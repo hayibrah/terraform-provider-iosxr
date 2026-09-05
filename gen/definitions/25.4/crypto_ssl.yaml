@@ -9,6 +9,8 @@ attributes:
     type: List
     attributes:
       - yang_name: profile-name
+        tf_name: profile_name
+        type: String
         id: true
         example: MTLS_PROFILE
       - yang_name: certificate
