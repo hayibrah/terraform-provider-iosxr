@@ -501,7 +501,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Create(ctx context.Conte
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
 		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
@@ -645,7 +645,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Update(ctx context.Conte
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
 		deletedListItems := plan.getDeletedItems(ctx, state)
@@ -693,21 +693,21 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Delete(ctx context.Conte
 		return
 	}
 
-{{- if .HasVersionDifferences}}
-	// Validate version compatibility (only check if resource/fields are supported)
-	if len(state.GetVersionConstraints()) > 0 {
-		helpers.ValidateVersionConstraints(r.data.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
-		if resp.Diagnostics.HasError() {
-			return
-		}
-	}
-
-{{- end}}
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
 		return
 	}
+{{- if .HasVersionDifferences}}
+
+	// Validate version compatibility (only check if resource/fields are supported)
+	if len(state.GetVersionConstraints()) > 0 {
+		helpers.ValidateVersionConstraints(device.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
+		}
+	}
+{{- end}}
 
 	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Delete", state.Id.ValueString()))
 
