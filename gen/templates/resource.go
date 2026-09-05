@@ -589,9 +589,9 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Read(ctx context.Context
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
