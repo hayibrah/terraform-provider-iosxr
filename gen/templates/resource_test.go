@@ -274,6 +274,9 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 	{{- range  .Attributes}}
 	{{- if or .Reference .Id .Mandatory .MinimumTestValue}}
 	{{- if eq .Type "List"}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+	{{- end}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
@@ -281,6 +284,9 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 		{{- range  .Attributes}}
 		{{- if or .Id .Mandatory .MinimumTestValue}}
 		{{- if eq .Type "List"}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+		{{- end}}
 		{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		{{- end}}
@@ -288,6 +294,9 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 			{{- range  .Attributes}}
 			{{- if or .Id .Mandatory .MinimumTestValue}}
 			{{- if eq .Type "List"}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+			{{- end}}
 			{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 			{{- end}}
@@ -295,6 +304,9 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 				{{- range  .Attributes}}
 				{{- if or .Id .Mandatory .MinimumTestValue}}
 				{{- if eq .Type "List"}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+				{{- end}}
 				{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 				{{- end}}
@@ -314,13 +326,22 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 				{{- if len .TestTags}}
 	}
 				{{- end}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+				{{- end}}
 				{{- else}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+				{{- end}}
 				{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `				{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
 	}
 				{{- else}}
 	config += `				{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+				{{- end}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	}
 				{{- end}}
 				{{- end}}
 				{{- end}}
@@ -329,13 +350,22 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 			{{- if len .TestTags}}
 	}
 			{{- end}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+			{{- end}}
 			{{- else}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+			{{- end}}
 			{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `			{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
 	}
 			{{- else}}
 	config += `			{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+			{{- end}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	}
 			{{- end}}
 			{{- end}}
 			{{- end}}
@@ -344,13 +374,22 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 		{{- if len .TestTags}}
 	}
 		{{- end}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+		{{- end}}
 		{{- else}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+		{{- end}}
 		{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `		{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
 	}
 		{{- else}}
 	config += `		{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+		{{- end}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+	}
 		{{- end}}
 		{{- end}}
 		{{- end}}
@@ -359,13 +398,22 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 	{{- if len .TestTags}}
 	}
 	{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
 	{{- else}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+	{{- end}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `	{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
 	}
 	{{- else}}
 	config += `	{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+	{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
 	{{- end}}
 	{{- end}}
 	{{- end}}
@@ -389,6 +437,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 	{{- range  .Attributes}}
 	{{- if not .ExcludeTest}}
 	{{- if eq .Type "List"}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+	{{- end}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
@@ -396,6 +447,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- range  .Attributes}}
 		{{- if not .ExcludeTest}}
 		{{- if eq .Type "List"}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+		{{- end}}
 		{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		{{- end}}
@@ -403,6 +457,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- range  .Attributes}}
 			{{- if not .ExcludeTest}}
 			{{- if eq .Type "List"}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+			{{- end}}
 			{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 			{{- end}}
@@ -410,6 +467,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- range  .Attributes}}
 				{{- if not .ExcludeTest}}
 				{{- if eq .Type "List"}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
+				{{- end}}
 				{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 				{{- end}}
@@ -435,6 +495,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- if len .TestTags}}
 	}
 				{{- end}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+				{{- end}}
 				{{- else}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
@@ -454,6 +517,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- end}}
 	config += `			}]` + "\n"
 			{{- if len .TestTags}}
+	}
+			{{- end}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 			{{- end}}
 			{{- else}}
@@ -477,6 +543,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- if len .TestTags}}
 	}
 			{{- end}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+			{{- end}}
 		{{- else}}
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
@@ -498,6 +567,9 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- if len .TestTags}}
 	}
 		{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
 	{{- else}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {

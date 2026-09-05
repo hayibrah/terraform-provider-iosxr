@@ -118,7 +118,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 				{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 				ElementType:         types.Int64Type,
 				{{- end}}
-				{{- if or .Id .Reference .Mandatory}}
+				{{- if and (or .Id .Reference .Mandatory) (not .RemovedInVersion)}}
 				Required:            true,
 				{{- else}}
 				Optional:            true,
@@ -186,7 +186,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 							{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 							ElementType:         types.Int64Type,
 							{{- end}}
-							{{- if or .Id .Mandatory}}
+							{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
 							Required:            true,
 							{{- else}}
 							Optional:            true,
@@ -252,7 +252,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 										{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 										ElementType:         types.Int64Type,
 										{{- end}}
-										{{- if or .Id .Mandatory}}
+										{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
 										Required:            true,
 										{{- else}}
 										Optional:            true,
@@ -320,7 +320,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 												{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 												ElementType:         types.Int64Type,
 												{{- end}}
-												{{- if or .Id .Mandatory}}
+												{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
 												Required:            true,
 												{{- else}}
 												Optional:            true,
@@ -388,7 +388,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 															{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 															ElementType:         types.Int64Type,
 															{{- end}}
-															{{- if or .Id .Mandatory}}
+															{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
 															Required:            true,
 															{{- else}}
 															Optional:            true,

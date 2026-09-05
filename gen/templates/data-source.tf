@@ -8,12 +8,6 @@ data "iosxr_{{snakeCase .Name}}" "example" {
 {{- end}}
 {{- range  .Attributes}}
 {{- if and (or .Id .Reference) (len .Example)}}
-{{- if ne .AddedInVersion ""}}
-  # Supported from version {{formatVersionDisplay .AddedInVersion}}
-{{- end}}
-{{- if ne .RemovedInVersion ""}}
-  # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-{{- end}}
   {{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}
 {{- end}}
 {{- end}}

@@ -9,55 +9,25 @@ resource "iosxr_{{snakeCase .Name}}" "example" {
 {{- range  .Attributes}}
 {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample (ne .RemovedInVersion ""))}}
 {{- if eq .Type "List"}}
-{{- if ne .AddedInVersion ""}}
-  # Supported from version {{formatVersionDisplay .AddedInVersion}}
-{{- end}}
-{{- if ne .RemovedInVersion ""}}
-  # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-{{- end}}
   {{.TfName}} = [
     {
       {{- range  .Attributes}}
       {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
-      {{- if ne .AddedInVersion ""}}
-      # Supported from version {{formatVersionDisplay .AddedInVersion}}
-      {{- end}}
-      {{- if ne .RemovedInVersion ""}}
-      # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-      {{- end}}
       {{- if eq .Type "List"}}
         {{.TfName}} = [
           {
             {{- range  .Attributes}}
             {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
-            {{- if ne .AddedInVersion ""}}
-            # Supported from version {{formatVersionDisplay .AddedInVersion}}
-            {{- end}}
-            {{- if ne .RemovedInVersion ""}}
-            # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-            {{- end}}
             {{- if eq .Type "List"}}
               {{.TfName}} = [
                 {
                   {{- range  .Attributes}}
                   {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
-                  {{- if ne .AddedInVersion ""}}
-                  # Supported from version {{formatVersionDisplay .AddedInVersion}}
-                  {{- end}}
-                  {{- if ne .RemovedInVersion ""}}
-                  # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-                  {{- end}}
                   {{- if eq .Type "List"}}
                     {{.TfName}} = [
                       {
                         {{- range  .Attributes}}
                         {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
-                        {{- if ne .AddedInVersion ""}}
-                        # Supported from version {{formatVersionDisplay .AddedInVersion}}
-                        {{- end}}
-                        {{- if ne .RemovedInVersion ""}}
-                        # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-                        {{- end}}
                         {{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}
                         {{- end}}
                         {{- end}}
@@ -85,12 +55,6 @@ resource "iosxr_{{snakeCase .Name}}" "example" {
     }
   ]
 {{- else if len .Example}}
-{{- if ne .AddedInVersion ""}}
-  # Supported from version {{formatVersionDisplay .AddedInVersion}}
-{{- end}}
-{{- if ne .RemovedInVersion ""}}
-  # Not supported from version {{formatVersionDisplay .RemovedInVersion}} and above
-{{- end}}
   {{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}
 {{- end}}
 {{- end}}
