@@ -324,3 +324,5 @@ attributes:
     legacy: true
   - yang_name: suppress/duplicates
     legacy: true
+  - yang_name: yang
+    legacy: true

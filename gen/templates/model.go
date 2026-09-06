@@ -213,9 +213,8 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 	body := "{}"
 	{{- range .Attributes}}
 	{{- if and (not .Reference) (ne .Type "List") (ne .Type "Set")}}
-	{{- if .AddedInVersion}}
-	// Field added in version {{.AddedInVersion}} - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}") {
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
 	if !data.{{toGoName .TfName}}.IsNull() && !data.{{toGoName .TfName}}.IsUnknown() {
 		{{- if eq .Type "Int64"}}
@@ -242,7 +241,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 		body, _ = sjson.Set(body, "{{toJsonPath .YangName .XPath}}", values)
 		{{- end}}
 	}
-	{{- if .AddedInVersion}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 	{{- end}}
 	{{- end}}
@@ -250,7 +249,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 	{{- range .Attributes}}
 	{{- if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $list := toJsonPath .YangName .XPath }}
-	if len(data.{{toGoName .TfName}}) > 0 {
+	if {{if or .AddedInVersion .RemovedInVersion}}({{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}}) && {{end}}len(data.{{toGoName .TfName}}) > 0 {
 		body, _ = sjson.Set(body, "{{toJsonPath .YangName .XPath}}", []interface{}{})
 		for index, item := range data.{{toGoName .TfName}} {
 			{{- range .Attributes}}
