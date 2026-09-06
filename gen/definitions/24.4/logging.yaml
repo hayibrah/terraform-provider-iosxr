@@ -172,7 +172,8 @@ attributes:
     exclude_test: true
     example: true
   - yang_name: yang
-    example: emergencies
+    # example: emergencies
+    example: debugging
   - yang_name: Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule
     tf_name: suppress_rules
     type: List
