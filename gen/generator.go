@@ -992,6 +992,9 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if newAttr.Legacy {
 					result[i].RemovedInVersion = overrideVersion
 					result[i].Legacy = true
+					if newAttr.TfName != "" {
+						result[i].TfName = newAttr.TfName
+					}
 					found = true
 					break
 				}
