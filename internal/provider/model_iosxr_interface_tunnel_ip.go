@@ -387,6 +387,7 @@ func (data InterfaceTunnelIP) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data InterfaceTunnelIP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -405,7 +406,7 @@ func (data InterfaceTunnelIP) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *InterfaceTunnelIP) updateFromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelIP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); !data.Shutdown.IsNull() {
 		if value.Exists() {
 			data.Shutdown = types.BoolValue(true)
@@ -777,7 +778,7 @@ func (data *InterfaceTunnelIP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *InterfaceTunnelIP) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelIP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -989,7 +990,7 @@ func (data *InterfaceTunnelIP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *InterfaceTunnelIPData) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelIPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -1201,7 +1202,7 @@ func (data *InterfaceTunnelIPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *InterfaceTunnelIP) getDeletedItems(ctx context.Context, state InterfaceTunnelIP) []string {
+func (data *InterfaceTunnelIP) getDeletedItems(ctx context.Context, state InterfaceTunnelIP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.KeepalivePeriod.IsNull() && data.KeepalivePeriod.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-tunnel-cfg:keepalive/keepalive-period", state.getPath()))
@@ -1396,7 +1397,7 @@ func (data *InterfaceTunnelIP) getDeletedItems(ctx context.Context, state Interf
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *InterfaceTunnelIP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *InterfaceTunnelIP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TunnelDfDisable.IsNull() && !data.TunnelDfDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-tunnel-cfg:tunnel/dfbit/disable", data.getPath()))
@@ -1469,7 +1470,7 @@ func (data *InterfaceTunnelIP) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *InterfaceTunnelIP) getDeletePaths(ctx context.Context) []string {
+func (data *InterfaceTunnelIP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.KeepalivePeriod.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-tunnel-cfg:keepalive/keepalive-period", data.getPath()))
@@ -1547,6 +1548,14 @@ func (data *InterfaceTunnelIP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", data.getPath(), keyString))
 	}

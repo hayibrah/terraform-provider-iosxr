@@ -407,6 +407,7 @@ func (data InterfaceLoopback) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data InterfaceLoopback) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -425,7 +426,7 @@ func (data InterfaceLoopback) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *InterfaceLoopback) updateFromBody(ctx context.Context, res []byte) {
+func (data *InterfaceLoopback) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dampening"); !data.Dampening.IsNull() {
 		if value.Exists() {
 			data.Dampening = types.BoolValue(true)
@@ -872,7 +873,7 @@ func (data *InterfaceLoopback) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *InterfaceLoopback) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceLoopback) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dampening"); value.Exists() {
 		data.Dampening = types.BoolValue(true)
 	} else {
@@ -1115,7 +1116,7 @@ func (data *InterfaceLoopback) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *InterfaceLoopbackData) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceLoopbackData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dampening"); value.Exists() {
 		data.Dampening = types.BoolValue(true)
 	} else {
@@ -1358,7 +1359,7 @@ func (data *InterfaceLoopbackData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state InterfaceLoopback) []string {
+func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state InterfaceLoopback, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() && data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-ipv6-nd-cfg:nd/prefix/default/no-autoconfig", state.getPath()))
@@ -1637,7 +1638,7 @@ func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state Interf
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *InterfaceLoopback) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *InterfaceLoopback) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() && !data.Ipv6NdPrefixDefaultNoAutoconfig.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-ipv6-nd-cfg:nd/prefix/default/no-autoconfig", data.getPath()))
@@ -1719,7 +1720,7 @@ func (data *InterfaceLoopback) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *InterfaceLoopback) getDeletePaths(ctx context.Context) []string {
+func (data *InterfaceLoopback) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-ipv6-nd-cfg:nd/prefix/default/no-autoconfig", data.getPath()))
@@ -1747,6 +1748,14 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Eui64Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", data.getPath(), keyString))
 	}
 	if !data.Ipv6LinkLocalRouteTag.IsNull() {
@@ -1765,6 +1774,14 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", data.getPath(), keyString))
 	}
@@ -1803,6 +1820,17 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4HelperAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Ipv4HelperAddresses[i].Vrf.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", data.getPath(), keyString))
 	}
 	if !data.Ipv4MaskReply.IsNull() {
@@ -1830,6 +1858,14 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4Secondaries[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", data.getPath(), keyString))
 	}

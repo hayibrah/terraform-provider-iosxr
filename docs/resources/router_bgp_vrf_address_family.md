@@ -65,18 +65,16 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
       metric                                  = 100
       multipath                               = true
       route_policy                            = "ROUTE_POLICY_1"
-      # Supported from version 25.1
-      default_policy_action_in = "accept"
+      default_policy_action_in                = "accept"
     }
   ]
   redistribute_eigrp = [
     {
-      instance_name           = "EIGRP1"
-      match_internal_external = true
-      metric                  = 100
-      multipath               = true
-      route_policy            = "ROUTE_POLICY_1"
-      # Supported from version 25.1
+      instance_name            = "EIGRP1"
+      match_internal_external  = true
+      metric                   = 100
+      multipath                = true
+      route_policy             = "ROUTE_POLICY_1"
       default_policy_action_in = "accept"
     }
   ]
@@ -87,8 +85,7 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
       metric                             = 100
       multipath                          = true
       route_policy                       = "ROUTE_POLICY_1"
-      # Supported from version 25.1
-      default_policy_action_in = "accept"
+      default_policy_action_in           = "accept"
     }
   ]
   redistribute_connected               = true
@@ -222,10 +219,10 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
   - Range: `0`-`4294967295`
 - `redistribute_connected_multipath` (Boolean) Enable installation of multiple paths from RIB
 - `redistribute_connected_route_policy` (String) Route policy reference
-- `redistribute_eigrp` (Attributes List) Enhanced Interior Gateway Routing Protocol (EIGRP) (see [below for nested schema](#nestedatt--redistribute_eigrp))
-- `redistribute_isis` (Attributes List) ISO IS-IS (see [below for nested schema](#nestedatt--redistribute_isis))
-- `redistribute_ospf` (Attributes List) Open Shortest Path First (OSPF) (see [below for nested schema](#nestedatt--redistribute_ospf))
-- `redistribute_ospfv3` (Attributes List) IPv6 Open Shortest Path First (OSPFv3) (see [below for nested schema](#nestedatt--redistribute_ospfv3))
+- `redistribute_eigrp` (Attributes List) Redistribute EIGRP routes (see [below for nested schema](#nestedatt--redistribute_eigrp))
+- `redistribute_isis` (Attributes List) Redistribute ISIS routes (see [below for nested schema](#nestedatt--redistribute_isis))
+- `redistribute_ospf` (Attributes List) Redistribute OSPF routes (see [below for nested schema](#nestedatt--redistribute_ospf))
+- `redistribute_ospfv3` (Attributes List) Redistribute OSPFv3 routes (see [below for nested schema](#nestedatt--redistribute_ospfv3))
 - `redistribute_rip` (Boolean) Redistribute RIP routes
 - `redistribute_rip_metric` (Number) Metric for redistributed routes
   - Range: `0`-`4294967295`
@@ -297,7 +294,7 @@ Optional:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
   - Choices: `accept`, `reject`
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute EIGRP external routes
 - `match_internal` (Boolean) Redistribute EIGRP internal routes
 - `match_internal_external` (Boolean) Redistribute EIGRP internal and external routes
@@ -318,7 +315,7 @@ Optional:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
   - Choices: `accept`, `reject`
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `level_1` (Boolean) Redistribute ISIS level 1 routes
 - `level_1_inter_area` (Boolean) Redistribute ISIS level 1 inter-area routes
 - `level_1_level_1_inter_area` (Boolean) Redistribute ISIS level 1 and level 1 inter-area routes
@@ -343,7 +340,7 @@ Optional:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
   - Choices: `accept`, `reject`
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPF external routes
 - `match_external_1` (Boolean) Redistribute OSPF external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPF external type 1 and NSSA external routes
@@ -392,7 +389,7 @@ Optional:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
   - Choices: `accept`, `reject`
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPFv3 external routes
 - `match_external_1` (Boolean) Redistribute OSPFv3 external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPFv3 external type 1 and NSSA external routes

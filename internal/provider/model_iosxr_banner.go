@@ -81,6 +81,7 @@ func (data Banner) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data Banner) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -99,7 +100,7 @@ func (data Banner) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *Banner) updateFromBody(ctx context.Context, res []byte) {
+func (data *Banner) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "line"); value.Exists() && !data.Line.IsNull() {
 		data.Line = types.StringValue(value.String())
 	} else {
@@ -111,7 +112,7 @@ func (data *Banner) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *Banner) fromBody(ctx context.Context, res []byte) {
+func (data *Banner) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "line"); value.Exists() {
 		data.Line = types.StringValue(value.String())
 	}
@@ -121,7 +122,7 @@ func (data *Banner) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *BannerData) fromBody(ctx context.Context, res []byte) {
+func (data *BannerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "line"); value.Exists() {
 		data.Line = types.StringValue(value.String())
 	}
@@ -131,7 +132,7 @@ func (data *BannerData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *Banner) getDeletedItems(ctx context.Context, state Banner) []string {
+func (data *Banner) getDeletedItems(ctx context.Context, state Banner, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Line.IsNull() && data.Line.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/line", state.getPath()))
@@ -143,7 +144,7 @@ func (data *Banner) getDeletedItems(ctx context.Context, state Banner) []string 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *Banner) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *Banner) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -151,7 +152,7 @@ func (data *Banner) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *Banner) getDeletePaths(ctx context.Context) []string {
+func (data *Banner) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Line.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/line", data.getPath()))

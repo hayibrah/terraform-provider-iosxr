@@ -224,6 +224,7 @@ func (data MACSecPolicy) toBody(ctx context.Context, providerVersion string) str
 // GetVersionConstraints returns the version constraints for all fields
 func (data MACSecPolicy) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -242,7 +243,7 @@ func (data MACSecPolicy) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte) {
+func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && !data.KeyServerPriority.IsNull() {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	} else {
@@ -421,7 +422,7 @@ func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte) {
+func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	}
@@ -526,7 +527,7 @@ func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte) {
+func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	}
@@ -631,7 +632,7 @@ func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MACSecPolicy) getDeletedItems(ctx context.Context, state MACSecPolicy) []string {
+func (data *MACSecPolicy) getDeletedItems(ctx context.Context, state MACSecPolicy, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LoggingSakRekeySummaryInterval.IsNull() && data.LoggingSakRekeySummaryInterval.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/sak-rekey/summary-interval", state.getPath()))
@@ -712,7 +713,7 @@ func (data *MACSecPolicy) getDeletedItems(ctx context.Context, state MACSecPolic
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MACSecPolicy) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MACSecPolicy) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LoggingSakRekeyDisable.IsNull() && !data.LoggingSakRekeyDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/sak-rekey", data.getPath()))
@@ -759,7 +760,7 @@ func (data *MACSecPolicy) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MACSecPolicy) getDeletePaths(ctx context.Context) []string {
+func (data *MACSecPolicy) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LoggingSakRekeySummaryInterval.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/sak-rekey/summary-interval", data.getPath()))

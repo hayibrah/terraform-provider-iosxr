@@ -74,7 +74,7 @@ func TestAccIosxrRouterBGPVRFAddressFamily(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_ospf.0.metric", "100"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_ospf.0.multipath", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_ospf.0.route_policy", "ROUTE_POLICY_1"))
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_ospf.0.default_policy_action_in", "accept"))
 	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_eigrp.0.instance_name", "EIGRP1"))
@@ -82,7 +82,7 @@ func TestAccIosxrRouterBGPVRFAddressFamily(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_eigrp.0.metric", "100"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_eigrp.0.multipath", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_eigrp.0.route_policy", "ROUTE_POLICY_1"))
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_eigrp.0.default_policy_action_in", "accept"))
 	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_isis.0.instance_name", "ISIS1"))
@@ -90,7 +90,7 @@ func TestAccIosxrRouterBGPVRFAddressFamily(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_isis.0.metric", "100"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_isis.0.multipath", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_isis.0.route_policy", "ROUTE_POLICY_1"))
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_isis.0.default_policy_action_in", "accept"))
 	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_router_bgp_vrf_address_family.test", "redistribute_connected", "true"))
@@ -301,7 +301,7 @@ func testAccIosxrRouterBGPVRFAddressFamilyConfig_all() string {
 	config += `		metric = 100` + "\n"
 	config += `		multipath = true` + "\n"
 	config += `		route_policy = "ROUTE_POLICY_1"` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		default_policy_action_in = "accept"` + "\n"
 	}
 	config += `		}]` + "\n"
@@ -311,7 +311,7 @@ func testAccIosxrRouterBGPVRFAddressFamilyConfig_all() string {
 	config += `		metric = 100` + "\n"
 	config += `		multipath = true` + "\n"
 	config += `		route_policy = "ROUTE_POLICY_1"` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		default_policy_action_in = "accept"` + "\n"
 	}
 	config += `		}]` + "\n"
@@ -321,7 +321,7 @@ func testAccIosxrRouterBGPVRFAddressFamilyConfig_all() string {
 	config += `		metric = 100` + "\n"
 	config += `		multipath = true` + "\n"
 	config += `		route_policy = "ROUTE_POLICY_1"` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		default_policy_action_in = "accept"` + "\n"
 	}
 	config += `		}]` + "\n"

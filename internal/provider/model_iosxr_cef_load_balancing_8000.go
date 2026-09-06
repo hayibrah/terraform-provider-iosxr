@@ -212,6 +212,7 @@ func (data CEFLoadBalancing8000) toBody(ctx context.Context, providerVersion str
 // GetVersionConstraints returns the version constraints for all fields
 func (data CEFLoadBalancing8000) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -230,7 +231,7 @@ func (data CEFLoadBalancing8000) GetRangeConstraints() []helpers.FieldRangeConst
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte) {
+func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() && !data.PlatformLoadBalanceHashRotate.IsNull() {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	} else {
@@ -485,7 +486,7 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte) {
+func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	}
@@ -602,7 +603,7 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte) {
+func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	}
@@ -719,7 +720,7 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte) 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CEFLoadBalancing8000) getDeletedItems(ctx context.Context, state CEFLoadBalancing8000) []string {
+func (data *CEFLoadBalancing8000) getDeletedItems(ctx context.Context, state CEFLoadBalancing8000, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PlatformLoadBalanceMplsHashingInnerNonIpLabelOnly.IsNull() && data.PlatformLoadBalanceMplsHashingInnerNonIpLabelOnly.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/platform-load-balance/mpls-hash-non-ip-lbl-only", state.getPath()))
@@ -950,7 +951,7 @@ func (data *CEFLoadBalancing8000) getDeletedItems(ctx context.Context, state CEF
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CEFLoadBalancing8000) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CEFLoadBalancing8000) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PlatformLoadBalanceMplsHashingInnerNonIpLabelOnly.IsNull() && !data.PlatformLoadBalanceMplsHashingInnerNonIpLabelOnly.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/platform-load-balance/mpls-hash-non-ip-lbl-only", data.getPath()))
@@ -1009,7 +1010,7 @@ func (data *CEFLoadBalancing8000) getEmptyLeafsDelete(ctx context.Context) []str
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
+func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PlatformLoadBalanceMplsHashingInnerNonIpLabelOnly.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform-load-balance/mpls-hash-non-ip-lbl-only", data.getPath()))
@@ -1022,6 +1023,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv4-nontcpudps/ipv4-nontcpudp%v", data.getPath(), keyString))
 	}
 	for i := range data.PlatformLoadBalanceFieldsUserdataIpv4Tcp {
@@ -1031,6 +1040,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv4-tcps/ipv4-tcp%v", data.getPath(), keyString))
 	}
@@ -1042,6 +1059,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv4-udps/ipv4-udp%v", data.getPath(), keyString))
 	}
 	for i := range data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp {
@@ -1051,6 +1076,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv6-nontcpudps/ipv6-nontcpudp%v", data.getPath(), keyString))
 	}
@@ -1062,6 +1095,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv6-tcps/ipv6-tcp%v", data.getPath(), keyString))
 	}
 	for i := range data.PlatformLoadBalanceFieldsUserdataIpv6Udp {
@@ -1071,6 +1112,14 @@ func (data *CEFLoadBalancing8000) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].LocationString.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/load-balance/fields/userdata/ipv6-udps/ipv6-udp%v", data.getPath(), keyString))
 	}

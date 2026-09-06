@@ -744,6 +744,7 @@ func (data IPSLA) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data IPSLA) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -762,7 +763,7 @@ func (data IPSLA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *IPSLA) updateFromBody(ctx context.Context, res []byte) {
+func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "low-memory"); value.Exists() && !data.LowMemory.IsNull() {
 		data.LowMemory = types.Int64Value(value.Int())
 	} else {
@@ -1715,7 +1716,7 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *IPSLA) fromBody(ctx context.Context, res []byte) {
+func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "low-memory"); value.Exists() {
 		data.LowMemory = types.Int64Value(value.Int())
 	}
@@ -2242,7 +2243,7 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *IPSLAData) fromBody(ctx context.Context, res []byte) {
+func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "low-memory"); value.Exists() {
 		data.LowMemory = types.Int64Value(value.Int())
 	}
@@ -2769,7 +2770,7 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA) []string {
+func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ServerTwampTimerInactivity.IsNull() && data.ServerTwampTimerInactivity.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/twamp/timer/inactivity", state.getPath()))
@@ -3366,7 +3367,7 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ServerTwamp.IsNull() && !data.ServerTwamp.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/twamp", data.getPath()))
@@ -3491,7 +3492,7 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *IPSLA) getDeletePaths(ctx context.Context) []string {
+func (data *IPSLA) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ServerTwampTimerInactivity.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/twamp/timer/inactivity", data.getPath()))
@@ -3510,6 +3511,14 @@ func (data *IPSLA) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Schedules[i].OperationNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString))
 	}
 	for i := range data.Operations {
@@ -3519,6 +3528,14 @@ func (data *IPSLA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Operations[i].OperationNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString))
 	}

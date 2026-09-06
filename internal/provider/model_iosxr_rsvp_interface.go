@@ -393,6 +393,7 @@ func (data RSVPInterface) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RSVPInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -411,7 +412,7 @@ func (data RSVPInterface) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RSVPInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RSVPInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bandwidth.default"); !data.BandwidthDefault.IsNull() {
 		if value.Exists() {
 			data.BandwidthDefault = types.BoolValue(true)
@@ -743,7 +744,7 @@ func (data *RSVPInterface) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RSVPInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RSVPInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bandwidth.default"); value.Exists() {
 		data.BandwidthDefault = types.BoolValue(true)
 	} else {
@@ -943,7 +944,7 @@ func (data *RSVPInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RSVPInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RSVPInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bandwidth.default"); value.Exists() {
 		data.BandwidthDefault = types.BoolValue(true)
 	} else {
@@ -1143,7 +1144,7 @@ func (data *RSVPInterfaceData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RSVPInterface) getDeletedItems(ctx context.Context, state RSVPInterface) []string {
+func (data *RSVPInterface) getDeletedItems(ctx context.Context, state RSVPInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AuthenticationLifeTime.IsNull() && data.AuthenticationLifeTime.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/life-time", state.getPath()))
@@ -1335,7 +1336,7 @@ func (data *RSVPInterface) getDeletedItems(ctx context.Context, state RSVPInterf
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RSVPInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RSVPInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SignallingHelloGracefulRestartInterfaceBased.IsNull() && !data.SignallingHelloGracefulRestartInterfaceBased.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/hello/graceful-restart/interface-based", data.getPath()))
@@ -1358,7 +1359,7 @@ func (data *RSVPInterface) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RSVPInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RSVPInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AuthenticationLifeTime.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/life-time", data.getPath()))

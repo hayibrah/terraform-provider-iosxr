@@ -261,11 +261,11 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 							Computed:            true,
 						},
 						"local_accounting": schema.BoolAttribute{
-							MarkdownDescription: "Store only the command accounting logs",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 						"send_to_remote": schema.BoolAttribute{
-							MarkdownDescription: "Send the command accounting logs to syslog server",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 						"send_to_remote_facility": schema.StringAttribute{
@@ -323,6 +323,14 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 									},
 								},
 							},
+						},
+						"interface_name": schema.StringAttribute{
+							MarkdownDescription: "Specify interface for source address in logging transactions",
+							Computed:            true,
+						},
+						"vrf_name": schema.StringAttribute{
+							MarkdownDescription: "Set VRF option",
+							Computed:            true,
 						},
 					},
 				},
@@ -536,7 +544,7 @@ func (d *LoggingDataSource) Read(ctx context.Context, req datasource.ReadRequest
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

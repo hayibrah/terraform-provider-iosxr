@@ -664,14 +664,12 @@ func (data RouterBGPNeighborAddressFamily) toBody(ctx context.Context, providerV
 			body, _ = sjson.Set(body, "bestpath.origin-as.allow.invalid", []interface{}{nil})
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.DefaultPolicyActionIn.IsNull() && !data.DefaultPolicyActionIn.IsUnknown() {
 			body, _ = sjson.Set(body, "default-policy-action.in", data.DefaultPolicyActionIn.ValueString())
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.DefaultPolicyActionOut.IsNull() && !data.DefaultPolicyActionOut.IsUnknown() {
 			body, _ = sjson.Set(body, "default-policy-action.out", data.DefaultPolicyActionOut.ValueString())
 		}
@@ -686,14 +684,15 @@ func (data RouterBGPNeighborAddressFamily) toBody(ctx context.Context, providerV
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterBGPNeighborAddressFamily) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "default_policy_action_out",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -714,7 +713,7 @@ func (data RouterBGPNeighborAddressFamily) GetRangeConstraints() []helpers.Field
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterBGPNeighborAddressFamily) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "encapsulation-type"); value.Exists() && !data.EncapsulationType.IsNull() {
 		data.EncapsulationType = types.StringValue(value.String())
 	} else {
@@ -1441,12 +1440,12 @@ func (data *RouterBGPNeighborAddressFamily) updateFromBody(ctx context.Context, 
 	} else {
 		data.BestpathOriginAsAllowInvalid = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && !data.DefaultPolicyActionIn.IsNull() {
+	if value := gjson.GetBytes(res, "default-policy-action.in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.DefaultPolicyActionIn.IsNull() {
 		data.DefaultPolicyActionIn = types.StringValue(value.String())
 	} else {
 		data.DefaultPolicyActionIn = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && !data.DefaultPolicyActionOut.IsNull() {
+	if value := gjson.GetBytes(res, "default-policy-action.out"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.DefaultPolicyActionOut.IsNull() {
 		data.DefaultPolicyActionOut = types.StringValue(value.String())
 	} else {
 		data.DefaultPolicyActionOut = types.StringNull()
@@ -1457,7 +1456,7 @@ func (data *RouterBGPNeighborAddressFamily) updateFromBody(ctx context.Context, 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterBGPNeighborAddressFamily) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborAddressFamily) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "encapsulation-type"); value.Exists() {
 		data.EncapsulationType = types.StringValue(value.String())
 	}
@@ -1866,11 +1865,19 @@ func (data *RouterBGPNeighborAddressFamily) fromBody(ctx context.Context, res []
 	} else {
 		data.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() {
-		data.DefaultPolicyActionIn = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() {
+			data.DefaultPolicyActionIn = types.StringValue(value.String())
+		}
+	} else {
+		data.DefaultPolicyActionIn = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() {
-		data.DefaultPolicyActionOut = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() {
+			data.DefaultPolicyActionOut = types.StringValue(value.String())
+		}
+	} else {
+		data.DefaultPolicyActionOut = types.StringNull()
 	}
 }
 
@@ -1878,7 +1885,7 @@ func (data *RouterBGPNeighborAddressFamily) fromBody(ctx context.Context, res []
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterBGPNeighborAddressFamilyData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborAddressFamilyData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "encapsulation-type"); value.Exists() {
 		data.EncapsulationType = types.StringValue(value.String())
 	}
@@ -2287,11 +2294,19 @@ func (data *RouterBGPNeighborAddressFamilyData) fromBody(ctx context.Context, re
 	} else {
 		data.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() {
-		data.DefaultPolicyActionIn = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() {
+			data.DefaultPolicyActionIn = types.StringValue(value.String())
+		}
+	} else {
+		data.DefaultPolicyActionIn = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() {
-		data.DefaultPolicyActionOut = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() {
+			data.DefaultPolicyActionOut = types.StringValue(value.String())
+		}
+	} else {
+		data.DefaultPolicyActionOut = types.StringNull()
 	}
 }
 
@@ -2299,12 +2314,12 @@ func (data *RouterBGPNeighborAddressFamilyData) fromBody(ctx context.Context, re
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterBGPNeighborAddressFamily) getDeletedItems(ctx context.Context, state RouterBGPNeighborAddressFamily) []string {
+func (data *RouterBGPNeighborAddressFamily) getDeletedItems(ctx context.Context, state RouterBGPNeighborAddressFamily, version string) []string {
 	deletedItems := make([]string, 0)
-	if !state.DefaultPolicyActionOut.IsNull() && data.DefaultPolicyActionOut.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.DefaultPolicyActionOut.IsNull() && data.DefaultPolicyActionOut.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/default-policy-action/out", state.getPath()))
 	}
-	if !state.DefaultPolicyActionIn.IsNull() && data.DefaultPolicyActionIn.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.DefaultPolicyActionIn.IsNull() && data.DefaultPolicyActionIn.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/default-policy-action/in", state.getPath()))
 	}
 	if !state.BestpathOriginAsAllowInvalid.IsNull() && data.BestpathOriginAsAllowInvalid.IsNull() {
@@ -2584,7 +2599,7 @@ func (data *RouterBGPNeighborAddressFamily) getDeletedItems(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterBGPNeighborAddressFamily) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterBGPNeighborAddressFamily) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BestpathOriginAsAllowInvalid.IsNull() && !data.BestpathOriginAsAllowInvalid.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bestpath/origin-as/allow/invalid", data.getPath()))
@@ -2799,12 +2814,12 @@ func (data *RouterBGPNeighborAddressFamily) getEmptyLeafsDelete(ctx context.Cont
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterBGPNeighborAddressFamily) getDeletePaths(ctx context.Context) []string {
+func (data *RouterBGPNeighborAddressFamily) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
-	if !data.DefaultPolicyActionOut.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.DefaultPolicyActionOut.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/default-policy-action/out", data.getPath()))
 	}
-	if !data.DefaultPolicyActionIn.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.DefaultPolicyActionIn.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/default-policy-action/in", data.getPath()))
 	}
 	if !data.BestpathOriginAsAllowInvalid.IsNull() {

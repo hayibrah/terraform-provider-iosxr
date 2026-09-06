@@ -256,6 +256,7 @@ func (data MonitorSession) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data MonitorSession) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -274,7 +275,7 @@ func (data MonitorSession) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte) {
+func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.MonitorSessions {
 		keys := [...]string{"session-name"}
 		keyValues := [...]string{data.MonitorSessions[i].SessionName.ValueString()}
@@ -539,7 +540,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MonitorSession) fromBody(ctx context.Context, res []byte) {
+func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "monitor-session"); value.Exists() {
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -688,7 +689,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte) {
+func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "monitor-session"); value.Exists() {
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -837,7 +838,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MonitorSession) getDeletedItems(ctx context.Context, state MonitorSession) []string {
+func (data *MonitorSession) getDeletedItems(ctx context.Context, state MonitorSession, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LocalCaptureUnitGb.IsNull() && data.LocalCaptureUnitGb.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/gb", state.getPath()))
@@ -975,7 +976,7 @@ func (data *MonitorSession) getDeletedItems(ctx context.Context, state MonitorSe
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MonitorSession) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MonitorSession) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LocalCaptureUnitGb.IsNull() && !data.LocalCaptureUnitGb.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/gb", data.getPath()))
@@ -1039,7 +1040,7 @@ func (data *MonitorSession) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MonitorSession) getDeletePaths(ctx context.Context) []string {
+func (data *MonitorSession) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LocalCaptureUnitGb.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/gb", data.getPath()))
@@ -1066,6 +1067,14 @@ func (data *MonitorSession) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MonitorSessions[i].SessionName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString))
 	}

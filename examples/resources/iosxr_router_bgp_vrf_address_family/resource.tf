@@ -50,18 +50,16 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
       metric                                  = 100
       multipath                               = true
       route_policy                            = "ROUTE_POLICY_1"
-      # Supported from version 25.1
-      default_policy_action_in = "accept"
+      default_policy_action_in                = "accept"
     }
   ]
   redistribute_eigrp = [
     {
-      instance_name           = "EIGRP1"
-      match_internal_external = true
-      metric                  = 100
-      multipath               = true
-      route_policy            = "ROUTE_POLICY_1"
-      # Supported from version 25.1
+      instance_name            = "EIGRP1"
+      match_internal_external  = true
+      metric                   = 100
+      multipath                = true
+      route_policy             = "ROUTE_POLICY_1"
       default_policy_action_in = "accept"
     }
   ]
@@ -72,8 +70,7 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
       metric                             = 100
       multipath                          = true
       route_policy                       = "ROUTE_POLICY_1"
-      # Supported from version 25.1
-      default_policy_action_in = "accept"
+      default_policy_action_in           = "accept"
     }
   ]
   redistribute_connected               = true

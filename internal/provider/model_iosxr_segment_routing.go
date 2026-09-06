@@ -100,6 +100,7 @@ func (data SegmentRouting) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRouting) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -118,7 +119,7 @@ func (data SegmentRouting) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRouting) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRouting) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() && !data.LocalBlockLowerBound.IsNull() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	} else {
@@ -154,7 +155,7 @@ func (data *SegmentRouting) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRouting) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRouting) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	}
@@ -178,7 +179,7 @@ func (data *SegmentRouting) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingData) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	}
@@ -202,7 +203,7 @@ func (data *SegmentRoutingData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRouting) getDeletedItems(ctx context.Context, state SegmentRouting) []string {
+func (data *SegmentRouting) getDeletedItems(ctx context.Context, state SegmentRouting, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Enable.IsNull() && data.Enable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable", state.getPath()))
@@ -226,7 +227,7 @@ func (data *SegmentRouting) getDeletedItems(ctx context.Context, state SegmentRo
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRouting) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRouting) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Enable.IsNull() && !data.Enable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable", data.getPath()))
@@ -237,7 +238,7 @@ func (data *SegmentRouting) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRouting) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRouting) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Enable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable", data.getPath()))

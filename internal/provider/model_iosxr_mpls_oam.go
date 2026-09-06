@@ -139,6 +139,7 @@ func (data MPLSOAM) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data MPLSOAM) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -157,7 +158,7 @@ func (data MPLSOAM) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MPLSOAM) updateFromBody(ctx context.Context, res []byte) {
+func (data *MPLSOAM) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "oam"); !data.Oam.IsNull() {
 		if value.Exists() {
 			data.Oam = types.BoolValue(true)
@@ -246,7 +247,7 @@ func (data *MPLSOAM) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MPLSOAM) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSOAM) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "oam"); value.Exists() {
 		data.Oam = types.BoolValue(true)
 	} else {
@@ -299,7 +300,7 @@ func (data *MPLSOAM) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MPLSOAMData) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSOAMData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "oam"); value.Exists() {
 		data.Oam = types.BoolValue(true)
 	} else {
@@ -352,7 +353,7 @@ func (data *MPLSOAMData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MPLSOAM) getDeletedItems(ctx context.Context, state MPLSOAM) []string {
+func (data *MPLSOAM) getDeletedItems(ctx context.Context, state MPLSOAM, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.OamDpmDownstreamEcmpFaults.IsNull() && data.OamDpmDownstreamEcmpFaults.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", state.getPath()))
@@ -391,7 +392,7 @@ func (data *MPLSOAM) getDeletedItems(ctx context.Context, state MPLSOAM) []strin
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MPLSOAM) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MPLSOAM) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.OamDpmDownstreamEcmpFaults.IsNull() && !data.OamDpmDownstreamEcmpFaults.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", data.getPath()))
@@ -423,7 +424,7 @@ func (data *MPLSOAM) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MPLSOAM) getDeletePaths(ctx context.Context) []string {
+func (data *MPLSOAM) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.OamDpmDownstreamEcmpFaults.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", data.getPath()))

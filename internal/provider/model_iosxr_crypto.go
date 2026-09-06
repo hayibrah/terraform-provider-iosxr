@@ -478,18 +478,19 @@ func (data Crypto) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data Crypto) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "ca_trustpoints.enrollment_authentication_profile",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "ca_trustpoints.re_enrollment_authentication_profile",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "ca_trustpoints.ssl_profile",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -510,7 +511,7 @@ func (data Crypto) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *Crypto) updateFromBody(ctx context.Context, res []byte) {
+func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.description"); value.Exists() && !data.CaTrustpointSystemDescription.IsNull() {
 		data.CaTrustpointSystemDescription = types.StringValue(value.String())
 	} else {
@@ -912,17 +913,17 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte) {
 		} else {
 			data.CaTrustpoints[i].MethodEstCredentialCertificate = types.StringNull()
 		}
-		if value := r.Get("enrollment.authentication-profile"); value.Exists() && !data.CaTrustpoints[i].EnrollmentAuthenticationProfile.IsNull() {
+		if value := r.Get("enrollment.authentication-profile"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.CaTrustpoints[i].EnrollmentAuthenticationProfile.IsNull() {
 			data.CaTrustpoints[i].EnrollmentAuthenticationProfile = types.StringValue(value.String())
 		} else {
 			data.CaTrustpoints[i].EnrollmentAuthenticationProfile = types.StringNull()
 		}
-		if value := r.Get("re-enrollment.authentication-profile"); value.Exists() && !data.CaTrustpoints[i].ReEnrollmentAuthenticationProfile.IsNull() {
+		if value := r.Get("re-enrollment.authentication-profile"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.CaTrustpoints[i].ReEnrollmentAuthenticationProfile.IsNull() {
 			data.CaTrustpoints[i].ReEnrollmentAuthenticationProfile = types.StringValue(value.String())
 		} else {
 			data.CaTrustpoints[i].ReEnrollmentAuthenticationProfile = types.StringNull()
 		}
-		if value := r.Get("ssl-profile"); value.Exists() && !data.CaTrustpoints[i].SslProfile.IsNull() {
+		if value := r.Get("ssl-profile"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.CaTrustpoints[i].SslProfile.IsNull() {
 			data.CaTrustpoints[i].SslProfile = types.StringValue(value.String())
 		} else {
 			data.CaTrustpoints[i].SslProfile = types.StringNull()
@@ -1020,7 +1021,7 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *Crypto) fromBody(ctx context.Context, res []byte) {
+func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.description"); value.Exists() {
 		data.CaTrustpointSystemDescription = types.StringValue(value.String())
 	}
@@ -1245,14 +1246,26 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("method.est.credential.certificate"); cValue.Exists() {
 				item.MethodEstCredentialCertificate = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("enrollment.authentication-profile"); cValue.Exists() {
-				item.EnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("enrollment.authentication-profile"); cValue.Exists() {
+					item.EnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.EnrollmentAuthenticationProfile = types.StringNull()
 			}
-			if cValue := v.Get("re-enrollment.authentication-profile"); cValue.Exists() {
-				item.ReEnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("re-enrollment.authentication-profile"); cValue.Exists() {
+					item.ReEnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.ReEnrollmentAuthenticationProfile = types.StringNull()
 			}
-			if cValue := v.Get("ssl-profile"); cValue.Exists() {
-				item.SslProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("ssl-profile"); cValue.Exists() {
+					item.SslProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.SslProfile = types.StringNull()
 			}
 			data.CaTrustpoints = append(data.CaTrustpoints, item)
 			return true
@@ -1308,7 +1321,7 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CryptoData) fromBody(ctx context.Context, res []byte) {
+func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.description"); value.Exists() {
 		data.CaTrustpointSystemDescription = types.StringValue(value.String())
 	}
@@ -1533,14 +1546,26 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("method.est.credential.certificate"); cValue.Exists() {
 				item.MethodEstCredentialCertificate = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("enrollment.authentication-profile"); cValue.Exists() {
-				item.EnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("enrollment.authentication-profile"); cValue.Exists() {
+					item.EnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.EnrollmentAuthenticationProfile = types.StringNull()
 			}
-			if cValue := v.Get("re-enrollment.authentication-profile"); cValue.Exists() {
-				item.ReEnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("re-enrollment.authentication-profile"); cValue.Exists() {
+					item.ReEnrollmentAuthenticationProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.ReEnrollmentAuthenticationProfile = types.StringNull()
 			}
-			if cValue := v.Get("ssl-profile"); cValue.Exists() {
-				item.SslProfile = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("ssl-profile"); cValue.Exists() {
+					item.SslProfile = types.StringValue(cValue.String())
+				}
+			} else {
+				item.SslProfile = types.StringNull()
 			}
 			data.CaTrustpoints = append(data.CaTrustpoints, item)
 			return true
@@ -1596,7 +1621,7 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto) []string {
+func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.FipsMode.IsNull() && data.FipsMode.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/fips-mode", state.getPath()))
@@ -1678,13 +1703,13 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto) []string 
 				found = false
 			}
 			if found {
-				if !state.CaTrustpoints[i].SslProfile.IsNull() && data.CaTrustpoints[j].SslProfile.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].SslProfile.IsNull() && data.CaTrustpoints[j].SslProfile.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/ssl-profile", state.getPath(), keyString))
 				}
-				if !state.CaTrustpoints[i].ReEnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].ReEnrollmentAuthenticationProfile.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].ReEnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].ReEnrollmentAuthenticationProfile.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/re-enrollment/authentication-profile", state.getPath(), keyString))
 				}
-				if !state.CaTrustpoints[i].EnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].EnrollmentAuthenticationProfile.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].EnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].EnrollmentAuthenticationProfile.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/authentication-profile", state.getPath(), keyString))
 				}
 				if !state.CaTrustpoints[i].MethodEstCredentialCertificate.IsNull() && data.CaTrustpoints[j].MethodEstCredentialCertificate.IsNull() {
@@ -1884,7 +1909,7 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto) []string 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *Crypto) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *Crypto) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.FipsMode.IsNull() && !data.FipsMode.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fips-mode", data.getPath()))
@@ -1968,7 +1993,7 @@ func (data *Crypto) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *Crypto) getDeletePaths(ctx context.Context) []string {
+func (data *Crypto) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.FipsMode.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fips-mode", data.getPath()))
@@ -2002,6 +2027,14 @@ func (data *Crypto) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CaOpensshTrustpoints[i].TrustpointName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/openssh/trustpoints/trustpoint%v", data.getPath(), keyString))
 	}
 	for i := range data.CaTrustpoints {
@@ -2011,6 +2044,14 @@ func (data *Crypto) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CaTrustpoints[i].TrustpointName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString))
 	}

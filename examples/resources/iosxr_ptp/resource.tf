@@ -42,8 +42,6 @@ resource "iosxr_ptp" "example" {
   clock_timescale_ptp                           = true
   clock_time_source_gps                         = true
   clock_profile_g_8275_1_clock_type_t_bc        = true
-  # Supported from version 25.1
-  monitor_receiver = true
-  # Supported from version 25.1
-  monitor_sender = true
+  monitor_receiver                              = true
+  monitor_sender                                = true
 }

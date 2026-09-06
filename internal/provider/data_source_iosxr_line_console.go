@@ -290,7 +290,7 @@ func (d *LineConsoleDataSource) Read(ctx context.Context, req datasource.ReadReq
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

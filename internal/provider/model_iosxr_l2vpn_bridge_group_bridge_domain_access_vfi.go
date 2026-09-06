@@ -123,6 +123,7 @@ func (data L2VPNBridgeGroupBridgeDomainAccessVFI) toBody(ctx context.Context, pr
 // GetVersionConstraints returns the version constraints for all fields
 func (data L2VPNBridgeGroupBridgeDomainAccessVFI) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -141,7 +142,7 @@ func (data L2VPNBridgeGroupBridgeDomainAccessVFI) GetRangeConstraints() []helper
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); !data.Shutdown.IsNull() {
 		if value.Exists() {
 			data.Shutdown = types.BoolValue(true)
@@ -225,7 +226,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Co
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -265,7 +266,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) fromBody(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFIData) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFIData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -305,7 +306,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFIData) fromBody(ctx context.Cont
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomainAccessVFI) []string {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomainAccessVFI, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -386,7 +387,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.C
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -413,7 +414,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getEmptyLeafsDelete(ctx conte
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletePaths(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -422,6 +423,17 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletePaths(ctx context.Co
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Neighbors[i].PwId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}

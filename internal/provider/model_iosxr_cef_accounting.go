@@ -79,6 +79,7 @@ func (data CEFAccounting) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data CEFAccounting) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -97,7 +98,7 @@ func (data CEFAccounting) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CEFAccounting) updateFromBody(ctx context.Context, res []byte) {
+func (data *CEFAccounting) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.policies.srv6.disable"); !data.Disable.IsNull() {
 		if value.Exists() {
 			data.Disable = types.BoolValue(true)
@@ -113,7 +114,7 @@ func (data *CEFAccounting) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CEFAccounting) fromBody(ctx context.Context, res []byte) {
+func (data *CEFAccounting) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.policies.srv6.disable"); value.Exists() {
 		data.Disable = types.BoolValue(true)
 	} else {
@@ -125,7 +126,7 @@ func (data *CEFAccounting) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CEFAccountingData) fromBody(ctx context.Context, res []byte) {
+func (data *CEFAccountingData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.policies.srv6.disable"); value.Exists() {
 		data.Disable = types.BoolValue(true)
 	} else {
@@ -137,7 +138,7 @@ func (data *CEFAccountingData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CEFAccounting) getDeletedItems(ctx context.Context, state CEFAccounting) []string {
+func (data *CEFAccounting) getDeletedItems(ctx context.Context, state CEFAccounting, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Disable.IsNull() && data.Disable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", state.getPath()))
@@ -149,7 +150,7 @@ func (data *CEFAccounting) getDeletedItems(ctx context.Context, state CEFAccount
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CEFAccounting) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CEFAccounting) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Disable.IsNull() && !data.Disable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", data.getPath()))
@@ -160,7 +161,7 @@ func (data *CEFAccounting) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CEFAccounting) getDeletePaths(ctx context.Context) []string {
+func (data *CEFAccounting) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Disable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", data.getPath()))

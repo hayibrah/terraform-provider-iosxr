@@ -125,6 +125,7 @@ func (data ICMP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data ICMP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -143,7 +144,7 @@ func (data ICMP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ICMP) updateFromBody(ctx context.Context, res []byte) {
+func (data *ICMP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.source.vrf"); !data.Ipv4SourceVrf.IsNull() {
 		if value.Exists() {
 			data.Ipv4SourceVrf = types.BoolValue(true)
@@ -214,7 +215,7 @@ func (data *ICMP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ICMP) fromBody(ctx context.Context, res []byte) {
+func (data *ICMP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.source.vrf"); value.Exists() {
 		data.Ipv4SourceVrf = types.BoolValue(true)
 	} else {
@@ -257,7 +258,7 @@ func (data *ICMP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ICMPData) fromBody(ctx context.Context, res []byte) {
+func (data *ICMPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.source.vrf"); value.Exists() {
 		data.Ipv4SourceVrf = types.BoolValue(true)
 	} else {
@@ -300,7 +301,7 @@ func (data *ICMPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ICMP) getDeletedItems(ctx context.Context, state ICMP) []string {
+func (data *ICMP) getDeletedItems(ctx context.Context, state ICMP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Ipv6SourceRfc.IsNull() && data.Ipv6SourceRfc.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/source", state.getPath()))
@@ -333,7 +334,7 @@ func (data *ICMP) getDeletedItems(ctx context.Context, state ICMP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ICMP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ICMP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Ipv6SourceRfc.IsNull() && !data.Ipv6SourceRfc.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/source", data.getPath()))
@@ -359,7 +360,7 @@ func (data *ICMP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ICMP) getDeletePaths(ctx context.Context) []string {
+func (data *ICMP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Ipv6SourceRfc.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/source", data.getPath()))

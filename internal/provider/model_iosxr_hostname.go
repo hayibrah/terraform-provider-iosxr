@@ -76,6 +76,7 @@ func (data Hostname) toBody(ctx context.Context, providerVersion string) string 
 // GetVersionConstraints returns the version constraints for all fields
 func (data Hostname) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -94,7 +95,7 @@ func (data Hostname) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *Hostname) updateFromBody(ctx context.Context, res []byte) {
+func (data *Hostname) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && !data.SystemNetworkName.IsNull() {
 		data.SystemNetworkName = types.StringValue(value.String())
 	} else {
@@ -106,7 +107,7 @@ func (data *Hostname) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *Hostname) fromBody(ctx context.Context, res []byte) {
+func (data *Hostname) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() {
 		data.SystemNetworkName = types.StringValue(value.String())
 	}
@@ -116,7 +117,7 @@ func (data *Hostname) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *HostnameData) fromBody(ctx context.Context, res []byte) {
+func (data *HostnameData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() {
 		data.SystemNetworkName = types.StringValue(value.String())
 	}
@@ -126,7 +127,7 @@ func (data *HostnameData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *Hostname) getDeletedItems(ctx context.Context, state Hostname) []string {
+func (data *Hostname) getDeletedItems(ctx context.Context, state Hostname, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SystemNetworkName.IsNull() && data.SystemNetworkName.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/system-network-name", state.getPath()))
@@ -138,7 +139,7 @@ func (data *Hostname) getDeletedItems(ctx context.Context, state Hostname) []str
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *Hostname) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *Hostname) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -146,7 +147,7 @@ func (data *Hostname) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *Hostname) getDeletePaths(ctx context.Context) []string {
+func (data *Hostname) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SystemNetworkName.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/system-network-name", data.getPath()))

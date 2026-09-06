@@ -103,6 +103,7 @@ func (data TFTPClient) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data TFTPClient) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -121,7 +122,7 @@ func (data TFTPClient) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte) {
+func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.ClientVrfs {
 		keys := [...]string{"vrf-name"}
 		keyValues := [...]string{data.ClientVrfs[i].VrfName.ValueString()}
@@ -177,7 +178,7 @@ func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *TFTPClient) fromBody(ctx context.Context, res []byte) {
+func (data *TFTPClient) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "client.vrfs.vrf"); value.Exists() {
 		data.ClientVrfs = make([]TFTPClientClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -207,7 +208,7 @@ func (data *TFTPClient) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TFTPClientData) fromBody(ctx context.Context, res []byte) {
+func (data *TFTPClientData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "client.vrfs.vrf"); value.Exists() {
 		data.ClientVrfs = make([]TFTPClientClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -237,7 +238,7 @@ func (data *TFTPClientData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *TFTPClient) getDeletedItems(ctx context.Context, state TFTPClient) []string {
+func (data *TFTPClient) getDeletedItems(ctx context.Context, state TFTPClient, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.ClientVrfs {
 		keys := [...]string{"vrf-name"}
@@ -288,7 +289,7 @@ func (data *TFTPClient) getDeletedItems(ctx context.Context, state TFTPClient) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *TFTPClient) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *TFTPClient) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.ClientVrfs {
 		keys := [...]string{"vrf-name"}
@@ -304,7 +305,7 @@ func (data *TFTPClient) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *TFTPClient) getDeletePaths(ctx context.Context) []string {
+func (data *TFTPClient) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.ClientVrfs {
 		keys := [...]string{"vrf-name"}
@@ -313,6 +314,14 @@ func (data *TFTPClient) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ClientVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/vrfs/vrf%v", data.getPath(), keyString))
 	}

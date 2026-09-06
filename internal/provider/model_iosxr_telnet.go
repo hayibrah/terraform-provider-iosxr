@@ -130,6 +130,7 @@ func (data Telnet) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data Telnet) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -148,7 +149,7 @@ func (data Telnet) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *Telnet) updateFromBody(ctx context.Context, res []byte) {
+func (data *Telnet) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.client.source-interface"); value.Exists() && !data.Ipv4ClientSourceInterface.IsNull() {
 		data.Ipv4ClientSourceInterface = types.StringValue(value.String())
 	} else {
@@ -248,7 +249,7 @@ func (data *Telnet) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *Telnet) fromBody(ctx context.Context, res []byte) {
+func (data *Telnet) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.client.source-interface"); value.Exists() {
 		data.Ipv4ClientSourceInterface = types.StringValue(value.String())
 	}
@@ -298,7 +299,7 @@ func (data *Telnet) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TelnetData) fromBody(ctx context.Context, res []byte) {
+func (data *TelnetData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.client.source-interface"); value.Exists() {
 		data.Ipv4ClientSourceInterface = types.StringValue(value.String())
 	}
@@ -348,7 +349,7 @@ func (data *TelnetData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet) []string {
+func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.VrfsDscp {
 		keys := [...]string{"vrf-name"}
@@ -438,7 +439,7 @@ func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet) []string 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *Telnet) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *Telnet) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.VrfsDscp {
 		keys := [...]string{"vrf-name"}
@@ -462,7 +463,7 @@ func (data *Telnet) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *Telnet) getDeletePaths(ctx context.Context) []string {
+func (data *Telnet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.VrfsDscp {
 		keys := [...]string{"vrf-name"}
@@ -471,6 +472,14 @@ func (data *Telnet) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.VrfsDscp[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf-dscp%v", data.getPath(), keyString))
 	}
@@ -481,6 +490,14 @@ func (data *Telnet) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}

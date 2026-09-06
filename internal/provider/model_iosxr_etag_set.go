@@ -81,6 +81,7 @@ func (data EtagSet) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data EtagSet) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -99,7 +100,7 @@ func (data EtagSet) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EtagSet) updateFromBody(ctx context.Context, res []byte) {
+func (data *EtagSet) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
@@ -111,7 +112,7 @@ func (data *EtagSet) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EtagSet) fromBody(ctx context.Context, res []byte) {
+func (data *EtagSet) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -121,7 +122,7 @@ func (data *EtagSet) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EtagSetData) fromBody(ctx context.Context, res []byte) {
+func (data *EtagSetData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -131,7 +132,7 @@ func (data *EtagSetData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EtagSet) getDeletedItems(ctx context.Context, state EtagSet) []string {
+func (data *EtagSet) getDeletedItems(ctx context.Context, state EtagSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/etag-set-as-text", state.getPath()))
@@ -143,7 +144,7 @@ func (data *EtagSet) getDeletedItems(ctx context.Context, state EtagSet) []strin
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EtagSet) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EtagSet) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -151,7 +152,7 @@ func (data *EtagSet) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EtagSet) getDeletePaths(ctx context.Context) []string {
+func (data *EtagSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/etag-set-as-text", data.getPath()))

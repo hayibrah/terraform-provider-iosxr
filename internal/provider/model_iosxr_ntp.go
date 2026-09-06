@@ -866,6 +866,7 @@ func (data NTP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data NTP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -884,7 +885,7 @@ func (data NTP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *NTP) updateFromBody(ctx context.Context, res []byte) {
+func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
@@ -2092,7 +2093,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *NTP) fromBody(ctx context.Context, res []byte) {
+func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
@@ -2696,7 +2697,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *NTPData) fromBody(ctx context.Context, res []byte) {
+func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
@@ -3300,7 +3301,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *NTP) getDeletedItems(ctx context.Context, state NTP) []string {
+func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AdminPlaneIburst.IsNull() && data.AdminPlaneIburst.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/admin-plane/iburst", state.getPath()))
@@ -4185,7 +4186,7 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *NTP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.AdminPlaneIburst.IsNull() && !data.AdminPlaneIburst.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/admin-plane/iburst", data.getPath()))
@@ -4440,7 +4441,7 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *NTP) getDeletePaths(ctx context.Context) []string {
+func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AdminPlaneIburst.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/admin-plane/iburst", data.getPath()))
@@ -4471,6 +4472,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SourceVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/source/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.SourceInterfaceName.IsNull() {
@@ -4493,6 +4502,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrustedKeys[i].KeyNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/trusted-keys/trusted-key%v", data.getPath(), keyString))
 	}
 	for i := range data.PeersServersVrfs {
@@ -4502,6 +4519,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeersServersVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/vrfs/vrf%v", data.getPath(), keyString))
 	}
@@ -4513,6 +4538,17 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HostnamePeersServers[i].FqdnHostname.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.HostnamePeersServers[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", data.getPath(), keyString))
 	}
 	for i := range data.Ipv6PeersServers {
@@ -4523,6 +4559,17 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6PeersServers[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Ipv6PeersServers[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", data.getPath(), keyString))
 	}
 	for i := range data.Ipv4PeersServers {
@@ -4532,6 +4579,17 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4PeersServers[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Ipv4PeersServers[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", data.getPath(), keyString))
 	}
@@ -4552,6 +4610,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.InterfaceVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	for i := range data.Interfaces {
@@ -4561,6 +4627,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -4602,6 +4676,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HmacSha2AuthenticationKeys[i].KeyNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hmac-sha2-authentication-keys/hmac-sha2-authentication-key%v", data.getPath(), keyString))
 	}
 	for i := range data.HmacSha1AuthenticationKeys {
@@ -4611,6 +4693,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HmacSha1AuthenticationKeys[i].KeyNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hmac-sha1-authentication-keys/hmac-sha1-authentication-key%v", data.getPath(), keyString))
 	}
@@ -4622,6 +4712,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CmacAuthenticationKeys[i].KeyNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/cmac-authentication-keys/cmac-authentication-key%v", data.getPath(), keyString))
 	}
 	for i := range data.AuthenticationKeys {
@@ -4631,6 +4729,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AuthenticationKeys[i].KeyNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication-keys/authentication-key%v", data.getPath(), keyString))
 	}
@@ -4644,6 +4750,14 @@ func (data *NTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AccessGroupVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-group/vrfs/vrf%v", data.getPath(), keyString))
 	}

@@ -558,6 +558,7 @@ func (data SegmentRoutingTEPolicy) toBody(ctx context.Context, providerVersion s
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRoutingTEPolicy) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -576,7 +577,7 @@ func (data SegmentRoutingTEPolicy) GetRangeConstraints() []helpers.FieldRangeCon
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRoutingTEPolicy) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEPolicy) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv6-disable"); !data.Ipv6Disable.IsNull() {
 		if value.Exists() {
 			data.Ipv6Disable = types.BoolValue(true)
@@ -1259,7 +1260,7 @@ func (data *SegmentRoutingTEPolicy) updateFromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRoutingTEPolicy) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEPolicy) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv6-disable"); value.Exists() {
 		data.Ipv6Disable = types.BoolValue(true)
 	} else {
@@ -1620,7 +1621,7 @@ func (data *SegmentRoutingTEPolicy) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingTEPolicyData) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEPolicyData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ipv6-disable"); value.Exists() {
 		data.Ipv6Disable = types.BoolValue(true)
 	} else {
@@ -1981,7 +1982,7 @@ func (data *SegmentRoutingTEPolicyData) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state SegmentRoutingTEPolicy) []string {
+func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state SegmentRoutingTEPolicy, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Srv6LocatorBehavior.IsNull() && data.Srv6LocatorBehavior.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/locator/behavior", state.getPath()))
@@ -2440,7 +2441,7 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdLoggingSessionStateChange.IsNull() && !data.BfdLoggingSessionStateChange.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/bfd-logging/session-state-change", data.getPath()))
@@ -2567,7 +2568,7 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context) []s
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Srv6LocatorBehavior.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/locator/behavior", data.getPath()))
@@ -2643,6 +2644,14 @@ func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CandidatePathsPreferences[i].PathIndex.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/candidate-paths/preferences/preference%v", data.getPath(), keyString))
 	}
 	for i := range data.AutoRouteIncludePrefixes {
@@ -2652,6 +2661,20 @@ func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutoRouteIncludePrefixes[i].AfType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutoRouteIncludePrefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutoRouteIncludePrefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/include-prefixes/include-prefix%v", data.getPath(), keyString))
 	}

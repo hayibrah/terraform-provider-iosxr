@@ -804,6 +804,7 @@ func (data RouterBGPSessionGroup) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterBGPSessionGroup) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -822,7 +823,7 @@ func (data RouterBGPSessionGroup) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && !data.RemoteAs.IsNull() {
 		data.RemoteAs = types.StringValue(value.String())
 	} else {
@@ -1711,7 +1712,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() {
 		data.RemoteAs = types.StringValue(value.String())
 	}
@@ -2208,7 +2209,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() {
 		data.RemoteAs = types.StringValue(value.String())
 	}
@@ -2705,7 +2706,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterBGPSessionGroup) getDeletedItems(ctx context.Context, state RouterBGPSessionGroup) []string {
+func (data *RouterBGPSessionGroup) getDeletedItems(ctx context.Context, state RouterBGPSessionGroup, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.UpdateInErrorHandlingTreatAsWithdraw.IsNull() && data.UpdateInErrorHandlingTreatAsWithdraw.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/in/error-handling/treat-as-withdraw", state.getPath()))
@@ -3113,7 +3114,7 @@ func (data *RouterBGPSessionGroup) getDeletedItems(ctx context.Context, state Ro
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterBGPSessionGroup) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterBGPSessionGroup) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.UpdateInLabeledUnicastEquivalentInheritanceDisable.IsNull() && !data.UpdateInLabeledUnicastEquivalentInheritanceDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/in/labeled-unicast/equivalent/inheritance-disable", data.getPath()))
@@ -3335,7 +3336,7 @@ func (data *RouterBGPSessionGroup) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context) []string {
+func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.UpdateInErrorHandlingTreatAsWithdraw.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/in/error-handling/treat-as-withdraw", data.getPath()))
@@ -3380,6 +3381,14 @@ func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context) []string 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeerSets[i].Peer.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-set/peer-sets%v", data.getPath(), keyString))
 	}
@@ -3618,6 +3627,14 @@ func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context) []string 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BmpActivateServers[i].ServerNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bmp-activate/servers/server%v", data.getPath(), keyString))
 	}

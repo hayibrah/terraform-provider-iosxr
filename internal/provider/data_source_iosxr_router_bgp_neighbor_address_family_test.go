@@ -67,8 +67,12 @@ func TestAccDataSourceIosxrRouterBGPNeighborAddressFamily(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "accept_own", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "slow_peer_dynamic", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "slow_peer_dynamic_threshold", "260"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "default_policy_action_in", "accept"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "default_policy_action_out", "accept"))
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "default_policy_action_in", "accept"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_router_bgp_neighbor_address_family.test", "default_policy_action_out", "accept"))
+	}
 	resource.Test(t, resource.TestCase{
 		PreCheck:                 func() { testAccPreCheck(t) },
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -185,10 +189,10 @@ func testAccDataSourceIosxrRouterBGPNeighborAddressFamilyConfig() string {
 	config += `	accept_own = true` + "\n"
 	config += `	slow_peer_dynamic = true` + "\n"
 	config += `	slow_peer_dynamic_threshold = 260` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_in = "accept"` + "\n"
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_out = "accept"` + "\n"
 	}
 	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, ]` + "\n"

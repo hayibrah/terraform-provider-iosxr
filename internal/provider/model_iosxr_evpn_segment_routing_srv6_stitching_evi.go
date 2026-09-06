@@ -371,6 +371,7 @@ func (data EVPNSegmentRoutingSRv6StitchingEVI) toBody(ctx context.Context, provi
 // GetVersionConstraints returns the version constraints for all fields
 func (data EVPNSegmentRoutingSRv6StitchingEVI) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -389,7 +390,7 @@ func (data EVPNSegmentRoutingSRv6StitchingEVI) GetRangeConstraints() []helpers.F
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EVPNSegmentRoutingSRv6StitchingEVI) updateFromBody(ctx context.Context, res []byte) {
+func (data *EVPNSegmentRoutingSRv6StitchingEVI) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
@@ -865,7 +866,7 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) updateFromBody(ctx context.Conte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EVPNSegmentRoutingSRv6StitchingEVI) fromBody(ctx context.Context, res []byte) {
+func (data *EVPNSegmentRoutingSRv6StitchingEVI) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1091,7 +1092,7 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) fromBody(ctx context.Context, re
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EVPNSegmentRoutingSRv6StitchingEVIData) fromBody(ctx context.Context, res []byte) {
+func (data *EVPNSegmentRoutingSRv6StitchingEVIData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1317,7 +1318,7 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVIData) fromBody(ctx context.Context
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletedItems(ctx context.Context, state EVPNSegmentRoutingSRv6StitchingEVI) []string {
+func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletedItems(ctx context.Context, state EVPNSegmentRoutingSRv6StitchingEVI, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Locator.IsNull() && data.Locator.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/locator", state.getPath()))
@@ -1719,7 +1720,7 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletedItems(ctx context.Cont
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EVPNSegmentRoutingSRv6StitchingEVI) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EVPNSegmentRoutingSRv6StitchingEVI) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ReOriginationDisable.IsNull() && !data.ReOriginationDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/re-origination-disable", data.getPath()))
@@ -1835,7 +1836,7 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getEmptyLeafsDelete(ctx context.
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Context) []string {
+func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Locator.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/locator", data.getPath()))
@@ -1893,6 +1894,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetExportFourByteAsFormat {
@@ -1902,6 +1914,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -1913,6 +1936,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetImportIpv4AddressFormat {
@@ -1922,6 +1956,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
@@ -1933,6 +1978,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetImportTwoByteAsFormat {
@@ -1942,6 +1998,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -1953,6 +2020,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetFourByteAsFormat {
@@ -1963,6 +2041,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetTwoByteAsFormat {
@@ -1972,6 +2061,17 @@ func (data *EVPNSegmentRoutingSRv6StitchingEVI) getDeletePaths(ctx context.Conte
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}

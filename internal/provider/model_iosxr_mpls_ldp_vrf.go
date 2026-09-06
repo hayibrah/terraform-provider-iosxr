@@ -411,6 +411,7 @@ func (data MPLSLDPVRF) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data MPLSLDPVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -429,7 +430,7 @@ func (data MPLSLDPVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
@@ -933,7 +934,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
 		data.RouterId = types.StringValue(value.String())
 	}
@@ -1181,7 +1182,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
 		data.RouterId = types.StringValue(value.String())
 	}
@@ -1429,7 +1430,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF) []string {
+func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1822,7 +1823,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1939,7 +1940,7 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
+func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1948,6 +1949,14 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -1958,6 +1967,17 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/remote/accept/from/neighbor%v", data.getPath(), keyString))
 	}
@@ -1972,6 +1992,14 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors {
@@ -1981,6 +2009,17 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/to/neighbor%v", data.getPath(), keyString))
 	}
@@ -2022,6 +2061,17 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/remote/accept/from/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseDisable.IsNull() {
@@ -2035,6 +2085,14 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors {
@@ -2044,6 +2102,17 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/to/neighbor%v", data.getPath(), keyString))
 	}
@@ -2084,6 +2153,17 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Neighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}

@@ -196,6 +196,7 @@ func (data RouterVRRPInterfaceIPv6) toBody(ctx context.Context, providerVersion 
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterVRRPInterfaceIPv6) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -214,7 +215,7 @@ func (data RouterVRRPInterfaceIPv6) GetRangeConstraints() []helpers.FieldRangeCo
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.GlobalAddresses {
 		keys := [...]string{"address"}
 		keyValues := [...]string{data.GlobalAddresses[i].Address.ValueString()}
@@ -394,7 +395,7 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.global.global-address"); value.Exists() {
 		data.GlobalAddresses = make([]RouterVRRPInterfaceIPv6GlobalAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -484,7 +485,7 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.global.global-address"); value.Exists() {
 		data.GlobalAddresses = make([]RouterVRRPInterfaceIPv6GlobalAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -574,7 +575,7 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterVRRPInterfaceIPv6) getDeletedItems(ctx context.Context, state RouterVRRPInterfaceIPv6) []string {
+func (data *RouterVRRPInterfaceIPv6) getDeletedItems(ctx context.Context, state RouterVRRPInterfaceIPv6, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdFastDetectPeerIpv6.IsNull() && data.BfdFastDetectPeerIpv6.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv6", state.getPath()))
@@ -715,7 +716,7 @@ func (data *RouterVRRPInterfaceIPv6) getDeletedItems(ctx context.Context, state 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterVRRPInterfaceIPv6) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterVRRPInterfaceIPv6) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -759,7 +760,7 @@ func (data *RouterVRRPInterfaceIPv6) getEmptyLeafsDelete(ctx context.Context) []
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterVRRPInterfaceIPv6) getDeletePaths(ctx context.Context) []string {
+func (data *RouterVRRPInterfaceIPv6) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdFastDetectPeerIpv6.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv6", data.getPath()))
@@ -772,6 +773,14 @@ func (data *RouterVRRPInterfaceIPv6) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackObjects[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track/objects/object%v", data.getPath(), keyString))
 	}
 	for i := range data.TrackInterfaces {
@@ -781,6 +790,14 @@ func (data *RouterVRRPInterfaceIPv6) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -824,6 +841,14 @@ func (data *RouterVRRPInterfaceIPv6) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.GlobalAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/global/global-address%v", data.getPath(), keyString))
 	}

@@ -190,6 +190,7 @@ func (data SegmentRoutingV6) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRoutingV6) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -208,7 +209,7 @@ func (data SegmentRoutingV6) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); !data.Enable.IsNull() {
 		if value.Exists() {
 			data.Enable = types.BoolValue(true)
@@ -383,7 +384,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -476,7 +477,7 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -569,7 +570,7 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRoutingV6) getDeletedItems(ctx context.Context, state SegmentRoutingV6) []string {
+func (data *SegmentRoutingV6) getDeletedItems(ctx context.Context, state SegmentRoutingV6, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.EncapsulationSourceAddress.IsNull() && data.EncapsulationSourceAddress.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/encapsulation/source-address", state.getPath()))
@@ -692,7 +693,7 @@ func (data *SegmentRoutingV6) getDeletedItems(ctx context.Context, state Segment
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRoutingV6) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRoutingV6) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Locators {
 		keys := [...]string{"name"}
@@ -731,7 +732,7 @@ func (data *SegmentRoutingV6) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.EncapsulationSourceAddress.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/encapsulation/source-address", data.getPath()))
@@ -756,6 +757,14 @@ func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Locators[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/locators/locators/locator%v", data.getPath(), keyString))
 	}
 	for i := range data.Formats {
@@ -765,6 +774,14 @@ func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Formats[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/formats/formats/format%v", data.getPath(), keyString))
 	}

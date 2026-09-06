@@ -1535,6 +1535,7 @@ func (data RouterBGP) toBody(ctx context.Context, providerVersion string) string
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterBGP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1553,7 +1554,7 @@ func (data RouterBGP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterBGP) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterBGP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default-metric"); value.Exists() && !data.DefaultMetric.IsNull() {
 		data.DefaultMetric = types.Int64Value(value.Int())
 	} else {
@@ -3644,7 +3645,7 @@ func (data *RouterBGP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterBGP) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default-metric"); value.Exists() {
 		data.DefaultMetric = types.Int64Value(value.Int())
 	}
@@ -4759,7 +4760,7 @@ func (data *RouterBGP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterBGPData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default-metric"); value.Exists() {
 		data.DefaultMetric = types.Int64Value(value.Int())
 	}
@@ -5874,7 +5875,7 @@ func (data *RouterBGPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP) []string {
+func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.RpkiServers {
 		keys := [...]string{"server-name"}
@@ -7011,7 +7012,7 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP) []s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.RpkiServers {
 		keys := [...]string{"server-name"}
@@ -7527,7 +7528,7 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
+func (data *RouterBGP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.RpkiServers {
 		keys := [...]string{"server-name"}
@@ -7536,6 +7537,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RpkiServers[i].Server.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpki/servers/server%v", data.getPath(), keyString))
 	}
@@ -7546,6 +7555,23 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RpkiRoutes[i].RouteAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.RpkiRoutes[i].RoutePrefix.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.RpkiRoutes[i].MaxLength.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.RpkiRoutes[i].OriginAs.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpki/routes/route%v", data.getPath(), keyString))
 	}
@@ -7649,6 +7675,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpConfederationPeers[i].PeerAsNumber.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/confederation/peers%v", data.getPath(), keyString))
 	}
@@ -7807,6 +7841,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AsLists[i].ListName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/as-lists/as-list%v", data.getPath(), keyString))
 	}
 	for i := range data.AttributeFilterGroups {
@@ -7816,6 +7858,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AttributeFilterGroups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/attribute-filter/groups/group%v", data.getPath(), keyString))
 	}
@@ -7827,6 +7877,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AsLeaguePeers[i].PeerAsNumber.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/as-league/peers/peer%v", data.getPath(), keyString))
 	}
 	for i := range data.MplsActivateInterfaces {
@@ -7836,6 +7894,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MplsActivateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mpls/activate/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -7847,6 +7913,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.GracefulMaintenanceActivateLocations[i].LocationValue.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-maintenance/activate/locations/location%v", data.getPath(), keyString))
 	}
 	for i := range data.GracefulMaintenanceActivateInterfaces {
@@ -7856,6 +7930,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.GracefulMaintenanceActivateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-maintenance/activate/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -7872,6 +7954,14 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}

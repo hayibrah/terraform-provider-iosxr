@@ -58,7 +58,7 @@ func (r *HWModuleProfile8000Resource) Metadata(_ context.Context, req resource.M
 func (r *HWModuleProfile8000Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "This resource can manage the HW Module Profile 8000 configuration.",
+		MarkdownDescription: "This resource can manage the HW Module Profile configuration on Cisco 8000 series routers.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -667,14 +667,21 @@ func (r *HWModuleProfile8000Resource) Schema(ctx context.Context, req resource.S
 							},
 						},
 						"non_pfc_tcs": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("configure to allow lossy TCs to evict.").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
-						"non_pfc_tcs_max_non_pfc_voqs": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("max lossy voqs to evict").AddIntegerRangeDescription(1, 3800).String + "\n  - Supported from version: `25.1`",
+						"non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs": schema.Int64Attribute{
+							MarkdownDescription: helpers.NewAttributeDescription("number of evict voqs").AddIntegerRangeDescription(1, 3800).String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 							Validators: []validator.Int64{
 								int64validator.Between(1, 3800),
+							},
+						},
+						"non_pfc_tcs_max_non_pfc_voqs_hbm_buffers_percentage": schema.Int64Attribute{
+							MarkdownDescription: helpers.NewAttributeDescription("configure hbm-buffers-percentage for non-pfc-tcs").AddIntegerRangeDescription(50, 80).String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
+							Validators: []validator.Int64{
+								int64validator.Between(50, 80),
 							},
 						},
 					},
@@ -800,10 +807,10 @@ func (r *HWModuleProfile8000Resource) Create(ctx context.Context, req resource.C
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -886,9 +893,9 @@ func (r *HWModuleProfile8000Resource) Read(ctx context.Context, req resource.Rea
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
@@ -936,17 +943,17 @@ func (r *HWModuleProfile8000Resource) Update(ctx context.Context, req resource.U
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		deletedListItems := plan.getDeletedItems(ctx, state)
+		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
 
 		for _, i := range deletedListItems {
 			ops = append(ops, gnmi.Delete(i))
 		}
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -981,17 +988,19 @@ func (r *HWModuleProfile8000Resource) Delete(ctx context.Context, req resource.D
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	// Validate version compatibility (only check if resource/fields are supported)
-	if len(state.GetVersionConstraints()) > 0 {
-		helpers.ValidateVersionConstraints(r.data.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
-		if resp.Diagnostics.HasError() {
-			return
-		}
-	}
+
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
 		return
+	}
+
+	// Validate version compatibility (only check if resource/fields are supported)
+	if len(state.GetVersionConstraints()) > 0 {
+		helpers.ValidateVersionConstraints(device.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
+		}
 	}
 
 	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Delete", state.Id.ValueString()))
@@ -1008,7 +1017,7 @@ func (r *HWModuleProfile8000Resource) Delete(ctx context.Context, req resource.D
 		if deleteMode == "all" {
 			ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 		} else {
-			deletePaths := state.getDeletePaths(ctx)
+			deletePaths := state.getDeletePaths(ctx, device.Version)
 			tflog.Debug(ctx, fmt.Sprintf("Paths to delete: %+v", deletePaths))
 
 			for _, i := range deletePaths {

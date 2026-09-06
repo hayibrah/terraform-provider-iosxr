@@ -128,6 +128,7 @@ func (data ControllerOptics) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data ControllerOptics) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -146,7 +147,7 @@ func (data ControllerOptics) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ControllerOptics) updateFromBody(ctx context.Context, res []byte) {
+func (data *ControllerOptics) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); !data.Shutdown.IsNull() {
 		if value.Exists() {
 			data.Shutdown = types.BoolValue(true)
@@ -202,7 +203,7 @@ func (data *ControllerOptics) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ControllerOptics) fromBody(ctx context.Context, res []byte) {
+func (data *ControllerOptics) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -238,7 +239,7 @@ func (data *ControllerOptics) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte) {
+func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -274,7 +275,7 @@ func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ControllerOptics) getDeletedItems(ctx context.Context, state ControllerOptics) []string {
+func (data *ControllerOptics) getDeletedItems(ctx context.Context, state ControllerOptics, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Breakout.IsNull() && data.Breakout.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-optics-driver-cfg:breakout", state.getPath()))
@@ -304,7 +305,7 @@ func (data *ControllerOptics) getDeletedItems(ctx context.Context, state Control
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ControllerOptics) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ControllerOptics) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TransceiverDisable.IsNull() && !data.TransceiverDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable", data.getPath()))
@@ -321,7 +322,7 @@ func (data *ControllerOptics) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ControllerOptics) getDeletePaths(ctx context.Context) []string {
+func (data *ControllerOptics) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Breakout.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-optics-driver-cfg:breakout", data.getPath()))

@@ -56,7 +56,7 @@ func (d *CryptoSSLDataSource) Metadata(_ context.Context, req datasource.Metadat
 func (d *CryptoSSLDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "This data source can read the Crypto SSL configuration.\n\n> **Note:** This data source is only supported from IOS-XR version 25.1 and above.",
+		MarkdownDescription: "\n\n> **Note:** This data source is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -73,7 +73,7 @@ func (d *CryptoSSLDataSource) Schema(ctx context.Context, req datasource.SchemaR
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"profile_name": schema.StringAttribute{
-							MarkdownDescription: "Template that will be pinned to applications",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 						"certificate": schema.StringAttribute{
@@ -140,7 +140,7 @@ func (d *CryptoSSLDataSource) Read(ctx context.Context, req datasource.ReadReque
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

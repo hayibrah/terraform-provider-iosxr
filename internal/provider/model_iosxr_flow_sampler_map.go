@@ -87,6 +87,7 @@ func (data FlowSamplerMap) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data FlowSamplerMap) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -105,7 +106,7 @@ func (data FlowSamplerMap) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *FlowSamplerMap) updateFromBody(ctx context.Context, res []byte) {
+func (data *FlowSamplerMap) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "random"); value.Exists() && !data.Random.IsNull() {
 		data.Random = types.Int64Value(value.Int())
 	} else {
@@ -122,7 +123,7 @@ func (data *FlowSamplerMap) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *FlowSamplerMap) fromBody(ctx context.Context, res []byte) {
+func (data *FlowSamplerMap) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "random"); value.Exists() {
 		data.Random = types.Int64Value(value.Int())
 	}
@@ -135,7 +136,7 @@ func (data *FlowSamplerMap) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *FlowSamplerMapData) fromBody(ctx context.Context, res []byte) {
+func (data *FlowSamplerMapData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "random"); value.Exists() {
 		data.Random = types.Int64Value(value.Int())
 	}
@@ -148,7 +149,7 @@ func (data *FlowSamplerMapData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *FlowSamplerMap) getDeletedItems(ctx context.Context, state FlowSamplerMap) []string {
+func (data *FlowSamplerMap) getDeletedItems(ctx context.Context, state FlowSamplerMap, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.OutOf.IsNull() && data.OutOf.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/out-of", state.getPath()))
@@ -163,7 +164,7 @@ func (data *FlowSamplerMap) getDeletedItems(ctx context.Context, state FlowSampl
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *FlowSamplerMap) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *FlowSamplerMap) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -171,7 +172,7 @@ func (data *FlowSamplerMap) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *FlowSamplerMap) getDeletePaths(ctx context.Context) []string {
+func (data *FlowSamplerMap) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.OutOf.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/out-of", data.getPath()))

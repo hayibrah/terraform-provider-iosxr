@@ -86,6 +86,7 @@ func (data MACSec) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data MACSec) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -104,7 +105,7 @@ func (data MACSec) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MACSec) updateFromBody(ctx context.Context, res []byte) {
+func (data *MACSec) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); !data.Shutdown.IsNull() {
 		if value.Exists() {
 			data.Shutdown = types.BoolValue(true)
@@ -129,7 +130,7 @@ func (data *MACSec) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MACSec) fromBody(ctx context.Context, res []byte) {
+func (data *MACSec) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -146,7 +147,7 @@ func (data *MACSec) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MACSecData) fromBody(ctx context.Context, res []byte) {
+func (data *MACSecData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -163,7 +164,7 @@ func (data *MACSecData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MACSec) getDeletedItems(ctx context.Context, state MACSec) []string {
+func (data *MACSec) getDeletedItems(ctx context.Context, state MACSec, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Fips.IsNull() && data.Fips.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/fips", state.getPath()))
@@ -178,7 +179,7 @@ func (data *MACSec) getDeletedItems(ctx context.Context, state MACSec) []string 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MACSec) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MACSec) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Fips.IsNull() && !data.Fips.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fips", data.getPath()))
@@ -192,7 +193,7 @@ func (data *MACSec) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MACSec) getDeletePaths(ctx context.Context) []string {
+func (data *MACSec) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Fips.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fips", data.getPath()))

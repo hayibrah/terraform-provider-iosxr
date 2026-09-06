@@ -119,6 +119,7 @@ func (data TFTPServer) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data TFTPServer) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -137,7 +138,7 @@ func (data TFTPServer) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *TFTPServer) updateFromBody(ctx context.Context, res []byte) {
+func (data *TFTPServer) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
 		keyValues := [...]string{data.Vrfs[i].VrfName.ValueString()}
@@ -213,7 +214,7 @@ func (data *TFTPServer) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *TFTPServer) fromBody(ctx context.Context, res []byte) {
+func (data *TFTPServer) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
 		data.Vrfs = make([]TFTPServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -255,7 +256,7 @@ func (data *TFTPServer) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TFTPServerData) fromBody(ctx context.Context, res []byte) {
+func (data *TFTPServerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
 		data.Vrfs = make([]TFTPServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -297,7 +298,7 @@ func (data *TFTPServerData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *TFTPServer) getDeletedItems(ctx context.Context, state TFTPServer) []string {
+func (data *TFTPServer) getDeletedItems(ctx context.Context, state TFTPServer, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -360,7 +361,7 @@ func (data *TFTPServer) getDeletedItems(ctx context.Context, state TFTPServer) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *TFTPServer) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *TFTPServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -376,7 +377,7 @@ func (data *TFTPServer) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *TFTPServer) getDeletePaths(ctx context.Context) []string {
+func (data *TFTPServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -385,6 +386,14 @@ func (data *TFTPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}

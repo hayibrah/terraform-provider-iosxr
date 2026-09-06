@@ -637,6 +637,7 @@ func (data L2VPNXconnectGroup) toBody(ctx context.Context, providerVersion strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data L2VPNXconnectGroup) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -655,7 +656,7 @@ func (data L2VPNXconnectGroup) GetRangeConstraints() []helpers.FieldRangeConstra
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte) {
+func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.P2ps {
 		keys := [...]string{"p2p-xconnect-name"}
 		keyValues := [...]string{data.P2ps[i].P2pXconnectName.ValueString()}
@@ -1708,7 +1709,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte) 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "p2ps.p2p"); value.Exists() {
 		data.P2ps = make([]L2VPNXconnectGroupP2ps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2185,7 +2186,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "p2ps.p2p"); value.Exists() {
 		data.P2ps = make([]L2VPNXconnectGroupP2ps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2662,7 +2663,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPNXconnectGroup) []string {
+func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPNXconnectGroup, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Mp2mps {
 		keys := [...]string{"instance-name"}
@@ -3634,7 +3635,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Mp2mps {
 		keys := [...]string{"instance-name"}
@@ -3864,7 +3865,7 @@ func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context) []strin
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context) []string {
+func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Mp2mps {
 		keys := [...]string{"instance-name"}
@@ -3873,6 +3874,14 @@ func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Mp2mps[i].InstanceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString))
 	}
@@ -3883,6 +3892,14 @@ func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.P2ps[i].P2pXconnectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/p2ps/p2p%v", data.getPath(), keyString))
 	}

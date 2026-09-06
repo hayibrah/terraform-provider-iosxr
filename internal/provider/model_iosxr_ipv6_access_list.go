@@ -699,6 +699,7 @@ func (data IPv6AccessList) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data IPv6AccessList) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -717,7 +718,7 @@ func (data IPv6AccessList) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *IPv6AccessList) updateFromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessList) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
 		keyValues := [...]string{strconv.FormatInt(data.Sequences[i].SequenceNumber.ValueInt64(), 10)}
@@ -1531,7 +1532,7 @@ func (data *IPv6AccessList) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *IPv6AccessList) fromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessList) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sequences.sequence"); value.Exists() {
 		data.Sequences = make([]IPv6AccessListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2011,7 +2012,7 @@ func (data *IPv6AccessList) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *IPv6AccessListData) fromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessListData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sequences.sequence"); value.Exists() {
 		data.Sequences = make([]IPv6AccessListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2491,7 +2492,7 @@ func (data *IPv6AccessListData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *IPv6AccessList) getDeletedItems(ctx context.Context, state IPv6AccessList) []string {
+func (data *IPv6AccessList) getDeletedItems(ctx context.Context, state IPv6AccessList, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -2968,7 +2969,7 @@ func (data *IPv6AccessList) getDeletedItems(ctx context.Context, state IPv6Acces
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *IPv6AccessList) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *IPv6AccessList) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -3020,7 +3021,7 @@ func (data *IPv6AccessList) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *IPv6AccessList) getDeletePaths(ctx context.Context) []string {
+func (data *IPv6AccessList) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -3029,6 +3030,14 @@ func (data *IPv6AccessList) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Sequences[i].SequenceNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString))
 	}

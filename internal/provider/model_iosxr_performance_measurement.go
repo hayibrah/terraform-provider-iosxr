@@ -269,6 +269,7 @@ func (data PerformanceMeasurement) toBody(ctx context.Context, providerVersion s
 // GetVersionConstraints returns the version constraints for all fields
 func (data PerformanceMeasurement) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -287,7 +288,7 @@ func (data PerformanceMeasurement) GetRangeConstraints() []helpers.FieldRangeCon
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && !data.SourceAddressIpv4.IsNull() {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	} else {
@@ -631,7 +632,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
@@ -787,7 +788,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
@@ -943,7 +944,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state PerformanceMeasurement) []string {
+func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state PerformanceMeasurement, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PathTracingTimestampTemplateSt3.IsNull() && data.PathTracingTimestampTemplateSt3.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", state.getPath()))
@@ -1255,7 +1256,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PerformanceMeasurement) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PerformanceMeasurement) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PathTracingTimestampTemplateSt3.IsNull() && !data.PathTracingTimestampTemplateSt3.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
@@ -1342,7 +1343,7 @@ func (data *PerformanceMeasurement) getEmptyLeafsDelete(ctx context.Context) []s
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string {
+func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PathTracingTimestampTemplateSt3.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
@@ -1367,6 +1368,14 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-addresses/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes {
@@ -1376,6 +1385,17 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-prefixes/ipv6%v", data.getPath(), keyString))
 	}
@@ -1387,6 +1407,14 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-addresses/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes {
@@ -1396,6 +1424,17 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-prefixess/ipv4%v", data.getPath(), keyString))
 	}
@@ -1407,6 +1446,14 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-addresses/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes {
@@ -1416,6 +1463,17 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-prefixes/ipv6%v", data.getPath(), keyString))
 	}
@@ -1427,6 +1485,14 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-addresses/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes {
@@ -1436,6 +1502,17 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4%v", data.getPath(), keyString))
 	}

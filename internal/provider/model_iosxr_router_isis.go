@@ -1154,6 +1154,7 @@ func (data RouterISIS) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterISIS) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1172,7 +1173,7 @@ func (data RouterISIS) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterISIS) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterISIS) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.global-block.lower-bound-of-srgb"); value.Exists() && !data.SegmentRoutingGlobalBlockLowerBound.IsNull() {
 		data.SegmentRoutingGlobalBlockLowerBound = types.Int64Value(value.Int())
 	} else {
@@ -2716,7 +2717,7 @@ func (data *RouterISIS) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterISIS) fromBody(ctx context.Context, res []byte) {
+func (data *RouterISIS) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.global-block.lower-bound-of-srgb"); value.Exists() {
 		data.SegmentRoutingGlobalBlockLowerBound = types.Int64Value(value.Int())
 	}
@@ -3514,7 +3515,7 @@ func (data *RouterISIS) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterISISData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterISISData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.global-block.lower-bound-of-srgb"); value.Exists() {
 		data.SegmentRoutingGlobalBlockLowerBound = types.Int64Value(value.Int())
 	}
@@ -4312,7 +4313,7 @@ func (data *RouterISISData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterISIS) getDeletedItems(ctx context.Context, state RouterISIS) []string {
+func (data *RouterISIS) getDeletedItems(ctx context.Context, state RouterISIS, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.FlexAlgos {
 		keys := [...]string{"flex-algo-number"}
@@ -5314,7 +5315,7 @@ func (data *RouterISIS) getDeletedItems(ctx context.Context, state RouterISIS) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterISIS) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterISIS) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.FlexAlgos {
 		keys := [...]string{"flex-algo-number"}
@@ -5691,7 +5692,7 @@ func (data *RouterISIS) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
+func (data *RouterISIS) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.FlexAlgos {
 		keys := [...]string{"flex-algo-number"}
@@ -5700,6 +5701,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlexAlgos[i].Number.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/flex-algoes/flex-algo%v", data.getPath(), keyString))
 	}
@@ -5710,6 +5719,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrlgNames[i].SrlgName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/srlg/names/name%v", data.getPath(), keyString))
 	}
@@ -5733,6 +5750,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AffinityMaps[i].AffinityName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity-maps/affinity-map%v", data.getPath(), keyString))
 	}
 	for i := range data.Nets {
@@ -5742,6 +5767,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Nets[i].NetId.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/nets/net%v", data.getPath(), keyString))
 	}
@@ -5770,6 +5803,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MaxLspLifetimeLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/max-lsp-lifetime-levels/max-lsp-lifetime-level%v", data.getPath(), keyString))
 	}
@@ -5804,6 +5845,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MaxMetricLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/max-metric-levels/max-metric-level%v", data.getPath(), keyString))
 	}
@@ -5842,6 +5891,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MinLspArrivalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/min-lsp-arrivaltime-levels/min-lsp-arrivaltime-level%v", data.getPath(), keyString))
 	}
 	if !data.MinLspArrivalMaximumWait.IsNull() {
@@ -5875,6 +5932,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspPasswordLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-password-levels/lsp-password-level%v", data.getPath(), keyString))
 	}
@@ -5922,6 +5987,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspPasswordAcceptLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-password/accept-levels/accept-level%v", data.getPath(), keyString))
 	}
 	if !data.LspPasswordAcceptEncrypted.IsNull() {
@@ -5934,6 +6007,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LogSizes[i].LogType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/sizes/size%v", data.getPath(), keyString))
 	}
@@ -5953,6 +6034,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MultiPartTlvDisableLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/multi-part-tlv/disable-levels/disable-level%v", data.getPath(), keyString))
 	}
@@ -5991,6 +6080,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspGenIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-gen-interval-levels/lsp-gen-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.LspGenIntervalSecondaryWait.IsNull() {
@@ -6009,6 +6106,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspCheckIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-check-interval-levels/lsp-check-interval-level%v", data.getPath(), keyString))
 	}
@@ -6047,6 +6152,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspMtuLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-mtu-levels/lsp-mtu-level%v", data.getPath(), keyString))
 	}
 	if !data.LspMtu.IsNull() {
@@ -6059,6 +6172,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SetOverloadBitLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/set-overload-bit-levels/set-overload-bit-level%v", data.getPath(), keyString))
 	}
@@ -6087,6 +6208,14 @@ func (data *RouterISIS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspRefreshIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-refresh-interval-levels/lsp-refresh-interval-level%v", data.getPath(), keyString))
 	}

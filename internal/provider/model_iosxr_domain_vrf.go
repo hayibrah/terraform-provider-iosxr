@@ -173,6 +173,7 @@ func (data DomainVRF) toBody(ctx context.Context, providerVersion string) string
 // GetVersionConstraints returns the version constraints for all fields
 func (data DomainVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -191,7 +192,7 @@ func (data DomainVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *DomainVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *DomainVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Domains {
 		keys := [...]string{"domain-name", "order"}
 		keyValues := [...]string{data.Domains[i].DomainName.ValueString(), strconv.FormatInt(data.Domains[i].Order.ValueInt64(), 10)}
@@ -358,7 +359,7 @@ func (data *DomainVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *DomainVRF) fromBody(ctx context.Context, res []byte) {
+func (data *DomainVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "list.domain"); value.Exists() {
 		data.Domains = make([]DomainVRFDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -439,7 +440,7 @@ func (data *DomainVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *DomainVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *DomainVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "list.domain"); value.Exists() {
 		data.Domains = make([]DomainVRFDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -520,7 +521,7 @@ func (data *DomainVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF) []string {
+func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Multicast.IsNull() && data.Multicast.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast", state.getPath()))
@@ -679,7 +680,7 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF) []s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *DomainVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *DomainVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Ipv6Hosts {
 		keys := [...]string{"host-name"}
@@ -722,7 +723,7 @@ func (data *DomainVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *DomainVRF) getDeletePaths(ctx context.Context) []string {
+func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Multicast.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast", data.getPath()))
@@ -735,6 +736,14 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Hosts[i].HostName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/host/host%v", data.getPath(), keyString))
 	}
 	for i := range data.NameServers {
@@ -745,6 +754,17 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NameServers[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.NameServers[i].Order.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/name-servers/name-server%v", data.getPath(), keyString))
 	}
 	for i := range data.Ipv4Hosts {
@@ -754,6 +774,14 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4Hosts[i].HostName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/hosts/host%v", data.getPath(), keyString))
 	}
@@ -773,6 +801,17 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Domains[i].DomainName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Domains[i].Order.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/list/domain%v", data.getPath(), keyString))
 	}

@@ -232,6 +232,7 @@ func (data SRLG) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data SRLG) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -250,7 +251,7 @@ func (data SRLG) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SRLG) updateFromBody(ctx context.Context, res []byte) {
+func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Names {
 		keys := [...]string{"srlg-name"}
 		keyValues := [...]string{data.Names[i].SrlgName.ValueString()}
@@ -577,7 +578,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SRLG) fromBody(ctx context.Context, res []byte) {
+func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "names.name"); value.Exists() {
 		data.Names = make([]SRLGNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -718,7 +719,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SRLGData) fromBody(ctx context.Context, res []byte) {
+func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "names.name"); value.Exists() {
 		data.Names = make([]SRLGNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -859,7 +860,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG) []string {
+func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.InheritLocations {
 		keys := [...]string{"location-name"}
@@ -1171,7 +1172,7 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SRLG) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SRLG) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.InheritLocations {
 		keys := [...]string{"location-name"}
@@ -1254,7 +1255,7 @@ func (data *SRLG) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SRLG) getDeletePaths(ctx context.Context) []string {
+func (data *SRLG) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.InheritLocations {
 		keys := [...]string{"location-name"}
@@ -1263,6 +1264,14 @@ func (data *SRLG) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.InheritLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/inherit-locations/inherit-location%v", data.getPath(), keyString))
 	}
@@ -1274,6 +1283,14 @@ func (data *SRLG) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Groups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
 	}
 	for i := range data.Interfaces {
@@ -1284,6 +1301,14 @@ func (data *SRLG) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.Names {
@@ -1293,6 +1318,14 @@ func (data *SRLG) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Names[i].SrlgName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
 	}

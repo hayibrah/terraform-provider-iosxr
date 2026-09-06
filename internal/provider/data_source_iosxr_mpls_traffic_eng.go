@@ -72,7 +72,7 @@ func (d *MPLSTrafficEngDataSource) Schema(ctx context.Context, req datasource.Sc
 				Computed:            true,
 			},
 			"disable": schema.BoolAttribute{
-				MarkdownDescription: "disable reoptimization",
+				MarkdownDescription: "",
 				Computed:            true,
 			},
 			"reoptimize_reoptimization_period_in": schema.Int64Attribute{
@@ -140,7 +140,7 @@ func (d *MPLSTrafficEngDataSource) Read(ctx context.Context, req datasource.Read
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

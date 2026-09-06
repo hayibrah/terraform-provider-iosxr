@@ -129,6 +129,7 @@ func (data VTYPool) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data VTYPool) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -147,7 +148,7 @@ func (data VTYPool) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *VTYPool) updateFromBody(ctx context.Context, res []byte) {
+func (data *VTYPool) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() && !data.DefaultFirstVty.IsNull() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	} else {
@@ -228,7 +229,7 @@ func (data *VTYPool) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *VTYPool) fromBody(ctx context.Context, res []byte) {
+func (data *VTYPool) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	}
@@ -273,7 +274,7 @@ func (data *VTYPool) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *VTYPoolData) fromBody(ctx context.Context, res []byte) {
+func (data *VTYPoolData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	}
@@ -318,7 +319,7 @@ func (data *VTYPoolData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool) []string {
+func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Pools {
 		keys := [...]string{"pool-name"}
@@ -384,7 +385,7 @@ func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool) []strin
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *VTYPool) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *VTYPool) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Pools {
 		keys := [...]string{"pool-name"}
@@ -400,7 +401,7 @@ func (data *VTYPool) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *VTYPool) getDeletePaths(ctx context.Context) []string {
+func (data *VTYPool) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Pools {
 		keys := [...]string{"pool-name"}
@@ -409,6 +410,14 @@ func (data *VTYPool) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Pools[i].PoolName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/pools/pool%v", data.getPath(), keyString))
 	}

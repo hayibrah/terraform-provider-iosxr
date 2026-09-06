@@ -2060,6 +2060,7 @@ func (data ControlPlane) toBody(ctx context.Context, providerVersion string) str
 // GetVersionConstraints returns the version constraints for all fields
 func (data ControlPlane) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -2078,7 +2079,7 @@ func (data ControlPlane) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte) {
+func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.MgmtInbandInterfaces {
 		keys := [...]string{"interface-name"}
 		keyValues := [...]string{data.MgmtInbandInterfaces[i].InterfaceName.ValueString()}
@@ -6225,7 +6226,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ControlPlane) fromBody(ctx context.Context, res []byte) {
+func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "management-plane.inband.interfaces.interface"); value.Exists() {
 		data.MgmtInbandInterfaces = make([]ControlPlaneMgmtInbandInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -7922,7 +7923,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte) {
+func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "management-plane.inband.interfaces.interface"); value.Exists() {
 		data.MgmtInbandInterfaces = make([]ControlPlaneMgmtInbandInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -9619,7 +9620,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlane) []string {
+func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlane, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.MgmtOobAllAllowAllIpv6Hosts {
 		keys := [...]string{"address"}
@@ -13750,7 +13751,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.MgmtOobAllAllowAllIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14833,7 +14834,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
+func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.MgmtOobAllAllowAllIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14842,6 +14843,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
@@ -14853,6 +14862,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllAllowAllIpv4Hosts {
@@ -14863,6 +14883,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllAllowAllIpv4Prefixes {
@@ -14872,6 +14900,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllAllowAllIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14886,6 +14925,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllNetconfIpv6Prefixes {
@@ -14895,6 +14942,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14906,6 +14964,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllNetconfIpv4Prefixes {
@@ -14915,6 +14981,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllNetconfIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14929,6 +15006,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllXmlIpv6Prefixes {
@@ -14938,6 +15023,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14949,6 +15045,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllXmlIpv4Prefixes {
@@ -14958,6 +15062,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllXmlIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14972,6 +15087,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllHttpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllHttpIpv4Prefixes {
@@ -14981,6 +15104,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllHttpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllHttpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -14995,6 +15129,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllTftpIpv6Prefixes {
@@ -15004,6 +15146,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15015,6 +15168,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllTftpIpv4Prefixes {
@@ -15024,6 +15185,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllTftpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15038,6 +15210,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllSnmpIpv6Prefixes {
@@ -15047,6 +15227,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15058,6 +15249,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllSnmpIpv4Prefixes {
@@ -15067,6 +15266,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllSnmpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15081,6 +15291,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllTelnetIpv6Prefixes {
@@ -15090,6 +15308,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15101,6 +15330,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllTelnetIpv4Prefixes {
@@ -15110,6 +15347,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllTelnetIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15124,6 +15372,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllSshIpv6Prefixes {
@@ -15133,6 +15389,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15144,6 +15411,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtOobAllSshIpv4Prefixes {
@@ -15153,6 +15428,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtOobAllSshIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15173,6 +15459,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtOobInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv6Hosts {
@@ -15182,6 +15476,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
@@ -15193,6 +15495,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv4Hosts {
@@ -15203,6 +15516,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv4Prefixes {
@@ -15212,6 +15533,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllAllowAllIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15226,6 +15558,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv6Prefixes {
@@ -15235,6 +15575,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15246,6 +15597,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv4Prefixes {
@@ -15255,6 +15614,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllNetconfIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15269,6 +15639,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllXmlIpv6Prefixes {
@@ -15278,6 +15656,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15289,6 +15678,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllXmlIpv4Prefixes {
@@ -15298,6 +15695,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllXmlIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15312,6 +15720,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllHttpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllHttpIpv4Prefixes {
@@ -15321,6 +15737,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllHttpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllHttpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15335,6 +15762,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllTftpIpv6Prefixes {
@@ -15344,6 +15779,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15355,6 +15801,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllTftpIpv4Prefixes {
@@ -15364,6 +15818,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllTftpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15378,6 +15843,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv6Prefixes {
@@ -15387,6 +15860,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15398,6 +15882,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv4Prefixes {
@@ -15407,6 +15899,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllSnmpIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15421,6 +15924,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv6Prefixes {
@@ -15430,6 +15941,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15441,6 +15963,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv4Prefixes {
@@ -15450,6 +15980,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllTelnetIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15464,6 +16005,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv6Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllSshIpv6Prefixes {
@@ -15473,6 +16022,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv6Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv6Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15484,6 +16044,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv4Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.MgmtInbandAllSshIpv4Prefixes {
@@ -15493,6 +16061,17 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv4Prefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MgmtInbandAllSshIpv4Prefixes[i].Length.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
@@ -15506,6 +16085,14 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MgmtInbandInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString))
 	}

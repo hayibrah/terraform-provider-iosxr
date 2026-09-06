@@ -1720,6 +1720,7 @@ func (data RouterOSPFVRF) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterOSPFVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1738,7 +1739,7 @@ func (data RouterOSPFVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterOSPFVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "domain-id.type"); value.Exists() && !data.DomainIdType.IsNull() {
 		data.DomainIdType = types.StringValue(value.String())
 	} else {
@@ -3854,7 +3855,7 @@ func (data *RouterOSPFVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterOSPFVRF) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "domain-id.type"); value.Exists() {
 		data.DomainIdType = types.StringValue(value.String())
 	}
@@ -5000,7 +5001,7 @@ func (data *RouterOSPFVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterOSPFVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "domain-id.type"); value.Exists() {
 		data.DomainIdType = types.StringValue(value.String())
 	}
@@ -6146,7 +6147,7 @@ func (data *RouterOSPFVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterOSPFVRF) getDeletedItems(ctx context.Context, state RouterOSPFVRF) []string {
+func (data *RouterOSPFVRF) getDeletedItems(ctx context.Context, state RouterOSPFVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ExchangeTimerRecoveryCount.IsNull() && data.ExchangeTimerRecoveryCount.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/exchange-timer", state.getPath()))
@@ -7289,7 +7290,7 @@ func (data *RouterOSPFVRF) getDeletedItems(ctx context.Context, state RouterOSPF
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterOSPFVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterOSPFVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.MaxExternalLsaWarningOnly.IsNull() && !data.MaxExternalLsaWarningOnly.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/max-external-lsa", data.getPath()))
@@ -7765,7 +7766,7 @@ func (data *RouterOSPFVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
+func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ExchangeTimerRecoveryCount.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exchange-timer", data.getPath()))
@@ -7798,6 +7799,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.UcmpExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ucmp/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -7941,6 +7950,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MessageDigestKeys[i].KeyId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
@@ -7993,6 +8010,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
@@ -8002,6 +8027,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -8031,6 +8064,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
@@ -8040,6 +8081,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -8116,6 +8165,17 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SummaryPrefixes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.SummaryPrefixes[i].Mask.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", data.getPath(), keyString))
 	}
@@ -8349,6 +8409,17 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.DistanceSources[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.DistanceSources[i].Wildcard.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/distance/administrative-distance/source-addresses/source-address%v", data.getPath(), keyString))
 	}
 	if !data.DefaultMetric.IsNull() {
@@ -8431,6 +8502,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeOspf[i].InstanceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString))
 	}
 	for i := range data.RedistributeIsis {
@@ -8441,6 +8520,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeIsis[i].InstanceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString))
 	}
 	for i := range data.RedistributeBgp {
@@ -8450,6 +8537,14 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeBgp[i].AsNumber.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString))
 	}
@@ -8523,6 +8618,17 @@ func (data *RouterOSPFVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.DomainIdSecondaries[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.DomainIdSecondaries[i].Value.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/domain-id/secondaries/secondary%v", data.getPath(), keyString))
 	}

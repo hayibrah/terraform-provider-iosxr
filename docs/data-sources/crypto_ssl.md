@@ -3,21 +3,18 @@
 page_title: "iosxr_crypto_ssl Data Source - terraform-provider-iosxr"
 subcategory: ""
 description: |-
-  This data source can read the Crypto SSL configuration.
-  **Note:** This data source is only supported from IOS-XR version 25.1 and above.
+  **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_crypto_ssl (Data Source)
 
-This data source can read the Crypto SSL configuration.
-
-> **Note:** This data source is only supported from IOS-XR version 25.1 and above.
+> **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 
 ## Example Usage
 
 ```terraform
 data "iosxr_crypto_ssl" "example" {
-  # NOTE: This data source is only supported from IOS-XR version 25.1 and above
+  # NOTE: This data source is only supported from IOS-XR version 25.4 and above
 }
 ```
 
@@ -39,4 +36,4 @@ data "iosxr_crypto_ssl" "example" {
 Read-Only:
 
 - `certificate` (String) Router certificate to be used in mTLS session, only during enrollment or bootstrap phase.
-- `profile_name` (String) Template that will be pinned to applications
+- `profile_name` (String)

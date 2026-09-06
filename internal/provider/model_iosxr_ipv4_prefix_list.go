@@ -119,6 +119,7 @@ func (data IPv4PrefixList) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data IPv4PrefixList) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -137,7 +138,7 @@ func (data IPv4PrefixList) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *IPv4PrefixList) updateFromBody(ctx context.Context, res []byte) {
+func (data *IPv4PrefixList) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
 		keyValues := [...]string{strconv.FormatInt(data.Sequences[i].SequenceNumber.ValueInt64(), 10)}
@@ -208,7 +209,7 @@ func (data *IPv4PrefixList) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *IPv4PrefixList) fromBody(ctx context.Context, res []byte) {
+func (data *IPv4PrefixList) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sequences.sequence"); value.Exists() {
 		data.Sequences = make([]IPv4PrefixListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -247,7 +248,7 @@ func (data *IPv4PrefixList) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *IPv4PrefixListData) fromBody(ctx context.Context, res []byte) {
+func (data *IPv4PrefixListData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sequences.sequence"); value.Exists() {
 		data.Sequences = make([]IPv4PrefixListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -286,7 +287,7 @@ func (data *IPv4PrefixListData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *IPv4PrefixList) getDeletedItems(ctx context.Context, state IPv4PrefixList) []string {
+func (data *IPv4PrefixList) getDeletedItems(ctx context.Context, state IPv4PrefixList, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -346,7 +347,7 @@ func (data *IPv4PrefixList) getDeletedItems(ctx context.Context, state IPv4Prefi
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *IPv4PrefixList) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *IPv4PrefixList) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -362,7 +363,7 @@ func (data *IPv4PrefixList) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *IPv4PrefixList) getDeletePaths(ctx context.Context) []string {
+func (data *IPv4PrefixList) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Sequences {
 		keys := [...]string{"sequence-number"}
@@ -371,6 +372,14 @@ func (data *IPv4PrefixList) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Sequences[i].SequenceNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString))
 	}

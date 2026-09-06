@@ -749,6 +749,7 @@ func (data InterfaceTunnelTE) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data InterfaceTunnelTE) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -767,7 +768,7 @@ func (data InterfaceTunnelTE) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); !data.Shutdown.IsNull() {
 		if value.Exists() {
 			data.Shutdown = types.BoolValue(true)
@@ -1591,7 +1592,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -2057,7 +2058,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
 		data.Shutdown = types.BoolValue(true)
 	} else {
@@ -2523,7 +2524,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state InterfaceTunnelTE) []string {
+func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state InterfaceTunnelTE, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Destination.IsNull() && data.Destination.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:destination", state.getPath()))
@@ -2925,7 +2926,7 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdEncapGal.IsNull() && !data.BfdEncapGal.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal", data.getPath()))
@@ -3102,7 +3103,7 @@ func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context) []string {
+func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Destination.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:destination", data.getPath()))
@@ -3259,6 +3260,14 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PathOptions[i].Preference.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString))
 	}
 	if !data.SignalledName.IsNull() {
@@ -3349,6 +3358,14 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutorouteDestinations[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination%v", data.getPath(), keyString))
 	}

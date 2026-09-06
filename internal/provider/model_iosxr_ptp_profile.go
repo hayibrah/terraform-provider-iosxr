@@ -677,6 +677,7 @@ func (data PTPProfile) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data PTPProfile) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -695,7 +696,7 @@ func (data PTPProfile) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte) {
+func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "port.state.subordinate-only"); !data.PortStateSlaveOnly.IsNull() {
 		if value.Exists() {
 			data.PortStateSlaveOnly = types.BoolValue(true)
@@ -1546,7 +1547,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PTPProfile) fromBody(ctx context.Context, res []byte) {
+func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "port.state.subordinate-only"); value.Exists() {
 		data.PortStateSlaveOnly = types.BoolValue(true)
 	} else {
@@ -1991,7 +1992,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PTPProfileData) fromBody(ctx context.Context, res []byte) {
+func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "port.state.subordinate-only"); value.Exists() {
 		data.PortStateSlaveOnly = types.BoolValue(true)
 	} else {
@@ -2436,7 +2437,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile) []string {
+func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.InteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -2949,7 +2950,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.InteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -3150,7 +3151,7 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
+func (data *PTPProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.InteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -3159,6 +3160,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.InteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
@@ -3184,6 +3193,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.InteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
@@ -3225,6 +3242,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MasterEthernets[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString))
 	}
 	for i := range data.MasterIpv6s {
@@ -3234,6 +3259,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MasterIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
@@ -3245,6 +3278,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MasterIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.SlaveEthernets {
@@ -3254,6 +3295,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SlaveEthernets[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/subordinate/ethernets/ethernet%v", data.getPath(), keyString))
 	}
@@ -3265,6 +3314,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SlaveIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/subordinate/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.SlaveIpv4s {
@@ -3274,6 +3331,14 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SlaveIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString))
 	}

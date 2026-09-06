@@ -430,16 +430,14 @@ func (data PTP) toBody(ctx context.Context, providerVersion string) string {
 			body, _ = sjson.Set(body, "clock.profile.g-8275-2.clock-type.t-tsc", map[string]string{})
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorReceiver.IsNull() && !data.MonitorReceiver.IsUnknown() {
 			if data.MonitorReceiver.ValueBool() {
 				body, _ = sjson.Set(body, "profiles.profile.monitor-receiver", map[string]string{})
 			}
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorSender.IsNull() && !data.MonitorSender.IsUnknown() {
 			if data.MonitorSender.ValueBool() {
 				body, _ = sjson.Set(body, "profiles.profile.monitor-sender", map[string]string{})
@@ -467,14 +465,15 @@ func (data PTP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data PTP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "monitor_receiver",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "monitor_sender",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -495,7 +494,7 @@ func (data PTP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PTP) updateFromBody(ctx context.Context, res []byte) {
+func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() && !data.FrequencyPriority.IsNull() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	} else {
@@ -952,7 +951,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte) {
 	} else {
 		data.ClockProfileG82752ClockTypeTTsc = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); !data.MonitorReceiver.IsNull() {
+	if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); helpers.VersionAtLeast(version, "25.4") && !data.MonitorReceiver.IsNull() {
 		if value.Exists() {
 			data.MonitorReceiver = types.BoolValue(true)
 		} else {
@@ -961,7 +960,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte) {
 	} else {
 		data.MonitorReceiver = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); !data.MonitorSender.IsNull() {
+	if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); helpers.VersionAtLeast(version, "25.4") && !data.MonitorSender.IsNull() {
 		if value.Exists() {
 			data.MonitorSender = types.BoolValue(true)
 		} else {
@@ -976,7 +975,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PTP) fromBody(ctx context.Context, res []byte) {
+func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	}
@@ -1231,15 +1230,23 @@ func (data *PTP) fromBody(ctx context.Context, res []byte) {
 	} else {
 		data.ClockProfileG82752ClockTypeTTsc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); value.Exists() {
-		data.MonitorReceiver = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); value.Exists() {
+			data.MonitorReceiver = types.BoolValue(true)
+		} else {
+			data.MonitorReceiver = types.BoolValue(false)
+		}
 	} else {
-		data.MonitorReceiver = types.BoolValue(false)
+		data.MonitorReceiver = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); value.Exists() {
-		data.MonitorSender = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); value.Exists() {
+			data.MonitorSender = types.BoolValue(true)
+		} else {
+			data.MonitorSender = types.BoolValue(false)
+		}
 	} else {
-		data.MonitorSender = types.BoolValue(false)
+		data.MonitorSender = types.BoolNull()
 	}
 }
 
@@ -1247,7 +1254,7 @@ func (data *PTP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PTPData) fromBody(ctx context.Context, res []byte) {
+func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	}
@@ -1502,15 +1509,23 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte) {
 	} else {
 		data.ClockProfileG82752ClockTypeTTsc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); value.Exists() {
-		data.MonitorReceiver = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "profiles.profile.monitor-receiver"); value.Exists() {
+			data.MonitorReceiver = types.BoolValue(true)
+		} else {
+			data.MonitorReceiver = types.BoolValue(false)
+		}
 	} else {
-		data.MonitorReceiver = types.BoolValue(false)
+		data.MonitorReceiver = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); value.Exists() {
-		data.MonitorSender = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "profiles.profile.monitor-sender"); value.Exists() {
+			data.MonitorSender = types.BoolValue(true)
+		} else {
+			data.MonitorSender = types.BoolValue(false)
+		}
 	} else {
-		data.MonitorSender = types.BoolValue(false)
+		data.MonitorSender = types.BoolNull()
 	}
 }
 
@@ -1518,12 +1533,12 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PTP) getDeletedItems(ctx context.Context, state PTP) []string {
+func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string) []string {
 	deletedItems := make([]string, 0)
-	if !state.MonitorSender.IsNull() && data.MonitorSender.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.MonitorSender.IsNull() && data.MonitorSender.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile/monitor-sender", state.getPath()))
 	}
-	if !state.MonitorReceiver.IsNull() && data.MonitorReceiver.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.MonitorReceiver.IsNull() && data.MonitorReceiver.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile/monitor-receiver", state.getPath()))
 	}
 	if !state.ClockProfileG82752ClockTypeTTsc.IsNull() && data.ClockProfileG82752ClockTypeTTsc.IsNull() {
@@ -1740,12 +1755,12 @@ func (data *PTP) getDeletedItems(ctx context.Context, state PTP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PTP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PTP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
-	if !data.MonitorSender.IsNull() && !data.MonitorSender.ValueBool() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorSender.IsNull() && !data.MonitorSender.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile/monitor-sender", data.getPath()))
 	}
-	if !data.MonitorReceiver.IsNull() && !data.MonitorReceiver.ValueBool() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorReceiver.IsNull() && !data.MonitorReceiver.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile/monitor-receiver", data.getPath()))
 	}
 	if !data.ClockProfileG82752ClockTypeTTsc.IsNull() && !data.ClockProfileG82752ClockTypeTTsc.ValueBool() {
@@ -1861,12 +1876,12 @@ func (data *PTP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PTP) getDeletePaths(ctx context.Context) []string {
+func (data *PTP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
-	if !data.MonitorSender.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorSender.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile/monitor-sender", data.getPath()))
 	}
-	if !data.MonitorReceiver.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorReceiver.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile/monitor-receiver", data.getPath()))
 	}
 	if !data.ClockProfileG82752ClockTypeTTsc.IsNull() {
@@ -2035,6 +2050,14 @@ func (data *PTP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.UtcOffsets[i].Date.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/utc-offset/offsets/offset%v", data.getPath(), keyString))
 	}

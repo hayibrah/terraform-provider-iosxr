@@ -199,6 +199,7 @@ func (data RouterVRRPInterfaceIPv4) toBody(ctx context.Context, providerVersion 
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterVRRPInterfaceIPv4) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -217,7 +218,7 @@ func (data RouterVRRPInterfaceIPv4) GetRangeConstraints() []helpers.FieldRangeCo
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address"); value.Exists() && !data.Address.IsNull() {
 		data.Address = types.StringValue(value.String())
 	} else {
@@ -388,7 +389,7 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address"); value.Exists() {
 		data.Address = types.StringValue(value.String())
 	}
@@ -473,7 +474,7 @@ func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address"); value.Exists() {
 		data.Address = types.StringValue(value.String())
 	}
@@ -558,7 +559,7 @@ func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state RouterVRRPInterfaceIPv4) []string {
+func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state RouterVRRPInterfaceIPv4, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdFastDetectPeerIpv4.IsNull() && data.BfdFastDetectPeerIpv4.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv4", state.getPath()))
@@ -699,7 +700,7 @@ func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterVRRPInterfaceIPv4) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterVRRPInterfaceIPv4) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -740,7 +741,7 @@ func (data *RouterVRRPInterfaceIPv4) getEmptyLeafsDelete(ctx context.Context) []
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context) []string {
+func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdFastDetectPeerIpv4.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv4", data.getPath()))
@@ -753,6 +754,14 @@ func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackObjects[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track/objects/object%v", data.getPath(), keyString))
 	}
 	for i := range data.TrackInterfaces {
@@ -762,6 +771,14 @@ func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -790,6 +807,14 @@ func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SecondaryAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/secondary-addresses/secondary-address%v", data.getPath(), keyString))
 	}

@@ -370,6 +370,7 @@ func (data PolicyMapQoS) toBody(ctx context.Context, providerVersion string) str
 // GetVersionConstraints returns the version constraints for all fields
 func (data PolicyMapQoS) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -388,7 +389,7 @@ func (data PolicyMapQoS) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte) {
+func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
@@ -810,7 +811,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte) {
+func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1044,7 +1045,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte) {
+func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1278,7 +1279,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQoS) []string {
+func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQoS, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Classes {
 		keys := [...]string{"name", "type"}
@@ -1572,7 +1573,7 @@ func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQo
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PolicyMapQoS) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PolicyMapQoS) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Classes {
 		keys := [...]string{"name", "type"}
@@ -1625,7 +1626,7 @@ func (data *PolicyMapQoS) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PolicyMapQoS) getDeletePaths(ctx context.Context) []string {
+func (data *PolicyMapQoS) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Classes {
 		keys := [...]string{"name", "type"}
@@ -1634,6 +1635,17 @@ func (data *PolicyMapQoS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Classes[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Classes[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/class%v", data.getPath(), keyString))
 	}

@@ -95,6 +95,7 @@ func (data TACACSSourceInterface) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data TACACSSourceInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -113,7 +114,7 @@ func (data TACACSSourceInterface) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
@@ -159,7 +160,7 @@ func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *TACACSSourceInterface) fromBody(ctx context.Context, res []byte) {
+func (data *TACACSSourceInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() {
 		data.SourceInterface = types.StringValue(value.String())
 	}
@@ -183,7 +184,7 @@ func (data *TACACSSourceInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TACACSSourceInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *TACACSSourceInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() {
 		data.SourceInterface = types.StringValue(value.String())
 	}
@@ -207,7 +208,7 @@ func (data *TACACSSourceInterfaceData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *TACACSSourceInterface) getDeletedItems(ctx context.Context, state TACACSSourceInterface) []string {
+func (data *TACACSSourceInterface) getDeletedItems(ctx context.Context, state TACACSSourceInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.SourceInterfaces {
 		keys := [...]string{"vrf-name"}
@@ -252,7 +253,7 @@ func (data *TACACSSourceInterface) getDeletedItems(ctx context.Context, state TA
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *TACACSSourceInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *TACACSSourceInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.SourceInterfaces {
 		keys := [...]string{"vrf-name"}
@@ -268,7 +269,7 @@ func (data *TACACSSourceInterface) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *TACACSSourceInterface) getDeletePaths(ctx context.Context) []string {
+func (data *TACACSSourceInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.SourceInterfaces {
 		keys := [...]string{"vrf-name"}
@@ -277,6 +278,14 @@ func (data *TACACSSourceInterface) getDeletePaths(ctx context.Context) []string 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SourceInterfaces[i].Vrf.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}

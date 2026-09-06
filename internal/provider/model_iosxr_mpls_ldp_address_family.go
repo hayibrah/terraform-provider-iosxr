@@ -301,6 +301,7 @@ func (data MPLSLDPAddressFamily) toBody(ctx context.Context, providerVersion str
 // GetVersionConstraints returns the version constraints for all fields
 func (data MPLSLDPAddressFamily) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -319,7 +320,7 @@ func (data MPLSLDPAddressFamily) GetRangeConstraints() []helpers.FieldRangeConst
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "discovery.transport-address.ipv4-address"); value.Exists() && !data.DiscoveryTransportAddressIpv4.IsNull() {
 		data.DiscoveryTransportAddressIpv4 = types.StringValue(value.String())
 	} else {
@@ -696,7 +697,7 @@ func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "discovery.transport-address.ipv4-address"); value.Exists() {
 		data.DiscoveryTransportAddressIpv4 = types.StringValue(value.String())
 	}
@@ -871,7 +872,7 @@ func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "discovery.transport-address.ipv4-address"); value.Exists() {
 		data.DiscoveryTransportAddressIpv4 = types.StringValue(value.String())
 	}
@@ -1046,7 +1047,7 @@ func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte) 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MPLSLDPAddressFamily) getDeletedItems(ctx context.Context, state MPLSLDPAddressFamily) []string {
+func (data *MPLSLDPAddressFamily) getDeletedItems(ctx context.Context, state MPLSLDPAddressFamily, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1367,7 +1368,7 @@ func (data *MPLSLDPAddressFamily) getDeletedItems(ctx context.Context, state MPL
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MPLSLDPAddressFamily) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MPLSLDPAddressFamily) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1460,7 +1461,7 @@ func (data *MPLSLDPAddressFamily) getEmptyLeafsDelete(ctx context.Context) []str
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
+func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1469,6 +1470,17 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LabelRemoteAcceptFromNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/label/remote/accept/from/neighbor%v", data.getPath(), keyString))
 	}
@@ -1479,6 +1491,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LabelLocalAdvertiseForAccessLists[i].AccessListName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/label/local/advertise/for/access-lists%v", data.getPath(), keyString))
 	}
@@ -1493,6 +1513,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LabelLocalAdvertiseInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/label/local/advertise/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.LabelLocalAdvertiseToNeighbors {
@@ -1502,6 +1530,17 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LabelLocalAdvertiseToNeighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/label/local/advertise/to/neighbor%v", data.getPath(), keyString))
 	}
@@ -1546,6 +1585,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrafficEngAutoTunnelMeshGroups[i].GroupId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic-eng/auto-tunnel/mesh/groups/group%v", data.getPath(), keyString))
 	}
 	for i := range data.NeighborSrPolicies {
@@ -1555,6 +1602,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NeighborSrPolicies[i].PolicyName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbor/sr-policies/sr-policy%v", data.getPath(), keyString))
 	}
@@ -1566,6 +1621,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NeighborIpv6Targeted[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbor/ipv6-addresses/targeted%v", data.getPath(), keyString))
 	}
 	for i := range data.NeighborIpv4Targeted {
@@ -1575,6 +1638,14 @@ func (data *MPLSLDPAddressFamily) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NeighborIpv4Targeted[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbor/ipv4-addresses/targeted%v", data.getPath(), keyString))
 	}

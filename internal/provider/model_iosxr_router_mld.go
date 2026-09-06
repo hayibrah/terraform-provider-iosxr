@@ -192,6 +192,7 @@ func (data RouterMLD) toBody(ctx context.Context, providerVersion string) string
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterMLD) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -210,7 +211,7 @@ func (data RouterMLD) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterMLD) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterMLD) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "nsf.lifetime"); value.Exists() && !data.NsfLifetime.IsNull() {
 		data.NsfLifetime = types.Int64Value(value.Int())
 	} else {
@@ -358,7 +359,7 @@ func (data *RouterMLD) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterMLD) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLD) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "nsf.lifetime"); value.Exists() {
 		data.NsfLifetime = types.Int64Value(value.Int())
 	}
@@ -442,7 +443,7 @@ func (data *RouterMLD) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterMLDData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "nsf.lifetime"); value.Exists() {
 		data.NsfLifetime = types.Int64Value(value.Int())
 	}
@@ -526,7 +527,7 @@ func (data *RouterMLDData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterMLD) getDeletedItems(ctx context.Context, state RouterMLD) []string {
+func (data *RouterMLD) getDeletedItems(ctx context.Context, state RouterMLD, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.MissedPacketsMemberReport.IsNull() && data.MissedPacketsMemberReport.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/member-report", state.getPath()))
@@ -625,7 +626,7 @@ func (data *RouterMLD) getDeletedItems(ctx context.Context, state RouterMLD) []s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterMLD) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterMLD) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SsmMapQueryDns.IsNull() && !data.SsmMapQueryDns.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
@@ -650,7 +651,7 @@ func (data *RouterMLD) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterMLD) getDeletePaths(ctx context.Context) []string {
+func (data *RouterMLD) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.MissedPacketsMemberReport.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/member-report", data.getPath()))
@@ -674,6 +675,14 @@ func (data *RouterMLD) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SsmMapStatics[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
 	}

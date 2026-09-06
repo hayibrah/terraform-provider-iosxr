@@ -507,11 +507,11 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 							Computed:            true,
 						},
 						"collect_hbh": schema.BoolAttribute{
-							MarkdownDescription: "Collect hop by hop data for delay sessions",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 						"ntp": schema.BoolAttribute{
-							MarkdownDescription: "Network Time Protocol timestamp format",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 					},
@@ -523,11 +523,11 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 				Computed:            true,
 			},
 			"collect_hbh": schema.BoolAttribute{
-				MarkdownDescription: "Collect hop by hop data for delay sessions",
+				MarkdownDescription: "",
 				Computed:            true,
 			},
 			"ntp": schema.BoolAttribute{
-				MarkdownDescription: "Network Time Protocol timestamp format",
+				MarkdownDescription: "",
 				Computed:            true,
 			},
 		},
@@ -587,7 +587,7 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Read(ctx context.Context,
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

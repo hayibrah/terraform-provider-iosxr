@@ -328,6 +328,7 @@ func (data KeyChain) toBody(ctx context.Context, providerVersion string) string 
 // GetVersionConstraints returns the version constraints for all fields
 func (data KeyChain) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -346,7 +347,7 @@ func (data KeyChain) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *KeyChain) updateFromBody(ctx context.Context, res []byte) {
+func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accept-tolerance.tolerance-value"); value.Exists() && !data.AcceptToleranceValue.IsNull() {
 		data.AcceptToleranceValue = types.Int64Value(value.Int())
 	} else {
@@ -675,7 +676,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *KeyChain) fromBody(ctx context.Context, res []byte) {
+func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accept-tolerance.tolerance-value"); value.Exists() {
 		data.AcceptToleranceValue = types.Int64Value(value.Int())
 	}
@@ -860,7 +861,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *KeyChainData) fromBody(ctx context.Context, res []byte) {
+func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accept-tolerance.tolerance-value"); value.Exists() {
 		data.AcceptToleranceValue = types.Int64Value(value.Int())
 	}
@@ -1045,7 +1046,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *KeyChain) getDeletedItems(ctx context.Context, state KeyChain) []string {
+func (data *KeyChain) getDeletedItems(ctx context.Context, state KeyChain, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TimezoneGmt.IsNull() && data.TimezoneGmt.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/timezone/gmt", state.getPath()))
@@ -1270,7 +1271,7 @@ func (data *KeyChain) getDeletedItems(ctx context.Context, state KeyChain) []str
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *KeyChain) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *KeyChain) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TimezoneGmt.IsNull() && !data.TimezoneGmt.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/timezone/gmt", data.getPath()))
@@ -1312,7 +1313,7 @@ func (data *KeyChain) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *KeyChain) getDeletePaths(ctx context.Context) []string {
+func (data *KeyChain) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TimezoneGmt.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/timezone/gmt", data.getPath()))
@@ -1328,6 +1329,14 @@ func (data *KeyChain) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Keys[i].KeyName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/keys/key%v", data.getPath(), keyString))
 	}
 	for i := range data.MacsecKeys {
@@ -1337,6 +1346,14 @@ func (data *KeyChain) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MacsecKeys[i].Ckn.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/macsec/keys/key%v", data.getPath(), keyString))
 	}

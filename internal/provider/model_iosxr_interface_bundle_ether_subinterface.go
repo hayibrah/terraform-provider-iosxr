@@ -1660,6 +1660,7 @@ func (data InterfaceBundleEtherSubinterface) toBody(ctx context.Context, provide
 // GetVersionConstraints returns the version constraints for all fields
 func (data InterfaceBundleEtherSubinterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1678,7 +1679,7 @@ func (data InterfaceBundleEtherSubinterface) GetRangeConstraints() []helpers.Fie
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sub-interface-type.l2transport"); !data.L2transport.IsNull() {
 		if value.Exists() {
 			data.L2transport = types.BoolValue(true)
@@ -3949,7 +3950,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sub-interface-type.l2transport"); value.Exists() {
 		data.L2transport = types.BoolValue(true)
 	} else {
@@ -5114,7 +5115,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sub-interface-type.l2transport"); value.Exists() {
 		data.L2transport = types.BoolValue(true)
 	} else {
@@ -6279,7 +6280,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *InterfaceBundleEtherSubinterface) getDeletedItems(ctx context.Context, state InterfaceBundleEtherSubinterface) []string {
+func (data *InterfaceBundleEtherSubinterface) getDeletedItems(ctx context.Context, state InterfaceBundleEtherSubinterface, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.PtpInteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -7758,7 +7759,7 @@ func (data *InterfaceBundleEtherSubinterface) getDeletedItems(ctx context.Contex
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *InterfaceBundleEtherSubinterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *InterfaceBundleEtherSubinterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.PtpInteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -8253,7 +8254,7 @@ func (data *InterfaceBundleEtherSubinterface) getEmptyLeafsDelete(ctx context.Co
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context) []string {
+func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.PtpInteropIngressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -8262,6 +8263,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
@@ -8287,6 +8296,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
@@ -8328,6 +8345,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpMasterEthernets[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString))
 	}
 	for i := range data.PtpMasterIpv6s {
@@ -8337,6 +8362,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpMasterIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
@@ -8348,6 +8381,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpMasterIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.PtpSlaveEthernets {
@@ -8357,6 +8398,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpSlaveEthernets[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet%v", data.getPath(), keyString))
 	}
@@ -8368,6 +8417,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpSlaveIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.PtpSlaveIpv4s {
@@ -8377,6 +8434,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PtpSlaveIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString))
 	}
@@ -8526,6 +8591,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MonitorSessions[i].SessionName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString))
 	}
 	if !data.LldpReceiveDisable.IsNull() {
@@ -8566,6 +8639,17 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv6EgressMonitorSamplers[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.FlowIpv6EgressMonitorSamplers[i].SamplerMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitor-samplers/egress-monitor-sampler%v", data.getPath(), keyString))
 	}
 	for i := range data.FlowIpv6EgressMonitors {
@@ -8575,6 +8659,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv6EgressMonitors[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitors/egress-monitor%v", data.getPath(), keyString))
 	}
@@ -8586,6 +8678,17 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv6IngressMonitorSamplers[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.FlowIpv6IngressMonitorSamplers[i].SamplerMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", data.getPath(), keyString))
 	}
 	for i := range data.FlowIpv6IngressMonitors {
@@ -8595,6 +8698,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv6IngressMonitors[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitors/ingress-monitor%v", data.getPath(), keyString))
 	}
@@ -8606,6 +8717,17 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv4EgressMonitorSamplers[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.FlowIpv4EgressMonitorSamplers[i].SamplerMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitor-samplers/egress-monitor-sampler%v", data.getPath(), keyString))
 	}
 	for i := range data.FlowIpv4EgressMonitors {
@@ -8615,6 +8737,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv4EgressMonitors[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitors/egress-monitor%v", data.getPath(), keyString))
 	}
@@ -8626,6 +8756,17 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv4IngressMonitorSamplers[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.FlowIpv4IngressMonitorSamplers[i].SamplerMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", data.getPath(), keyString))
 	}
 	for i := range data.FlowIpv4IngressMonitors {
@@ -8635,6 +8776,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlowIpv4IngressMonitors[i].MonitorMapName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitors/ingress-monitor%v", data.getPath(), keyString))
 	}
@@ -8663,6 +8812,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.EthernetCfmMepDomains[i].DomainName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", data.getPath(), keyString))
 	}
@@ -8731,6 +8888,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Eui64Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", data.getPath(), keyString))
 	}
 	if !data.Ipv6LinkLocalRouteTag.IsNull() {
@@ -8749,6 +8914,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv6Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", data.getPath(), keyString))
 	}
@@ -8841,6 +9014,17 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4HelperAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Ipv4HelperAddresses[i].Vrf.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", data.getPath(), keyString))
 	}
 	if !data.Ipv4MaskReply.IsNull() {
@@ -8862,6 +9046,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ipv4Secondaries[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", data.getPath(), keyString))
 	}
@@ -8924,6 +9116,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ServicePolicyOutput[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/output%v", data.getPath(), keyString))
 	}
 	for i := range data.ServicePolicyInput {
@@ -8933,6 +9133,14 @@ func (data *InterfaceBundleEtherSubinterface) getDeletePaths(ctx context.Context
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ServicePolicyInput[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/input%v", data.getPath(), keyString))
 	}

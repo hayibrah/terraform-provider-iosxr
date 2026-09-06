@@ -437,6 +437,7 @@ func (data Track) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data Track) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -455,7 +456,7 @@ func (data Track) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *Track) updateFromBody(ctx context.Context, res []byte) {
+func (data *Track) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && !data.DelayUp.IsNull() {
 		data.DelayUp = types.Int64Value(value.Int())
 	} else {
@@ -1007,7 +1008,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *Track) fromBody(ctx context.Context, res []byte) {
+func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
@@ -1273,7 +1274,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TrackData) fromBody(ctx context.Context, res []byte) {
+func (data *TrackData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
@@ -1539,7 +1540,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *Track) getDeletedItems(ctx context.Context, state Track) []string {
+func (data *Track) getDeletedItems(ctx context.Context, state Track, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.TrackUpErrorDisableInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1977,7 +1978,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *Track) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.TrackUpErrorDisableInterfaces {
 		keys := [...]string{"interface-name"}
@@ -2095,7 +2096,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *Track) getDeletePaths(ctx context.Context) []string {
+func (data *Track) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.TrackUpErrorDisableInterfaces {
 		keys := [...]string{"interface-name"}
@@ -2104,6 +2105,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackUpErrorDisableInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -2114,6 +2123,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackDownErrorDisableInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -2182,6 +2199,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LineProtocolBooleanOr[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/or/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.LineProtocolBooleanAnd {
@@ -2192,6 +2217,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LineProtocolBooleanAnd[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/and/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.LineProtocolPercentage {
@@ -2201,6 +2234,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LineProtocolPercentage[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -2217,6 +2258,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LineProtocolWeight[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -2240,6 +2289,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ThresholdWeight[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", data.getPath(), keyString))
 	}
 	if !data.ThresholdPercentageDown.IsNull() {
@@ -2256,6 +2313,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ThresholdPercentage[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v", data.getPath(), keyString))
 	}
 	for i := range data.BooleanOrList {
@@ -2266,6 +2331,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BooleanOrList[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", data.getPath(), keyString))
 	}
 	for i := range data.BooleanAndList {
@@ -2275,6 +2348,14 @@ func (data *Track) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BooleanAndList[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", data.getPath(), keyString))
 	}

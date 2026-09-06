@@ -813,6 +813,7 @@ func (data L2VPNBridgeGroupBridgeDomain) toBody(ctx context.Context, providerVer
 // GetVersionConstraints returns the version constraints for all fields
 func (data L2VPNBridgeGroupBridgeDomain) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -831,7 +832,7 @@ func (data L2VPNBridgeGroupBridgeDomain) GetRangeConstraints() []helpers.FieldRa
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mtu"); value.Exists() && !data.Mtu.IsNull() {
 		data.Mtu = types.Int64Value(value.Int())
 	} else {
@@ -1933,7 +1934,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
 		data.Mtu = types.Int64Value(value.Int())
 	}
@@ -2503,7 +2504,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
 		data.Mtu = types.Int64Value(value.Int())
 	}
@@ -3073,7 +3074,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomain) []string {
+func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomain, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.MemberVnisVni {
 		keys := [...]string{"vni-id"}
@@ -3688,7 +3689,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.MemberVnisVni {
 		keys := [...]string{"vni-id"}
@@ -4001,7 +4002,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.MemberVnisVni {
 		keys := [...]string{"vni-id"}
@@ -4010,6 +4011,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MemberVnisVni[i].VniId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/member/vnis/vni%v", data.getPath(), keyString))
 	}
@@ -4029,6 +4038,17 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NeighborsEvpnEvi[i].VpnId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.NeighborsEvpnEvi[i].Target.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/evpn/evi%v", data.getPath(), keyString))
 	}
@@ -4100,6 +4120,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MacStaticAddresses[i].MacAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/static-addresses/static-address%v", data.getPath(), keyString))
 	}
 	if !data.MacAgingTypeAbsolute.IsNull() {
@@ -4119,6 +4147,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RoutedInterface[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/routed/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.Interfaces {
@@ -4128,6 +4164,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -4205,6 +4249,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vnis[i].VniId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vnis/vni%v", data.getPath(), keyString))
 	}
 	for i := range data.Srv6Evis {
@@ -4215,6 +4267,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Srv6Evis[i].VpnId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing-srv6-evis/evi%v", data.getPath(), keyString))
 	}
 	for i := range data.Evis {
@@ -4224,6 +4284,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context) []
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Evis[i].VpnId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/evis/evi%v", data.getPath(), keyString))
 	}

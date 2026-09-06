@@ -200,10 +200,10 @@ func (r *PerformanceMeasurementInterfaceResource) Create(ctx context.Context, re
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -286,9 +286,9 @@ func (r *PerformanceMeasurementInterfaceResource) Read(ctx context.Context, req 
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
@@ -332,17 +332,17 @@ func (r *PerformanceMeasurementInterfaceResource) Update(ctx context.Context, re
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		deletedListItems := plan.getDeletedItems(ctx, state)
+		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
 
 		for _, i := range deletedListItems {
 			ops = append(ops, gnmi.Delete(i))
 		}
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -377,6 +377,7 @@ func (r *PerformanceMeasurementInterfaceResource) Delete(ctx context.Context, re
 	if resp.Diagnostics.HasError() {
 		return
 	}
+
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
@@ -397,7 +398,7 @@ func (r *PerformanceMeasurementInterfaceResource) Delete(ctx context.Context, re
 		if deleteMode == "all" {
 			ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 		} else {
-			deletePaths := state.getDeletePaths(ctx)
+			deletePaths := state.getDeletePaths(ctx, device.Version)
 			tflog.Debug(ctx, fmt.Sprintf("Paths to delete: %+v", deletePaths))
 
 			for _, i := range deletePaths {

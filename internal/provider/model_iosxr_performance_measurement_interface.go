@@ -157,6 +157,7 @@ func (data PerformanceMeasurementInterface) toBody(ctx context.Context, provider
 // GetVersionConstraints returns the version constraints for all fields
 func (data PerformanceMeasurementInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -175,7 +176,7 @@ func (data PerformanceMeasurementInterface) GetRangeConstraints() []helpers.Fiel
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PerformanceMeasurementInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay-measurement"); !data.DelayMeasurement.IsNull() {
 		if value.Exists() {
 			data.DelayMeasurement = types.BoolValue(true)
@@ -275,7 +276,7 @@ func (data *PerformanceMeasurementInterface) updateFromBody(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PerformanceMeasurementInterface) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay-measurement"); value.Exists() {
 		data.DelayMeasurement = types.BoolValue(true)
 	} else {
@@ -335,7 +336,7 @@ func (data *PerformanceMeasurementInterface) fromBody(ctx context.Context, res [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay-measurement"); value.Exists() {
 		data.DelayMeasurement = types.BoolValue(true)
 	} else {
@@ -395,7 +396,7 @@ func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, r
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PerformanceMeasurementInterface) getDeletedItems(ctx context.Context, state PerformanceMeasurementInterface) []string {
+func (data *PerformanceMeasurementInterface) getDeletedItems(ctx context.Context, state PerformanceMeasurementInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PathTracingTimestampTemplateSt3.IsNull() && data.PathTracingTimestampTemplateSt3.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", state.getPath()))
@@ -443,7 +444,7 @@ func (data *PerformanceMeasurementInterface) getDeletedItems(ctx context.Context
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PerformanceMeasurementInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PerformanceMeasurementInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PathTracingTimestampTemplateSt3.IsNull() && !data.PathTracingTimestampTemplateSt3.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
@@ -472,7 +473,7 @@ func (data *PerformanceMeasurementInterface) getEmptyLeafsDelete(ctx context.Con
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PerformanceMeasurementInterface) getDeletePaths(ctx context.Context) []string {
+func (data *PerformanceMeasurementInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PathTracingTimestampTemplateSt3.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))

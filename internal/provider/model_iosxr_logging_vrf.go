@@ -178,6 +178,7 @@ func (data LoggingVRF) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data LoggingVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -196,7 +197,7 @@ func (data LoggingVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Hostnames {
 		keys := [...]string{"name"}
 		keyValues := [...]string{data.Hostnames[i].Name.ValueString()}
@@ -365,7 +366,7 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *LoggingVRF) fromBody(ctx context.Context, res []byte) {
+func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "host-names.host-name"); value.Exists() {
 		data.Hostnames = make([]LoggingVRFHostnames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -450,7 +451,7 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "host-names.host-name"); value.Exists() {
 		data.Hostnames = make([]LoggingVRFHostnames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -535,7 +536,7 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF) []string {
+func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.HostIpv6Addresses {
 		keys := [...]string{"ipv6-address"}
@@ -679,7 +680,7 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *LoggingVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *LoggingVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.HostIpv6Addresses {
 		keys := [...]string{"ipv6-address"}
@@ -711,7 +712,7 @@ func (data *LoggingVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *LoggingVRF) getDeletePaths(ctx context.Context) []string {
+func (data *LoggingVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.HostIpv6Addresses {
 		keys := [...]string{"ipv6-address"}
@@ -720,6 +721,14 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HostIpv6Addresses[i].Ipv6Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/host-ipv6-addresses/host-ipv6-address%v", data.getPath(), keyString))
 	}
@@ -731,6 +740,14 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HostIpv4Addresses[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/host-ipv4-addresses/host-ipv4-address%v", data.getPath(), keyString))
 	}
 	for i := range data.Hostnames {
@@ -740,6 +757,14 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Hostnames[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/host-names/host-name%v", data.getPath(), keyString))
 	}

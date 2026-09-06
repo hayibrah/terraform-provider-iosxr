@@ -263,6 +263,7 @@ func (data SNMPServerMIB) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data SNMPServerMIB) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -281,7 +282,7 @@ func (data SNMPServerMIB) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SNMPServerMIB) updateFromBody(ctx context.Context, res []byte) {
+func (data *SNMPServerMIB) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib.cache"); !data.CbqosmibCache.IsNull() {
 		if value.Exists() {
 			data.CbqosmibCache = types.BoolValue(true)
@@ -530,7 +531,7 @@ func (data *SNMPServerMIB) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SNMPServerMIB) fromBody(ctx context.Context, res []byte) {
+func (data *SNMPServerMIB) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib.cache"); value.Exists() {
 		data.CbqosmibCache = types.BoolValue(true)
 	} else {
@@ -669,7 +670,7 @@ func (data *SNMPServerMIB) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SNMPServerMIBData) fromBody(ctx context.Context, res []byte) {
+func (data *SNMPServerMIBData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib.cache"); value.Exists() {
 		data.CbqosmibCache = types.BoolValue(true)
 	} else {
@@ -808,7 +809,7 @@ func (data *SNMPServerMIBData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServerMIB) []string {
+func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServerMIB, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.EntityindexPersist.IsNull() && data.EntityindexPersist.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", state.getPath()))
@@ -934,7 +935,7 @@ func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServer
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.EntityindexPersist.IsNull() && !data.EntityindexPersist.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", data.getPath()))
@@ -1001,7 +1002,7 @@ func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SNMPServerMIB) getDeletePaths(ctx context.Context) []string {
+func (data *SNMPServerMIB) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.EntityindexPersist.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", data.getPath()))
@@ -1070,6 +1071,14 @@ func (data *SNMPServerMIB) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString))
 	}

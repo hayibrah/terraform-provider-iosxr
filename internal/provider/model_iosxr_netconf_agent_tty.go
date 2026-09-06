@@ -93,6 +93,7 @@ func (data NetconfAgentTTY) toBody(ctx context.Context, providerVersion string) 
 // GetVersionConstraints returns the version constraints for all fields
 func (data NetconfAgentTTY) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -111,7 +112,7 @@ func (data NetconfAgentTTY) GetRangeConstraints() []helpers.FieldRangeConstraint
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *NetconfAgentTTY) updateFromBody(ctx context.Context, res []byte) {
+func (data *NetconfAgentTTY) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && !data.ThrottleProcessRate.IsNull() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	} else {
@@ -138,7 +139,7 @@ func (data *NetconfAgentTTY) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *NetconfAgentTTY) fromBody(ctx context.Context, res []byte) {
+func (data *NetconfAgentTTY) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
@@ -157,7 +158,7 @@ func (data *NetconfAgentTTY) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *NetconfAgentTTYData) fromBody(ctx context.Context, res []byte) {
+func (data *NetconfAgentTTYData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
@@ -176,7 +177,7 @@ func (data *NetconfAgentTTYData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *NetconfAgentTTY) getDeletedItems(ctx context.Context, state NetconfAgentTTY) []string {
+func (data *NetconfAgentTTY) getDeletedItems(ctx context.Context, state NetconfAgentTTY, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SessionTimeout.IsNull() && data.SessionTimeout.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/timeout", state.getPath()))
@@ -197,7 +198,7 @@ func (data *NetconfAgentTTY) getDeletedItems(ctx context.Context, state NetconfA
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *NetconfAgentTTY) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *NetconfAgentTTY) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -205,7 +206,7 @@ func (data *NetconfAgentTTY) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *NetconfAgentTTY) getDeletePaths(ctx context.Context) []string {
+func (data *NetconfAgentTTY) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SessionTimeout.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/timeout", data.getPath()))

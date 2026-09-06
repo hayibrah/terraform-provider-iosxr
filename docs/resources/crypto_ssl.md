@@ -3,21 +3,18 @@
 page_title: "iosxr_crypto_ssl Resource - terraform-provider-iosxr"
 subcategory: ""
 description: |-
-  This resource can manage the Crypto SSL configuration.
-  **Note:** This resource is only supported from IOS-XR version 25.1 and above.
+  **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_crypto_ssl (Resource)
 
-This resource can manage the Crypto SSL configuration.
-
-> **Note:** This resource is only supported from IOS-XR version 25.1 and above.
+> **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 
 ## Example Usage
 
 ```terraform
 resource "iosxr_crypto_ssl" "example" {
-  # NOTE: This resource is only supported from IOS-XR version 25.1 and above
+  # NOTE: This resource is only supported from IOS-XR version 25.4 and above
   profile = [
     {
       profile_name = "MTLS_PROFILE"
@@ -46,7 +43,7 @@ resource "iosxr_crypto_ssl" "example" {
 
 Required:
 
-- `profile_name` (String) Template that will be pinned to applications
+- `profile_name` (String)
 
 Optional:
 

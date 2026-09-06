@@ -125,6 +125,7 @@ func (data CLIAlias) toBody(ctx context.Context, providerVersion string) string 
 // GetVersionConstraints returns the version constraints for all fields
 func (data CLIAlias) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -143,7 +144,7 @@ func (data CLIAlias) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte) {
+func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Aliases {
 		keys := [...]string{"alias-name"}
 		keyValues := [...]string{data.Aliases[i].Name.ValueString()}
@@ -252,7 +253,7 @@ func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CLIAlias) fromBody(ctx context.Context, res []byte) {
+func (data *CLIAlias) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "aliases.alias"); value.Exists() {
 		data.Aliases = make([]CLIAliasAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -301,7 +302,7 @@ func (data *CLIAlias) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CLIAliasData) fromBody(ctx context.Context, res []byte) {
+func (data *CLIAliasData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "aliases.alias"); value.Exists() {
 		data.Aliases = make([]CLIAliasAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -350,7 +351,7 @@ func (data *CLIAliasData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias) []string {
+func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.ConfigAliases {
 		keys := [...]string{"config-alias-name"}
@@ -458,7 +459,7 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias) []str
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CLIAlias) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CLIAlias) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.ConfigAliases {
 		keys := [...]string{"config-alias-name"}
@@ -490,7 +491,7 @@ func (data *CLIAlias) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CLIAlias) getDeletePaths(ctx context.Context) []string {
+func (data *CLIAlias) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.ConfigAliases {
 		keys := [...]string{"config-alias-name"}
@@ -499,6 +500,14 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ConfigAliases[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/config/alias%v", data.getPath(), keyString))
 	}
@@ -510,6 +519,14 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ExecAliases[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exec/alias%v", data.getPath(), keyString))
 	}
 	for i := range data.Aliases {
@@ -519,6 +536,14 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Aliases[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/aliases/alias%v", data.getPath(), keyString))
 	}

@@ -119,6 +119,7 @@ func (data NetconfYangAgent) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data NetconfYangAgent) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -137,7 +138,7 @@ func (data NetconfYangAgent) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *NetconfYangAgent) updateFromBody(ctx context.Context, res []byte) {
+func (data *NetconfYangAgent) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ssh"); !data.Ssh.IsNull() {
 		if value.Exists() {
 			data.Ssh = types.BoolValue(true)
@@ -196,7 +197,7 @@ func (data *NetconfYangAgent) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *NetconfYangAgent) fromBody(ctx context.Context, res []byte) {
+func (data *NetconfYangAgent) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ssh"); value.Exists() {
 		data.Ssh = types.BoolValue(true)
 	} else {
@@ -233,7 +234,7 @@ func (data *NetconfYangAgent) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte) {
+func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ssh"); value.Exists() {
 		data.Ssh = types.BoolValue(true)
 	} else {
@@ -270,7 +271,7 @@ func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *NetconfYangAgent) getDeletedItems(ctx context.Context, state NetconfYangAgent) []string {
+func (data *NetconfYangAgent) getDeletedItems(ctx context.Context, state NetconfYangAgent, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.NetconfV1StreamingDisabled.IsNull() && data.NetconfV1StreamingDisabled.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/netconf1.0", state.getPath()))
@@ -303,7 +304,7 @@ func (data *NetconfYangAgent) getDeletedItems(ctx context.Context, state Netconf
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *NetconfYangAgent) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *NetconfYangAgent) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.NetconfV1StreamingDisabled.IsNull() && !data.NetconfV1StreamingDisabled.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/netconf1.0", data.getPath()))
@@ -320,7 +321,7 @@ func (data *NetconfYangAgent) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *NetconfYangAgent) getDeletePaths(ctx context.Context) []string {
+func (data *NetconfYangAgent) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.NetconfV1StreamingDisabled.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/netconf1.0", data.getPath()))

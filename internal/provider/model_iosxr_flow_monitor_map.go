@@ -468,6 +468,7 @@ func (data FlowMonitorMap) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data FlowMonitorMap) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -486,7 +487,7 @@ func (data FlowMonitorMap) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte) {
+func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Exporters {
 		keys := [...]string{"exporter-name"}
 		keyValues := [...]string{data.Exporters[i].Name.ValueString()}
@@ -991,7 +992,7 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte) {
+func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "exporters.exporter"); value.Exists() {
 		data.Exporters = make([]FlowMonitorMapExporters, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1272,7 +1273,7 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte) {
+func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "exporters.exporter"); value.Exists() {
 		data.Exporters = make([]FlowMonitorMapExporters, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1553,7 +1554,7 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *FlowMonitorMap) getDeletedItems(ctx context.Context, state FlowMonitorMap) []string {
+func (data *FlowMonitorMap) getDeletedItems(ctx context.Context, state FlowMonitorMap, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SflowOptionsOutputIfindex.IsNull() && data.SflowOptionsOutputIfindex.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/sflow/options/output/ifindex", state.getPath()))
@@ -1763,7 +1764,7 @@ func (data *FlowMonitorMap) getDeletedItems(ctx context.Context, state FlowMonit
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *FlowMonitorMap) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *FlowMonitorMap) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SflowOptionsExtendedIpv6TunnelEgress.IsNull() && !data.SflowOptionsExtendedIpv6TunnelEgress.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sflow/options/extended-ipv6-tunnel-egress", data.getPath()))
@@ -1917,7 +1918,7 @@ func (data *FlowMonitorMap) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *FlowMonitorMap) getDeletePaths(ctx context.Context) []string {
+func (data *FlowMonitorMap) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SflowOptionsOutputIfindex.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/sflow/options/output/ifindex", data.getPath()))
@@ -2097,6 +2098,14 @@ func (data *FlowMonitorMap) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Exporters[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exporters/exporter%v", data.getPath(), keyString))
 	}

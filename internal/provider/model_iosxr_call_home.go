@@ -315,6 +315,7 @@ func (data CallHome) toBody(ctx context.Context, providerVersion string) string 
 // GetVersionConstraints returns the version constraints for all fields
 func (data CallHome) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -333,7 +334,7 @@ func (data CallHome) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CallHome) updateFromBody(ctx context.Context, res []byte) {
+func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "service.active"); !data.ServiceActive.IsNull() {
 		if value.Exists() {
 			data.ServiceActive = types.BoolValue(true)
@@ -683,7 +684,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CallHome) fromBody(ctx context.Context, res []byte) {
+func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "service.active"); value.Exists() {
 		data.ServiceActive = types.BoolValue(true)
 	} else {
@@ -869,7 +870,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CallHomeData) fromBody(ctx context.Context, res []byte) {
+func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "service.active"); value.Exists() {
 		data.ServiceActive = types.BoolValue(true)
 	} else {
@@ -1055,7 +1056,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome) []string {
+func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Profiles {
 		keys := [...]string{"profile-name"}
@@ -1265,7 +1266,7 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome) []str
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CallHome) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CallHome) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -1354,7 +1355,7 @@ func (data *CallHome) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CallHome) getDeletePaths(ctx context.Context) []string {
+func (data *CallHome) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -1363,6 +1364,14 @@ func (data *CallHome) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Profiles[i].ProfileName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
 	}
@@ -1433,6 +1442,14 @@ func (data *CallHome) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MailServers[i].MailServerName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mail-servers/mail-server%v", data.getPath(), keyString))
 	}

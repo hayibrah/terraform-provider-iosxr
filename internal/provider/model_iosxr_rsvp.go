@@ -301,6 +301,7 @@ func (data RSVP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data RSVP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -319,7 +320,7 @@ func (data RSVP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RSVP) updateFromBody(ctx context.Context, res []byte) {
+func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "signalling.graceful-restart"); !data.SignallingGracefulRestart.IsNull() {
 		if value.Exists() {
 			data.SignallingGracefulRestart = types.BoolValue(true)
@@ -604,7 +605,7 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RSVP) fromBody(ctx context.Context, res []byte) {
+func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "signalling.graceful-restart"); value.Exists() {
 		data.SignallingGracefulRestart = types.BoolValue(true)
 	} else {
@@ -765,7 +766,7 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RSVPData) fromBody(ctx context.Context, res []byte) {
+func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "signalling.graceful-restart"); value.Exists() {
 		data.SignallingGracefulRestart = types.BoolValue(true)
 	} else {
@@ -926,7 +927,7 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP) []string {
+func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LtraceBufferMultiplierSync.IsNull() && data.LtraceBufferMultiplierSync.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
@@ -1076,7 +1077,7 @@ func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RSVP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RSVP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LtraceBufferMultiplierSync.IsNull() && !data.LtraceBufferMultiplierSync.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
@@ -1140,7 +1141,7 @@ func (data *RSVP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RSVP) getDeletePaths(ctx context.Context) []string {
+func (data *RSVP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LtraceBufferMultiplierSync.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
@@ -1197,6 +1198,14 @@ func (data *RSVP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}

@@ -26,7 +26,7 @@ data "iosxr_performance_measurement_delay_profile" "example" {
 
 ### Read-Only
 
-- `collect_hbh` (Boolean) Collect hop by hop data for delay sessions
+- `collect_hbh` (Boolean)
 - `delay_bins_explicit` (List of Number) explicit list of 27 numbers to split 28 bins. All 27 entries must be configured
 - `endpoint_default` (Boolean) Default profile
 - `endpoint_default_advertisement_accelerated` (Boolean) Endpoint delay profile advertisement accelerated
@@ -76,7 +76,7 @@ data "iosxr_performance_measurement_delay_profile" "example" {
 - `interfaces_default_probe_tos_dscp` (Number) DSCP value indicating TOS level used by protocol twamp-light
 - `interfaces_default_probe_tos_traffic_class` (Number) Traffic Class value indicating TOS level used by protocol pm-mpls
 - `interfaces_default_probe_tx_interval` (Number) TX interval
-- `ntp` (Boolean) Network Time Protocol timestamp format
+- `ntp` (Boolean)
 - `profiles` (Attributes List) Delay profile name (see [below for nested schema](#nestedatt--profiles))
 - `sr_policy_default` (Boolean) Default profile
 - `sr_policy_default_advertisement_accelerated` (Boolean) SR Policy delay profile advertisement accelerated
@@ -127,8 +127,8 @@ Read-Only:
 - `advertise_threshold_check_average_delay` (Boolean) Enable average-delay threshold-check
 - `advertise_threshold_check_maximum_delay` (Boolean) Enable maximum-delay threshold-check
 - `advertise_threshold_check_minimum_delay` (Boolean) Enable minimum-delay threshold-check
-- `collect_hbh` (Boolean) Collect hop by hop data for delay sessions
-- `ntp` (Boolean) Network Time Protocol timestamp format
+- `collect_hbh` (Boolean)
+- `ntp` (Boolean)
 - `probe_computation_interval` (Number) Interval for metric computation
 - `probe_flow_label_explicit` (Boolean) explicit list of flow labels
 - `probe_flow_label_explicit_list` (List of Number) explicit list of flow labels

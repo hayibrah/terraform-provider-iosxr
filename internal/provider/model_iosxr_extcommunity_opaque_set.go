@@ -81,6 +81,7 @@ func (data ExtcommunityOpaqueSet) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data ExtcommunityOpaqueSet) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -99,7 +100,7 @@ func (data ExtcommunityOpaqueSet) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ExtcommunityOpaqueSet) updateFromBody(ctx context.Context, res []byte) {
+func (data *ExtcommunityOpaqueSet) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "rpl-extended-community-opaque-set"); value.Exists() && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
@@ -111,7 +112,7 @@ func (data *ExtcommunityOpaqueSet) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ExtcommunityOpaqueSet) fromBody(ctx context.Context, res []byte) {
+func (data *ExtcommunityOpaqueSet) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "rpl-extended-community-opaque-set"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -121,7 +122,7 @@ func (data *ExtcommunityOpaqueSet) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ExtcommunityOpaqueSetData) fromBody(ctx context.Context, res []byte) {
+func (data *ExtcommunityOpaqueSetData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "rpl-extended-community-opaque-set"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -131,7 +132,7 @@ func (data *ExtcommunityOpaqueSetData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ExtcommunityOpaqueSet) getDeletedItems(ctx context.Context, state ExtcommunityOpaqueSet) []string {
+func (data *ExtcommunityOpaqueSet) getDeletedItems(ctx context.Context, state ExtcommunityOpaqueSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/rpl-extended-community-opaque-set", state.getPath()))
@@ -143,7 +144,7 @@ func (data *ExtcommunityOpaqueSet) getDeletedItems(ctx context.Context, state Ex
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ExtcommunityOpaqueSet) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ExtcommunityOpaqueSet) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -151,7 +152,7 @@ func (data *ExtcommunityOpaqueSet) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ExtcommunityOpaqueSet) getDeletePaths(ctx context.Context) []string {
+func (data *ExtcommunityOpaqueSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpl-extended-community-opaque-set", data.getPath()))

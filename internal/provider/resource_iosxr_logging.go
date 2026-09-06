@@ -80,7 +80,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"console": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set console logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set console logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"),
@@ -94,21 +94,21 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set monitor logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set monitor logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"),
 				},
 			},
 			"console_facility": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Console message logging facilities").AddStringEnumDescription("all").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Console message logging facilities").AddStringEnumDescription("all").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("all"),
 				},
 			},
 			"monitor_discriminator_match1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -116,7 +116,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor_discriminator_match2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -124,7 +124,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor_discriminator_match3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -132,7 +132,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor_discriminator_nomatch1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -140,7 +140,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor_discriminator_nomatch2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -148,7 +148,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"monitor_discriminator_nomatch3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -156,106 +156,106 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"archive_disk0": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Use disk0 as the archive device").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Use disk0 as the archive device").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"archive_disk1": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Use disk1 as the archive device").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Use disk1 as the archive device").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"archive_harddisk": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Use harddisk as the archive device").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Use harddisk as the archive device").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"archive_frequency_daily": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Collect log in files on a daily basis").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Collect log in files on a daily basis").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"archive_frequency_weekly": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Collect log in files on a weekly basis").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Collect log in files on a weekly basis").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"archive_filesize": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The maximum file size for a single log file.").AddIntegerRangeDescription(1, 2047).String,
+				MarkdownDescription: helpers.NewAttributeDescription("The maximum file size for a single log file.").AddIntegerRangeDescription(1, 2047).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(1, 2047),
 				},
 			},
 			"archive_size": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The total size of the archive").AddIntegerRangeDescription(1, 2047).String,
+				MarkdownDescription: helpers.NewAttributeDescription("The total size of the archive").AddIntegerRangeDescription(1, 2047).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(1, 2047),
 				},
 			},
 			"archive_length": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The maximum no of weeks of log to maintain").AddIntegerRangeDescription(1, 256).String,
+				MarkdownDescription: helpers.NewAttributeDescription("The maximum no of weeks of log to maintain").AddIntegerRangeDescription(1, 256).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(1, 256),
 				},
 			},
 			"archive_severity": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The minimum severity of log messages to archive").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String,
+				MarkdownDescription: helpers.NewAttributeDescription("The minimum severity of log messages to archive").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
 				},
 			},
 			"archive_threshold": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The size threshold at which a syslog is generated").AddIntegerRangeDescription(1, 99).String,
+				MarkdownDescription: helpers.NewAttributeDescription("The size threshold at which a syslog is generated").AddIntegerRangeDescription(1, 99).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(1, 99),
 				},
 			},
 			"ipv4_dscp": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set IP DSCP (DiffServ CodePoint)").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set IP DSCP (DiffServ CodePoint)").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"ipv4_precedence": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set precedence").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set precedence").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"ipv6_dscp": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set IP DSCP (DiffServ CodePoint)").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set IP DSCP (DiffServ CodePoint)").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"ipv6_precedence": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set precedence").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Set precedence").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"facility_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("all", "audit", "auth", "authpriv", "console", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "mail", "ntp", "syslog", "user").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("all", "audit", "auth", "authpriv", "console", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "mail", "ntp", "syslog", "user").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("all", "audit", "auth", "authpriv", "console", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "mail", "ntp", "syslog", "user"),
 				},
 			},
 			"buffered_entries_count": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Syslog in buffer").AddIntegerRangeDescription(2545, 151699).String,
+				MarkdownDescription: helpers.NewAttributeDescription("Syslog in buffer").AddIntegerRangeDescription(2545, 151699).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(2545, 151699),
 				},
 			},
 			"buffered_size": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Logging buffer size").AddIntegerRangeDescription(307200, 125000000).String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Logging buffer size").AddIntegerRangeDescription(307200, 125000000).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(307200, 125000000),
 				},
 			},
 			"buffered_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
 				},
 			},
 			"buffered_discriminator_match1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -263,7 +263,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_discriminator_match2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -271,7 +271,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_discriminator_match3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -279,7 +279,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_discriminator_nomatch1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -287,7 +287,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_discriminator_nomatch2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -295,7 +295,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_discriminator_nomatch3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.LengthBetween(1, 32),
@@ -303,11 +303,11 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"container_all": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Enables log collection from all containers").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Enables log collection from all containers").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"container_fetch_timestamp": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Fetch logs with container timestamp for all containers").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Fetch logs with container timestamp for all containers").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"file": schema.ListNestedAttribute{
@@ -324,29 +324,29 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 							},
 						},
 						"path": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set file path ").String + "\n  - **Not supported from version `25.1` and above**",
+							MarkdownDescription: helpers.NewAttributeDescription("Set file path ").String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.LengthBetween(1, 256),
 							},
 						},
 						"maxfilesize": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set max file size").AddIntegerRangeDescription(1, 2097152).String + "\n  - **Not supported from version `25.1` and above**",
+							MarkdownDescription: helpers.NewAttributeDescription("Set max file size").AddIntegerRangeDescription(1, 2097152).String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
-							// Field removed in version 25.1 - keep base range validation + runtime check
+							// Field removed in version 25.4 - keep base range validation + runtime check
 							Validators: []validator.Int64{
 								int64validator.Between(1, 2097152),
 							},
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set severity level").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning").String + "\n  - **Not supported from version `25.1` and above**",
+							MarkdownDescription: helpers.NewAttributeDescription("Set severity level").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning").String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"),
 							},
 						},
 						"local_accounting_send_to_remote_facility_level": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "sys10", "sys11", "sys12", "sys13", "sys14", "sys9", "syslog", "user", "uucp").String + "\n  - **Not supported from version `25.1` and above**",
+							MarkdownDescription: helpers.NewAttributeDescription("configure this node").AddStringEnumDescription("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "sys10", "sys11", "sys12", "sys13", "sys14", "sys9", "syslog", "user", "uucp").String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.OneOf("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "sys10", "sys11", "sys12", "sys13", "sys14", "sys9", "syslog", "user", "uucp"),
@@ -401,37 +401,34 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 							},
 						},
 						"local_accounting": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Store only the command accounting logs").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"send_to_remote": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Send the command accounting logs to syslog server").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"send_to_remote_facility": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Modify message logging facilities").AddStringEnumDescription("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("Modify message logging facilities").AddStringEnumDescription("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.OneOf("auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp"),
 							},
 						},
 						"path_maxfilesize": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set max file size").AddIntegerRangeDescription(1, 2097152).String + "\n  - Supported from version: `25.1`",
-							Required:            true,
+							MarkdownDescription: helpers.NewAttributeDescription("Set max file size").AddIntegerRangeDescription(1, 2097152).String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
 							Validators: []validator.Int64{
 								int64validator.Between(1, 2097152),
 							},
 						},
 						"path_path_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("File path (e.g. /disk0: )").String + "\n  - Supported from version: `25.1`",
-							Required:            true,
-							Validators: []validator.String{
-								stringvalidator.LengthBetween(1, 256),
-							},
+							MarkdownDescription: helpers.NewAttributeDescription("File path (e.g. /disk0: )").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
 						},
 						"path_severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("severity").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.1`",
-							Required:            true,
+							MarkdownDescription: helpers.NewAttributeDescription("severity").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"),
 							},
@@ -440,14 +437,14 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"history": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set history logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set history logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings"),
 				},
 			},
 			"history_size": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Logging history size").AddIntegerRangeDescription(1, 500).String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Logging history size").AddIntegerRangeDescription(1, 500).String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(1, 500),
@@ -469,19 +466,19 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"source_interfaces": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String,
-							Required:            true,
+							MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String + "\n  - **Not supported from version `25.4` and above**",
+							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.RegexMatches(regexp.MustCompile(`[a-zA-Z0-9.:_/-]+`), ""),
 							},
 						},
 						"vrfs": schema.ListNestedAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set VRF option").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Set VRF option").String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
@@ -492,23 +489,31 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 								},
 							},
 						},
+						"interface_name": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
+						},
+						"vrf_name": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("Set VRF option").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
+						},
 					},
 				},
 			},
 			"suppress_duplicates": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Suppress consecutive duplicate messages").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Suppress consecutive duplicate messages").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"format_rfc5424": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Enable to send the syslog message rfc5424 format ").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Enable to send the syslog message rfc5424 format ").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"format_bsd": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Enable to send the syslog message as BSD format ").String + "\n  - **Not supported from version `25.1` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Enable to send the syslog message as BSD format ").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 			},
 			"yang": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set yang logging parameters").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set yang logging parameters").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - **Not supported from version `25.4` and above**",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
@@ -621,84 +626,66 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"buffered_buffered_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("buffered level").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("buffered level").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
 				},
 			},
 			"buffered_log_buffer_size": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Logging buffer size").AddIntegerRangeDescription(2097152, 125000000).String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Logging buffer size").AddIntegerRangeDescription(2097152, 125000000).String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(2097152, 125000000),
 				},
 			},
 			"console_console_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("console level").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("console level").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"),
 				},
 			},
 			"console_discriminator_match1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"console_discriminator_match2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"console_discriminator_match3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"console_discriminator_nomatch1": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"console_discriminator_nomatch2": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"console_discriminator_nomatch3": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
-				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 32),
-				},
 			},
 			"facility_all": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("All supported facilities").AddStringEnumDescription("all").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("All supported facilities").AddStringEnumDescription("all").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("all"),
 				},
 			},
 			"history_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("history level").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("history level").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings"),
 				},
 			},
 			"monitor_monitor_level": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set monitor logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("Set monitor logging").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"),
@@ -745,10 +732,10 @@ func (r *LoggingResource) Create(ctx context.Context, req resource.CreateRequest
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -831,9 +818,9 @@ func (r *LoggingResource) Read(ctx context.Context, req resource.ReadRequest, re
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
@@ -881,17 +868,17 @@ func (r *LoggingResource) Update(ctx context.Context, req resource.UpdateRequest
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		deletedListItems := plan.getDeletedItems(ctx, state)
+		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
 
 		for _, i := range deletedListItems {
 			ops = append(ops, gnmi.Delete(i))
 		}
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -926,17 +913,19 @@ func (r *LoggingResource) Delete(ctx context.Context, req resource.DeleteRequest
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	// Validate version compatibility (only check if resource/fields are supported)
-	if len(state.GetVersionConstraints()) > 0 {
-		helpers.ValidateVersionConstraints(r.data.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
-		if resp.Diagnostics.HasError() {
-			return
-		}
-	}
+
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
 		return
+	}
+
+	// Validate version compatibility (only check if resource/fields are supported)
+	if len(state.GetVersionConstraints()) > 0 {
+		helpers.ValidateVersionConstraints(device.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
+		}
 	}
 
 	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Delete", state.Id.ValueString()))
@@ -953,7 +942,7 @@ func (r *LoggingResource) Delete(ctx context.Context, req resource.DeleteRequest
 		if deleteMode == "all" {
 			ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 		} else {
-			deletePaths := state.getDeletePaths(ctx)
+			deletePaths := state.getDeletePaths(ctx, device.Version)
 			tflog.Debug(ctx, fmt.Sprintf("Paths to delete: %+v", deletePaths))
 
 			for _, i := range deletePaths {

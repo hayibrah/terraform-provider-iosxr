@@ -303,6 +303,7 @@ func (data RadiusServer) toBody(ctx context.Context, providerVersion string) str
 // GetVersionConstraints returns the version constraints for all fields
 func (data RadiusServer) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -321,7 +322,7 @@ func (data RadiusServer) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte) {
+func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Hosts {
 		keys := [...]string{"ordering-index", "address", "auth-port", "acct-port"}
 		keyValues := [...]string{strconv.FormatInt(data.Hosts[i].Order.ValueInt64(), 10), data.Hosts[i].Address.ValueString(), strconv.FormatInt(data.Hosts[i].AuthPort.ValueInt64(), 10), strconv.FormatInt(data.Hosts[i].AcctPort.ValueInt64(), 10)}
@@ -635,7 +636,7 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RadiusServer) fromBody(ctx context.Context, res []byte) {
+func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "hosts.host"); value.Exists() {
 		data.Hosts = make([]RadiusServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -797,7 +798,7 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RadiusServerData) fromBody(ctx context.Context, res []byte) {
+func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "hosts.host"); value.Exists() {
 		data.Hosts = make([]RadiusServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -959,7 +960,7 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RadiusServer) getDeletedItems(ctx context.Context, state RadiusServer) []string {
+func (data *RadiusServer) getDeletedItems(ctx context.Context, state RadiusServer, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AttributeFilterId11DefaultDirection.IsNull() && data.AttributeFilterId11DefaultDirection.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute/filter-id-11/default/direction", state.getPath()))
@@ -1202,7 +1203,7 @@ func (data *RadiusServer) getDeletedItems(ctx context.Context, state RadiusServe
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RadiusServer) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RadiusServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.AttributeAcctMultiSessionIdIncludeParentSessionId.IsNull() && !data.AttributeAcctMultiSessionIdIncludeParentSessionId.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/attribute/acct-multi-session-id/include-parent-session-id", data.getPath()))
@@ -1269,7 +1270,7 @@ func (data *RadiusServer) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RadiusServer) getDeletePaths(ctx context.Context) []string {
+func (data *RadiusServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AttributeFilterId11DefaultDirection.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/attribute/filter-id-11/default/direction", data.getPath()))
@@ -1287,6 +1288,14 @@ func (data *RadiusServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AttributeLists[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/attribute/list%v", data.getPath(), keyString))
 	}
@@ -1351,6 +1360,23 @@ func (data *RadiusServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Hosts[i].Order.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Hosts[i].AuthPort.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Hosts[i].AcctPort.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString))
 	}

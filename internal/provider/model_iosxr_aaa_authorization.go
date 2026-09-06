@@ -470,6 +470,7 @@ func (data AAAAuthorization) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data AAAAuthorization) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -488,7 +489,7 @@ func (data AAAAuthorization) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *AAAAuthorization) updateFromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthorization) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Exec {
 		keys := [...]string{"list-name"}
 		keyValues := [...]string{data.Exec[i].List.ValueString()}
@@ -1113,7 +1114,7 @@ func (data *AAAAuthorization) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *AAAAuthorization) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthorization) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "exec.authorization-list"); value.Exists() {
 		data.Exec = make([]AAAAuthorizationExec, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1446,7 +1447,7 @@ func (data *AAAAuthorization) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *AAAAuthorizationData) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthorizationData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "exec.authorization-list"); value.Exists() {
 		data.Exec = make([]AAAAuthorizationExec, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1779,7 +1780,7 @@ func (data *AAAAuthorizationData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *AAAAuthorization) getDeletedItems(ctx context.Context, state AAAAuthorization) []string {
+func (data *AAAAuthorization) getDeletedItems(ctx context.Context, state AAAAuthorization, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Network {
 		keys := [...]string{"list-name"}
@@ -2094,7 +2095,7 @@ func (data *AAAAuthorization) getDeletedItems(ctx context.Context, state AAAAuth
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *AAAAuthorization) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *AAAAuthorization) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Network {
 		keys := [...]string{"list-name"}
@@ -2278,7 +2279,7 @@ func (data *AAAAuthorization) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *AAAAuthorization) getDeletePaths(ctx context.Context) []string {
+func (data *AAAAuthorization) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Network {
 		keys := [...]string{"list-name"}
@@ -2287,6 +2288,14 @@ func (data *AAAAuthorization) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Network[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/network/authorization-list%v", data.getPath(), keyString))
 	}
@@ -2298,6 +2307,14 @@ func (data *AAAAuthorization) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Commands[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/commands/authorization-list%v", data.getPath(), keyString))
 	}
 	for i := range data.Eventmanager {
@@ -2308,6 +2325,14 @@ func (data *AAAAuthorization) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Eventmanager[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/eventmanager/authorization-list%v", data.getPath(), keyString))
 	}
 	for i := range data.Exec {
@@ -2317,6 +2342,14 @@ func (data *AAAAuthorization) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Exec[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exec/authorization-list%v", data.getPath(), keyString))
 	}

@@ -104,6 +104,7 @@ func (data CDP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data CDP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -122,7 +123,7 @@ func (data CDP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CDP) updateFromBody(ctx context.Context, res []byte) {
+func (data *CDP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); !data.Enable.IsNull() {
 		if value.Exists() {
 			data.Enable = types.BoolValue(true)
@@ -166,7 +167,7 @@ func (data *CDP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CDP) fromBody(ctx context.Context, res []byte) {
+func (data *CDP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -194,7 +195,7 @@ func (data *CDP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CDPData) fromBody(ctx context.Context, res []byte) {
+func (data *CDPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -222,7 +223,7 @@ func (data *CDPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CDP) getDeletedItems(ctx context.Context, state CDP) []string {
+func (data *CDP) getDeletedItems(ctx context.Context, state CDP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LogAdjacencyChanges.IsNull() && data.LogAdjacencyChanges.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/adjacency/changes", state.getPath()))
@@ -246,7 +247,7 @@ func (data *CDP) getDeletedItems(ctx context.Context, state CDP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CDP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CDP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LogAdjacencyChanges.IsNull() && !data.LogAdjacencyChanges.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/adjacency/changes", data.getPath()))
@@ -263,7 +264,7 @@ func (data *CDP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CDP) getDeletePaths(ctx context.Context) []string {
+func (data *CDP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LogAdjacencyChanges.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/adjacency/changes", data.getPath()))

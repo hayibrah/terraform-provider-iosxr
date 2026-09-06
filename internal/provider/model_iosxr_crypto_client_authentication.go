@@ -95,6 +95,7 @@ func (data CryptoClientAuthentication) toBody(ctx context.Context, providerVersi
 // GetVersionConstraints returns the version constraints for all fields
 func (data CryptoClientAuthentication) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -113,7 +114,7 @@ func (data CryptoClientAuthentication) GetRangeConstraints() []helpers.FieldRang
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CryptoClientAuthentication) updateFromBody(ctx context.Context, res []byte) {
+func (data *CryptoClientAuthentication) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
 		keyValues := [...]string{data.Profile[i].ProfileName.ValueString()}
@@ -159,7 +160,7 @@ func (data *CryptoClientAuthentication) updateFromBody(ctx context.Context, res 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CryptoClientAuthentication) fromBody(ctx context.Context, res []byte) {
+func (data *CryptoClientAuthentication) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profile = make([]CryptoClientAuthenticationProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -183,7 +184,7 @@ func (data *CryptoClientAuthentication) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CryptoClientAuthenticationData) fromBody(ctx context.Context, res []byte) {
+func (data *CryptoClientAuthenticationData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profile = make([]CryptoClientAuthenticationProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -207,7 +208,7 @@ func (data *CryptoClientAuthenticationData) fromBody(ctx context.Context, res []
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CryptoClientAuthentication) getDeletedItems(ctx context.Context, state CryptoClientAuthentication) []string {
+func (data *CryptoClientAuthentication) getDeletedItems(ctx context.Context, state CryptoClientAuthentication, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Profile {
 		keys := [...]string{"profile-name"}
@@ -252,7 +253,7 @@ func (data *CryptoClientAuthentication) getDeletedItems(ctx context.Context, sta
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CryptoClientAuthentication) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CryptoClientAuthentication) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
@@ -268,7 +269,7 @@ func (data *CryptoClientAuthentication) getEmptyLeafsDelete(ctx context.Context)
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CryptoClientAuthentication) getDeletePaths(ctx context.Context) []string {
+func (data *CryptoClientAuthentication) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
@@ -277,6 +278,14 @@ func (data *CryptoClientAuthentication) getDeletePaths(ctx context.Context) []st
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Profile[i].ProfileName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
 	}

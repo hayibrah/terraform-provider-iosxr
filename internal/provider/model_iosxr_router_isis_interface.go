@@ -464,6 +464,7 @@ func (data RouterISISInterface) toBody(ctx context.Context, providerVersion stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterISISInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -482,7 +483,7 @@ func (data RouterISISInterface) GetRangeConstraints() []helpers.FieldRangeConstr
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() && !data.MeshGroup.IsNull() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	} else {
@@ -1037,7 +1038,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	}
@@ -1308,7 +1309,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	}
@@ -1579,7 +1580,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state RouterISISInterface) []string {
+func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state RouterISISInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
@@ -2032,7 +2033,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdFastDetectIpv6.IsNull() && !data.BfdFastDetectIpv6.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/fast-detect/ipv6", data.getPath()))
@@ -2156,7 +2157,7 @@ func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context) []stri
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdMultiplier.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))
@@ -2202,6 +2203,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RetransmitThrottleIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-throttle-interval-levels/retransmit-throttle-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.RetransmitThrottleInterval.IsNull() {
@@ -2214,6 +2223,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RetransmitIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-interval-levels/retransmit-interval-level%v", data.getPath(), keyString))
 	}
@@ -2231,6 +2248,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PriorityLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority-levels/priority-level%v", data.getPath(), keyString))
 	}
 	if !data.Priority.IsNull() {
@@ -2246,6 +2271,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HelloPasswordLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", data.getPath(), keyString))
 	}
@@ -2275,6 +2308,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HelloPasswordAcceptsLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/accepts-levels/accepts-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloPasswordAcceptEncrypted.IsNull() {
@@ -2287,6 +2328,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.LspIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-interval-levels/lsp-interval-level%v", data.getPath(), keyString))
 	}
@@ -2301,6 +2350,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HelloMultiplierLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-multiplier-levels/hello-multiplier-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloMultiplier.IsNull() {
@@ -2313,6 +2370,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HelloIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-interval-levels/hello-interval-level%v", data.getPath(), keyString))
 	}
@@ -2327,6 +2392,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.HelloPaddingLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-padding-levels/hello-padding-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloPadding.IsNull() {
@@ -2339,6 +2412,14 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CsnpIntervalLevels[i].LevelNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/csnp-interval-levels/csnp-interval-level%v", data.getPath(), keyString))
 	}

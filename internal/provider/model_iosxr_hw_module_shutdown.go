@@ -90,6 +90,7 @@ func (data HWModuleShutdown) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data HWModuleShutdown) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -108,7 +109,7 @@ func (data HWModuleShutdown) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *HWModuleShutdown) updateFromBody(ctx context.Context, res []byte) {
+func (data *HWModuleShutdown) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shut"); !data.Shut.IsNull() {
 		if value.Exists() {
 			data.Shut = types.BoolValue(true)
@@ -133,7 +134,7 @@ func (data *HWModuleShutdown) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *HWModuleShutdown) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleShutdown) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shut"); value.Exists() {
 		data.Shut = types.BoolValue(true)
 	} else {
@@ -150,7 +151,7 @@ func (data *HWModuleShutdown) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *HWModuleShutdownData) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleShutdownData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "shut"); value.Exists() {
 		data.Shut = types.BoolValue(true)
 	} else {
@@ -167,7 +168,7 @@ func (data *HWModuleShutdownData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *HWModuleShutdown) getDeletedItems(ctx context.Context, state HWModuleShutdown) []string {
+func (data *HWModuleShutdown) getDeletedItems(ctx context.Context, state HWModuleShutdown, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Unshut.IsNull() && data.Unshut.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/unshut", state.getPath()))
@@ -182,7 +183,7 @@ func (data *HWModuleShutdown) getDeletedItems(ctx context.Context, state HWModul
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *HWModuleShutdown) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *HWModuleShutdown) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Unshut.IsNull() && !data.Unshut.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/unshut", data.getPath()))
@@ -196,7 +197,7 @@ func (data *HWModuleShutdown) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *HWModuleShutdown) getDeletePaths(ctx context.Context) []string {
+func (data *HWModuleShutdown) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Unshut.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/unshut", data.getPath()))

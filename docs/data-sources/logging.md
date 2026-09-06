@@ -106,14 +106,14 @@ Read-Only:
 - `discriminator_nomatch2` (String) Set no-match discriminator 2
 - `discriminator_nomatch3` (String) Set no-match discriminator 3
 - `file_name` (String) Set file logging
-- `local_accounting` (Boolean) Store only the command accounting logs
+- `local_accounting` (Boolean)
 - `local_accounting_send_to_remote_facility_level` (String) configure this node
 - `maxfilesize` (Number) Set max file size
 - `path` (String) Set file path
 - `path_maxfilesize` (Number) Set max file size
 - `path_path_name` (String) File path (e.g. /disk0: )
 - `path_severity` (String) severity
-- `send_to_remote` (Boolean) Send the command accounting logs to syslog server
+- `send_to_remote` (Boolean)
 - `send_to_remote_facility` (String) Modify message logging facilities
 - `severity` (String) Set severity level
 
@@ -131,7 +131,9 @@ Read-Only:
 
 Read-Only:
 
+- `interface_name` (String) Specify interface for source address in logging transactions
 - `name` (String) Specify interface for source address in logging transactions
+- `vrf_name` (String) Set VRF option
 - `vrfs` (Attributes List) Set VRF option (see [below for nested schema](#nestedatt--source_interfaces--vrfs))
 
 <a id="nestedatt--source_interfaces--vrfs"></a>

@@ -179,6 +179,7 @@ func (data FlowExporterMap) toBody(ctx context.Context, providerVersion string) 
 // GetVersionConstraints returns the version constraints for all fields
 func (data FlowExporterMap) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -197,7 +198,7 @@ func (data FlowExporterMap) GetRangeConstraints() []helpers.FieldRangeConstraint
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte) {
+func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() && !data.DestinationIpv4Address.IsNull() {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	} else {
@@ -308,7 +309,7 @@ func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte) {
+func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	}
@@ -377,7 +378,7 @@ func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte) {
+func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	}
@@ -446,7 +447,7 @@ func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *FlowExporterMap) getDeletedItems(ctx context.Context, state FlowExporterMap) []string {
+func (data *FlowExporterMap) getDeletedItems(ctx context.Context, state FlowExporterMap, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.VersionOptionsVrfTableTimeout.IsNull() && data.VersionOptionsVrfTableTimeout.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/options/vrf-table/timeout", state.getPath()))
@@ -515,7 +516,7 @@ func (data *FlowExporterMap) getDeletedItems(ctx context.Context, state FlowExpo
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *FlowExporterMap) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *FlowExporterMap) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.DfbitSet.IsNull() && !data.DfbitSet.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dfbit/set", data.getPath()))
@@ -526,7 +527,7 @@ func (data *FlowExporterMap) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *FlowExporterMap) getDeletePaths(ctx context.Context) []string {
+func (data *FlowExporterMap) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.VersionOptionsVrfTableTimeout.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/options/vrf-table/timeout", data.getPath()))

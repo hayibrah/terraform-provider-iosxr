@@ -1387,14 +1387,15 @@ func (data RouterBGPNeighborGroup) toBody(ctx context.Context, providerVersion s
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterBGPNeighborGroup) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "address_family.default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "address_family.default_policy_action_out",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -1415,7 +1416,7 @@ func (data RouterBGPNeighborGroup) GetRangeConstraints() []helpers.FieldRangeCon
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && !data.RemoteAs.IsNull() {
 		data.RemoteAs = types.StringValue(value.String())
 	} else {
@@ -3120,12 +3121,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].BestpathOriginAsAllowInvalid = types.BoolNull()
 		}
-		if value := r.Get("default-policy-action.in"); value.Exists() && !data.AddressFamily[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action.in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.AddressFamily[i].DefaultPolicyActionIn.IsNull() {
 			data.AddressFamily[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DefaultPolicyActionIn = types.StringNull()
 		}
-		if value := r.Get("default-policy-action.out"); value.Exists() && !data.AddressFamily[i].DefaultPolicyActionOut.IsNull() {
+		if value := r.Get("default-policy-action.out"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.AddressFamily[i].DefaultPolicyActionOut.IsNull() {
 			data.AddressFamily[i].DefaultPolicyActionOut = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DefaultPolicyActionOut = types.StringNull()
@@ -3137,7 +3138,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() {
 		data.RemoteAs = types.StringValue(value.String())
 	}
@@ -4083,11 +4084,19 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte) {
 			} else {
 				item.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 			}
-			if cValue := v.Get("default-policy-action.in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action.in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
-			if cValue := v.Get("default-policy-action.out"); cValue.Exists() {
-				item.DefaultPolicyActionOut = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action.out"); cValue.Exists() {
+					item.DefaultPolicyActionOut = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionOut = types.StringNull()
 			}
 			data.AddressFamily = append(data.AddressFamily, item)
 			return true
@@ -4099,7 +4108,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "remote-as"); value.Exists() {
 		data.RemoteAs = types.StringValue(value.String())
 	}
@@ -5045,11 +5054,19 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 			}
-			if cValue := v.Get("default-policy-action.in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action.in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
-			if cValue := v.Get("default-policy-action.out"); cValue.Exists() {
-				item.DefaultPolicyActionOut = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action.out"); cValue.Exists() {
+					item.DefaultPolicyActionOut = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionOut = types.StringNull()
 			}
 			data.AddressFamily = append(data.AddressFamily, item)
 			return true
@@ -5061,7 +5078,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterBGPNeighborGroup) getDeletedItems(ctx context.Context, state RouterBGPNeighborGroup) []string {
+func (data *RouterBGPNeighborGroup) getDeletedItems(ctx context.Context, state RouterBGPNeighborGroup, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.AddressFamily {
 		keys := [...]string{"af-name"}
@@ -5086,10 +5103,10 @@ func (data *RouterBGPNeighborGroup) getDeletedItems(ctx context.Context, state R
 				found = false
 			}
 			if found {
-				if !state.AddressFamily[i].DefaultPolicyActionOut.IsNull() && data.AddressFamily[j].DefaultPolicyActionOut.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.AddressFamily[i].DefaultPolicyActionOut.IsNull() && data.AddressFamily[j].DefaultPolicyActionOut.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/default-policy-action/out", state.getPath(), keyString))
 				}
-				if !state.AddressFamily[i].DefaultPolicyActionIn.IsNull() && data.AddressFamily[j].DefaultPolicyActionIn.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.AddressFamily[i].DefaultPolicyActionIn.IsNull() && data.AddressFamily[j].DefaultPolicyActionIn.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/default-policy-action/in", state.getPath(), keyString))
 				}
 				if !state.AddressFamily[i].BestpathOriginAsAllowInvalid.IsNull() && data.AddressFamily[j].BestpathOriginAsAllowInvalid.IsNull() {
@@ -5811,7 +5828,7 @@ func (data *RouterBGPNeighborGroup) getDeletedItems(ctx context.Context, state R
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterBGPNeighborGroup) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterBGPNeighborGroup) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.AddressFamily {
 		keys := [...]string{"af-name"}
@@ -6254,7 +6271,7 @@ func (data *RouterBGPNeighborGroup) getEmptyLeafsDelete(ctx context.Context) []s
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterBGPNeighborGroup) getDeletePaths(ctx context.Context) []string {
+func (data *RouterBGPNeighborGroup) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.AddressFamily {
 		keys := [...]string{"af-name"}
@@ -6263,6 +6280,14 @@ func (data *RouterBGPNeighborGroup) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AddressFamily[i].AfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString))
 	}
@@ -6348,6 +6373,14 @@ func (data *RouterBGPNeighborGroup) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeerSets[i].Peer.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-set/peer-sets%v", data.getPath(), keyString))
 	}
@@ -6592,6 +6625,14 @@ func (data *RouterBGPNeighborGroup) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BmpActivateServers[i].ServerNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bmp-activate/servers/server%v", data.getPath(), keyString))
 	}

@@ -562,6 +562,7 @@ func (data AAAAccounting) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data AAAAccounting) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -580,7 +581,7 @@ func (data AAAAccounting) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *AAAAccounting) updateFromBody(ctx context.Context, res []byte) {
+func (data *AAAAccounting) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "update.newinfo"); !data.UpdateNewinfo.IsNull() {
 		if value.Exists() {
 			data.UpdateNewinfo = types.BoolValue(true)
@@ -1337,7 +1338,7 @@ func (data *AAAAccounting) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *AAAAccounting) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAccounting) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "update.newinfo"); value.Exists() {
 		data.UpdateNewinfo = types.BoolValue(true)
 	} else {
@@ -1744,7 +1745,7 @@ func (data *AAAAccounting) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *AAAAccountingData) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAccountingData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "update.newinfo"); value.Exists() {
 		data.UpdateNewinfo = types.BoolValue(true)
 	} else {
@@ -2151,7 +2152,7 @@ func (data *AAAAccountingData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccounting) []string {
+func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccounting, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Network {
 		keys := [...]string{"list-name"}
@@ -2514,7 +2515,7 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Network {
 		keys := [...]string{"list-name"}
@@ -2737,7 +2738,7 @@ func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *AAAAccounting) getDeletePaths(ctx context.Context) []string {
+func (data *AAAAccounting) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Network {
 		keys := [...]string{"list-name"}
@@ -2746,6 +2747,14 @@ func (data *AAAAccounting) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Network[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString))
 	}
@@ -2757,6 +2766,14 @@ func (data *AAAAccounting) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.System[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString))
 	}
 	for i := range data.Commands {
@@ -2767,6 +2784,14 @@ func (data *AAAAccounting) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Commands[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString))
 	}
 	for i := range data.Exec {
@@ -2776,6 +2801,14 @@ func (data *AAAAccounting) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Exec[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString))
 	}

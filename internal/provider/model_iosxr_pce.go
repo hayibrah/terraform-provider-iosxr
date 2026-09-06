@@ -1265,6 +1265,7 @@ func (data PCE) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data PCE) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1283,7 +1284,7 @@ func (data PCE) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PCE) updateFromBody(ctx context.Context, res []byte) {
+func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && !data.AddressIpv4.IsNull() {
 		data.AddressIpv4 = types.StringValue(value.String())
 	} else {
@@ -3178,7 +3179,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PCE) fromBody(ctx context.Context, res []byte) {
+func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() {
 		data.AddressIpv4 = types.StringValue(value.String())
 	}
@@ -4109,7 +4110,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PCEData) fromBody(ctx context.Context, res []byte) {
+func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() {
 		data.AddressIpv4 = types.StringValue(value.String())
 	}
@@ -5040,7 +5041,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PCE) getDeletedItems(ctx context.Context, state PCE) []string {
+func (data *PCE) getDeletedItems(ctx context.Context, state PCE, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.HierarchicalUnderlayEnableAll.IsNull() && data.HierarchicalUnderlayEnableAll.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/hierarchical/underlay/enable-all", state.getPath()))
@@ -6423,7 +6424,7 @@ func (data *PCE) getDeletedItems(ctx context.Context, state PCE) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PCE) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PCE) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.HierarchicalUnderlayEnableAll.IsNull() && !data.HierarchicalUnderlayEnableAll.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hierarchical/underlay/enable-all", data.getPath()))
@@ -6837,7 +6838,7 @@ func (data *PCE) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PCE) getDeletePaths(ctx context.Context) []string {
+func (data *PCE) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.HierarchicalUnderlayEnableAll.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hierarchical/underlay/enable-all", data.getPath()))
@@ -6853,6 +6854,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteP2mpFrrNodeSetToIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/p2mp/frr-node-set/to/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.SrteP2mpFrrNodeSetFromIpv4s {
@@ -6862,6 +6871,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteP2mpFrrNodeSetFromIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/p2mp/frr-node-set/from/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
@@ -6891,6 +6908,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteP2mpPolicies[i].PolicyName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/p2mp/policies/policy%v", data.getPath(), keyString))
 	}
 	for i := range data.SrteP2mpEndpointSets {
@@ -6900,6 +6925,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteP2mpEndpointSets[i].EndpointSetName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/p2mp/endpoint-sets/endpoint-set%v", data.getPath(), keyString))
 	}
@@ -6920,6 +6953,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteIpv4Peers[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/peer/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.SrteSegmentLists {
@@ -6930,6 +6971,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteSegmentLists[i].SegmentListName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/segment-lists/segment-list%v", data.getPath(), keyString))
 	}
 	for i := range data.SrteAffinityBitmaps {
@@ -6939,6 +6988,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrteAffinityBitmaps[i].AffinityColorName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/affinity/bit-map/affinity-colors/affinity-color%v", data.getPath(), keyString))
 	}
@@ -7004,6 +7061,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ApiUsers[i].UserName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/api/users/user%v", data.getPath(), keyString))
 	}
 	if !data.ApiVrf.IsNull() {
@@ -7029,6 +7094,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeerIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.PeerIpv4s {
@@ -7039,6 +7112,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeerIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer/ipv4s/ipv4%v", data.getPath(), keyString))
 	}
 	for i := range data.DisjointPathGroupIds {
@@ -7048,6 +7129,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.DisjointPathGroupIds[i].GroupId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/disjoint-path/group-ids/group-id%v", data.getPath(), keyString))
 	}
@@ -7077,6 +7166,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.StateSyncIpv6s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/state-sync/ipv6s/ipv6%v", data.getPath(), keyString))
 	}
 	for i := range data.StateSyncIpv4s {
@@ -7086,6 +7183,14 @@ func (data *PCE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.StateSyncIpv4s[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/state-sync/ipv4s/ipv4%v", data.getPath(), keyString))
 	}

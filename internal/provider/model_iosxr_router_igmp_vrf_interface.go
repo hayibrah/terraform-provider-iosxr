@@ -295,6 +295,7 @@ func (data RouterIGMPVRFInterface) toBody(ctx context.Context, providerVersion s
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterIGMPVRFInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -313,7 +314,7 @@ func (data RouterIGMPVRFInterface) GetRangeConstraints() []helpers.FieldRangeCon
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterIGMPVRFInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRFInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() && !data.Version.IsNull() {
 		data.Version = types.Int64Value(value.Int())
 	} else {
@@ -671,7 +672,7 @@ func (data *RouterIGMPVRFInterface) updateFromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterIGMPVRFInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRFInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() {
 		data.Version = types.Int64Value(value.Int())
 	}
@@ -845,7 +846,7 @@ func (data *RouterIGMPVRFInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterIGMPVRFInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRFInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() {
 		data.Version = types.Int64Value(value.Int())
 	}
@@ -1019,7 +1020,7 @@ func (data *RouterIGMPVRFInterfaceData) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state RouterIGMPVRFInterface) []string {
+func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state RouterIGMPVRFInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.JoinGroups {
 		keys := [...]string{"group-address"}
@@ -1286,7 +1287,7 @@ func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state R
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.JoinGroups {
 		keys := [...]string{"group-address"}
@@ -1381,7 +1382,7 @@ func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context) []s
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.JoinGroups {
 		keys := [...]string{"group-address"}
@@ -1390,6 +1391,14 @@ func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.JoinGroups[i].GroupAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/join-groups/join-group%v", data.getPath(), keyString))
 	}
@@ -1400,6 +1409,14 @@ func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.StaticGroups[i].GroupAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/static-group/group-address%v", data.getPath(), keyString))
 	}

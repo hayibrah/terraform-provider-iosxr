@@ -415,6 +415,7 @@ func (data EthernetCFM) toBody(ctx context.Context, providerVersion string) stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data EthernetCFM) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -433,7 +434,7 @@ func (data EthernetCFM) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte) {
+func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() && !data.TracerouteCacheHoldTime.IsNull() {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	} else {
@@ -948,7 +949,7 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EthernetCFM) fromBody(ctx context.Context, res []byte) {
+func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	}
@@ -1229,7 +1230,7 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte) {
+func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	}
@@ -1510,7 +1511,7 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM) []string {
+func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Domains {
 		keys := [...]string{"domain-name"}
@@ -1792,7 +1793,7 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EthernetCFM) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EthernetCFM) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Domains {
 		keys := [...]string{"domain-name"}
@@ -1911,7 +1912,7 @@ func (data *EthernetCFM) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EthernetCFM) getDeletePaths(ctx context.Context) []string {
+func (data *EthernetCFM) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Domains {
 		keys := [...]string{"domain-name"}
@@ -1920,6 +1921,14 @@ func (data *EthernetCFM) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Domains[i].DomainName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/domains/domain%v", data.getPath(), keyString))
 	}

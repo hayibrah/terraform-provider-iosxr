@@ -75,9 +75,15 @@ func TestAccDataSourceIosxrCrypto(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.vrf", "VRF1"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.message_digest", "sha256"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.method_est_credential_certificate", "EST-BOOTSTRAP"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.enrollment_authentication_profile", "EAP_PROFILE"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.re_enrollment_authentication_profile", "EAP_PROFILE"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.ssl_profile", "MTLS_PROFILE"))
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.enrollment_authentication_profile", "EAP_PROFILE"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.re_enrollment_authentication_profile", "EAP_PROFILE"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_trustpoints.0.ssl_profile", "MTLS_PROFILE"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_openssh_trustpoints.0.trustpoint_name", "OPENSSH-TP1"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_openssh_trustpoints.0.rsakeypair", "KEY1"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_crypto.test", "ca_http_proxy", "proxy.example.com"))
@@ -171,13 +177,13 @@ func testAccDataSourceIosxrCryptoConfig() string {
 	config += `		vrf = "VRF1"` + "\n"
 	config += `		message_digest = "sha256"` + "\n"
 	config += `		method_est_credential_certificate = "EST-BOOTSTRAP"` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		enrollment_authentication_profile = "EAP_PROFILE"` + "\n"
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		re_enrollment_authentication_profile = "EAP_PROFILE"` + "\n"
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		ssl_profile = "MTLS_PROFILE"` + "\n"
 	}
 	config += `	}]` + "\n"

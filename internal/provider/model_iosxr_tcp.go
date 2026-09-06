@@ -175,6 +175,7 @@ func (data TCP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data TCP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -193,7 +194,7 @@ func (data TCP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *TCP) updateFromBody(ctx context.Context, res []byte) {
+func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "window-size"); value.Exists() && !data.WindowSize.IsNull() {
 		data.WindowSize = types.Int64Value(value.Int())
 	} else {
@@ -344,7 +345,7 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *TCP) fromBody(ctx context.Context, res []byte) {
+func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
@@ -423,7 +424,7 @@ func (data *TCP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TCPData) fromBody(ctx context.Context, res []byte) {
+func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
@@ -502,7 +503,7 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *TCP) getDeletedItems(ctx context.Context, state TCP) []string {
+func (data *TCP) getDeletedItems(ctx context.Context, state TCP, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.AoKeychains {
 		keys := [...]string{"keychain-name"}
@@ -613,7 +614,7 @@ func (data *TCP) getDeletedItems(ctx context.Context, state TCP) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *TCP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *TCP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.AoKeychains {
 		keys := [...]string{"keychain-name"}
@@ -649,7 +650,7 @@ func (data *TCP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *TCP) getDeletePaths(ctx context.Context) []string {
+func (data *TCP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.AoKeychains {
 		keys := [...]string{"keychain-name"}
@@ -658,6 +659,14 @@ func (data *TCP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AoKeychains[i].KeychainName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ao/keychains/keychain%v", data.getPath(), keyString))
 	}

@@ -26,7 +26,7 @@ data "iosxr_mpls_traffic_eng" "example" {
 
 ### Read-Only
 
-- `disable` (Boolean) disable reoptimization
+- `disable` (Boolean)
 - `id` (String) The path of the retrieved object.
 - `reoptimize_reoptimization_period_in` (Number) Reoptimization period in seconds
 - `server_ipv4` (String) IPv4 address of PCE server

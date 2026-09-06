@@ -23,7 +23,6 @@ package provider
 import (
 	"context"
 	"fmt"
-	"regexp"
 	"strings"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -57,7 +56,7 @@ func (r *CryptoSSLResource) Metadata(_ context.Context, req resource.MetadataReq
 func (r *CryptoSSLResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "This resource can manage the Crypto SSL configuration.\n\n> **Note:** This resource is only supported from IOS-XR version 25.1 and above.",
+		MarkdownDescription: "\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -84,20 +83,12 @@ func (r *CryptoSSLResource) Schema(ctx context.Context, req resource.SchemaReque
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"profile_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Template that will be pinned to applications").String,
+							MarkdownDescription: helpers.NewAttributeDescription("").String,
 							Required:            true,
-							Validators: []validator.String{
-								stringvalidator.LengthBetween(1, 800),
-								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
-							},
 						},
 						"certificate": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Router certificate to be used in mTLS session, only during enrollment or bootstrap phase.").String,
 							Optional:            true,
-							Validators: []validator.String{
-								stringvalidator.LengthBetween(1, 800),
-								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
-							},
 						},
 					},
 				},
@@ -139,10 +130,10 @@ func (r *CryptoSSLResource) Create(ctx context.Context, req resource.CreateReque
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -225,9 +216,9 @@ func (r *CryptoSSLResource) Read(ctx context.Context, req resource.ReadRequest, 
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
@@ -271,17 +262,17 @@ func (r *CryptoSSLResource) Update(ctx context.Context, req resource.UpdateReque
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		deletedListItems := plan.getDeletedItems(ctx, state)
+		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
 
 		for _, i := range deletedListItems {
 			ops = append(ops, gnmi.Delete(i))
 		}
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -316,6 +307,7 @@ func (r *CryptoSSLResource) Delete(ctx context.Context, req resource.DeleteReque
 	if resp.Diagnostics.HasError() {
 		return
 	}
+
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
@@ -336,7 +328,7 @@ func (r *CryptoSSLResource) Delete(ctx context.Context, req resource.DeleteReque
 		if deleteMode == "all" {
 			ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 		} else {
-			deletePaths := state.getDeletePaths(ctx)
+			deletePaths := state.getDeletePaths(ctx, device.Version)
 			tflog.Debug(ctx, fmt.Sprintf("Paths to delete: %+v", deletePaths))
 
 			for _, i := range deletePaths {

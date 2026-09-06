@@ -100,6 +100,7 @@ func (data FPD) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data FPD) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -118,7 +119,7 @@ func (data FPD) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *FPD) updateFromBody(ctx context.Context, res []byte) {
+func (data *FPD) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "auto-upgrade.enable"); !data.AutoUpgradeEnable.IsNull() {
 		if value.Exists() {
 			data.AutoUpgradeEnable = types.BoolValue(true)
@@ -161,7 +162,7 @@ func (data *FPD) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *FPD) fromBody(ctx context.Context, res []byte) {
+func (data *FPD) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "auto-upgrade.enable"); value.Exists() {
 		data.AutoUpgradeEnable = types.BoolValue(true)
 	} else {
@@ -188,7 +189,7 @@ func (data *FPD) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *FPDData) fromBody(ctx context.Context, res []byte) {
+func (data *FPDData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "auto-upgrade.enable"); value.Exists() {
 		data.AutoUpgradeEnable = types.BoolValue(true)
 	} else {
@@ -215,7 +216,7 @@ func (data *FPDData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *FPD) getDeletedItems(ctx context.Context, state FPD) []string {
+func (data *FPD) getDeletedItems(ctx context.Context, state FPD, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AutoReloadDisable.IsNull() && data.AutoReloadDisable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-reload/disable", state.getPath()))
@@ -236,7 +237,7 @@ func (data *FPD) getDeletedItems(ctx context.Context, state FPD) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *FPD) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *FPD) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.AutoReloadDisable.IsNull() && !data.AutoReloadDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-reload/disable", data.getPath()))
@@ -256,7 +257,7 @@ func (data *FPD) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *FPD) getDeletePaths(ctx context.Context) []string {
+func (data *FPD) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AutoReloadDisable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-reload/disable", data.getPath()))

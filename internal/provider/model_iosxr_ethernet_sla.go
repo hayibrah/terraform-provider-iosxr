@@ -342,14 +342,15 @@ func (data EthernetSLA) toBody(ctx context.Context, providerVersion string) stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data EthernetSLA) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "statistics_measure.aggregate_minimum_delay",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "statistics_measure.usec_minimum_delay",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -370,7 +371,7 @@ func (data EthernetSLA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte) {
+func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type"); value.Exists() && !data.Type.IsNull() {
 		data.Type = types.StringValue(value.String())
 	} else {
@@ -642,12 +643,12 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte) {
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin = types.Int64Null()
 		}
-		if value := r.Get("aggregate.minimum-delay"); value.Exists() && !data.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() {
+		if value := r.Get("aggregate.minimum-delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() {
 			data.StatisticsMeasure[i].AggregateMinimumDelay = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].AggregateMinimumDelay = types.Int64Null()
 		}
-		if value := r.Get("aggregate.usec-minimum-delay"); !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() {
+		if value := r.Get("aggregate.usec-minimum-delay"); helpers.VersionAtLeast(version, "25.4") && !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() {
 			if value.Exists() {
 				data.StatisticsMeasure[i].UsecMinimumDelay = types.BoolValue(true)
 			} else {
@@ -707,7 +708,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EthernetSLA) fromBody(ctx context.Context, res []byte) {
+func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type"); value.Exists() {
 		data.Type = types.StringValue(value.String())
 	}
@@ -856,13 +857,21 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
-				item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
-			}
-			if cValue := v.Get("aggregate.usec-minimum-delay"); cValue.Exists() {
-				item.UsecMinimumDelay = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
+					item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
+				}
 			} else {
-				item.UsecMinimumDelay = types.BoolValue(false)
+				item.AggregateMinimumDelay = types.Int64Null()
+			}
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("aggregate.usec-minimum-delay"); cValue.Exists() {
+					item.UsecMinimumDelay = types.BoolValue(true)
+				} else {
+					item.UsecMinimumDelay = types.BoolValue(false)
+				}
+			} else {
+				item.UsecMinimumDelay = types.BoolNull()
 			}
 			data.StatisticsMeasure = append(data.StatisticsMeasure, item)
 			return true
@@ -900,7 +909,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte) {
+func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type"); value.Exists() {
 		data.Type = types.StringValue(value.String())
 	}
@@ -1049,13 +1058,21 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
-				item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
-			}
-			if cValue := v.Get("aggregate.usec-minimum-delay"); cValue.Exists() {
-				item.UsecMinimumDelay = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
+					item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
+				}
 			} else {
-				item.UsecMinimumDelay = types.BoolValue(false)
+				item.AggregateMinimumDelay = types.Int64Null()
+			}
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("aggregate.usec-minimum-delay"); cValue.Exists() {
+					item.UsecMinimumDelay = types.BoolValue(true)
+				} else {
+					item.UsecMinimumDelay = types.BoolValue(false)
+				}
+			} else {
+				item.UsecMinimumDelay = types.BoolNull()
 			}
 			data.StatisticsMeasure = append(data.StatisticsMeasure, item)
 			return true
@@ -1093,7 +1110,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA) []string {
+func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ScheduleEveryForUnit.IsNull() && data.ScheduleEveryForUnit.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/for/unit", state.getPath()))
@@ -1142,10 +1159,10 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA)
 				found = false
 			}
 			if found {
-				if !state.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && data.StatisticsMeasure[j].UsecMinimumDelay.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && data.StatisticsMeasure[j].UsecMinimumDelay.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec-minimum-delay", state.getPath(), keyString))
 				}
-				if !state.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() && data.StatisticsMeasure[j].AggregateMinimumDelay.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() && data.StatisticsMeasure[j].AggregateMinimumDelay.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/minimum-delay", state.getPath(), keyString))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnInAndAboveBin.IsNull() {
@@ -1279,7 +1296,7 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ScheduleEveryDay.IsNull() && !data.ScheduleEveryDay.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/schedule/every/day", data.getPath()))
@@ -1291,7 +1308,7 @@ func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
-		if !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && !data.StatisticsMeasure[i].UsecMinimumDelay.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && !data.StatisticsMeasure[i].UsecMinimumDelay.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec-minimum-delay", data.getPath(), keyString))
 		}
 		if !data.StatisticsMeasure[i].BucketsProbes.IsNull() && !data.StatisticsMeasure[i].BucketsProbes.ValueBool() {
@@ -1337,7 +1354,7 @@ func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EthernetSLA) getDeletePaths(ctx context.Context) []string {
+func (data *EthernetSLA) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ScheduleEveryForUnit.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/for/unit", data.getPath()))
@@ -1370,6 +1387,14 @@ func (data *EthernetSLA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.StatisticsMeasure[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString))
 	}

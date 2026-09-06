@@ -234,6 +234,7 @@ func (data XMLAgent) toBody(ctx context.Context, providerVersion string) string 
 // GetVersionConstraints returns the version constraints for all fields
 func (data XMLAgent) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -252,7 +253,7 @@ func (data XMLAgent) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte) {
+func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); !data.Enable.IsNull() {
 		if value.Exists() {
 			data.Enable = types.BoolValue(true)
@@ -470,7 +471,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *XMLAgent) fromBody(ctx context.Context, res []byte) {
+func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -588,7 +589,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *XMLAgentData) fromBody(ctx context.Context, res []byte) {
+func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
 		data.Enable = types.BoolValue(true)
 	} else {
@@ -706,7 +707,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent) []string {
+func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -850,7 +851,7 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent) []str
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -895,7 +896,7 @@ func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *XMLAgent) getDeletePaths(ctx context.Context) []string {
+func (data *XMLAgent) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -904,6 +905,14 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}
@@ -935,6 +944,14 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SslVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/vrfs/vrf%v", data.getPath(), keyString))
 	}

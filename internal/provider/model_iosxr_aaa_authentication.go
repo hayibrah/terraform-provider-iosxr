@@ -199,6 +199,7 @@ func (data AAAAuthentication) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data AAAAuthentication) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -217,7 +218,7 @@ func (data AAAAuthentication) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Login {
 		keys := [...]string{"list-name"}
 		keyValues := [...]string{data.Login[i].List.ValueString()}
@@ -417,7 +418,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "login.authentication-list"); value.Exists() {
 		data.Login = make([]AAAAuthenticationLogin, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -527,7 +528,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte) {
+func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "login.authentication-list"); value.Exists() {
 		data.Login = make([]AAAAuthenticationLogin, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -637,7 +638,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *AAAAuthentication) getDeletedItems(ctx context.Context, state AAAAuthentication) []string {
+func (data *AAAAuthentication) getDeletedItems(ctx context.Context, state AAAAuthentication, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Login {
 		keys := [...]string{"list-name"}
@@ -736,7 +737,7 @@ func (data *AAAAuthentication) getDeletedItems(ctx context.Context, state AAAAut
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *AAAAuthentication) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *AAAAuthentication) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Login {
 		keys := [...]string{"list-name"}
@@ -800,7 +801,7 @@ func (data *AAAAuthentication) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *AAAAuthentication) getDeletePaths(ctx context.Context) []string {
+func (data *AAAAuthentication) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Login {
 		keys := [...]string{"list-name"}
@@ -809,6 +810,14 @@ func (data *AAAAuthentication) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Login[i].List.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/login/authentication-list%v", data.getPath(), keyString))
 	}

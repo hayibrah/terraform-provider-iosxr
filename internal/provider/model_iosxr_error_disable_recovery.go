@@ -173,6 +173,7 @@ func (data ErrorDisableRecovery) toBody(ctx context.Context, providerVersion str
 // GetVersionConstraints returns the version constraints for all fields
 func (data ErrorDisableRecovery) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -191,7 +192,7 @@ func (data ErrorDisableRecovery) GetRangeConstraints() []helpers.FieldRangeConst
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ErrorDisableRecovery) updateFromBody(ctx context.Context, res []byte) {
+func (data *ErrorDisableRecovery) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "link-oam-session-down.interval"); value.Exists() && !data.LinkOamSessionDownInterval.IsNull() {
 		data.LinkOamSessionDownInterval = types.Int64Value(value.Int())
 	} else {
@@ -298,7 +299,7 @@ func (data *ErrorDisableRecovery) updateFromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ErrorDisableRecovery) fromBody(ctx context.Context, res []byte) {
+func (data *ErrorDisableRecovery) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "link-oam-session-down.interval"); value.Exists() {
 		data.LinkOamSessionDownInterval = types.Int64Value(value.Int())
 	}
@@ -365,7 +366,7 @@ func (data *ErrorDisableRecovery) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ErrorDisableRecoveryData) fromBody(ctx context.Context, res []byte) {
+func (data *ErrorDisableRecoveryData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "link-oam-session-down.interval"); value.Exists() {
 		data.LinkOamSessionDownInterval = types.Int64Value(value.Int())
 	}
@@ -432,7 +433,7 @@ func (data *ErrorDisableRecoveryData) fromBody(ctx context.Context, res []byte) 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ErrorDisableRecovery) getDeletedItems(ctx context.Context, state ErrorDisableRecovery) []string {
+func (data *ErrorDisableRecovery) getDeletedItems(ctx context.Context, state ErrorDisableRecovery, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LinkOamDampeningInterval.IsNull() && data.LinkOamDampeningInterval.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-dampening", state.getPath()))
@@ -501,7 +502,7 @@ func (data *ErrorDisableRecovery) getDeletedItems(ctx context.Context, state Err
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ErrorDisableRecovery) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ErrorDisableRecovery) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -509,7 +510,7 @@ func (data *ErrorDisableRecovery) getEmptyLeafsDelete(ctx context.Context) []str
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ErrorDisableRecovery) getDeletePaths(ctx context.Context) []string {
+func (data *ErrorDisableRecovery) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LinkOamDampeningInterval.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-dampening", data.getPath()))

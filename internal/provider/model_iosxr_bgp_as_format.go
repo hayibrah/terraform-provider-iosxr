@@ -77,6 +77,7 @@ func (data BGPASFormat) toBody(ctx context.Context, providerVersion string) stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data BGPASFormat) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -95,7 +96,7 @@ func (data BGPASFormat) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte) {
+func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "as-format"); value.Exists() && !data.AsFormat.IsNull() {
 		data.AsFormat = types.StringValue(value.String())
 	} else {
@@ -107,7 +108,7 @@ func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *BGPASFormat) fromBody(ctx context.Context, res []byte) {
+func (data *BGPASFormat) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "as-format"); value.Exists() {
 		data.AsFormat = types.StringValue(value.String())
 	}
@@ -117,7 +118,7 @@ func (data *BGPASFormat) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte) {
+func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "as-format"); value.Exists() {
 		data.AsFormat = types.StringValue(value.String())
 	}
@@ -127,7 +128,7 @@ func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *BGPASFormat) getDeletedItems(ctx context.Context, state BGPASFormat) []string {
+func (data *BGPASFormat) getDeletedItems(ctx context.Context, state BGPASFormat, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AsFormat.IsNull() && data.AsFormat.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/as-format", state.getPath()))
@@ -139,7 +140,7 @@ func (data *BGPASFormat) getDeletedItems(ctx context.Context, state BGPASFormat)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *BGPASFormat) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *BGPASFormat) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -147,7 +148,7 @@ func (data *BGPASFormat) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *BGPASFormat) getDeletePaths(ctx context.Context) []string {
+func (data *BGPASFormat) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AsFormat.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/as-format", data.getPath()))

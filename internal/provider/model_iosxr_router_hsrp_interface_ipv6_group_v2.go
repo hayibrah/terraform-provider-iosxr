@@ -197,6 +197,7 @@ func (data RouterHSRPInterfaceIPv6GroupV2) toBody(ctx context.Context, providerV
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterHSRPInterfaceIPv6GroupV2) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -215,7 +216,7 @@ func (data RouterHSRPInterfaceIPv6GroupV2) GetRangeConstraints() []helpers.Field
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterHSRPInterfaceIPv6GroupV2) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterfaceIPv6GroupV2) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Addresses {
 		keys := [...]string{"address"}
 		keyValues := [...]string{data.Addresses[i].Address.ValueString()}
@@ -392,7 +393,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) updateFromBody(ctx context.Context, 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterHSRPInterfaceIPv6GroupV2) fromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterfaceIPv6GroupV2) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.globals.global"); value.Exists() {
 		data.Addresses = make([]RouterHSRPInterfaceIPv6GroupV2Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -481,7 +482,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) fromBody(ctx context.Context, res []
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterHSRPInterfaceIPv6GroupV2Data) fromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterfaceIPv6GroupV2Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "address.globals.global"); value.Exists() {
 		data.Addresses = make([]RouterHSRPInterfaceIPv6GroupV2Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -570,7 +571,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2Data) fromBody(ctx context.Context, re
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context, state RouterHSRPInterfaceIPv6GroupV2) []string {
+func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context, state RouterHSRPInterfaceIPv6GroupV2, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdFastDetectPeerInterface.IsNull() && data.BfdFastDetectPeerInterface.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/interface", state.getPath()))
@@ -714,7 +715,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterHSRPInterfaceIPv6GroupV2) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterHSRPInterfaceIPv6GroupV2) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -752,7 +753,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getEmptyLeafsDelete(ctx context.Cont
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context) []string {
+func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdFastDetectPeerInterface.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/interface", data.getPath()))
@@ -786,6 +787,14 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context) 
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackObjects[i].ObjectName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track-objects/track-object%v", data.getPath(), keyString))
 	}
 	for i := range data.TrackInterfaces {
@@ -795,6 +804,14 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context) 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TrackInterfaces[i].TrackName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track-interfaces/track-interface%v", data.getPath(), keyString))
 	}
@@ -820,6 +837,14 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context) 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Addresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/globals/global%v", data.getPath(), keyString))
 	}

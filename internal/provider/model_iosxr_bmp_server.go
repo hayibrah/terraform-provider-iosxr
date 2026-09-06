@@ -188,6 +188,7 @@ func (data BMPServer) toBody(ctx context.Context, providerVersion string) string
 // GetVersionConstraints returns the version constraints for all fields
 func (data BMPServer) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -206,7 +207,7 @@ func (data BMPServer) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *BMPServer) updateFromBody(ctx context.Context, res []byte) {
+func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.AllRouteMonitorings {
 		keys := [...]string{"route-mon"}
 		keyValues := [...]string{data.AllRouteMonitorings[i].RouteMon.ValueString()}
@@ -383,7 +384,7 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *BMPServer) fromBody(ctx context.Context, res []byte) {
+func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "all.route-monitorings.route-monitoring"); value.Exists() {
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -478,7 +479,7 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *BMPServerData) fromBody(ctx context.Context, res []byte) {
+func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "all.route-monitorings.route-monitoring"); value.Exists() {
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -573,7 +574,7 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *BMPServer) getDeletedItems(ctx context.Context, state BMPServer) []string {
+func (data *BMPServer) getDeletedItems(ctx context.Context, state BMPServer, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Servers {
 		keys := [...]string{"server-number"}
@@ -702,7 +703,7 @@ func (data *BMPServer) getDeletedItems(ctx context.Context, state BMPServer) []s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *BMPServer) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *BMPServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Servers {
 		keys := [...]string{"server-number"}
@@ -735,7 +736,7 @@ func (data *BMPServer) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *BMPServer) getDeletePaths(ctx context.Context) []string {
+func (data *BMPServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Servers {
 		keys := [...]string{"server-number"}
@@ -744,6 +745,14 @@ func (data *BMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Servers[i].Number.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/server%v", data.getPath(), keyString))
 	}
@@ -760,6 +769,14 @@ func (data *BMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AllRouteMonitorings[i].RouteMon.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/all/route-monitorings/route-monitoring%v", data.getPath(), keyString))
 	}

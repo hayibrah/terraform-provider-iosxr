@@ -1324,6 +1324,7 @@ func (data RouterOSPFArea) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterOSPFArea) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1342,7 +1343,7 @@ func (data RouterOSPFArea) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Ranges {
 		keys := [...]string{"address", "mask"}
 		keyValues := [...]string{data.Ranges[i].Address.ValueString(), data.Ranges[i].Mask.ValueString()}
@@ -3099,7 +3100,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ranges.range"); value.Exists() {
 		data.Ranges = make([]RouterOSPFAreaRanges, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -4016,7 +4017,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ranges.range"); value.Exists() {
 		data.Ranges = make([]RouterOSPFAreaRanges, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -4933,7 +4934,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterOSPFArea) getDeletedItems(ctx context.Context, state RouterOSPFArea) []string {
+func (data *RouterOSPFArea) getDeletedItems(ctx context.Context, state RouterOSPFArea, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.VirtualLinks {
 		keys := [...]string{"virtual-link-address"}
@@ -5938,7 +5939,7 @@ func (data *RouterOSPFArea) getDeletedItems(ctx context.Context, state RouterOSP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterOSPFArea) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterOSPFArea) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.VirtualLinks {
 		keys := [...]string{"virtual-link-address"}
@@ -6396,7 +6397,7 @@ func (data *RouterOSPFArea) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
+func (data *RouterOSPFArea) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.VirtualLinks {
 		keys := [...]string{"virtual-link-address"}
@@ -6405,6 +6406,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.VirtualLinks[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString))
 	}
@@ -6503,6 +6512,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
@@ -6512,6 +6529,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -6532,6 +6557,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
@@ -6541,6 +6574,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -6699,6 +6740,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MessageDigestKeys[i].KeyId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
@@ -6769,6 +6818,14 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MultiAreaInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/multi-area-interfaces/multi-area-interface%v", data.getPath(), keyString))
 	}
 	if !data.NssaTranslateType7Always.IsNull() {
@@ -6808,6 +6865,17 @@ func (data *RouterOSPFArea) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Ranges[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Ranges[i].Mask.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ranges/range%v", data.getPath(), keyString))
 	}

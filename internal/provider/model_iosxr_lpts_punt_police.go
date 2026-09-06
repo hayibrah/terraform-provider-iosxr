@@ -192,6 +192,7 @@ func (data LPTSPuntPolice) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data LPTSPuntPolice) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -210,7 +211,7 @@ func (data LPTSPuntPolice) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte) {
+func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() && !data.McastRate.IsNull() {
 		data.McastRate = types.Int64Value(value.Int())
 	} else {
@@ -383,7 +384,7 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte) {
+func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() {
 		data.McastRate = types.Int64Value(value.Int())
 	}
@@ -476,7 +477,7 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte) {
+func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() {
 		data.McastRate = types.Int64Value(value.Int())
 	}
@@ -569,7 +570,7 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntPolice) []string {
+func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntPolice, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -698,7 +699,7 @@ func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *LPTSPuntPolice) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *LPTSPuntPolice) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -728,7 +729,7 @@ func (data *LPTSPuntPolice) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *LPTSPuntPolice) getDeletePaths(ctx context.Context) []string {
+func (data *LPTSPuntPolice) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -737,6 +738,14 @@ func (data *LPTSPuntPolice) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -747,6 +756,14 @@ func (data *LPTSPuntPolice) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Domains[i].DomainName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/domains/domain%v", data.getPath(), keyString))
 	}

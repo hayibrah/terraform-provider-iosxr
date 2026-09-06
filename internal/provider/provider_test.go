@@ -21,6 +21,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 )
@@ -34,6 +35,12 @@ var (
 		"iosxr": providerserver.NewProtocol6WithError(New()),
 	}
 )
+
+// iosxrVersionAtLeast returns true when currentVersion meets minVersion, or when
+// currentVersion is empty (permissive default so tests aren't skipped without a version set).
+func iosxrVersionAtLeast(currentVersion, minVersion string) bool {
+	return helpers.VersionAtLeast(currentVersion, minVersion)
+}
 
 func testAccPreCheck(t *testing.T) {
 	// You can add code here to run prior to any test case execution, for example assertions

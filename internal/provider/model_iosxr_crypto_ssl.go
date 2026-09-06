@@ -91,6 +91,7 @@ func (data CryptoSSL) toBody(ctx context.Context, providerVersion string) string
 // GetVersionConstraints returns the version constraints for all fields
 func (data CryptoSSL) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -109,7 +110,7 @@ func (data CryptoSSL) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CryptoSSL) updateFromBody(ctx context.Context, res []byte) {
+func (data *CryptoSSL) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
 		keyValues := [...]string{data.Profile[i].ProfileName.ValueString()}
@@ -150,7 +151,7 @@ func (data *CryptoSSL) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CryptoSSL) fromBody(ctx context.Context, res []byte) {
+func (data *CryptoSSL) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profile = make([]CryptoSSLProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -171,7 +172,7 @@ func (data *CryptoSSL) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CryptoSSLData) fromBody(ctx context.Context, res []byte) {
+func (data *CryptoSSLData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profile = make([]CryptoSSLProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -192,7 +193,7 @@ func (data *CryptoSSLData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CryptoSSL) getDeletedItems(ctx context.Context, state CryptoSSL) []string {
+func (data *CryptoSSL) getDeletedItems(ctx context.Context, state CryptoSSL, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Profile {
 		keys := [...]string{"profile-name"}
@@ -234,7 +235,7 @@ func (data *CryptoSSL) getDeletedItems(ctx context.Context, state CryptoSSL) []s
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CryptoSSL) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CryptoSSL) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
@@ -250,7 +251,7 @@ func (data *CryptoSSL) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CryptoSSL) getDeletePaths(ctx context.Context) []string {
+func (data *CryptoSSL) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Profile {
 		keys := [...]string{"profile-name"}
@@ -259,6 +260,14 @@ func (data *CryptoSSL) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Profile[i].ProfileName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
 	}

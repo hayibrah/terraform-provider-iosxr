@@ -81,6 +81,7 @@ func (data RadiusSourceInterface) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RadiusSourceInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -99,7 +100,7 @@ func (data RadiusSourceInterface) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RadiusSourceInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RadiusSourceInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
@@ -111,7 +112,7 @@ func (data *RadiusSourceInterface) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RadiusSourceInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RadiusSourceInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() {
 		data.SourceInterface = types.StringValue(value.String())
 	}
@@ -121,7 +122,7 @@ func (data *RadiusSourceInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RadiusSourceInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RadiusSourceInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() {
 		data.SourceInterface = types.StringValue(value.String())
 	}
@@ -131,7 +132,7 @@ func (data *RadiusSourceInterfaceData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RadiusSourceInterface) getDeletedItems(ctx context.Context, state RadiusSourceInterface) []string {
+func (data *RadiusSourceInterface) getDeletedItems(ctx context.Context, state RadiusSourceInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SourceInterface.IsNull() && data.SourceInterface.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interface", state.getPath()))
@@ -143,7 +144,7 @@ func (data *RadiusSourceInterface) getDeletedItems(ctx context.Context, state Ra
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RadiusSourceInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RadiusSourceInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -151,7 +152,7 @@ func (data *RadiusSourceInterface) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RadiusSourceInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RadiusSourceInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SourceInterface.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-interface", data.getPath()))

@@ -368,6 +368,7 @@ func (data L2VPN) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data L2VPN) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -386,7 +387,7 @@ func (data L2VPN) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *L2VPN) updateFromBody(ctx context.Context, res []byte) {
+func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
@@ -847,7 +848,7 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *L2VPN) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1074,7 +1075,7 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *L2VPNData) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1301,7 +1302,7 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN) []string {
+func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SnmpMibPseudowireStatistics.IsNull() && data.SnmpMibPseudowireStatistics.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", state.getPath()))
@@ -1628,7 +1629,7 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SnmpMibPseudowireStatistics.IsNull() && !data.SnmpMibPseudowireStatistics.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", data.getPath()))
@@ -1749,7 +1750,7 @@ func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *L2VPN) getDeletePaths(ctx context.Context) []string {
+func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SnmpMibPseudowireStatistics.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", data.getPath()))
@@ -1840,6 +1841,14 @@ func (data *L2VPN) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlexibleXconnectServiceVlanAwareEvis[i].VpnId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/flexible-xconnect-service/vlan-aware/evis/evi%v", data.getPath(), keyString))
 	}
 	for i := range data.FlexibleXconnectServiceVlanUnaware {
@@ -1850,6 +1859,14 @@ func (data *L2VPN) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FlexibleXconnectServiceVlanUnaware[i].ServiceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/flexible-xconnect-service/vlan-unawares/vlan-unaware%v", data.getPath(), keyString))
 	}
 	for i := range data.RedundancyIccpGroups {
@@ -1859,6 +1876,14 @@ func (data *L2VPN) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedundancyIccpGroups[i].GroupNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redundancy/iccp/groups/group%v", data.getPath(), keyString))
 	}

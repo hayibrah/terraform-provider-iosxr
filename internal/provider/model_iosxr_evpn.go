@@ -475,6 +475,7 @@ func (data EVPN) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data EVPN) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -493,7 +494,7 @@ func (data EVPN) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EVPN) updateFromBody(ctx context.Context, res []byte) {
+func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && !data.BgpRdTwoByteAsNumber.IsNull() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	} else {
@@ -1046,7 +1047,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EVPN) fromBody(ctx context.Context, res []byte) {
+func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
@@ -1341,7 +1342,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EVPNData) fromBody(ctx context.Context, res []byte) {
+func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
@@ -1636,7 +1637,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN) []string {
+func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.VirtualAccessEviEthernetSegmentBgpRt.IsNull() && data.VirtualAccessEviEthernetSegmentBgpRt.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual/access-evi/ethernet-segment/bgp", state.getPath()))
@@ -1993,7 +1994,7 @@ func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EVPN) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EVPN) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.VirtualVfis {
 		keys := [...]string{"vfi-name"}
@@ -2098,7 +2099,7 @@ func (data *EVPN) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EVPN) getDeletePaths(ctx context.Context) []string {
+func (data *EVPN) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.VirtualAccessEviEthernetSegmentBgpRt.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual/access-evi/ethernet-segment/bgp", data.getPath()))
@@ -2114,6 +2115,14 @@ func (data *EVPN) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.VirtualVfis[i].VfiName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual/vfis/vfi%v", data.getPath(), keyString))
 	}
 	for i := range data.VirtualNeighbors {
@@ -2123,6 +2132,17 @@ func (data *EVPN) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.VirtualNeighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.VirtualNeighbors[i].PwId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString))
 	}
@@ -2185,6 +2205,14 @@ func (data *EVPN) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Srv6Locators[i].LocatorName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/srv6/locators/locator%v", data.getPath(), keyString))
 	}
 	if !data.Srv6.IsNull() {
@@ -2197,6 +2225,14 @@ func (data *EVPN) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Groups[i].GroupId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
 	}

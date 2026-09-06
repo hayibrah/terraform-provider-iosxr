@@ -923,6 +923,7 @@ func (data RouterOSPFAreaInterface) toBody(ctx context.Context, providerVersion 
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterOSPFAreaInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -941,7 +942,7 @@ func (data RouterOSPFAreaInterface) GetRangeConstraints() []helpers.FieldRangeCo
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterOSPFAreaInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFAreaInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.AffinityFlexAlgos {
 		keys := [...]string{"affinity-attribute-name"}
 		keyValues := [...]string{data.AffinityFlexAlgos[i].AffinityName.ValueString()}
@@ -2093,7 +2094,7 @@ func (data *RouterOSPFAreaInterface) updateFromBody(ctx context.Context, res []b
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterOSPFAreaInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFAreaInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "affinity.flex-algo.affinity-attributes.affinity-attribute"); value.Exists() {
 		data.AffinityFlexAlgos = make([]RouterOSPFAreaInterfaceAffinityFlexAlgos, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2695,7 +2696,7 @@ func (data *RouterOSPFAreaInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterOSPFAreaInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterOSPFAreaInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "affinity.flex-algo.affinity-attributes.affinity-attribute"); value.Exists() {
 		data.AffinityFlexAlgos = make([]RouterOSPFAreaInterfaceAffinityFlexAlgos, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -3297,7 +3298,7 @@ func (data *RouterOSPFAreaInterfaceData) fromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterOSPFAreaInterface) getDeletedItems(ctx context.Context, state RouterOSPFAreaInterface) []string {
+func (data *RouterOSPFAreaInterface) getDeletedItems(ctx context.Context, state RouterOSPFAreaInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.DelayNormalizeOffset.IsNull() && data.DelayNormalizeOffset.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/normalize/offset", state.getPath()))
@@ -3957,7 +3958,7 @@ func (data *RouterOSPFAreaInterface) getDeletedItems(ctx context.Context, state 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterOSPFAreaInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterOSPFAreaInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.AdjacencySidAbsolutes {
 		keys := [...]string{"sid-value"}
@@ -4255,7 +4256,7 @@ func (data *RouterOSPFAreaInterface) getEmptyLeafsDelete(ctx context.Context) []
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.DelayNormalizeOffset.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/normalize/offset", data.getPath()))
@@ -4277,6 +4278,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AdjacencySidAbsolutes[i].SidValue.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", data.getPath(), keyString))
 	}
 	for i := range data.AdjacencySidIndexes {
@@ -4286,6 +4295,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AdjacencySidIndexes[i].SidIndex.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/adjacency-sid/indexes/index%v", data.getPath(), keyString))
 	}
@@ -4302,6 +4319,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PrefixSidAlgorithms[i].Number.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString))
 	}
@@ -4427,6 +4452,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
@@ -4436,6 +4469,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -4456,6 +4497,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
@@ -4465,6 +4514,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -4638,6 +4695,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MessageDigestKeys[i].KeyId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
@@ -4651,6 +4716,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	for i := range data.AffinityFlexAlgos {
@@ -4660,6 +4733,14 @@ func (data *RouterOSPFAreaInterface) getDeletePaths(ctx context.Context) []strin
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AffinityFlexAlgos[i].AffinityName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity/flex-algo/affinity-attributes/affinity-attribute%v", data.getPath(), keyString))
 	}

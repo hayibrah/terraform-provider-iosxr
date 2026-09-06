@@ -66,10 +66,10 @@ func TestAccIosxrEthernetSLA(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "statistics_measure.0.thresholds_stateless_log_on_mean_value", "2000"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "statistics_measure.0.thresholds_stateless_log_on_sample_count", "10"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "statistics_measure.0.thresholds_stateless_log_on_in_and_above_bin", "5"))
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "statistics_measure.0.aggregate_minimum_delay", "100"))
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "statistics_measure.0.usec_minimum_delay", "true"))
 	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_ethernet_sla.test", "schedule_every_minutes", "1"))
@@ -162,10 +162,10 @@ func testAccIosxrEthernetSLAConfig_all() string {
 	config += `		thresholds_stateless_log_on_mean_value = 2000` + "\n"
 	config += `		thresholds_stateless_log_on_sample_count = 10` + "\n"
 	config += `		thresholds_stateless_log_on_in_and_above_bin = 5` + "\n"
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		aggregate_minimum_delay = 100` + "\n"
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.1") {
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		usec_minimum_delay = true` + "\n"
 	}
 	config += `		}]` + "\n"

@@ -237,11 +237,11 @@ func (d *EthernetSLADataSource) Schema(ctx context.Context, req datasource.Schem
 							Computed:            true,
 						},
 						"aggregate_minimum_delay": schema.Int64Attribute{
-							MarkdownDescription: "Specify the width of the first bin in milliseconds (or optionally microseconds), independent of the width of the other bins",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 						"usec_minimum_delay": schema.BoolAttribute{
-							MarkdownDescription: "Interpret the minimum-delay in microseconds",
+							MarkdownDescription: "",
 							Computed:            true,
 						},
 					},
@@ -336,7 +336,7 @@ func (d *EthernetSLADataSource) Read(ctx context.Context, req datasource.ReadReq
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

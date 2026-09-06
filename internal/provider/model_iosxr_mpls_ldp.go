@@ -369,6 +369,7 @@ func (data MPLSLDP) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data MPLSLDP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -387,7 +388,7 @@ func (data MPLSLDP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
@@ -753,7 +754,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *MPLSLDP) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
 		data.RouterId = types.StringValue(value.String())
 	}
@@ -959,7 +960,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte) {
+func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
 		data.RouterId = types.StringValue(value.String())
 	}
@@ -1165,7 +1166,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *MPLSLDP) getDeletedItems(ctx context.Context, state MPLSLDP) []string {
+func (data *MPLSLDP) getDeletedItems(ctx context.Context, state MPLSLDP, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1348,7 +1349,7 @@ func (data *MPLSLDP) getDeletedItems(ctx context.Context, state MPLSLDP) []strin
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *MPLSLDP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *MPLSLDP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1439,7 +1440,7 @@ func (data *MPLSLDP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *MPLSLDP) getDeletePaths(ctx context.Context) []string {
+func (data *MPLSLDP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1448,6 +1449,17 @@ func (data *MPLSLDP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].NeighborAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Neighbors[i].LabelSpaceId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", data.getPath(), keyString))
 	}

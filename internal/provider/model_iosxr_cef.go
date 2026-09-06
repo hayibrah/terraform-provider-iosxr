@@ -158,6 +158,7 @@ func (data CEF) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data CEF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -176,7 +177,7 @@ func (data CEF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CEF) updateFromBody(ctx context.Context, res []byte) {
+func (data *CEF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "adjacency.route.override.rib"); !data.AdjacencyRouteOverrideRib.IsNull() {
 		if value.Exists() {
 			data.AdjacencyRouteOverrideRib = types.BoolValue(true)
@@ -278,7 +279,7 @@ func (data *CEF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CEF) fromBody(ctx context.Context, res []byte) {
+func (data *CEF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "adjacency.route.override.rib"); value.Exists() {
 		data.AdjacencyRouteOverrideRib = types.BoolValue(true)
 	} else {
@@ -340,7 +341,7 @@ func (data *CEF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CEFData) fromBody(ctx context.Context, res []byte) {
+func (data *CEFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "adjacency.route.override.rib"); value.Exists() {
 		data.AdjacencyRouteOverrideRib = types.BoolValue(true)
 	} else {
@@ -402,7 +403,7 @@ func (data *CEFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CEF) getDeletedItems(ctx context.Context, state CEF) []string {
+func (data *CEF) getDeletedItems(ctx context.Context, state CEF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() && data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration", state.getPath()))
@@ -456,7 +457,7 @@ func (data *CEF) getDeletedItems(ctx context.Context, state CEF) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CEF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CEF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LoadBalancingRecursiveOorModeDampeningAndDlb.IsNull() && !data.LoadBalancingRecursiveOorModeDampeningAndDlb.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb", data.getPath()))
@@ -479,7 +480,7 @@ func (data *CEF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CEF) getDeletePaths(ctx context.Context) []string {
+func (data *CEF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration", data.getPath()))

@@ -212,6 +212,7 @@ func (data IPSLAResponder) toBody(ctx context.Context, providerVersion string) s
 // GetVersionConstraints returns the version constraints for all fields
 func (data IPSLAResponder) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -230,7 +231,7 @@ func (data IPSLAResponder) GetRangeConstraints() []helpers.FieldRangeConstraint 
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte) {
+func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.TypeUdpIpv4 {
 		keys := [...]string{"address"}
 		keyValues := [...]string{data.TypeUdpIpv4[i].Address.ValueString()}
@@ -507,7 +508,7 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte) {
+func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type.udp.ipv4.address"); value.Exists() {
 		data.TypeUdpIpv4 = make([]IPSLAResponderTypeUdpIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -630,7 +631,7 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte) {
+func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type.udp.ipv4.address"); value.Exists() {
 		data.TypeUdpIpv4 = make([]IPSLAResponderTypeUdpIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -753,7 +754,7 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *IPSLAResponder) getDeletedItems(ctx context.Context, state IPSLAResponder) []string {
+func (data *IPSLAResponder) getDeletedItems(ctx context.Context, state IPSLAResponder, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.TwampLightSessions {
 		keys := [...]string{"session-id"}
@@ -1023,7 +1024,7 @@ func (data *IPSLAResponder) getDeletedItems(ctx context.Context, state IPSLAResp
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *IPSLAResponder) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *IPSLAResponder) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.TwampLightSessions {
 		keys := [...]string{"session-id"}
@@ -1096,7 +1097,7 @@ func (data *IPSLAResponder) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *IPSLAResponder) getDeletePaths(ctx context.Context) []string {
+func (data *IPSLAResponder) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.TwampLightSessions {
 		keys := [...]string{"session-id"}
@@ -1105,6 +1106,14 @@ func (data *IPSLAResponder) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TwampLightSessions[i].SessionId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/twamp-light/test-session/session%v", data.getPath(), keyString))
 	}
@@ -1121,6 +1130,14 @@ func (data *IPSLAResponder) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TypeUdpIpv4[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/udp/ipv4/address%v", data.getPath(), keyString))
 	}

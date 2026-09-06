@@ -2746,6 +2746,7 @@ func (data AAA) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data AAA) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -2764,7 +2765,7 @@ func (data AAA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *AAA) updateFromBody(ctx context.Context, res []byte) {
+func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() && !data.DefaultTaskgroup.IsNull() {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	} else {
@@ -6810,7 +6811,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *AAA) fromBody(ctx context.Context, res []byte) {
+func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	}
@@ -8998,7 +8999,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *AAAData) fromBody(ctx context.Context, res []byte) {
+func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	}
@@ -11186,7 +11187,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *AAA) getDeletedItems(ctx context.Context, state AAA) []string {
+func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Usergroups {
 		keys := [...]string{"usergroup-name"}
@@ -12944,7 +12945,7 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *AAA) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Usergroups {
 		keys := [...]string{"usergroup-name"}
@@ -14210,7 +14211,7 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *AAA) getDeletePaths(ctx context.Context) []string {
+func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Usergroups {
 		keys := [...]string{"usergroup-name"}
@@ -14219,6 +14220,14 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Usergroups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString))
 	}
@@ -14230,6 +14239,14 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Taskgroups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString))
 	}
 	for i := range data.Usernames {
@@ -14239,6 +14256,17 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Usernames[i].Order.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Usernames[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString))
 	}
@@ -14250,6 +14278,14 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.TacacsServerGroups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v", data.getPath(), keyString))
 	}
 	for i := range data.ServerRadiusDynamicAuthorClients {
@@ -14259,6 +14295,17 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ServerRadiusDynamicAuthorClients[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ServerRadiusDynamicAuthorClients[i].Vrf.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client%v", data.getPath(), keyString))
 	}
@@ -14281,6 +14328,14 @@ func (data *AAA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RadiusServerGroups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString))
 	}

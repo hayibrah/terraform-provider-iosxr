@@ -390,6 +390,7 @@ func (data ClassMapQoS) toBody(ctx context.Context, providerVersion string) stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data ClassMapQoS) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -408,7 +409,7 @@ func (data ClassMapQoS) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte) {
+func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "match-all"); !data.MatchAll.IsNull() {
 		if value.Exists() {
 			data.MatchAll = types.BoolValue(true)
@@ -759,7 +760,7 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte) {
+func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "match-all"); value.Exists() {
 		data.MatchAll = types.BoolValue(true)
 	} else {
@@ -994,7 +995,7 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte) {
+func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "match-all"); value.Exists() {
 		data.MatchAll = types.BoolValue(true)
 	} else {
@@ -1229,7 +1230,7 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS) []string {
+func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.MatchVlanInner.IsNull() && data.MatchVlanInner.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/vlan-inner/vlan-id", state.getPath()))
@@ -1490,7 +1491,7 @@ func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ClassMapQoS) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ClassMapQoS) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.MatchTcpFlagAny.IsNull() && !data.MatchTcpFlagAny.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/tcp-flag/any", data.getPath()))
@@ -1551,7 +1552,7 @@ func (data *ClassMapQoS) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ClassMapQoS) getDeletePaths(ctx context.Context) []string {
+func (data *ClassMapQoS) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.MatchVlanInner.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/vlan-inner/vlan-id", data.getPath()))
@@ -1582,6 +1583,17 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MatchSourceAddressIpv6[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MatchSourceAddressIpv6[i].PrefixLength.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/ipv6/address-prefix%v", data.getPath(), keyString))
 	}
 	for i := range data.MatchSourceAddressIpv4 {
@@ -1591,6 +1603,17 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MatchSourceAddressIpv4[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MatchSourceAddressIpv4[i].Netmask.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/ipv4/address-prefix%v", data.getPath(), keyString))
 	}
@@ -1668,6 +1691,17 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MatchDestinationAddressIpv6[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MatchDestinationAddressIpv6[i].PrefixLength.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/ipv6/address-prefix%v", data.getPath(), keyString))
 	}
 	for i := range data.MatchDestinationAddressIpv4 {
@@ -1677,6 +1711,17 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MatchDestinationAddressIpv4[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.MatchDestinationAddressIpv4[i].Netmask.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/ipv4/address-prefix%v", data.getPath(), keyString))
 	}

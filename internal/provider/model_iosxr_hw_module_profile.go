@@ -584,6 +584,7 @@ func (data HWModuleProfile) toBody(ctx context.Context, providerVersion string) 
 // GetVersionConstraints returns the version constraints for all fields
 func (data HWModuleProfile) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -602,7 +603,7 @@ func (data HWModuleProfile) GetRangeConstraints() []helpers.FieldRangeConstraint
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.layer2"); !data.ProfileLoadBalanceAlgorithmLayer2.IsNull() {
 		if value.Exists() {
 			data.ProfileLoadBalanceAlgorithmLayer2 = types.BoolValue(true)
@@ -1311,7 +1312,7 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.layer2"); value.Exists() {
 		data.ProfileLoadBalanceAlgorithmLayer2 = types.BoolValue(true)
 	} else {
@@ -1686,7 +1687,7 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.layer2"); value.Exists() {
 		data.ProfileLoadBalanceAlgorithmLayer2 = types.BoolValue(true)
 	} else {
@@ -2061,7 +2062,7 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModuleProfile) []string {
+func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModuleProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BgpMpPicAutoProtectEnable.IsNull() && data.BgpMpPicAutoProtectEnable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", state.getPath()))
@@ -2436,7 +2437,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BgpMpPicAutoProtectEnable.IsNull() && !data.BgpMpPicAutoProtectEnable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", data.getPath()))
@@ -2643,7 +2644,7 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
+func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BgpMpPicAutoProtectEnable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", data.getPath()))
@@ -2737,6 +2738,17 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NetflowSflowEnableLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.NetflowSflowEnableLocations[i].LocationName2.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/sflow-enable-locations/location%v", data.getPath(), keyString))
 	}
 	if !data.NetflowSflowEnable.IsNull() {
@@ -2749,6 +2761,17 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NetflowIpfix315EnableLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.NetflowIpfix315EnableLocations[i].LocationName2.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/ipfix315-enable-locations/location%v", data.getPath(), keyString))
 	}
@@ -2765,6 +2788,14 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileQosNifHpFifoReserveLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", data.getPath(), keyString))
 	}
@@ -2824,6 +2855,14 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileQosMaxClassmapSizeLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileQosMaxClassmapSize.IsNull() {
@@ -2842,6 +2881,17 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileBundleHashIndexLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ProfileBundleHashIndexLocations[i].LocationName2.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", data.getPath(), keyString))
 	}

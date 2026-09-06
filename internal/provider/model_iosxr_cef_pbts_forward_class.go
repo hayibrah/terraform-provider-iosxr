@@ -97,6 +97,7 @@ func (data CEFPBTSForwardClass) toBody(ctx context.Context, providerVersion stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data CEFPBTSForwardClass) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -115,7 +116,7 @@ func (data CEFPBTSForwardClass) GetRangeConstraints() []helpers.FieldRangeConstr
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *CEFPBTSForwardClass) updateFromBody(ctx context.Context, res []byte) {
+func (data *CEFPBTSForwardClass) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "fallback-to.fallback-class-number"); value.Exists() && !data.FallbackToClass.IsNull() {
 		data.FallbackToClass = helpers.GetInt64List(value.Array())
 	} else {
@@ -145,7 +146,7 @@ func (data *CEFPBTSForwardClass) updateFromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *CEFPBTSForwardClass) fromBody(ctx context.Context, res []byte) {
+func (data *CEFPBTSForwardClass) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "fallback-to.fallback-class-number"); value.Exists() {
 		data.FallbackToClass = helpers.GetInt64List(value.Array())
 	} else {
@@ -167,7 +168,7 @@ func (data *CEFPBTSForwardClass) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *CEFPBTSForwardClassData) fromBody(ctx context.Context, res []byte) {
+func (data *CEFPBTSForwardClassData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "fallback-to.fallback-class-number"); value.Exists() {
 		data.FallbackToClass = helpers.GetInt64List(value.Array())
 	} else {
@@ -189,7 +190,7 @@ func (data *CEFPBTSForwardClassData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *CEFPBTSForwardClass) getDeletedItems(ctx context.Context, state CEFPBTSForwardClass) []string {
+func (data *CEFPBTSForwardClass) getDeletedItems(ctx context.Context, state CEFPBTSForwardClass, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.FallbackToDrop.IsNull() && data.FallbackToDrop.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/fallback-to/drop", state.getPath()))
@@ -207,7 +208,7 @@ func (data *CEFPBTSForwardClass) getDeletedItems(ctx context.Context, state CEFP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *CEFPBTSForwardClass) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *CEFPBTSForwardClass) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.FallbackToDrop.IsNull() && !data.FallbackToDrop.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fallback-to/drop", data.getPath()))
@@ -221,7 +222,7 @@ func (data *CEFPBTSForwardClass) getEmptyLeafsDelete(ctx context.Context) []stri
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *CEFPBTSForwardClass) getDeletePaths(ctx context.Context) []string {
+func (data *CEFPBTSForwardClass) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.FallbackToDrop.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/fallback-to/drop", data.getPath()))

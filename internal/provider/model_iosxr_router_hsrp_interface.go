@@ -117,6 +117,7 @@ func (data RouterHSRPInterface) toBody(ctx context.Context, providerVersion stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterHSRPInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -135,7 +136,7 @@ func (data RouterHSRPInterface) GetRangeConstraints() []helpers.FieldRangeConstr
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterHSRPInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "hsrp.use-bia"); !data.HsrpUseBia.IsNull() {
 		if value.Exists() {
 			data.HsrpUseBia = types.BoolValue(true)
@@ -185,7 +186,7 @@ func (data *RouterHSRPInterface) updateFromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterHSRPInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "hsrp.use-bia"); value.Exists() {
 		data.HsrpUseBia = types.BoolValue(true)
 	} else {
@@ -217,7 +218,7 @@ func (data *RouterHSRPInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterHSRPInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterHSRPInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "hsrp.use-bia"); value.Exists() {
 		data.HsrpUseBia = types.BoolValue(true)
 	} else {
@@ -249,7 +250,7 @@ func (data *RouterHSRPInterfaceData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterHSRPInterface) getDeletedItems(ctx context.Context, state RouterHSRPInterface) []string {
+func (data *RouterHSRPInterface) getDeletedItems(ctx context.Context, state RouterHSRPInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.HsrpMacRefresh.IsNull() && data.HsrpMacRefresh.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/hsrp/mac-refresh", state.getPath()))
@@ -279,7 +280,7 @@ func (data *RouterHSRPInterface) getDeletedItems(ctx context.Context, state Rout
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterHSRPInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterHSRPInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.HsrpRedirectsDisable.IsNull() && !data.HsrpRedirectsDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hsrp/redirects/disable", data.getPath()))
@@ -293,7 +294,7 @@ func (data *RouterHSRPInterface) getEmptyLeafsDelete(ctx context.Context) []stri
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterHSRPInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterHSRPInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.HsrpMacRefresh.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hsrp/mac-refresh", data.getPath()))

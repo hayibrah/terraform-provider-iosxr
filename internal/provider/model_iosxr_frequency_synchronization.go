@@ -140,6 +140,7 @@ func (data FrequencySynchronization) toBody(ctx context.Context, providerVersion
 // GetVersionConstraints returns the version constraints for all fields
 func (data FrequencySynchronization) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -158,7 +159,7 @@ func (data FrequencySynchronization) GetRangeConstraints() []helpers.FieldRangeC
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *FrequencySynchronization) updateFromBody(ctx context.Context, res []byte) {
+func (data *FrequencySynchronization) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "quality.itu-t.option.one"); !data.QualityItuTOptionOne.IsNull() {
 		if value.Exists() {
 			data.QualityItuTOptionOne = types.BoolValue(true)
@@ -251,7 +252,7 @@ func (data *FrequencySynchronization) updateFromBody(ctx context.Context, res []
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *FrequencySynchronization) fromBody(ctx context.Context, res []byte) {
+func (data *FrequencySynchronization) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "quality.itu-t.option.one"); value.Exists() {
 		data.QualityItuTOptionOne = types.BoolValue(true)
 	} else {
@@ -306,7 +307,7 @@ func (data *FrequencySynchronization) fromBody(ctx context.Context, res []byte) 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *FrequencySynchronizationData) fromBody(ctx context.Context, res []byte) {
+func (data *FrequencySynchronizationData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "quality.itu-t.option.one"); value.Exists() {
 		data.QualityItuTOptionOne = types.BoolValue(true)
 	} else {
@@ -361,7 +362,7 @@ func (data *FrequencySynchronizationData) fromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *FrequencySynchronization) getDeletedItems(ctx context.Context, state FrequencySynchronization) []string {
+func (data *FrequencySynchronization) getDeletedItems(ctx context.Context, state FrequencySynchronization, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ClockIdentityMacAddress.IsNull() && data.ClockIdentityMacAddress.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock-identity/mac-address", state.getPath()))
@@ -400,7 +401,7 @@ func (data *FrequencySynchronization) getDeletedItems(ctx context.Context, state
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *FrequencySynchronization) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *FrequencySynchronization) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LogSelectionErrors.IsNull() && !data.LogSelectionErrors.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/selection/errors", data.getPath()))
@@ -435,7 +436,7 @@ func (data *FrequencySynchronization) getEmptyLeafsDelete(ctx context.Context) [
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *FrequencySynchronization) getDeletePaths(ctx context.Context) []string {
+func (data *FrequencySynchronization) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ClockIdentityMacAddress.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock-identity/mac-address", data.getPath()))

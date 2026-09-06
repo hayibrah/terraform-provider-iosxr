@@ -548,27 +548,24 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 	if !data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() && !data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsUnknown() {
 		body, _ = sjson.Set(body, "endpoint.default.advertisement.anomaly-loss.upper-bound", strconv.FormatInt(data.EndpointDefaultAdvertisementAnomalyLossUpperBound.ValueInt64(), 10))
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.DelayBinsExplicit.IsNull() && !data.DelayBinsExplicit.IsUnknown() {
 			var values []int
 			data.DelayBinsExplicit.ElementsAs(ctx, &values, false)
 			body, _ = sjson.Set(body, "endpoint.default.histogram.delay-bins.explicit", values)
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.CollectHbh.IsNull() && !data.CollectHbh.IsUnknown() {
 			if data.CollectHbh.ValueBool() {
-				body, _ = sjson.Set(body, "sr-policy.default.probe.collect-hbh", map[string]string{})
+				body, _ = sjson.Set(body, "endpoint.default.probe.collect-hbh", map[string]string{})
 			}
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.Ntp.IsNull() && !data.Ntp.IsUnknown() {
 			if data.Ntp.ValueBool() {
-				body, _ = sjson.Set(body, "sr-policy.default.probe.timestamp-format.ntp", map[string]string{})
+				body, _ = sjson.Set(body, "endpoint.default.probe.measurement-mode.timestamp-format.ntp", map[string]string{})
 			}
 		}
 	}
@@ -722,26 +719,27 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 // GetVersionConstraints returns the version constraints for all fields
 func (data PerformanceMeasurementDelayProfile) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "profiles.collect_hbh",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "profiles.ntp",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "delay_bins_explicit",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "collect_hbh",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "ntp",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -762,7 +760,7 @@ func (data PerformanceMeasurementDelayProfile) GetRangeConstraints() []helpers.F
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "interfaces.default"); !data.InterfacesDefault.IsNull() {
 		if value.Exists() {
 			data.InterfacesDefault = types.BoolValue(true)
@@ -1498,7 +1496,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].AdvertiseAnomalyLossLowerBound = types.Int64Null()
 		}
-		if value := r.Get("probe.collect-hbh"); !data.Profiles[i].CollectHbh.IsNull() {
+		if value := r.Get("probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].CollectHbh.IsNull() {
 			if value.Exists() {
 				data.Profiles[i].CollectHbh = types.BoolValue(true)
 			} else {
@@ -1507,7 +1505,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].CollectHbh = types.BoolNull()
 		}
-		if value := r.Get("probe.timestamp-format.ntp"); !data.Profiles[i].Ntp.IsNull() {
+		if value := r.Get("probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].Ntp.IsNull() {
 			if value.Exists() {
 				data.Profiles[i].Ntp = types.BoolValue(true)
 			} else {
@@ -1517,12 +1515,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 			data.Profiles[i].Ntp = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() && !data.DelayBinsExplicit.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.DelayBinsExplicit.IsNull() {
 		data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
 	} else {
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); !data.CollectHbh.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
 		if value.Exists() {
 			data.CollectHbh = types.BoolValue(true)
 		} else {
@@ -1531,7 +1529,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.CollectHbh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); !data.Ntp.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
 		if value.Exists() {
 			data.Ntp = types.BoolValue(true)
 		} else {
@@ -1546,7 +1544,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "interfaces.default"); value.Exists() {
 		data.InterfacesDefault = types.BoolValue(true)
 	} else {
@@ -1965,34 +1963,54 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() {
 				item.AdvertiseAnomalyLossLowerBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
-				item.CollectHbh = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
+					item.CollectHbh = types.BoolValue(true)
+				} else {
+					item.CollectHbh = types.BoolValue(false)
+				}
 			} else {
-				item.CollectHbh = types.BoolValue(false)
+				item.CollectHbh = types.BoolNull()
 			}
-			if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
-				item.Ntp = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
+					item.Ntp = types.BoolValue(true)
+				} else {
+					item.Ntp = types.BoolValue(false)
+				}
 			} else {
-				item.Ntp = types.BoolValue(false)
+				item.Ntp = types.BoolNull()
 			}
 			data.Profiles = append(data.Profiles, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
-		data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
+			data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+		} else {
+			data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+		}
 	} else {
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
-		data.CollectHbh = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+			data.CollectHbh = types.BoolValue(true)
+		} else {
+			data.CollectHbh = types.BoolValue(false)
+		}
 	} else {
-		data.CollectHbh = types.BoolValue(false)
+		data.CollectHbh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
-		data.Ntp = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+			data.Ntp = types.BoolValue(true)
+		} else {
+			data.Ntp = types.BoolValue(false)
+		}
 	} else {
-		data.Ntp = types.BoolValue(false)
+		data.Ntp = types.BoolNull()
 	}
 }
 
@@ -2000,7 +2018,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "interfaces.default"); value.Exists() {
 		data.InterfacesDefault = types.BoolValue(true)
 	} else {
@@ -2419,34 +2437,54 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() {
 				item.AdvertiseAnomalyLossLowerBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
-				item.CollectHbh = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
+					item.CollectHbh = types.BoolValue(true)
+				} else {
+					item.CollectHbh = types.BoolValue(false)
+				}
 			} else {
-				item.CollectHbh = types.BoolValue(false)
+				item.CollectHbh = types.BoolNull()
 			}
-			if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
-				item.Ntp = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
+					item.Ntp = types.BoolValue(true)
+				} else {
+					item.Ntp = types.BoolValue(false)
+				}
 			} else {
-				item.Ntp = types.BoolValue(false)
+				item.Ntp = types.BoolNull()
 			}
 			data.Profiles = append(data.Profiles, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
-		data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
+			data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+		} else {
+			data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+		}
 	} else {
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
-		data.CollectHbh = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+			data.CollectHbh = types.BoolValue(true)
+		} else {
+			data.CollectHbh = types.BoolValue(false)
+		}
 	} else {
-		data.CollectHbh = types.BoolValue(false)
+		data.CollectHbh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
-		data.Ntp = types.BoolValue(true)
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+			data.Ntp = types.BoolValue(true)
+		} else {
+			data.Ntp = types.BoolValue(false)
+		}
 	} else {
-		data.Ntp = types.BoolValue(false)
+		data.Ntp = types.BoolNull()
 	}
 }
 
@@ -2454,15 +2492,15 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementDelayProfile) []string {
+func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementDelayProfile, version string) []string {
 	deletedItems := make([]string, 0)
-	if !state.Ntp.IsNull() && data.Ntp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", state.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !state.Ntp.IsNull() && data.Ntp.IsNull() {
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", state.getPath()))
 	}
-	if !state.CollectHbh.IsNull() && data.CollectHbh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", state.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !state.CollectHbh.IsNull() && data.CollectHbh.IsNull() {
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", state.getPath()))
 	}
-	if !state.DelayBinsExplicit.IsNull() && data.DelayBinsExplicit.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.DelayBinsExplicit.IsNull() && data.DelayBinsExplicit.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", state.getPath()))
 	}
 	for i := range state.Profiles {
@@ -2488,10 +2526,10 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 				found = false
 			}
 			if found {
-				if !state.Profiles[i].Ntp.IsNull() && data.Profiles[j].Ntp.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].Ntp.IsNull() && data.Profiles[j].Ntp.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/timestamp-format/ntp", state.getPath(), keyString))
 				}
-				if !state.Profiles[i].CollectHbh.IsNull() && data.Profiles[j].CollectHbh.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].CollectHbh.IsNull() && data.Profiles[j].CollectHbh.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/collect-hbh", state.getPath(), keyString))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyLossLowerBound.IsNull() && data.Profiles[j].AdvertiseAnomalyLossLowerBound.IsNull() {
@@ -2829,13 +2867,13 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
-	if !data.Ntp.IsNull() && !data.Ntp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() && !data.Ntp.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", data.getPath()))
 	}
-	if !data.CollectHbh.IsNull() && !data.CollectHbh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() && !data.CollectHbh.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", data.getPath()))
 	}
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -2844,10 +2882,10 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
-		if !data.Profiles[i].Ntp.IsNull() && !data.Profiles[i].Ntp.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].Ntp.IsNull() && !data.Profiles[i].Ntp.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/timestamp-format/ntp", data.getPath(), keyString))
 		}
-		if !data.Profiles[i].CollectHbh.IsNull() && !data.Profiles[i].CollectHbh.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].CollectHbh.IsNull() && !data.Profiles[i].CollectHbh.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/collect-hbh", data.getPath(), keyString))
 		}
 		if !data.Profiles[i].AdvertiseAccelerated.IsNull() && !data.Profiles[i].AdvertiseAccelerated.ValueBool() {
@@ -2986,15 +3024,15 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Context) []string {
+func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
-	if !data.Ntp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", data.getPath()))
 	}
-	if !data.CollectHbh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
+	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", data.getPath()))
 	}
-	if !data.DelayBinsExplicit.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.DelayBinsExplicit.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", data.getPath()))
 	}
 	for i := range data.Profiles {
@@ -3004,6 +3042,14 @@ func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Conte
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Profiles[i].ProfileName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
 	}

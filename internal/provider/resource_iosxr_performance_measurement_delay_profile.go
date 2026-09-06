@@ -712,27 +712,27 @@ func (r *PerformanceMeasurementDelayProfileResource) Schema(ctx context.Context,
 							},
 						},
 						"collect_hbh": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Collect hop by hop data for delay sessions").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"ntp": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Network Time Protocol timestamp format").String + "\n  - Supported from version: `25.1`",
+							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 					},
 				},
 			},
 			"delay_bins_explicit": schema.ListAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("explicit list of 27 numbers to split 28 bins. All 27 entries must be configured").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("explicit list of 27 numbers to split 28 bins. All 27 entries must be configured").String + "\n  - Supported from version: `25.4`",
 				ElementType:         types.Int64Type,
 				Optional:            true,
 			},
 			"collect_hbh": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Collect hop by hop data for delay sessions").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 			"ntp": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Network Time Protocol timestamp format").String + "\n  - Supported from version: `25.1`",
+				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 		},
@@ -776,10 +776,10 @@ func (r *PerformanceMeasurementDelayProfileResource) Create(ctx context.Context,
 		var ops []gnmi.SetOperation
 
 		// Create object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -862,9 +862,9 @@ func (r *PerformanceMeasurementDelayProfileResource) Read(ctx context.Context, r
 		// After `terraform import` we switch to a full read.
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
 		if imp {
-			state.fromBody(ctx, respBody)
+			state.fromBody(ctx, respBody, device.Version)
 		} else {
-			state.updateFromBody(ctx, respBody)
+			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
 
@@ -912,17 +912,17 @@ func (r *PerformanceMeasurementDelayProfileResource) Update(ctx context.Context,
 		var ops []gnmi.SetOperation
 
 		// Update object
-		body := plan.toBody(ctx, r.data.Version)
+		body := plan.toBody(ctx, device.Version)
 		ops = append(ops, gnmi.Update(plan.getPath(), body))
 
-		deletedListItems := plan.getDeletedItems(ctx, state)
+		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
 
 		for _, i := range deletedListItems {
 			ops = append(ops, gnmi.Delete(i))
 		}
 
-		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx)
+		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
 
 		for _, i := range emptyLeafsDelete {
@@ -957,17 +957,19 @@ func (r *PerformanceMeasurementDelayProfileResource) Delete(ctx context.Context,
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	// Validate version compatibility (only check if resource/fields are supported)
-	if len(state.GetVersionConstraints()) > 0 {
-		helpers.ValidateVersionConstraints(r.data.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
-		if resp.Diagnostics.HasError() {
-			return
-		}
-	}
+
 	device, ok := r.data.Devices[state.Device.ValueString()]
 	if !ok {
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", state.Device.ValueString()))
 		return
+	}
+
+	// Validate version compatibility (only check if resource/fields are supported)
+	if len(state.GetVersionConstraints()) > 0 {
+		helpers.ValidateVersionConstraints(device.Version, state, state.GetVersionConstraints(), &resp.Diagnostics)
+		if resp.Diagnostics.HasError() {
+			return
+		}
 	}
 
 	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Delete", state.Id.ValueString()))
@@ -984,7 +986,7 @@ func (r *PerformanceMeasurementDelayProfileResource) Delete(ctx context.Context,
 		if deleteMode == "all" {
 			ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 		} else {
-			deletePaths := state.getDeletePaths(ctx)
+			deletePaths := state.getDeletePaths(ctx, device.Version)
 			tflog.Debug(ctx, fmt.Sprintf("Paths to delete: %+v", deletePaths))
 
 			for _, i := range deletePaths {

@@ -450,6 +450,7 @@ func (data EVPNEVI) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data EVPNEVI) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -468,7 +469,7 @@ func (data EVPNEVI) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *EVPNEVI) updateFromBody(ctx context.Context, res []byte) {
+func (data *EVPNEVI) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
@@ -1047,7 +1048,7 @@ func (data *EVPNEVI) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *EVPNEVI) fromBody(ctx context.Context, res []byte) {
+func (data *EVPNEVI) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1330,7 +1331,7 @@ func (data *EVPNEVI) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *EVPNEVIData) fromBody(ctx context.Context, res []byte) {
+func (data *EVPNEVIData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() {
 		data.Description = types.StringValue(value.String())
 	}
@@ -1613,7 +1614,7 @@ func (data *EVPNEVIData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *EVPNEVI) getDeletedItems(ctx context.Context, state EVPNEVI) []string {
+func (data *EVPNEVI) getDeletedItems(ctx context.Context, state EVPNEVI, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BviCoupledMode.IsNull() && data.BviCoupledMode.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bvi-coupled-mode", state.getPath()))
@@ -2048,7 +2049,7 @@ func (data *EVPNEVI) getDeletedItems(ctx context.Context, state EVPNEVI) []strin
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *EVPNEVI) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *EVPNEVI) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BviCoupledMode.IsNull() && !data.BviCoupledMode.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bvi-coupled-mode", data.getPath()))
@@ -2200,7 +2201,7 @@ func (data *EVPNEVI) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
+func (data *EVPNEVI) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BviCoupledMode.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bvi-coupled-mode", data.getPath()))
@@ -2291,6 +2292,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetExportFourByteAsFormat {
@@ -2300,6 +2312,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -2311,6 +2334,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetImportIpv4AddressFormat {
@@ -2320,6 +2354,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
@@ -2331,6 +2376,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetImportTwoByteAsFormat {
@@ -2340,6 +2396,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -2351,6 +2418,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetFourByteAsFormat {
@@ -2361,6 +2439,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetFourByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpRouteTargetTwoByteAsFormat {
@@ -2370,6 +2459,17 @@ func (data *EVPNEVI) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpRouteTargetTwoByteAsFormat[i].AsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}

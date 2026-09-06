@@ -81,6 +81,7 @@ func (data LargeCommunitySet) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data LargeCommunitySet) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -99,7 +100,7 @@ func (data LargeCommunitySet) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *LargeCommunitySet) updateFromBody(ctx context.Context, res []byte) {
+func (data *LargeCommunitySet) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
@@ -111,7 +112,7 @@ func (data *LargeCommunitySet) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *LargeCommunitySet) fromBody(ctx context.Context, res []byte) {
+func (data *LargeCommunitySet) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -121,7 +122,7 @@ func (data *LargeCommunitySet) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *LargeCommunitySetData) fromBody(ctx context.Context, res []byte) {
+func (data *LargeCommunitySetData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() {
 		data.Rpl = types.StringValue(value.String())
 	}
@@ -131,7 +132,7 @@ func (data *LargeCommunitySetData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *LargeCommunitySet) getDeletedItems(ctx context.Context, state LargeCommunitySet) []string {
+func (data *LargeCommunitySet) getDeletedItems(ctx context.Context, state LargeCommunitySet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/large-community-set-as-text", state.getPath()))
@@ -143,7 +144,7 @@ func (data *LargeCommunitySet) getDeletedItems(ctx context.Context, state LargeC
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *LargeCommunitySet) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *LargeCommunitySet) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -151,7 +152,7 @@ func (data *LargeCommunitySet) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *LargeCommunitySet) getDeletePaths(ctx context.Context) []string {
+func (data *LargeCommunitySet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/large-community-set-as-text", data.getPath()))

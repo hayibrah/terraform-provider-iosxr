@@ -316,11 +316,11 @@ func (d *PTPDataSource) Schema(ctx context.Context, req datasource.SchemaRequest
 				Computed:            true,
 			},
 			"monitor_receiver": schema.BoolAttribute{
-				MarkdownDescription: "Enable monitor-receiver packet exchange",
+				MarkdownDescription: "",
 				Computed:            true,
 			},
 			"monitor_sender": schema.BoolAttribute{
-				MarkdownDescription: "Enable monitor-sender packet exchange",
+				MarkdownDescription: "",
 				Computed:            true,
 			},
 		},
@@ -380,7 +380,7 @@ func (d *PTPDataSource) Read(ctx context.Context, req datasource.ReadRequest, re
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

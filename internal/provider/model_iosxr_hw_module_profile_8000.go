@@ -234,11 +234,12 @@ type HWModuleProfile8000ProfileEncapExactLocations struct {
 	LocationName types.String `tfsdk:"location_name"`
 }
 type HWModuleProfile8000ProfilePriorityFlowControlLocations struct {
-	LocationName               types.String                                                                       `tfsdk:"location_name"`
-	BufferExtendedTrafficClass []HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass `tfsdk:"buffer_extended_traffic_class"`
-	BufferInternalTrafficClass []HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass `tfsdk:"buffer_internal_traffic_class"`
-	NonPfcTcs                  types.Bool                                                                         `tfsdk:"non_pfc_tcs"`
-	NonPfcTcsMaxNonPfcVoqs     types.Int64                                                                        `tfsdk:"non_pfc_tcs_max_non_pfc_voqs"`
+	LocationName                               types.String                                                                       `tfsdk:"location_name"`
+	BufferExtendedTrafficClass                 []HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass `tfsdk:"buffer_extended_traffic_class"`
+	BufferInternalTrafficClass                 []HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass `tfsdk:"buffer_internal_traffic_class"`
+	NonPfcTcs                                  types.Bool                                                                         `tfsdk:"non_pfc_tcs"`
+	NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs    types.Int64                                                                        `tfsdk:"non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs"`
+	NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage types.Int64                                                                        `tfsdk:"non_pfc_tcs_max_non_pfc_voqs_hbm_buffers_percentage"`
 }
 type HWModuleProfile8000ProfileNpuBufferExtendedLocations struct {
 	LocationName                       types.String `tfsdk:"location_name"`
@@ -673,8 +674,11 @@ func (data HWModuleProfile8000) toBody(ctx context.Context, providerVersion stri
 					body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs", map[string]string{})
 				}
 			}
-			if !item.NonPfcTcsMaxNonPfcVoqs.IsNull() && !item.NonPfcTcsMaxNonPfcVoqs.IsUnknown() {
-				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqs.ValueInt64(), 10))
+			if !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsUnknown() {
+				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.ValueInt64(), 10))
+			}
+			if !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsUnknown() {
+				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.ValueInt64(), 10))
 			}
 			if len(item.BufferExtendedTrafficClass) > 0 {
 				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.traffic-class", []interface{}{})
@@ -775,14 +779,19 @@ func (data HWModuleProfile8000) toBody(ctx context.Context, providerVersion stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data HWModuleProfile8000) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "profile_priority_flow_control_locations.non_pfc_tcs",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
-			FieldPath:      "profile_priority_flow_control_locations.non_pfc_tcs_max_non_pfc_voqs",
-			AddedInVersion: "25.1",
+			FieldPath:      "profile_priority_flow_control_locations.non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "profile_priority_flow_control_locations.non_pfc_tcs_max_non_pfc_voqs_hbm_buffers_percentage",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -803,7 +812,7 @@ func (data HWModuleProfile8000) GetRangeConstraints() []helpers.FieldRangeConstr
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "multicast.route-scale"); !data.MulticastRouteScale.IsNull() {
 		if value.Exists() {
 			data.MulticastRouteScale = types.BoolValue(true)
@@ -1587,7 +1596,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte)
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage = types.Int64Null()
 			}
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs"); !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() {
+		if value := r.Get("buffer-extended.non-pfc-tcs"); helpers.VersionAtLeast(version, "25.4") && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() {
 			if value.Exists() {
 				data.ProfilePriorityFlowControlLocations[i].NonPfcTcs = types.BoolValue(true)
 			} else {
@@ -1596,10 +1605,15 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte)
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcs = types.BoolNull()
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqs.IsNull() {
-			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqs = types.Int64Value(value.Int())
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
+			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(value.Int())
 		} else {
-			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqs = types.Int64Null()
+			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
+		}
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
+			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(value.Int())
+		} else {
+			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Null()
 		}
 	}
 	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && !data.ProfileGueUdpDestPortIpv4.IsNull() {
@@ -1738,7 +1752,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "multicast.route-scale"); value.Exists() {
 		data.MulticastRouteScale = types.BoolValue(true)
 	} else {
@@ -2157,13 +2171,28 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte) {
 					return true
 				})
 			}
-			if cValue := v.Get("buffer-extended.non-pfc-tcs"); cValue.Exists() {
-				item.NonPfcTcs = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs"); cValue.Exists() {
+					item.NonPfcTcs = types.BoolValue(true)
+				} else {
+					item.NonPfcTcs = types.BoolValue(false)
+				}
 			} else {
-				item.NonPfcTcs = types.BoolValue(false)
+				item.NonPfcTcs = types.BoolNull()
 			}
-			if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs"); cValue.Exists() {
-				item.NonPfcTcsMaxNonPfcVoqs = types.Int64Value(cValue.Int())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
+					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
+				}
+			} else {
+				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
+			}
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
+					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
+				}
+			} else {
+				item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Null()
 			}
 			data.ProfilePriorityFlowControlLocations = append(data.ProfilePriorityFlowControlLocations, item)
 			return true
@@ -2243,7 +2272,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte) {
+func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "multicast.route-scale"); value.Exists() {
 		data.MulticastRouteScale = types.BoolValue(true)
 	} else {
@@ -2662,13 +2691,28 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte) {
 					return true
 				})
 			}
-			if cValue := v.Get("buffer-extended.non-pfc-tcs"); cValue.Exists() {
-				item.NonPfcTcs = types.BoolValue(true)
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs"); cValue.Exists() {
+					item.NonPfcTcs = types.BoolValue(true)
+				} else {
+					item.NonPfcTcs = types.BoolValue(false)
+				}
 			} else {
-				item.NonPfcTcs = types.BoolValue(false)
+				item.NonPfcTcs = types.BoolNull()
 			}
-			if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs"); cValue.Exists() {
-				item.NonPfcTcsMaxNonPfcVoqs = types.Int64Value(cValue.Int())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
+					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
+				}
+			} else {
+				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
+			}
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
+					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
+				}
+			} else {
+				item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Null()
 			}
 			data.ProfilePriorityFlowControlLocations = append(data.ProfilePriorityFlowControlLocations, item)
 			return true
@@ -2748,7 +2792,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWModuleProfile8000) []string {
+func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWModuleProfile8000, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ProfileIrbThroughputOptimized.IsNull() && data.ProfileIrbThroughputOptimized.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/irb/throughput-optimized", state.getPath()))
@@ -2842,10 +2886,13 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 				found = false
 			}
 			if found {
-				if !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs/max-non-pfc-voqs", state.getPath(), keyString))
+				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
+					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs/max-non-pfc-voqs/hbm-buffers-percentage", state.getPath(), keyString))
 				}
-				if !state.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcs.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
+					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs/max-non-pfc-voqs/number-of-evict-voqs", state.getPath(), keyString))
+				}
+				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcs.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs", state.getPath(), keyString))
 				}
 				for ci := range state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
@@ -3255,7 +3302,7 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ProfileIrbThroughputOptimized.IsNull() && !data.ProfileIrbThroughputOptimized.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/irb/throughput-optimized", data.getPath()))
@@ -3299,7 +3346,7 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context) []stri
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
-		if !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs", data.getPath(), keyString))
 		}
 		for ci := range data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
@@ -3479,7 +3526,7 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context) []stri
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context) []string {
+func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ProfileIrbThroughputOptimized.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/irb/throughput-optimized", data.getPath()))
@@ -3513,6 +3560,14 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileNpuBufferExtendedLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileGueUdpDestPortMpls.IsNull() {
@@ -3531,6 +3586,14 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfilePriorityFlowControlLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", data.getPath(), keyString))
 	}
@@ -3560,6 +3623,14 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileEncapExactLocations[i].LocationName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/locations/location%v", data.getPath(), keyString))
 	}
 	for i := range data.ProfileEncapExactInterfaces {
@@ -3569,6 +3640,14 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ProfileEncapExactInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/interfaces/interface%v", data.getPath(), keyString))
 	}

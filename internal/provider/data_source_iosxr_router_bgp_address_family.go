@@ -316,7 +316,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 				},
 			},
 			"redistribute_ospf": schema.ListNestedAttribute{
-				MarkdownDescription: "Open Shortest Path First (OSPF)",
+				MarkdownDescription: "Redistribute OSPF routes",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -468,7 +468,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 				},
 			},
 			"redistribute_ospfv3": schema.ListNestedAttribute{
-				MarkdownDescription: "IPv6 Open Shortest Path First (OSPFv3)",
+				MarkdownDescription: "Redistribute OSPFv3 routes",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -620,7 +620,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 				},
 			},
 			"redistribute_eigrp": schema.ListNestedAttribute{
-				MarkdownDescription: "Enhanced Interior Gateway Routing Protocol (EIGRP)",
+				MarkdownDescription: "Redistribute EIGRP routes",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -660,7 +660,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 				},
 			},
 			"redistribute_isis": schema.ListNestedAttribute{
-				MarkdownDescription: "ISO IS-IS",
+				MarkdownDescription: "Redistribute ISIS routes",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -1144,7 +1144,7 @@ func (d *RouterBGPAddressFamilyDataSource) Read(ctx context.Context, req datasou
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())

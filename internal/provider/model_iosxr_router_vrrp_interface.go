@@ -103,6 +103,7 @@ func (data RouterVRRPInterface) toBody(ctx context.Context, providerVersion stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterVRRPInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -121,7 +122,7 @@ func (data RouterVRRPInterface) GetRangeConstraints() []helpers.FieldRangeConstr
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterVRRPInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() && !data.MacRefresh.IsNull() {
 		data.MacRefresh = types.Int64Value(value.Int())
 	} else {
@@ -153,7 +154,7 @@ func (data *RouterVRRPInterface) updateFromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterVRRPInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() {
 		data.MacRefresh = types.Int64Value(value.Int())
 	}
@@ -175,7 +176,7 @@ func (data *RouterVRRPInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterVRRPInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterVRRPInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() {
 		data.MacRefresh = types.Int64Value(value.Int())
 	}
@@ -197,7 +198,7 @@ func (data *RouterVRRPInterfaceData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterVRRPInterface) getDeletedItems(ctx context.Context, state RouterVRRPInterface) []string {
+func (data *RouterVRRPInterface) getDeletedItems(ctx context.Context, state RouterVRRPInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
@@ -221,7 +222,7 @@ func (data *RouterVRRPInterface) getDeletedItems(ctx context.Context, state Rout
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterVRRPInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterVRRPInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	return emptyLeafsDelete
 }
@@ -229,7 +230,7 @@ func (data *RouterVRRPInterface) getEmptyLeafsDelete(ctx context.Context) []stri
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterVRRPInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterVRRPInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdMultiplier.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))

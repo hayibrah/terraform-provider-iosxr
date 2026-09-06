@@ -204,6 +204,7 @@ func (data RouterIGMPVRF) toBody(ctx context.Context, providerVersion string) st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterIGMPVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -222,7 +223,7 @@ func (data RouterIGMPVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterIGMPVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dvmrp-enable"); !data.DvmrpEnable.IsNull() {
 		if value.Exists() {
 			data.DvmrpEnable = types.BoolValue(true)
@@ -379,7 +380,7 @@ func (data *RouterIGMPVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterIGMPVRF) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dvmrp-enable"); value.Exists() {
 		data.DvmrpEnable = types.BoolValue(true)
 	} else {
@@ -468,7 +469,7 @@ func (data *RouterIGMPVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterIGMPVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dvmrp-enable"); value.Exists() {
 		data.DvmrpEnable = types.BoolValue(true)
 	} else {
@@ -557,7 +558,7 @@ func (data *RouterIGMPVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterIGMPVRF) getDeletedItems(ctx context.Context, state RouterIGMPVRF) []string {
+func (data *RouterIGMPVRF) getDeletedItems(ctx context.Context, state RouterIGMPVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TrafficProfile.IsNull() && data.TrafficProfile.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic/profile", state.getPath()))
@@ -659,7 +660,7 @@ func (data *RouterIGMPVRF) getDeletedItems(ctx context.Context, state RouterIGMP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterIGMPVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterIGMPVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SsmMapQueryDns.IsNull() && !data.SsmMapQueryDns.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
@@ -687,7 +688,7 @@ func (data *RouterIGMPVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterIGMPVRF) getDeletePaths(ctx context.Context) []string {
+func (data *RouterIGMPVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TrafficProfile.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic/profile", data.getPath()))
@@ -714,6 +715,14 @@ func (data *RouterIGMPVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SsmMapStatics[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
 	}

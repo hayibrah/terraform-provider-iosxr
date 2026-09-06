@@ -694,6 +694,7 @@ func (data RouterPIMVRFIPv4) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterPIMVRFIPv4) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -712,7 +713,7 @@ func (data RouterPIMVRFIPv4) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterPIMVRFIPv4) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterPIMVRFIPv4) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.RpAddresses {
 		keys := [...]string{"address"}
 		keyValues := [...]string{data.RpAddresses[i].Address.ValueString()}
@@ -1555,7 +1556,7 @@ func (data *RouterPIMVRFIPv4) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterPIMVRFIPv4) fromBody(ctx context.Context, res []byte) {
+func (data *RouterPIMVRFIPv4) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "rp-addresses.rp-address"); value.Exists() {
 		data.RpAddresses = make([]RouterPIMVRFIPv4RpAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2004,7 +2005,7 @@ func (data *RouterPIMVRFIPv4) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterPIMVRFIPv4Data) fromBody(ctx context.Context, res []byte) {
+func (data *RouterPIMVRFIPv4Data) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "rp-addresses.rp-address"); value.Exists() {
 		data.RpAddresses = make([]RouterPIMVRFIPv4RpAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -2453,7 +2454,7 @@ func (data *RouterPIMVRFIPv4Data) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterPIMVRFIPv4) getDeletedItems(ctx context.Context, state RouterPIMVRFIPv4) []string {
+func (data *RouterPIMVRFIPv4) getDeletedItems(ctx context.Context, state RouterPIMVRFIPv4, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -2996,7 +2997,7 @@ func (data *RouterPIMVRFIPv4) getDeletedItems(ctx context.Context, state RouterP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterPIMVRFIPv4) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterPIMVRFIPv4) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -3161,7 +3162,7 @@ func (data *RouterPIMVRFIPv4) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
+func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -3170,6 +3171,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -3181,6 +3190,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BsrRelayVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bsr/relay/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	for i := range data.BsrCandidateRps {
@@ -3190,6 +3207,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BsrCandidateRps[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", data.getPath(), keyString))
 	}
@@ -3209,6 +3234,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutoRpRelayVrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-rp/relay/vrfs/vrf%v", data.getPath(), keyString))
 	}
@@ -3298,6 +3331,17 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ExplicitRpfVectorInjects[i].SourceAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.ExplicitRpfVectorInjects[i].SourceMask.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/explicit-rpf-vector/injects/inject%v", data.getPath(), keyString))
 	}
 	for i := range data.RpfVectorInjects {
@@ -3307,6 +3351,17 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RpfVectorInjects[i].SourceAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.RpfVectorInjects[i].SourceMask.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpf-vector-injects/inject%v", data.getPath(), keyString))
 	}
@@ -3423,6 +3478,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RpAddressesBidir[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", data.getPath(), keyString))
 	}
 	for i := range data.RpAddresses {
@@ -3432,6 +3495,14 @@ func (data *RouterPIMVRFIPv4) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RpAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rp-addresses/rp-address%v", data.getPath(), keyString))
 	}

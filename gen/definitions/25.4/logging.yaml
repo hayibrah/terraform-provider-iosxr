@@ -268,7 +268,7 @@ attributes:
         tf_name: vrf_name
         description: "Set VRF option"
         type: String
-        example: VRF1
+        example: default
       - yang_name: source-interface-name
         legacy: true  # replaced by interface-name
       - yang_name: vrfs/vrf
@@ -287,6 +287,28 @@ attributes:
   - yang_name: archive/frequency/daily
     legacy: true
   - yang_name: archive/frequency/weekly
+    legacy: true
+  - yang_name: archive/file-size
+    legacy: true
+  - yang_name: archive/archive-size
+    legacy: true
+  - yang_name: archive/archive-length
+    legacy: true
+  - yang_name: archive/severity
+    legacy: true
+  - yang_name: archive/threshold
+    legacy: true
+  - yang_name: buffered/discriminator/match1
+    legacy: true
+  - yang_name: buffered/discriminator/match2
+    legacy: true
+  - yang_name: buffered/discriminator/match3
+    legacy: true
+  - yang_name: buffered/discriminator/nomatch1
+    legacy: true
+  - yang_name: buffered/discriminator/nomatch2
+    legacy: true
+  - yang_name: buffered/discriminator/nomatch3
     legacy: true
   - yang_name: console-logging/console-log-facility/console-facility-level
     legacy: true

@@ -38,32 +38,29 @@ resource "iosxr_crypto" "example" {
   ca_trustpoint_system_message_digest               = "sha256"
   ca_trustpoints = [
     {
-      trustpoint_name                   = "TP1"
-      description                       = "Custom trustpoint"
-      enrollment_retry_count            = 10
-      enrollment_retry_period           = 5
-      enrollment_url                    = "http://ca.example.com"
-      sftp_username                     = "sftpuser"
-      sftp_password                     = "1511021F0725"
-      auto_enroll                       = 80
-      renewal_message_type_renewalreq   = true
-      skip_challenge_password           = true
-      rsakeypair                        = "KEY1"
-      crl_optional                      = true
-      query_url                         = "ldap://ca.example.com/certsrv"
-      ip_address                        = "10.1.1.2"
-      subject_name                      = "CN=Router2,OU=Network,O=Example,C=US"
-      subject_alternative_name          = "DNS:router2.example.com,IP:192.168.1.2"
-      serial_number                     = true
-      vrf                               = "VRF1"
-      message_digest                    = "sha256"
-      method_est_credential_certificate = "EST-BOOTSTRAP"
-      # Supported from version 25.1
-      enrollment_authentication_profile = "EAP_PROFILE"
-      # Supported from version 25.1
+      trustpoint_name                      = "TP1"
+      description                          = "Custom trustpoint"
+      enrollment_retry_count               = 10
+      enrollment_retry_period              = 5
+      enrollment_url                       = "http://ca.example.com"
+      sftp_username                        = "sftpuser"
+      sftp_password                        = "1511021F0725"
+      auto_enroll                          = 80
+      renewal_message_type_renewalreq      = true
+      skip_challenge_password              = true
+      rsakeypair                           = "KEY1"
+      crl_optional                         = true
+      query_url                            = "ldap://ca.example.com/certsrv"
+      ip_address                           = "10.1.1.2"
+      subject_name                         = "CN=Router2,OU=Network,O=Example,C=US"
+      subject_alternative_name             = "DNS:router2.example.com,IP:192.168.1.2"
+      serial_number                        = true
+      vrf                                  = "VRF1"
+      message_digest                       = "sha256"
+      method_est_credential_certificate    = "EST-BOOTSTRAP"
+      enrollment_authentication_profile    = "EAP_PROFILE"
       re_enrollment_authentication_profile = "EAP_PROFILE"
-      # Supported from version 25.1
-      ssl_profile = "MTLS_PROFILE"
+      ssl_profile                          = "MTLS_PROFILE"
     }
   ]
   ca_openssh_trustpoints = [
@@ -177,7 +174,7 @@ Optional:
 - `crl_optional` (Boolean) CRL verification as optional
 - `description` (String) Description for the trustpoint
 - `enrollment_authentication_profile` (String) Authentication profile used during certificate enrollment
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `enrollment_retry_count` (Number) How many times to poll CA for our certificate
   - Range: `1`-`100`
 - `enrollment_retry_period` (Number) How long to wait between requests to CA for our certificate
@@ -191,7 +188,7 @@ Optional:
 - `method_est_credential_certificate` (String) Certificate based authentication in TLS handshake during bootstrap
 - `query_url` (String) CA server query URL
 - `re_enrollment_authentication_profile` (String) Authentication profile used during certificate re-enrollment
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `renewal_message_type_pkcsreq` (Boolean) Message type PKCSReq(Default)
 - `renewal_message_type_renewalreq` (Boolean) Message type RenewalReq
 - `rsakeypair` (String) RSA key pair
@@ -201,7 +198,7 @@ Optional:
 - `sftp_username` (String) Secure FTP username
 - `skip_challenge_password` (Boolean) Skip challenge password attribute for manual enrollment request
 - `ssl_profile` (String) SSL profile parameters used during TLS/mTLS handshake
-  - Supported from version: `25.1`
+  - Supported from version: `25.4`
 - `subject_alternative_name` (String) Include Subject Alternative Name(SAN) in CSR request
 - `subject_name` (String) Subject Name
 - `vrf` (String) Source interface VRF

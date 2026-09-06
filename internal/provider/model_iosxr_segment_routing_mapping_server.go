@@ -117,6 +117,7 @@ func (data SegmentRoutingMappingServer) toBody(ctx context.Context, providerVers
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRoutingMappingServer) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -135,7 +136,7 @@ func (data SegmentRoutingMappingServer) GetRangeConstraints() []helpers.FieldRan
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRoutingMappingServer) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingMappingServer) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.MappingPrefixSidAddressFamily {
 		keys := [...]string{"af-name"}
 		keyValues := [...]string{data.MappingPrefixSidAddressFamily[i].AfName.ValueString()}
@@ -224,7 +225,7 @@ func (data *SegmentRoutingMappingServer) updateFromBody(ctx context.Context, res
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRoutingMappingServer) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingMappingServer) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "prefix-sid-map.address-families.address-family"); value.Exists() {
 		data.MappingPrefixSidAddressFamily = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -267,7 +268,7 @@ func (data *SegmentRoutingMappingServer) fromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingMappingServerData) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingMappingServerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "prefix-sid-map.address-families.address-family"); value.Exists() {
 		data.MappingPrefixSidAddressFamily = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -310,7 +311,7 @@ func (data *SegmentRoutingMappingServerData) fromBody(ctx context.Context, res [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRoutingMappingServer) getDeletedItems(ctx context.Context, state SegmentRoutingMappingServer) []string {
+func (data *SegmentRoutingMappingServer) getDeletedItems(ctx context.Context, state SegmentRoutingMappingServer, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.MappingPrefixSidAddressFamily {
 		keys := [...]string{"af-name"}
@@ -394,7 +395,7 @@ func (data *SegmentRoutingMappingServer) getDeletedItems(ctx context.Context, st
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRoutingMappingServer) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRoutingMappingServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.MappingPrefixSidAddressFamily {
 		keys := [...]string{"af-name"}
@@ -421,7 +422,7 @@ func (data *SegmentRoutingMappingServer) getEmptyLeafsDelete(ctx context.Context
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRoutingMappingServer) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRoutingMappingServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.MappingPrefixSidAddressFamily {
 		keys := [...]string{"af-name"}
@@ -430,6 +431,14 @@ func (data *SegmentRoutingMappingServer) getDeletePaths(ctx context.Context) []s
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MappingPrefixSidAddressFamily[i].AfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v", data.getPath(), keyString))
 	}

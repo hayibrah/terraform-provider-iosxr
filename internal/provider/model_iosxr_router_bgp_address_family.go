@@ -953,32 +953,27 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 	if !data.SegmentRoutingSrv6AllocModeRoutePolicy.IsNull() && !data.SegmentRoutingSrv6AllocModeRoutePolicy.IsUnknown() {
 		body, _ = sjson.Set(body, "segment-routing.srv6.alloc.mode.route-policy", data.SegmentRoutingSrv6AllocModeRoutePolicy.ValueString())
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.AsBasedAsList.IsNull() && !data.AsBasedAsList.IsUnknown() {
 			body, _ = sjson.Set(body, "ecmp-delay.as-based.as-list", data.AsBasedAsList.ValueString())
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.AsBasedDelay.IsNull() && !data.AsBasedDelay.IsUnknown() {
 			body, _ = sjson.Set(body, "ecmp-delay.as-based.delay", strconv.FormatInt(data.AsBasedDelay.ValueInt64(), 10))
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.FixedDelay.IsNull() && !data.FixedDelay.IsUnknown() {
 			body, _ = sjson.Set(body, "ecmp-delay.fixed.delay", strconv.FormatInt(data.FixedDelay.ValueInt64(), 10))
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.PlatformOorBasedDelay.IsNull() && !data.PlatformOorBasedDelay.IsUnknown() {
 			body, _ = sjson.Set(body, "ecmp-delay.platform-oor-based.delay", strconv.FormatInt(data.PlatformOorBasedDelay.ValueInt64(), 10))
 		}
 	}
-	// Field added in version 25.1 - only set if provider version supports it
-	if helpers.VersionAtLeast(providerVersion, "25.1") {
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.PlatformOorBasedThreshold.IsNull() && !data.PlatformOorBasedThreshold.IsUnknown() {
 			body, _ = sjson.Set(body, "ecmp-delay.platform-oor-based.threshold", strconv.FormatInt(data.PlatformOorBasedThreshold.ValueInt64(), 10))
 		}
@@ -1537,42 +1532,43 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterBGPAddressFamily) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
 			FieldPath:      "redistribute_ospf.default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "redistribute_ospfv3.default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "redistribute_eigrp.default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "redistribute_isis.default_policy_action_in",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "as_based_as_list",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "as_based_delay",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "fixed_delay",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "platform_oor_based_delay",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 		{
 			FieldPath:      "platform_oor_based_threshold",
-			AddedInVersion: "25.1",
+			AddedInVersion: "25.4",
 		},
 	}...)
 	if len(constraints) == 0 {
@@ -1593,7 +1589,7 @@ func (data RouterBGPAddressFamily) GetRangeConstraints() []helpers.FieldRangeCon
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrf.all.segment-routing.srv6.locator"); value.Exists() && !data.VrfAllSegmentRoutingSrv6Locator.IsNull() {
 		data.VrfAllSegmentRoutingSrv6Locator = types.StringValue(value.String())
 	} else {
@@ -2368,7 +2364,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeOspf[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); value.Exists() && !data.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeOspf[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].DefaultPolicyActionIn = types.StringNull()
@@ -2700,7 +2696,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeOspfv3[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); value.Exists() && !data.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeOspfv3[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].DefaultPolicyActionIn = types.StringNull()
@@ -2780,7 +2776,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeEigrp[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); value.Exists() && !data.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeEigrp[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeEigrp[i].DefaultPolicyActionIn = types.StringNull()
@@ -2896,7 +2892,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeIsis[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); value.Exists() && !data.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeIsis[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].DefaultPolicyActionIn = types.StringNull()
@@ -3552,27 +3548,27 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 			data.PeerSetIds[i].PeerSidIndex = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); value.Exists() && !data.AsBasedAsList.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.AsBasedAsList.IsNull() {
 		data.AsBasedAsList = types.StringValue(value.String())
 	} else {
 		data.AsBasedAsList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() && !data.AsBasedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.AsBasedDelay.IsNull() {
 		data.AsBasedDelay = types.Int64Value(value.Int())
 	} else {
 		data.AsBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() && !data.FixedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.FixedDelay.IsNull() {
 		data.FixedDelay = types.Int64Value(value.Int())
 	} else {
 		data.FixedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() && !data.PlatformOorBasedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.PlatformOorBasedDelay.IsNull() {
 		data.PlatformOorBasedDelay = types.Int64Value(value.Int())
 	} else {
 		data.PlatformOorBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() && !data.PlatformOorBasedThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.PlatformOorBasedThreshold.IsNull() {
 		data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
 	} else {
 		data.PlatformOorBasedThreshold = types.Int64Null()
@@ -3583,7 +3579,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrf.all.segment-routing.srv6.locator"); value.Exists() {
 		data.VrfAllSegmentRoutingSrv6Locator = types.StringValue(value.String())
 	}
@@ -4001,8 +3997,12 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeOspf = append(data.RedistributeOspf, item)
 			return true
@@ -4181,8 +4181,12 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeOspfv3 = append(data.RedistributeOspfv3, item)
 			return true
@@ -4221,8 +4225,12 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeEigrp = append(data.RedistributeEigrp, item)
 			return true
@@ -4281,8 +4289,12 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeIsis = append(data.RedistributeIsis, item)
 			return true
@@ -4642,20 +4654,40 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); value.Exists() {
-		data.AsBasedAsList = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); value.Exists() {
+			data.AsBasedAsList = types.StringValue(value.String())
+		}
+	} else {
+		data.AsBasedAsList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
-		data.AsBasedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
+			data.AsBasedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.AsBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
-		data.FixedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
+			data.FixedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.FixedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
-		data.PlatformOorBasedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
+			data.PlatformOorBasedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.PlatformOorBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
-		data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
+			data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
+		}
+	} else {
+		data.PlatformOorBasedThreshold = types.Int64Null()
 	}
 }
 
@@ -4663,7 +4695,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrf.all.segment-routing.srv6.locator"); value.Exists() {
 		data.VrfAllSegmentRoutingSrv6Locator = types.StringValue(value.String())
 	}
@@ -5081,8 +5113,12 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeOspf = append(data.RedistributeOspf, item)
 			return true
@@ -5261,8 +5297,12 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeOspfv3 = append(data.RedistributeOspfv3, item)
 			return true
@@ -5301,8 +5341,12 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeEigrp = append(data.RedistributeEigrp, item)
 			return true
@@ -5361,8 +5405,12 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("route-policy"); cValue.Exists() {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
-				item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+			if helpers.VersionAtLeast(version, "25.4") {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() {
+					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
+				}
+			} else {
+				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			data.RedistributeIsis = append(data.RedistributeIsis, item)
 			return true
@@ -5722,20 +5770,40 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); value.Exists() {
-		data.AsBasedAsList = types.StringValue(value.String())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.as-list"); value.Exists() {
+			data.AsBasedAsList = types.StringValue(value.String())
+		}
+	} else {
+		data.AsBasedAsList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
-		data.AsBasedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
+			data.AsBasedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.AsBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
-		data.FixedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
+			data.FixedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.FixedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
-		data.PlatformOorBasedDelay = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
+			data.PlatformOorBasedDelay = types.Int64Value(value.Int())
+		}
+	} else {
+		data.PlatformOorBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
-		data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
+			data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
+		}
+	} else {
+		data.PlatformOorBasedThreshold = types.Int64Null()
 	}
 }
 
@@ -5743,21 +5811,21 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state RouterBGPAddressFamily) []string {
+func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state RouterBGPAddressFamily, version string) []string {
 	deletedItems := make([]string, 0)
-	if !state.PlatformOorBasedThreshold.IsNull() && data.PlatformOorBasedThreshold.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.PlatformOorBasedThreshold.IsNull() && data.PlatformOorBasedThreshold.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ecmp-delay/platform-oor-based/threshold", state.getPath()))
 	}
-	if !state.PlatformOorBasedDelay.IsNull() && data.PlatformOorBasedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.PlatformOorBasedDelay.IsNull() && data.PlatformOorBasedDelay.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ecmp-delay/platform-oor-based/delay", state.getPath()))
 	}
-	if !state.FixedDelay.IsNull() && data.FixedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.FixedDelay.IsNull() && data.FixedDelay.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ecmp-delay/fixed/delay", state.getPath()))
 	}
-	if !state.AsBasedDelay.IsNull() && data.AsBasedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.AsBasedDelay.IsNull() && data.AsBasedDelay.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ecmp-delay/as-based/delay", state.getPath()))
 	}
-	if !state.AsBasedAsList.IsNull() && data.AsBasedAsList.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.AsBasedAsList.IsNull() && data.AsBasedAsList.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/ecmp-delay/as-based/as-list", state.getPath()))
 	}
 	for i := range state.PeerSetIds {
@@ -6110,7 +6178,7 @@ func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state R
 				found = false
 			}
 			if found {
-				if !state.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() && data.RedistributeIsis[j].DefaultPolicyActionIn.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() && data.RedistributeIsis[j].DefaultPolicyActionIn.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v/default-policy-action-in", state.getPath(), keyString))
 				}
 				if !state.RedistributeIsis[i].RoutePolicy.IsNull() && data.RedistributeIsis[j].RoutePolicy.IsNull() {
@@ -6173,7 +6241,7 @@ func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state R
 				found = false
 			}
 			if found {
-				if !state.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() && data.RedistributeEigrp[j].DefaultPolicyActionIn.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() && data.RedistributeEigrp[j].DefaultPolicyActionIn.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/eigrps/eigrp%v/default-policy-action-in", state.getPath(), keyString))
 				}
 				if !state.RedistributeEigrp[i].RoutePolicy.IsNull() && data.RedistributeEigrp[j].RoutePolicy.IsNull() {
@@ -6224,7 +6292,7 @@ func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state R
 				found = false
 			}
 			if found {
-				if !state.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspfv3[j].DefaultPolicyActionIn.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspfv3[j].DefaultPolicyActionIn.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v/default-policy-action-in", state.getPath(), keyString))
 				}
 				if !state.RedistributeOspfv3[i].RoutePolicy.IsNull() && data.RedistributeOspfv3[j].RoutePolicy.IsNull() {
@@ -6359,7 +6427,7 @@ func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state R
 				found = false
 			}
 			if found {
-				if !state.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspf[j].DefaultPolicyActionIn.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspf[j].DefaultPolicyActionIn.IsNull() {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/ospfs/ospf%v/default-policy-action-in", state.getPath(), keyString))
 				}
 				if !state.RedistributeOspf[i].RoutePolicy.IsNull() && data.RedistributeOspf[j].RoutePolicy.IsNull() {
@@ -6706,7 +6774,7 @@ func (data *RouterBGPAddressFamily) getDeletedItems(ctx context.Context, state R
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterBGPAddressFamily) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterBGPAddressFamily) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.PeerSetIds {
 		keys := [...]string{"peer-set-id-number"}
@@ -7230,21 +7298,21 @@ func (data *RouterBGPAddressFamily) getEmptyLeafsDelete(ctx context.Context) []s
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string {
+func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
-	if !data.PlatformOorBasedThreshold.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.PlatformOorBasedThreshold.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ecmp-delay/platform-oor-based/threshold", data.getPath()))
 	}
-	if !data.PlatformOorBasedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.PlatformOorBasedDelay.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ecmp-delay/platform-oor-based/delay", data.getPath()))
 	}
-	if !data.FixedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.FixedDelay.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ecmp-delay/fixed/delay", data.getPath()))
 	}
-	if !data.AsBasedDelay.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.AsBasedDelay.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ecmp-delay/as-based/delay", data.getPath()))
 	}
-	if !data.AsBasedAsList.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.AsBasedAsList.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ecmp-delay/as-based/as-list", data.getPath()))
 	}
 	for i := range data.PeerSetIds {
@@ -7254,6 +7322,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PeerSetIds[i].PeerId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-set-ids/peer-set-id%v", data.getPath(), keyString))
 	}
@@ -7367,6 +7443,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpClientToClientReflectionClusterIdsIpFormat[i].ClusterIp.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/client-to-client/reflection/cluster-ids/cluster-id-ip-address%v", data.getPath(), keyString))
 	}
 	for i := range data.BgpClientToClientReflectionClusterIds32bitFormat {
@@ -7376,6 +7460,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.BgpClientToClientReflectionClusterIds32bitFormat[i].ClusterAs.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/client-to-client/reflection/cluster-ids/cluster-id-number%v", data.getPath(), keyString))
 	}
@@ -7513,6 +7605,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeIsis[i].InstanceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString))
 	}
 	for i := range data.RedistributeEigrp {
@@ -7522,6 +7622,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeEigrp[i].InstanceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString))
 	}
@@ -7533,6 +7641,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeOspfv3[i].RouterTag.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString))
 	}
 	for i := range data.RedistributeOspf {
@@ -7542,6 +7658,14 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.RedistributeOspf[i].RouterTag.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString))
 	}
@@ -7553,6 +7677,17 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AggregateAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AggregateAddresses[i].Prefix.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", data.getPath(), keyString))
 	}
 	for i := range data.Networks {
@@ -7562,6 +7697,17 @@ func (data *RouterBGPAddressFamily) getDeletePaths(ctx context.Context) []string
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Networks[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Networks[i].Prefix.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/networks/network%v", data.getPath(), keyString))
 	}

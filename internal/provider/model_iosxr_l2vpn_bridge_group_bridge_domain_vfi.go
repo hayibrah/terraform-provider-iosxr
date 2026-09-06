@@ -494,6 +494,7 @@ func (data L2VPNBridgeGroupBridgeDomainVFI) toBody(ctx context.Context, provider
 // GetVersionConstraints returns the version constraints for all fields
 func (data L2VPNBridgeGroupBridgeDomainVFI) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -512,7 +513,7 @@ func (data L2VPNBridgeGroupBridgeDomainVFI) GetRangeConstraints() []helpers.Fiel
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() && !data.VpnId.IsNull() {
 		data.VpnId = types.Int64Value(value.Int())
 	} else {
@@ -1160,7 +1161,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() {
 		data.VpnId = types.Int64Value(value.Int())
 	}
@@ -1474,7 +1475,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, res []byte) {
+func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() {
 		data.VpnId = types.Int64Value(value.Int())
 	}
@@ -1788,7 +1789,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomainVFI) []string {
+func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context, state L2VPNBridgeGroupBridgeDomainVFI, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -2307,7 +2308,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -2457,7 +2458,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Con
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context) []string {
+func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Neighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -2466,6 +2467,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Neighbors[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.Neighbors[i].PwId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
@@ -2546,6 +2558,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Index.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetFourByteAsFormat {
@@ -2555,6 +2578,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].FourByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -2566,6 +2600,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].TwoByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat {
@@ -2575,6 +2620,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
@@ -2586,6 +2642,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].FourByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat {
@@ -2595,6 +2662,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].TwoByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
@@ -2606,6 +2684,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat {
@@ -2616,6 +2705,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].FourByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat {
@@ -2625,6 +2725,17 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context)
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].TwoByteAsNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}

@@ -295,6 +295,7 @@ func (data RouterMLDVRFInterface) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterMLDVRFInterface) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -313,7 +314,7 @@ func (data RouterMLDVRFInterface) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterMLDVRFInterface) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRFInterface) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() && !data.Version.IsNull() {
 		data.Version = types.Int64Value(value.Int())
 	} else {
@@ -671,7 +672,7 @@ func (data *RouterMLDVRFInterface) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterMLDVRFInterface) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRFInterface) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() {
 		data.Version = types.Int64Value(value.Int())
 	}
@@ -845,7 +846,7 @@ func (data *RouterMLDVRFInterface) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterMLDVRFInterfaceData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRFInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "version"); value.Exists() {
 		data.Version = types.Int64Value(value.Int())
 	}
@@ -1019,7 +1020,7 @@ func (data *RouterMLDVRFInterfaceData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterMLDVRFInterface) getDeletedItems(ctx context.Context, state RouterMLDVRFInterface) []string {
+func (data *RouterMLDVRFInterface) getDeletedItems(ctx context.Context, state RouterMLDVRFInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.DvmrpEnable.IsNull() && data.DvmrpEnable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/dvmrp-enable", state.getPath()))
@@ -1286,7 +1287,7 @@ func (data *RouterMLDVRFInterface) getDeletedItems(ctx context.Context, state Ro
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterMLDVRFInterface) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterMLDVRFInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.DvmrpEnable.IsNull() && !data.DvmrpEnable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dvmrp-enable", data.getPath()))
@@ -1381,7 +1382,7 @@ func (data *RouterMLDVRFInterface) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterMLDVRFInterface) getDeletePaths(ctx context.Context) []string {
+func (data *RouterMLDVRFInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.DvmrpEnable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/dvmrp-enable", data.getPath()))
@@ -1394,6 +1395,14 @@ func (data *RouterMLDVRFInterface) getDeletePaths(ctx context.Context) []string 
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.JoinGroups[i].GroupAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/join-groups/join-group%v", data.getPath(), keyString))
 	}
 	for i := range data.StaticGroups {
@@ -1403,6 +1412,14 @@ func (data *RouterMLDVRFInterface) getDeletePaths(ctx context.Context) []string 
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.StaticGroups[i].GroupAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/static-group/group-address%v", data.getPath(), keyString))
 	}

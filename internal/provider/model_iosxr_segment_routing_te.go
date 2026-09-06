@@ -715,6 +715,7 @@ func (data SegmentRoutingTE) toBody(ctx context.Context, providerVersion string)
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRoutingTE) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -733,7 +734,7 @@ func (data SegmentRoutingTE) GetRangeConstraints() []helpers.FieldRangeConstrain
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRoutingTE) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTE) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "te-latency"); !data.TeLatency.IsNull() {
 		if value.Exists() {
 			data.TeLatency = types.BoolValue(true)
@@ -1735,7 +1736,7 @@ func (data *SegmentRoutingTE) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRoutingTE) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTE) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "te-latency"); value.Exists() {
 		data.TeLatency = types.BoolValue(true)
 	} else {
@@ -2223,7 +2224,7 @@ func (data *SegmentRoutingTE) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingTEData) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "te-latency"); value.Exists() {
 		data.TeLatency = types.BoolValue(true)
 	} else {
@@ -2711,7 +2712,7 @@ func (data *SegmentRoutingTEData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state SegmentRoutingTE) []string {
+func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state SegmentRoutingTE, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Srv6MaximumSidDepth.IsNull() && data.Srv6MaximumSidDepth.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/maximum-sid-depth", state.getPath()))
@@ -3485,7 +3486,7 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.CandidatePaths {
 		keys := [...]string{"candidate-path-type"}
@@ -3695,7 +3696,7 @@ func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context) []string 
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Srv6MaximumSidDepth.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/maximum-sid-depth", data.getPath()))
@@ -3717,6 +3718,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.CandidatePaths[i].PathType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", data.getPath(), keyString))
 	}
 	for i := range data.AffinityMaps {
@@ -3726,6 +3735,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.AffinityMaps[i].AffinityName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity-maps/affinity-map%v", data.getPath(), keyString))
 	}
@@ -3740,6 +3757,17 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PathDisableAlgoChecksStrictSpfAreas[i].AreaId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.PathDisableAlgoChecksStrictSpfAreas[i].Protocol.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/path/disable-algorithm-check/strict-spf/areas/area%v", data.getPath(), keyString))
 	}
 	for i := range data.Traces {
@@ -3749,6 +3777,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Traces[i].BufferName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/trace-counts/trace-count%v", data.getPath(), keyString))
 	}
@@ -3790,6 +3826,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PccProfiles[i].ProfileId.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString))
 	}
 	for i := range data.PcePeersIpv6 {
@@ -3799,6 +3843,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PcePeersIpv6[i].PceAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", data.getPath(), keyString))
 	}
@@ -3810,6 +3862,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PcePeersIpv4[i].PceAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", data.getPath(), keyString))
 	}
 	for i := range data.Interfaces {
@@ -3819,6 +3879,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/srte-interfaces/srte-interface%v", data.getPath(), keyString))
 	}
@@ -3847,6 +3915,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.ResourceLists[i].PathName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/resources/resource%v", data.getPath(), keyString))
 	}
@@ -3891,6 +3967,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SegmentListsSrMplsExplicitSegments[i].PathName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segments/segment%v", data.getPath(), keyString))
 	}
 	for i := range data.SegmentListsSrv6ExplicitSegments {
@@ -3900,6 +3984,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SegmentListsSrv6ExplicitSegments[i].PathName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v", data.getPath(), keyString))
 	}
@@ -3932,6 +4024,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.EffectiveMetricAdminDistanceFlexAlgoMetricTypes[i].MetricType.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type%v", data.getPath(), keyString))
 	}
 	for i := range data.EffectiveMetricAdminDistanceMetricTypes {
@@ -3941,6 +4041,14 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.EffectiveMetricAdminDistanceMetricTypes[i].MetricType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type%v", data.getPath(), keyString))
 	}

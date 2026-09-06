@@ -209,6 +209,7 @@ func (data RouterIGMP) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterIGMP) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -227,7 +228,7 @@ func (data RouterIGMP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterIGMP) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMP) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accounting.max-history"); value.Exists() && !data.AccountingMaxHistory.IsNull() {
 		data.AccountingMaxHistory = types.Int64Value(value.Int())
 	} else {
@@ -394,7 +395,7 @@ func (data *RouterIGMP) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterIGMP) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accounting.max-history"); value.Exists() {
 		data.AccountingMaxHistory = types.Int64Value(value.Int())
 	}
@@ -489,7 +490,7 @@ func (data *RouterIGMP) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterIGMPData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterIGMPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "accounting.max-history"); value.Exists() {
 		data.AccountingMaxHistory = types.Int64Value(value.Int())
 	}
@@ -584,7 +585,7 @@ func (data *RouterIGMPData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterIGMP) getDeletedItems(ctx context.Context, state RouterIGMP) []string {
+func (data *RouterIGMP) getDeletedItems(ctx context.Context, state RouterIGMP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TrafficProfile.IsNull() && data.TrafficProfile.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic/profile", state.getPath()))
@@ -692,7 +693,7 @@ func (data *RouterIGMP) getDeletedItems(ctx context.Context, state RouterIGMP) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterIGMP) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterIGMP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SsmMapQueryDns.IsNull() && !data.SsmMapQueryDns.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
@@ -720,7 +721,7 @@ func (data *RouterIGMP) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterIGMP) getDeletePaths(ctx context.Context) []string {
+func (data *RouterIGMP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TrafficProfile.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic/profile", data.getPath()))
@@ -747,6 +748,14 @@ func (data *RouterIGMP) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SsmMapStatics[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
 	}

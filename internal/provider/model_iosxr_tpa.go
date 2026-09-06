@@ -203,6 +203,7 @@ func (data TPA) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data TPA) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -221,7 +222,7 @@ func (data TPA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *TPA) updateFromBody(ctx context.Context, res []byte) {
+func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() && !data.StatisticsUpdateFrequency.IsNull() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	} else {
@@ -444,7 +445,7 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *TPA) fromBody(ctx context.Context, res []byte) {
+func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	}
@@ -553,7 +554,7 @@ func (data *TPA) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *TPAData) fromBody(ctx context.Context, res []byte) {
+func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	}
@@ -662,7 +663,7 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *TPA) getDeletedItems(ctx context.Context, state TPA) []string {
+func (data *TPA) getDeletedItems(ctx context.Context, state TPA, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -839,7 +840,7 @@ func (data *TPA) getDeletedItems(ctx context.Context, state TPA) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *TPA) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *TPA) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -894,7 +895,7 @@ func (data *TPA) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *TPA) getDeletePaths(ctx context.Context) []string {
+func (data *TPA) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -903,6 +904,14 @@ func (data *TPA) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}

@@ -97,6 +97,7 @@ func (data IPv6AccessListOptions) toBody(ctx context.Context, providerVersion st
 // GetVersionConstraints returns the version constraints for all fields
 func (data IPv6AccessListOptions) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -115,7 +116,7 @@ func (data IPv6AccessListOptions) GetRangeConstraints() []helpers.FieldRangeCons
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *IPv6AccessListOptions) updateFromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessListOptions) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() && !data.LogUpdateThreshold.IsNull() {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	} else {
@@ -150,7 +151,7 @@ func (data *IPv6AccessListOptions) updateFromBody(ctx context.Context, res []byt
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *IPv6AccessListOptions) fromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessListOptions) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	}
@@ -173,7 +174,7 @@ func (data *IPv6AccessListOptions) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *IPv6AccessListOptionsData) fromBody(ctx context.Context, res []byte) {
+func (data *IPv6AccessListOptionsData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	}
@@ -196,7 +197,7 @@ func (data *IPv6AccessListOptionsData) fromBody(ctx context.Context, res []byte)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *IPv6AccessListOptions) getDeletedItems(ctx context.Context, state IPv6AccessListOptions) []string {
+func (data *IPv6AccessListOptions) getDeletedItems(ctx context.Context, state IPv6AccessListOptions, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.IcmpOff.IsNull() && data.IcmpOff.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/icmp-off", state.getPath()))
@@ -217,7 +218,7 @@ func (data *IPv6AccessListOptions) getDeletedItems(ctx context.Context, state IP
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *IPv6AccessListOptions) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *IPv6AccessListOptions) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.IcmpOff.IsNull() && !data.IcmpOff.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/icmp-off", data.getPath()))
@@ -231,7 +232,7 @@ func (data *IPv6AccessListOptions) getEmptyLeafsDelete(ctx context.Context) []st
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *IPv6AccessListOptions) getDeletePaths(ctx context.Context) []string {
+func (data *IPv6AccessListOptions) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.IcmpOff.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/icmp-off", data.getPath()))

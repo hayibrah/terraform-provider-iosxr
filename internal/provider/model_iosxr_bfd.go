@@ -274,6 +274,7 @@ func (data BFD) toBody(ctx context.Context, providerVersion string) string {
 // GetVersionConstraints returns the version constraints for all fields
 func (data BFD) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -292,7 +293,7 @@ func (data BFD) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *BFD) updateFromBody(ctx context.Context, res []byte) {
+func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "echo.disable"); !data.EchoDisable.IsNull() {
 		if value.Exists() {
 			data.EchoDisable = types.BoolValue(true)
@@ -576,7 +577,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *BFD) fromBody(ctx context.Context, res []byte) {
+func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "echo.disable"); value.Exists() {
 		data.EchoDisable = types.BoolValue(true)
 	} else {
@@ -726,7 +727,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *BFDData) fromBody(ctx context.Context, res []byte) {
+func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "echo.disable"); value.Exists() {
 		data.EchoDisable = types.BoolValue(true)
 	} else {
@@ -876,7 +877,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *BFD) getDeletedItems(ctx context.Context, state BFD) []string {
+func (data *BFD) getDeletedItems(ctx context.Context, state BFD, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1065,7 +1066,7 @@ func (data *BFD) getDeletedItems(ctx context.Context, state BFD) []string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *BFD) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *BFD) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1127,7 +1128,7 @@ func (data *BFD) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *BFD) getDeletePaths(ctx context.Context) []string {
+func (data *BFD) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1136,6 +1137,14 @@ func (data *BFD) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Interfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
@@ -1186,6 +1195,14 @@ func (data *BFD) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MultipathDestinations[i].DestinationAddress.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/multipath/destinations/destination%v", data.getPath(), keyString))
 	}
 	for i := range data.MultipathLocations {
@@ -1195,6 +1212,14 @@ func (data *BFD) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.MultipathLocations[i].LocationId.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/multipath/include/locations/location%v", data.getPath(), keyString))
 	}

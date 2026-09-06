@@ -192,6 +192,7 @@ func (data RouterMLDVRF) toBody(ctx context.Context, providerVersion string) str
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterMLDVRF) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -210,7 +211,7 @@ func (data RouterMLDVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterMLDVRF) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "robustness-variable"); value.Exists() && !data.RobustnessVariable.IsNull() {
 		data.RobustnessVariable = types.Int64Value(value.Int())
 	} else {
@@ -353,7 +354,7 @@ func (data *RouterMLDVRF) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterMLDVRF) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRF) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "robustness-variable"); value.Exists() {
 		data.RobustnessVariable = types.Int64Value(value.Int())
 	}
@@ -434,7 +435,7 @@ func (data *RouterMLDVRF) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterMLDVRFData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterMLDVRFData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "robustness-variable"); value.Exists() {
 		data.RobustnessVariable = types.Int64Value(value.Int())
 	}
@@ -515,7 +516,7 @@ func (data *RouterMLDVRFData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVRF) []string {
+func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.MissedPacketsMemberReport.IsNull() && data.MissedPacketsMemberReport.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/member-report", state.getPath()))
@@ -611,7 +612,7 @@ func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVR
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SsmMapQueryDns.IsNull() && !data.SsmMapQueryDns.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
@@ -636,7 +637,7 @@ func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterMLDVRF) getDeletePaths(ctx context.Context) []string {
+func (data *RouterMLDVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.MissedPacketsMemberReport.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/member-report", data.getPath()))
@@ -660,6 +661,14 @@ func (data *RouterMLDVRF) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SsmMapStatics[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
 	}

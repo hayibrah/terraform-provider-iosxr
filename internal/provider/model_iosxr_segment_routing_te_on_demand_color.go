@@ -377,6 +377,7 @@ func (data SegmentRoutingTEOnDemandColor) toBody(ctx context.Context, providerVe
 // GetVersionConstraints returns the version constraints for all fields
 func (data SegmentRoutingTEOnDemandColor) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -395,7 +396,7 @@ func (data SegmentRoutingTEOnDemandColor) GetRangeConstraints() []helpers.FieldR
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-anycast"); !data.DynamicAnycastSidInclusion.IsNull() {
 		if value.Exists() {
 			data.DynamicAnycastSidInclusion = types.BoolValue(true)
@@ -792,7 +793,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-anycast"); value.Exists() {
 		data.DynamicAnycastSidInclusion = types.BoolValue(true)
 	} else {
@@ -1005,7 +1006,7 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res []byte) {
+func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-anycast"); value.Exists() {
 		data.DynamicAnycastSidInclusion = types.BoolValue(true)
 	} else {
@@ -1218,7 +1219,7 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, state SegmentRoutingTEOnDemandColor) []string {
+func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, state SegmentRoutingTEOnDemandColor, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Srv6LocatorBehavior.IsNull() && data.Srv6LocatorBehavior.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/locator/behavior", state.getPath()))
@@ -1488,7 +1489,7 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SegmentRoutingTEOnDemandColor) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SegmentRoutingTEOnDemandColor) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdLoggingSessionStateChange.IsNull() && !data.BfdLoggingSessionStateChange.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/bfd-logging/session-state-change", data.getPath()))
@@ -1558,7 +1559,7 @@ func (data *SegmentRoutingTEOnDemandColor) getEmptyLeafsDelete(ctx context.Conte
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context) []string {
+func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Srv6LocatorBehavior.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/locator/behavior", data.getPath()))
@@ -1615,6 +1616,14 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context) [
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.PerFlowForwardClasses[i].ForwardClass.ValueInt64()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/per-flow/forward-class-and-colors/forward-class-and-color%v", data.getPath(), keyString))
 	}
@@ -1674,6 +1683,17 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context) [
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.DynamicBounds[i].Type.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.DynamicBounds[i].MetricType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/on-demand-color-dyn-mpls/bounds/bounds/bound%v", data.getPath(), keyString))
 	}
 	for i := range data.DynamicAffinityRules {
@@ -1683,6 +1703,14 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context) [
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.DynamicAffinityRules[i].AffinityType.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/on-demand-color-dyn-mpls/affinity-rules/affinity-rule%v", data.getPath(), keyString))
 	}

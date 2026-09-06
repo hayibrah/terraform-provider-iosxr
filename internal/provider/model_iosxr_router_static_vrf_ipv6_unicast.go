@@ -447,6 +447,7 @@ func (data RouterStaticVRFIPv6Unicast) toBody(ctx context.Context, providerVersi
 // GetVersionConstraints returns the version constraints for all fields
 func (data RouterStaticVRFIPv6Unicast) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -465,7 +466,7 @@ func (data RouterStaticVRFIPv6Unicast) GetRangeConstraints() []helpers.FieldRang
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *RouterStaticVRFIPv6Unicast) updateFromBody(ctx context.Context, res []byte) {
+func (data *RouterStaticVRFIPv6Unicast) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.NexthopInterfaces {
 		keys := [...]string{"interface-name"}
 		keyValues := [...]string{data.NexthopInterfaces[i].InterfaceName.ValueString()}
@@ -1055,7 +1056,7 @@ func (data *RouterStaticVRFIPv6Unicast) updateFromBody(ctx context.Context, res 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *RouterStaticVRFIPv6Unicast) fromBody(ctx context.Context, res []byte) {
+func (data *RouterStaticVRFIPv6Unicast) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "nexthop-interfaces.nexthop-interface"); value.Exists() {
 		data.NexthopInterfaces = make([]RouterStaticVRFIPv6UnicastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1351,7 +1352,7 @@ func (data *RouterStaticVRFIPv6Unicast) fromBody(ctx context.Context, res []byte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *RouterStaticVRFIPv6UnicastData) fromBody(ctx context.Context, res []byte) {
+func (data *RouterStaticVRFIPv6UnicastData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "nexthop-interfaces.nexthop-interface"); value.Exists() {
 		data.NexthopInterfaces = make([]RouterStaticVRFIPv6UnicastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
@@ -1647,7 +1648,7 @@ func (data *RouterStaticVRFIPv6UnicastData) fromBody(ctx context.Context, res []
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *RouterStaticVRFIPv6Unicast) getDeletedItems(ctx context.Context, state RouterStaticVRFIPv6Unicast) []string {
+func (data *RouterStaticVRFIPv6Unicast) getDeletedItems(ctx context.Context, state RouterStaticVRFIPv6Unicast, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -2106,7 +2107,7 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletedItems(ctx context.Context, sta
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *RouterStaticVRFIPv6Unicast) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *RouterStaticVRFIPv6Unicast) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -2210,7 +2211,7 @@ func (data *RouterStaticVRFIPv6Unicast) getEmptyLeafsDelete(ctx context.Context)
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []string {
+func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Vrfs {
 		keys := [...]string{"vrf-name"}
@@ -2219,6 +2220,14 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []st
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Vrfs[i].VrfName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}
@@ -2230,6 +2239,14 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []st
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.SrPolicies[i].SrPolicyName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policies/sr-policy%v", data.getPath(), keyString))
 	}
 	for i := range data.NexthopAddresses {
@@ -2239,6 +2256,14 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []st
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NexthopAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop-addresses/nexthop-address%v", data.getPath(), keyString))
 	}
@@ -2250,6 +2275,17 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []st
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NexthopInterfaceAddresses[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.NexthopInterfaceAddresses[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop-interface-addresses/nexthop-interface-address%v", data.getPath(), keyString))
 	}
 	for i := range data.NexthopInterfaces {
@@ -2259,6 +2295,14 @@ func (data *RouterStaticVRFIPv6Unicast) getDeletePaths(ctx context.Context) []st
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.NexthopInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop-interfaces/nexthop-interface%v", data.getPath(), keyString))
 	}

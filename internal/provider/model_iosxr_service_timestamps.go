@@ -169,6 +169,7 @@ func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string
 // GetVersionConstraints returns the version constraints for all fields
 func (data ServiceTimestamps) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -187,7 +188,7 @@ func (data ServiceTimestamps) GetRangeConstraints() []helpers.FieldRangeConstrai
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte) {
+func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); !data.DebugDatetimeLocaltimeOnly.IsNull() {
 		if value.Exists() {
 			data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
@@ -320,7 +321,7 @@ func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte) {
+func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
 		data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
 	} else {
@@ -397,7 +398,7 @@ func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte) {
+func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
 		data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
 	} else {
@@ -474,7 +475,7 @@ func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state ServiceTimestamps) []string {
+func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state ServiceTimestamps, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LogDisable.IsNull() && data.LogDisable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/disable", state.getPath()))
@@ -525,7 +526,7 @@ func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state Servic
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LogDisable.IsNull() && !data.LogDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/disable", data.getPath()))
@@ -575,7 +576,7 @@ func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context) []string
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *ServiceTimestamps) getDeletePaths(ctx context.Context) []string {
+func (data *ServiceTimestamps) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LogDisable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/disable", data.getPath()))

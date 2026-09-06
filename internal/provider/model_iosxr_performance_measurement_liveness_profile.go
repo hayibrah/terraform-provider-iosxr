@@ -279,6 +279,7 @@ func (data PerformanceMeasurementLivenessProfile) toBody(ctx context.Context, pr
 // GetVersionConstraints returns the version constraints for all fields
 func (data PerformanceMeasurementLivenessProfile) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -297,7 +298,7 @@ func (data PerformanceMeasurementLivenessProfile) GetRangeConstraints() []helper
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sr-policy.default"); !data.SrPolicyDefault.IsNull() {
 		if value.Exists() {
 			data.SrPolicyDefault = types.BoolValue(true)
@@ -549,7 +550,7 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sr-policy.default"); value.Exists() {
 		data.SrPolicyDefault = types.BoolValue(true)
 	} else {
@@ -699,7 +700,7 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Context, res []byte) {
+func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "sr-policy.default"); value.Exists() {
 		data.SrPolicyDefault = types.BoolValue(true)
 	} else {
@@ -849,7 +850,7 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *PerformanceMeasurementLivenessProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementLivenessProfile) []string {
+func (data *PerformanceMeasurementLivenessProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementLivenessProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	for i := range state.Profiles {
 		keys := [...]string{"profile-name"}
@@ -996,7 +997,7 @@ func (data *PerformanceMeasurementLivenessProfile) getDeletedItems(ctx context.C
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *PerformanceMeasurementLivenessProfile) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *PerformanceMeasurementLivenessProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -1039,7 +1040,7 @@ func (data *PerformanceMeasurementLivenessProfile) getEmptyLeafsDelete(ctx conte
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *PerformanceMeasurementLivenessProfile) getDeletePaths(ctx context.Context) []string {
+func (data *PerformanceMeasurementLivenessProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -1048,6 +1049,14 @@ func (data *PerformanceMeasurementLivenessProfile) getDeletePaths(ctx context.Co
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Profiles[i].ProfileName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
 	}

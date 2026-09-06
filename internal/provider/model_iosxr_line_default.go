@@ -316,6 +316,7 @@ func (data LineDefault) toBody(ctx context.Context, providerVersion string) stri
 // GetVersionConstraints returns the version constraints for all fields
 func (data LineDefault) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -334,7 +335,7 @@ func (data LineDefault) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *LineDefault) updateFromBody(ctx context.Context, res []byte) {
+func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && !data.Autocommand.IsNull() {
 		data.Autocommand = types.StringValue(value.String())
 	} else {
@@ -623,7 +624,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *LineDefault) fromBody(ctx context.Context, res []byte) {
+func (data *LineDefault) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "autocommand"); value.Exists() {
 		data.Autocommand = types.StringValue(value.String())
 	}
@@ -786,7 +787,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *LineDefaultData) fromBody(ctx context.Context, res []byte) {
+func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "autocommand"); value.Exists() {
 		data.Autocommand = types.StringValue(value.String())
 	}
@@ -949,7 +950,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault) []string {
+func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TelnetTransparent.IsNull() && data.TelnetTransparent.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", state.getPath()))
@@ -1105,7 +1106,7 @@ func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault)
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TelnetTransparent.IsNull() && !data.TelnetTransparent.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", data.getPath()))
@@ -1172,7 +1173,7 @@ func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *LineDefault) getDeletePaths(ctx context.Context) []string {
+func (data *LineDefault) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TelnetTransparent.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", data.getPath()))
@@ -1205,6 +1206,14 @@ func (data *LineDefault) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.UsersGroup[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:users/group%v", data.getPath(), keyString))
 	}

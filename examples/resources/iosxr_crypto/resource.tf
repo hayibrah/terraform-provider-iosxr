@@ -23,32 +23,29 @@ resource "iosxr_crypto" "example" {
   ca_trustpoint_system_message_digest               = "sha256"
   ca_trustpoints = [
     {
-      trustpoint_name                   = "TP1"
-      description                       = "Custom trustpoint"
-      enrollment_retry_count            = 10
-      enrollment_retry_period           = 5
-      enrollment_url                    = "http://ca.example.com"
-      sftp_username                     = "sftpuser"
-      sftp_password                     = "1511021F0725"
-      auto_enroll                       = 80
-      renewal_message_type_renewalreq   = true
-      skip_challenge_password           = true
-      rsakeypair                        = "KEY1"
-      crl_optional                      = true
-      query_url                         = "ldap://ca.example.com/certsrv"
-      ip_address                        = "10.1.1.2"
-      subject_name                      = "CN=Router2,OU=Network,O=Example,C=US"
-      subject_alternative_name          = "DNS:router2.example.com,IP:192.168.1.2"
-      serial_number                     = true
-      vrf                               = "VRF1"
-      message_digest                    = "sha256"
-      method_est_credential_certificate = "EST-BOOTSTRAP"
-      # Supported from version 25.1
-      enrollment_authentication_profile = "EAP_PROFILE"
-      # Supported from version 25.1
+      trustpoint_name                      = "TP1"
+      description                          = "Custom trustpoint"
+      enrollment_retry_count               = 10
+      enrollment_retry_period              = 5
+      enrollment_url                       = "http://ca.example.com"
+      sftp_username                        = "sftpuser"
+      sftp_password                        = "1511021F0725"
+      auto_enroll                          = 80
+      renewal_message_type_renewalreq      = true
+      skip_challenge_password              = true
+      rsakeypair                           = "KEY1"
+      crl_optional                         = true
+      query_url                            = "ldap://ca.example.com/certsrv"
+      ip_address                           = "10.1.1.2"
+      subject_name                         = "CN=Router2,OU=Network,O=Example,C=US"
+      subject_alternative_name             = "DNS:router2.example.com,IP:192.168.1.2"
+      serial_number                        = true
+      vrf                                  = "VRF1"
+      message_digest                       = "sha256"
+      method_est_credential_certificate    = "EST-BOOTSTRAP"
+      enrollment_authentication_profile    = "EAP_PROFILE"
       re_enrollment_authentication_profile = "EAP_PROFILE"
-      # Supported from version 25.1
-      ssl_profile = "MTLS_PROFILE"
+      ssl_profile                          = "MTLS_PROFILE"
     }
   ]
   ca_openssh_trustpoints = [

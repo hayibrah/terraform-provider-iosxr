@@ -1390,6 +1390,7 @@ func (data SNMPServer) toBody(ctx context.Context, providerVersion string) strin
 // GetVersionConstraints returns the version constraints for all fields
 func (data SNMPServer) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
+
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -1408,7 +1409,7 @@ func (data SNMPServer) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // End of section. //template:end getRangeConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
-func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte) {
+func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "location"); value.Exists() && !data.Location.IsNull() {
 		data.Location = types.StringValue(value.String())
 	} else {
@@ -3148,7 +3149,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
-func (data *SNMPServer) fromBody(ctx context.Context, res []byte) {
+func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "location"); value.Exists() {
 		data.Location = types.StringValue(value.String())
 	}
@@ -4066,7 +4067,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
-func (data *SNMPServerData) fromBody(ctx context.Context, res []byte) {
+func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "location"); value.Exists() {
 		data.Location = types.StringValue(value.String())
 	}
@@ -4984,7 +4985,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletedItems
 
-func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer) []string {
+func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.InformPending.IsNull() && data.InformPending.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/inform/pending", state.getPath()))
@@ -5986,7 +5987,7 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer) [
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getEmptyLeafsDelete
 
-func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context) []string {
+func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.OidPollStats.IsNull() && !data.OidPollStats.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oid-poll-stats", data.getPath()))
@@ -6440,7 +6441,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context) []string {
 // End of section. //template:end getEmptyLeafsDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
-func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
+func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.InformPending.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/inform/pending", data.getPath()))
@@ -6483,6 +6484,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Users[i].UserName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/users/user%v", data.getPath(), keyString))
 	}
 	for i := range data.EngineIdRemotes {
@@ -6492,6 +6501,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.EngineIdRemotes[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/engine-id/remotes/remote%v", data.getPath(), keyString))
 	}
@@ -6505,6 +6522,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Groups[i].GroupName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
 	}
@@ -6552,6 +6577,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Views[i].ViewName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/views/view%v", data.getPath(), keyString))
 	}
 	for i := range data.Hosts {
@@ -6561,6 +6594,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Hosts[i].Address.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString))
 	}
@@ -6838,6 +6879,14 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context) []string {
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
+		}
+
+		emptyKeys := true
+		if !reflect.ValueOf(data.Communities[i].Community.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if emptyKeys {
+			continue
 		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString))
 	}

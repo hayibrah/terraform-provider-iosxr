@@ -148,7 +148,7 @@ func (d *RouterVRRPInterfaceDataSource) Read(ctx context.Context, req datasource
 		}
 
 		respBody := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()
-		config.fromBody(ctx, respBody)
+		config.fromBody(ctx, respBody, device.Version)
 	}
 
 	config.Id = types.StringValue(config.getPath())
