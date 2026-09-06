@@ -101,7 +101,7 @@ func (data EtagSet) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EtagSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *EtagSet) updateFromBody(ctx context.Context, res []byte, version str
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *EtagSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() {
+	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *EtagSet) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *EtagSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() {
+	if value := gjson.GetBytes(res, "etag-set-as-text"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

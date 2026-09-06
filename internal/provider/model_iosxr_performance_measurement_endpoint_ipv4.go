@@ -199,12 +199,12 @@ func (data PerformanceMeasurementEndpointIPv4) GetRangeConstraints() []helpers.F
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && !data.SourceAddressIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String && !data.SourceAddressIpv4.IsNull() {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	} else {
 		data.SourceAddressIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -218,7 +218,7 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 	} else {
 		data.DelayMeasurement = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && !data.DelayMeasurementProfileName.IsNull() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String && !data.DelayMeasurementProfileName.IsNull() {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	} else {
 		data.DelayMeasurementProfileName = types.StringNull()
@@ -246,7 +246,7 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 				return true
 			},
 		)
-		if value := r.Get("list-name"); value.Exists() && !data.SegmentListNames[i].ListName.IsNull() {
+		if value := r.Get("list-name"); value.Exists() && value.Type == gjson.String && !data.SegmentListNames[i].ListName.IsNull() {
 			data.SegmentListNames[i].ListName = types.StringValue(value.String())
 		} else {
 			data.SegmentListNames[i].ListName = types.StringNull()
@@ -261,7 +261,7 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 	} else {
 		data.LivenessDetection = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() && !data.LivenessDetectionProfileName.IsNull() {
+	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() && value.Type == gjson.String && !data.LivenessDetectionProfileName.IsNull() {
 		data.LivenessDetectionProfileName = types.StringValue(value.String())
 	} else {
 		data.LivenessDetectionProfileName = types.StringNull()
@@ -307,12 +307,12 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 				return true
 			},
 		)
-		if value := r.Get("list-name"); value.Exists() && !data.SegmentRoutingTeExplicitSegmentLists[i].ListName.IsNull() {
+		if value := r.Get("list-name"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingTeExplicitSegmentLists[i].ListName.IsNull() {
 			data.SegmentRoutingTeExplicitSegmentLists[i].ListName = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingTeExplicitSegmentLists[i].ListName = types.StringNull()
 		}
-		if value := r.Get("reverse-path.segment-list.name"); value.Exists() && !data.SegmentRoutingTeExplicitSegmentLists[i].ReversePathSegmentList.IsNull() {
+		if value := r.Get("reverse-path.segment-list.name"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingTeExplicitSegmentLists[i].ReversePathSegmentList.IsNull() {
 			data.SegmentRoutingTeExplicitSegmentLists[i].ReversePathSegmentList = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingTeExplicitSegmentLists[i].ReversePathSegmentList = types.StringNull()
@@ -327,7 +327,7 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 			data.SegmentRoutingTeExplicitSegmentLists[i].InsertSrhSlZero = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() && !data.SegmentRoutingTeExplicitReversePathList.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingTeExplicitReversePathList.IsNull() {
 		data.SegmentRoutingTeExplicitReversePathList = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingTeExplicitReversePathList = types.StringNull()
@@ -339,10 +339,10 @@ func (data *PerformanceMeasurementEndpointIPv4) updateFromBody(ctx context.Conte
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay-measurement"); value.Exists() {
@@ -350,14 +350,14 @@ func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, re
 	} else {
 		data.DelayMeasurement = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-list.names.name"); value.Exists() {
 		data.SegmentListNames = make([]PerformanceMeasurementEndpointIPv4SegmentListNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementEndpointIPv4SegmentListNames{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ListName = types.StringValue(cValue.String())
 			}
 			data.SegmentListNames = append(data.SegmentListNames, item)
@@ -369,7 +369,7 @@ func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, re
 	} else {
 		data.LivenessDetection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.LivenessDetectionProfileName = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
@@ -390,10 +390,10 @@ func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, re
 		data.SegmentRoutingTeExplicitSegmentLists = make([]PerformanceMeasurementEndpointIPv4SegmentRoutingTeExplicitSegmentLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementEndpointIPv4SegmentRoutingTeExplicitSegmentLists{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ListName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("reverse-path.segment-list.name"); cValue.Exists() {
+			if cValue := v.Get("reverse-path.segment-list.name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ReversePathSegmentList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("insert-srh.sl-zero"); cValue.Exists() {
@@ -405,7 +405,7 @@ func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, re
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() && value.Type == gjson.String {
 		data.SegmentRoutingTeExplicitReversePathList = types.StringValue(value.String())
 	}
 }
@@ -415,10 +415,10 @@ func (data *PerformanceMeasurementEndpointIPv4) fromBody(ctx context.Context, re
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PerformanceMeasurementEndpointIPv4Data) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay-measurement"); value.Exists() {
@@ -426,14 +426,14 @@ func (data *PerformanceMeasurementEndpointIPv4Data) fromBody(ctx context.Context
 	} else {
 		data.DelayMeasurement = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-list.names.name"); value.Exists() {
 		data.SegmentListNames = make([]PerformanceMeasurementEndpointIPv4SegmentListNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementEndpointIPv4SegmentListNames{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ListName = types.StringValue(cValue.String())
 			}
 			data.SegmentListNames = append(data.SegmentListNames, item)
@@ -445,7 +445,7 @@ func (data *PerformanceMeasurementEndpointIPv4Data) fromBody(ctx context.Context
 	} else {
 		data.LivenessDetection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "liveness-detection.liveness-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.LivenessDetectionProfileName = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
@@ -466,10 +466,10 @@ func (data *PerformanceMeasurementEndpointIPv4Data) fromBody(ctx context.Context
 		data.SegmentRoutingTeExplicitSegmentLists = make([]PerformanceMeasurementEndpointIPv4SegmentRoutingTeExplicitSegmentLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementEndpointIPv4SegmentRoutingTeExplicitSegmentLists{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ListName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("reverse-path.segment-list.name"); cValue.Exists() {
+			if cValue := v.Get("reverse-path.segment-list.name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ReversePathSegmentList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("insert-srh.sl-zero"); cValue.Exists() {
@@ -481,7 +481,7 @@ func (data *PerformanceMeasurementEndpointIPv4Data) fromBody(ctx context.Context
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "segment-routing.traffic-eng.explicit.reverse-path.segment-list.name"); value.Exists() && value.Type == gjson.String {
 		data.SegmentRoutingTeExplicitReversePathList = types.StringValue(value.String())
 	}
 }

@@ -712,7 +712,7 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.ProfileLoadBalanceAlgorithmInnerL2Field = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() && !data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
+	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() && value.Type == gjson.Number && !data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
 		data.ProfileLoadBalanceAlgorithmHashPolynomialIndex = types.Int64Value(value.Int())
 	} else {
 		data.ProfileLoadBalanceAlgorithmHashPolynomialIndex = types.Int64Null()
@@ -740,17 +740,17 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfileBundleHashIndexLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfileBundleHashIndexLocations[i].LocationName.IsNull() {
 			data.ProfileBundleHashIndexLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfileBundleHashIndexLocations[i].LocationName = types.StringNull()
 		}
-		if value := r.Get("location-name2"); value.Exists() && !data.ProfileBundleHashIndexLocations[i].LocationName2.IsNull() {
+		if value := r.Get("location-name2"); value.Exists() && value.Type == gjson.String && !data.ProfileBundleHashIndexLocations[i].LocationName2.IsNull() {
 			data.ProfileBundleHashIndexLocations[i].LocationName2 = types.StringValue(value.String())
 		} else {
 			data.ProfileBundleHashIndexLocations[i].LocationName2 = types.StringNull()
 		}
-		if value := r.Get("index"); value.Exists() && !data.ProfileBundleHashIndexLocations[i].Index.IsNull() {
+		if value := r.Get("index"); value.Exists() && value.Type == gjson.String && !data.ProfileBundleHashIndexLocations[i].Index.IsNull() {
 			data.ProfileBundleHashIndexLocations[i].Index = types.StringValue(value.String())
 		} else {
 			data.ProfileBundleHashIndexLocations[i].Index = types.StringNull()
@@ -774,7 +774,7 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.ProfileBundleHashPerPacketRoundRobin = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() && !data.ProfileQosMaxClassmapSize.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() && value.Type == gjson.String && !data.ProfileQosMaxClassmapSize.IsNull() {
 		data.ProfileQosMaxClassmapSize = types.StringValue(value.String())
 	} else {
 		data.ProfileQosMaxClassmapSize = types.StringNull()
@@ -802,33 +802,33 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfileQosMaxClassmapSizeLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfileQosMaxClassmapSizeLocations[i].LocationName.IsNull() {
 			data.ProfileQosMaxClassmapSizeLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfileQosMaxClassmapSizeLocations[i].LocationName = types.StringNull()
 		}
-		if value := r.Get("max-classmap-size"); value.Exists() && !data.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize.IsNull() {
+		if value := r.Get("max-classmap-size"); value.Exists() && value.Type == gjson.String && !data.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize.IsNull() {
 			data.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize = types.StringValue(value.String())
 		} else {
 			data.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() && !data.ProfileQosQosgDscpMarkEnableFirst.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosQosgDscpMarkEnableFirst.IsNull() {
 		data.ProfileQosQosgDscpMarkEnableFirst = types.Int64Value(value.Int())
 	} else {
 		data.ProfileQosQosgDscpMarkEnableFirst = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() && !data.ProfileQosQosgDscpMarkEnableSecond.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosQosgDscpMarkEnableSecond.IsNull() {
 		data.ProfileQosQosgDscpMarkEnableSecond = types.Int64Value(value.Int())
 	} else {
 		data.ProfileQosQosgDscpMarkEnableSecond = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() && !data.ProfileQosFreeBufferIntThresholdSet.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosFreeBufferIntThresholdSet.IsNull() {
 		data.ProfileQosFreeBufferIntThresholdSet = types.Int64Value(value.Int())
 	} else {
 		data.ProfileQosFreeBufferIntThresholdSet = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() && !data.ProfileQosFreeBufferIntThresholdClear.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosFreeBufferIntThresholdClear.IsNull() {
 		data.ProfileQosFreeBufferIntThresholdClear = types.Int64Value(value.Int())
 	} else {
 		data.ProfileQosFreeBufferIntThresholdClear = types.Int64Null()
@@ -923,12 +923,12 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.ProfileQosEgressCompensationSettingForce = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() && !data.ProfileQosPolicerScale.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() && value.Type == gjson.String && !data.ProfileQosPolicerScale.IsNull() {
 		data.ProfileQosPolicerScale = types.StringValue(value.String())
 	} else {
 		data.ProfileQosPolicerScale = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() && !data.ProfileQosNifHpFifoReservePercent.IsNull() {
+	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosNifHpFifoReservePercent.IsNull() {
 		data.ProfileQosNifHpFifoReservePercent = types.Int64Value(value.Int())
 	} else {
 		data.ProfileQosNifHpFifoReservePercent = types.Int64Null()
@@ -956,12 +956,12 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfileQosNifHpFifoReserveLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfileQosNifHpFifoReserveLocations[i].LocationName.IsNull() {
 			data.ProfileQosNifHpFifoReserveLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfileQosNifHpFifoReserveLocations[i].LocationName = types.StringNull()
 		}
-		if value := r.Get("percent"); value.Exists() && !data.ProfileQosNifHpFifoReserveLocations[i].Percent.IsNull() {
+		if value := r.Get("percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileQosNifHpFifoReserveLocations[i].Percent.IsNull() {
 			data.ProfileQosNifHpFifoReserveLocations[i].Percent = types.Int64Value(value.Int())
 		} else {
 			data.ProfileQosNifHpFifoReserveLocations[i].Percent = types.Int64Null()
@@ -1008,12 +1008,12 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.NetflowIpfix315EnableLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.NetflowIpfix315EnableLocations[i].LocationName.IsNull() {
 			data.NetflowIpfix315EnableLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.NetflowIpfix315EnableLocations[i].LocationName = types.StringNull()
 		}
-		if value := r.Get("location-name2"); value.Exists() && !data.NetflowIpfix315EnableLocations[i].LocationName2.IsNull() {
+		if value := r.Get("location-name2"); value.Exists() && value.Type == gjson.String && !data.NetflowIpfix315EnableLocations[i].LocationName2.IsNull() {
 			data.NetflowIpfix315EnableLocations[i].LocationName2 = types.StringValue(value.String())
 		} else {
 			data.NetflowIpfix315EnableLocations[i].LocationName2 = types.StringNull()
@@ -1051,12 +1051,12 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.NetflowSflowEnableLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.NetflowSflowEnableLocations[i].LocationName.IsNull() {
 			data.NetflowSflowEnableLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.NetflowSflowEnableLocations[i].LocationName = types.StringNull()
 		}
-		if value := r.Get("location-name2"); value.Exists() && !data.NetflowSflowEnableLocations[i].LocationName2.IsNull() {
+		if value := r.Get("location-name2"); value.Exists() && value.Type == gjson.String && !data.NetflowSflowEnableLocations[i].LocationName2.IsNull() {
 			data.NetflowSflowEnableLocations[i].LocationName2 = types.StringValue(value.String())
 		} else {
 			data.NetflowSflowEnableLocations[i].LocationName2 = types.StringNull()
@@ -1188,7 +1188,7 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.Srv6EncapsulationL2TrafficClassPropagate = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() && !data.Srv6EncapsulationL2TrafficClassValue.IsNull() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number && !data.Srv6EncapsulationL2TrafficClassValue.IsNull() {
 		data.Srv6EncapsulationL2TrafficClassValue = types.Int64Value(value.Int())
 	} else {
 		data.Srv6EncapsulationL2TrafficClassValue = types.Int64Null()
@@ -1211,7 +1211,7 @@ func (data *HWModuleProfile) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.Srv6EncapsulationL3TrafficClassPolicyMap = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() && !data.Srv6EncapsulationL3TrafficClassValue.IsNull() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number && !data.Srv6EncapsulationL3TrafficClassValue.IsNull() {
 		data.Srv6EncapsulationL3TrafficClassValue = types.Int64Value(value.Int())
 	} else {
 		data.Srv6EncapsulationL3TrafficClassValue = types.Int64Null()
@@ -1373,20 +1373,20 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProfileLoadBalanceAlgorithmInnerL2Field = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileLoadBalanceAlgorithmHashPolynomialIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-bundle-hash.hash-index.locations.location"); value.Exists() {
 		data.ProfileBundleHashIndexLocations = make([]HWModuleProfileProfileBundleHashIndexLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileBundleHashIndexLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("index"); cValue.Exists() {
+			if cValue := v.Get("index"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Index = types.StringValue(cValue.String())
 			}
 			data.ProfileBundleHashIndexLocations = append(data.ProfileBundleHashIndexLocations, item)
@@ -1403,33 +1403,33 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProfileBundleHashPerPacketRoundRobin = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosMaxClassmapSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.locations.location"); value.Exists() {
 		data.ProfileQosMaxClassmapSizeLocations = make([]HWModuleProfileProfileQosMaxClassmapSizeLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileQosMaxClassmapSizeLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("max-classmap-size"); cValue.Exists() {
+			if cValue := v.Get("max-classmap-size"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MaxClassmapSize = types.StringValue(cValue.String())
 			}
 			data.ProfileQosMaxClassmapSizeLocations = append(data.ProfileQosMaxClassmapSizeLocations, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosQosgDscpMarkEnableFirst = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosQosgDscpMarkEnableSecond = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosFreeBufferIntThresholdSet = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosFreeBufferIntThresholdClear = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.hqos-enable"); value.Exists() {
@@ -1482,20 +1482,20 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProfileQosEgressCompensationSettingForce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosPolicerScale = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosNifHpFifoReservePercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve-locations.location"); value.Exists() {
 		data.ProfileQosNifHpFifoReserveLocations = make([]HWModuleProfileProfileQosNifHpFifoReserveLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileQosNifHpFifoReserveLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("percent"); cValue.Exists() {
+			if cValue := v.Get("percent"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Percent = types.Int64Value(cValue.Int())
 			}
 			data.ProfileQosNifHpFifoReserveLocations = append(data.ProfileQosNifHpFifoReserveLocations, item)
@@ -1516,10 +1516,10 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 		data.NetflowIpfix315EnableLocations = make([]HWModuleProfileNetflowIpfix315EnableLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileNetflowIpfix315EnableLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
 			data.NetflowIpfix315EnableLocations = append(data.NetflowIpfix315EnableLocations, item)
@@ -1535,10 +1535,10 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 		data.NetflowSflowEnableLocations = make([]HWModuleProfileNetflowSflowEnableLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileNetflowSflowEnableLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
 			data.NetflowSflowEnableLocations = append(data.NetflowSflowEnableLocations, item)
@@ -1615,7 +1615,7 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.Srv6EncapsulationL2TrafficClassPropagate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number {
 		data.Srv6EncapsulationL2TrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.propagate"); value.Exists() {
@@ -1628,7 +1628,7 @@ func (data *HWModuleProfile) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.Srv6EncapsulationL3TrafficClassPolicyMap = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number {
 		data.Srv6EncapsulationL3TrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class-with-hoplimit.propagate"); value.Exists() {
@@ -1748,20 +1748,20 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileLoadBalanceAlgorithmInnerL2Field = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-load-balance.algorithm.hash-polynomial-index"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileLoadBalanceAlgorithmHashPolynomialIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-bundle-hash.hash-index.locations.location"); value.Exists() {
 		data.ProfileBundleHashIndexLocations = make([]HWModuleProfileProfileBundleHashIndexLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileBundleHashIndexLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("index"); cValue.Exists() {
+			if cValue := v.Get("index"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Index = types.StringValue(cValue.String())
 			}
 			data.ProfileBundleHashIndexLocations = append(data.ProfileBundleHashIndexLocations, item)
@@ -1778,33 +1778,33 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileBundleHashPerPacketRoundRobin = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.max-classmap-size"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosMaxClassmapSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.max-classmap-sizes.locations.location"); value.Exists() {
 		data.ProfileQosMaxClassmapSizeLocations = make([]HWModuleProfileProfileQosMaxClassmapSizeLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileQosMaxClassmapSizeLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("max-classmap-size"); cValue.Exists() {
+			if cValue := v.Get("max-classmap-size"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MaxClassmapSize = types.StringValue(cValue.String())
 			}
 			data.ProfileQosMaxClassmapSizeLocations = append(data.ProfileQosMaxClassmapSizeLocations, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.first-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosQosgDscpMarkEnableFirst = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.qosg-dscp-mark-enable.second-dscp-precedence-value"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosQosgDscpMarkEnableSecond = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.free-buffer-int-threshold"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosFreeBufferIntThresholdSet = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.clear-value-in-percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosFreeBufferIntThresholdClear = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.hqos-enable"); value.Exists() {
@@ -1857,20 +1857,20 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileQosEgressCompensationSettingForce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.policer-scale.scale-value"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosPolicerScale = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileQosNifHpFifoReservePercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-qos.nif-hp-fifo-reserve-locations.location"); value.Exists() {
 		data.ProfileQosNifHpFifoReserveLocations = make([]HWModuleProfileProfileQosNifHpFifoReserveLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileProfileQosNifHpFifoReserveLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("percent"); cValue.Exists() {
+			if cValue := v.Get("percent"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Percent = types.Int64Value(cValue.Int())
 			}
 			data.ProfileQosNifHpFifoReserveLocations = append(data.ProfileQosNifHpFifoReserveLocations, item)
@@ -1891,10 +1891,10 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 		data.NetflowIpfix315EnableLocations = make([]HWModuleProfileNetflowIpfix315EnableLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileNetflowIpfix315EnableLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
 			data.NetflowIpfix315EnableLocations = append(data.NetflowIpfix315EnableLocations, item)
@@ -1910,10 +1910,10 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 		data.NetflowSflowEnableLocations = make([]HWModuleProfileNetflowSflowEnableLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfileNetflowSflowEnableLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-name2"); cValue.Exists() {
+			if cValue := v.Get("location-name2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName2 = types.StringValue(cValue.String())
 			}
 			data.NetflowSflowEnableLocations = append(data.NetflowSflowEnableLocations, item)
@@ -1990,7 +1990,7 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.Srv6EncapsulationL2TrafficClassPropagate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l2-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number {
 		data.Srv6EncapsulationL2TrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.propagate"); value.Exists() {
@@ -2003,7 +2003,7 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.Srv6EncapsulationL3TrafficClassPolicyMap = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class.traffic-class-value"); value.Exists() && value.Type == gjson.Number {
 		data.Srv6EncapsulationL3TrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile-segment-routing.srv6.mode.encapsulation.l3-traffic.traffic-class-with-hoplimit.propagate"); value.Exists() {

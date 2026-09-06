@@ -152,7 +152,7 @@ func (data *FTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.ClientVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].VrfName.IsNull() {
 			data.ClientVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].VrfName = types.StringNull()
@@ -166,12 +166,12 @@ func (data *FTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.ClientVrfs[i].Passive = types.BoolNull()
 		}
-		if value := r.Get("source-interface"); value.Exists() && !data.ClientVrfs[i].SourceInterface.IsNull() {
+		if value := r.Get("source-interface"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].SourceInterface.IsNull() {
 			data.ClientVrfs[i].SourceInterface = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].SourceInterface = types.StringNull()
 		}
-		if value := r.Get("username"); value.Exists() && !data.ClientVrfs[i].Username.IsNull() {
+		if value := r.Get("username"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].Username.IsNull() {
 			data.ClientVrfs[i].Username = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].Username = types.StringNull()
@@ -188,7 +188,7 @@ func (data *FTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.ClientVrfs = make([]FTPClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := FTPClientVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("passive"); cValue.Exists() {
@@ -196,10 +196,10 @@ func (data *FTP) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Passive = types.BoolValue(false)
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() {
+			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("username"); cValue.Exists() {
+			if cValue := v.Get("username"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ClientVrfs = append(data.ClientVrfs, item)
@@ -217,7 +217,7 @@ func (data *FTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.ClientVrfs = make([]FTPClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := FTPClientVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("passive"); cValue.Exists() {
@@ -225,10 +225,10 @@ func (data *FTPData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Passive = types.BoolValue(false)
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() {
+			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("username"); cValue.Exists() {
+			if cValue := v.Get("username"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ClientVrfs = append(data.ClientVrfs, item)

@@ -168,12 +168,12 @@ func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("alias-name"); value.Exists() && !data.Aliases[i].Name.IsNull() {
+		if value := r.Get("alias-name"); value.Exists() && value.Type == gjson.String && !data.Aliases[i].Name.IsNull() {
 			data.Aliases[i].Name = types.StringValue(value.String())
 		} else {
 			data.Aliases[i].Name = types.StringNull()
 		}
-		if value := r.Get("alias-body"); value.Exists() && !data.Aliases[i].Command.IsNull() {
+		if value := r.Get("alias-body"); value.Exists() && value.Type == gjson.String && !data.Aliases[i].Command.IsNull() {
 			data.Aliases[i].Command = types.StringValue(value.String())
 		} else {
 			data.Aliases[i].Command = types.StringNull()
@@ -202,12 +202,12 @@ func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("exec-alias-name"); value.Exists() && !data.ExecAliases[i].Name.IsNull() {
+		if value := r.Get("exec-alias-name"); value.Exists() && value.Type == gjson.String && !data.ExecAliases[i].Name.IsNull() {
 			data.ExecAliases[i].Name = types.StringValue(value.String())
 		} else {
 			data.ExecAliases[i].Name = types.StringNull()
 		}
-		if value := r.Get("aliased-exec-command"); value.Exists() && !data.ExecAliases[i].Command.IsNull() {
+		if value := r.Get("aliased-exec-command"); value.Exists() && value.Type == gjson.String && !data.ExecAliases[i].Command.IsNull() {
 			data.ExecAliases[i].Command = types.StringValue(value.String())
 		} else {
 			data.ExecAliases[i].Command = types.StringNull()
@@ -236,12 +236,12 @@ func (data *CLIAlias) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("config-alias-name"); value.Exists() && !data.ConfigAliases[i].Name.IsNull() {
+		if value := r.Get("config-alias-name"); value.Exists() && value.Type == gjson.String && !data.ConfigAliases[i].Name.IsNull() {
 			data.ConfigAliases[i].Name = types.StringValue(value.String())
 		} else {
 			data.ConfigAliases[i].Name = types.StringNull()
 		}
-		if value := r.Get("aliased-config-command"); value.Exists() && !data.ConfigAliases[i].Command.IsNull() {
+		if value := r.Get("aliased-config-command"); value.Exists() && value.Type == gjson.String && !data.ConfigAliases[i].Command.IsNull() {
 			data.ConfigAliases[i].Command = types.StringValue(value.String())
 		} else {
 			data.ConfigAliases[i].Command = types.StringNull()
@@ -258,10 +258,10 @@ func (data *CLIAlias) fromBody(ctx context.Context, res []byte, version string) 
 		data.Aliases = make([]CLIAliasAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasAliases{}
-			if cValue := v.Get("alias-name"); cValue.Exists() {
+			if cValue := v.Get("alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("alias-body"); cValue.Exists() {
+			if cValue := v.Get("alias-body"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.Aliases = append(data.Aliases, item)
@@ -272,10 +272,10 @@ func (data *CLIAlias) fromBody(ctx context.Context, res []byte, version string) 
 		data.ExecAliases = make([]CLIAliasExecAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasExecAliases{}
-			if cValue := v.Get("exec-alias-name"); cValue.Exists() {
+			if cValue := v.Get("exec-alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("aliased-exec-command"); cValue.Exists() {
+			if cValue := v.Get("aliased-exec-command"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.ExecAliases = append(data.ExecAliases, item)
@@ -286,10 +286,10 @@ func (data *CLIAlias) fromBody(ctx context.Context, res []byte, version string) 
 		data.ConfigAliases = make([]CLIAliasConfigAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasConfigAliases{}
-			if cValue := v.Get("config-alias-name"); cValue.Exists() {
+			if cValue := v.Get("config-alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("aliased-config-command"); cValue.Exists() {
+			if cValue := v.Get("aliased-config-command"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.ConfigAliases = append(data.ConfigAliases, item)
@@ -307,10 +307,10 @@ func (data *CLIAliasData) fromBody(ctx context.Context, res []byte, version stri
 		data.Aliases = make([]CLIAliasAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasAliases{}
-			if cValue := v.Get("alias-name"); cValue.Exists() {
+			if cValue := v.Get("alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("alias-body"); cValue.Exists() {
+			if cValue := v.Get("alias-body"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.Aliases = append(data.Aliases, item)
@@ -321,10 +321,10 @@ func (data *CLIAliasData) fromBody(ctx context.Context, res []byte, version stri
 		data.ExecAliases = make([]CLIAliasExecAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasExecAliases{}
-			if cValue := v.Get("exec-alias-name"); cValue.Exists() {
+			if cValue := v.Get("exec-alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("aliased-exec-command"); cValue.Exists() {
+			if cValue := v.Get("aliased-exec-command"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.ExecAliases = append(data.ExecAliases, item)
@@ -335,10 +335,10 @@ func (data *CLIAliasData) fromBody(ctx context.Context, res []byte, version stri
 		data.ConfigAliases = make([]CLIAliasConfigAliases, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CLIAliasConfigAliases{}
-			if cValue := v.Get("config-alias-name"); cValue.Exists() {
+			if cValue := v.Get("config-alias-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("aliased-config-command"); cValue.Exists() {
+			if cValue := v.Get("aliased-config-command"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Command = types.StringValue(cValue.String())
 			}
 			data.ConfigAliases = append(data.ConfigAliases, item)

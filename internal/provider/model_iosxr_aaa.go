@@ -2766,12 +2766,12 @@ func (data AAA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() && !data.DefaultTaskgroup.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() && value.Type == gjson.String && !data.DefaultTaskgroup.IsNull() {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	} else {
 		data.DefaultTaskgroup = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "banner.login"); value.Exists() && !data.BannerLogin.IsNull() {
+	if value := gjson.GetBytes(res, "banner.login"); value.Exists() && value.Type == gjson.String && !data.BannerLogin.IsNull() {
 		data.BannerLogin = types.StringValue(value.String())
 	} else {
 		data.BannerLogin = types.StringNull()
@@ -2799,7 +2799,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("server-group-name"); value.Exists() && !data.RadiusServerGroups[i].GroupName.IsNull() {
+		if value := r.Get("server-group-name"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].GroupName.IsNull() {
 			data.RadiusServerGroups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].GroupName = types.StringNull()
@@ -2827,28 +2827,28 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].Order.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].Order = types.Int64Null()
 			}
-			if value := cr.Get("address"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].Servers[ci].Address.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].Address = types.StringValue(value.String())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("auth-port"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].AuthPort.IsNull() {
+			if value := cr.Get("auth-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].AuthPort.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].AuthPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].AuthPort = types.Int64Null()
 			}
-			if value := cr.Get("acct-port"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].AcctPort.IsNull() {
+			if value := cr.Get("acct-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].AcctPort.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].AcctPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].AcctPort = types.Int64Null()
 			}
 		}
-		if value := r.Get("load-balance.method.least-outstanding.batch-size"); value.Exists() && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() {
+		if value := r.Get("load-balance.method.least-outstanding.batch-size"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Null()
@@ -2871,22 +2871,22 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolNull()
 		}
-		if value := r.Get("deadtime"); value.Exists() && !data.RadiusServerGroups[i].Deadtime.IsNull() {
+		if value := r.Get("deadtime"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Deadtime.IsNull() {
 			data.RadiusServerGroups[i].Deadtime = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].Deadtime = types.Int64Null()
 		}
-		if value := r.Get("throttle.access"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccess.IsNull() {
+		if value := r.Get("throttle.access"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccess.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccess = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccess = types.Int64Null()
 		}
-		if value := r.Get("throttle.access-timeout"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccessTimeout.IsNull() {
+		if value := r.Get("throttle.access-timeout"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccessTimeout.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccessTimeout = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccessTimeout = types.Int64Null()
 		}
-		if value := r.Get("throttle.accounting"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccounting.IsNull() {
+		if value := r.Get("throttle.accounting"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccounting.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccounting = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccounting = types.Int64Null()
@@ -2914,42 +2914,42 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Order.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Order = types.Int64Null()
 			}
-			if value := cr.Get("address"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].ServerPrivates[ci].Address.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Address = types.StringValue(value.String())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("auth-port"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort.IsNull() {
+			if value := cr.Get("auth-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort = types.Int64Null()
 			}
-			if value := cr.Get("acct-port"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort.IsNull() {
+			if value := cr.Get("acct-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort = types.Int64Null()
 			}
-			if value := cr.Get("timeout"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
+			if value := cr.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Null()
 			}
-			if value := cr.Get("retransmit"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit.IsNull() {
+			if value := cr.Get("retransmit"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit = types.Int64Null()
 			}
-			if value := cr.Get("test.username"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].TestUsername.IsNull() {
+			if value := cr.Get("test.username"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].ServerPrivates[ci].TestUsername.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].TestUsername = types.StringValue(value.String())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].TestUsername = types.StringNull()
 			}
-			if value := cr.Get("idle-time"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime.IsNull() {
+			if value := cr.Get("idle-time"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime = types.Int64Null()
@@ -2973,12 +2973,12 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				data.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAcctPort = types.BoolNull()
 			}
 		}
-		if value := r.Get("vrf"); value.Exists() && !data.RadiusServerGroups[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].Vrf.IsNull() {
 			data.RadiusServerGroups[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].Vrf = types.StringNull()
 		}
-		if value := r.Get("source-interface"); value.Exists() && !data.RadiusServerGroups[i].SourceInterface.IsNull() {
+		if value := r.Get("source-interface"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].SourceInterface.IsNull() {
 			data.RadiusServerGroups[i].SourceInterface = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].SourceInterface = types.StringNull()
@@ -3001,7 +3001,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].AuthorizationRequestReject = types.BoolNull()
 		}
-		if value := r.Get("authorization.request.radius-attribute-list"); value.Exists() && !data.RadiusServerGroups[i].AuthorizationRequestRadiusAttributeList.IsNull() {
+		if value := r.Get("authorization.request.radius-attribute-list"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].AuthorizationRequestRadiusAttributeList.IsNull() {
 			data.RadiusServerGroups[i].AuthorizationRequestRadiusAttributeList = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].AuthorizationRequestRadiusAttributeList = types.StringNull()
@@ -3024,7 +3024,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].AuthorizationReplyReject = types.BoolNull()
 		}
-		if value := r.Get("authorization.reply.radius-attribute-list"); value.Exists() && !data.RadiusServerGroups[i].AuthorizationReplyRadiusAttributeList.IsNull() {
+		if value := r.Get("authorization.reply.radius-attribute-list"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].AuthorizationReplyRadiusAttributeList.IsNull() {
 			data.RadiusServerGroups[i].AuthorizationReplyRadiusAttributeList = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].AuthorizationReplyRadiusAttributeList = types.StringNull()
@@ -3047,7 +3047,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].AccountingRequestReject = types.BoolNull()
 		}
-		if value := r.Get("accounting.request.radius-attribute-list"); value.Exists() && !data.RadiusServerGroups[i].AccountingRequestRadiusAttributeList.IsNull() {
+		if value := r.Get("accounting.request.radius-attribute-list"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].AccountingRequestRadiusAttributeList.IsNull() {
 			data.RadiusServerGroups[i].AccountingRequestRadiusAttributeList = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].AccountingRequestRadiusAttributeList = types.StringNull()
@@ -3070,13 +3070,13 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].AccountingReplyReject = types.BoolNull()
 		}
-		if value := r.Get("accounting.reply.radius-attribute-list"); value.Exists() && !data.RadiusServerGroups[i].AccountingReplyRadiusAttributeList.IsNull() {
+		if value := r.Get("accounting.reply.radius-attribute-list"); value.Exists() && value.Type == gjson.String && !data.RadiusServerGroups[i].AccountingReplyRadiusAttributeList.IsNull() {
 			data.RadiusServerGroups[i].AccountingReplyRadiusAttributeList = types.StringValue(value.String())
 		} else {
 			data.RadiusServerGroups[i].AccountingReplyRadiusAttributeList = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && !data.ServerRadiusDynamicAuthorPort.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number && !data.ServerRadiusDynamicAuthorPort.IsNull() {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	} else {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Null()
@@ -3113,12 +3113,12 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.ServerRadiusDynamicAuthorClients[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ServerRadiusDynamicAuthorClients[i].Address.IsNull() {
 			data.ServerRadiusDynamicAuthorClients[i].Address = types.StringValue(value.String())
 		} else {
 			data.ServerRadiusDynamicAuthorClients[i].Address = types.StringNull()
 		}
-		if value := r.Get("vrf"); value.Exists() && !data.ServerRadiusDynamicAuthorClients[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.ServerRadiusDynamicAuthorClients[i].Vrf.IsNull() {
 			data.ServerRadiusDynamicAuthorClients[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.ServerRadiusDynamicAuthorClients[i].Vrf = types.StringNull()
@@ -3147,7 +3147,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("server-group-name"); value.Exists() && !data.TacacsServerGroups[i].GroupName.IsNull() {
+		if value := r.Get("server-group-name"); value.Exists() && value.Type == gjson.String && !data.TacacsServerGroups[i].GroupName.IsNull() {
 			data.TacacsServerGroups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.TacacsServerGroups[i].GroupName = types.StringNull()
@@ -3175,23 +3175,23 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && !data.TacacsServerGroups[i].Servers[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].Servers[ci].Order.IsNull() {
 				data.TacacsServerGroups[i].Servers[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].Servers[ci].Order = types.Int64Null()
 			}
-			if value := cr.Get("address"); value.Exists() && !data.TacacsServerGroups[i].Servers[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TacacsServerGroups[i].Servers[ci].Address.IsNull() {
 				data.TacacsServerGroups[i].Servers[ci].Address = types.StringValue(value.String())
 			} else {
 				data.TacacsServerGroups[i].Servers[ci].Address = types.StringNull()
 			}
 		}
-		if value := r.Get("vrf"); value.Exists() && !data.TacacsServerGroups[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.TacacsServerGroups[i].Vrf.IsNull() {
 			data.TacacsServerGroups[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.TacacsServerGroups[i].Vrf = types.StringNull()
 		}
-		if value := r.Get("holddown-time"); value.Exists() && !data.TacacsServerGroups[i].HolddownTime.IsNull() {
+		if value := r.Get("holddown-time"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].HolddownTime.IsNull() {
 			data.TacacsServerGroups[i].HolddownTime = types.Int64Value(value.Int())
 		} else {
 			data.TacacsServerGroups[i].HolddownTime = types.Int64Null()
@@ -3219,17 +3219,17 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Order.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Order = types.Int64Null()
 			}
-			if value := cr.Get("address"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TacacsServerGroups[i].ServerPrivates[ci].Address.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Address = types.StringValue(value.String())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("port"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Port.IsNull() {
+			if value := cr.Get("port"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Port.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Port = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Port = types.Int64Null()
@@ -3243,17 +3243,17 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnection = types.BoolNull()
 			}
-			if value := cr.Get("single-connection-idle-timeout"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout.IsNull() {
+			if value := cr.Get("single-connection-idle-timeout"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout = types.Int64Null()
 			}
-			if value := cr.Get("timeout"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
+			if value := cr.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Null()
 			}
-			if value := cr.Get("holddown-time"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime.IsNull() {
+			if value := cr.Get("holddown-time"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime = types.Int64Null()
@@ -3283,12 +3283,12 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ordering-index"); value.Exists() && !data.Usernames[i].Order.IsNull() {
+		if value := r.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.Usernames[i].Order.IsNull() {
 			data.Usernames[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.Usernames[i].Order = types.Int64Null()
 		}
-		if value := r.Get("name"); value.Exists() && !data.Usernames[i].Name.IsNull() {
+		if value := r.Get("name"); value.Exists() && value.Type == gjson.String && !data.Usernames[i].Name.IsNull() {
 			data.Usernames[i].Name = types.StringValue(value.String())
 		} else {
 			data.Usernames[i].Name = types.StringNull()
@@ -3311,7 +3311,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Usernames[i].LoginHistoryDisable = types.BoolNull()
 		}
-		if value := r.Get("policy"); value.Exists() && !data.Usernames[i].Policy.IsNull() {
+		if value := r.Get("policy"); value.Exists() && value.Type == gjson.String && !data.Usernames[i].Policy.IsNull() {
 			data.Usernames[i].Policy = types.StringValue(value.String())
 		} else {
 			data.Usernames[i].Policy = types.StringNull()
@@ -3429,18 +3429,18 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("user-group-name"); value.Exists() && !data.Usernames[i].UserGroups[ci].GroupName.IsNull() {
+			if value := cr.Get("user-group-name"); value.Exists() && value.Type == gjson.String && !data.Usernames[i].UserGroups[ci].GroupName.IsNull() {
 				data.Usernames[i].UserGroups[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.Usernames[i].UserGroups[ci].GroupName = types.StringNull()
 			}
 		}
-		if value := r.Get("shell-type"); value.Exists() && !data.Usernames[i].ShellType.IsNull() {
+		if value := r.Get("shell-type"); value.Exists() && value.Type == gjson.String && !data.Usernames[i].ShellType.IsNull() {
 			data.Usernames[i].ShellType = types.StringValue(value.String())
 		} else {
 			data.Usernames[i].ShellType = types.StringNull()
 		}
-		if value := r.Get("directory"); value.Exists() && !data.Usernames[i].Directory.IsNull() {
+		if value := r.Get("directory"); value.Exists() && value.Type == gjson.String && !data.Usernames[i].Directory.IsNull() {
 			data.Usernames[i].Directory = types.StringValue(value.String())
 		} else {
 			data.Usernames[i].Directory = types.StringNull()
@@ -3469,12 +3469,12 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("taskgroup-name"); value.Exists() && !data.Taskgroups[i].GroupName.IsNull() {
+		if value := r.Get("taskgroup-name"); value.Exists() && value.Type == gjson.String && !data.Taskgroups[i].GroupName.IsNull() {
 			data.Taskgroups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.Taskgroups[i].GroupName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && !data.Taskgroups[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.Taskgroups[i].Description.IsNull() {
 			data.Taskgroups[i].Description = types.StringValue(value.String())
 		} else {
 			data.Taskgroups[i].Description = types.StringNull()
@@ -6616,7 +6616,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("task-group-name"); value.Exists() && !data.Taskgroups[i].InheritTaskgroups[ci].GroupName.IsNull() {
+			if value := cr.Get("task-group-name"); value.Exists() && value.Type == gjson.String && !data.Taskgroups[i].InheritTaskgroups[ci].GroupName.IsNull() {
 				data.Taskgroups[i].InheritTaskgroups[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.Taskgroups[i].InheritTaskgroups[ci].GroupName = types.StringNull()
@@ -6646,12 +6646,12 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("usergroup-name"); value.Exists() && !data.Usergroups[i].GroupName.IsNull() {
+		if value := r.Get("usergroup-name"); value.Exists() && value.Type == gjson.String && !data.Usergroups[i].GroupName.IsNull() {
 			data.Usergroups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.Usergroups[i].GroupName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && !data.Usergroups[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.Usergroups[i].Description.IsNull() {
 			data.Usergroups[i].Description = types.StringValue(value.String())
 		} else {
 			data.Usergroups[i].Description = types.StringNull()
@@ -6769,7 +6769,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("task-group-name"); value.Exists() && !data.Usergroups[i].Taskgroups[ci].GroupName.IsNull() {
+			if value := cr.Get("task-group-name"); value.Exists() && value.Type == gjson.String && !data.Usergroups[i].Taskgroups[ci].GroupName.IsNull() {
 				data.Usergroups[i].Taskgroups[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.Usergroups[i].Taskgroups[ci].GroupName = types.StringNull()
@@ -6798,7 +6798,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("usergroup-name"); value.Exists() && !data.Usergroups[i].InheritUsergroups[ci].GroupName.IsNull() {
+			if value := cr.Get("usergroup-name"); value.Exists() && value.Type == gjson.String && !data.Usergroups[i].InheritUsergroups[ci].GroupName.IsNull() {
 				data.Usergroups[i].InheritUsergroups[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.Usergroups[i].InheritUsergroups[ci].GroupName = types.StringNull()
@@ -6812,40 +6812,40 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() && value.Type == gjson.String {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "banner.login"); value.Exists() {
+	if value := gjson.GetBytes(res, "banner.login"); value.Exists() && value.Type == gjson.String {
 		data.BannerLogin = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:group.server.radius.server-groups.server-group"); value.Exists() {
 		data.RadiusServerGroups = make([]AAARadiusServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAARadiusServerGroups{}
-			if cValue := v.Get("server-group-name"); cValue.Exists() {
+			if cValue := v.Get("server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("servers.server"); cValue.Exists() {
 				item.Servers = make([]AAARadiusServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() {
+			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("load-balance.method.least-outstanding"); cValue.Exists() {
@@ -6858,44 +6858,44 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolValue(false)
 			}
-			if cValue := v.Get("deadtime"); cValue.Exists() {
+			if cValue := v.Get("deadtime"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Deadtime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access"); cValue.Exists() {
+			if cValue := v.Get("throttle.access"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccess = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() {
+			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccessTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.accounting"); cValue.Exists() {
+			if cValue := v.Get("throttle.accounting"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccounting = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAARadiusServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("retransmit"); ccValue.Exists() {
+					if ccValue := cv.Get("retransmit"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Retransmit = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("test.username"); ccValue.Exists() {
+					if ccValue := cv.Get("test.username"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.TestUsername = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("idle-time"); ccValue.Exists() {
+					if ccValue := cv.Get("idle-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdleTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ignore-auth-port"); ccValue.Exists() {
@@ -6912,10 +6912,10 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 					return true
 				})
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() {
+			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authorization.request.accept"); cValue.Exists() {
@@ -6928,7 +6928,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AuthorizationRequestReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("authorization.request.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("authorization.request.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AuthorizationRequestRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authorization.reply.accept"); cValue.Exists() {
@@ -6941,7 +6941,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AuthorizationReplyReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("authorization.reply.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("authorization.reply.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AuthorizationReplyRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accounting.request.accept"); cValue.Exists() {
@@ -6954,7 +6954,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AccountingRequestReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("accounting.request.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("accounting.request.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AccountingRequestRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accounting.reply.accept"); cValue.Exists() {
@@ -6967,14 +6967,14 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AccountingReplyReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("accounting.reply.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("accounting.reply.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AccountingReplyRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			data.RadiusServerGroups = append(data.RadiusServerGroups, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.ignore.server-key"); value.Exists() {
@@ -6986,10 +6986,10 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerRadiusDynamicAuthorClients = make([]AAAServerRadiusDynamicAuthorClients, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAServerRadiusDynamicAuthorClients{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			data.ServerRadiusDynamicAuthorClients = append(data.ServerRadiusDynamicAuthorClients, item)
@@ -7000,40 +7000,40 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.TacacsServerGroups = make([]AAATacacsServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAATacacsServerGroups{}
-			if cValue := v.Get("server-group-name"); cValue.Exists() {
+			if cValue := v.Get("server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("servers.server"); cValue.Exists() {
 				item.Servers = make([]AAATacacsServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() {
+			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAATacacsServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("port"); ccValue.Exists() {
+					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("single-connection"); ccValue.Exists() {
@@ -7041,13 +7041,13 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.SingleConnection = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.SingleConnectionIdleTimeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("holddown-time"); ccValue.Exists() {
+					if ccValue := cv.Get("holddown-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.HolddownTime = types.Int64Value(ccValue.Int())
 					}
 					item.ServerPrivates = append(item.ServerPrivates, cItem)
@@ -7062,10 +7062,10 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usernames = make([]AAAUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsernames{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() {
+			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("name"); cValue.Exists() {
+			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("login-history.enable"); cValue.Exists() {
@@ -7078,7 +7078,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoginHistoryDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("policy"); cValue.Exists() {
+			if cValue := v.Get("policy"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Policy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group.root-lr"); cValue.Exists() {
@@ -7135,17 +7135,17 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.UserGroups = make([]AAAUsernamesUserGroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsernamesUserGroups{}
-					if ccValue := cv.Get("user-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("user-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.UserGroups = append(item.UserGroups, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("shell-type"); cValue.Exists() {
+			if cValue := v.Get("shell-type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ShellType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("directory"); cValue.Exists() {
+			if cValue := v.Get("directory"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Directory = types.StringValue(cValue.String())
 			}
 			data.Usernames = append(data.Usernames, item)
@@ -7156,10 +7156,10 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Taskgroups = make([]AAATaskgroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAATaskgroups{}
-			if cValue := v.Get("taskgroup-name"); cValue.Exists() {
+			if cValue := v.Get("taskgroup-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("task.read.bgp"); cValue.Exists() {
@@ -8896,7 +8896,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.InheritTaskgroups = make([]AAATaskgroupsInheritTaskgroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATaskgroupsInheritTaskgroups{}
-					if ccValue := cv.Get("task-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("task-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.InheritTaskgroups = append(item.InheritTaskgroups, cItem)
@@ -8911,10 +8911,10 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usergroups = make([]AAAUsergroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsergroups{}
-			if cValue := v.Get("usergroup-name"); cValue.Exists() {
+			if cValue := v.Get("usergroup-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("taskgroup.root-lr"); cValue.Exists() {
@@ -8971,7 +8971,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.Taskgroups = make([]AAAUsergroupsTaskgroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsergroupsTaskgroups{}
-					if ccValue := cv.Get("task-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("task-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.Taskgroups = append(item.Taskgroups, cItem)
@@ -8982,7 +8982,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.InheritUsergroups = make([]AAAUsergroupsInheritUsergroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsergroupsInheritUsergroups{}
-					if ccValue := cv.Get("usergroup-name"); ccValue.Exists() {
+					if ccValue := cv.Get("usergroup-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.InheritUsergroups = append(item.InheritUsergroups, cItem)
@@ -9000,40 +9000,40 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:default-taskgroup"); value.Exists() && value.Type == gjson.String {
 		data.DefaultTaskgroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "banner.login"); value.Exists() {
+	if value := gjson.GetBytes(res, "banner.login"); value.Exists() && value.Type == gjson.String {
 		data.BannerLogin = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:group.server.radius.server-groups.server-group"); value.Exists() {
 		data.RadiusServerGroups = make([]AAARadiusServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAARadiusServerGroups{}
-			if cValue := v.Get("server-group-name"); cValue.Exists() {
+			if cValue := v.Get("server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("servers.server"); cValue.Exists() {
 				item.Servers = make([]AAARadiusServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() {
+			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("load-balance.method.least-outstanding"); cValue.Exists() {
@@ -9046,44 +9046,44 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolValue(false)
 			}
-			if cValue := v.Get("deadtime"); cValue.Exists() {
+			if cValue := v.Get("deadtime"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Deadtime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access"); cValue.Exists() {
+			if cValue := v.Get("throttle.access"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccess = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() {
+			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccessTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.accounting"); cValue.Exists() {
+			if cValue := v.Get("throttle.accounting"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ThrottleAccounting = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAARadiusServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("retransmit"); ccValue.Exists() {
+					if ccValue := cv.Get("retransmit"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Retransmit = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("test.username"); ccValue.Exists() {
+					if ccValue := cv.Get("test.username"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.TestUsername = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("idle-time"); ccValue.Exists() {
+					if ccValue := cv.Get("idle-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdleTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ignore-auth-port"); ccValue.Exists() {
@@ -9100,10 +9100,10 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 					return true
 				})
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() {
+			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authorization.request.accept"); cValue.Exists() {
@@ -9116,7 +9116,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AuthorizationRequestReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("authorization.request.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("authorization.request.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AuthorizationRequestRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authorization.reply.accept"); cValue.Exists() {
@@ -9129,7 +9129,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AuthorizationReplyReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("authorization.reply.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("authorization.reply.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AuthorizationReplyRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accounting.request.accept"); cValue.Exists() {
@@ -9142,7 +9142,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AccountingRequestReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("accounting.request.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("accounting.request.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AccountingRequestRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accounting.reply.accept"); cValue.Exists() {
@@ -9155,14 +9155,14 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.AccountingReplyReject = types.BoolValue(false)
 			}
-			if cValue := v.Get("accounting.reply.radius-attribute-list"); cValue.Exists() {
+			if cValue := v.Get("accounting.reply.radius-attribute-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AccountingReplyRadiusAttributeList = types.StringValue(cValue.String())
 			}
 			data.RadiusServerGroups = append(data.RadiusServerGroups, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.ignore.server-key"); value.Exists() {
@@ -9174,10 +9174,10 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerRadiusDynamicAuthorClients = make([]AAAServerRadiusDynamicAuthorClients, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAServerRadiusDynamicAuthorClients{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			data.ServerRadiusDynamicAuthorClients = append(data.ServerRadiusDynamicAuthorClients, item)
@@ -9188,40 +9188,40 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.TacacsServerGroups = make([]AAATacacsServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAATacacsServerGroups{}
-			if cValue := v.Get("server-group-name"); cValue.Exists() {
+			if cValue := v.Get("server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("servers.server"); cValue.Exists() {
 				item.Servers = make([]AAATacacsServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() {
+			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAATacacsServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("port"); ccValue.Exists() {
+					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("single-connection"); ccValue.Exists() {
@@ -9229,13 +9229,13 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.SingleConnection = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.SingleConnectionIdleTimeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("holddown-time"); ccValue.Exists() {
+					if ccValue := cv.Get("holddown-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.HolddownTime = types.Int64Value(ccValue.Int())
 					}
 					item.ServerPrivates = append(item.ServerPrivates, cItem)
@@ -9250,10 +9250,10 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usernames = make([]AAAUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsernames{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() {
+			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("name"); cValue.Exists() {
+			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("login-history.enable"); cValue.Exists() {
@@ -9266,7 +9266,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoginHistoryDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("policy"); cValue.Exists() {
+			if cValue := v.Get("policy"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Policy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group.root-lr"); cValue.Exists() {
@@ -9323,17 +9323,17 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.UserGroups = make([]AAAUsernamesUserGroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsernamesUserGroups{}
-					if ccValue := cv.Get("user-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("user-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.UserGroups = append(item.UserGroups, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("shell-type"); cValue.Exists() {
+			if cValue := v.Get("shell-type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ShellType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("directory"); cValue.Exists() {
+			if cValue := v.Get("directory"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Directory = types.StringValue(cValue.String())
 			}
 			data.Usernames = append(data.Usernames, item)
@@ -9344,10 +9344,10 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Taskgroups = make([]AAATaskgroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAATaskgroups{}
-			if cValue := v.Get("taskgroup-name"); cValue.Exists() {
+			if cValue := v.Get("taskgroup-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("task.read.bgp"); cValue.Exists() {
@@ -11084,7 +11084,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.InheritTaskgroups = make([]AAATaskgroupsInheritTaskgroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATaskgroupsInheritTaskgroups{}
-					if ccValue := cv.Get("task-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("task-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.InheritTaskgroups = append(item.InheritTaskgroups, cItem)
@@ -11099,10 +11099,10 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usergroups = make([]AAAUsergroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsergroups{}
-			if cValue := v.Get("usergroup-name"); cValue.Exists() {
+			if cValue := v.Get("usergroup-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("taskgroup.root-lr"); cValue.Exists() {
@@ -11159,7 +11159,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Taskgroups = make([]AAAUsergroupsTaskgroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsergroupsTaskgroups{}
-					if ccValue := cv.Get("task-group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("task-group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.Taskgroups = append(item.Taskgroups, cItem)
@@ -11170,7 +11170,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.InheritUsergroups = make([]AAAUsergroupsInheritUsergroups, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAAUsergroupsInheritUsergroups{}
-					if ccValue := cv.Get("usergroup-name"); ccValue.Exists() {
+					if ccValue := cv.Get("usergroup-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.InheritUsergroups = append(item.InheritUsergroups, cItem)

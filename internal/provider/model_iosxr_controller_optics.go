@@ -166,13 +166,13 @@ func (data *ControllerOptics) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.LinkStatus = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-controller-optics-cfg:optics.optics-performance-monitoring"); !data.PerformanceMonitoring.IsNull() {
-		if value.Exists() {
+		if value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 			data.PerformanceMonitoring = types.BoolValue(value.Bool())
 		}
 	} else {
@@ -187,12 +187,12 @@ func (data *ControllerOptics) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.TransceiverDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() && !data.Speed.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() && value.Type == gjson.String && !data.Speed.IsNull() {
 		data.Speed = types.StringValue(value.String())
 	} else {
 		data.Speed = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() && !data.Breakout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() && value.Type == gjson.String && !data.Breakout.IsNull() {
 		data.Breakout = types.StringValue(value.String())
 	} else {
 		data.Breakout = types.StringNull()
@@ -214,10 +214,10 @@ func (data *ControllerOptics) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.LinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-controller-optics-cfg:optics.optics-performance-monitoring"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-controller-optics-cfg:optics.optics-performance-monitoring"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.PerformanceMonitoring = types.BoolValue(value.Bool())
 	} else {
 		data.PerformanceMonitoring = types.BoolValue(false)
@@ -227,10 +227,10 @@ func (data *ControllerOptics) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.TransceiverDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() && value.Type == gjson.String {
 		data.Speed = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() && value.Type == gjson.String {
 		data.Breakout = types.StringValue(value.String())
 	}
 }
@@ -250,10 +250,10 @@ func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.LinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-controller-optics-cfg:optics.optics-performance-monitoring"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-controller-optics-cfg:optics.optics-performance-monitoring"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.PerformanceMonitoring = types.BoolValue(value.Bool())
 	} else {
 		data.PerformanceMonitoring = types.BoolValue(false)
@@ -263,10 +263,10 @@ func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.TransceiverDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-speed-cfg:speed"); value.Exists() && value.Type == gjson.String {
 		data.Speed = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-optics-driver-cfg:breakout"); value.Exists() && value.Type == gjson.String {
 		data.Breakout = types.StringValue(value.String())
 	}
 }

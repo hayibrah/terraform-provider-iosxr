@@ -160,7 +160,7 @@ func (data *SegmentRoutingMappingServer) updateFromBody(ctx context.Context, res
 				return true
 			},
 		)
-		if value := r.Get("af-name"); value.Exists() && !data.MappingPrefixSidAddressFamily[i].AfName.IsNull() {
+		if value := r.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.MappingPrefixSidAddressFamily[i].AfName.IsNull() {
 			data.MappingPrefixSidAddressFamily[i].AfName = types.StringValue(value.String())
 		} else {
 			data.MappingPrefixSidAddressFamily[i].AfName = types.StringNull()
@@ -188,22 +188,22 @@ func (data *SegmentRoutingMappingServer) updateFromBody(ctx context.Context, res
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Address.IsNull() {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && value.Type == gjson.String && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Length.IsNull() {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Length = types.StringValue(value.String())
 			} else {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Length = types.StringNull()
 			}
-			if value := cr.Get("sid-index"); value.Exists() && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].SidIndex.IsNull() {
+			if value := cr.Get("sid-index"); value.Exists() && value.Type == gjson.Number && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].SidIndex.IsNull() {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].SidIndex = types.Int64Value(value.Int())
 			} else {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].SidIndex = types.Int64Null()
 			}
-			if value := cr.Get("range"); value.Exists() && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Range.IsNull() {
+			if value := cr.Get("range"); value.Exists() && value.Type == gjson.Number && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Range.IsNull() {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Range = types.Int64Value(value.Int())
 			} else {
 				data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Range = types.Int64Null()
@@ -230,23 +230,23 @@ func (data *SegmentRoutingMappingServer) fromBody(ctx context.Context, res []byt
 		data.MappingPrefixSidAddressFamily = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingMappingServerMappingPrefixSidAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() {
+			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("prefix-address"); cValue.Exists() {
 				item.PrefixAddresses = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamilyPrefixAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SegmentRoutingMappingServerMappingPrefixSidAddressFamilyPrefixAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() {
+					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Length = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("sid-index"); ccValue.Exists() {
+					if ccValue := cv.Get("sid-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.SidIndex = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("range"); ccValue.Exists() {
+					if ccValue := cv.Get("range"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Range = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("attached"); ccValue.Exists() {
@@ -273,23 +273,23 @@ func (data *SegmentRoutingMappingServerData) fromBody(ctx context.Context, res [
 		data.MappingPrefixSidAddressFamily = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingMappingServerMappingPrefixSidAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() {
+			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("prefix-address"); cValue.Exists() {
 				item.PrefixAddresses = make([]SegmentRoutingMappingServerMappingPrefixSidAddressFamilyPrefixAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SegmentRoutingMappingServerMappingPrefixSidAddressFamilyPrefixAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() {
+					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Length = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("sid-index"); ccValue.Exists() {
+					if ccValue := cv.Get("sid-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.SidIndex = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("range"); ccValue.Exists() {
+					if ccValue := cv.Get("range"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Range = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("attached"); ccValue.Exists() {

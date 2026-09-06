@@ -101,7 +101,7 @@ func (data LargeCommunitySet) GetRangeConstraints() []helpers.FieldRangeConstrai
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LargeCommunitySet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *LargeCommunitySet) updateFromBody(ctx context.Context, res []byte, v
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LargeCommunitySet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() {
+	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *LargeCommunitySet) fromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LargeCommunitySetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() {
+	if value := gjson.GetBytes(res, "large-community-set-as-text"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

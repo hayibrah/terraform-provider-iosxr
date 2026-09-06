@@ -242,7 +242,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, v
 				return true
 			},
 		)
-		if value := r.Get("list-name"); value.Exists() && !data.Login[i].List.IsNull() {
+		if value := r.Get("list-name"); value.Exists() && value.Type == gjson.String && !data.Login[i].List.IsNull() {
 			data.Login[i].List = types.StringValue(value.String())
 		} else {
 			data.Login[i].List = types.StringNull()
@@ -283,7 +283,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.Login[i].A1Radius = types.BoolNull()
 		}
-		if value := r.Get("groups.group-1.server-group-name"); value.Exists() && !data.Login[i].A1Group.IsNull() {
+		if value := r.Get("groups.group-1.server-group-name"); value.Exists() && value.Type == gjson.String && !data.Login[i].A1Group.IsNull() {
 			data.Login[i].A1Group = types.StringValue(value.String())
 		} else {
 			data.Login[i].A1Group = types.StringNull()
@@ -324,7 +324,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.Login[i].A2Radius = types.BoolNull()
 		}
-		if value := r.Get("groups.group-2.server-group-name"); value.Exists() && !data.Login[i].A2Group.IsNull() {
+		if value := r.Get("groups.group-2.server-group-name"); value.Exists() && value.Type == gjson.String && !data.Login[i].A2Group.IsNull() {
 			data.Login[i].A2Group = types.StringValue(value.String())
 		} else {
 			data.Login[i].A2Group = types.StringNull()
@@ -365,7 +365,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.Login[i].A3Radius = types.BoolNull()
 		}
-		if value := r.Get("groups.group-3.server-group-name"); value.Exists() && !data.Login[i].A3Group.IsNull() {
+		if value := r.Get("groups.group-3.server-group-name"); value.Exists() && value.Type == gjson.String && !data.Login[i].A3Group.IsNull() {
 			data.Login[i].A3Group = types.StringValue(value.String())
 		} else {
 			data.Login[i].A3Group = types.StringNull()
@@ -406,7 +406,7 @@ func (data *AAAAuthentication) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.Login[i].A4Radius = types.BoolNull()
 		}
-		if value := r.Get("groups.group-4.server-group-name"); value.Exists() && !data.Login[i].A4Group.IsNull() {
+		if value := r.Get("groups.group-4.server-group-name"); value.Exists() && value.Type == gjson.String && !data.Login[i].A4Group.IsNull() {
 			data.Login[i].A4Group = types.StringValue(value.String())
 		} else {
 			data.Login[i].A4Group = types.StringNull()
@@ -423,7 +423,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version
 		data.Login = make([]AAAAuthenticationLogin, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAAuthenticationLogin{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.List = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("local"); cValue.Exists() {
@@ -446,7 +446,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version
 			} else {
 				item.A1Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-1.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-1.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A1Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-2.local"); cValue.Exists() {
@@ -469,7 +469,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version
 			} else {
 				item.A2Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-2.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-2.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A2Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-3.local"); cValue.Exists() {
@@ -492,7 +492,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version
 			} else {
 				item.A3Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-3.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-3.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A3Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-4.local"); cValue.Exists() {
@@ -515,7 +515,7 @@ func (data *AAAAuthentication) fromBody(ctx context.Context, res []byte, version
 			} else {
 				item.A4Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-4.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-4.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A4Group = types.StringValue(cValue.String())
 			}
 			data.Login = append(data.Login, item)
@@ -533,7 +533,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, ver
 		data.Login = make([]AAAAuthenticationLogin, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAAuthenticationLogin{}
-			if cValue := v.Get("list-name"); cValue.Exists() {
+			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.List = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("local"); cValue.Exists() {
@@ -556,7 +556,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, ver
 			} else {
 				item.A1Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-1.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-1.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A1Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-2.local"); cValue.Exists() {
@@ -579,7 +579,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, ver
 			} else {
 				item.A2Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-2.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-2.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A2Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-3.local"); cValue.Exists() {
@@ -602,7 +602,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, ver
 			} else {
 				item.A3Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-3.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-3.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A3Group = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("groups.group-4.local"); cValue.Exists() {
@@ -625,7 +625,7 @@ func (data *AAAAuthenticationData) fromBody(ctx context.Context, res []byte, ver
 			} else {
 				item.A4Radius = types.BoolValue(false)
 			}
-			if cValue := v.Get("groups.group-4.server-group-name"); cValue.Exists() {
+			if cValue := v.Get("groups.group-4.server-group-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.A4Group = types.StringValue(cValue.String())
 			}
 			data.Login = append(data.Login, item)

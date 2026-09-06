@@ -162,47 +162,47 @@ func (data *TFTPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.server.access-list"); value.Exists() && !data.Vrfs[i].Ipv4ServerAccessList.IsNull() {
+		if value := r.Get("ipv4.server.access-list"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4ServerAccessList.IsNull() {
 			data.Vrfs[i].Ipv4ServerAccessList = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4ServerAccessList = types.StringNull()
 		}
-		if value := r.Get("ipv4.server.max-servers"); value.Exists() && !data.Vrfs[i].Ipv4ServerMaxServers.IsNull() {
+		if value := r.Get("ipv4.server.max-servers"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4ServerMaxServers.IsNull() {
 			data.Vrfs[i].Ipv4ServerMaxServers = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4ServerMaxServers = types.StringNull()
 		}
-		if value := r.Get("ipv4.server.homedir"); value.Exists() && !data.Vrfs[i].Ipv4ServerHomedir.IsNull() {
+		if value := r.Get("ipv4.server.homedir"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4ServerHomedir.IsNull() {
 			data.Vrfs[i].Ipv4ServerHomedir = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4ServerHomedir = types.StringNull()
 		}
-		if value := r.Get("ipv4.server.dscp"); value.Exists() && !data.Vrfs[i].Ipv4ServerDscp.IsNull() {
+		if value := r.Get("ipv4.server.dscp"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4ServerDscp.IsNull() {
 			data.Vrfs[i].Ipv4ServerDscp = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4ServerDscp = types.StringNull()
 		}
-		if value := r.Get("ipv6.server.access-list"); value.Exists() && !data.Vrfs[i].Ipv6ServerAccessList.IsNull() {
+		if value := r.Get("ipv6.server.access-list"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6ServerAccessList.IsNull() {
 			data.Vrfs[i].Ipv6ServerAccessList = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6ServerAccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.server.max-servers"); value.Exists() && !data.Vrfs[i].Ipv6ServerMaxServers.IsNull() {
+		if value := r.Get("ipv6.server.max-servers"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6ServerMaxServers.IsNull() {
 			data.Vrfs[i].Ipv6ServerMaxServers = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6ServerMaxServers = types.StringNull()
 		}
-		if value := r.Get("ipv6.server.homedir"); value.Exists() && !data.Vrfs[i].Ipv6ServerHomedir.IsNull() {
+		if value := r.Get("ipv6.server.homedir"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6ServerHomedir.IsNull() {
 			data.Vrfs[i].Ipv6ServerHomedir = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6ServerHomedir = types.StringNull()
 		}
-		if value := r.Get("ipv6.server.dscp"); value.Exists() && !data.Vrfs[i].Ipv6ServerDscp.IsNull() {
+		if value := r.Get("ipv6.server.dscp"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6ServerDscp.IsNull() {
 			data.Vrfs[i].Ipv6ServerDscp = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6ServerDscp = types.StringNull()
@@ -219,31 +219,31 @@ func (data *TFTPServer) fromBody(ctx context.Context, res []byte, version string
 		data.Vrfs = make([]TFTPServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TFTPServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerMaxServers = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.homedir"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.homedir"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerHomedir = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.dscp"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.dscp"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerDscp = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerMaxServers = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.homedir"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.homedir"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerHomedir = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.dscp"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.dscp"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerDscp = types.StringValue(cValue.String())
 			}
 			data.Vrfs = append(data.Vrfs, item)
@@ -261,31 +261,31 @@ func (data *TFTPServerData) fromBody(ctx context.Context, res []byte, version st
 		data.Vrfs = make([]TFTPServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TFTPServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerMaxServers = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.homedir"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.homedir"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerHomedir = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.dscp"); cValue.Exists() {
+			if cValue := v.Get("ipv4.server.dscp"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServerDscp = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerMaxServers = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.homedir"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.homedir"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerHomedir = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.dscp"); cValue.Exists() {
+			if cValue := v.Get("ipv6.server.dscp"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServerDscp = types.StringValue(cValue.String())
 			}
 			data.Vrfs = append(data.Vrfs, item)

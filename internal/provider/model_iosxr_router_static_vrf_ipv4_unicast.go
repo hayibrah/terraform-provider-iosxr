@@ -490,22 +490,22 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.NexthopInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].InterfaceName.IsNull() {
 			data.NexthopInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && !data.NexthopInterfaces[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].Description.IsNull() {
 			data.NexthopInterfaces[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].Description = types.StringNull()
 		}
-		if value := r.Get("tag"); value.Exists() && !data.NexthopInterfaces[i].Tag.IsNull() {
+		if value := r.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaces[i].Tag.IsNull() {
 			data.NexthopInterfaces[i].Tag = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaces[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("distance-metric"); value.Exists() && !data.NexthopInterfaces[i].DistanceMetric.IsNull() {
+		if value := r.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaces[i].DistanceMetric.IsNull() {
 			data.NexthopInterfaces[i].DistanceMetric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaces[i].DistanceMetric = types.Int64Null()
@@ -519,12 +519,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 		} else {
 			data.NexthopInterfaces[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && !data.NexthopInterfaces[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].Track.IsNull() {
 			data.NexthopInterfaces[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].Track = types.StringNull()
 		}
-		if value := r.Get("metric"); value.Exists() && !data.NexthopInterfaces[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaces[i].Metric.IsNull() {
 			data.NexthopInterfaces[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaces[i].Metric = types.Int64Null()
@@ -553,37 +553,37 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.NexthopInterfaceAddresses[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].InterfaceName.IsNull() {
 			data.NexthopInterfaceAddresses[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("address"); value.Exists() && !data.NexthopInterfaceAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Address.IsNull() {
 			data.NexthopInterfaceAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("bfd.fast-detect.minimum-interval"); value.Exists() && !data.NexthopInterfaceAddresses[i].BfdFastDetectMinimumInterval.IsNull() {
+		if value := r.Get("bfd.fast-detect.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaceAddresses[i].BfdFastDetectMinimumInterval.IsNull() {
 			data.NexthopInterfaceAddresses[i].BfdFastDetectMinimumInterval = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaceAddresses[i].BfdFastDetectMinimumInterval = types.Int64Null()
 		}
-		if value := r.Get("bfd.fast-detect.multiplier"); value.Exists() && !data.NexthopInterfaceAddresses[i].BfdFastDetectMultiplier.IsNull() {
+		if value := r.Get("bfd.fast-detect.multiplier"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaceAddresses[i].BfdFastDetectMultiplier.IsNull() {
 			data.NexthopInterfaceAddresses[i].BfdFastDetectMultiplier = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaceAddresses[i].BfdFastDetectMultiplier = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && !data.NexthopInterfaceAddresses[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Description.IsNull() {
 			data.NexthopInterfaceAddresses[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Description = types.StringNull()
 		}
-		if value := r.Get("tag"); value.Exists() && !data.NexthopInterfaceAddresses[i].Tag.IsNull() {
+		if value := r.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaceAddresses[i].Tag.IsNull() {
 			data.NexthopInterfaceAddresses[i].Tag = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaceAddresses[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("distance-metric"); value.Exists() && !data.NexthopInterfaceAddresses[i].DistanceMetric.IsNull() {
+		if value := r.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaceAddresses[i].DistanceMetric.IsNull() {
 			data.NexthopInterfaceAddresses[i].DistanceMetric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaceAddresses[i].DistanceMetric = types.Int64Null()
@@ -597,12 +597,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 		} else {
 			data.NexthopInterfaceAddresses[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && !data.NexthopInterfaceAddresses[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Track.IsNull() {
 			data.NexthopInterfaceAddresses[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Track = types.StringNull()
 		}
-		if value := r.Get("metric"); value.Exists() && !data.NexthopInterfaceAddresses[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopInterfaceAddresses[i].Metric.IsNull() {
 			data.NexthopInterfaceAddresses[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopInterfaceAddresses[i].Metric = types.Int64Null()
@@ -631,32 +631,32 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.NexthopAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Address.IsNull() {
 			data.NexthopAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("bfd.fast-detect.minimum-interval"); value.Exists() && !data.NexthopAddresses[i].BfdFastDetectMinimumInterval.IsNull() {
+		if value := r.Get("bfd.fast-detect.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.NexthopAddresses[i].BfdFastDetectMinimumInterval.IsNull() {
 			data.NexthopAddresses[i].BfdFastDetectMinimumInterval = types.Int64Value(value.Int())
 		} else {
 			data.NexthopAddresses[i].BfdFastDetectMinimumInterval = types.Int64Null()
 		}
-		if value := r.Get("bfd.fast-detect.multiplier"); value.Exists() && !data.NexthopAddresses[i].BfdFastDetectMultiplier.IsNull() {
+		if value := r.Get("bfd.fast-detect.multiplier"); value.Exists() && value.Type == gjson.Number && !data.NexthopAddresses[i].BfdFastDetectMultiplier.IsNull() {
 			data.NexthopAddresses[i].BfdFastDetectMultiplier = types.Int64Value(value.Int())
 		} else {
 			data.NexthopAddresses[i].BfdFastDetectMultiplier = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && !data.NexthopAddresses[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Description.IsNull() {
 			data.NexthopAddresses[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Description = types.StringNull()
 		}
-		if value := r.Get("tag"); value.Exists() && !data.NexthopAddresses[i].Tag.IsNull() {
+		if value := r.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.NexthopAddresses[i].Tag.IsNull() {
 			data.NexthopAddresses[i].Tag = types.Int64Value(value.Int())
 		} else {
 			data.NexthopAddresses[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("distance-metric"); value.Exists() && !data.NexthopAddresses[i].DistanceMetric.IsNull() {
+		if value := r.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopAddresses[i].DistanceMetric.IsNull() {
 			data.NexthopAddresses[i].DistanceMetric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopAddresses[i].DistanceMetric = types.Int64Null()
@@ -670,12 +670,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 		} else {
 			data.NexthopAddresses[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && !data.NexthopAddresses[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Track.IsNull() {
 			data.NexthopAddresses[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Track = types.StringNull()
 		}
-		if value := r.Get("metric"); value.Exists() && !data.NexthopAddresses[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.NexthopAddresses[i].Metric.IsNull() {
 			data.NexthopAddresses[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.NexthopAddresses[i].Metric = types.Int64Null()
@@ -704,22 +704,22 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("sr-policy-name"); value.Exists() && !data.SrPolicies[i].SrPolicyName.IsNull() {
+		if value := r.Get("sr-policy-name"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].SrPolicyName.IsNull() {
 			data.SrPolicies[i].SrPolicyName = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].SrPolicyName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && !data.SrPolicies[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].Description.IsNull() {
 			data.SrPolicies[i].Description = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].Description = types.StringNull()
 		}
-		if value := r.Get("tag"); value.Exists() && !data.SrPolicies[i].Tag.IsNull() {
+		if value := r.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.SrPolicies[i].Tag.IsNull() {
 			data.SrPolicies[i].Tag = types.Int64Value(value.Int())
 		} else {
 			data.SrPolicies[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("distance-metric"); value.Exists() && !data.SrPolicies[i].DistanceMetric.IsNull() {
+		if value := r.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.SrPolicies[i].DistanceMetric.IsNull() {
 			data.SrPolicies[i].DistanceMetric = types.Int64Value(value.Int())
 		} else {
 			data.SrPolicies[i].DistanceMetric = types.Int64Null()
@@ -733,12 +733,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 		} else {
 			data.SrPolicies[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && !data.SrPolicies[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].Track.IsNull() {
 			data.SrPolicies[i].Track = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].Track = types.StringNull()
 		}
-		if value := r.Get("metric"); value.Exists() && !data.SrPolicies[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.SrPolicies[i].Metric.IsNull() {
 			data.SrPolicies[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.SrPolicies[i].Metric = types.Int64Null()
@@ -767,7 +767,7 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
@@ -795,22 +795,22 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("description"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Description = types.StringNull()
 			}
-			if value := cr.Get("tag"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].Tag.IsNull() {
+			if value := cr.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaces[ci].Tag.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Tag = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Tag = types.Int64Null()
 			}
-			if value := cr.Get("distance-metric"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].DistanceMetric.IsNull() {
+			if value := cr.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaces[ci].DistanceMetric.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].DistanceMetric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].DistanceMetric = types.Int64Null()
@@ -824,12 +824,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Track = types.StringNull()
 			}
-			if value := cr.Get("metric"); value.Exists() && !data.Vrfs[i].NexthopInterfaces[ci].Metric.IsNull() {
+			if value := cr.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaces[ci].Metric.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Metric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Metric = types.Int64Null()
@@ -858,37 +858,37 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("address"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Address.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("bfd.fast-detect.minimum-interval"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMinimumInterval.IsNull() {
+			if value := cr.Get("bfd.fast-detect.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMinimumInterval.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMinimumInterval = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMinimumInterval = types.Int64Null()
 			}
-			if value := cr.Get("bfd.fast-detect.multiplier"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMultiplier.IsNull() {
+			if value := cr.Get("bfd.fast-detect.multiplier"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMultiplier.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMultiplier = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMultiplier = types.Int64Null()
 			}
-			if value := cr.Get("description"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Description = types.StringNull()
 			}
-			if value := cr.Get("tag"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Tag.IsNull() {
+			if value := cr.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Tag.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Tag = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Tag = types.Int64Null()
 			}
-			if value := cr.Get("distance-metric"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].DistanceMetric.IsNull() {
+			if value := cr.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaceAddresses[ci].DistanceMetric.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].DistanceMetric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].DistanceMetric = types.Int64Null()
@@ -902,12 +902,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Track = types.StringNull()
 			}
-			if value := cr.Get("metric"); value.Exists() && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Metric.IsNull() {
+			if value := cr.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Metric.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Metric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Metric = types.Int64Null()
@@ -936,32 +936,32 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Address.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("bfd.fast-detect.minimum-interval"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMinimumInterval.IsNull() {
+			if value := cr.Get("bfd.fast-detect.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMinimumInterval.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMinimumInterval = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMinimumInterval = types.Int64Null()
 			}
-			if value := cr.Get("bfd.fast-detect.multiplier"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMultiplier.IsNull() {
+			if value := cr.Get("bfd.fast-detect.multiplier"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMultiplier.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMultiplier = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMultiplier = types.Int64Null()
 			}
-			if value := cr.Get("description"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Description = types.StringNull()
 			}
-			if value := cr.Get("tag"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].Tag.IsNull() {
+			if value := cr.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopAddresses[ci].Tag.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Tag = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Tag = types.Int64Null()
 			}
-			if value := cr.Get("distance-metric"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].DistanceMetric.IsNull() {
+			if value := cr.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopAddresses[ci].DistanceMetric.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].DistanceMetric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].DistanceMetric = types.Int64Null()
@@ -975,12 +975,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Track = types.StringNull()
 			}
-			if value := cr.Get("metric"); value.Exists() && !data.Vrfs[i].NexthopAddresses[ci].Metric.IsNull() {
+			if value := cr.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].NexthopAddresses[ci].Metric.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Metric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Metric = types.Int64Null()
@@ -1009,22 +1009,22 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 					return true
 				},
 			)
-			if value := cr.Get("sr-policy-name"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].SrPolicyName.IsNull() {
+			if value := cr.Get("sr-policy-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].SrPolicyName.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].SrPolicyName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].SrPolicyName = types.StringNull()
 			}
-			if value := cr.Get("description"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].Description.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Description = types.StringNull()
 			}
-			if value := cr.Get("tag"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].Tag.IsNull() {
+			if value := cr.Get("tag"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].SrPolicies[ci].Tag.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Tag = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Tag = types.Int64Null()
 			}
-			if value := cr.Get("distance-metric"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].DistanceMetric.IsNull() {
+			if value := cr.Get("distance-metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].SrPolicies[ci].DistanceMetric.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].DistanceMetric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].DistanceMetric = types.Int64Null()
@@ -1038,12 +1038,12 @@ func (data *RouterStaticVRFIPv4Unicast) updateFromBody(ctx context.Context, res 
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].Track.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Track = types.StringNull()
 			}
-			if value := cr.Get("metric"); value.Exists() && !data.Vrfs[i].SrPolicies[ci].Metric.IsNull() {
+			if value := cr.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].SrPolicies[ci].Metric.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Metric = types.Int64Value(value.Int())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Metric = types.Int64Null()
@@ -1061,16 +1061,16 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 		data.NexthopInterfaces = make([]RouterStaticVRFIPv4UnicastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1078,10 +1078,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopInterfaces = append(data.NexthopInterfaces, item)
@@ -1092,25 +1092,25 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 		data.NexthopInterfaceAddresses = make([]RouterStaticVRFIPv4UnicastNexthopInterfaceAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopInterfaceAddresses{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMinimumInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1118,10 +1118,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopInterfaceAddresses = append(data.NexthopInterfaceAddresses, item)
@@ -1132,22 +1132,22 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 		data.NexthopAddresses = make([]RouterStaticVRFIPv4UnicastNexthopAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMinimumInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1155,10 +1155,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopAddresses = append(data.NexthopAddresses, item)
@@ -1169,16 +1169,16 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 		data.SrPolicies = make([]RouterStaticVRFIPv4UnicastSrPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastSrPolicies{}
-			if cValue := v.Get("sr-policy-name"); cValue.Exists() {
+			if cValue := v.Get("sr-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SrPolicyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1186,10 +1186,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.SrPolicies = append(data.SrPolicies, item)
@@ -1200,23 +1200,23 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 		data.Vrfs = make([]RouterStaticVRFIPv4UnicastVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("nexthop-interfaces.nexthop-interface"); cValue.Exists() {
 				item.NexthopInterfaces = make([]RouterStaticVRFIPv4UnicastVrfsNexthopInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1224,10 +1224,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopInterfaces = append(item.NexthopInterfaces, cItem)
@@ -1238,25 +1238,25 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 				item.NexthopInterfaceAddresses = make([]RouterStaticVRFIPv4UnicastVrfsNexthopInterfaceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopInterfaceAddresses{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMinimumInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1264,10 +1264,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopInterfaceAddresses = append(item.NexthopInterfaceAddresses, cItem)
@@ -1278,22 +1278,22 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 				item.NexthopAddresses = make([]RouterStaticVRFIPv4UnicastVrfsNexthopAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMinimumInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1301,10 +1301,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopAddresses = append(item.NexthopAddresses, cItem)
@@ -1315,16 +1315,16 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 				item.SrPolicies = make([]RouterStaticVRFIPv4UnicastVrfsSrPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsSrPolicies{}
-					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() {
+					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SrPolicyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1332,10 +1332,10 @@ func (data *RouterStaticVRFIPv4Unicast) fromBody(ctx context.Context, res []byte
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.SrPolicies = append(item.SrPolicies, cItem)
@@ -1357,16 +1357,16 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 		data.NexthopInterfaces = make([]RouterStaticVRFIPv4UnicastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1374,10 +1374,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopInterfaces = append(data.NexthopInterfaces, item)
@@ -1388,25 +1388,25 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 		data.NexthopInterfaceAddresses = make([]RouterStaticVRFIPv4UnicastNexthopInterfaceAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopInterfaceAddresses{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMinimumInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1414,10 +1414,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopInterfaceAddresses = append(data.NexthopInterfaceAddresses, item)
@@ -1428,22 +1428,22 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 		data.NexthopAddresses = make([]RouterStaticVRFIPv4UnicastNexthopAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastNexthopAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMinimumInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() {
+			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1451,10 +1451,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.NexthopAddresses = append(data.NexthopAddresses, item)
@@ -1465,16 +1465,16 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 		data.SrPolicies = make([]RouterStaticVRFIPv4UnicastSrPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastSrPolicies{}
-			if cValue := v.Get("sr-policy-name"); cValue.Exists() {
+			if cValue := v.Get("sr-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SrPolicyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tag"); cValue.Exists() {
+			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("distance-metric"); cValue.Exists() {
+			if cValue := v.Get("distance-metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DistanceMetric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permanent"); cValue.Exists() {
@@ -1482,10 +1482,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() {
+			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Track = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric"); cValue.Exists() {
+			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			data.SrPolicies = append(data.SrPolicies, item)
@@ -1496,23 +1496,23 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 		data.Vrfs = make([]RouterStaticVRFIPv4UnicastVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticVRFIPv4UnicastVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("nexthop-interfaces.nexthop-interface"); cValue.Exists() {
 				item.NexthopInterfaces = make([]RouterStaticVRFIPv4UnicastVrfsNexthopInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1520,10 +1520,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopInterfaces = append(item.NexthopInterfaces, cItem)
@@ -1534,25 +1534,25 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 				item.NexthopInterfaceAddresses = make([]RouterStaticVRFIPv4UnicastVrfsNexthopInterfaceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopInterfaceAddresses{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMinimumInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1560,10 +1560,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopInterfaceAddresses = append(item.NexthopInterfaceAddresses, cItem)
@@ -1574,22 +1574,22 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 				item.NexthopAddresses = make([]RouterStaticVRFIPv4UnicastVrfsNexthopAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsNexthopAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMinimumInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() {
+					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1597,10 +1597,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.NexthopAddresses = append(item.NexthopAddresses, cItem)
@@ -1611,16 +1611,16 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 				item.SrPolicies = make([]RouterStaticVRFIPv4UnicastVrfsSrPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticVRFIPv4UnicastVrfsSrPolicies{}
-					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() {
+					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SrPolicyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() {
+					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("tag"); ccValue.Exists() {
+					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Tag = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("distance-metric"); ccValue.Exists() {
+					if ccValue := cv.Get("distance-metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.DistanceMetric = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("permanent"); ccValue.Exists() {
@@ -1628,10 +1628,10 @@ func (data *RouterStaticVRFIPv4UnicastData) fromBody(ctx context.Context, res []
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() {
+					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("metric"); ccValue.Exists() {
+					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Metric = types.Int64Value(ccValue.Int())
 					}
 					item.SrPolicies = append(item.SrPolicies, cItem)

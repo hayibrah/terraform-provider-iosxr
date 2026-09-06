@@ -218,12 +218,12 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 				return true
 			},
 		)
-		if value := r.Get("domain-name"); value.Exists() && !data.Domains[i].DomainName.IsNull() {
+		if value := r.Get("domain-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].DomainName.IsNull() {
 			data.Domains[i].DomainName = types.StringValue(value.String())
 		} else {
 			data.Domains[i].DomainName = types.StringNull()
 		}
-		if value := r.Get("order"); value.Exists() && !data.Domains[i].Order.IsNull() {
+		if value := r.Get("order"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Order.IsNull() {
 			data.Domains[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].Order = types.Int64Null()
@@ -238,12 +238,12 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.LookupDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() && !data.LookupSourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() && value.Type == gjson.String && !data.LookupSourceInterface.IsNull() {
 		data.LookupSourceInterface = types.StringValue(value.String())
 	} else {
 		data.LookupSourceInterface = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() && !data.Name.IsNull() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String && !data.Name.IsNull() {
 		data.Name = types.StringValue(value.String())
 	} else {
 		data.Name = types.StringNull()
@@ -271,7 +271,7 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 				return true
 			},
 		)
-		if value := r.Get("host-name"); value.Exists() && !data.Ipv4Hosts[i].HostName.IsNull() {
+		if value := r.Get("host-name"); value.Exists() && value.Type == gjson.String && !data.Ipv4Hosts[i].HostName.IsNull() {
 			data.Ipv4Hosts[i].HostName = types.StringValue(value.String())
 		} else {
 			data.Ipv4Hosts[i].HostName = types.StringNull()
@@ -305,12 +305,12 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.NameServers[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.NameServers[i].Address.IsNull() {
 			data.NameServers[i].Address = types.StringValue(value.String())
 		} else {
 			data.NameServers[i].Address = types.StringNull()
 		}
-		if value := r.Get("order"); value.Exists() && !data.NameServers[i].Order.IsNull() {
+		if value := r.Get("order"); value.Exists() && value.Type == gjson.Number && !data.NameServers[i].Order.IsNull() {
 			data.NameServers[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.NameServers[i].Order = types.Int64Null()
@@ -339,7 +339,7 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 				return true
 			},
 		)
-		if value := r.Get("host-name"); value.Exists() && !data.Ipv6Hosts[i].HostName.IsNull() {
+		if value := r.Get("host-name"); value.Exists() && value.Type == gjson.String && !data.Ipv6Hosts[i].HostName.IsNull() {
 			data.Ipv6Hosts[i].HostName = types.StringValue(value.String())
 		} else {
 			data.Ipv6Hosts[i].HostName = types.StringNull()
@@ -350,7 +350,7 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 			data.Ipv6Hosts[i].Ipv6Address = types.ListNull(types.StringType)
 		}
 	}
-	if value := gjson.GetBytes(res, "multicast"); value.Exists() && !data.Multicast.IsNull() {
+	if value := gjson.GetBytes(res, "multicast"); value.Exists() && value.Type == gjson.String && !data.Multicast.IsNull() {
 		data.Multicast = types.StringValue(value.String())
 	} else {
 		data.Multicast = types.StringNull()
@@ -375,10 +375,10 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 		data.Domains = make([]DomainDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() {
+			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -390,17 +390,17 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LookupDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() && value.Type == gjson.String {
 		data.LookupSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
 		data.Name = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.hosts.host"); value.Exists() {
 		data.Ipv4Hosts = make([]DomainIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainIpv4Hosts{}
-			if cValue := v.Get("host-name"); cValue.Exists() {
+			if cValue := v.Get("host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ip-address"); cValue.Exists() {
@@ -416,10 +416,10 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 		data.NameServers = make([]DomainNameServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainNameServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() {
+			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.NameServers = append(data.NameServers, item)
@@ -430,7 +430,7 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6Hosts = make([]DomainIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainIpv6Hosts{}
-			if cValue := v.Get("host-name"); cValue.Exists() {
+			if cValue := v.Get("host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv6-address"); cValue.Exists() {
@@ -442,7 +442,7 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "multicast"); value.Exists() {
+	if value := gjson.GetBytes(res, "multicast"); value.Exists() && value.Type == gjson.String {
 		data.Multicast = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "default-flows.disable"); value.Exists() {
@@ -461,10 +461,10 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 		data.Domains = make([]DomainDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() {
+			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -476,17 +476,17 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.LookupDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "lookup.source-interface"); value.Exists() && value.Type == gjson.String {
 		data.LookupSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
 		data.Name = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.hosts.host"); value.Exists() {
 		data.Ipv4Hosts = make([]DomainIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainIpv4Hosts{}
-			if cValue := v.Get("host-name"); cValue.Exists() {
+			if cValue := v.Get("host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ip-address"); cValue.Exists() {
@@ -502,10 +502,10 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 		data.NameServers = make([]DomainNameServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainNameServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() {
+			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.NameServers = append(data.NameServers, item)
@@ -516,7 +516,7 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 		data.Ipv6Hosts = make([]DomainIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := DomainIpv6Hosts{}
-			if cValue := v.Get("host-name"); cValue.Exists() {
+			if cValue := v.Get("host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv6-address"); cValue.Exists() {
@@ -528,7 +528,7 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "multicast"); value.Exists() {
+	if value := gjson.GetBytes(res, "multicast"); value.Exists() && value.Type == gjson.String {
 		data.Multicast = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "default-flows.disable"); value.Exists() {

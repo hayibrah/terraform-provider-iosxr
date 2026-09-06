@@ -199,57 +199,57 @@ func (data FlowExporterMap) GetRangeConstraints() []helpers.FieldRangeConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() && !data.DestinationIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.DestinationIpv4Address.IsNull() {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	} else {
 		data.DestinationIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() && !data.DestinationIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.DestinationIpv6Address.IsNull() {
 		data.DestinationIpv6Address = types.StringValue(value.String())
 	} else {
 		data.DestinationIpv6Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() && !data.DestinationVrf.IsNull() {
+	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() && value.Type == gjson.String && !data.DestinationVrf.IsNull() {
 		data.DestinationVrf = types.StringValue(value.String())
 	} else {
 		data.DestinationVrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source"); value.Exists() && !data.Source.IsNull() {
+	if value := gjson.GetBytes(res, "source"); value.Exists() && value.Type == gjson.String && !data.Source.IsNull() {
 		data.Source = types.StringValue(value.String())
 	} else {
 		data.Source = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() && !data.SourceAddressIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.SourceAddressIpv4Address.IsNull() {
 		data.SourceAddressIpv4Address = types.StringValue(value.String())
 	} else {
 		data.SourceAddressIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() && !data.SourceAddressIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.SourceAddressIpv6Address.IsNull() {
 		data.SourceAddressIpv6Address = types.StringValue(value.String())
 	} else {
 		data.SourceAddressIpv6Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() && !data.RouterIdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.RouterIdIpv4Address.IsNull() {
 		data.RouterIdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.RouterIdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() && !data.RouterIdIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.RouterIdIpv6Address.IsNull() {
 		data.RouterIdIpv6Address = types.StringValue(value.String())
 	} else {
 		data.RouterIdIpv6Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && !data.Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number && !data.Dscp.IsNull() {
 		data.Dscp = types.Int64Value(value.Int())
 	} else {
 		data.Dscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() && !data.TransportUdp.IsNull() {
+	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() && value.Type == gjson.Number && !data.TransportUdp.IsNull() {
 		data.TransportUdp = types.Int64Value(value.Int())
 	} else {
 		data.TransportUdp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "packet-length"); value.Exists() && !data.PacketLength.IsNull() {
+	if value := gjson.GetBytes(res, "packet-length"); value.Exists() && value.Type == gjson.Number && !data.PacketLength.IsNull() {
 		data.PacketLength = types.Int64Value(value.Int())
 	} else {
 		data.PacketLength = types.Int64Null()
@@ -263,42 +263,42 @@ func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.DfbitSet = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() && !data.VersionExportFormat.IsNull() {
+	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() && value.Type == gjson.String && !data.VersionExportFormat.IsNull() {
 		data.VersionExportFormat = types.StringValue(value.String())
 	} else {
 		data.VersionExportFormat = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() && !data.VersionTemplateDataTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionTemplateDataTimeout.IsNull() {
 		data.VersionTemplateDataTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionTemplateDataTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() && !data.VersionTemplateOptionsTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionTemplateOptionsTimeout.IsNull() {
 		data.VersionTemplateOptionsTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionTemplateOptionsTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() && !data.VersionTemplateTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionTemplateTimeout.IsNull() {
 		data.VersionTemplateTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionTemplateTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() && !data.VersionOptionsInterfaceTableTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionOptionsInterfaceTableTimeout.IsNull() {
 		data.VersionOptionsInterfaceTableTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionOptionsInterfaceTableTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() && !data.VersionOptionsSamplerTableTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionOptionsSamplerTableTimeout.IsNull() {
 		data.VersionOptionsSamplerTableTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionOptionsSamplerTableTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() && !data.VersionOptionsClassTableTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionOptionsClassTableTimeout.IsNull() {
 		data.VersionOptionsClassTableTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionOptionsClassTableTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() && !data.VersionOptionsVrfTableTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() && value.Type == gjson.Number && !data.VersionOptionsVrfTableTimeout.IsNull() {
 		data.VersionOptionsVrfTableTimeout = types.Int64Value(value.Int())
 	} else {
 		data.VersionOptionsVrfTableTimeout = types.Int64Null()
@@ -310,37 +310,37 @@ func (data *FlowExporterMap) updateFromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.DestinationIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() && value.Type == gjson.String {
 		data.DestinationVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source"); value.Exists() {
+	if value := gjson.GetBytes(res, "source"); value.Exists() && value.Type == gjson.String {
 		data.Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.RouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.RouterIdIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number {
 		data.Dscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() {
+	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() && value.Type == gjson.Number {
 		data.TransportUdp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "packet-length"); value.Exists() {
+	if value := gjson.GetBytes(res, "packet-length"); value.Exists() && value.Type == gjson.Number {
 		data.PacketLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dfbit.set"); value.Exists() {
@@ -348,28 +348,28 @@ func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.DfbitSet = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() && value.Type == gjson.String {
 		data.VersionExportFormat = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateDataTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateOptionsTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsInterfaceTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsSamplerTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsClassTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsVrfTableTimeout = types.Int64Value(value.Int())
 	}
 }
@@ -379,37 +379,37 @@ func (data *FlowExporterMap) fromBody(ctx context.Context, res []byte, version s
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.DestinationIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.DestinationIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "destination.vrf"); value.Exists() && value.Type == gjson.String {
 		data.DestinationVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source"); value.Exists() {
+	if value := gjson.GetBytes(res, "source"); value.Exists() && value.Type == gjson.String {
 		data.Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "source-address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.SourceAddressIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.RouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id.router-id-address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.RouterIdIpv6Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number {
 		data.Dscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() {
+	if value := gjson.GetBytes(res, "transport.udp"); value.Exists() && value.Type == gjson.Number {
 		data.TransportUdp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "packet-length"); value.Exists() {
+	if value := gjson.GetBytes(res, "packet-length"); value.Exists() && value.Type == gjson.Number {
 		data.PacketLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dfbit.set"); value.Exists() {
@@ -417,28 +417,28 @@ func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.DfbitSet = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.export-format"); value.Exists() && value.Type == gjson.String {
 		data.VersionExportFormat = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.data.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateDataTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.options.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateOptionsTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.template.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionTemplateTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.interface-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsInterfaceTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.sampler-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsSamplerTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.class-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsClassTableTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "version.options.vrf-table.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.VersionOptionsVrfTableTimeout = types.Int64Value(value.Int())
 	}
 }

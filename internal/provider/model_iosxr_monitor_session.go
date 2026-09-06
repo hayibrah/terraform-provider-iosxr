@@ -299,17 +299,17 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("session-name"); value.Exists() && !data.MonitorSessions[i].SessionName.IsNull() {
+		if value := r.Get("session-name"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].SessionName.IsNull() {
 			data.MonitorSessions[i].SessionName = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].SessionName = types.StringNull()
 		}
-		if value := r.Get("traffic-type"); value.Exists() && !data.MonitorSessions[i].TrafficType.IsNull() {
+		if value := r.Get("traffic-type"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].TrafficType.IsNull() {
 			data.MonitorSessions[i].TrafficType = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].TrafficType = types.StringNull()
 		}
-		if value := r.Get("destination.interface"); value.Exists() && !data.MonitorSessions[i].DestinationInterface.IsNull() {
+		if value := r.Get("destination.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DestinationInterface.IsNull() {
 			data.MonitorSessions[i].DestinationInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DestinationInterface = types.StringNull()
@@ -323,7 +323,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].DestinationPseudowire = types.BoolNull()
 		}
-		if value := r.Get("destination.file.size"); value.Exists() && !data.MonitorSessions[i].DestinationFileSize.IsNull() {
+		if value := r.Get("destination.file.size"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].DestinationFileSize.IsNull() {
 			data.MonitorSessions[i].DestinationFileSize = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].DestinationFileSize = types.Int64Null()
@@ -346,7 +346,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].DestinationFileFormatPcapng = types.BoolNull()
 		}
-		if value := r.Get("destination.file.filter"); value.Exists() && !data.MonitorSessions[i].DestinationFileFilter.IsNull() {
+		if value := r.Get("destination.file.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DestinationFileFilter.IsNull() {
 			data.MonitorSessions[i].DestinationFileFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DestinationFileFilter = types.StringNull()
@@ -396,12 +396,12 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].DropsTx = types.BoolNull()
 		}
-		if value := r.Get("drops.filter"); value.Exists() && !data.MonitorSessions[i].DropsFilter.IsNull() {
+		if value := r.Get("drops.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DropsFilter.IsNull() {
 			data.MonitorSessions[i].DropsFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DropsFilter = types.StringNull()
 		}
-		if value := r.Get("rx.interface"); value.Exists() && !data.MonitorSessions[i].RxInterface.IsNull() {
+		if value := r.Get("rx.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].RxInterface.IsNull() {
 			data.MonitorSessions[i].RxInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].RxInterface = types.StringNull()
@@ -415,7 +415,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].RxPseudowire = types.BoolNull()
 		}
-		if value := r.Get("tx.interface"); value.Exists() && !data.MonitorSessions[i].TxInterface.IsNull() {
+		if value := r.Get("tx.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].TxInterface.IsNull() {
 			data.MonitorSessions[i].TxInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].TxInterface = types.StringNull()
@@ -429,27 +429,27 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].TxPseudowire = types.BoolNull()
 		}
-		if value := r.Get("inject-interface"); value.Exists() && !data.MonitorSessions[i].InjectInterface.IsNull() {
+		if value := r.Get("inject-interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].InjectInterface.IsNull() {
 			data.MonitorSessions[i].InjectInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].InjectInterface = types.StringNull()
 		}
-		if value := r.Get("discard-class"); value.Exists() && !data.MonitorSessions[i].DiscardClass.IsNull() {
+		if value := r.Get("discard-class"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].DiscardClass.IsNull() {
 			data.MonitorSessions[i].DiscardClass = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].DiscardClass = types.Int64Null()
 		}
-		if value := r.Get("traffic-class"); value.Exists() && !data.MonitorSessions[i].TrafficClass.IsNull() {
+		if value := r.Get("traffic-class"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].TrafficClass.IsNull() {
 			data.MonitorSessions[i].TrafficClass = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].TrafficClass = types.Int64Null()
 		}
-		if value := r.Get("mirror.first"); value.Exists() && !data.MonitorSessions[i].MirrorFirst.IsNull() {
+		if value := r.Get("mirror.first"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].MirrorFirst.IsNull() {
 			data.MonitorSessions[i].MirrorFirst = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].MirrorFirst = types.Int64Null()
 		}
-		if value := r.Get("mirror.interval"); value.Exists() && !data.MonitorSessions[i].MirrorInterval.IsNull() {
+		if value := r.Get("mirror.interval"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].MirrorInterval.IsNull() {
 			data.MonitorSessions[i].MirrorInterval = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].MirrorInterval = types.StringNull()
@@ -472,23 +472,23 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].ProtocolCaptureTx = types.BoolNull()
 		}
-		if value := r.Get("protocol-capture.filter"); value.Exists() && !data.MonitorSessions[i].ProtocolCaptureFilter.IsNull() {
+		if value := r.Get("protocol-capture.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].ProtocolCaptureFilter.IsNull() {
 			data.MonitorSessions[i].ProtocolCaptureFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].ProtocolCaptureFilter = types.StringNull()
 		}
-		if value := r.Get("rate-limit.rx"); value.Exists() && !data.MonitorSessions[i].RateLimitRx.IsNull() {
+		if value := r.Get("rate-limit.rx"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].RateLimitRx.IsNull() {
 			data.MonitorSessions[i].RateLimitRx = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].RateLimitRx = types.Int64Null()
 		}
-		if value := r.Get("rate-limit.tx"); value.Exists() && !data.MonitorSessions[i].RateLimitTx.IsNull() {
+		if value := r.Get("rate-limit.tx"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].RateLimitTx.IsNull() {
 			data.MonitorSessions[i].RateLimitTx = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].RateLimitTx = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.Number && !data.RouterId.IsNull() {
 		data.RouterId = types.Int64Value(value.Int())
 	} else {
 		data.RouterId = types.Int64Null()
@@ -502,7 +502,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.DefaultCaptureDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() && !data.LocalCaptureCapacitySize.IsNull() {
+	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() && value.Type == gjson.Number && !data.LocalCaptureCapacitySize.IsNull() {
 		data.LocalCaptureCapacitySize = types.Int64Value(value.Int())
 	} else {
 		data.LocalCaptureCapacitySize = types.Int64Null()
@@ -545,13 +545,13 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MonitorSessionMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() {
+			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SessionName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("traffic-type"); cValue.Exists() {
+			if cValue := v.Get("traffic-type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.TrafficType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("destination.interface"); cValue.Exists() {
+			if cValue := v.Get("destination.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DestinationInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.pseudowire"); cValue.Exists() {
@@ -559,7 +559,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DestinationPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.size"); cValue.Exists() {
+			if cValue := v.Get("destination.file.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DestinationFileSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("destination.file.buffer-type.linear"); cValue.Exists() {
@@ -572,7 +572,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DestinationFileFormatPcapng = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.filter"); cValue.Exists() {
+			if cValue := v.Get("destination.file.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DestinationFileFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.file.always-on"); cValue.Exists() {
@@ -600,10 +600,10 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DropsTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("drops.filter"); cValue.Exists() {
+			if cValue := v.Get("drops.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DropsFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rx.interface"); cValue.Exists() {
+			if cValue := v.Get("rx.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rx.pseudowire"); cValue.Exists() {
@@ -611,7 +611,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.RxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("tx.interface"); cValue.Exists() {
+			if cValue := v.Get("tx.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.TxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx.pseudowire"); cValue.Exists() {
@@ -619,19 +619,19 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.TxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("inject-interface"); cValue.Exists() {
+			if cValue := v.Get("inject-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InjectInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discard-class"); cValue.Exists() {
+			if cValue := v.Get("discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("traffic-class"); cValue.Exists() {
+			if cValue := v.Get("traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TrafficClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.first"); cValue.Exists() {
+			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("protocol-capture.rx"); cValue.Exists() {
@@ -644,20 +644,20 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.ProtocolCaptureTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() {
+			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProtocolCaptureFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rate-limit.rx"); cValue.Exists() {
+			if cValue := v.Get("rate-limit.rx"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RateLimitRx = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("rate-limit.tx"); cValue.Exists() {
+			if cValue := v.Get("rate-limit.tx"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RateLimitTx = types.Int64Value(cValue.Int())
 			}
 			data.MonitorSessions = append(data.MonitorSessions, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.Number {
 		data.RouterId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default-capture-disable"); value.Exists() {
@@ -665,7 +665,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.DefaultCaptureDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() {
+	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() && value.Type == gjson.Number {
 		data.LocalCaptureCapacitySize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "kb"); value.Exists() {
@@ -694,13 +694,13 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MonitorSessionMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() {
+			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SessionName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("traffic-type"); cValue.Exists() {
+			if cValue := v.Get("traffic-type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.TrafficType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("destination.interface"); cValue.Exists() {
+			if cValue := v.Get("destination.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DestinationInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.pseudowire"); cValue.Exists() {
@@ -708,7 +708,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DestinationPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.size"); cValue.Exists() {
+			if cValue := v.Get("destination.file.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DestinationFileSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("destination.file.buffer-type.linear"); cValue.Exists() {
@@ -721,7 +721,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DestinationFileFormatPcapng = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.filter"); cValue.Exists() {
+			if cValue := v.Get("destination.file.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DestinationFileFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.file.always-on"); cValue.Exists() {
@@ -749,10 +749,10 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DropsTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("drops.filter"); cValue.Exists() {
+			if cValue := v.Get("drops.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DropsFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rx.interface"); cValue.Exists() {
+			if cValue := v.Get("rx.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rx.pseudowire"); cValue.Exists() {
@@ -760,7 +760,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.RxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("tx.interface"); cValue.Exists() {
+			if cValue := v.Get("tx.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.TxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx.pseudowire"); cValue.Exists() {
@@ -768,19 +768,19 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.TxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("inject-interface"); cValue.Exists() {
+			if cValue := v.Get("inject-interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InjectInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discard-class"); cValue.Exists() {
+			if cValue := v.Get("discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("traffic-class"); cValue.Exists() {
+			if cValue := v.Get("traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TrafficClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.first"); cValue.Exists() {
+			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("protocol-capture.rx"); cValue.Exists() {
@@ -793,20 +793,20 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.ProtocolCaptureTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() {
+			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProtocolCaptureFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rate-limit.rx"); cValue.Exists() {
+			if cValue := v.Get("rate-limit.rx"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RateLimitRx = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("rate-limit.tx"); cValue.Exists() {
+			if cValue := v.Get("rate-limit.tx"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RateLimitTx = types.Int64Value(cValue.Int())
 			}
 			data.MonitorSessions = append(data.MonitorSessions, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.Number {
 		data.RouterId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default-capture-disable"); value.Exists() {
@@ -814,7 +814,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.DefaultCaptureDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() {
+	if value := gjson.GetBytes(res, "local-capture-capacity"); value.Exists() && value.Type == gjson.Number {
 		data.LocalCaptureCapacitySize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "kb"); value.Exists() {

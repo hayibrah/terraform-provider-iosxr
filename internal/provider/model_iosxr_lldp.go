@@ -293,32 +293,32 @@ func (data LLDP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LLDP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && !data.Holdtime.IsNull() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number && !data.Holdtime.IsNull() {
 		data.Holdtime = types.Int64Value(value.Int())
 	} else {
 		data.Holdtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() && !data.Timer.IsNull() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number && !data.Timer.IsNull() {
 		data.Timer = types.Int64Value(value.Int())
 	} else {
 		data.Timer = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() && !data.Reinit.IsNull() {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number && !data.Reinit.IsNull() {
 		data.Reinit = types.Int64Value(value.Int())
 	} else {
 		data.Reinit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() && !data.SystemName.IsNull() {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String && !data.SystemName.IsNull() {
 		data.SystemName = types.StringValue(value.String())
 	} else {
 		data.SystemName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() && !data.SystemDescription.IsNull() {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String && !data.SystemDescription.IsNull() {
 		data.SystemDescription = types.StringValue(value.String())
 	} else {
 		data.SystemDescription = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && !data.ChassisId.IsNull() {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String && !data.ChassisId.IsNull() {
 		data.ChassisId = types.StringValue(value.String())
 	} else {
 		data.ChassisId = types.StringNull()
@@ -483,22 +483,22 @@ func (data *LLDP) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LLDP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
 		data.Timer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
 		data.Reinit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String {
 		data.SystemName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String {
 		data.SystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
@@ -621,22 +621,22 @@ func (data *LLDP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LLDPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
 		data.Timer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
 		data.Reinit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String {
 		data.SystemName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String {
 		data.SystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {

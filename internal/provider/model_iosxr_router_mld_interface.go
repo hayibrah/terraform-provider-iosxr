@@ -313,7 +313,7 @@ func (data RouterMLDInterface) GetRangeConstraints() []helpers.FieldRangeConstra
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "version"); value.Exists() && !data.Version.IsNull() {
+	if value := gjson.GetBytes(res, "version"); value.Exists() && value.Type == gjson.Number && !data.Version.IsNull() {
 		data.Version = types.Int64Value(value.Int())
 	} else {
 		data.Version = types.Int64Null()
@@ -336,17 +336,17 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 	} else {
 		data.RouterDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "query-interval"); value.Exists() && !data.QueryInterval.IsNull() {
+	if value := gjson.GetBytes(res, "query-interval"); value.Exists() && value.Type == gjson.Number && !data.QueryInterval.IsNull() {
 		data.QueryInterval = types.Int64Value(value.Int())
 	} else {
 		data.QueryInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() && !data.QueryTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() && value.Type == gjson.Number && !data.QueryTimeout.IsNull() {
 		data.QueryTimeout = types.Int64Value(value.Int())
 	} else {
 		data.QueryTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() && !data.QueryMaxResponseTime.IsNull() {
+	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() && value.Type == gjson.Number && !data.QueryMaxResponseTime.IsNull() {
 		data.QueryMaxResponseTime = types.Int64Value(value.Int())
 	} else {
 		data.QueryMaxResponseTime = types.Int64Null()
@@ -369,27 +369,27 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 	} else {
 		data.ExplicitTrackingDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() && !data.ExplicitTrackingAcl.IsNull() {
+	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() && value.Type == gjson.String && !data.ExplicitTrackingAcl.IsNull() {
 		data.ExplicitTrackingAcl = types.StringValue(value.String())
 	} else {
 		data.ExplicitTrackingAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group"); value.Exists() && !data.AccessGroup.IsNull() {
+	if value := gjson.GetBytes(res, "access-group"); value.Exists() && value.Type == gjson.String && !data.AccessGroup.IsNull() {
 		data.AccessGroup = types.StringValue(value.String())
 	} else {
 		data.AccessGroup = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() && !data.MaximumGroupsPerInterface.IsNull() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() && value.Type == gjson.Number && !data.MaximumGroupsPerInterface.IsNull() {
 		data.MaximumGroupsPerInterface = types.Int64Value(value.Int())
 	} else {
 		data.MaximumGroupsPerInterface = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() && !data.MaximumGroupsPerInterfaceThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() && value.Type == gjson.Number && !data.MaximumGroupsPerInterfaceThreshold.IsNull() {
 		data.MaximumGroupsPerInterfaceThreshold = types.Int64Value(value.Int())
 	} else {
 		data.MaximumGroupsPerInterfaceThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() && !data.MaximumGroupsPerInterfaceAcl.IsNull() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() && value.Type == gjson.String && !data.MaximumGroupsPerInterfaceAcl.IsNull() {
 		data.MaximumGroupsPerInterfaceAcl = types.StringValue(value.String())
 	} else {
 		data.MaximumGroupsPerInterfaceAcl = types.StringNull()
@@ -417,7 +417,7 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 				return true
 			},
 		)
-		if value := r.Get("group-address"); value.Exists() && !data.StaticGroups[i].GroupAddress.IsNull() {
+		if value := r.Get("group-address"); value.Exists() && value.Type == gjson.String && !data.StaticGroups[i].GroupAddress.IsNull() {
 			data.StaticGroups[i].GroupAddress = types.StringValue(value.String())
 		} else {
 			data.StaticGroups[i].GroupAddress = types.StringNull()
@@ -463,12 +463,12 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("group-mask-address"); value.Exists() && !data.StaticGroups[i].GroupMasks[ci].GroupIncMask.IsNull() {
+			if value := cr.Get("group-mask-address"); value.Exists() && value.Type == gjson.String && !data.StaticGroups[i].GroupMasks[ci].GroupIncMask.IsNull() {
 				data.StaticGroups[i].GroupMasks[ci].GroupIncMask = types.StringValue(value.String())
 			} else {
 				data.StaticGroups[i].GroupMasks[ci].GroupIncMask = types.StringNull()
 			}
-			if value := cr.Get("group-address-count"); value.Exists() && !data.StaticGroups[i].GroupMasks[ci].GroupCount.IsNull() {
+			if value := cr.Get("group-address-count"); value.Exists() && value.Type == gjson.Number && !data.StaticGroups[i].GroupMasks[ci].GroupCount.IsNull() {
 				data.StaticGroups[i].GroupMasks[ci].GroupCount = types.Int64Value(value.Int())
 			} else {
 				data.StaticGroups[i].GroupMasks[ci].GroupCount = types.Int64Null()
@@ -506,7 +506,7 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("source-address"); value.Exists() && !data.StaticGroups[i].SourceAddresses[ci].SourceIp.IsNull() {
+			if value := cr.Get("source-address"); value.Exists() && value.Type == gjson.String && !data.StaticGroups[i].SourceAddresses[ci].SourceIp.IsNull() {
 				data.StaticGroups[i].SourceAddresses[ci].SourceIp = types.StringValue(value.String())
 			} else {
 				data.StaticGroups[i].SourceAddresses[ci].SourceIp = types.StringNull()
@@ -544,17 +544,17 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("group-mask-address"); value.Exists() && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupIncMask.IsNull() {
+			if value := cr.Get("group-mask-address"); value.Exists() && value.Type == gjson.String && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupIncMask.IsNull() {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupIncMask = types.StringValue(value.String())
 			} else {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupIncMask = types.StringNull()
 			}
-			if value := cr.Get("source-address"); value.Exists() && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].SourceIp.IsNull() {
+			if value := cr.Get("source-address"); value.Exists() && value.Type == gjson.String && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].SourceIp.IsNull() {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].SourceIp = types.StringValue(value.String())
 			} else {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].SourceIp = types.StringNull()
 			}
-			if value := cr.Get("group-address-count"); value.Exists() && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupCount.IsNull() {
+			if value := cr.Get("group-address-count"); value.Exists() && value.Type == gjson.Number && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupCount.IsNull() {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupCount = types.Int64Value(value.Int())
 			} else {
 				data.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupCount = types.Int64Null()
@@ -593,7 +593,7 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 				return true
 			},
 		)
-		if value := r.Get("group-address"); value.Exists() && !data.JoinGroups[i].GroupAddress.IsNull() {
+		if value := r.Get("group-address"); value.Exists() && value.Type == gjson.String && !data.JoinGroups[i].GroupAddress.IsNull() {
 			data.JoinGroups[i].GroupAddress = types.StringValue(value.String())
 		} else {
 			data.JoinGroups[i].GroupAddress = types.StringNull()
@@ -630,7 +630,7 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("source-address"); value.Exists() && !data.JoinGroups[i].SourceAddresses[ci].SourceIp.IsNull() {
+			if value := cr.Get("source-address"); value.Exists() && value.Type == gjson.String && !data.JoinGroups[i].SourceAddresses[ci].SourceIp.IsNull() {
 				data.JoinGroups[i].SourceAddresses[ci].SourceIp = types.StringValue(value.String())
 			} else {
 				data.JoinGroups[i].SourceAddresses[ci].SourceIp = types.StringNull()
@@ -671,7 +671,7 @@ func (data *RouterMLDInterface) updateFromBody(ctx context.Context, res []byte, 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "version"); value.Exists() {
+	if value := gjson.GetBytes(res, "version"); value.Exists() && value.Type == gjson.Number {
 		data.Version = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "router.enable"); value.Exists() {
@@ -684,13 +684,13 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.RouterDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "query-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-interval"); value.Exists() && value.Type == gjson.Number {
 		data.QueryInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.QueryTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() && value.Type == gjson.Number {
 		data.QueryMaxResponseTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "explicit-tracking.enable"); value.Exists() {
@@ -703,26 +703,26 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.ExplicitTrackingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() && value.Type == gjson.String {
 		data.ExplicitTrackingAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumGroupsPerInterface = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumGroupsPerInterfaceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() && value.Type == gjson.String {
 		data.MaximumGroupsPerInterfaceAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "static-group.group-address"); value.Exists() {
 		data.StaticGroups = make([]RouterMLDInterfaceStaticGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterMLDInterfaceStaticGroups{}
-			if cValue := v.Get("group-address"); cValue.Exists() {
+			if cValue := v.Get("group-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group-address-only"); cValue.Exists() {
@@ -739,10 +739,10 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 				item.GroupMasks = make([]RouterMLDInterfaceStaticGroupsGroupMasks, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsGroupMasks{}
-					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() {
+					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupIncMask = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-address-count"); ccValue.Exists() {
+					if ccValue := cv.Get("group-address-count"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.GroupCount = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -758,7 +758,7 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 				item.SourceAddresses = make([]RouterMLDInterfaceStaticGroupsSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsSourceAddresses{}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -774,13 +774,13 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 				item.GroupMasksSourceAddresses = make([]RouterMLDInterfaceStaticGroupsGroupMasksSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsGroupMasksSourceAddresses{}
-					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() {
+					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupIncMask = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-address-count"); ccValue.Exists() {
+					if ccValue := cv.Get("group-address-count"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.GroupCount = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -800,7 +800,7 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 		data.JoinGroups = make([]RouterMLDInterfaceJoinGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterMLDInterfaceJoinGroups{}
-			if cValue := v.Get("group-address"); cValue.Exists() {
+			if cValue := v.Get("group-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group-address-only"); cValue.Exists() {
@@ -812,7 +812,7 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 				item.SourceAddresses = make([]RouterMLDInterfaceJoinGroupsSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceJoinGroupsSourceAddresses{}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("include"); ccValue.Exists() {
@@ -845,7 +845,7 @@ func (data *RouterMLDInterface) fromBody(ctx context.Context, res []byte, versio
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "version"); value.Exists() {
+	if value := gjson.GetBytes(res, "version"); value.Exists() && value.Type == gjson.Number {
 		data.Version = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "router.enable"); value.Exists() {
@@ -858,13 +858,13 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.RouterDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "query-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-interval"); value.Exists() && value.Type == gjson.Number {
 		data.QueryInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.QueryTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "query-max-response-time"); value.Exists() && value.Type == gjson.Number {
 		data.QueryMaxResponseTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "explicit-tracking.enable"); value.Exists() {
@@ -877,26 +877,26 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.ExplicitTrackingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "explicit-tracking.access-list"); value.Exists() && value.Type == gjson.String {
 		data.ExplicitTrackingAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.maximum-number"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumGroupsPerInterface = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumGroupsPerInterfaceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "maximum.groups-per-interface.access-list"); value.Exists() && value.Type == gjson.String {
 		data.MaximumGroupsPerInterfaceAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "static-group.group-address"); value.Exists() {
 		data.StaticGroups = make([]RouterMLDInterfaceStaticGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterMLDInterfaceStaticGroups{}
-			if cValue := v.Get("group-address"); cValue.Exists() {
+			if cValue := v.Get("group-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group-address-only"); cValue.Exists() {
@@ -913,10 +913,10 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 				item.GroupMasks = make([]RouterMLDInterfaceStaticGroupsGroupMasks, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsGroupMasks{}
-					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() {
+					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupIncMask = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-address-count"); ccValue.Exists() {
+					if ccValue := cv.Get("group-address-count"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.GroupCount = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -932,7 +932,7 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 				item.SourceAddresses = make([]RouterMLDInterfaceStaticGroupsSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsSourceAddresses{}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -948,13 +948,13 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 				item.GroupMasksSourceAddresses = make([]RouterMLDInterfaceStaticGroupsGroupMasksSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceStaticGroupsGroupMasksSourceAddresses{}
-					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() {
+					if ccValue := cv.Get("group-mask-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupIncMask = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-address-count"); ccValue.Exists() {
+					if ccValue := cv.Get("group-address-count"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.GroupCount = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("suppress-reports"); ccValue.Exists() {
@@ -974,7 +974,7 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 		data.JoinGroups = make([]RouterMLDInterfaceJoinGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterMLDInterfaceJoinGroups{}
-			if cValue := v.Get("group-address"); cValue.Exists() {
+			if cValue := v.Get("group-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.GroupAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("group-address-only"); cValue.Exists() {
@@ -986,7 +986,7 @@ func (data *RouterMLDInterfaceData) fromBody(ctx context.Context, res []byte, ve
 				item.SourceAddresses = make([]RouterMLDInterfaceJoinGroupsSourceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterMLDInterfaceJoinGroupsSourceAddresses{}
-					if ccValue := cv.Get("source-address"); ccValue.Exists() {
+					if ccValue := cv.Get("source-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.SourceIp = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("include"); ccValue.Exists() {

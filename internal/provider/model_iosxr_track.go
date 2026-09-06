@@ -457,47 +457,47 @@ func (data Track) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Track) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && !data.DelayUp.IsNull() {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number && !data.DelayUp.IsNull() {
 		data.DelayUp = types.Int64Value(value.Int())
 	} else {
 		data.DelayUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && !data.DelayDown.IsNull() {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number && !data.DelayDown.IsNull() {
 		data.DelayDown = types.Int64Value(value.Int())
 	} else {
 		data.DelayDown = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && !data.RouteIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && value.Type == gjson.String && !data.RouteIpv4Address.IsNull() {
 		data.RouteIpv4Address = types.StringValue(value.String())
 	} else {
 		data.RouteIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() && !data.RouteIpv4Mask.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() && value.Type == gjson.String && !data.RouteIpv4Mask.IsNull() {
 		data.RouteIpv4Mask = types.StringValue(value.String())
 	} else {
 		data.RouteIpv4Mask = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && !data.RouteAddressPrefix.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && value.Type == gjson.String && !data.RouteAddressPrefix.IsNull() {
 		data.RouteAddressPrefix = types.StringValue(value.String())
 	} else {
 		data.RouteAddressPrefix = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && !data.RouteAddressPrefixLength.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number && !data.RouteAddressPrefixLength.IsNull() {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	} else {
 		data.RouteAddressPrefixLength = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && !data.RouteVrf.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && value.Type == gjson.String && !data.RouteVrf.IsNull() {
 		data.RouteVrf = types.StringValue(value.String())
 	} else {
 		data.RouteVrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && !data.LineProtocolState.IsNull() {
+	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && value.Type == gjson.String && !data.LineProtocolState.IsNull() {
 		data.LineProtocolState = types.StringValue(value.String())
 	} else {
 		data.LineProtocolState = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && !data.Rtr.IsNull() {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number && !data.Rtr.IsNull() {
 		data.Rtr = types.Int64Value(value.Int())
 	} else {
 		data.Rtr = types.Int64Null()
@@ -525,7 +525,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && !data.BooleanAndList[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.BooleanAndList[i].ObjectName.IsNull() {
 			data.BooleanAndList[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.BooleanAndList[i].ObjectName = types.StringNull()
@@ -563,7 +563,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && !data.BooleanOrList[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.BooleanOrList[i].ObjectName.IsNull() {
 			data.BooleanOrList[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.BooleanOrList[i].ObjectName = types.StringNull()
@@ -601,23 +601,23 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && !data.ThresholdPercentage[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.ThresholdPercentage[i].ObjectName.IsNull() {
 			data.ThresholdPercentage[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.ThresholdPercentage[i].ObjectName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && !data.ThresholdPercentage[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentage[i].Weight.IsNull() {
 			data.ThresholdPercentage[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.ThresholdPercentage[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && !data.ThresholdPercentageUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentageUp.IsNull() {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdPercentageUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && !data.ThresholdPercentageDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentageDown.IsNull() {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdPercentageDown = types.Int64Null()
@@ -645,33 +645,33 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && !data.ThresholdWeight[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.ThresholdWeight[i].ObjectName.IsNull() {
 			data.ThresholdWeight[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.ThresholdWeight[i].ObjectName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && !data.ThresholdWeight[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeight[i].Weight.IsNull() {
 			data.ThresholdWeight[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.ThresholdWeight[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && !data.ThresholdWeightUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeightUp.IsNull() {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdWeightUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && !data.ThresholdWeightDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeightDown.IsNull() {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdWeightDown = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && !data.LineProtocolWeightUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeightUp.IsNull() {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolWeightUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && !data.LineProtocolWeightDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeightDown.IsNull() {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolWeightDown = types.Int64Null()
@@ -699,23 +699,23 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.LineProtocolWeight[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.LineProtocolWeight[i].InterfaceName.IsNull() {
 			data.LineProtocolWeight[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.LineProtocolWeight[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && !data.LineProtocolWeight[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeight[i].Weight.IsNull() {
 			data.LineProtocolWeight[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.LineProtocolWeight[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && !data.LineProtocolPercentageUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolPercentageUp.IsNull() {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolPercentageUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && !data.LineProtocolPercentageDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolPercentageDown.IsNull() {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolPercentageDown = types.Int64Null()
@@ -743,7 +743,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.LineProtocolPercentage[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.LineProtocolPercentage[i].InterfaceName.IsNull() {
 			data.LineProtocolPercentage[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.LineProtocolPercentage[i].InterfaceName = types.StringNull()
@@ -772,7 +772,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.LineProtocolBooleanAnd[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.LineProtocolBooleanAnd[i].InterfaceName.IsNull() {
 			data.LineProtocolBooleanAnd[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.LineProtocolBooleanAnd[i].InterfaceName = types.StringNull()
@@ -801,38 +801,38 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.LineProtocolBooleanOr[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.LineProtocolBooleanOr[i].InterfaceName.IsNull() {
 			data.LineProtocolBooleanOr[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.LineProtocolBooleanOr[i].InterfaceName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && !data.BfdRate.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number && !data.BfdRate.IsNull() {
 		data.BfdRate = types.Int64Value(value.Int())
 	} else {
 		data.BfdRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && !data.BfdDebounce.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number && !data.BfdDebounce.IsNull() {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	} else {
 		data.BfdDebounce = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && !data.BfdInterface.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && value.Type == gjson.String && !data.BfdInterface.IsNull() {
 		data.BfdInterface = types.StringValue(value.String())
 	} else {
 		data.BfdInterface = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() && !data.BfdDestinationAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() && value.Type == gjson.String && !data.BfdDestinationAddress.IsNull() {
 		data.BfdDestinationAddress = types.StringValue(value.String())
 	} else {
 		data.BfdDestinationAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() && !data.BgpNeighborIpv4UnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv4UnicastAddress.IsNull() {
 		data.BgpNeighborIpv4UnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv4UnicastAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() && !data.BgpNeighborIpv4UnicastVrfName.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv4UnicastVrfName.IsNull() {
 		data.BgpNeighborIpv4UnicastVrfName = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv4UnicastVrfName = types.StringNull()
@@ -846,12 +846,12 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.BgpNeighborIpv4UnicastDisableFibCheck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() && !data.BgpNeighborIpv4LabeledUnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv4LabeledUnicastAddress.IsNull() {
 		data.BgpNeighborIpv4LabeledUnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv4LabeledUnicastAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() && !data.BgpNeighborIpv4LabeledUnicastVrfName.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv4LabeledUnicastVrfName.IsNull() {
 		data.BgpNeighborIpv4LabeledUnicastVrfName = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv4LabeledUnicastVrfName = types.StringNull()
@@ -865,12 +865,12 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.BgpNeighborIpv4LabeledUnicastDisableFibCheck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() && !data.BgpNeighborIpv6UnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv6UnicastAddress.IsNull() {
 		data.BgpNeighborIpv6UnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv6UnicastAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() && !data.BgpNeighborIpv6UnicastVrfName.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv6UnicastVrfName.IsNull() {
 		data.BgpNeighborIpv6UnicastVrfName = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv6UnicastVrfName = types.StringNull()
@@ -884,7 +884,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.BgpNeighborIpv6UnicastDisableFibCheck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() && !data.BgpNeighborIpv6LabeledUnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborIpv6LabeledUnicastAddress.IsNull() {
 		data.BgpNeighborIpv6LabeledUnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborIpv6LabeledUnicastAddress = types.StringNull()
@@ -898,7 +898,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.BgpNeighborIpv6LabeledUnicastDisableFibCheck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() && !data.BgpNeighborVpnv4UnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborVpnv4UnicastAddress.IsNull() {
 		data.BgpNeighborVpnv4UnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborVpnv4UnicastAddress = types.StringNull()
@@ -912,7 +912,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.BgpNeighborVpnv4UnicastDisableFibCheck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() && !data.BgpNeighborVpnv6UnicastAddress.IsNull() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String && !data.BgpNeighborVpnv6UnicastAddress.IsNull() {
 		data.BgpNeighborVpnv6UnicastAddress = types.StringValue(value.String())
 	} else {
 		data.BgpNeighborVpnv6UnicastAddress = types.StringNull()
@@ -949,7 +949,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.TrackDownErrorDisableInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.TrackDownErrorDisableInterfaces[i].InterfaceName.IsNull() {
 			data.TrackDownErrorDisableInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.TrackDownErrorDisableInterfaces[i].InterfaceName = types.StringNull()
@@ -987,7 +987,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.TrackUpErrorDisableInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.TrackUpErrorDisableInterfaces[i].InterfaceName.IsNull() {
 			data.TrackUpErrorDisableInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.TrackUpErrorDisableInterfaces[i].InterfaceName = types.StringNull()
@@ -1009,38 +1009,38 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number {
 		data.DelayDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && value.Type == gjson.String {
 		data.RouteIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() && value.Type == gjson.String {
 		data.RouteIpv4Mask = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && value.Type == gjson.String {
 		data.RouteAddressPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && value.Type == gjson.String {
 		data.RouteVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && value.Type == gjson.String {
 		data.LineProtocolState = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number {
 		data.Rtr = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.boolean.and.objects.object"); value.Exists() {
 		data.BooleanAndList = make([]TrackBooleanAndList, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackBooleanAndList{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not"); cValue.Exists() {
@@ -1056,7 +1056,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.BooleanOrList = make([]TrackBooleanOrList, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackBooleanOrList{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not"); cValue.Exists() {
@@ -1072,73 +1072,73 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.ThresholdPercentage = make([]TrackThresholdPercentage, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackThresholdPercentage{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdPercentage = append(data.ThresholdPercentage, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.threshold.weight.objects.object"); value.Exists() {
 		data.ThresholdWeight = make([]TrackThresholdWeight, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackThresholdWeight{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdWeight = append(data.ThresholdWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.interfaces.interface"); value.Exists() {
 		data.LineProtocolWeight = make([]TrackLineProtocolWeight, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolWeight{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.LineProtocolWeight = append(data.LineProtocolWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.interfaces.interface"); value.Exists() {
 		data.LineProtocolPercentage = make([]TrackLineProtocolPercentage, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolPercentage{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolPercentage = append(data.LineProtocolPercentage, item)
@@ -1149,7 +1149,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.LineProtocolBooleanAnd = make([]TrackLineProtocolBooleanAnd, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolBooleanAnd{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolBooleanAnd = append(data.LineProtocolBooleanAnd, item)
@@ -1160,29 +1160,29 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.LineProtocolBooleanOr = make([]TrackLineProtocolBooleanOr, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolBooleanOr{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolBooleanOr = append(data.LineProtocolBooleanOr, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number {
 		data.BfdRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && value.Type == gjson.String {
 		data.BfdInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() && value.Type == gjson.String {
 		data.BfdDestinationAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4UnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4UnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.disable.fib-check"); value.Exists() {
@@ -1190,10 +1190,10 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.BgpNeighborIpv4UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4LabeledUnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4LabeledUnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.disable.fib-check"); value.Exists() {
@@ -1201,10 +1201,10 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.BgpNeighborIpv4LabeledUnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6UnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6UnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.disable.fib-check"); value.Exists() {
@@ -1212,7 +1212,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.BgpNeighborIpv6UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6LabeledUnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.disable.fib-check"); value.Exists() {
@@ -1220,7 +1220,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.BgpNeighborIpv6LabeledUnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborVpnv4UnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.disable.fib-check"); value.Exists() {
@@ -1228,7 +1228,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.BgpNeighborVpnv4UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborVpnv6UnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.disable.fib-check"); value.Exists() {
@@ -1240,7 +1240,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.TrackDownErrorDisableInterfaces = make([]TrackTrackDownErrorDisableInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackTrackDownErrorDisableInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auto-recover"); cValue.Exists() {
@@ -1256,7 +1256,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 		data.TrackUpErrorDisableInterfaces = make([]TrackTrackUpErrorDisableInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackTrackUpErrorDisableInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auto-recover"); cValue.Exists() {
@@ -1275,38 +1275,38 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *TrackData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number {
 		data.DelayDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && value.Type == gjson.String {
 		data.RouteIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.mask"); value.Exists() && value.Type == gjson.String {
 		data.RouteIpv4Mask = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && value.Type == gjson.String {
 		data.RouteAddressPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && value.Type == gjson.String {
 		data.RouteVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && value.Type == gjson.String {
 		data.LineProtocolState = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number {
 		data.Rtr = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.boolean.and.objects.object"); value.Exists() {
 		data.BooleanAndList = make([]TrackBooleanAndList, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackBooleanAndList{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not"); cValue.Exists() {
@@ -1322,7 +1322,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.BooleanOrList = make([]TrackBooleanOrList, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackBooleanOrList{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not"); cValue.Exists() {
@@ -1338,73 +1338,73 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.ThresholdPercentage = make([]TrackThresholdPercentage, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackThresholdPercentage{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdPercentage = append(data.ThresholdPercentage, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.threshold.weight.objects.object"); value.Exists() {
 		data.ThresholdWeight = make([]TrackThresholdWeight, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackThresholdWeight{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdWeight = append(data.ThresholdWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.interfaces.interface"); value.Exists() {
 		data.LineProtocolWeight = make([]TrackLineProtocolWeight, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolWeight{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() {
+			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.LineProtocolWeight = append(data.LineProtocolWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.interfaces.interface"); value.Exists() {
 		data.LineProtocolPercentage = make([]TrackLineProtocolPercentage, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolPercentage{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolPercentage = append(data.LineProtocolPercentage, item)
@@ -1415,7 +1415,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.LineProtocolBooleanAnd = make([]TrackLineProtocolBooleanAnd, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolBooleanAnd{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolBooleanAnd = append(data.LineProtocolBooleanAnd, item)
@@ -1426,29 +1426,29 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.LineProtocolBooleanOr = make([]TrackLineProtocolBooleanOr, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackLineProtocolBooleanOr{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.LineProtocolBooleanOr = append(data.LineProtocolBooleanOr, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number {
 		data.BfdRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && value.Type == gjson.String {
 		data.BfdInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.destaddress"); value.Exists() && value.Type == gjson.String {
 		data.BfdDestinationAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4UnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4UnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.unicast.disable.fib-check"); value.Exists() {
@@ -1456,10 +1456,10 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.BgpNeighborIpv4UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4LabeledUnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv4LabeledUnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv4.labeled-unicast.disable.fib-check"); value.Exists() {
@@ -1467,10 +1467,10 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.BgpNeighborIpv4LabeledUnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6UnicastAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.vrf"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6UnicastVrfName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.unicast.disable.fib-check"); value.Exists() {
@@ -1478,7 +1478,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.BgpNeighborIpv6UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborIpv6LabeledUnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.ipv6.labeled-unicast.disable.fib-check"); value.Exists() {
@@ -1486,7 +1486,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.BgpNeighborIpv6LabeledUnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborVpnv4UnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv4.unicast.disable.fib-check"); value.Exists() {
@@ -1494,7 +1494,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.BgpNeighborVpnv4UnicastDisableFibCheck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() {
+	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.neighbor"); value.Exists() && value.Type == gjson.String {
 		data.BgpNeighborVpnv6UnicastAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "type.bgp.neighbor.address-family.state.address-family.vpnv6.unicast.disable.fib-check"); value.Exists() {
@@ -1506,7 +1506,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.TrackDownErrorDisableInterfaces = make([]TrackTrackDownErrorDisableInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackTrackDownErrorDisableInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auto-recover"); cValue.Exists() {
@@ -1522,7 +1522,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 		data.TrackUpErrorDisableInterfaces = make([]TrackTrackUpErrorDisableInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TrackTrackUpErrorDisableInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auto-recover"); cValue.Exists() {

@@ -280,7 +280,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].Address.IsNull() {
 			data.Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].Address = types.StringNull()
@@ -308,7 +308,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort = types.StringNull()
@@ -322,7 +322,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringNull()
@@ -351,7 +351,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort = types.StringNull()
@@ -365,7 +365,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringNull()
@@ -394,7 +394,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsEncryptedAes[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].UdpPort = types.StringNull()
@@ -408,7 +408,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel = types.StringNull()
@@ -437,7 +437,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort = types.StringNull()
@@ -451,7 +451,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringNull()
@@ -480,7 +480,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsEncryptedDefault[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].UdpPort = types.StringNull()
@@ -494,7 +494,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringNull()
@@ -523,7 +523,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsEncryptedAes[ci].UdpPort = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].UdpPort = types.StringNull()
@@ -537,7 +537,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && !data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel = types.StringNull()
@@ -567,7 +567,7 @@ func (data *SNMPServerVRF) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("context-name"); value.Exists() && !data.Contexts[i].Name.IsNull() {
+		if value := r.Get("context-name"); value.Exists() && value.Type == gjson.String && !data.Contexts[i].Name.IsNull() {
 			data.Contexts[i].Name = types.StringValue(value.String())
 		} else {
 			data.Contexts[i].Name = types.StringNull()
@@ -584,14 +584,14 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 		data.Hosts = make([]SNMPServerVRFHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerVRFHosts{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("traps.unencrypted.unencrypted-string"); cValue.Exists() {
 				item.TrapsUnencryptedStrings = make([]SNMPServerVRFHostsTrapsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -599,7 +599,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsUnencryptedStrings = append(item.TrapsUnencryptedStrings, cItem)
@@ -610,7 +610,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 				item.TrapsEncryptedDefault = make([]SNMPServerVRFHostsTrapsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -618,7 +618,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedDefault = append(item.TrapsEncryptedDefault, cItem)
@@ -629,7 +629,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 				item.TrapsEncryptedAes = make([]SNMPServerVRFHostsTrapsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -637,7 +637,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedAes = append(item.TrapsEncryptedAes, cItem)
@@ -648,7 +648,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 				item.InformsUnencryptedStrings = make([]SNMPServerVRFHostsInformsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -656,7 +656,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsUnencryptedStrings = append(item.InformsUnencryptedStrings, cItem)
@@ -667,7 +667,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 				item.InformsEncryptedDefault = make([]SNMPServerVRFHostsInformsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -675,7 +675,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedDefault = append(item.InformsEncryptedDefault, cItem)
@@ -686,7 +686,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 				item.InformsEncryptedAes = make([]SNMPServerVRFHostsInformsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -694,7 +694,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedAes = append(item.InformsEncryptedAes, cItem)
@@ -709,7 +709,7 @@ func (data *SNMPServerVRF) fromBody(ctx context.Context, res []byte, version str
 		data.Contexts = make([]SNMPServerVRFContexts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerVRFContexts{}
-			if cValue := v.Get("context-name"); cValue.Exists() {
+			if cValue := v.Get("context-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.Contexts = append(data.Contexts, item)
@@ -727,14 +727,14 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 		data.Hosts = make([]SNMPServerVRFHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerVRFHosts{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("traps.unencrypted.unencrypted-string"); cValue.Exists() {
 				item.TrapsUnencryptedStrings = make([]SNMPServerVRFHostsTrapsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -742,7 +742,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsUnencryptedStrings = append(item.TrapsUnencryptedStrings, cItem)
@@ -753,7 +753,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 				item.TrapsEncryptedDefault = make([]SNMPServerVRFHostsTrapsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -761,7 +761,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedDefault = append(item.TrapsEncryptedDefault, cItem)
@@ -772,7 +772,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 				item.TrapsEncryptedAes = make([]SNMPServerVRFHostsTrapsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsTrapsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -780,7 +780,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedAes = append(item.TrapsEncryptedAes, cItem)
@@ -791,7 +791,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 				item.InformsUnencryptedStrings = make([]SNMPServerVRFHostsInformsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -799,7 +799,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsUnencryptedStrings = append(item.InformsUnencryptedStrings, cItem)
@@ -810,7 +810,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 				item.InformsEncryptedDefault = make([]SNMPServerVRFHostsInformsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -818,7 +818,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedDefault = append(item.InformsEncryptedDefault, cItem)
@@ -829,7 +829,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 				item.InformsEncryptedAes = make([]SNMPServerVRFHostsInformsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerVRFHostsInformsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.UdpPort = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -837,7 +837,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedAes = append(item.InformsEncryptedAes, cItem)
@@ -852,7 +852,7 @@ func (data *SNMPServerVRFData) fromBody(ctx context.Context, res []byte, version
 		data.Contexts = make([]SNMPServerVRFContexts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerVRFContexts{}
-			if cValue := v.Get("context-name"); cValue.Exists() {
+			if cValue := v.Get("context-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.Contexts = append(data.Contexts, item)

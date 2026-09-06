@@ -221,32 +221,32 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("name"); value.Exists() && !data.Hostnames[i].Name.IsNull() {
+		if value := r.Get("name"); value.Exists() && value.Type == gjson.String && !data.Hostnames[i].Name.IsNull() {
 			data.Hostnames[i].Name = types.StringValue(value.String())
 		} else {
 			data.Hostnames[i].Name = types.StringNull()
 		}
-		if value := r.Get("severity"); value.Exists() && !data.Hostnames[i].Severity.IsNull() {
+		if value := r.Get("severity"); value.Exists() && value.Type == gjson.String && !data.Hostnames[i].Severity.IsNull() {
 			data.Hostnames[i].Severity = types.StringValue(value.String())
 		} else {
 			data.Hostnames[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); value.Exists() && !data.Hostnames[i].Port.IsNull() {
+		if value := r.Get("port"); value.Exists() && value.Type == gjson.Number && !data.Hostnames[i].Port.IsNull() {
 			data.Hostnames[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.Hostnames[i].Port = types.Int64Null()
 		}
-		if value := r.Get("operator"); value.Exists() && !data.Hostnames[i].Operator.IsNull() {
+		if value := r.Get("operator"); value.Exists() && value.Type == gjson.String && !data.Hostnames[i].Operator.IsNull() {
 			data.Hostnames[i].Operator = types.StringValue(value.String())
 		} else {
 			data.Hostnames[i].Operator = types.StringNull()
 		}
-		if value := r.Get("facility"); value.Exists() && !data.Hostnames[i].Facility.IsNull() {
+		if value := r.Get("facility"); value.Exists() && value.Type == gjson.String && !data.Hostnames[i].Facility.IsNull() {
 			data.Hostnames[i].Facility = types.StringValue(value.String())
 		} else {
 			data.Hostnames[i].Facility = types.StringNull()
 		}
-		if value := r.Get("hostname-source-address"); value.Exists() && !data.Hostnames[i].HostnameSourceAddress.IsNull() {
+		if value := r.Get("hostname-source-address"); value.Exists() && value.Type == gjson.String && !data.Hostnames[i].HostnameSourceAddress.IsNull() {
 			data.Hostnames[i].HostnameSourceAddress = types.StringValue(value.String())
 		} else {
 			data.Hostnames[i].HostnameSourceAddress = types.StringNull()
@@ -275,32 +275,32 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && !data.HostIpv4Addresses[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.HostIpv4Addresses[i].Ipv4Address.IsNull() {
 			data.HostIpv4Addresses[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.HostIpv4Addresses[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("severity"); value.Exists() && !data.HostIpv4Addresses[i].Severity.IsNull() {
+		if value := r.Get("severity"); value.Exists() && value.Type == gjson.String && !data.HostIpv4Addresses[i].Severity.IsNull() {
 			data.HostIpv4Addresses[i].Severity = types.StringValue(value.String())
 		} else {
 			data.HostIpv4Addresses[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); value.Exists() && !data.HostIpv4Addresses[i].Port.IsNull() {
+		if value := r.Get("port"); value.Exists() && value.Type == gjson.Number && !data.HostIpv4Addresses[i].Port.IsNull() {
 			data.HostIpv4Addresses[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.HostIpv4Addresses[i].Port = types.Int64Null()
 		}
-		if value := r.Get("operator"); value.Exists() && !data.HostIpv4Addresses[i].Operator.IsNull() {
+		if value := r.Get("operator"); value.Exists() && value.Type == gjson.String && !data.HostIpv4Addresses[i].Operator.IsNull() {
 			data.HostIpv4Addresses[i].Operator = types.StringValue(value.String())
 		} else {
 			data.HostIpv4Addresses[i].Operator = types.StringNull()
 		}
-		if value := r.Get("facility"); value.Exists() && !data.HostIpv4Addresses[i].Facility.IsNull() {
+		if value := r.Get("facility"); value.Exists() && value.Type == gjson.String && !data.HostIpv4Addresses[i].Facility.IsNull() {
 			data.HostIpv4Addresses[i].Facility = types.StringValue(value.String())
 		} else {
 			data.HostIpv4Addresses[i].Facility = types.StringNull()
 		}
-		if value := r.Get("ipv4-source-address"); value.Exists() && !data.HostIpv4Addresses[i].Ipv4SourceAddress.IsNull() {
+		if value := r.Get("ipv4-source-address"); value.Exists() && value.Type == gjson.String && !data.HostIpv4Addresses[i].Ipv4SourceAddress.IsNull() {
 			data.HostIpv4Addresses[i].Ipv4SourceAddress = types.StringValue(value.String())
 		} else {
 			data.HostIpv4Addresses[i].Ipv4SourceAddress = types.StringNull()
@@ -329,32 +329,32 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("ipv6-address"); value.Exists() && !data.HostIpv6Addresses[i].Ipv6Address.IsNull() {
+		if value := r.Get("ipv6-address"); value.Exists() && value.Type == gjson.String && !data.HostIpv6Addresses[i].Ipv6Address.IsNull() {
 			data.HostIpv6Addresses[i].Ipv6Address = types.StringValue(value.String())
 		} else {
 			data.HostIpv6Addresses[i].Ipv6Address = types.StringNull()
 		}
-		if value := r.Get("severity"); value.Exists() && !data.HostIpv6Addresses[i].Severity.IsNull() {
+		if value := r.Get("severity"); value.Exists() && value.Type == gjson.String && !data.HostIpv6Addresses[i].Severity.IsNull() {
 			data.HostIpv6Addresses[i].Severity = types.StringValue(value.String())
 		} else {
 			data.HostIpv6Addresses[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); value.Exists() && !data.HostIpv6Addresses[i].Port.IsNull() {
+		if value := r.Get("port"); value.Exists() && value.Type == gjson.Number && !data.HostIpv6Addresses[i].Port.IsNull() {
 			data.HostIpv6Addresses[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.HostIpv6Addresses[i].Port = types.Int64Null()
 		}
-		if value := r.Get("operator"); value.Exists() && !data.HostIpv6Addresses[i].Operator.IsNull() {
+		if value := r.Get("operator"); value.Exists() && value.Type == gjson.String && !data.HostIpv6Addresses[i].Operator.IsNull() {
 			data.HostIpv6Addresses[i].Operator = types.StringValue(value.String())
 		} else {
 			data.HostIpv6Addresses[i].Operator = types.StringNull()
 		}
-		if value := r.Get("facility"); value.Exists() && !data.HostIpv6Addresses[i].Facility.IsNull() {
+		if value := r.Get("facility"); value.Exists() && value.Type == gjson.String && !data.HostIpv6Addresses[i].Facility.IsNull() {
 			data.HostIpv6Addresses[i].Facility = types.StringValue(value.String())
 		} else {
 			data.HostIpv6Addresses[i].Facility = types.StringNull()
 		}
-		if value := r.Get("ipv6-source-address"); value.Exists() && !data.HostIpv6Addresses[i].Ipv6SourceAddress.IsNull() {
+		if value := r.Get("ipv6-source-address"); value.Exists() && value.Type == gjson.String && !data.HostIpv6Addresses[i].Ipv6SourceAddress.IsNull() {
 			data.HostIpv6Addresses[i].Ipv6SourceAddress = types.StringValue(value.String())
 		} else {
 			data.HostIpv6Addresses[i].Ipv6SourceAddress = types.StringNull()
@@ -371,22 +371,22 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 		data.Hostnames = make([]LoggingVRFHostnames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostnames{}
-			if cValue := v.Get("name"); cValue.Exists() {
+			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("hostname-source-address"); cValue.Exists() {
+			if cValue := v.Get("hostname-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostnameSourceAddress = types.StringValue(cValue.String())
 			}
 			data.Hostnames = append(data.Hostnames, item)
@@ -397,22 +397,22 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 		data.HostIpv4Addresses = make([]LoggingVRFHostIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostIpv4Addresses{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-source-address"); cValue.Exists() {
+			if cValue := v.Get("ipv4-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceAddress = types.StringValue(cValue.String())
 			}
 			data.HostIpv4Addresses = append(data.HostIpv4Addresses, item)
@@ -423,22 +423,22 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 		data.HostIpv6Addresses = make([]LoggingVRFHostIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostIpv6Addresses{}
-			if cValue := v.Get("ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-source-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceAddress = types.StringValue(cValue.String())
 			}
 			data.HostIpv6Addresses = append(data.HostIpv6Addresses, item)
@@ -456,22 +456,22 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.Hostnames = make([]LoggingVRFHostnames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostnames{}
-			if cValue := v.Get("name"); cValue.Exists() {
+			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("hostname-source-address"); cValue.Exists() {
+			if cValue := v.Get("hostname-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.HostnameSourceAddress = types.StringValue(cValue.String())
 			}
 			data.Hostnames = append(data.Hostnames, item)
@@ -482,22 +482,22 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.HostIpv4Addresses = make([]LoggingVRFHostIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostIpv4Addresses{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-source-address"); cValue.Exists() {
+			if cValue := v.Get("ipv4-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceAddress = types.StringValue(cValue.String())
 			}
 			data.HostIpv4Addresses = append(data.HostIpv4Addresses, item)
@@ -508,22 +508,22 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.HostIpv6Addresses = make([]LoggingVRFHostIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingVRFHostIpv6Addresses{}
-			if cValue := v.Get("ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("severity"); cValue.Exists() {
+			if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Severity = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() {
+			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("operator"); cValue.Exists() {
+			if cValue := v.Get("operator"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Operator = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("facility"); cValue.Exists() {
+			if cValue := v.Get("facility"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Facility = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-source-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-source-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceAddress = types.StringValue(cValue.String())
 			}
 			data.HostIpv6Addresses = append(data.HostIpv6Addresses, item)

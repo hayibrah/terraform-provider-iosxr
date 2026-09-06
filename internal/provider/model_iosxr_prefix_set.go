@@ -101,7 +101,7 @@ func (data PrefixSet) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PrefixSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *PrefixSet) updateFromBody(ctx context.Context, res []byte, version s
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PrefixSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *PrefixSet) fromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PrefixSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-prefix-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

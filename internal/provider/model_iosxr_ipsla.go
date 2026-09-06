@@ -764,12 +764,12 @@ func (data IPSLA) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "low-memory"); value.Exists() && !data.LowMemory.IsNull() {
+	if value := gjson.GetBytes(res, "low-memory"); value.Exists() && value.Type == gjson.Number && !data.LowMemory.IsNull() {
 		data.LowMemory = types.Int64Value(value.Int())
 	} else {
 		data.LowMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "key-chain"); value.Exists() && !data.KeyChain.IsNull() {
+	if value := gjson.GetBytes(res, "key-chain"); value.Exists() && value.Type == gjson.String && !data.KeyChain.IsNull() {
 		data.KeyChain = types.StringValue(value.String())
 	} else {
 		data.KeyChain = types.StringNull()
@@ -806,7 +806,7 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("operation-number"); value.Exists() && !data.Operations[i].OperationNumber.IsNull() {
+		if value := r.Get("operation-number"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].OperationNumber.IsNull() {
 			data.Operations[i].OperationNumber = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].OperationNumber = types.Int64Null()
@@ -820,57 +820,57 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].IcmpEcho = types.BoolNull()
 		}
-		if value := r.Get("type.icmp.echo.tag"); value.Exists() && !data.Operations[i].IcmpEchoTag.IsNull() {
+		if value := r.Get("type.icmp.echo.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoTag.IsNull() {
 			data.Operations[i].IcmpEchoTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoTag = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.frequency"); value.Exists() && !data.Operations[i].IcmpEchoFrequency.IsNull() {
+		if value := r.Get("type.icmp.echo.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoFrequency.IsNull() {
 			data.Operations[i].IcmpEchoFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].IcmpEchoDatasizeRequest.IsNull() {
+		if value := r.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoDatasizeRequest.IsNull() {
 			data.Operations[i].IcmpEchoDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.timeout"); value.Exists() && !data.Operations[i].IcmpEchoTimeout.IsNull() {
+		if value := r.Get("type.icmp.echo.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoTimeout.IsNull() {
 			data.Operations[i].IcmpEchoTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.source.address.ipv4-address"); value.Exists() && !data.Operations[i].IcmpEchoSourceIpv4.IsNull() {
+		if value := r.Get("type.icmp.echo.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoSourceIpv4.IsNull() {
 			data.Operations[i].IcmpEchoSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.source.address.ipv6-address"); value.Exists() && !data.Operations[i].IcmpEchoSourceIpv6.IsNull() {
+		if value := r.Get("type.icmp.echo.source.address.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoSourceIpv6.IsNull() {
 			data.Operations[i].IcmpEchoSourceIpv6 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoSourceIpv6 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.tos"); value.Exists() && !data.Operations[i].IcmpEchoTos.IsNull() {
+		if value := r.Get("type.icmp.echo.tos"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoTos.IsNull() {
 			data.Operations[i].IcmpEchoTos = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoTos = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.vrf"); value.Exists() && !data.Operations[i].IcmpEchoVrf.IsNull() {
+		if value := r.Get("type.icmp.echo.vrf"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoVrf.IsNull() {
 			data.Operations[i].IcmpEchoVrf = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoVrf = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.destination.address.ipv4-address"); value.Exists() && !data.Operations[i].IcmpEchoDestinationIpv4.IsNull() {
+		if value := r.Get("type.icmp.echo.destination.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoDestinationIpv4.IsNull() {
 			data.Operations[i].IcmpEchoDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.destination.address.ipv6-address"); value.Exists() && !data.Operations[i].IcmpEchoDestinationIpv6.IsNull() {
+		if value := r.Get("type.icmp.echo.destination.address.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpEchoDestinationIpv6.IsNull() {
 			data.Operations[i].IcmpEchoDestinationIpv6 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpEchoDestinationIpv6 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.echo.history.buckets"); value.Exists() && !data.Operations[i].IcmpEchoHistoryBuckets.IsNull() {
+		if value := r.Get("type.icmp.echo.history.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoHistoryBuckets.IsNull() {
 			data.Operations[i].IcmpEchoHistoryBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoHistoryBuckets = types.Int64Null()
@@ -893,22 +893,22 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].IcmpEchoHistoryFilterFailures = types.BoolNull()
 		}
-		if value := r.Get("type.icmp.echo.history.lives"); value.Exists() && !data.Operations[i].IcmpEchoHistoryLives.IsNull() {
+		if value := r.Get("type.icmp.echo.history.lives"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoHistoryLives.IsNull() {
 			data.Operations[i].IcmpEchoHistoryLives = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoHistoryLives = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].IcmpEchoStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.icmp.echo.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].IcmpEchoStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].IcmpEchoStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.icmp.echo.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].IcmpEchoStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.echo.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].IcmpEchoStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.icmp.echo.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].IcmpEchoStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpEchoStatisticsHourlyDistributionInterval = types.Int64Null()
@@ -936,12 +936,12 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interval-time"); value.Exists() && !data.Operations[i].IcmpEchoStatisticsIntervals[ci].Interval.IsNull() {
+			if value := cr.Get("interval-time"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoStatisticsIntervals[ci].Interval.IsNull() {
 				data.Operations[i].IcmpEchoStatisticsIntervals[ci].Interval = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].IcmpEchoStatisticsIntervals[ci].Interval = types.Int64Null()
 			}
-			if value := cr.Get("buckets"); value.Exists() && !data.Operations[i].IcmpEchoStatisticsIntervals[ci].Buckets.IsNull() {
+			if value := cr.Get("buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpEchoStatisticsIntervals[ci].Buckets.IsNull() {
 				data.Operations[i].IcmpEchoStatisticsIntervals[ci].Buckets = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].IcmpEchoStatisticsIntervals[ci].Buckets = types.Int64Null()
@@ -956,42 +956,42 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].IcmpPathEcho = types.BoolNull()
 		}
-		if value := r.Get("type.icmp.path-echo.tag"); value.Exists() && !data.Operations[i].IcmpPathEchoTag.IsNull() {
+		if value := r.Get("type.icmp.path-echo.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathEchoTag.IsNull() {
 			data.Operations[i].IcmpPathEchoTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathEchoTag = types.StringNull()
 		}
-		if value := r.Get("type.icmp.path-echo.frequency"); value.Exists() && !data.Operations[i].IcmpPathEchoFrequency.IsNull() {
+		if value := r.Get("type.icmp.path-echo.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoFrequency.IsNull() {
 			data.Operations[i].IcmpPathEchoFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].IcmpPathEchoDatasizeRequest.IsNull() {
+		if value := r.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoDatasizeRequest.IsNull() {
 			data.Operations[i].IcmpPathEchoDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.timeout"); value.Exists() && !data.Operations[i].IcmpPathEchoTimeout.IsNull() {
+		if value := r.Get("type.icmp.path-echo.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoTimeout.IsNull() {
 			data.Operations[i].IcmpPathEchoTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.source.address.ipv4-address"); value.Exists() && !data.Operations[i].IcmpPathEchoSourceIpv4.IsNull() {
+		if value := r.Get("type.icmp.path-echo.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathEchoSourceIpv4.IsNull() {
 			data.Operations[i].IcmpPathEchoSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathEchoSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.path-echo.tos"); value.Exists() && !data.Operations[i].IcmpPathEchoTos.IsNull() {
+		if value := r.Get("type.icmp.path-echo.tos"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoTos.IsNull() {
 			data.Operations[i].IcmpPathEchoTos = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoTos = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.destination.address.address"); value.Exists() && !data.Operations[i].IcmpPathEchoDestinationIpv4.IsNull() {
+		if value := r.Get("type.icmp.path-echo.destination.address.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathEchoDestinationIpv4.IsNull() {
 			data.Operations[i].IcmpPathEchoDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathEchoDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.path-echo.history.buckets"); value.Exists() && !data.Operations[i].IcmpPathEchoHistoryBuckets.IsNull() {
+		if value := r.Get("type.icmp.path-echo.history.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoHistoryBuckets.IsNull() {
 			data.Operations[i].IcmpPathEchoHistoryBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoHistoryBuckets = types.Int64Null()
@@ -1014,37 +1014,37 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].IcmpPathEchoHistoryFilterFailures = types.BoolNull()
 		}
-		if value := r.Get("type.icmp.path-echo.history.lives"); value.Exists() && !data.Operations[i].IcmpPathEchoHistoryLives.IsNull() {
+		if value := r.Get("type.icmp.path-echo.history.lives"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoHistoryLives.IsNull() {
 			data.Operations[i].IcmpPathEchoHistoryLives = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoHistoryLives = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.history.samples"); value.Exists() && !data.Operations[i].IcmpPathEchoHistorySamples.IsNull() {
+		if value := r.Get("type.icmp.path-echo.history.samples"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoHistorySamples.IsNull() {
 			data.Operations[i].IcmpPathEchoHistorySamples = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoHistorySamples = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].IcmpPathEchoStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.icmp.path-echo.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyDistributionInterval = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); value.Exists() && !data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumHops.IsNull() {
+		if value := r.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumHops.IsNull() {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumHops = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumHops = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); value.Exists() && !data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumPaths.IsNull() {
+		if value := r.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumPaths.IsNull() {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumPaths = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathEchoStatisticsHourlyMaximumPaths = types.Int64Null()
@@ -1058,47 +1058,47 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].IcmpPathJitter = types.BoolNull()
 		}
-		if value := r.Get("type.icmp.path-jitter.tag"); value.Exists() && !data.Operations[i].IcmpPathJitterTag.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathJitterTag.IsNull() {
 			data.Operations[i].IcmpPathJitterTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathJitterTag = types.StringNull()
 		}
-		if value := r.Get("type.icmp.path-jitter.frequency"); value.Exists() && !data.Operations[i].IcmpPathJitterFrequency.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterFrequency.IsNull() {
 			data.Operations[i].IcmpPathJitterFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].IcmpPathJitterDatasizeRequest.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterDatasizeRequest.IsNull() {
 			data.Operations[i].IcmpPathJitterDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.timeout"); value.Exists() && !data.Operations[i].IcmpPathJitterTimeout.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterTimeout.IsNull() {
 			data.Operations[i].IcmpPathJitterTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.source.address.ipv4-address"); value.Exists() && !data.Operations[i].IcmpPathJitterSourceIpv4.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathJitterSourceIpv4.IsNull() {
 			data.Operations[i].IcmpPathJitterSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathJitterSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.icmp.path-jitter.packet.count"); value.Exists() && !data.Operations[i].IcmpPathJitterPacketCount.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.packet.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterPacketCount.IsNull() {
 			data.Operations[i].IcmpPathJitterPacketCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterPacketCount = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.packet.interval"); value.Exists() && !data.Operations[i].IcmpPathJitterPacketInterval.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.packet.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterPacketInterval.IsNull() {
 			data.Operations[i].IcmpPathJitterPacketInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterPacketInterval = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.tos"); value.Exists() && !data.Operations[i].IcmpPathJitterTos.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.tos"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].IcmpPathJitterTos.IsNull() {
 			data.Operations[i].IcmpPathJitterTos = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].IcmpPathJitterTos = types.Int64Null()
 		}
-		if value := r.Get("type.icmp.path-jitter.destination.address.address"); value.Exists() && !data.Operations[i].IcmpPathJitterDestinationIpv4.IsNull() {
+		if value := r.Get("type.icmp.path-jitter.destination.address.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].IcmpPathJitterDestinationIpv4.IsNull() {
 			data.Operations[i].IcmpPathJitterDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].IcmpPathJitterDestinationIpv4 = types.StringNull()
@@ -1112,42 +1112,42 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].UdpEcho = types.BoolNull()
 		}
-		if value := r.Get("type.udp.echo.tag"); value.Exists() && !data.Operations[i].UdpEchoTag.IsNull() {
+		if value := r.Get("type.udp.echo.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpEchoTag.IsNull() {
 			data.Operations[i].UdpEchoTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpEchoTag = types.StringNull()
 		}
-		if value := r.Get("type.udp.echo.frequency"); value.Exists() && !data.Operations[i].UdpEchoFrequency.IsNull() {
+		if value := r.Get("type.udp.echo.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoFrequency.IsNull() {
 			data.Operations[i].UdpEchoFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].UdpEchoDatasizeRequest.IsNull() {
+		if value := r.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoDatasizeRequest.IsNull() {
 			data.Operations[i].UdpEchoDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.timeout"); value.Exists() && !data.Operations[i].UdpEchoTimeout.IsNull() {
+		if value := r.Get("type.udp.echo.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoTimeout.IsNull() {
 			data.Operations[i].UdpEchoTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.source.address.ipv4-address"); value.Exists() && !data.Operations[i].UdpEchoSourceIpv4.IsNull() {
+		if value := r.Get("type.udp.echo.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpEchoSourceIpv4.IsNull() {
 			data.Operations[i].UdpEchoSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpEchoSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.udp.echo.source.port"); value.Exists() && !data.Operations[i].UdpEchoSourcePort.IsNull() {
+		if value := r.Get("type.udp.echo.source.port"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoSourcePort.IsNull() {
 			data.Operations[i].UdpEchoSourcePort = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoSourcePort = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.destination.address"); value.Exists() && !data.Operations[i].UdpEchoDestinationIpv4.IsNull() {
+		if value := r.Get("type.udp.echo.destination.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpEchoDestinationIpv4.IsNull() {
 			data.Operations[i].UdpEchoDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpEchoDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.udp.echo.destination.port"); value.Exists() && !data.Operations[i].UdpEchoDestinationPort.IsNull() {
+		if value := r.Get("type.udp.echo.destination.port"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoDestinationPort.IsNull() {
 			data.Operations[i].UdpEchoDestinationPort = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoDestinationPort = types.Int64Null()
@@ -1170,27 +1170,27 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].UdpEchoVerifyData = types.BoolNull()
 		}
-		if value := r.Get("type.udp.echo.tos"); value.Exists() && !data.Operations[i].UdpEchoTos.IsNull() {
+		if value := r.Get("type.udp.echo.tos"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoTos.IsNull() {
 			data.Operations[i].UdpEchoTos = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoTos = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.vrf"); value.Exists() && !data.Operations[i].UdpEchoVrf.IsNull() {
+		if value := r.Get("type.udp.echo.vrf"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpEchoVrf.IsNull() {
 			data.Operations[i].UdpEchoVrf = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpEchoVrf = types.StringNull()
 		}
-		if value := r.Get("type.udp.echo.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].UdpEchoStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.udp.echo.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].UdpEchoStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].UdpEchoStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.udp.echo.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].UdpEchoStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.udp.echo.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].UdpEchoStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.udp.echo.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].UdpEchoStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoStatisticsHourlyDistributionInterval = types.Int64Null()
@@ -1218,18 +1218,18 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interval-time"); value.Exists() && !data.Operations[i].UdpEchoStatisticsIntervals[ci].Interval.IsNull() {
+			if value := cr.Get("interval-time"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoStatisticsIntervals[ci].Interval.IsNull() {
 				data.Operations[i].UdpEchoStatisticsIntervals[ci].Interval = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].UdpEchoStatisticsIntervals[ci].Interval = types.Int64Null()
 			}
-			if value := cr.Get("buckets"); value.Exists() && !data.Operations[i].UdpEchoStatisticsIntervals[ci].Buckets.IsNull() {
+			if value := cr.Get("buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoStatisticsIntervals[ci].Buckets.IsNull() {
 				data.Operations[i].UdpEchoStatisticsIntervals[ci].Buckets = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].UdpEchoStatisticsIntervals[ci].Buckets = types.Int64Null()
 			}
 		}
-		if value := r.Get("type.udp.echo.history.buckets"); value.Exists() && !data.Operations[i].UdpEchoHistoryBuckets.IsNull() {
+		if value := r.Get("type.udp.echo.history.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoHistoryBuckets.IsNull() {
 			data.Operations[i].UdpEchoHistoryBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoHistoryBuckets = types.Int64Null()
@@ -1252,7 +1252,7 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].UdpEchoHistoryFilterFailures = types.BoolNull()
 		}
-		if value := r.Get("type.udp.echo.history.lives"); value.Exists() && !data.Operations[i].UdpEchoHistoryLives.IsNull() {
+		if value := r.Get("type.udp.echo.history.lives"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpEchoHistoryLives.IsNull() {
 			data.Operations[i].UdpEchoHistoryLives = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpEchoHistoryLives = types.Int64Null()
@@ -1266,62 +1266,62 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].UdpJitter = types.BoolNull()
 		}
-		if value := r.Get("type.udp.jitter.tag"); value.Exists() && !data.Operations[i].UdpJitterTag.IsNull() {
+		if value := r.Get("type.udp.jitter.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpJitterTag.IsNull() {
 			data.Operations[i].UdpJitterTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpJitterTag = types.StringNull()
 		}
-		if value := r.Get("type.udp.jitter.frequency"); value.Exists() && !data.Operations[i].UdpJitterFrequency.IsNull() {
+		if value := r.Get("type.udp.jitter.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterFrequency.IsNull() {
 			data.Operations[i].UdpJitterFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].UdpJitterDatasizeRequest.IsNull() {
+		if value := r.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterDatasizeRequest.IsNull() {
 			data.Operations[i].UdpJitterDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.timeout"); value.Exists() && !data.Operations[i].UdpJitterTimeout.IsNull() {
+		if value := r.Get("type.udp.jitter.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterTimeout.IsNull() {
 			data.Operations[i].UdpJitterTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.source.address.ipv4-address"); value.Exists() && !data.Operations[i].UdpJitterSourceIpv4.IsNull() {
+		if value := r.Get("type.udp.jitter.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpJitterSourceIpv4.IsNull() {
 			data.Operations[i].UdpJitterSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpJitterSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.udp.jitter.source.port"); value.Exists() && !data.Operations[i].UdpJitterSourcePort.IsNull() {
+		if value := r.Get("type.udp.jitter.source.port"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterSourcePort.IsNull() {
 			data.Operations[i].UdpJitterSourcePort = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterSourcePort = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.destination.address"); value.Exists() && !data.Operations[i].UdpJitterDestinationIpv4.IsNull() {
+		if value := r.Get("type.udp.jitter.destination.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpJitterDestinationIpv4.IsNull() {
 			data.Operations[i].UdpJitterDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpJitterDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.udp.jitter.destination.port"); value.Exists() && !data.Operations[i].UdpJitterDestinationPort.IsNull() {
+		if value := r.Get("type.udp.jitter.destination.port"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterDestinationPort.IsNull() {
 			data.Operations[i].UdpJitterDestinationPort = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterDestinationPort = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.packet.count"); value.Exists() && !data.Operations[i].UdpJitterPacketCount.IsNull() {
+		if value := r.Get("type.udp.jitter.packet.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterPacketCount.IsNull() {
 			data.Operations[i].UdpJitterPacketCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterPacketCount = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.packet.interval"); value.Exists() && !data.Operations[i].UdpJitterPacketInterval.IsNull() {
+		if value := r.Get("type.udp.jitter.packet.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterPacketInterval.IsNull() {
 			data.Operations[i].UdpJitterPacketInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterPacketInterval = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.tos"); value.Exists() && !data.Operations[i].UdpJitterTos.IsNull() {
+		if value := r.Get("type.udp.jitter.tos"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterTos.IsNull() {
 			data.Operations[i].UdpJitterTos = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterTos = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.vrf"); value.Exists() && !data.Operations[i].UdpJitterVrf.IsNull() {
+		if value := r.Get("type.udp.jitter.vrf"); value.Exists() && value.Type == gjson.String && !data.Operations[i].UdpJitterVrf.IsNull() {
 			data.Operations[i].UdpJitterVrf = types.StringValue(value.String())
 		} else {
 			data.Operations[i].UdpJitterVrf = types.StringNull()
@@ -1344,17 +1344,17 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].UdpJitterVerifyData = types.BoolNull()
 		}
-		if value := r.Get("type.udp.jitter.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].UdpJitterStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.udp.jitter.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].UdpJitterStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].UdpJitterStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.udp.jitter.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].UdpJitterStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.udp.jitter.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].UdpJitterStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.udp.jitter.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].UdpJitterStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].UdpJitterStatisticsHourlyDistributionInterval = types.Int64Null()
@@ -1382,12 +1382,12 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interval-time"); value.Exists() && !data.Operations[i].UdpJitterStatisticsIntervals[ci].Interval.IsNull() {
+			if value := cr.Get("interval-time"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterStatisticsIntervals[ci].Interval.IsNull() {
 				data.Operations[i].UdpJitterStatisticsIntervals[ci].Interval = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].UdpJitterStatisticsIntervals[ci].Interval = types.Int64Null()
 			}
-			if value := cr.Get("buckets"); value.Exists() && !data.Operations[i].UdpJitterStatisticsIntervals[ci].Buckets.IsNull() {
+			if value := cr.Get("buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].UdpJitterStatisticsIntervals[ci].Buckets.IsNull() {
 				data.Operations[i].UdpJitterStatisticsIntervals[ci].Buckets = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].UdpJitterStatisticsIntervals[ci].Buckets = types.Int64Null()
@@ -1402,67 +1402,67 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].MplsLspPing = types.BoolNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.tag"); value.Exists() && !data.Operations[i].MplsLspPingTag.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspPingTag.IsNull() {
 			data.Operations[i].MplsLspPingTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspPingTag = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.frequency"); value.Exists() && !data.Operations[i].MplsLspPingFrequency.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingFrequency.IsNull() {
 			data.Operations[i].MplsLspPingFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); value.Exists() && !data.Operations[i].MplsLspPingDatasizeRequest.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingDatasizeRequest.IsNull() {
 			data.Operations[i].MplsLspPingDatasizeRequest = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingDatasizeRequest = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.timeout"); value.Exists() && !data.Operations[i].MplsLspPingTimeout.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingTimeout.IsNull() {
 			data.Operations[i].MplsLspPingTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.source.address.ipv4-address"); value.Exists() && !data.Operations[i].MplsLspPingSourceIpv4.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspPingSourceIpv4.IsNull() {
 			data.Operations[i].MplsLspPingSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspPingSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.target.ipv4.address"); value.Exists() && !data.Operations[i].MplsLspPingTargetIpv4.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.target.ipv4.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspPingTargetIpv4.IsNull() {
 			data.Operations[i].MplsLspPingTargetIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspPingTargetIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.target.ipv4.mask"); value.Exists() && !data.Operations[i].MplsLspPingTargetIpv4Mask.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.target.ipv4.mask"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspPingTargetIpv4Mask.IsNull() {
 			data.Operations[i].MplsLspPingTargetIpv4Mask = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspPingTargetIpv4Mask = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); value.Exists() && !data.Operations[i].MplsLspPingTargetTeTunnel.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingTargetTeTunnel.IsNull() {
 			data.Operations[i].MplsLspPingTargetTeTunnel = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingTargetTeTunnel = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.target.pseudowire.address"); value.Exists() && !data.Operations[i].MplsLspPingTargetPseudowireAddress.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.target.pseudowire.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspPingTargetPseudowireAddress.IsNull() {
 			data.Operations[i].MplsLspPingTargetPseudowireAddress = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspPingTargetPseudowireAddress = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); value.Exists() && !data.Operations[i].MplsLspPingTargetPseudowireVcId.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingTargetPseudowireVcId.IsNull() {
 			data.Operations[i].MplsLspPingTargetPseudowireVcId = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingTargetPseudowireVcId = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].MplsLspPingStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].MplsLspPingStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].MplsLspPingStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].MplsLspPingStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].MplsLspPingStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].MplsLspPingStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspPingStatisticsHourlyDistributionInterval = types.Int64Null()
@@ -1490,12 +1490,12 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interval-time"); value.Exists() && !data.Operations[i].MplsLspPingStatisticsIntervals[ci].Interval.IsNull() {
+			if value := cr.Get("interval-time"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingStatisticsIntervals[ci].Interval.IsNull() {
 				data.Operations[i].MplsLspPingStatisticsIntervals[ci].Interval = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].MplsLspPingStatisticsIntervals[ci].Interval = types.Int64Null()
 			}
-			if value := cr.Get("buckets"); value.Exists() && !data.Operations[i].MplsLspPingStatisticsIntervals[ci].Buckets.IsNull() {
+			if value := cr.Get("buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspPingStatisticsIntervals[ci].Buckets.IsNull() {
 				data.Operations[i].MplsLspPingStatisticsIntervals[ci].Buckets = types.Int64Value(value.Int())
 			} else {
 				data.Operations[i].MplsLspPingStatisticsIntervals[ci].Buckets = types.Int64Null()
@@ -1510,62 +1510,62 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Operations[i].MplsLspTrace = types.BoolNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.tag"); value.Exists() && !data.Operations[i].MplsLspTraceTag.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.tag"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspTraceTag.IsNull() {
 			data.Operations[i].MplsLspTraceTag = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspTraceTag = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.frequency"); value.Exists() && !data.Operations[i].MplsLspTraceFrequency.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.frequency"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceFrequency.IsNull() {
 			data.Operations[i].MplsLspTraceFrequency = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceFrequency = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.timeout"); value.Exists() && !data.Operations[i].MplsLspTraceTimeout.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.timeout"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceTimeout.IsNull() {
 			data.Operations[i].MplsLspTraceTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceTimeout = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.source.address.ipv4-address"); value.Exists() && !data.Operations[i].MplsLspTraceSourceIpv4.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.source.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspTraceSourceIpv4.IsNull() {
 			data.Operations[i].MplsLspTraceSourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspTraceSourceIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.target.ipv4.address"); value.Exists() && !data.Operations[i].MplsLspTraceTargetIpv4.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.target.ipv4.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspTraceTargetIpv4.IsNull() {
 			data.Operations[i].MplsLspTraceTargetIpv4 = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspTraceTargetIpv4 = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.target.ipv4.mask"); value.Exists() && !data.Operations[i].MplsLspTraceTargetIpv4Mask.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.target.ipv4.mask"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspTraceTargetIpv4Mask.IsNull() {
 			data.Operations[i].MplsLspTraceTargetIpv4Mask = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspTraceTargetIpv4Mask = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); value.Exists() && !data.Operations[i].MplsLspTraceTargetTeTunnel.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceTargetTeTunnel.IsNull() {
 			data.Operations[i].MplsLspTraceTargetTeTunnel = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceTargetTeTunnel = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.target.pseudowire.address"); value.Exists() && !data.Operations[i].MplsLspTraceTargetPseudowireAddress.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.target.pseudowire.address"); value.Exists() && value.Type == gjson.String && !data.Operations[i].MplsLspTraceTargetPseudowireAddress.IsNull() {
 			data.Operations[i].MplsLspTraceTargetPseudowireAddress = types.StringValue(value.String())
 		} else {
 			data.Operations[i].MplsLspTraceTargetPseudowireAddress = types.StringNull()
 		}
-		if value := r.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); value.Exists() && !data.Operations[i].MplsLspTraceTargetPseudowireVcId.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceTargetPseudowireVcId.IsNull() {
 			data.Operations[i].MplsLspTraceTargetPseudowireVcId = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceTargetPseudowireVcId = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); value.Exists() && !data.Operations[i].MplsLspTraceStatisticsHourlyBuckets.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceStatisticsHourlyBuckets.IsNull() {
 			data.Operations[i].MplsLspTraceStatisticsHourlyBuckets = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceStatisticsHourlyBuckets = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); value.Exists() && !data.Operations[i].MplsLspTraceStatisticsHourlyDistributionCount.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceStatisticsHourlyDistributionCount.IsNull() {
 			data.Operations[i].MplsLspTraceStatisticsHourlyDistributionCount = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceStatisticsHourlyDistributionCount = types.Int64Null()
 		}
-		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); value.Exists() && !data.Operations[i].MplsLspTraceStatisticsHourlyDistributionInterval.IsNull() {
+		if value := r.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); value.Exists() && value.Type == gjson.Number && !data.Operations[i].MplsLspTraceStatisticsHourlyDistributionInterval.IsNull() {
 			data.Operations[i].MplsLspTraceStatisticsHourlyDistributionInterval = types.Int64Value(value.Int())
 		} else {
 			data.Operations[i].MplsLspTraceStatisticsHourlyDistributionInterval = types.Int64Null()
@@ -1594,7 +1594,7 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("operation-number"); value.Exists() && !data.Schedules[i].OperationNumber.IsNull() {
+		if value := r.Get("operation-number"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].OperationNumber.IsNull() {
 			data.Schedules[i].OperationNumber = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].OperationNumber = types.Int64Null()
@@ -1608,37 +1608,37 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Schedules[i].LifeForever = types.BoolNull()
 		}
-		if value := r.Get("life.length-of-time"); value.Exists() && !data.Schedules[i].LifeTime.IsNull() {
+		if value := r.Get("life.length-of-time"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].LifeTime.IsNull() {
 			data.Schedules[i].LifeTime = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].LifeTime = types.Int64Null()
 		}
-		if value := r.Get("start-time.time-and-date.hour"); value.Exists() && !data.Schedules[i].StartHour.IsNull() {
+		if value := r.Get("start-time.time-and-date.hour"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartHour.IsNull() {
 			data.Schedules[i].StartHour = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartHour = types.Int64Null()
 		}
-		if value := r.Get("start-time.time-and-date.minute"); value.Exists() && !data.Schedules[i].StartMinute.IsNull() {
+		if value := r.Get("start-time.time-and-date.minute"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartMinute.IsNull() {
 			data.Schedules[i].StartMinute = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartMinute = types.Int64Null()
 		}
-		if value := r.Get("start-time.time-and-date.second"); value.Exists() && !data.Schedules[i].StartSecond.IsNull() {
+		if value := r.Get("start-time.time-and-date.second"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartSecond.IsNull() {
 			data.Schedules[i].StartSecond = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartSecond = types.Int64Null()
 		}
-		if value := r.Get("start-time.time-and-date.month"); value.Exists() && !data.Schedules[i].StartMonth.IsNull() {
+		if value := r.Get("start-time.time-and-date.month"); value.Exists() && value.Type == gjson.String && !data.Schedules[i].StartMonth.IsNull() {
 			data.Schedules[i].StartMonth = types.StringValue(value.String())
 		} else {
 			data.Schedules[i].StartMonth = types.StringNull()
 		}
-		if value := r.Get("start-time.time-and-date.day-of-month"); value.Exists() && !data.Schedules[i].StartDayOfMonth.IsNull() {
+		if value := r.Get("start-time.time-and-date.day-of-month"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartDayOfMonth.IsNull() {
 			data.Schedules[i].StartDayOfMonth = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartDayOfMonth = types.Int64Null()
 		}
-		if value := r.Get("start-time.time-and-date.year"); value.Exists() && !data.Schedules[i].StartYear.IsNull() {
+		if value := r.Get("start-time.time-and-date.year"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartYear.IsNull() {
 			data.Schedules[i].StartYear = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartYear = types.Int64Null()
@@ -1652,17 +1652,17 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Schedules[i].StartPending = types.BoolNull()
 		}
-		if value := r.Get("start-time.after.time.hour"); value.Exists() && !data.Schedules[i].StartAfterHour.IsNull() {
+		if value := r.Get("start-time.after.time.hour"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartAfterHour.IsNull() {
 			data.Schedules[i].StartAfterHour = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartAfterHour = types.Int64Null()
 		}
-		if value := r.Get("start-time.after.time.minute"); value.Exists() && !data.Schedules[i].StartAfterMinute.IsNull() {
+		if value := r.Get("start-time.after.time.minute"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartAfterMinute.IsNull() {
 			data.Schedules[i].StartAfterMinute = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartAfterMinute = types.Int64Null()
 		}
-		if value := r.Get("start-time.after.time.second"); value.Exists() && !data.Schedules[i].StartAfterSecond.IsNull() {
+		if value := r.Get("start-time.after.time.second"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].StartAfterSecond.IsNull() {
 			data.Schedules[i].StartAfterSecond = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].StartAfterSecond = types.Int64Null()
@@ -1685,7 +1685,7 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.Schedules[i].Recurring = types.BoolNull()
 		}
-		if value := r.Get("ageout"); value.Exists() && !data.Schedules[i].Ageout.IsNull() {
+		if value := r.Get("ageout"); value.Exists() && value.Type == gjson.Number && !data.Schedules[i].Ageout.IsNull() {
 			data.Schedules[i].Ageout = types.Int64Value(value.Int())
 		} else {
 			data.Schedules[i].Ageout = types.Int64Null()
@@ -1700,12 +1700,12 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ServerTwamp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() && !data.ServerTwampPort.IsNull() {
+	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() && value.Type == gjson.Number && !data.ServerTwampPort.IsNull() {
 		data.ServerTwampPort = types.Int64Value(value.Int())
 	} else {
 		data.ServerTwampPort = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() && !data.ServerTwampTimerInactivity.IsNull() {
+	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() && value.Type == gjson.Number && !data.ServerTwampTimerInactivity.IsNull() {
 		data.ServerTwampTimerInactivity = types.Int64Value(value.Int())
 	} else {
 		data.ServerTwampTimerInactivity = types.Int64Null()
@@ -1717,10 +1717,10 @@ func (data *IPSLA) updateFromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "low-memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "low-memory"); value.Exists() && value.Type == gjson.Number {
 		data.LowMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "key-chain"); value.Exists() {
+	if value := gjson.GetBytes(res, "key-chain"); value.Exists() && value.Type == gjson.String {
 		data.KeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hw-timestamp.disable"); value.Exists() {
@@ -1732,7 +1732,7 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Operations = make([]IPSLAOperations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLAOperations{}
-			if cValue := v.Get("operation-number"); cValue.Exists() {
+			if cValue := v.Get("operation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OperationNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo"); cValue.Exists() {
@@ -1740,37 +1740,37 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IcmpEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.source.address.ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.source.address.ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoSourceIpv6 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoVrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.destination.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.destination.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.destination.address.ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.destination.address.ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoDestinationIpv6 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo.history.filter.all"); cValue.Exists() {
@@ -1783,26 +1783,26 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IcmpEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo.statistics.intervals.interval"); cValue.Exists() {
 				item.IcmpEchoStatisticsIntervals = make([]IPSLAOperationsIcmpEchoStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsIcmpEchoStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.IcmpEchoStatisticsIntervals = append(item.IcmpEchoStatisticsIntervals, cItem)
@@ -1814,28 +1814,28 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IcmpPathEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.destination.address.address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.destination.address.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.path-echo.history.filter.all"); cValue.Exists() {
@@ -1848,25 +1848,25 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IcmpPathEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.samples"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.samples"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistorySamples = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyMaximumHops = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyMaximumPaths = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.path-jitter"); cValue.Exists() {
@@ -1874,31 +1874,31 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IcmpPathJitter = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-jitter.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.packet.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.packet.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterPacketCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.packet.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.packet.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterPacketInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.destination.address.address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.destination.address.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterDestinationIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.udp.echo"); cValue.Exists() {
@@ -1906,28 +1906,28 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.UdpEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.source.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.source.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoSourcePort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.destination.address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.destination.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.destination.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.destination.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoDestinationPort = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.control.disable"); cValue.Exists() {
@@ -1940,36 +1940,36 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.UdpEchoVerifyData = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoVrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.statistics.intervals.interval"); cValue.Exists() {
 				item.UdpEchoStatisticsIntervals = make([]IPSLAOperationsUdpEchoStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsUdpEchoStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.UdpEchoStatisticsIntervals = append(item.UdpEchoStatisticsIntervals, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("type.udp.echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.history.filter.all"); cValue.Exists() {
@@ -1982,7 +1982,7 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.UdpEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.jitter"); cValue.Exists() {
@@ -1990,40 +1990,40 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.UdpJitter = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.jitter.tag"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.source.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.source.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterSourcePort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.destination.address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.destination.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.destination.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.destination.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterDestinationPort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.packet.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.packet.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterPacketCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.packet.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.packet.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterPacketInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.tos"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterVrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.udp.jitter.control.disable"); cValue.Exists() {
@@ -2036,23 +2036,23 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.UdpJitterVerifyData = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.jitter.statistics.intervals.interval"); cValue.Exists() {
 				item.UdpJitterStatisticsIntervals = make([]IPSLAOperationsUdpJitterStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsUdpJitterStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.UdpJitterStatisticsIntervals = append(item.UdpJitterStatisticsIntervals, cItem)
@@ -2064,53 +2064,53 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.MplsLspPing = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.tag"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.mask"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.mask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetIpv4Mask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTargetTeTunnel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetPseudowireAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTargetPseudowireVcId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.mpls.lsp.ping.statistics.intervals.interval"); cValue.Exists() {
 				item.MplsLspPingStatisticsIntervals = make([]IPSLAOperationsMplsLspPingStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsMplsLspPingStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.MplsLspPingStatisticsIntervals = append(item.MplsLspPingStatisticsIntervals, cItem)
@@ -2122,40 +2122,40 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.MplsLspTrace = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.tag"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.mask"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.mask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetIpv4Mask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTargetTeTunnel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetPseudowireAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTargetPseudowireVcId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			data.Operations = append(data.Operations, item)
@@ -2166,7 +2166,7 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Schedules = make([]IPSLASchedules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLASchedules{}
-			if cValue := v.Get("operation-number"); cValue.Exists() {
+			if cValue := v.Get("operation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OperationNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("life.forever"); cValue.Exists() {
@@ -2174,25 +2174,25 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LifeForever = types.BoolValue(false)
 			}
-			if cValue := v.Get("life.length-of-time"); cValue.Exists() {
+			if cValue := v.Get("life.length-of-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifeTime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.hour"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.hour"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartHour = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.minute"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.minute"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartMinute = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.second"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.month"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.month"); cValue.Exists() && cValue.Type == gjson.String {
 				item.StartMonth = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("start-time.time-and-date.day-of-month"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartDayOfMonth = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.year"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.year"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartYear = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("start-time.pending"); cValue.Exists() {
@@ -2200,13 +2200,13 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.StartPending = types.BoolValue(false)
 			}
-			if cValue := v.Get("start-time.after.time.hour"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterHour = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.after.time.minute"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.minute"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterMinute = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.after.time.second"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterSecond = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("start-time.now"); cValue.Exists() {
@@ -2219,7 +2219,7 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Recurring = types.BoolValue(false)
 			}
-			if cValue := v.Get("ageout"); cValue.Exists() {
+			if cValue := v.Get("ageout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ageout = types.Int64Value(cValue.Int())
 			}
 			data.Schedules = append(data.Schedules, item)
@@ -2231,10 +2231,10 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerTwamp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTwampPort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTwampTimerInactivity = types.Int64Value(value.Int())
 	}
 }
@@ -2244,10 +2244,10 @@ func (data *IPSLA) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "low-memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "low-memory"); value.Exists() && value.Type == gjson.Number {
 		data.LowMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "key-chain"); value.Exists() {
+	if value := gjson.GetBytes(res, "key-chain"); value.Exists() && value.Type == gjson.String {
 		data.KeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hw-timestamp.disable"); value.Exists() {
@@ -2259,7 +2259,7 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 		data.Operations = make([]IPSLAOperations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLAOperations{}
-			if cValue := v.Get("operation-number"); cValue.Exists() {
+			if cValue := v.Get("operation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OperationNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo"); cValue.Exists() {
@@ -2267,37 +2267,37 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.IcmpEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.source.address.ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.source.address.ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoSourceIpv6 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoVrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.destination.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.destination.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.destination.address.ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.destination.address.ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpEchoDestinationIpv6 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo.history.filter.all"); cValue.Exists() {
@@ -2310,26 +2310,26 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.IcmpEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.echo.statistics.intervals.interval"); cValue.Exists() {
 				item.IcmpEchoStatisticsIntervals = make([]IPSLAOperationsIcmpEchoStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsIcmpEchoStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.IcmpEchoStatisticsIntervals = append(item.IcmpEchoStatisticsIntervals, cItem)
@@ -2341,28 +2341,28 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.IcmpPathEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.destination.address.address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.destination.address.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.path-echo.history.filter.all"); cValue.Exists() {
@@ -2375,25 +2375,25 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.IcmpPathEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.history.samples"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.history.samples"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoHistorySamples = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.hops"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyMaximumHops = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-echo.statistics.hourly.maximum.paths"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathEchoStatisticsHourlyMaximumPaths = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.icmp.path-jitter"); cValue.Exists() {
@@ -2401,31 +2401,31 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.IcmpPathJitter = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.icmp.path-jitter.tag"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.packet.count"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.packet.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterPacketCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.packet.interval"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.packet.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterPacketInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.tos"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IcmpPathJitterTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.icmp.path-jitter.destination.address.address"); cValue.Exists() {
+			if cValue := v.Get("type.icmp.path-jitter.destination.address.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IcmpPathJitterDestinationIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.udp.echo"); cValue.Exists() {
@@ -2433,28 +2433,28 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.UdpEcho = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.tag"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.source.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.source.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoSourcePort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.destination.address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.destination.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.destination.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.destination.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoDestinationPort = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.control.disable"); cValue.Exists() {
@@ -2467,36 +2467,36 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.UdpEchoVerifyData = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.tos"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpEchoVrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.statistics.intervals.interval"); cValue.Exists() {
 				item.UdpEchoStatisticsIntervals = make([]IPSLAOperationsUdpEchoStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsUdpEchoStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.UdpEchoStatisticsIntervals = append(item.UdpEchoStatisticsIntervals, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("type.udp.echo.history.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.history.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoHistoryBuckets = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.echo.history.filter.all"); cValue.Exists() {
@@ -2509,7 +2509,7 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.UdpEchoHistoryFilterFailures = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.echo.history.lives"); cValue.Exists() {
+			if cValue := v.Get("type.udp.echo.history.lives"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpEchoHistoryLives = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.jitter"); cValue.Exists() {
@@ -2517,40 +2517,40 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.UdpJitter = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.jitter.tag"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.source.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.source.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterSourcePort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.destination.address"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.destination.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.udp.jitter.destination.port"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.destination.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterDestinationPort = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.packet.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.packet.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterPacketCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.packet.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.packet.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterPacketInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.tos"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.tos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterTos = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.vrf"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UdpJitterVrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.udp.jitter.control.disable"); cValue.Exists() {
@@ -2563,23 +2563,23 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.UdpJitterVerifyData = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.udp.jitter.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.UdpJitterStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.udp.jitter.statistics.intervals.interval"); cValue.Exists() {
 				item.UdpJitterStatisticsIntervals = make([]IPSLAOperationsUdpJitterStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsUdpJitterStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.UdpJitterStatisticsIntervals = append(item.UdpJitterStatisticsIntervals, cItem)
@@ -2591,53 +2591,53 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.MplsLspPing = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.tag"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.datasize.request.enter-request-datasize-in-byte"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingDatasizeRequest = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.mask"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.ipv4.mask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetIpv4Mask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.traffic-eng.tunnel"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTargetTeTunnel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspPingTargetPseudowireAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.target.pseudowire.virtual-circuit-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingTargetPseudowireVcId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.ping.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspPingStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("type.mpls.lsp.ping.statistics.intervals.interval"); cValue.Exists() {
 				item.MplsLspPingStatisticsIntervals = make([]IPSLAOperationsMplsLspPingStatisticsIntervals, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAOperationsMplsLspPingStatisticsIntervals{}
-					if ccValue := cv.Get("interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("interval-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Interval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("buckets"); ccValue.Exists() {
+					if ccValue := cv.Get("buckets"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Buckets = types.Int64Value(ccValue.Int())
 					}
 					item.MplsLspPingStatisticsIntervals = append(item.MplsLspPingStatisticsIntervals, cItem)
@@ -2649,40 +2649,40 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.MplsLspTrace = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.tag"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.tag"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTag = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.frequency"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.frequency"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceFrequency = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.timeout"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.source.address.ipv4-address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.source.address.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceSourceIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.mask"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.ipv4.mask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetIpv4Mask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.traffic-eng.tunnel"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTargetTeTunnel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.address"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MplsLspTraceTargetPseudowireAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.target.pseudowire.virtual-circuit-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceTargetPseudowireVcId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.buckets"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyBuckets = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.count"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyDistributionCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); cValue.Exists() {
+			if cValue := v.Get("type.mpls.lsp.trace.statistics.hourly.distribution.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsLspTraceStatisticsHourlyDistributionInterval = types.Int64Value(cValue.Int())
 			}
 			data.Operations = append(data.Operations, item)
@@ -2693,7 +2693,7 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 		data.Schedules = make([]IPSLASchedules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLASchedules{}
-			if cValue := v.Get("operation-number"); cValue.Exists() {
+			if cValue := v.Get("operation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OperationNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("life.forever"); cValue.Exists() {
@@ -2701,25 +2701,25 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.LifeForever = types.BoolValue(false)
 			}
-			if cValue := v.Get("life.length-of-time"); cValue.Exists() {
+			if cValue := v.Get("life.length-of-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifeTime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.hour"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.hour"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartHour = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.minute"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.minute"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartMinute = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.second"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.month"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.month"); cValue.Exists() && cValue.Type == gjson.String {
 				item.StartMonth = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("start-time.time-and-date.day-of-month"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartDayOfMonth = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.time-and-date.year"); cValue.Exists() {
+			if cValue := v.Get("start-time.time-and-date.year"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartYear = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("start-time.pending"); cValue.Exists() {
@@ -2727,13 +2727,13 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.StartPending = types.BoolValue(false)
 			}
-			if cValue := v.Get("start-time.after.time.hour"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterHour = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.after.time.minute"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.minute"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterMinute = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("start-time.after.time.second"); cValue.Exists() {
+			if cValue := v.Get("start-time.after.time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StartAfterSecond = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("start-time.now"); cValue.Exists() {
@@ -2746,7 +2746,7 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.Recurring = types.BoolValue(false)
 			}
-			if cValue := v.Get("ageout"); cValue.Exists() {
+			if cValue := v.Get("ageout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ageout = types.Int64Value(cValue.Int())
 			}
 			data.Schedules = append(data.Schedules, item)
@@ -2758,10 +2758,10 @@ func (data *IPSLAData) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerTwamp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.twamp.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTwampPort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.twamp.timer.inactivity"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTwampTimerInactivity = types.Int64Value(value.Int())
 	}
 }

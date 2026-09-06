@@ -113,22 +113,22 @@ func (data NetconfAgentTTY) GetRangeConstraints() []helpers.FieldRangeConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *NetconfAgentTTY) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && !data.ThrottleProcessRate.IsNull() {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number && !data.ThrottleProcessRate.IsNull() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleProcessRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && !data.ThrottleMemory.IsNull() {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number && !data.ThrottleMemory.IsNull() {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() && !data.ThrottleOffloadMemory.IsNull() {
+	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() && value.Type == gjson.Number && !data.ThrottleOffloadMemory.IsNull() {
 		data.ThrottleOffloadMemory = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleOffloadMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && !data.SessionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionTimeout.IsNull() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionTimeout = types.Int64Null()
@@ -140,16 +140,16 @@ func (data *NetconfAgentTTY) updateFromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *NetconfAgentTTY) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleOffloadMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 }
@@ -159,16 +159,16 @@ func (data *NetconfAgentTTY) fromBody(ctx context.Context, res []byte, version s
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *NetconfAgentTTYData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() {
+	if value := gjson.GetBytes(res, "throttle.offload-memory"); value.Exists() && value.Type == gjson.Number {
 		data.ThrottleOffloadMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 }

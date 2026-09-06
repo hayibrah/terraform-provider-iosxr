@@ -158,17 +158,17 @@ func (data IPv6) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *IPv6) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() && !data.HopLimit.IsNull() {
+	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() && value.Type == gjson.Number && !data.HopLimit.IsNull() {
 		data.HopLimit = types.Int64Value(value.Int())
 	} else {
 		data.HopLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() && !data.IcmpErrorInterval.IsNull() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() && value.Type == gjson.Number && !data.IcmpErrorInterval.IsNull() {
 		data.IcmpErrorInterval = types.Int64Value(value.Int())
 	} else {
 		data.IcmpErrorInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() && !data.IcmpErrorIntervalBucketSize.IsNull() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() && value.Type == gjson.Number && !data.IcmpErrorIntervalBucketSize.IsNull() {
 		data.IcmpErrorIntervalBucketSize = types.Int64Value(value.Int())
 	} else {
 		data.IcmpErrorIntervalBucketSize = types.Int64Null()
@@ -182,12 +182,12 @@ func (data *IPv6) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.SourceRoute = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() && !data.AssemblerTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() && value.Type == gjson.Number && !data.AssemblerTimeout.IsNull() {
 		data.AssemblerTimeout = types.Int64Value(value.Int())
 	} else {
 		data.AssemblerTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() && !data.AssemblerMaxPackets.IsNull() {
+	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() && value.Type == gjson.Number && !data.AssemblerMaxPackets.IsNull() {
 		data.AssemblerMaxPackets = types.Int64Value(value.Int())
 	} else {
 		data.AssemblerMaxPackets = types.Int64Null()
@@ -228,7 +228,7 @@ func (data *IPv6) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.PathMtuEnable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() && !data.PathMtuTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() && value.Type == gjson.Number && !data.PathMtuTimeout.IsNull() {
 		data.PathMtuTimeout = types.Int64Value(value.Int())
 	} else {
 		data.PathMtuTimeout = types.Int64Null()
@@ -240,13 +240,13 @@ func (data *IPv6) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *IPv6) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() && value.Type == gjson.Number {
 		data.HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() && value.Type == gjson.Number {
 		data.IcmpErrorInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() && value.Type == gjson.Number {
 		data.IcmpErrorIntervalBucketSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-route"); value.Exists() {
@@ -254,10 +254,10 @@ func (data *IPv6) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SourceRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.AssemblerTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() {
+	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() && value.Type == gjson.Number {
 		data.AssemblerMaxPackets = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "assembler.reassembler-drop.enable"); value.Exists() {
@@ -280,7 +280,7 @@ func (data *IPv6) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.PathMtuEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PathMtuTimeout = types.Int64Value(value.Int())
 	}
 }
@@ -290,13 +290,13 @@ func (data *IPv6) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *IPv6Data) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "hop-limit"); value.Exists() && value.Type == gjson.Number {
 		data.HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.interval-time"); value.Exists() && value.Type == gjson.Number {
 		data.IcmpErrorInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "icmp.error-interval.bucket-size"); value.Exists() && value.Type == gjson.Number {
 		data.IcmpErrorIntervalBucketSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-route"); value.Exists() {
@@ -304,10 +304,10 @@ func (data *IPv6Data) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.SourceRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "assembler.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.AssemblerTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() {
+	if value := gjson.GetBytes(res, "assembler.max-packets"); value.Exists() && value.Type == gjson.Number {
 		data.AssemblerMaxPackets = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "assembler.reassembler-drop.enable"); value.Exists() {
@@ -330,7 +330,7 @@ func (data *IPv6Data) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.PathMtuEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "path-mtu.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PathMtuTimeout = types.Int64Value(value.Int())
 	}
 }

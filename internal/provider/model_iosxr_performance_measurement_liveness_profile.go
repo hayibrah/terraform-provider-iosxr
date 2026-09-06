@@ -308,12 +308,12 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 	} else {
 		data.SrPolicyDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() && !data.SrPolicyDefaultLivenessDetectionMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultLivenessDetectionMultiplier.IsNull() {
 		data.SrPolicyDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultLivenessDetectionMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && !data.SrPolicyDefaultProbeTxInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeTxInterval.IsNull() {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Null()
@@ -332,32 +332,32 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() && !data.SrPolicyDefaultProbeFlowLabelFrom.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeFlowLabelFrom.IsNull() {
 		data.SrPolicyDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelFrom = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() && !data.SrPolicyDefaultProbeFlowLabelTo.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeFlowLabelTo.IsNull() {
 		data.SrPolicyDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelTo = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() && !data.SrPolicyDefaultProbeFlowLabelIncrement.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeFlowLabelIncrement.IsNull() {
 		data.SrPolicyDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && !data.SrPolicyDefaultProbeTosDscp.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeTosDscp.IsNull() {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Null()
@@ -380,7 +380,7 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 	} else {
 		data.EndpointDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && !data.EndpointDefaultProbeTxInterval.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeTxInterval.IsNull() {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeTxInterval = types.Int64Null()
@@ -399,37 +399,37 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && !data.EndpointDefaultProbeTosDscp.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeTosDscp.IsNull() {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeTosDscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() && !data.EndpointDefaultLivenessDetectionMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultLivenessDetectionMultiplier.IsNull() {
 		data.EndpointDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultLivenessDetectionMultiplier = types.Int64Null()
@@ -466,12 +466,12 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && !data.Profiles[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProfileName.IsNull() {
 			data.Profiles[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProfileName = types.StringNull()
 		}
-		if value := r.Get("liveness-detection.multiplier"); value.Exists() && !data.Profiles[i].LivenessDetectionMultiplier.IsNull() {
+		if value := r.Get("liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].LivenessDetectionMultiplier.IsNull() {
 			data.Profiles[i].LivenessDetectionMultiplier = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].LivenessDetectionMultiplier = types.Int64Null()
@@ -485,7 +485,7 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 		} else {
 			data.Profiles[i].LivenessDetectionLoggingStateChange = types.BoolNull()
 		}
-		if value := r.Get("probe.tx-interval"); value.Exists() && !data.Profiles[i].ProbeTxInterval.IsNull() {
+		if value := r.Get("probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeTxInterval.IsNull() {
 			data.Profiles[i].ProbeTxInterval = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeTxInterval = types.Int64Null()
@@ -504,32 +504,32 @@ func (data *PerformanceMeasurementLivenessProfile) updateFromBody(ctx context.Co
 		} else {
 			data.Profiles[i].ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 		}
-		if value := r.Get("probe.flow-label.from"); value.Exists() && !data.Profiles[i].ProbeFlowLabelFrom.IsNull() {
+		if value := r.Get("probe.flow-label.from"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelFrom.IsNull() {
 			data.Profiles[i].ProbeFlowLabelFrom = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelFrom = types.Int64Null()
 		}
-		if value := r.Get("probe.flow-label.to"); value.Exists() && !data.Profiles[i].ProbeFlowLabelTo.IsNull() {
+		if value := r.Get("probe.flow-label.to"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelTo.IsNull() {
 			data.Profiles[i].ProbeFlowLabelTo = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelTo = types.Int64Null()
 		}
-		if value := r.Get("probe.flow-label.increment"); value.Exists() && !data.Profiles[i].ProbeFlowLabelIncrement.IsNull() {
+		if value := r.Get("probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelIncrement.IsNull() {
 			data.Profiles[i].ProbeFlowLabelIncrement = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelIncrement = types.Int64Null()
 		}
-		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
+		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("probe.sweep.destination.range"); value.Exists() && !data.Profiles[i].ProbeSweepDestinationRange.IsNull() {
+		if value := r.Get("probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeSweepDestinationRange.IsNull() {
 			data.Profiles[i].ProbeSweepDestinationRange = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeSweepDestinationRange = types.Int64Null()
 		}
-		if value := r.Get("probe.tos.dscp"); value.Exists() && !data.Profiles[i].ProbeTosDscp.IsNull() {
+		if value := r.Get("probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeTosDscp.IsNull() {
 			data.Profiles[i].ProbeTosDscp = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeTosDscp = types.Int64Null()
@@ -556,10 +556,10 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 	} else {
 		data.SrPolicyDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.explicits"); value.Exists() {
@@ -572,22 +572,22 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.npu-offload"); value.Exists() {
@@ -600,7 +600,7 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 	} else {
 		data.EndpointDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.explicits"); value.Exists() {
@@ -613,25 +613,25 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.logging.state-change"); value.Exists() {
@@ -643,10 +643,10 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 		data.Profiles = make([]PerformanceMeasurementLivenessProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementLivenessProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("liveness-detection.multiplier"); cValue.Exists() {
+			if cValue := v.Get("liveness-detection.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LivenessDetectionMultiplier = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("liveness-detection.logging.state-change"); cValue.Exists() {
@@ -654,7 +654,7 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 			} else {
 				item.LivenessDetectionLoggingStateChange = types.BoolValue(false)
 			}
-			if cValue := v.Get("probe.tx-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTxInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.flow-label.explicits"); cValue.Exists() {
@@ -667,22 +667,22 @@ func (data *PerformanceMeasurementLivenessProfile) fromBody(ctx context.Context,
 			} else {
 				item.ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 			}
-			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelTo = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelIncrement = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeSweepDestinationRange = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosDscp = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("npu-offload"); cValue.Exists() {
@@ -706,10 +706,10 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 	} else {
 		data.SrPolicyDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.explicits"); value.Exists() {
@@ -722,22 +722,22 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 	} else {
 		data.SrPolicyDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.npu-offload"); value.Exists() {
@@ -750,7 +750,7 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 	} else {
 		data.EndpointDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.explicits"); value.Exists() {
@@ -763,25 +763,25 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultLivenessDetectionMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.liveness-detection.logging.state-change"); value.Exists() {
@@ -793,10 +793,10 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 		data.Profiles = make([]PerformanceMeasurementLivenessProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementLivenessProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("liveness-detection.multiplier"); cValue.Exists() {
+			if cValue := v.Get("liveness-detection.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LivenessDetectionMultiplier = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("liveness-detection.logging.state-change"); cValue.Exists() {
@@ -804,7 +804,7 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 			} else {
 				item.LivenessDetectionLoggingStateChange = types.BoolValue(false)
 			}
-			if cValue := v.Get("probe.tx-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTxInterval = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.flow-label.explicits"); cValue.Exists() {
@@ -817,22 +817,22 @@ func (data *PerformanceMeasurementLivenessProfileData) fromBody(ctx context.Cont
 			} else {
 				item.ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 			}
-			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelTo = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelIncrement = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeSweepDestinationRange = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosDscp = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("npu-offload"); cValue.Exists() {

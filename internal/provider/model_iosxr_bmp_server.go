@@ -231,17 +231,17 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 				return true
 			},
 		)
-		if value := r.Get("route-mon"); value.Exists() && !data.AllRouteMonitorings[i].RouteMon.IsNull() {
+		if value := r.Get("route-mon"); value.Exists() && value.Type == gjson.String && !data.AllRouteMonitorings[i].RouteMon.IsNull() {
 			data.AllRouteMonitorings[i].RouteMon = types.StringValue(value.String())
 		} else {
 			data.AllRouteMonitorings[i].RouteMon = types.StringNull()
 		}
-		if value := r.Get("advertisement-interval"); value.Exists() && !data.AllRouteMonitorings[i].AdvertisementInterval.IsNull() {
+		if value := r.Get("advertisement-interval"); value.Exists() && value.Type == gjson.Number && !data.AllRouteMonitorings[i].AdvertisementInterval.IsNull() {
 			data.AllRouteMonitorings[i].AdvertisementInterval = types.Int64Value(value.Int())
 		} else {
 			data.AllRouteMonitorings[i].AdvertisementInterval = types.Int64Null()
 		}
-		if value := r.Get("scan-time"); value.Exists() && !data.AllRouteMonitorings[i].ScanTime.IsNull() {
+		if value := r.Get("scan-time"); value.Exists() && value.Type == gjson.Number && !data.AllRouteMonitorings[i].ScanTime.IsNull() {
 			data.AllRouteMonitorings[i].ScanTime = types.Int64Value(value.Int())
 		} else {
 			data.AllRouteMonitorings[i].ScanTime = types.Int64Null()
@@ -256,7 +256,7 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.AllRouteMirroringInboundPrePolicy = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() && !data.AllMaxBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() && value.Type == gjson.Number && !data.AllMaxBufferSize.IsNull() {
 		data.AllMaxBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.AllMaxBufferSize = types.Int64Null()
@@ -284,7 +284,7 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 				return true
 			},
 		)
-		if value := r.Get("server-number"); value.Exists() && !data.Servers[i].Number.IsNull() {
+		if value := r.Get("server-number"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].Number.IsNull() {
 			data.Servers[i].Number = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].Number = types.Int64Null()
@@ -298,32 +298,32 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 		} else {
 			data.Servers[i].Shutdown = types.BoolNull()
 		}
-		if value := r.Get("host.host-name"); value.Exists() && !data.Servers[i].Host.IsNull() {
+		if value := r.Get("host.host-name"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Host.IsNull() {
 			data.Servers[i].Host = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Host = types.StringNull()
 		}
-		if value := r.Get("host.port"); value.Exists() && !data.Servers[i].Port.IsNull() {
+		if value := r.Get("host.port"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].Port.IsNull() {
 			data.Servers[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].Port = types.Int64Null()
 		}
-		if value := r.Get("initial-delay"); value.Exists() && !data.Servers[i].InitialDelay.IsNull() {
+		if value := r.Get("initial-delay"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].InitialDelay.IsNull() {
 			data.Servers[i].InitialDelay = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].InitialDelay = types.Int64Null()
 		}
-		if value := r.Get("flapping-delay"); value.Exists() && !data.Servers[i].FlappingDelay.IsNull() {
+		if value := r.Get("flapping-delay"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].FlappingDelay.IsNull() {
 			data.Servers[i].FlappingDelay = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].FlappingDelay = types.Int64Null()
 		}
-		if value := r.Get("initial-refresh.delay"); value.Exists() && !data.Servers[i].InitialRefreshDelay.IsNull() {
+		if value := r.Get("initial-refresh.delay"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].InitialRefreshDelay.IsNull() {
 			data.Servers[i].InitialRefreshDelay = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].InitialRefreshDelay = types.Int64Null()
 		}
-		if value := r.Get("initial-refresh.spread"); value.Exists() && !data.Servers[i].InitialRefreshSpread.IsNull() {
+		if value := r.Get("initial-refresh.spread"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].InitialRefreshSpread.IsNull() {
 			data.Servers[i].InitialRefreshSpread = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].InitialRefreshSpread = types.Int64Null()
@@ -337,42 +337,42 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 		} else {
 			data.Servers[i].InitialRefreshSkip = types.BoolNull()
 		}
-		if value := r.Get("stats-reporting-period"); value.Exists() && !data.Servers[i].StatsReportingPeriod.IsNull() {
+		if value := r.Get("stats-reporting-period"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].StatsReportingPeriod.IsNull() {
 			data.Servers[i].StatsReportingPeriod = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].StatsReportingPeriod = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && !data.Servers[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Description.IsNull() {
 			data.Servers[i].Description = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Description = types.StringNull()
 		}
-		if value := r.Get("dscp.dscp-value"); value.Exists() && !data.Servers[i].DscpValue.IsNull() {
+		if value := r.Get("dscp.dscp-value"); value.Exists() && value.Type == gjson.String && !data.Servers[i].DscpValue.IsNull() {
 			data.Servers[i].DscpValue = types.StringValue(value.String())
 		} else {
 			data.Servers[i].DscpValue = types.StringNull()
 		}
-		if value := r.Get("precedence.precedence-value"); value.Exists() && !data.Servers[i].PrecedenceValue.IsNull() {
+		if value := r.Get("precedence.precedence-value"); value.Exists() && value.Type == gjson.String && !data.Servers[i].PrecedenceValue.IsNull() {
 			data.Servers[i].PrecedenceValue = types.StringValue(value.String())
 		} else {
 			data.Servers[i].PrecedenceValue = types.StringNull()
 		}
-		if value := r.Get("update-source"); value.Exists() && !data.Servers[i].UpdateSource.IsNull() {
+		if value := r.Get("update-source"); value.Exists() && value.Type == gjson.String && !data.Servers[i].UpdateSource.IsNull() {
 			data.Servers[i].UpdateSource = types.StringValue(value.String())
 		} else {
 			data.Servers[i].UpdateSource = types.StringNull()
 		}
-		if value := r.Get("vrf"); value.Exists() && !data.Servers[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Vrf.IsNull() {
 			data.Servers[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Vrf = types.StringNull()
 		}
-		if value := r.Get("tcp.mss"); value.Exists() && !data.Servers[i].TcpMss.IsNull() {
+		if value := r.Get("tcp.mss"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].TcpMss.IsNull() {
 			data.Servers[i].TcpMss = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].TcpMss = types.Int64Null()
 		}
-		if value := r.Get("tcp.keep-alive"); value.Exists() && !data.Servers[i].TcpKeepAlive.IsNull() {
+		if value := r.Get("tcp.keep-alive"); value.Exists() && value.Type == gjson.Number && !data.Servers[i].TcpKeepAlive.IsNull() {
 			data.Servers[i].TcpKeepAlive = types.Int64Value(value.Int())
 		} else {
 			data.Servers[i].TcpKeepAlive = types.Int64Null()
@@ -389,13 +389,13 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerAllRouteMonitorings{}
-			if cValue := v.Get("route-mon"); cValue.Exists() {
+			if cValue := v.Get("route-mon"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RouteMon = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("advertisement-interval"); cValue.Exists() {
+			if cValue := v.Get("advertisement-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisementInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("scan-time"); cValue.Exists() {
+			if cValue := v.Get("scan-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ScanTime = types.Int64Value(cValue.Int())
 			}
 			data.AllRouteMonitorings = append(data.AllRouteMonitorings, item)
@@ -407,14 +407,14 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.AllRouteMirroringInboundPrePolicy = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() && value.Type == gjson.Number {
 		data.AllMaxBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server"); value.Exists() {
 		data.Servers = make([]BMPServerServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerServers{}
-			if cValue := v.Get("server-number"); cValue.Exists() {
+			if cValue := v.Get("server-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Number = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -422,22 +422,22 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("host.host-name"); cValue.Exists() {
+			if cValue := v.Get("host.host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Host = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("host.port"); cValue.Exists() {
+			if cValue := v.Get("host.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-delay"); cValue.Exists() {
+			if cValue := v.Get("initial-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("flapping-delay"); cValue.Exists() {
+			if cValue := v.Get("flapping-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.FlappingDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-refresh.delay"); cValue.Exists() {
+			if cValue := v.Get("initial-refresh.delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialRefreshDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-refresh.spread"); cValue.Exists() {
+			if cValue := v.Get("initial-refresh.spread"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialRefreshSpread = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("initial-refresh.skip"); cValue.Exists() {
@@ -445,28 +445,28 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.InitialRefreshSkip = types.BoolValue(false)
 			}
-			if cValue := v.Get("stats-reporting-period"); cValue.Exists() {
+			if cValue := v.Get("stats-reporting-period"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StatsReportingPeriod = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() {
+			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DscpValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() {
+			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && cValue.Type == gjson.String {
 				item.PrecedenceValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("update-source"); cValue.Exists() {
+			if cValue := v.Get("update-source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UpdateSource = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp.mss"); cValue.Exists() {
+			if cValue := v.Get("tcp.mss"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TcpMss = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("tcp.keep-alive"); cValue.Exists() {
+			if cValue := v.Get("tcp.keep-alive"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TcpKeepAlive = types.Int64Value(cValue.Int())
 			}
 			data.Servers = append(data.Servers, item)
@@ -484,13 +484,13 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerAllRouteMonitorings{}
-			if cValue := v.Get("route-mon"); cValue.Exists() {
+			if cValue := v.Get("route-mon"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RouteMon = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("advertisement-interval"); cValue.Exists() {
+			if cValue := v.Get("advertisement-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisementInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("scan-time"); cValue.Exists() {
+			if cValue := v.Get("scan-time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ScanTime = types.Int64Value(cValue.Int())
 			}
 			data.AllRouteMonitorings = append(data.AllRouteMonitorings, item)
@@ -502,14 +502,14 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.AllRouteMirroringInboundPrePolicy = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "all.max-buffer-size"); value.Exists() && value.Type == gjson.Number {
 		data.AllMaxBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server"); value.Exists() {
 		data.Servers = make([]BMPServerServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerServers{}
-			if cValue := v.Get("server-number"); cValue.Exists() {
+			if cValue := v.Get("server-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Number = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -517,22 +517,22 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("host.host-name"); cValue.Exists() {
+			if cValue := v.Get("host.host-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Host = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("host.port"); cValue.Exists() {
+			if cValue := v.Get("host.port"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-delay"); cValue.Exists() {
+			if cValue := v.Get("initial-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("flapping-delay"); cValue.Exists() {
+			if cValue := v.Get("flapping-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.FlappingDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-refresh.delay"); cValue.Exists() {
+			if cValue := v.Get("initial-refresh.delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialRefreshDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("initial-refresh.spread"); cValue.Exists() {
+			if cValue := v.Get("initial-refresh.spread"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.InitialRefreshSpread = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("initial-refresh.skip"); cValue.Exists() {
@@ -540,28 +540,28 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 			} else {
 				item.InitialRefreshSkip = types.BoolValue(false)
 			}
-			if cValue := v.Get("stats-reporting-period"); cValue.Exists() {
+			if cValue := v.Get("stats-reporting-period"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StatsReportingPeriod = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() {
+			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() {
+			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DscpValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() {
+			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && cValue.Type == gjson.String {
 				item.PrecedenceValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("update-source"); cValue.Exists() {
+			if cValue := v.Get("update-source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.UpdateSource = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp.mss"); cValue.Exists() {
+			if cValue := v.Get("tcp.mss"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TcpMss = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("tcp.keep-alive"); cValue.Exists() {
+			if cValue := v.Get("tcp.keep-alive"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TcpKeepAlive = types.Int64Value(cValue.Int())
 			}
 			data.Servers = append(data.Servers, item)

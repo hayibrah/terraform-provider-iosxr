@@ -163,7 +163,7 @@ func (data *ICMP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.Ipv4SourceRfc = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() && !data.Ipv4RateLimitUnreachableRate.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() && value.Type == gjson.Number && !data.Ipv4RateLimitUnreachableRate.IsNull() {
 		data.Ipv4RateLimitUnreachableRate = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4RateLimitUnreachableRate = types.Int64Null()
@@ -177,7 +177,7 @@ func (data *ICMP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.Ipv4RateLimitUnreachableDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() && !data.Ipv4RateLimitUnreachableDfRate.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() && value.Type == gjson.Number && !data.Ipv4RateLimitUnreachableDfRate.IsNull() {
 		data.Ipv4RateLimitUnreachableDfRate = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4RateLimitUnreachableDfRate = types.Int64Null()
@@ -226,7 +226,7 @@ func (data *ICMP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4SourceRfc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RateLimitUnreachableRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.disable"); value.Exists() {
@@ -234,7 +234,7 @@ func (data *ICMP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4RateLimitUnreachableDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RateLimitUnreachableDfRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.disable"); value.Exists() {
@@ -269,7 +269,7 @@ func (data *ICMPData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.Ipv4SourceRfc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.rate"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RateLimitUnreachableRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.disable"); value.Exists() {
@@ -277,7 +277,7 @@ func (data *ICMPData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.Ipv4RateLimitUnreachableDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.rate"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RateLimitUnreachableDfRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.rate-limit.unreachable.df.disable"); value.Exists() {

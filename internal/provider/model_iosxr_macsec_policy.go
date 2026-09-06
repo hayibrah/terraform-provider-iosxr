@@ -244,42 +244,42 @@ func (data MACSecPolicy) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && !data.KeyServerPriority.IsNull() {
+	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && value.Type == gjson.Number && !data.KeyServerPriority.IsNull() {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	} else {
 		data.KeyServerPriority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() && !data.CipherSuite.IsNull() {
+	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() && value.Type == gjson.String && !data.CipherSuite.IsNull() {
 		data.CipherSuite = types.StringValue(value.String())
 	} else {
 		data.CipherSuite = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() && !data.WindowSize.IsNull() {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number && !data.WindowSize.IsNull() {
 		data.WindowSize = types.Int64Value(value.Int())
 	} else {
 		data.WindowSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() && !data.ConfOffset.IsNull() {
+	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() && value.Type == gjson.String && !data.ConfOffset.IsNull() {
 		data.ConfOffset = types.StringValue(value.String())
 	} else {
 		data.ConfOffset = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "security-policy"); value.Exists() && !data.SecurityPolicy.IsNull() {
+	if value := gjson.GetBytes(res, "security-policy"); value.Exists() && value.Type == gjson.String && !data.SecurityPolicy.IsNull() {
 		data.SecurityPolicy = types.StringValue(value.String())
 	} else {
 		data.SecurityPolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() && !data.VlanTagsInClear.IsNull() {
+	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() && value.Type == gjson.Number && !data.VlanTagsInClear.IsNull() {
 		data.VlanTagsInClear = types.Int64Value(value.Int())
 	} else {
 		data.VlanTagsInClear = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() && !data.PolicyException.IsNull() {
+	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() && value.Type == gjson.String && !data.PolicyException.IsNull() {
 		data.PolicyException = types.StringValue(value.String())
 	} else {
 		data.PolicyException = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() && !data.SakRekeyIntervalSeconds.IsNull() {
+	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() && value.Type == gjson.Number && !data.SakRekeyIntervalSeconds.IsNull() {
 		data.SakRekeyIntervalSeconds = types.Int64Value(value.Int())
 	} else {
 		data.SakRekeyIntervalSeconds = types.Int64Null()
@@ -356,7 +356,7 @@ func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.ImposeOverheadOnBundle = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "max-an"); value.Exists() && !data.MaxAn.IsNull() {
+	if value := gjson.GetBytes(res, "max-an"); value.Exists() && value.Type == gjson.String && !data.MaxAn.IsNull() {
 		data.MaxAn = types.StringValue(value.String())
 	} else {
 		data.MaxAn = types.StringNull()
@@ -397,7 +397,7 @@ func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.Ppk = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() && !data.PpkSksProfile.IsNull() {
+	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() && value.Type == gjson.String && !data.PpkSksProfile.IsNull() {
 		data.PpkSksProfile = types.StringValue(value.String())
 	} else {
 		data.PpkSksProfile = types.StringNull()
@@ -411,7 +411,7 @@ func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.LoggingSakRekeyDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() && !data.LoggingSakRekeySummaryInterval.IsNull() {
+	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() && value.Type == gjson.Number && !data.LoggingSakRekeySummaryInterval.IsNull() {
 		data.LoggingSakRekeySummaryInterval = types.Int64Value(value.Int())
 	} else {
 		data.LoggingSakRekeySummaryInterval = types.Int64Null()
@@ -423,28 +423,28 @@ func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, versio
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && value.Type == gjson.Number {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() {
+	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() && value.Type == gjson.String {
 		data.CipherSuite = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() {
+	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() && value.Type == gjson.String {
 		data.ConfOffset = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "security-policy"); value.Exists() {
+	if value := gjson.GetBytes(res, "security-policy"); value.Exists() && value.Type == gjson.String {
 		data.SecurityPolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() {
+	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() && value.Type == gjson.Number {
 		data.VlanTagsInClear = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() {
+	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() && value.Type == gjson.String {
 		data.PolicyException = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() && value.Type == gjson.Number {
 		data.SakRekeyIntervalSeconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "include-icv-indicator"); value.Exists() {
@@ -487,7 +487,7 @@ func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.ImposeOverheadOnBundle = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "max-an"); value.Exists() {
+	if value := gjson.GetBytes(res, "max-an"); value.Exists() && value.Type == gjson.String {
 		data.MaxAn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allow.lacp-in-clear"); value.Exists() {
@@ -510,7 +510,7 @@ func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.Ppk = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() && value.Type == gjson.String {
 		data.PpkSksProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "logging.sak-rekey.disable"); value.Exists() {
@@ -518,7 +518,7 @@ func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.LoggingSakRekeyDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() && value.Type == gjson.Number {
 		data.LoggingSakRekeySummaryInterval = types.Int64Value(value.Int())
 	}
 }
@@ -528,28 +528,28 @@ func (data *MACSecPolicy) fromBody(ctx context.Context, res []byte, version stri
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && value.Type == gjson.Number {
 		data.KeyServerPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() {
+	if value := gjson.GetBytes(res, "cipher-suite"); value.Exists() && value.Type == gjson.String {
 		data.CipherSuite = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() {
+	if value := gjson.GetBytes(res, "conf-offset"); value.Exists() && value.Type == gjson.String {
 		data.ConfOffset = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "security-policy"); value.Exists() {
+	if value := gjson.GetBytes(res, "security-policy"); value.Exists() && value.Type == gjson.String {
 		data.SecurityPolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() {
+	if value := gjson.GetBytes(res, "vlan-tags-in-clear"); value.Exists() && value.Type == gjson.Number {
 		data.VlanTagsInClear = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() {
+	if value := gjson.GetBytes(res, "policy-exception"); value.Exists() && value.Type == gjson.String {
 		data.PolicyException = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "sak-rekey-interval.seconds"); value.Exists() && value.Type == gjson.Number {
 		data.SakRekeyIntervalSeconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "include-icv-indicator"); value.Exists() {
@@ -592,7 +592,7 @@ func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.ImposeOverheadOnBundle = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "max-an"); value.Exists() {
+	if value := gjson.GetBytes(res, "max-an"); value.Exists() && value.Type == gjson.String {
 		data.MaxAn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allow.lacp-in-clear"); value.Exists() {
@@ -615,7 +615,7 @@ func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.Ppk = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "ppk.sks-profile"); value.Exists() && value.Type == gjson.String {
 		data.PpkSksProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "logging.sak-rekey.disable"); value.Exists() {
@@ -623,7 +623,7 @@ func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.LoggingSakRekeyDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "logging.sak-rekey.summary-interval"); value.Exists() && value.Type == gjson.Number {
 		data.LoggingSakRekeySummaryInterval = types.Int64Value(value.Int())
 	}
 }

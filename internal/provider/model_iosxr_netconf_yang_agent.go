@@ -157,27 +157,27 @@ func (data *NetconfYangAgent) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.WithDefaultsSupport = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && !data.RateLimit.IsNull() {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number && !data.RateLimit.IsNull() {
 		data.RateLimit = types.Int64Value(value.Int())
 	} else {
 		data.RateLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && !data.SessionLimit.IsNull() {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number && !data.SessionLimit.IsNull() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	} else {
 		data.SessionLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && !data.SessionIdleTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionIdleTimeout.IsNull() {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionIdleTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && !data.SessionAbsoluteTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionAbsoluteTimeout.IsNull() {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionAbsoluteTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() && !data.NetconfV1.IsNull() {
+	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() && value.Type == gjson.String && !data.NetconfV1.IsNull() {
 		data.NetconfV1 = types.StringValue(value.String())
 	} else {
 		data.NetconfV1 = types.StringNull()
@@ -208,19 +208,19 @@ func (data *NetconfYangAgent) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.WithDefaultsSupport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() {
+	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() && value.Type == gjson.String {
 		data.NetconfV1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "netconf1\\.0.streaming-disabled"); value.Exists() {
@@ -245,19 +245,19 @@ func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.WithDefaultsSupport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() {
+	if value := gjson.GetBytes(res, "netconf1\\.0.support"); value.Exists() && value.Type == gjson.String {
 		data.NetconfV1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "netconf1\\.0.streaming-disabled"); value.Exists() {

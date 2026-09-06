@@ -387,7 +387,7 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.StatisticsSynchronizationTenMinutes = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() && !data.LinuxOwnedVrf.IsNull() {
+	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() && value.Type == gjson.String && !data.LinuxOwnedVrf.IsNull() {
 		data.LinuxOwnedVrf = types.StringValue(value.String())
 	} else {
 		data.LinuxOwnedVrf = types.StringNull()
@@ -415,12 +415,12 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.ExposedInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.ExposedInterfaces[i].InterfaceName.IsNull() {
 			data.ExposedInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.ExposedInterfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("linux-managed"); value.Exists() && !data.ExposedInterfaces[i].LinuxManaged.IsNull() {
+		if value := r.Get("linux-managed"); value.Exists() && value.Type == gjson.String && !data.ExposedInterfaces[i].LinuxManaged.IsNull() {
 			data.ExposedInterfaces[i].LinuxManaged = types.StringValue(value.String())
 		} else {
 			data.ExposedInterfaces[i].LinuxManaged = types.StringNull()
@@ -485,7 +485,7 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
@@ -522,13 +522,13 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 					return true
 				},
 			)
-			if value := cr.Get("east-west-name"); value.Exists() && !data.Vrfs[i].EastWestInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("east-west-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].EastWestInterfaces[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].EastWestInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].EastWestInterfaces[ci].InterfaceName = types.StringNull()
 			}
 		}
-		if value := r.Get("address-family.ipv4.source-hint.default-route.interface"); value.Exists() && !data.Vrfs[i].Ipv4SourceInterfaceDefaultRoute.IsNull() {
+		if value := r.Get("address-family.ipv4.source-hint.default-route.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4SourceInterfaceDefaultRoute.IsNull() {
 			data.Vrfs[i].Ipv4SourceInterfaceDefaultRoute = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4SourceInterfaceDefaultRoute = types.StringNull()
@@ -542,7 +542,7 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 		} else {
 			data.Vrfs[i].Ipv4SourceDefaultRouteActiveManagement = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv4.source-hint.management-route.interface"); value.Exists() && !data.Vrfs[i].Ipv4SourceInterfaceManagementRoute.IsNull() {
+		if value := r.Get("address-family.ipv4.source-hint.management-route.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4SourceInterfaceManagementRoute.IsNull() {
 			data.Vrfs[i].Ipv4SourceInterfaceManagementRoute = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4SourceInterfaceManagementRoute = types.StringNull()
@@ -556,7 +556,7 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 		} else {
 			data.Vrfs[i].Ipv4DefaultRouteSoftwareForwarding = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv6.source-hint.default-route.interface"); value.Exists() && !data.Vrfs[i].Ipv6SourceInterfaceDefaultRoute.IsNull() {
+		if value := r.Get("address-family.ipv6.source-hint.default-route.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6SourceInterfaceDefaultRoute.IsNull() {
 			data.Vrfs[i].Ipv6SourceInterfaceDefaultRoute = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6SourceInterfaceDefaultRoute = types.StringNull()
@@ -570,7 +570,7 @@ func (data *LinuxNetworking) updateFromBody(ctx context.Context, res []byte, ver
 		} else {
 			data.Vrfs[i].Ipv6SourceDefaultRouteActiveManagement = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv6.source-hint.management-route.interface"); value.Exists() && !data.Vrfs[i].Ipv6SourceInterfaceManagementRoute.IsNull() {
+		if value := r.Get("address-family.ipv6.source-hint.management-route.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6SourceInterfaceManagementRoute.IsNull() {
 			data.Vrfs[i].Ipv6SourceInterfaceManagementRoute = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6SourceInterfaceManagementRoute = types.StringNull()
@@ -647,17 +647,17 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.StatisticsSynchronizationTenMinutes = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() && value.Type == gjson.String {
 		data.LinuxOwnedVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "exposed-interfaces.interfaces.interface"); value.Exists() {
 		data.ExposedInterfaces = make([]LinuxNetworkingExposedInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LinuxNetworkingExposedInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("linux-managed"); cValue.Exists() {
+			if cValue := v.Get("linux-managed"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LinuxManaged = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("statistics-synchronization.from-xr.every.five-seconds"); cValue.Exists() {
@@ -688,7 +688,7 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 		data.Vrfs = make([]LinuxNetworkingVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LinuxNetworkingVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -700,14 +700,14 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 				item.EastWestInterfaces = make([]LinuxNetworkingVrfsEastWestInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LinuxNetworkingVrfsEastWestInterfaces{}
-					if ccValue := cv.Get("east-west-name"); ccValue.Exists() {
+					if ccValue := cv.Get("east-west-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.EastWestInterfaces = append(item.EastWestInterfaces, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("address-family.ipv4.source-hint.default-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv4.source-hint.default-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceInterfaceDefaultRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.source-hint.default-route.active-management"); cValue.Exists() {
@@ -715,7 +715,7 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.Ipv4SourceDefaultRouteActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.source-hint.management-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv4.source-hint.management-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceInterfaceManagementRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.default-route.software-forwarding"); cValue.Exists() {
@@ -723,7 +723,7 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.Ipv4DefaultRouteSoftwareForwarding = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.source-hint.default-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv6.source-hint.default-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceInterfaceDefaultRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.source-hint.default-route.active-management"); cValue.Exists() {
@@ -731,7 +731,7 @@ func (data *LinuxNetworking) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.Ipv6SourceDefaultRouteActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.source-hint.management-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv6.source-hint.management-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceInterfaceManagementRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.default-route.software-forwarding"); cValue.Exists() {
@@ -805,17 +805,17 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.StatisticsSynchronizationTenMinutes = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "linux-owned-vrf"); value.Exists() && value.Type == gjson.String {
 		data.LinuxOwnedVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "exposed-interfaces.interfaces.interface"); value.Exists() {
 		data.ExposedInterfaces = make([]LinuxNetworkingExposedInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LinuxNetworkingExposedInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("linux-managed"); cValue.Exists() {
+			if cValue := v.Get("linux-managed"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LinuxManaged = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("statistics-synchronization.from-xr.every.five-seconds"); cValue.Exists() {
@@ -846,7 +846,7 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 		data.Vrfs = make([]LinuxNetworkingVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LinuxNetworkingVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -858,14 +858,14 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 				item.EastWestInterfaces = make([]LinuxNetworkingVrfsEastWestInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LinuxNetworkingVrfsEastWestInterfaces{}
-					if ccValue := cv.Get("east-west-name"); ccValue.Exists() {
+					if ccValue := cv.Get("east-west-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.EastWestInterfaces = append(item.EastWestInterfaces, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("address-family.ipv4.source-hint.default-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv4.source-hint.default-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceInterfaceDefaultRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.source-hint.default-route.active-management"); cValue.Exists() {
@@ -873,7 +873,7 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 			} else {
 				item.Ipv4SourceDefaultRouteActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.source-hint.management-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv4.source-hint.management-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4SourceInterfaceManagementRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.default-route.software-forwarding"); cValue.Exists() {
@@ -881,7 +881,7 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 			} else {
 				item.Ipv4DefaultRouteSoftwareForwarding = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.source-hint.default-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv6.source-hint.default-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceInterfaceDefaultRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.source-hint.default-route.active-management"); cValue.Exists() {
@@ -889,7 +889,7 @@ func (data *LinuxNetworkingData) fromBody(ctx context.Context, res []byte, versi
 			} else {
 				item.Ipv6SourceDefaultRouteActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.source-hint.management-route.interface"); cValue.Exists() {
+			if cValue := v.Get("address-family.ipv6.source-hint.management-route.interface"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6SourceInterfaceManagementRoute = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.default-route.software-forwarding"); cValue.Exists() {

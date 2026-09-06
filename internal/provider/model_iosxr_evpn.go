@@ -495,62 +495,62 @@ func (data EVPN) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && !data.BgpRdTwoByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdTwoByteAsNumber.IsNull() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdTwoByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && !data.BgpRdTwoByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdTwoByteAsIndex.IsNull() {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdTwoByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && !data.BgpRdFourByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdFourByteAsNumber.IsNull() {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdFourByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && !data.BgpRdFourByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdFourByteAsIndex.IsNull() {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdFourByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && !data.BgpRdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.BgpRdIpv4Address.IsNull() {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.BgpRdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && !data.BgpRdIpv4AddressIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdIpv4AddressIndex.IsNull() {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdIpv4AddressIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() && !data.TimersRecovery.IsNull() {
+	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() && value.Type == gjson.Number && !data.TimersRecovery.IsNull() {
 		data.TimersRecovery = types.Int64Value(value.Int())
 	} else {
 		data.TimersRecovery = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() && !data.TimersPeering.IsNull() {
+	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() && value.Type == gjson.Number && !data.TimersPeering.IsNull() {
 		data.TimersPeering = types.Int64Value(value.Int())
 	} else {
 		data.TimersPeering = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() && !data.TimersCarving.IsNull() {
+	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() && value.Type == gjson.Number && !data.TimersCarving.IsNull() {
 		data.TimersCarving = types.Int64Value(value.Int())
 	} else {
 		data.TimersCarving = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() && !data.TimersAcDebounce.IsNull() {
+	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() && value.Type == gjson.Number && !data.TimersAcDebounce.IsNull() {
 		data.TimersAcDebounce = types.Int64Value(value.Int())
 	} else {
 		data.TimersAcDebounce = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() && !data.TimersBackupReplacementDelay.IsNull() {
+	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() && value.Type == gjson.Number && !data.TimersBackupReplacementDelay.IsNull() {
 		data.TimersBackupReplacementDelay = types.Int64Value(value.Int())
 	} else {
 		data.TimersBackupReplacementDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() && !data.TimersMacPostpone.IsNull() {
+	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() && value.Type == gjson.Number && !data.TimersMacPostpone.IsNull() {
 		data.TimersMacPostpone = types.Int64Value(value.Int())
 	} else {
 		data.TimersMacPostpone = types.Int64Null()
@@ -564,7 +564,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.LoadBalancingFlowLabelStatic = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "source.interface"); value.Exists() && !data.SourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "source.interface"); value.Exists() && value.Type == gjson.String && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
 		data.SourceInterface = types.StringNull()
@@ -578,12 +578,12 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.CostOut = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() && !data.StartupCostIn.IsNull() {
+	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() && value.Type == gjson.Number && !data.StartupCostIn.IsNull() {
 		data.StartupCostIn = types.Int64Value(value.Int())
 	} else {
 		data.StartupCostIn = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() && !data.StaggeredBringupTimer.IsNull() {
+	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() && value.Type == gjson.Number && !data.StaggeredBringupTimer.IsNull() {
 		data.StaggeredBringupTimer = types.Int64Value(value.Int())
 	} else {
 		data.StaggeredBringupTimer = types.Int64Null()
@@ -629,7 +629,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("group-name"); value.Exists() && !data.Groups[i].GroupId.IsNull() {
+		if value := r.Get("group-name"); value.Exists() && value.Type == gjson.Number && !data.Groups[i].GroupId.IsNull() {
 			data.Groups[i].GroupId = types.Int64Value(value.Int())
 		} else {
 			data.Groups[i].GroupId = types.Int64Null()
@@ -657,7 +657,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && !data.Groups[i].CoreInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Groups[i].CoreInterfaces[ci].InterfaceName.IsNull() {
 				data.Groups[i].CoreInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Groups[i].CoreInterfaces[ci].InterfaceName = types.StringNull()
@@ -696,7 +696,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("locator-name"); value.Exists() && !data.Srv6Locators[i].LocatorName.IsNull() {
+		if value := r.Get("locator-name"); value.Exists() && value.Type == gjson.String && !data.Srv6Locators[i].LocatorName.IsNull() {
 			data.Srv6Locators[i].LocatorName = types.StringValue(value.String())
 		} else {
 			data.Srv6Locators[i].LocatorName = types.StringNull()
@@ -756,22 +756,22 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.TransmitL2Mtu = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() && !data.HostIpv4DuplicateDetectionMoveCount.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number && !data.HostIpv4DuplicateDetectionMoveCount.IsNull() {
 		data.HostIpv4DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv4DuplicateDetectionMoveCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() && !data.HostIpv4DuplicateDetectionMoveInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number && !data.HostIpv4DuplicateDetectionMoveInterval.IsNull() {
 		data.HostIpv4DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv4DuplicateDetectionMoveInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() && !data.HostIpv4DuplicateDetectionFreezeTime.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number && !data.HostIpv4DuplicateDetectionFreezeTime.IsNull() {
 		data.HostIpv4DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv4DuplicateDetectionFreezeTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() && !data.HostIpv4DuplicateDetectionRetryCount.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String && !data.HostIpv4DuplicateDetectionRetryCount.IsNull() {
 		data.HostIpv4DuplicateDetectionRetryCount = types.StringValue(value.String())
 	} else {
 		data.HostIpv4DuplicateDetectionRetryCount = types.StringNull()
@@ -785,27 +785,27 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.HostIpv4DuplicateDetectionDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && !data.HostIpv4DuplicateDetectionResetFreezeCountInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number && !data.HostIpv4DuplicateDetectionResetFreezeCountInterval.IsNull() {
 		data.HostIpv4DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv4DuplicateDetectionResetFreezeCountInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() && !data.HostIpv6DuplicateDetectionMoveCount.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number && !data.HostIpv6DuplicateDetectionMoveCount.IsNull() {
 		data.HostIpv6DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv6DuplicateDetectionMoveCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() && !data.HostIpv6DuplicateDetectionMoveInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number && !data.HostIpv6DuplicateDetectionMoveInterval.IsNull() {
 		data.HostIpv6DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv6DuplicateDetectionMoveInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() && !data.HostIpv6DuplicateDetectionFreezeTime.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number && !data.HostIpv6DuplicateDetectionFreezeTime.IsNull() {
 		data.HostIpv6DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv6DuplicateDetectionFreezeTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() && !data.HostIpv6DuplicateDetectionRetryCount.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String && !data.HostIpv6DuplicateDetectionRetryCount.IsNull() {
 		data.HostIpv6DuplicateDetectionRetryCount = types.StringValue(value.String())
 	} else {
 		data.HostIpv6DuplicateDetectionRetryCount = types.StringNull()
@@ -819,7 +819,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.HostIpv6DuplicateDetectionDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && !data.HostIpv6DuplicateDetectionResetFreezeCountInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number && !data.HostIpv6DuplicateDetectionResetFreezeCountInterval.IsNull() {
 		data.HostIpv6DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	} else {
 		data.HostIpv6DuplicateDetectionResetFreezeCountInterval = types.Int64Null()
@@ -847,47 +847,47 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.VirtualNeighbors[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.VirtualNeighbors[i].Address.IsNull() {
 			data.VirtualNeighbors[i].Address = types.StringValue(value.String())
 		} else {
 			data.VirtualNeighbors[i].Address = types.StringNull()
 		}
-		if value := r.Get("pw-id"); value.Exists() && !data.VirtualNeighbors[i].PwId.IsNull() {
+		if value := r.Get("pw-id"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].PwId.IsNull() {
 			data.VirtualNeighbors[i].PwId = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].PwId = types.Int64Null()
 		}
-		if value := r.Get("timers.peering"); value.Exists() && !data.VirtualNeighbors[i].TimersPeering.IsNull() {
+		if value := r.Get("timers.peering"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].TimersPeering.IsNull() {
 			data.VirtualNeighbors[i].TimersPeering = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].TimersPeering = types.Int64Null()
 		}
-		if value := r.Get("timers.recovery"); value.Exists() && !data.VirtualNeighbors[i].TimersRecovery.IsNull() {
+		if value := r.Get("timers.recovery"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].TimersRecovery.IsNull() {
 			data.VirtualNeighbors[i].TimersRecovery = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].TimersRecovery = types.Int64Null()
 		}
-		if value := r.Get("timers.carving"); value.Exists() && !data.VirtualNeighbors[i].TimersCarving.IsNull() {
+		if value := r.Get("timers.carving"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].TimersCarving.IsNull() {
 			data.VirtualNeighbors[i].TimersCarving = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].TimersCarving = types.Int64Null()
 		}
-		if value := r.Get("timers.ac-debounce"); value.Exists() && !data.VirtualNeighbors[i].TimersAcDebounce.IsNull() {
+		if value := r.Get("timers.ac-debounce"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].TimersAcDebounce.IsNull() {
 			data.VirtualNeighbors[i].TimersAcDebounce = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].TimersAcDebounce = types.Int64Null()
 		}
-		if value := r.Get("ethernet-segment.identifier.type.zero.esi"); value.Exists() && !data.VirtualNeighbors[i].EthernetSegmentEsiZero.IsNull() {
+		if value := r.Get("ethernet-segment.identifier.type.zero.esi"); value.Exists() && value.Type == gjson.String && !data.VirtualNeighbors[i].EthernetSegmentEsiZero.IsNull() {
 			data.VirtualNeighbors[i].EthernetSegmentEsiZero = types.StringValue(value.String())
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentEsiZero = types.StringNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.manual.primary"); value.Exists() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.manual.primary"); value.Exists() && value.Type == gjson.String && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualPrimary = types.StringValue(value.String())
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualPrimary = types.StringNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.manual.secondary"); value.Exists() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.manual.secondary"); value.Exists() && value.Type == gjson.String && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualSecondary = types.StringValue(value.String())
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualSecondary = types.StringNull()
@@ -901,7 +901,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingHrw = types.BoolNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.preference-based.weight"); value.Exists() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.preference-based.weight"); value.Exists() && value.Type == gjson.Number && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(value.Int())
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Null()
@@ -933,7 +933,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwG = types.BoolNull()
 		}
-		if value := r.Get("ethernet-segment.bgp.route-target"); value.Exists() && !data.VirtualNeighbors[i].EthernetSegmentBgpRt.IsNull() {
+		if value := r.Get("ethernet-segment.bgp.route-target"); value.Exists() && value.Type == gjson.String && !data.VirtualNeighbors[i].EthernetSegmentBgpRt.IsNull() {
 			data.VirtualNeighbors[i].EthernetSegmentBgpRt = types.StringValue(value.String())
 		} else {
 			data.VirtualNeighbors[i].EthernetSegmentBgpRt = types.StringNull()
@@ -962,42 +962,42 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("vfi-name"); value.Exists() && !data.VirtualVfis[i].VfiName.IsNull() {
+		if value := r.Get("vfi-name"); value.Exists() && value.Type == gjson.String && !data.VirtualVfis[i].VfiName.IsNull() {
 			data.VirtualVfis[i].VfiName = types.StringValue(value.String())
 		} else {
 			data.VirtualVfis[i].VfiName = types.StringNull()
 		}
-		if value := r.Get("timers.peering"); value.Exists() && !data.VirtualVfis[i].TimersPeering.IsNull() {
+		if value := r.Get("timers.peering"); value.Exists() && value.Type == gjson.Number && !data.VirtualVfis[i].TimersPeering.IsNull() {
 			data.VirtualVfis[i].TimersPeering = types.Int64Value(value.Int())
 		} else {
 			data.VirtualVfis[i].TimersPeering = types.Int64Null()
 		}
-		if value := r.Get("timers.recovery"); value.Exists() && !data.VirtualVfis[i].TimersRecovery.IsNull() {
+		if value := r.Get("timers.recovery"); value.Exists() && value.Type == gjson.Number && !data.VirtualVfis[i].TimersRecovery.IsNull() {
 			data.VirtualVfis[i].TimersRecovery = types.Int64Value(value.Int())
 		} else {
 			data.VirtualVfis[i].TimersRecovery = types.Int64Null()
 		}
-		if value := r.Get("timers.carving"); value.Exists() && !data.VirtualVfis[i].TimersCarving.IsNull() {
+		if value := r.Get("timers.carving"); value.Exists() && value.Type == gjson.Number && !data.VirtualVfis[i].TimersCarving.IsNull() {
 			data.VirtualVfis[i].TimersCarving = types.Int64Value(value.Int())
 		} else {
 			data.VirtualVfis[i].TimersCarving = types.Int64Null()
 		}
-		if value := r.Get("timers.ac-debounce"); value.Exists() && !data.VirtualVfis[i].TimersAcDebounce.IsNull() {
+		if value := r.Get("timers.ac-debounce"); value.Exists() && value.Type == gjson.Number && !data.VirtualVfis[i].TimersAcDebounce.IsNull() {
 			data.VirtualVfis[i].TimersAcDebounce = types.Int64Value(value.Int())
 		} else {
 			data.VirtualVfis[i].TimersAcDebounce = types.Int64Null()
 		}
-		if value := r.Get("ethernet-segment.identifier.type.zero.esi"); value.Exists() && !data.VirtualVfis[i].EthernetSegmentEsiZero.IsNull() {
+		if value := r.Get("ethernet-segment.identifier.type.zero.esi"); value.Exists() && value.Type == gjson.String && !data.VirtualVfis[i].EthernetSegmentEsiZero.IsNull() {
 			data.VirtualVfis[i].EthernetSegmentEsiZero = types.StringValue(value.String())
 		} else {
 			data.VirtualVfis[i].EthernetSegmentEsiZero = types.StringNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.manual.primary"); value.Exists() && !data.VirtualVfis[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.manual.primary"); value.Exists() && value.Type == gjson.String && !data.VirtualVfis[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingManualPrimary = types.StringValue(value.String())
 		} else {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingManualPrimary = types.StringNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.manual.secondary"); value.Exists() && !data.VirtualVfis[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.manual.secondary"); value.Exists() && value.Type == gjson.String && !data.VirtualVfis[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingManualSecondary = types.StringValue(value.String())
 		} else {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingManualSecondary = types.StringNull()
@@ -1011,7 +1011,7 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingHrw = types.BoolNull()
 		}
-		if value := r.Get("ethernet-segment.service-carving.preference-based.weight"); value.Exists() && !data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
+		if value := r.Get("ethernet-segment.service-carving.preference-based.weight"); value.Exists() && value.Type == gjson.Number && !data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(value.Int())
 		} else {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Null()
@@ -1025,18 +1025,18 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven = types.BoolNull()
 		}
-		if value := r.Get("ethernet-segment.bgp.route-target"); value.Exists() && !data.VirtualVfis[i].EthernetSegmentBgpRt.IsNull() {
+		if value := r.Get("ethernet-segment.bgp.route-target"); value.Exists() && value.Type == gjson.String && !data.VirtualVfis[i].EthernetSegmentBgpRt.IsNull() {
 			data.VirtualVfis[i].EthernetSegmentBgpRt = types.StringValue(value.String())
 		} else {
 			data.VirtualVfis[i].EthernetSegmentBgpRt = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() && !data.VirtualAccessEviEthernetSegmentEsiZero.IsNull() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() && value.Type == gjson.String && !data.VirtualAccessEviEthernetSegmentEsiZero.IsNull() {
 		data.VirtualAccessEviEthernetSegmentEsiZero = types.StringValue(value.String())
 	} else {
 		data.VirtualAccessEviEthernetSegmentEsiZero = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() && !data.VirtualAccessEviEthernetSegmentBgpRt.IsNull() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() && value.Type == gjson.String && !data.VirtualAccessEviEthernetSegmentBgpRt.IsNull() {
 		data.VirtualAccessEviEthernetSegmentBgpRt = types.StringValue(value.String())
 	} else {
 		data.VirtualAccessEviEthernetSegmentBgpRt = types.StringNull()
@@ -1048,40 +1048,40 @@ func (data *EVPN) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() && value.Type == gjson.Number {
 		data.TimersRecovery = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() && value.Type == gjson.Number {
 		data.TimersPeering = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() && value.Type == gjson.Number {
 		data.TimersCarving = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() && value.Type == gjson.Number {
 		data.TimersAcDebounce = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() && value.Type == gjson.Number {
 		data.TimersBackupReplacementDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() && value.Type == gjson.Number {
 		data.TimersMacPostpone = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "load-balancing.flow-label.static"); value.Exists() {
@@ -1089,7 +1089,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LoadBalancingFlowLabelStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "source.interface"); value.Exists() && value.Type == gjson.String {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cost-out"); value.Exists() {
@@ -1097,10 +1097,10 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.CostOut = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() {
+	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() && value.Type == gjson.Number {
 		data.StartupCostIn = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() && value.Type == gjson.Number {
 		data.StaggeredBringupTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.df-election"); value.Exists() {
@@ -1117,14 +1117,14 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 		data.Groups = make([]EVPNGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() {
+			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.GroupId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("core.interface"); cValue.Exists() {
 				item.CoreInterfaces = make([]EVPNGroupsCoreInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := EVPNGroupsCoreInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.CoreInterfaces = append(item.CoreInterfaces, cItem)
@@ -1144,7 +1144,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 		data.Srv6Locators = make([]EVPNSrv6Locators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSrv6Locators{}
-			if cValue := v.Get("locator-name"); cValue.Exists() {
+			if cValue := v.Get("locator-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("usid.allocation.wide-local-id-block"); cValue.Exists() {
@@ -1181,16 +1181,16 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.TransmitL2Mtu = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String {
 		data.HostIpv4DuplicateDetectionRetryCount = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.disable"); value.Exists() {
@@ -1198,19 +1198,19 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.HostIpv4DuplicateDetectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String {
 		data.HostIpv6DuplicateDetectionRetryCount = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.disable"); value.Exists() {
@@ -1218,38 +1218,38 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.HostIpv6DuplicateDetectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "virtual.neighbor.neighbor"); value.Exists() {
 		data.VirtualNeighbors = make([]EVPNVirtualNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNVirtualNeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() {
+			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.peering"); cValue.Exists() {
+			if cValue := v.Get("timers.peering"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersPeering = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.recovery"); cValue.Exists() {
+			if cValue := v.Get("timers.recovery"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersRecovery = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.carving"); cValue.Exists() {
+			if cValue := v.Get("timers.carving"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersCarving = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() {
+			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersAcDebounce = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentEsiZero = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualPrimary = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualSecondary = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.hrw"); cValue.Exists() {
@@ -1257,7 +1257,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.EthernetSegmentServiceCarvingHrw = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.preference-based.access-driven"); cValue.Exists() {
@@ -1275,7 +1275,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.EthernetSegmentServiceCarvingMulticastHrwG = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentBgpRt = types.StringValue(cValue.String())
 			}
 			data.VirtualNeighbors = append(data.VirtualNeighbors, item)
@@ -1286,28 +1286,28 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 		data.VirtualVfis = make([]EVPNVirtualVfis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNVirtualVfis{}
-			if cValue := v.Get("vfi-name"); cValue.Exists() {
+			if cValue := v.Get("vfi-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VfiName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("timers.peering"); cValue.Exists() {
+			if cValue := v.Get("timers.peering"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersPeering = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.recovery"); cValue.Exists() {
+			if cValue := v.Get("timers.recovery"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersRecovery = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.carving"); cValue.Exists() {
+			if cValue := v.Get("timers.carving"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersCarving = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() {
+			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersAcDebounce = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentEsiZero = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualPrimary = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualSecondary = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.hrw"); cValue.Exists() {
@@ -1315,7 +1315,7 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.EthernetSegmentServiceCarvingHrw = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.preference-based.access-driven"); cValue.Exists() {
@@ -1323,17 +1323,17 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentBgpRt = types.StringValue(cValue.String())
 			}
 			data.VirtualVfis = append(data.VirtualVfis, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() && value.Type == gjson.String {
 		data.VirtualAccessEviEthernetSegmentEsiZero = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() && value.Type == gjson.String {
 		data.VirtualAccessEviEthernetSegmentBgpRt = types.StringValue(value.String())
 	}
 }
@@ -1343,40 +1343,40 @@ func (data *EVPN) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.recovery"); value.Exists() && value.Type == gjson.Number {
 		data.TimersRecovery = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.peering"); value.Exists() && value.Type == gjson.Number {
 		data.TimersPeering = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.carving"); value.Exists() && value.Type == gjson.Number {
 		data.TimersCarving = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.ac-debounce"); value.Exists() && value.Type == gjson.Number {
 		data.TimersAcDebounce = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.backup-replacement-delay"); value.Exists() && value.Type == gjson.Number {
 		data.TimersBackupReplacementDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() {
+	if value := gjson.GetBytes(res, "timers.mac-postpone"); value.Exists() && value.Type == gjson.Number {
 		data.TimersMacPostpone = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "load-balancing.flow-label.static"); value.Exists() {
@@ -1384,7 +1384,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.LoadBalancingFlowLabelStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "source.interface"); value.Exists() && value.Type == gjson.String {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cost-out"); value.Exists() {
@@ -1392,10 +1392,10 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.CostOut = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() {
+	if value := gjson.GetBytes(res, "startup-cost-in"); value.Exists() && value.Type == gjson.Number {
 		data.StartupCostIn = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "staggered-bringup-timer"); value.Exists() && value.Type == gjson.Number {
 		data.StaggeredBringupTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.df-election"); value.Exists() {
@@ -1412,14 +1412,14 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Groups = make([]EVPNGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() {
+			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.GroupId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("core.interface"); cValue.Exists() {
 				item.CoreInterfaces = make([]EVPNGroupsCoreInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := EVPNGroupsCoreInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.CoreInterfaces = append(item.CoreInterfaces, cItem)
@@ -1439,7 +1439,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Srv6Locators = make([]EVPNSrv6Locators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSrv6Locators{}
-			if cValue := v.Get("locator-name"); cValue.Exists() {
+			if cValue := v.Get("locator-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("usid.allocation.wide-local-id-block"); cValue.Exists() {
@@ -1476,16 +1476,16 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.TransmitL2Mtu = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String {
 		data.HostIpv4DuplicateDetectionRetryCount = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.disable"); value.Exists() {
@@ -1493,19 +1493,19 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.HostIpv4DuplicateDetectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv4-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv4DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-count"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionMoveCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.move-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionMoveInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.freeze-time"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionFreezeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.retry-count"); value.Exists() && value.Type == gjson.String {
 		data.HostIpv6DuplicateDetectionRetryCount = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.disable"); value.Exists() {
@@ -1513,38 +1513,38 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.HostIpv6DuplicateDetectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-evpn-host-cfg:host.ipv6-address.duplicate-detection.reset-freeze-count-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HostIpv6DuplicateDetectionResetFreezeCountInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "virtual.neighbor.neighbor"); value.Exists() {
 		data.VirtualNeighbors = make([]EVPNVirtualNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNVirtualNeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() {
+			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.peering"); cValue.Exists() {
+			if cValue := v.Get("timers.peering"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersPeering = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.recovery"); cValue.Exists() {
+			if cValue := v.Get("timers.recovery"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersRecovery = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.carving"); cValue.Exists() {
+			if cValue := v.Get("timers.carving"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersCarving = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() {
+			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersAcDebounce = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentEsiZero = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualPrimary = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualSecondary = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.hrw"); cValue.Exists() {
@@ -1552,7 +1552,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.EthernetSegmentServiceCarvingHrw = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.preference-based.access-driven"); cValue.Exists() {
@@ -1570,7 +1570,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.EthernetSegmentServiceCarvingMulticastHrwG = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentBgpRt = types.StringValue(cValue.String())
 			}
 			data.VirtualNeighbors = append(data.VirtualNeighbors, item)
@@ -1581,28 +1581,28 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 		data.VirtualVfis = make([]EVPNVirtualVfis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNVirtualVfis{}
-			if cValue := v.Get("vfi-name"); cValue.Exists() {
+			if cValue := v.Get("vfi-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VfiName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("timers.peering"); cValue.Exists() {
+			if cValue := v.Get("timers.peering"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersPeering = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.recovery"); cValue.Exists() {
+			if cValue := v.Get("timers.recovery"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersRecovery = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.carving"); cValue.Exists() {
+			if cValue := v.Get("timers.carving"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersCarving = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() {
+			if cValue := v.Get("timers.ac-debounce"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.TimersAcDebounce = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.identifier.type.zero.esi"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentEsiZero = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.primary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualPrimary = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.manual.secondary"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentServiceCarvingManualSecondary = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.hrw"); cValue.Exists() {
@@ -1610,7 +1610,7 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.EthernetSegmentServiceCarvingHrw = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.service-carving.preference-based.weight"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.EthernetSegmentServiceCarvingPreferenceBasedWeight = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ethernet-segment.service-carving.preference-based.access-driven"); cValue.Exists() {
@@ -1618,17 +1618,17 @@ func (data *EVPNData) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven = types.BoolValue(false)
 			}
-			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() {
+			if cValue := v.Get("ethernet-segment.bgp.route-target"); cValue.Exists() && cValue.Type == gjson.String {
 				item.EthernetSegmentBgpRt = types.StringValue(cValue.String())
 			}
 			data.VirtualVfis = append(data.VirtualVfis, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.identifier.type.zero.esi"); value.Exists() && value.Type == gjson.String {
 		data.VirtualAccessEviEthernetSegmentEsiZero = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() {
+	if value := gjson.GetBytes(res, "virtual.access-evi.ethernet-segment.bgp.route-target"); value.Exists() && value.Type == gjson.String {
 		data.VirtualAccessEviEthernetSegmentBgpRt = types.StringValue(value.String())
 	}
 }

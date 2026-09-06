@@ -103,12 +103,12 @@ func (data LACP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LACP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() && !data.Mac.IsNull() {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String && !data.Mac.IsNull() {
 		data.Mac = types.StringValue(value.String())
 	} else {
 		data.Mac = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && !data.Priority.IsNull() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number && !data.Priority.IsNull() {
 		data.Priority = types.Int64Value(value.Int())
 	} else {
 		data.Priority = types.Int64Null()
@@ -120,10 +120,10 @@ func (data *LACP) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LACP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String {
 		data.Mac = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
 }
@@ -133,10 +133,10 @@ func (data *LACP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LACPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String {
 		data.Mac = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
 }

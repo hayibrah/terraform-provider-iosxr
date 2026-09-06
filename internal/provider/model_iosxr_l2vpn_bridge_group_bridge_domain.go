@@ -833,12 +833,12 @@ func (data L2VPNBridgeGroupBridgeDomain) GetRangeConstraints() []helpers.FieldRa
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() && !data.Mtu.IsNull() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number && !data.Mtu.IsNull() {
 		data.Mtu = types.Int64Value(value.Int())
 	} else {
 		data.Mtu = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -866,7 +866,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("vpn-id"); value.Exists() && !data.Evis[i].VpnId.IsNull() {
+		if value := r.Get("vpn-id"); value.Exists() && value.Type == gjson.Number && !data.Evis[i].VpnId.IsNull() {
 			data.Evis[i].VpnId = types.Int64Value(value.Int())
 		} else {
 			data.Evis[i].VpnId = types.Int64Null()
@@ -895,7 +895,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("vpn-id"); value.Exists() && !data.Srv6Evis[i].VpnId.IsNull() {
+		if value := r.Get("vpn-id"); value.Exists() && value.Type == gjson.Number && !data.Srv6Evis[i].VpnId.IsNull() {
 			data.Srv6Evis[i].VpnId = types.Int64Value(value.Int())
 		} else {
 			data.Srv6Evis[i].VpnId = types.Int64Null()
@@ -924,7 +924,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("vni-id"); value.Exists() && !data.Vnis[i].VniId.IsNull() {
+		if value := r.Get("vni-id"); value.Exists() && value.Type == gjson.Number && !data.Vnis[i].VniId.IsNull() {
 			data.Vnis[i].VniId = types.Int64Value(value.Int())
 		} else {
 			data.Vnis[i].VniId = types.Int64Null()
@@ -1020,7 +1020,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 	} else {
 		data.IpSourceGuardLogging = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() && !data.IgmpSnoopingProfile.IsNull() {
+	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.IgmpSnoopingProfile.IsNull() {
 		data.IgmpSnoopingProfile = types.StringValue(value.String())
 	} else {
 		data.IgmpSnoopingProfile = types.StringNull()
@@ -1034,37 +1034,37 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 	} else {
 		data.IgmpSnoopingDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() && !data.MldSnoopingProfile.IsNull() {
+	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.MldSnoopingProfile.IsNull() {
 		data.MldSnoopingProfile = types.StringValue(value.String())
 	} else {
 		data.MldSnoopingProfile = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() && !data.StormControlBroadcastPps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() && value.Type == gjson.Number && !data.StormControlBroadcastPps.IsNull() {
 		data.StormControlBroadcastPps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlBroadcastPps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() && !data.StormControlBroadcastKbps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() && value.Type == gjson.Number && !data.StormControlBroadcastKbps.IsNull() {
 		data.StormControlBroadcastKbps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlBroadcastKbps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() && !data.StormControlMulticastPps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() && value.Type == gjson.Number && !data.StormControlMulticastPps.IsNull() {
 		data.StormControlMulticastPps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlMulticastPps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() && !data.StormControlMulticastKbps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() && value.Type == gjson.Number && !data.StormControlMulticastKbps.IsNull() {
 		data.StormControlMulticastKbps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlMulticastKbps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() && !data.StormControlUnknownUnicastPps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() && value.Type == gjson.Number && !data.StormControlUnknownUnicastPps.IsNull() {
 		data.StormControlUnknownUnicastPps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlUnknownUnicastPps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() && !data.StormControlUnknownUnicastKbps.IsNull() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() && value.Type == gjson.Number && !data.StormControlUnknownUnicastKbps.IsNull() {
 		data.StormControlUnknownUnicastKbps = types.Int64Value(value.Int())
 	} else {
 		data.StormControlUnknownUnicastKbps = types.Int64Null()
@@ -1119,7 +1119,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -1214,7 +1214,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 		} else {
 			data.Interfaces[i].FloodingDisable = types.BoolNull()
 		}
-		if value := r.Get("igmp.snooping.profile"); value.Exists() && !data.Interfaces[i].IgmpSnoopingProfile.IsNull() {
+		if value := r.Get("igmp.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].IgmpSnoopingProfile.IsNull() {
 			data.Interfaces[i].IgmpSnoopingProfile = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].IgmpSnoopingProfile = types.StringNull()
@@ -1255,7 +1255,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 		} else {
 			data.Interfaces[i].IpSourceGuardLoggingDisable = types.BoolNull()
 		}
-		if value := r.Get("mac.aging.time"); value.Exists() && !data.Interfaces[i].MacAgingTime.IsNull() {
+		if value := r.Get("mac.aging.time"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].MacAgingTime.IsNull() {
 			data.Interfaces[i].MacAgingTime = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].MacAgingTime = types.Int64Null()
@@ -1296,7 +1296,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 		} else {
 			data.Interfaces[i].MacLearningDisable = types.BoolNull()
 		}
-		if value := r.Get("mac.limit.maximum"); value.Exists() && !data.Interfaces[i].MacLimitMaximum.IsNull() {
+		if value := r.Get("mac.limit.maximum"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].MacLimitMaximum.IsNull() {
 			data.Interfaces[i].MacLimitMaximum = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].MacLimitMaximum = types.Int64Null()
@@ -1445,7 +1445,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 		} else {
 			data.Interfaces[i].MacSecureDisable = types.BoolNull()
 		}
-		if value := r.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); value.Exists() && !data.Interfaces[i].MacSecureShutdownRecoveryTimeout.IsNull() {
+		if value := r.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].MacSecureShutdownRecoveryTimeout.IsNull() {
 			data.Interfaces[i].MacSecureShutdownRecoveryTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].MacSecureShutdownRecoveryTimeout = types.Int64Null()
@@ -1459,37 +1459,37 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 		} else {
 			data.Interfaces[i].MacSecureShutdownRecoveryTimeoutDisable = types.BoolNull()
 		}
-		if value := r.Get("mld.snooping.profile"); value.Exists() && !data.Interfaces[i].MldSnoopingProfile.IsNull() {
+		if value := r.Get("mld.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].MldSnoopingProfile.IsNull() {
 			data.Interfaces[i].MldSnoopingProfile = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].MldSnoopingProfile = types.StringNull()
 		}
-		if value := r.Get("storm-control.broadcast.pps"); value.Exists() && !data.Interfaces[i].StormControlBroadcastPps.IsNull() {
+		if value := r.Get("storm-control.broadcast.pps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlBroadcastPps.IsNull() {
 			data.Interfaces[i].StormControlBroadcastPps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlBroadcastPps = types.Int64Null()
 		}
-		if value := r.Get("storm-control.broadcast.kbps"); value.Exists() && !data.Interfaces[i].StormControlBroadcastKbps.IsNull() {
+		if value := r.Get("storm-control.broadcast.kbps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlBroadcastKbps.IsNull() {
 			data.Interfaces[i].StormControlBroadcastKbps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlBroadcastKbps = types.Int64Null()
 		}
-		if value := r.Get("storm-control.multicast.pps"); value.Exists() && !data.Interfaces[i].StormControlMulticastPps.IsNull() {
+		if value := r.Get("storm-control.multicast.pps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlMulticastPps.IsNull() {
 			data.Interfaces[i].StormControlMulticastPps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlMulticastPps = types.Int64Null()
 		}
-		if value := r.Get("storm-control.multicast.kbps"); value.Exists() && !data.Interfaces[i].StormControlMulticastKbps.IsNull() {
+		if value := r.Get("storm-control.multicast.kbps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlMulticastKbps.IsNull() {
 			data.Interfaces[i].StormControlMulticastKbps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlMulticastKbps = types.Int64Null()
 		}
-		if value := r.Get("storm-control.unknown-unicast.pps"); value.Exists() && !data.Interfaces[i].StormControlUnknownUnicastPps.IsNull() {
+		if value := r.Get("storm-control.unknown-unicast.pps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlUnknownUnicastPps.IsNull() {
 			data.Interfaces[i].StormControlUnknownUnicastPps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlUnknownUnicastPps = types.Int64Null()
 		}
-		if value := r.Get("storm-control.unknown-unicast.kbps"); value.Exists() && !data.Interfaces[i].StormControlUnknownUnicastKbps.IsNull() {
+		if value := r.Get("storm-control.unknown-unicast.kbps"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].StormControlUnknownUnicastKbps.IsNull() {
 			data.Interfaces[i].StormControlUnknownUnicastKbps = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].StormControlUnknownUnicastKbps = types.Int64Null()
@@ -1526,7 +1526,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 					return true
 				},
 			)
-			if value := cr.Get("mac-address"); value.Exists() && !data.Interfaces[i].StaticMacAddresses[ci].MacAddress.IsNull() {
+			if value := cr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].StaticMacAddresses[ci].MacAddress.IsNull() {
 				data.Interfaces[i].StaticMacAddresses[ci].MacAddress = types.StringValue(value.String())
 			} else {
 				data.Interfaces[i].StaticMacAddresses[ci].MacAddress = types.StringNull()
@@ -1556,7 +1556,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.RoutedInterface[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.RoutedInterface[i].InterfaceName.IsNull() {
 			data.RoutedInterface[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.RoutedInterface[i].InterfaceName = types.StringNull()
@@ -1580,7 +1580,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 	} else {
 		data.Shutdown = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() && !data.MacAgingTime.IsNull() {
+	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() && value.Type == gjson.Number && !data.MacAgingTime.IsNull() {
 		data.MacAgingTime = types.Int64Value(value.Int())
 	} else {
 		data.MacAgingTime = types.Int64Null()
@@ -1617,7 +1617,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("mac-address"); value.Exists() && !data.MacStaticAddresses[i].MacAddress.IsNull() {
+		if value := r.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.MacStaticAddresses[i].MacAddress.IsNull() {
 			data.MacStaticAddresses[i].MacAddress = types.StringValue(value.String())
 		} else {
 			data.MacStaticAddresses[i].MacAddress = types.StringNull()
@@ -1686,7 +1686,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 	} else {
 		data.MacWithdrawOptimize = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() && !data.MacLimitMaximum.IsNull() {
+	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() && value.Type == gjson.Number && !data.MacLimitMaximum.IsNull() {
 		data.MacLimitMaximum = types.Int64Value(value.Int())
 	} else {
 		data.MacLimitMaximum = types.Int64Null()
@@ -1799,7 +1799,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 	} else {
 		data.MacSecureActionShutdown = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() && !data.MacSecureShutdownRecoveryTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() && value.Type == gjson.Number && !data.MacSecureShutdownRecoveryTimeout.IsNull() {
 		data.MacSecureShutdownRecoveryTimeout = types.Int64Value(value.Int())
 	} else {
 		data.MacSecureShutdownRecoveryTimeout = types.Int64Null()
@@ -1827,12 +1827,12 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("vpn-id"); value.Exists() && !data.NeighborsEvpnEvi[i].VpnId.IsNull() {
+		if value := r.Get("vpn-id"); value.Exists() && value.Type == gjson.Number && !data.NeighborsEvpnEvi[i].VpnId.IsNull() {
 			data.NeighborsEvpnEvi[i].VpnId = types.Int64Value(value.Int())
 		} else {
 			data.NeighborsEvpnEvi[i].VpnId = types.Int64Null()
 		}
-		if value := r.Get("target"); value.Exists() && !data.NeighborsEvpnEvi[i].Target.IsNull() {
+		if value := r.Get("target"); value.Exists() && value.Type == gjson.Number && !data.NeighborsEvpnEvi[i].Target.IsNull() {
 			data.NeighborsEvpnEvi[i].Target = types.Int64Value(value.Int())
 		} else {
 			data.NeighborsEvpnEvi[i].Target = types.Int64Null()
@@ -1888,7 +1888,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 				return true
 			},
 		)
-		if value := r.Get("vni-id"); value.Exists() && !data.MemberVnisVni[i].VniId.IsNull() {
+		if value := r.Get("vni-id"); value.Exists() && value.Type == gjson.Number && !data.MemberVnisVni[i].VniId.IsNull() {
 			data.MemberVnisVni[i].VniId = types.Int64Value(value.Int())
 		} else {
 			data.MemberVnisVni[i].VniId = types.Int64Null()
@@ -1916,12 +1916,12 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 					return true
 				},
 			)
-			if value := cr.Get("mac-address"); value.Exists() && !data.MemberVnisVni[i].StaticMacAddresses[ci].MacAddress.IsNull() {
+			if value := cr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.MemberVnisVni[i].StaticMacAddresses[ci].MacAddress.IsNull() {
 				data.MemberVnisVni[i].StaticMacAddresses[ci].MacAddress = types.StringValue(value.String())
 			} else {
 				data.MemberVnisVni[i].StaticMacAddresses[ci].MacAddress = types.StringNull()
 			}
-			if value := cr.Get("next-hop"); value.Exists() && !data.MemberVnisVni[i].StaticMacAddresses[ci].NextHop.IsNull() {
+			if value := cr.Get("next-hop"); value.Exists() && value.Type == gjson.String && !data.MemberVnisVni[i].StaticMacAddresses[ci].NextHop.IsNull() {
 				data.MemberVnisVni[i].StaticMacAddresses[ci].NextHop = types.StringValue(value.String())
 			} else {
 				data.MemberVnisVni[i].StaticMacAddresses[ci].NextHop = types.StringNull()
@@ -1935,17 +1935,17 @@ func (data *L2VPNBridgeGroupBridgeDomain) updateFromBody(ctx context.Context, re
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Mtu = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "evis.evi"); value.Exists() {
 		data.Evis = make([]L2VPNBridgeGroupBridgeDomainEvis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainEvis{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
 			data.Evis = append(data.Evis, item)
@@ -1956,7 +1956,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.Srv6Evis = make([]L2VPNBridgeGroupBridgeDomainSrv6Evis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainSrv6Evis{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
 			data.Srv6Evis = append(data.Srv6Evis, item)
@@ -1967,7 +1967,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.Vnis = make([]L2VPNBridgeGroupBridgeDomainVnis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVnis{}
-			if cValue := v.Get("vni-id"); cValue.Exists() {
+			if cValue := v.Get("vni-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VniId = types.Int64Value(cValue.Int())
 			}
 			data.Vnis = append(data.Vnis, item)
@@ -2024,7 +2024,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 	} else {
 		data.IpSourceGuardLogging = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() && value.Type == gjson.String {
 		data.IgmpSnoopingProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "igmp.snooping.disable"); value.Exists() {
@@ -2032,25 +2032,25 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 	} else {
 		data.IgmpSnoopingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() && value.Type == gjson.String {
 		data.MldSnoopingProfile = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlBroadcastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlBroadcastKbps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlMulticastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlMulticastKbps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlUnknownUnicastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlUnknownUnicastKbps = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "multicast-source.ipv4"); value.Exists() {
@@ -2072,7 +2072,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.Interfaces = make([]L2VPNBridgeGroupBridgeDomainInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("dynamic-arp-inspection.logging"); cValue.Exists() {
@@ -2125,7 +2125,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 			} else {
 				item.FloodingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() {
+			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IgmpSnoopingProfile = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ip-source-guard"); cValue.Exists() {
@@ -2148,7 +2148,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 			} else {
 				item.IpSourceGuardLoggingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.aging.time"); cValue.Exists() {
+			if cValue := v.Get("mac.aging.time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacAgingTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.aging.type.absolute"); cValue.Exists() {
@@ -2171,7 +2171,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 			} else {
 				item.MacLearningDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.limit.maximum"); cValue.Exists() {
+			if cValue := v.Get("mac.limit.maximum"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacLimitMaximum = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.limit.action.flood"); cValue.Exists() {
@@ -2254,7 +2254,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 			} else {
 				item.MacSecureDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); cValue.Exists() {
+			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacSecureShutdownRecoveryTimeout = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.disable"); cValue.Exists() {
@@ -2262,25 +2262,25 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 			} else {
 				item.MacSecureShutdownRecoveryTimeoutDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() {
+			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MldSnoopingProfile = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("storm-control.broadcast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.broadcast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlBroadcastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.broadcast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.broadcast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlBroadcastKbps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.multicast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.multicast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlMulticastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.multicast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.multicast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlMulticastKbps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.unknown-unicast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.unknown-unicast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlUnknownUnicastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.unknown-unicast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.unknown-unicast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlUnknownUnicastKbps = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("split-horizon.group"); cValue.Exists() {
@@ -2292,7 +2292,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainInterfacesStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainInterfacesStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
@@ -2307,7 +2307,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.RoutedInterface = make([]L2VPNBridgeGroupBridgeDomainRoutedInterface, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainRoutedInterface{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("split-horizon.group.core"); cValue.Exists() {
@@ -2324,7 +2324,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() && value.Type == gjson.Number {
 		data.MacAgingTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mac.aging.type.absolute"); value.Exists() {
@@ -2336,7 +2336,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.MacStaticAddresses = make([]L2VPNBridgeGroupBridgeDomainMacStaticAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainMacStaticAddresses{}
-			if cValue := v.Get("mac-address"); cValue.Exists() {
+			if cValue := v.Get("mac-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MacAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("drop"); cValue.Exists() {
@@ -2378,7 +2378,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 	} else {
 		data.MacWithdrawOptimize = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() && value.Type == gjson.Number {
 		data.MacLimitMaximum = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mac.limit.action.flood"); value.Exists() {
@@ -2441,17 +2441,17 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 	} else {
 		data.MacSecureActionShutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.MacSecureShutdownRecoveryTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbors.evpn.evi"); value.Exists() {
 		data.NeighborsEvpnEvi = make([]L2VPNBridgeGroupBridgeDomainNeighborsEvpnEvi, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainNeighborsEvpnEvi{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("target"); cValue.Exists() {
+			if cValue := v.Get("target"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Target = types.Int64Value(cValue.Int())
 			}
 			data.NeighborsEvpnEvi = append(data.NeighborsEvpnEvi, item)
@@ -2477,17 +2477,17 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 		data.MemberVnisVni = make([]L2VPNBridgeGroupBridgeDomainMemberVnisVni, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainMemberVnisVni{}
-			if cValue := v.Get("vni-id"); cValue.Exists() {
+			if cValue := v.Get("vni-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VniId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainMemberVnisVniStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainMemberVnisVniStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("next-hop"); ccValue.Exists() {
+					if ccValue := cv.Get("next-hop"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.NextHop = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
@@ -2505,17 +2505,17 @@ func (data *L2VPNBridgeGroupBridgeDomain) fromBody(ctx context.Context, res []by
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Mtu = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "evis.evi"); value.Exists() {
 		data.Evis = make([]L2VPNBridgeGroupBridgeDomainEvis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainEvis{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
 			data.Evis = append(data.Evis, item)
@@ -2526,7 +2526,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.Srv6Evis = make([]L2VPNBridgeGroupBridgeDomainSrv6Evis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainSrv6Evis{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
 			data.Srv6Evis = append(data.Srv6Evis, item)
@@ -2537,7 +2537,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.Vnis = make([]L2VPNBridgeGroupBridgeDomainVnis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVnis{}
-			if cValue := v.Get("vni-id"); cValue.Exists() {
+			if cValue := v.Get("vni-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VniId = types.Int64Value(cValue.Int())
 			}
 			data.Vnis = append(data.Vnis, item)
@@ -2594,7 +2594,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 	} else {
 		data.IpSourceGuardLogging = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "igmp.snooping.profile"); value.Exists() && value.Type == gjson.String {
 		data.IgmpSnoopingProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "igmp.snooping.disable"); value.Exists() {
@@ -2602,25 +2602,25 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 	} else {
 		data.IgmpSnoopingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "mld.snooping.profile"); value.Exists() && value.Type == gjson.String {
 		data.MldSnoopingProfile = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlBroadcastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.broadcast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlBroadcastKbps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlMulticastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.multicast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlMulticastKbps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.pps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlUnknownUnicastPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() {
+	if value := gjson.GetBytes(res, "storm-control.unknown-unicast.kbps"); value.Exists() && value.Type == gjson.Number {
 		data.StormControlUnknownUnicastKbps = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "multicast-source.ipv4"); value.Exists() {
@@ -2642,7 +2642,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.Interfaces = make([]L2VPNBridgeGroupBridgeDomainInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("dynamic-arp-inspection.logging"); cValue.Exists() {
@@ -2695,7 +2695,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 			} else {
 				item.FloodingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() {
+			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IgmpSnoopingProfile = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ip-source-guard"); cValue.Exists() {
@@ -2718,7 +2718,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 			} else {
 				item.IpSourceGuardLoggingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.aging.time"); cValue.Exists() {
+			if cValue := v.Get("mac.aging.time"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacAgingTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.aging.type.absolute"); cValue.Exists() {
@@ -2741,7 +2741,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 			} else {
 				item.MacLearningDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.limit.maximum"); cValue.Exists() {
+			if cValue := v.Get("mac.limit.maximum"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacLimitMaximum = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.limit.action.flood"); cValue.Exists() {
@@ -2824,7 +2824,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 			} else {
 				item.MacSecureDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); cValue.Exists() {
+			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.recovery-timer-in-second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MacSecureShutdownRecoveryTimeout = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mac.secure.shutdown-recovery-timeout.disable"); cValue.Exists() {
@@ -2832,25 +2832,25 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 			} else {
 				item.MacSecureShutdownRecoveryTimeoutDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() {
+			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MldSnoopingProfile = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("storm-control.broadcast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.broadcast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlBroadcastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.broadcast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.broadcast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlBroadcastKbps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.multicast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.multicast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlMulticastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.multicast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.multicast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlMulticastKbps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.unknown-unicast.pps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.unknown-unicast.pps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlUnknownUnicastPps = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("storm-control.unknown-unicast.kbps"); cValue.Exists() {
+			if cValue := v.Get("storm-control.unknown-unicast.kbps"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StormControlUnknownUnicastKbps = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("split-horizon.group"); cValue.Exists() {
@@ -2862,7 +2862,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainInterfacesStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainInterfacesStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
@@ -2877,7 +2877,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.RoutedInterface = make([]L2VPNBridgeGroupBridgeDomainRoutedInterface, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainRoutedInterface{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("split-horizon.group.core"); cValue.Exists() {
@@ -2894,7 +2894,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.aging.time"); value.Exists() && value.Type == gjson.Number {
 		data.MacAgingTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mac.aging.type.absolute"); value.Exists() {
@@ -2906,7 +2906,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.MacStaticAddresses = make([]L2VPNBridgeGroupBridgeDomainMacStaticAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainMacStaticAddresses{}
-			if cValue := v.Get("mac-address"); cValue.Exists() {
+			if cValue := v.Get("mac-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MacAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("drop"); cValue.Exists() {
@@ -2948,7 +2948,7 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 	} else {
 		data.MacWithdrawOptimize = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.limit.maximum"); value.Exists() && value.Type == gjson.Number {
 		data.MacLimitMaximum = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mac.limit.action.flood"); value.Exists() {
@@ -3011,17 +3011,17 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 	} else {
 		data.MacSecureActionShutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac.secure.shutdown-recovery-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.MacSecureShutdownRecoveryTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbors.evpn.evi"); value.Exists() {
 		data.NeighborsEvpnEvi = make([]L2VPNBridgeGroupBridgeDomainNeighborsEvpnEvi, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainNeighborsEvpnEvi{}
-			if cValue := v.Get("vpn-id"); cValue.Exists() {
+			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VpnId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("target"); cValue.Exists() {
+			if cValue := v.Get("target"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Target = types.Int64Value(cValue.Int())
 			}
 			data.NeighborsEvpnEvi = append(data.NeighborsEvpnEvi, item)
@@ -3047,17 +3047,17 @@ func (data *L2VPNBridgeGroupBridgeDomainData) fromBody(ctx context.Context, res 
 		data.MemberVnisVni = make([]L2VPNBridgeGroupBridgeDomainMemberVnisVni, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainMemberVnisVni{}
-			if cValue := v.Get("vni-id"); cValue.Exists() {
+			if cValue := v.Get("vni-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.VniId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainMemberVnisVniStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainMemberVnisVniStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("next-hop"); ccValue.Exists() {
+					if ccValue := cv.Get("next-hop"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.NextHop = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)

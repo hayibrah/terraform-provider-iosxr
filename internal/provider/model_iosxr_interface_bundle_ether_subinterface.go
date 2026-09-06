@@ -1716,22 +1716,22 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Dampening = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() && !data.DampeningDecayHalfLife.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() && value.Type == gjson.Number && !data.DampeningDecayHalfLife.IsNull() {
 		data.DampeningDecayHalfLife = types.Int64Value(value.Int())
 	} else {
 		data.DampeningDecayHalfLife = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() && !data.DampeningReuseThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() && value.Type == gjson.Number && !data.DampeningReuseThreshold.IsNull() {
 		data.DampeningReuseThreshold = types.Int64Value(value.Int())
 	} else {
 		data.DampeningReuseThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() && !data.DampeningSuppressThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() && value.Type == gjson.Number && !data.DampeningSuppressThreshold.IsNull() {
 		data.DampeningSuppressThreshold = types.Int64Value(value.Int())
 	} else {
 		data.DampeningSuppressThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() && !data.DampeningMaxSuppressTime.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() && value.Type == gjson.Number && !data.DampeningMaxSuppressTime.IsNull() {
 		data.DampeningMaxSuppressTime = types.Int64Value(value.Int())
 	} else {
 		data.DampeningMaxSuppressTime = types.Int64Null()
@@ -1759,7 +1759,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("service-policy-name"); value.Exists() && !data.ServicePolicyInput[i].Name.IsNull() {
+		if value := r.Get("service-policy-name"); value.Exists() && value.Type == gjson.String && !data.ServicePolicyInput[i].Name.IsNull() {
 			data.ServicePolicyInput[i].Name = types.StringValue(value.String())
 		} else {
 			data.ServicePolicyInput[i].Name = types.StringNull()
@@ -1788,28 +1788,28 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("service-policy-name"); value.Exists() && !data.ServicePolicyOutput[i].Name.IsNull() {
+		if value := r.Get("service-policy-name"); value.Exists() && value.Type == gjson.String && !data.ServicePolicyOutput[i].Name.IsNull() {
 			data.ServicePolicyOutput[i].Name = types.StringValue(value.String())
 		} else {
 			data.ServicePolicyOutput[i].Name = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() && !data.EncapsulationDot1qVlanId.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationDot1qVlanId.IsNull() {
 		data.EncapsulationDot1qVlanId = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationDot1qVlanId = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() && !data.EncapsulationDot1qSecondDot1q.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationDot1qSecondDot1q.IsNull() {
 		data.EncapsulationDot1qSecondDot1q = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationDot1qSecondDot1q = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() && !data.L2transportEncapsulationDot1qVlanId.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.String && !data.L2transportEncapsulationDot1qVlanId.IsNull() {
 		data.L2transportEncapsulationDot1qVlanId = types.StringValue(value.String())
 	} else {
 		data.L2transportEncapsulationDot1qVlanId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() && !data.L2transportEncapsulationDot1qSecondDot1q.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.String && !data.L2transportEncapsulationDot1qSecondDot1q.IsNull() {
 		data.L2transportEncapsulationDot1qSecondDot1q = types.StringValue(value.String())
 	} else {
 		data.L2transportEncapsulationDot1qSecondDot1q = types.StringNull()
@@ -1841,7 +1841,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Shutdown = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() && !data.Mtu.IsNull() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number && !data.Mtu.IsNull() {
 		data.Mtu = types.Int64Value(value.Int())
 	} else {
 		data.Mtu = types.Int64Null()
@@ -1855,42 +1855,42 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && !data.Bandwidth.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number && !data.Bandwidth.IsNull() {
 		data.Bandwidth = types.Int64Value(value.Int())
 	} else {
 		data.Bandwidth = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && !data.LoadInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number && !data.LoadInterval.IsNull() {
 		data.LoadInterval = types.Int64Value(value.Int())
 	} else {
 		data.LoadInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() && !data.Vrf.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() && value.Type == gjson.String && !data.Vrf.IsNull() {
 		data.Vrf = types.StringValue(value.String())
 	} else {
 		data.Vrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && !data.Ipv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && value.Type == gjson.String && !data.Ipv4Address.IsNull() {
 		data.Ipv4Address = types.StringValue(value.String())
 	} else {
 		data.Ipv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() && !data.Ipv4Netmask.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() && value.Type == gjson.String && !data.Ipv4Netmask.IsNull() {
 		data.Ipv4Netmask = types.StringValue(value.String())
 	} else {
 		data.Ipv4Netmask = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() && !data.Ipv4RouteTag.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() && value.Type == gjson.Number && !data.Ipv4RouteTag.IsNull() {
 		data.Ipv4RouteTag = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4RouteTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() && !data.Ipv4Algorithm.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() && value.Type == gjson.Number && !data.Ipv4Algorithm.IsNull() {
 		data.Ipv4Algorithm = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4Algorithm = types.Int64Null()
@@ -1918,22 +1918,22 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv4Secondaries[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv4Secondaries[i].Address.IsNull() {
 			data.Ipv4Secondaries[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4Secondaries[i].Address = types.StringNull()
 		}
-		if value := r.Get("netmask"); value.Exists() && !data.Ipv4Secondaries[i].Netmask.IsNull() {
+		if value := r.Get("netmask"); value.Exists() && value.Type == gjson.String && !data.Ipv4Secondaries[i].Netmask.IsNull() {
 			data.Ipv4Secondaries[i].Netmask = types.StringValue(value.String())
 		} else {
 			data.Ipv4Secondaries[i].Netmask = types.StringNull()
 		}
-		if value := r.Get("route-tag"); value.Exists() && !data.Ipv4Secondaries[i].RouteTag.IsNull() {
+		if value := r.Get("route-tag"); value.Exists() && value.Type == gjson.Number && !data.Ipv4Secondaries[i].RouteTag.IsNull() {
 			data.Ipv4Secondaries[i].RouteTag = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4Secondaries[i].RouteTag = types.Int64Null()
 		}
-		if value := r.Get("algorithm"); value.Exists() && !data.Ipv4Secondaries[i].Algorithm.IsNull() {
+		if value := r.Get("algorithm"); value.Exists() && value.Type == gjson.Number && !data.Ipv4Secondaries[i].Algorithm.IsNull() {
 			data.Ipv4Secondaries[i].Algorithm = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4Secondaries[i].Algorithm = types.Int64Null()
@@ -1948,7 +1948,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv4PointToPoint = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() && !data.Ipv4Mtu.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() && value.Type == gjson.Number && !data.Ipv4Mtu.IsNull() {
 		data.Ipv4Mtu = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4Mtu = types.Int64Null()
@@ -1994,12 +1994,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv4HelperAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv4HelperAddresses[i].Address.IsNull() {
 			data.Ipv4HelperAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4HelperAddresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("vrf"); value.Exists() && !data.Ipv4HelperAddresses[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.Ipv4HelperAddresses[i].Vrf.IsNull() {
 			data.Ipv4HelperAddresses[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.Ipv4HelperAddresses[i].Vrf = types.StringNull()
@@ -2023,7 +2023,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv4TcpMssAdjust = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() && !data.Ipv4Unnumbered.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() && value.Type == gjson.String && !data.Ipv4Unnumbered.IsNull() {
 		data.Ipv4Unnumbered = types.StringValue(value.String())
 	} else {
 		data.Ipv4Unnumbered = types.StringNull()
@@ -2046,26 +2046,26 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv4TtlPropagateDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && !data.Ipv4VerifyUnicastSourceReachableViaType.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String && !data.Ipv4VerifyUnicastSourceReachableViaType.IsNull() {
 		data.Ipv4VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaType = types.StringNull()
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-self-ping"); !data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing.IsNull() {
-		if value.Exists() {
+		if value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 			data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 		}
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-default"); !data.Ipv4VerifyUnicastSourceReachableViaAllowDefault.IsNull() {
-		if value.Exists() {
+		if value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 			data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 		}
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && !data.Ipv4AccessGroupIngressAcl1.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String && !data.Ipv4AccessGroupIngressAcl1.IsNull() {
 		data.Ipv4AccessGroupIngressAcl1 = types.StringValue(value.String())
 	} else {
 		data.Ipv4AccessGroupIngressAcl1 = types.StringNull()
@@ -2088,12 +2088,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv4AccessGroupIngressInterfaceStatistics = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && !data.Ipv4AccessGroupIngressCompress.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number && !data.Ipv4AccessGroupIngressCompress.IsNull() {
 		data.Ipv4AccessGroupIngressCompress = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4AccessGroupIngressCompress = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && !data.Ipv4AccessGroupEgressAcl.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String && !data.Ipv4AccessGroupEgressAcl.IsNull() {
 		data.Ipv4AccessGroupEgressAcl = types.StringValue(value.String())
 	} else {
 		data.Ipv4AccessGroupEgressAcl = types.StringNull()
@@ -2116,31 +2116,31 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv4AccessGroupEgressInterfaceStatistics = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && !data.Ipv4AccessGroupEgressCompress.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number && !data.Ipv4AccessGroupEgressCompress.IsNull() {
 		data.Ipv4AccessGroupEgressCompress = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4AccessGroupEgressCompress = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && !data.Ipv6VerifyUnicastSourceReachableViaType.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String && !data.Ipv6VerifyUnicastSourceReachableViaType.IsNull() {
 		data.Ipv6VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaType = types.StringNull()
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-self-ping"); !data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing.IsNull() {
-		if value.Exists() {
+		if value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 			data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 		}
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-default"); !data.Ipv6VerifyUnicastSourceReachableViaAllowDefault.IsNull() {
-		if value.Exists() {
+		if value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 			data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 		}
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && !data.Ipv6AccessGroupIngressAcl1.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String && !data.Ipv6AccessGroupIngressAcl1.IsNull() {
 		data.Ipv6AccessGroupIngressAcl1 = types.StringValue(value.String())
 	} else {
 		data.Ipv6AccessGroupIngressAcl1 = types.StringNull()
@@ -2154,12 +2154,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv6AccessGroupIngressInterfaceStatistics = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && !data.Ipv6AccessGroupIngressCompress.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number && !data.Ipv6AccessGroupIngressCompress.IsNull() {
 		data.Ipv6AccessGroupIngressCompress = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6AccessGroupIngressCompress = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && !data.Ipv6AccessGroupEgressAcl.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String && !data.Ipv6AccessGroupEgressAcl.IsNull() {
 		data.Ipv6AccessGroupEgressAcl = types.StringValue(value.String())
 	} else {
 		data.Ipv6AccessGroupEgressAcl = types.StringNull()
@@ -2173,7 +2173,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv6AccessGroupEgressInterfaceStatistics = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && !data.Ipv6AccessGroupEgressCompress.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number && !data.Ipv6AccessGroupEgressCompress.IsNull() {
 		data.Ipv6AccessGroupEgressCompress = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6AccessGroupEgressCompress = types.Int64Null()
@@ -2219,43 +2219,43 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv6Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv6Addresses[i].Address.IsNull() {
 			data.Ipv6Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6Addresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("prefix-length"); value.Exists() && !data.Ipv6Addresses[i].PrefixLength.IsNull() {
+		if value := r.Get("prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Addresses[i].PrefixLength.IsNull() {
 			data.Ipv6Addresses[i].PrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Addresses[i].PrefixLength = types.Int64Null()
 		}
-		if value := r.Get("zone"); value.Exists() && !data.Ipv6Addresses[i].Zone.IsNull() {
+		if value := r.Get("zone"); value.Exists() && value.Type == gjson.String && !data.Ipv6Addresses[i].Zone.IsNull() {
 			data.Ipv6Addresses[i].Zone = types.StringValue(value.String())
 		} else {
 			data.Ipv6Addresses[i].Zone = types.StringNull()
 		}
-		if value := r.Get("route-tag"); value.Exists() && !data.Ipv6Addresses[i].RouteTag.IsNull() {
+		if value := r.Get("route-tag"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Addresses[i].RouteTag.IsNull() {
 			data.Ipv6Addresses[i].RouteTag = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Addresses[i].RouteTag = types.Int64Null()
 		}
-		if value := r.Get("algorithm"); value.Exists() && !data.Ipv6Addresses[i].Algorithm.IsNull() {
+		if value := r.Get("algorithm"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Addresses[i].Algorithm.IsNull() {
 			data.Ipv6Addresses[i].Algorithm = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Addresses[i].Algorithm = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() && !data.Ipv6LinkLocalAddress.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() && value.Type == gjson.String && !data.Ipv6LinkLocalAddress.IsNull() {
 		data.Ipv6LinkLocalAddress = types.StringValue(value.String())
 	} else {
 		data.Ipv6LinkLocalAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() && !data.Ipv6LinkLocalZone.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() && value.Type == gjson.String && !data.Ipv6LinkLocalZone.IsNull() {
 		data.Ipv6LinkLocalZone = types.StringValue(value.String())
 	} else {
 		data.Ipv6LinkLocalZone = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() && !data.Ipv6LinkLocalRouteTag.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() && value.Type == gjson.Number && !data.Ipv6LinkLocalRouteTag.IsNull() {
 		data.Ipv6LinkLocalRouteTag = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6LinkLocalRouteTag = types.Int64Null()
@@ -2283,27 +2283,27 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv6Eui64Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv6Eui64Addresses[i].Address.IsNull() {
 			data.Ipv6Eui64Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6Eui64Addresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("prefix-length"); value.Exists() && !data.Ipv6Eui64Addresses[i].PrefixLength.IsNull() {
+		if value := r.Get("prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Eui64Addresses[i].PrefixLength.IsNull() {
 			data.Ipv6Eui64Addresses[i].PrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Eui64Addresses[i].PrefixLength = types.Int64Null()
 		}
-		if value := r.Get("zone"); value.Exists() && !data.Ipv6Eui64Addresses[i].Zone.IsNull() {
+		if value := r.Get("zone"); value.Exists() && value.Type == gjson.String && !data.Ipv6Eui64Addresses[i].Zone.IsNull() {
 			data.Ipv6Eui64Addresses[i].Zone = types.StringValue(value.String())
 		} else {
 			data.Ipv6Eui64Addresses[i].Zone = types.StringNull()
 		}
-		if value := r.Get("route-tag"); value.Exists() && !data.Ipv6Eui64Addresses[i].RouteTag.IsNull() {
+		if value := r.Get("route-tag"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Eui64Addresses[i].RouteTag.IsNull() {
 			data.Ipv6Eui64Addresses[i].RouteTag = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Eui64Addresses[i].RouteTag = types.Int64Null()
 		}
-		if value := r.Get("algorithm"); value.Exists() && !data.Ipv6Eui64Addresses[i].Algorithm.IsNull() {
+		if value := r.Get("algorithm"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Eui64Addresses[i].Algorithm.IsNull() {
 			data.Ipv6Eui64Addresses[i].Algorithm = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6Eui64Addresses[i].Algorithm = types.Int64Null()
@@ -2327,7 +2327,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv6Dhcp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() && !data.Ipv6Mtu.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() && value.Type == gjson.Number && !data.Ipv6Mtu.IsNull() {
 		data.Ipv6Mtu = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6Mtu = types.Int64Null()
@@ -2350,17 +2350,17 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv6TcpMssAdjust = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() && !data.Ipv6NdReachableTime.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdReachableTime.IsNull() {
 		data.Ipv6NdReachableTime = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdReachableTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() && !data.Ipv6NdCacheLimit.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdCacheLimit.IsNull() {
 		data.Ipv6NdCacheLimit = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdCacheLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() && !data.Ipv6NdDadAttempts.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdDadAttempts.IsNull() {
 		data.Ipv6NdDadAttempts = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdDadAttempts = types.Int64Null()
@@ -2401,22 +2401,22 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ipv6NdOtherConfigFlag = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() && !data.Ipv6NdNsInterval.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdNsInterval.IsNull() {
 		data.Ipv6NdNsInterval = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdNsInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() && !data.Ipv6NdRaIntervalMax.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdRaIntervalMax.IsNull() {
 		data.Ipv6NdRaIntervalMax = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdRaIntervalMax = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() && !data.Ipv6NdRaIntervalMin.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdRaIntervalMin.IsNull() {
 		data.Ipv6NdRaIntervalMin = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdRaIntervalMin = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() && !data.Ipv6NdRaLifetime.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() && value.Type == gjson.Number && !data.Ipv6NdRaLifetime.IsNull() {
 		data.Ipv6NdRaLifetime = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6NdRaLifetime = types.Int64Null()
@@ -2471,22 +2471,22 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("domain-name"); value.Exists() && !data.EthernetCfmMepDomains[i].DomainName.IsNull() {
+		if value := r.Get("domain-name"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmMepDomains[i].DomainName.IsNull() {
 			data.EthernetCfmMepDomains[i].DomainName = types.StringValue(value.String())
 		} else {
 			data.EthernetCfmMepDomains[i].DomainName = types.StringNull()
 		}
-		if value := r.Get("service"); value.Exists() && !data.EthernetCfmMepDomains[i].Service.IsNull() {
+		if value := r.Get("service"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmMepDomains[i].Service.IsNull() {
 			data.EthernetCfmMepDomains[i].Service = types.StringValue(value.String())
 		} else {
 			data.EthernetCfmMepDomains[i].Service = types.StringNull()
 		}
-		if value := r.Get("mep-id"); value.Exists() && !data.EthernetCfmMepDomains[i].MepId.IsNull() {
+		if value := r.Get("mep-id"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].MepId.IsNull() {
 			data.EthernetCfmMepDomains[i].MepId = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].MepId = types.Int64Null()
 		}
-		if value := r.Get("cos"); value.Exists() && !data.EthernetCfmMepDomains[i].Cos.IsNull() {
+		if value := r.Get("cos"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].Cos.IsNull() {
 			data.EthernetCfmMepDomains[i].Cos = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].Cos = types.Int64Null()
@@ -2500,47 +2500,47 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersAggregate = types.BoolNull()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeStart.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeStart.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeStart = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeEnd.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeEnd.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeEnd = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value1"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue1.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value1"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue1.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue1 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue1 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value2"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue2.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value2"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue2.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue2 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue2 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value3"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue3.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value3"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue3.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue3 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue3 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value4"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue4.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value4"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue4.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue4 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue4 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value5"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue5.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value5"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue5.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue5 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue5 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value6"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue6.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value6"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue6.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue6 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue6 = types.Int64Null()
 		}
-		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value7"); value.Exists() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue7.IsNull() {
+		if value := r.Get("loss-measurement.counters.priority.cos-values.cos-value7"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue7.IsNull() {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue7 = types.Int64Value(value.Int())
 		} else {
 			data.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue7 = types.Int64Null()
@@ -2568,12 +2568,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 					return true
 				},
 			)
-			if value := cr.Get("profile-name"); value.Exists() && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].ProfileName.IsNull() {
+			if value := cr.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].ProfileName.IsNull() {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].ProfileName = types.StringValue(value.String())
 			} else {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].ProfileName = types.StringNull()
 			}
-			if value := cr.Get("mep-id"); value.Exists() && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].MepId.IsNull() {
+			if value := cr.Get("mep-id"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].MepId.IsNull() {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].MepId = types.Int64Value(value.Int())
 			} else {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds[ci].MepId = types.Int64Null()
@@ -2602,39 +2602,39 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 					return true
 				},
 			)
-			if value := cr.Get("profile-name"); value.Exists() && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].ProfileName.IsNull() {
+			if value := cr.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].ProfileName.IsNull() {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].ProfileName = types.StringValue(value.String())
 			} else {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].ProfileName = types.StringNull()
 			}
-			if value := cr.Get("mac-address"); value.Exists() && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].MacAddress.IsNull() {
+			if value := cr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].MacAddress.IsNull() {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].MacAddress = types.StringValue(value.String())
 			} else {
 				data.EthernetCfmMepDomains[i].SlaOperationProfileTargetMacAddresses[ci].MacAddress = types.StringNull()
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() && !data.EthernetCfmAisTransmissionUpInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() && value.Type == gjson.String && !data.EthernetCfmAisTransmissionUpInterval.IsNull() {
 		data.EthernetCfmAisTransmissionUpInterval = types.StringValue(value.String())
 	} else {
 		data.EthernetCfmAisTransmissionUpInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() && !data.EthernetCfmAisTransmissionUpCos.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmAisTransmissionUpCos.IsNull() {
 		data.EthernetCfmAisTransmissionUpCos = types.Int64Value(value.Int())
 	} else {
 		data.EthernetCfmAisTransmissionUpCos = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() && !data.EthernetCfmBandwidthNotificationsHoldOff.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmBandwidthNotificationsHoldOff.IsNull() {
 		data.EthernetCfmBandwidthNotificationsHoldOff = types.Int64Value(value.Int())
 	} else {
 		data.EthernetCfmBandwidthNotificationsHoldOff = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() && !data.EthernetCfmBandwidthNotificationsWaitToRestore.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmBandwidthNotificationsWaitToRestore.IsNull() {
 		data.EthernetCfmBandwidthNotificationsWaitToRestore = types.Int64Value(value.Int())
 	} else {
 		data.EthernetCfmBandwidthNotificationsWaitToRestore = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() && !data.EthernetCfmBandwidthNotificationsLossThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() && value.Type == gjson.Number && !data.EthernetCfmBandwidthNotificationsLossThreshold.IsNull() {
 		data.EthernetCfmBandwidthNotificationsLossThreshold = types.Int64Value(value.Int())
 	} else {
 		data.EthernetCfmBandwidthNotificationsLossThreshold = types.Int64Null()
@@ -2671,7 +2671,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv4IngressMonitors[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4IngressMonitors[i].MonitorMapName.IsNull() {
 			data.FlowIpv4IngressMonitors[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4IngressMonitors[i].MonitorMapName = types.StringNull()
@@ -2700,12 +2700,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv4IngressMonitorSamplers[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4IngressMonitorSamplers[i].MonitorMapName.IsNull() {
 			data.FlowIpv4IngressMonitorSamplers[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4IngressMonitorSamplers[i].MonitorMapName = types.StringNull()
 		}
-		if value := r.Get("sampler-map-name"); value.Exists() && !data.FlowIpv4IngressMonitorSamplers[i].SamplerMapName.IsNull() {
+		if value := r.Get("sampler-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4IngressMonitorSamplers[i].SamplerMapName.IsNull() {
 			data.FlowIpv4IngressMonitorSamplers[i].SamplerMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4IngressMonitorSamplers[i].SamplerMapName = types.StringNull()
@@ -2734,7 +2734,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv4EgressMonitors[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4EgressMonitors[i].MonitorMapName.IsNull() {
 			data.FlowIpv4EgressMonitors[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4EgressMonitors[i].MonitorMapName = types.StringNull()
@@ -2763,12 +2763,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv4EgressMonitorSamplers[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4EgressMonitorSamplers[i].MonitorMapName.IsNull() {
 			data.FlowIpv4EgressMonitorSamplers[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4EgressMonitorSamplers[i].MonitorMapName = types.StringNull()
 		}
-		if value := r.Get("sampler-map-name"); value.Exists() && !data.FlowIpv4EgressMonitorSamplers[i].SamplerMapName.IsNull() {
+		if value := r.Get("sampler-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv4EgressMonitorSamplers[i].SamplerMapName.IsNull() {
 			data.FlowIpv4EgressMonitorSamplers[i].SamplerMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv4EgressMonitorSamplers[i].SamplerMapName = types.StringNull()
@@ -2797,7 +2797,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv6IngressMonitors[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6IngressMonitors[i].MonitorMapName.IsNull() {
 			data.FlowIpv6IngressMonitors[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6IngressMonitors[i].MonitorMapName = types.StringNull()
@@ -2826,12 +2826,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv6IngressMonitorSamplers[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6IngressMonitorSamplers[i].MonitorMapName.IsNull() {
 			data.FlowIpv6IngressMonitorSamplers[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6IngressMonitorSamplers[i].MonitorMapName = types.StringNull()
 		}
-		if value := r.Get("sampler-map-name"); value.Exists() && !data.FlowIpv6IngressMonitorSamplers[i].SamplerMapName.IsNull() {
+		if value := r.Get("sampler-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6IngressMonitorSamplers[i].SamplerMapName.IsNull() {
 			data.FlowIpv6IngressMonitorSamplers[i].SamplerMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6IngressMonitorSamplers[i].SamplerMapName = types.StringNull()
@@ -2860,7 +2860,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv6EgressMonitors[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6EgressMonitors[i].MonitorMapName.IsNull() {
 			data.FlowIpv6EgressMonitors[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6EgressMonitors[i].MonitorMapName = types.StringNull()
@@ -2889,18 +2889,18 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("monitor-map-name"); value.Exists() && !data.FlowIpv6EgressMonitorSamplers[i].MonitorMapName.IsNull() {
+		if value := r.Get("monitor-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6EgressMonitorSamplers[i].MonitorMapName.IsNull() {
 			data.FlowIpv6EgressMonitorSamplers[i].MonitorMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6EgressMonitorSamplers[i].MonitorMapName = types.StringNull()
 		}
-		if value := r.Get("sampler-map-name"); value.Exists() && !data.FlowIpv6EgressMonitorSamplers[i].SamplerMapName.IsNull() {
+		if value := r.Get("sampler-map-name"); value.Exists() && value.Type == gjson.String && !data.FlowIpv6EgressMonitorSamplers[i].SamplerMapName.IsNull() {
 			data.FlowIpv6EgressMonitorSamplers[i].SamplerMapName = types.StringValue(value.String())
 		} else {
 			data.FlowIpv6EgressMonitorSamplers[i].SamplerMapName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() && !data.ArpTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() && value.Type == gjson.Number && !data.ArpTimeout.IsNull() {
 		data.ArpTimeout = types.Int64Value(value.Int())
 	} else {
 		data.ArpTimeout = types.Int64Null()
@@ -2932,7 +2932,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.ArpGratuitousIgnore = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() && !data.ArpCacheLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() && value.Type == gjson.Number && !data.ArpCacheLimit.IsNull() {
 		data.ArpCacheLimit = types.Int64Value(value.Int())
 	} else {
 		data.ArpCacheLimit = types.Int64Null()
@@ -2946,7 +2946,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.ProxyArp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && !data.MplsMtu.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number && !data.MplsMtu.IsNull() {
 		data.MplsMtu = types.Int64Value(value.Int())
 	} else {
 		data.MplsMtu = types.Int64Null()
@@ -3001,7 +3001,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("session-name"); value.Exists() && !data.MonitorSessions[i].SessionName.IsNull() {
+		if value := r.Get("session-name"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].SessionName.IsNull() {
 			data.MonitorSessions[i].SessionName = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].SessionName = types.StringNull()
@@ -3042,22 +3042,22 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 		} else {
 			data.MonitorSessions[i].Acl = types.BoolNull()
 		}
-		if value := r.Get("acl-ipv4.acl-name"); value.Exists() && !data.MonitorSessions[i].AclIpv4Name.IsNull() {
+		if value := r.Get("acl-ipv4.acl-name"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].AclIpv4Name.IsNull() {
 			data.MonitorSessions[i].AclIpv4Name = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].AclIpv4Name = types.StringNull()
 		}
-		if value := r.Get("acl-ipv6.acl-name"); value.Exists() && !data.MonitorSessions[i].AclIpv6Name.IsNull() {
+		if value := r.Get("acl-ipv6.acl-name"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].AclIpv6Name.IsNull() {
 			data.MonitorSessions[i].AclIpv6Name = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].AclIpv6Name = types.StringNull()
 		}
-		if value := r.Get("mirror.first"); value.Exists() && !data.MonitorSessions[i].MirrorFirst.IsNull() {
+		if value := r.Get("mirror.first"); value.Exists() && value.Type == gjson.Number && !data.MonitorSessions[i].MirrorFirst.IsNull() {
 			data.MonitorSessions[i].MirrorFirst = types.Int64Value(value.Int())
 		} else {
 			data.MonitorSessions[i].MirrorFirst = types.Int64Null()
 		}
-		if value := r.Get("mirror.interval"); value.Exists() && !data.MonitorSessions[i].MirrorInterval.IsNull() {
+		if value := r.Get("mirror.interval"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].MirrorInterval.IsNull() {
 			data.MonitorSessions[i].MirrorInterval = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].MirrorInterval = types.StringNull()
@@ -3072,7 +3072,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.Ptp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() && !data.PtpProfile.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() && value.Type == gjson.String && !data.PtpProfile.IsNull() {
 		data.PtpProfile = types.StringValue(value.String())
 	} else {
 		data.PtpProfile = types.StringNull()
@@ -3122,97 +3122,97 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpClockOperationTwoStep = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() && !data.PtpAnnounceInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() && value.Type == gjson.String && !data.PtpAnnounceInterval.IsNull() {
 		data.PtpAnnounceInterval = types.StringValue(value.String())
 	} else {
 		data.PtpAnnounceInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() && !data.PtpAnnounceFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() && value.Type == gjson.String && !data.PtpAnnounceFrequency.IsNull() {
 		data.PtpAnnounceFrequency = types.StringValue(value.String())
 	} else {
 		data.PtpAnnounceFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() && !data.PtpAnnounceTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() && value.Type == gjson.Number && !data.PtpAnnounceTimeout.IsNull() {
 		data.PtpAnnounceTimeout = types.Int64Value(value.Int())
 	} else {
 		data.PtpAnnounceTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() && !data.PtpAnnounceGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.PtpAnnounceGrantDuration.IsNull() {
 		data.PtpAnnounceGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.PtpAnnounceGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() && !data.PtpSyncInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() && value.Type == gjson.String && !data.PtpSyncInterval.IsNull() {
 		data.PtpSyncInterval = types.StringValue(value.String())
 	} else {
 		data.PtpSyncInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() && !data.PtpSyncFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() && value.Type == gjson.String && !data.PtpSyncFrequency.IsNull() {
 		data.PtpSyncFrequency = types.StringValue(value.String())
 	} else {
 		data.PtpSyncFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() && !data.PtpSyncGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.PtpSyncGrantDuration.IsNull() {
 		data.PtpSyncGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.PtpSyncGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() && !data.PtpSyncTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() && value.Type == gjson.Number && !data.PtpSyncTimeout.IsNull() {
 		data.PtpSyncTimeout = types.Int64Value(value.Int())
 	} else {
 		data.PtpSyncTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() && !data.PtpDelayRequestInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() && value.Type == gjson.String && !data.PtpDelayRequestInterval.IsNull() {
 		data.PtpDelayRequestInterval = types.StringValue(value.String())
 	} else {
 		data.PtpDelayRequestInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() && !data.PtpDelayRequestFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() && value.Type == gjson.String && !data.PtpDelayRequestFrequency.IsNull() {
 		data.PtpDelayRequestFrequency = types.StringValue(value.String())
 	} else {
 		data.PtpDelayRequestFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() && !data.PtpCos.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() && value.Type == gjson.Number && !data.PtpCos.IsNull() {
 		data.PtpCos = types.Int64Value(value.Int())
 	} else {
 		data.PtpCos = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() && !data.PtpCosEvent.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() && value.Type == gjson.Number && !data.PtpCosEvent.IsNull() {
 		data.PtpCosEvent = types.Int64Value(value.Int())
 	} else {
 		data.PtpCosEvent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() && !data.PtpCosGeneral.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() && value.Type == gjson.Number && !data.PtpCosGeneral.IsNull() {
 		data.PtpCosGeneral = types.Int64Value(value.Int())
 	} else {
 		data.PtpCosGeneral = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() && !data.PtpDscp.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() && value.Type == gjson.Number && !data.PtpDscp.IsNull() {
 		data.PtpDscp = types.Int64Value(value.Int())
 	} else {
 		data.PtpDscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() && !data.PtpDscpEvent.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() && value.Type == gjson.Number && !data.PtpDscpEvent.IsNull() {
 		data.PtpDscpEvent = types.Int64Value(value.Int())
 	} else {
 		data.PtpDscpEvent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() && !data.PtpDscpGeneral.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() && value.Type == gjson.Number && !data.PtpDscpGeneral.IsNull() {
 		data.PtpDscpGeneral = types.Int64Value(value.Int())
 	} else {
 		data.PtpDscpGeneral = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() && !data.PtpIpv4Ttl.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() && value.Type == gjson.Number && !data.PtpIpv4Ttl.IsNull() {
 		data.PtpIpv4Ttl = types.Int64Value(value.Int())
 	} else {
 		data.PtpIpv4Ttl = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() && !data.PtpIpv6HopLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number && !data.PtpIpv6HopLimit.IsNull() {
 		data.PtpIpv6HopLimit = types.Int64Value(value.Int())
 	} else {
 		data.PtpIpv6HopLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() && !data.PtpDelayAsymmetryValue.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.PtpDelayAsymmetryValue.IsNull() {
 		data.PtpDelayAsymmetryValue = types.Int64Value(value.Int())
 	} else {
 		data.PtpDelayAsymmetryValue = types.Int64Null()
@@ -3244,12 +3244,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpDelayAsymmetryUnitMilliseconds = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() && !data.PtpDelayResponseGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.PtpDelayResponseGrantDuration.IsNull() {
 		data.PtpDelayResponseGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.PtpDelayResponseGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() && !data.PtpDelayResponseTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() && value.Type == gjson.Number && !data.PtpDelayResponseTimeout.IsNull() {
 		data.PtpDelayResponseTimeout = types.Int64Value(value.Int())
 	} else {
 		data.PtpDelayResponseTimeout = types.Int64Null()
@@ -3344,7 +3344,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpPortStateAny = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() && !data.PtpSourceIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.PtpSourceIpv4Address.IsNull() {
 		data.PtpSourceIpv4Address = types.StringValue(value.String())
 	} else {
 		data.PtpSourceIpv4Address = types.StringNull()
@@ -3358,7 +3358,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpSourceIpv4AddressDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() && !data.PtpSourceIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.PtpSourceIpv6Address.IsNull() {
 		data.PtpSourceIpv6Address = types.StringValue(value.String())
 	} else {
 		data.PtpSourceIpv6Address = types.StringNull()
@@ -3372,7 +3372,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpSourceIpv6AddressDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() && !data.PtpLocalPriority.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() && value.Type == gjson.Number && !data.PtpLocalPriority.IsNull() {
 		data.PtpLocalPriority = types.Int64Value(value.Int())
 	} else {
 		data.PtpLocalPriority = types.Int64Null()
@@ -3400,7 +3400,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpSlaveIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpSlaveIpv4s[i].Address.IsNull() {
 			data.PtpSlaveIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpSlaveIpv4s[i].Address = types.StringNull()
@@ -3438,7 +3438,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpSlaveIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpSlaveIpv6s[i].Address.IsNull() {
 			data.PtpSlaveIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpSlaveIpv6s[i].Address = types.StringNull()
@@ -3476,7 +3476,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpSlaveEthernets[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpSlaveEthernets[i].Address.IsNull() {
 			data.PtpSlaveEthernets[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpSlaveEthernets[i].Address = types.StringNull()
@@ -3514,17 +3514,17 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpMasterIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpMasterIpv4s[i].Address.IsNull() {
 			data.PtpMasterIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpMasterIpv4s[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && !data.PtpMasterIpv4s[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv4s[i].Priority.IsNull() {
 			data.PtpMasterIpv4s[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv4s[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && !data.PtpMasterIpv4s[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv4s[i].ClockClass.IsNull() {
 			data.PtpMasterIpv4s[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv4s[i].ClockClass = types.Int64Null()
@@ -3556,7 +3556,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 		} else {
 			data.PtpMasterIpv4s[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && !data.PtpMasterIpv4s[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv4s[i].DelayAsymmetry.IsNull() {
 			data.PtpMasterIpv4s[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv4s[i].DelayAsymmetry = types.Int64Null()
@@ -3612,17 +3612,17 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpMasterIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpMasterIpv6s[i].Address.IsNull() {
 			data.PtpMasterIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpMasterIpv6s[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && !data.PtpMasterIpv6s[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv6s[i].Priority.IsNull() {
 			data.PtpMasterIpv6s[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv6s[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && !data.PtpMasterIpv6s[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv6s[i].ClockClass.IsNull() {
 			data.PtpMasterIpv6s[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv6s[i].ClockClass = types.Int64Null()
@@ -3654,7 +3654,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 		} else {
 			data.PtpMasterIpv6s[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && !data.PtpMasterIpv6s[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterIpv6s[i].DelayAsymmetry.IsNull() {
 			data.PtpMasterIpv6s[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterIpv6s[i].DelayAsymmetry = types.Int64Null()
@@ -3710,17 +3710,17 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.PtpMasterEthernets[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PtpMasterEthernets[i].Address.IsNull() {
 			data.PtpMasterEthernets[i].Address = types.StringValue(value.String())
 		} else {
 			data.PtpMasterEthernets[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && !data.PtpMasterEthernets[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterEthernets[i].Priority.IsNull() {
 			data.PtpMasterEthernets[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterEthernets[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && !data.PtpMasterEthernets[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterEthernets[i].ClockClass.IsNull() {
 			data.PtpMasterEthernets[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterEthernets[i].ClockClass = types.Int64Null()
@@ -3752,7 +3752,7 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 		} else {
 			data.PtpMasterEthernets[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && !data.PtpMasterEthernets[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.PtpMasterEthernets[i].DelayAsymmetry.IsNull() {
 			data.PtpMasterEthernets[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.PtpMasterEthernets[i].DelayAsymmetry = types.Int64Null()
@@ -3821,32 +3821,32 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 	} else {
 		data.PtpInteropProfileG82752 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() && !data.PtpInteropDomain.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropDomain.IsNull() {
 		data.PtpInteropDomain = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropDomain = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() && !data.PtpInteropEgressConversionPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionPriority1.IsNull() {
 		data.PtpInteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropEgressConversionPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() && !data.PtpInteropEgressConversionPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionPriority2.IsNull() {
 		data.PtpInteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropEgressConversionPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() && !data.PtpInteropEgressConversionClockAccuracy.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionClockAccuracy.IsNull() {
 		data.PtpInteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropEgressConversionClockAccuracy = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && !data.PtpInteropEgressConversionOffsetScaledLogVariance.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionOffsetScaledLogVariance.IsNull() {
 		data.PtpInteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropEgressConversionOffsetScaledLogVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() && !data.PtpInteropEgressConversionClockClassDefault.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionClockClassDefault.IsNull() {
 		data.PtpInteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropEgressConversionClockClassDefault = types.Int64Null()
@@ -3874,38 +3874,38 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("clock-class-to-map-from"); value.Exists() && !data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
+		if value := r.Get("clock-class-to-map-from"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
 			data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Value(value.Int())
 		} else {
 			data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Null()
 		}
-		if value := r.Get("clock-class-to-map-to"); value.Exists() && !data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
+		if value := r.Get("clock-class-to-map-to"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
 			data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Value(value.Int())
 		} else {
 			data.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() && !data.PtpInteropIngressConversionPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionPriority1.IsNull() {
 		data.PtpInteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropIngressConversionPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() && !data.PtpInteropIngressConversionPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionPriority2.IsNull() {
 		data.PtpInteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropIngressConversionPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() && !data.PtpInteropIngressConversionClockAccuracy.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionClockAccuracy.IsNull() {
 		data.PtpInteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropIngressConversionClockAccuracy = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && !data.PtpInteropIngressConversionOffsetScaledLogVariance.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionOffsetScaledLogVariance.IsNull() {
 		data.PtpInteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropIngressConversionOffsetScaledLogVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() && !data.PtpInteropIngressConversionClockClassDefault.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionClockClassDefault.IsNull() {
 		data.PtpInteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	} else {
 		data.PtpInteropIngressConversionClockClassDefault = types.Int64Null()
@@ -3933,12 +3933,12 @@ func (data *InterfaceBundleEtherSubinterface) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("clock-class-to-map-from"); value.Exists() && !data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
+		if value := r.Get("clock-class-to-map-from"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
 			data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Value(value.Int())
 		} else {
 			data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Null()
 		}
-		if value := r.Get("clock-class-to-map-to"); value.Exists() && !data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
+		if value := r.Get("clock-class-to-map-to"); value.Exists() && value.Type == gjson.Number && !data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
 			data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Value(value.Int())
 		} else {
 			data.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Null()
@@ -3971,23 +3971,23 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Dampening = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningDecayHalfLife = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningReuseThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningSuppressThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy.input"); value.Exists() {
 		data.ServicePolicyInput = make([]InterfaceBundleEtherSubinterfaceServicePolicyInput, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceServicePolicyInput{}
-			if cValue := v.Get("service-policy-name"); cValue.Exists() {
+			if cValue := v.Get("service-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.ServicePolicyInput = append(data.ServicePolicyInput, item)
@@ -3998,23 +3998,23 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.ServicePolicyOutput = make([]InterfaceBundleEtherSubinterfaceServicePolicyOutput, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceServicePolicyOutput{}
-			if cValue := v.Get("service-policy-name"); cValue.Exists() {
+			if cValue := v.Get("service-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.ServicePolicyOutput = append(data.ServicePolicyOutput, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationDot1qVlanId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationDot1qSecondDot1q = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.String {
 		data.L2transportEncapsulationDot1qVlanId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.String {
 		data.L2transportEncapsulationDot1qSecondDot1q = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:rewrite.ingress.tag.pop.one"); value.Exists() {
@@ -4032,7 +4032,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.events.link-status"); value.Exists() {
@@ -4040,44 +4040,44 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number {
 		data.Bandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number {
 		data.LoadInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() && value.Type == gjson.String {
 		data.Vrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Netmask = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RouteTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4Algorithm = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.secondaries.secondary"); value.Exists() {
 		data.Ipv4Secondaries = make([]InterfaceBundleEtherSubinterfaceIpv4Secondaries, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv4Secondaries{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv4Secondaries = append(data.Ipv4Secondaries, item)
@@ -4089,7 +4089,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv4PointToPoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:redirects"); value.Exists() {
@@ -4106,10 +4106,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.Ipv4HelperAddresses = make([]InterfaceBundleEtherSubinterfaceIpv4HelperAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv4HelperAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			data.Ipv4HelperAddresses = append(data.Ipv4HelperAddresses, item)
@@ -4126,7 +4126,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv4TcpMssAdjust = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Unnumbered = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable"); value.Exists() {
@@ -4139,20 +4139,20 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv4TtlPropagateDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4AccessGroupIngressAcl1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.hardware-count"); value.Exists() {
@@ -4165,10 +4165,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv4AccessGroupIngressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4AccessGroupIngressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4AccessGroupEgressAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.hardware-count"); value.Exists() {
@@ -4181,23 +4181,23 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv4AccessGroupEgressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4AccessGroupEgressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6AccessGroupIngressAcl1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.interface-statistics"); value.Exists() {
@@ -4205,10 +4205,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv6AccessGroupIngressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6AccessGroupIngressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6AccessGroupEgressAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.interface-statistics"); value.Exists() {
@@ -4216,7 +4216,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv6AccessGroupEgressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6AccessGroupEgressCompress = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:enable"); value.Exists() {
@@ -4233,51 +4233,51 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.Ipv6Addresses = make([]InterfaceBundleEtherSubinterfaceIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() {
+			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv6Addresses = append(data.Ipv6Addresses, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6LinkLocalAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6LinkLocalZone = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6LinkLocalRouteTag = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.eui64-addresses.eui64-address"); value.Exists() {
 		data.Ipv6Eui64Addresses = make([]InterfaceBundleEtherSubinterfaceIpv6Eui64Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv6Eui64Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() {
+			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv6Eui64Addresses = append(data.Ipv6Eui64Addresses, item)
@@ -4294,7 +4294,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv6Dhcp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:unreachables.disable"); value.Exists() {
@@ -4307,13 +4307,13 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv6TcpMssAdjust = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdReachableTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdCacheLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdDadAttempts = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.unicast-ra"); value.Exists() {
@@ -4336,16 +4336,16 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ipv6NdOtherConfigFlag = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdNsInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaIntervalMax = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaIntervalMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaLifetime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.redirects"); value.Exists() {
@@ -4367,16 +4367,16 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.EthernetCfmMepDomains = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("service"); cValue.Exists() {
+			if cValue := v.Get("service"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Service = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mep-id"); cValue.Exists() {
+			if cValue := v.Get("mep-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MepId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cos"); cValue.Exists() {
+			if cValue := v.Get("cos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Cos = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("loss-measurement.counters.aggregate"); cValue.Exists() {
@@ -4384,41 +4384,41 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			} else {
 				item.LossMeasurementCountersAggregate = types.BoolValue(false)
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value1"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value1"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue1 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value2"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value2"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue2 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value3"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value3"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue3 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value4"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value4"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue4 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value5"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value5"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue5 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value6"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value6"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue6 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value7"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value7"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue7 = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("sla.operation.profile.target.mep-id.profile-target-mep-id"); cValue.Exists() {
 				item.SlaOperationProfileTargetMepIds = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMepIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMepIds{}
-					if ccValue := cv.Get("profile-name"); ccValue.Exists() {
+					if ccValue := cv.Get("profile-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ProfileName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mep-id"); ccValue.Exists() {
+					if ccValue := cv.Get("mep-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MepId = types.Int64Value(ccValue.Int())
 					}
 					item.SlaOperationProfileTargetMepIds = append(item.SlaOperationProfileTargetMepIds, cItem)
@@ -4429,10 +4429,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 				item.SlaOperationProfileTargetMacAddresses = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMacAddresses{}
-					if ccValue := cv.Get("profile-name"); ccValue.Exists() {
+					if ccValue := cv.Get("profile-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ProfileName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.SlaOperationProfileTargetMacAddresses = append(item.SlaOperationProfileTargetMacAddresses, cItem)
@@ -4443,19 +4443,19 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() && value.Type == gjson.String {
 		data.EthernetCfmAisTransmissionUpInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmAisTransmissionUpCos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsHoldOff = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsWaitToRestore = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsLossThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.log.changes"); value.Exists() {
@@ -4467,7 +4467,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv4IngressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4IngressMonitors = append(data.FlowIpv4IngressMonitors, item)
@@ -4478,10 +4478,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv4IngressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4IngressMonitorSamplers = append(data.FlowIpv4IngressMonitorSamplers, item)
@@ -4492,7 +4492,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv4EgressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4EgressMonitors = append(data.FlowIpv4EgressMonitors, item)
@@ -4503,10 +4503,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv4EgressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4EgressMonitorSamplers = append(data.FlowIpv4EgressMonitorSamplers, item)
@@ -4517,7 +4517,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv6IngressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6IngressMonitors = append(data.FlowIpv6IngressMonitors, item)
@@ -4528,10 +4528,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv6IngressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6IngressMonitorSamplers = append(data.FlowIpv6IngressMonitorSamplers, item)
@@ -4542,7 +4542,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv6EgressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6EgressMonitors = append(data.FlowIpv6EgressMonitors, item)
@@ -4553,17 +4553,17 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.FlowIpv6EgressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6EgressMonitorSamplers = append(data.FlowIpv6EgressMonitorSamplers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.ArpTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.learning.disable"); value.Exists() {
@@ -4581,7 +4581,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.ArpGratuitousIgnore = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ArpCacheLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:proxy-arp"); value.Exists() {
@@ -4589,7 +4589,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.ProxyArp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number {
 		data.MplsMtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-lldp-cfg:lldp"); value.Exists() {
@@ -4611,7 +4611,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.MonitorSessions = make([]InterfaceBundleEtherSubinterfaceMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() {
+			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SessionName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet"); cValue.Exists() {
@@ -4634,16 +4634,16 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			} else {
 				item.Acl = types.BoolValue(false)
 			}
-			if cValue := v.Get("acl-ipv4.acl-name"); cValue.Exists() {
+			if cValue := v.Get("acl-ipv4.acl-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AclIpv4Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("acl-ipv6.acl-name"); cValue.Exists() {
+			if cValue := v.Get("acl-ipv6.acl-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AclIpv6Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mirror.first"); cValue.Exists() {
+			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			data.MonitorSessions = append(data.MonitorSessions, item)
@@ -4655,7 +4655,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.Ptp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() && value.Type == gjson.String {
 		data.PtpProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.transport.ipv4"); value.Exists() {
@@ -4683,61 +4683,61 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpClockOperationTwoStep = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpAnnounceInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpAnnounceFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpAnnounceTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpAnnounceGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpSyncInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpSyncFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpSyncGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpSyncTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpDelayRequestInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpDelayRequestFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCosEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCosGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscpEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscpGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() && value.Type == gjson.Number {
 		data.PtpIpv4Ttl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number {
 		data.PtpIpv6HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayAsymmetryValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.nanoseconds"); value.Exists() {
@@ -4755,10 +4755,10 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpDelayAsymmetryUnitMilliseconds = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayResponseGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayResponseTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.unicast-grant.invalid-request.reduce"); value.Exists() {
@@ -4811,7 +4811,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpPortStateAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.PtpSourceIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.disable"); value.Exists() {
@@ -4819,7 +4819,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpSourceIpv4AddressDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.PtpSourceIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.disable"); value.Exists() {
@@ -4827,14 +4827,14 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpSourceIpv6AddressDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() && value.Type == gjson.Number {
 		data.PtpLocalPriority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.subordinate.ipv4s.ipv4-non-negotiated"); value.Exists() {
 		data.PtpSlaveIpv4s = make([]InterfaceBundleEtherSubinterfacePtpSlaveIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -4850,7 +4850,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.PtpSlaveIpv6s = make([]InterfaceBundleEtherSubinterfacePtpSlaveIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -4866,7 +4866,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.PtpSlaveEthernets = make([]InterfaceBundleEtherSubinterfacePtpSlaveEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -4882,13 +4882,13 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.PtpMasterIpv4s = make([]InterfaceBundleEtherSubinterfacePtpMasterIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -4906,7 +4906,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -4932,13 +4932,13 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.PtpMasterIpv6s = make([]InterfaceBundleEtherSubinterfacePtpMasterIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -4956,7 +4956,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -4982,13 +4982,13 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 		data.PtpMasterEthernets = make([]InterfaceBundleEtherSubinterfacePtpMasterEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -5006,7 +5006,7 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -5048,61 +5048,61 @@ func (data *InterfaceBundleEtherSubinterface) fromBody(ctx context.Context, res 
 	} else {
 		data.PtpInteropProfileG82752 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.PtpInteropEgressConversionClockClassMappings = make([]InterfaceBundleEtherSubinterfacePtpInteropEgressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpInteropEgressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.PtpInteropEgressConversionClockClassMappings = append(data.PtpInteropEgressConversionClockClassMappings, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.PtpInteropIngressConversionClockClassMappings = make([]InterfaceBundleEtherSubinterfacePtpInteropIngressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpInteropIngressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.PtpInteropIngressConversionClockClassMappings = append(data.PtpInteropIngressConversionClockClassMappings, item)
@@ -5136,23 +5136,23 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Dampening = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningDecayHalfLife = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningReuseThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningSuppressThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "dampening.decay-half-life.reuse-threshold.suppress-threshold.max-suppress-time.value"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy.input"); value.Exists() {
 		data.ServicePolicyInput = make([]InterfaceBundleEtherSubinterfaceServicePolicyInput, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceServicePolicyInput{}
-			if cValue := v.Get("service-policy-name"); cValue.Exists() {
+			if cValue := v.Get("service-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.ServicePolicyInput = append(data.ServicePolicyInput, item)
@@ -5163,23 +5163,23 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.ServicePolicyOutput = make([]InterfaceBundleEtherSubinterfaceServicePolicyOutput, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceServicePolicyOutput{}
-			if cValue := v.Get("service-policy-name"); cValue.Exists() {
+			if cValue := v.Get("service-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.ServicePolicyOutput = append(data.ServicePolicyOutput, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationDot1qVlanId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationDot1qSecondDot1q = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.vlan-id"); value.Exists() && value.Type == gjson.String {
 		data.L2transportEncapsulationDot1qVlanId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:l2transport-encapsulation.dot1q.second-dot1q"); value.Exists() && value.Type == gjson.String {
 		data.L2transportEncapsulationDot1qSecondDot1q = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2-ethernet-cfg:rewrite.ingress.tag.pop.one"); value.Exists() {
@@ -5197,7 +5197,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.events.link-status"); value.Exists() {
@@ -5205,44 +5205,44 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number {
 		data.Bandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number {
 		data.LoadInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-vrf-cfg:vrf"); value.Exists() && value.Type == gjson.String {
 		data.Vrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.netmask"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Netmask = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.route-tag"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4RouteTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.algorithm"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4Algorithm = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.secondaries.secondary"); value.Exists() {
 		data.Ipv4Secondaries = make([]InterfaceBundleEtherSubinterfaceIpv4Secondaries, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv4Secondaries{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv4Secondaries = append(data.Ipv4Secondaries, item)
@@ -5254,7 +5254,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv4PointToPoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:redirects"); value.Exists() {
@@ -5271,10 +5271,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.Ipv4HelperAddresses = make([]InterfaceBundleEtherSubinterfaceIpv4HelperAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv4HelperAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() {
+			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			data.Ipv4HelperAddresses = append(data.Ipv4HelperAddresses, item)
@@ -5291,7 +5291,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv4TcpMssAdjust = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.unnumbered"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Unnumbered = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable"); value.Exists() {
@@ -5304,20 +5304,20 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv4TtlPropagateDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ipv4-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv4VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4AccessGroupIngressAcl1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.hardware-count"); value.Exists() {
@@ -5330,10 +5330,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv4AccessGroupIngressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4AccessGroupIngressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4AccessGroupEgressAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.hardware-count"); value.Exists() {
@@ -5346,23 +5346,23 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv4AccessGroupEgressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv4AccessGroupEgressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.type"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6VerifyUnicastSourceReachableViaType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-self-ping"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowSelfPing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:verify.unicast.source.reachable-via.allow-default"); value.Exists() && (value.Type == gjson.True || value.Type == gjson.False) {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(value.Bool())
 	} else {
 		data.Ipv6VerifyUnicastSourceReachableViaAllowDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.access-list-name-1.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6AccessGroupIngressAcl1 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.interface-statistics"); value.Exists() {
@@ -5370,10 +5370,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv6AccessGroupIngressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.ingress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6AccessGroupIngressCompress = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.access-list-name.name"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6AccessGroupEgressAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.interface-statistics"); value.Exists() {
@@ -5381,7 +5381,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv6AccessGroupEgressInterfaceStatistics = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-access-group-cfg:access-group.egress.compress"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6AccessGroupEgressCompress = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:enable"); value.Exists() {
@@ -5398,51 +5398,51 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.Ipv6Addresses = make([]InterfaceBundleEtherSubinterfaceIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() {
+			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv6Addresses = append(data.Ipv6Addresses, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.address"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6LinkLocalAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.zone"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6LinkLocalZone = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.link-local-address.route-tag"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6LinkLocalRouteTag = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.eui64-addresses.eui64-address"); value.Exists() {
 		data.Ipv6Eui64Addresses = make([]InterfaceBundleEtherSubinterfaceIpv6Eui64Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceIpv6Eui64Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() {
+			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-tag"); cValue.Exists() {
+			if cValue := v.Get("route-tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.RouteTag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() {
+			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Ipv6Eui64Addresses = append(data.Ipv6Eui64Addresses, item)
@@ -5459,7 +5459,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv6Dhcp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:mtu"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6Mtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-if-ipv6-cfg:unreachables.disable"); value.Exists() {
@@ -5472,13 +5472,13 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv6TcpMssAdjust = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.reachable-time"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdReachableTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.cache-limit"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdCacheLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.dad.attempts"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdDadAttempts = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.unicast-ra"); value.Exists() {
@@ -5501,16 +5501,16 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ipv6NdOtherConfigFlag = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ns-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdNsInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.maximum-ra-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaIntervalMax = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-interval.minimum-ra-interval"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaIntervalMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.ra-lifetime"); value.Exists() && value.Type == gjson.Number {
 		data.Ipv6NdRaLifetime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6.Cisco-IOS-XR-um-ipv6-nd-cfg:nd.redirects"); value.Exists() {
@@ -5532,16 +5532,16 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.EthernetCfmMepDomains = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("service"); cValue.Exists() {
+			if cValue := v.Get("service"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Service = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mep-id"); cValue.Exists() {
+			if cValue := v.Get("mep-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MepId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cos"); cValue.Exists() {
+			if cValue := v.Get("cos"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Cos = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("loss-measurement.counters.aggregate"); cValue.Exists() {
@@ -5549,41 +5549,41 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			} else {
 				item.LossMeasurementCountersAggregate = types.BoolValue(false)
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-range.start-of-cos-range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-range.end-of-cos-range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value1"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value1"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue1 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value2"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value2"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue2 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value3"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value3"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue3 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value4"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value4"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue4 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value5"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value5"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue5 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value6"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value6"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue6 = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value7"); cValue.Exists() {
+			if cValue := v.Get("loss-measurement.counters.priority.cos-values.cos-value7"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LossMeasurementCountersPriorityCosValue7 = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("sla.operation.profile.target.mep-id.profile-target-mep-id"); cValue.Exists() {
 				item.SlaOperationProfileTargetMepIds = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMepIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMepIds{}
-					if ccValue := cv.Get("profile-name"); ccValue.Exists() {
+					if ccValue := cv.Get("profile-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ProfileName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mep-id"); ccValue.Exists() {
+					if ccValue := cv.Get("mep-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MepId = types.Int64Value(ccValue.Int())
 					}
 					item.SlaOperationProfileTargetMepIds = append(item.SlaOperationProfileTargetMepIds, cItem)
@@ -5594,10 +5594,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 				item.SlaOperationProfileTargetMacAddresses = make([]InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := InterfaceBundleEtherSubinterfaceEthernetCfmMepDomainsSlaOperationProfileTargetMacAddresses{}
-					if ccValue := cv.Get("profile-name"); ccValue.Exists() {
+					if ccValue := cv.Get("profile-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ProfileName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.SlaOperationProfileTargetMacAddresses = append(item.SlaOperationProfileTargetMacAddresses, cItem)
@@ -5608,19 +5608,19 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.interval"); value.Exists() && value.Type == gjson.String {
 		data.EthernetCfmAisTransmissionUpInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.ais.transmission.up.cos"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmAisTransmissionUpCos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.hold-off"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsHoldOff = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.wait-to-restore"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsWaitToRestore = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.loss-threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EthernetCfmBandwidthNotificationsLossThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet.cfm.bandwidth-notifications.log.changes"); value.Exists() {
@@ -5632,7 +5632,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv4IngressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4IngressMonitors = append(data.FlowIpv4IngressMonitors, item)
@@ -5643,10 +5643,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv4IngressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4IngressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4IngressMonitorSamplers = append(data.FlowIpv4IngressMonitorSamplers, item)
@@ -5657,7 +5657,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv4EgressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4EgressMonitors = append(data.FlowIpv4EgressMonitors, item)
@@ -5668,10 +5668,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv4EgressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv4EgressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv4EgressMonitorSamplers = append(data.FlowIpv4EgressMonitorSamplers, item)
@@ -5682,7 +5682,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv6IngressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6IngressMonitors = append(data.FlowIpv6IngressMonitors, item)
@@ -5693,10 +5693,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv6IngressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6IngressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6IngressMonitorSamplers = append(data.FlowIpv6IngressMonitorSamplers, item)
@@ -5707,7 +5707,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv6EgressMonitors = make([]InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitors{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6EgressMonitors = append(data.FlowIpv6EgressMonitors, item)
@@ -5718,17 +5718,17 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.FlowIpv6EgressMonitorSamplers = make([]InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitorSamplers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceFlowIpv6EgressMonitorSamplers{}
-			if cValue := v.Get("monitor-map-name"); cValue.Exists() {
+			if cValue := v.Get("monitor-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MonitorMapName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("sampler-map-name"); cValue.Exists() {
+			if cValue := v.Get("sampler-map-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SamplerMapName = types.StringValue(cValue.String())
 			}
 			data.FlowIpv6EgressMonitorSamplers = append(data.FlowIpv6EgressMonitorSamplers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.ArpTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.learning.disable"); value.Exists() {
@@ -5746,7 +5746,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.ArpGratuitousIgnore = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:arp.cache-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ArpCacheLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-arp-cfg:proxy-arp"); value.Exists() {
@@ -5754,7 +5754,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.ProxyArp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number {
 		data.MplsMtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-lldp-cfg:lldp"); value.Exists() {
@@ -5776,7 +5776,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.MonitorSessions = make([]InterfaceBundleEtherSubinterfaceMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfaceMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() {
+			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.SessionName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ethernet"); cValue.Exists() {
@@ -5799,16 +5799,16 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			} else {
 				item.Acl = types.BoolValue(false)
 			}
-			if cValue := v.Get("acl-ipv4.acl-name"); cValue.Exists() {
+			if cValue := v.Get("acl-ipv4.acl-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AclIpv4Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("acl-ipv6.acl-name"); cValue.Exists() {
+			if cValue := v.Get("acl-ipv6.acl-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AclIpv6Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mirror.first"); cValue.Exists() {
+			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			data.MonitorSessions = append(data.MonitorSessions, item)
@@ -5820,7 +5820,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.Ptp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.profile"); value.Exists() && value.Type == gjson.String {
 		data.PtpProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.transport.ipv4"); value.Exists() {
@@ -5848,61 +5848,61 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpClockOperationTwoStep = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpAnnounceInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpAnnounceFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpAnnounceTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpAnnounceGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpSyncInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpSyncFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpSyncGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.sync.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpSyncTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.interval"); value.Exists() && value.Type == gjson.String {
 		data.PtpDelayRequestInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-request.frequency"); value.Exists() && value.Type == gjson.String {
 		data.PtpDelayRequestFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCosEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-cos"); value.Exists() && value.Type == gjson.Number {
 		data.PtpCosGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.event-dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscpEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.general-dscp"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDscpGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv4-ttl"); value.Exists() && value.Type == gjson.Number {
 		data.PtpIpv4Ttl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number {
 		data.PtpIpv6HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-asymmetry"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayAsymmetryValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.nanoseconds"); value.Exists() {
@@ -5920,10 +5920,10 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpDelayAsymmetryUnitMilliseconds = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayResponseGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.delay-response.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.PtpDelayResponseTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.unicast-grant.invalid-request.reduce"); value.Exists() {
@@ -5976,7 +5976,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpPortStateAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.ipv4-address"); value.Exists() && value.Type == gjson.String {
 		data.PtpSourceIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv4.address.disable"); value.Exists() {
@@ -5984,7 +5984,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpSourceIpv4AddressDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.ipv6-address"); value.Exists() && value.Type == gjson.String {
 		data.PtpSourceIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.source.ipv6.address.disable"); value.Exists() {
@@ -5992,14 +5992,14 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpSourceIpv6AddressDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.local-priority"); value.Exists() && value.Type == gjson.Number {
 		data.PtpLocalPriority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.subordinate.ipv4s.ipv4-non-negotiated"); value.Exists() {
 		data.PtpSlaveIpv4s = make([]InterfaceBundleEtherSubinterfacePtpSlaveIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -6015,7 +6015,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.PtpSlaveIpv6s = make([]InterfaceBundleEtherSubinterfacePtpSlaveIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -6031,7 +6031,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.PtpSlaveEthernets = make([]InterfaceBundleEtherSubinterfacePtpSlaveEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpSlaveEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -6047,13 +6047,13 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.PtpMasterIpv4s = make([]InterfaceBundleEtherSubinterfacePtpMasterIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -6071,7 +6071,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -6097,13 +6097,13 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.PtpMasterIpv6s = make([]InterfaceBundleEtherSubinterfacePtpMasterIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -6121,7 +6121,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -6147,13 +6147,13 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 		data.PtpMasterEthernets = make([]InterfaceBundleEtherSubinterfacePtpMasterEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpMasterEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() {
+			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() {
+			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -6171,7 +6171,7 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -6213,61 +6213,61 @@ func (data *InterfaceBundleEtherSubinterfaceData) fromBody(ctx context.Context, 
 	} else {
 		data.PtpInteropProfileG82752 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.domain"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.egress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.PtpInteropEgressConversionClockClassMappings = make([]InterfaceBundleEtherSubinterfacePtpInteropEgressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpInteropEgressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.PtpInteropEgressConversionClockClassMappings = append(data.PtpInteropEgressConversionClockClassMappings, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
 		data.PtpInteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-ptp-cfg:ptp.interop.ingress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.PtpInteropIngressConversionClockClassMappings = make([]InterfaceBundleEtherSubinterfacePtpInteropIngressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceBundleEtherSubinterfacePtpInteropIngressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.PtpInteropIngressConversionClockClassMappings = append(data.PtpInteropIngressConversionClockClassMappings, item)

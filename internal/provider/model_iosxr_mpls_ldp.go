@@ -389,7 +389,7 @@ func (data MPLSLDP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
 		data.RouterId = types.StringNull()
@@ -403,22 +403,22 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.GracefulRestart = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() && !data.GracefulRestartReconnectTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() && value.Type == gjson.Number && !data.GracefulRestartReconnectTimeout.IsNull() {
 		data.GracefulRestartReconnectTimeout = types.Int64Value(value.Int())
 	} else {
 		data.GracefulRestartReconnectTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && !data.GracefulRestartForwardingStateHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && value.Type == gjson.Number && !data.GracefulRestartForwardingStateHoldtime.IsNull() {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	} else {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && !data.LtraceBufferMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && value.Type == gjson.Number && !data.LtraceBufferMultiplier.IsNull() {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.LtraceBufferMultiplier = types.Int64Null()
@@ -432,22 +432,22 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.DefaultVrfImplicitIpv4Disable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() && !data.SessionBackoffTimeInitial.IsNull() {
+	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() && value.Type == gjson.Number && !data.SessionBackoffTimeInitial.IsNull() {
 		data.SessionBackoffTimeInitial = types.Int64Value(value.Int())
 	} else {
 		data.SessionBackoffTimeInitial = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() && !data.SessionBackoffTimeMaximum.IsNull() {
+	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() && value.Type == gjson.Number && !data.SessionBackoffTimeMaximum.IsNull() {
 		data.SessionBackoffTimeMaximum = types.Int64Value(value.Int())
 	} else {
 		data.SessionBackoffTimeMaximum = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && !data.SessionHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && value.Type == gjson.Number && !data.SessionHoldtime.IsNull() {
 		data.SessionHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.SessionHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && !data.SessionDownstreamOnDemandWith.IsNull() {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String && !data.SessionDownstreamOnDemandWith.IsNull() {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	} else {
 		data.SessionDownstreamOnDemandWith = types.StringNull()
@@ -461,12 +461,12 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SessionProtection = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && !data.SessionProtectionForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String && !data.SessionProtectionForAcl.IsNull() {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	} else {
 		data.SessionProtectionForAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && !data.SessionProtectionForAclDuration.IsNull() {
+	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && value.Type == gjson.Number && !data.SessionProtectionForAclDuration.IsNull() {
 		data.SessionProtectionForAclDuration = types.Int64Value(value.Int())
 	} else {
 		data.SessionProtectionForAclDuration = types.Int64Null()
@@ -480,7 +480,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SessionProtectionForAclDurationInfinite = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() && !data.SessionProtectionDuration.IsNull() {
+	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() && value.Type == gjson.Number && !data.SessionProtectionDuration.IsNull() {
 		data.SessionProtectionDuration = types.Int64Value(value.Int())
 	} else {
 		data.SessionProtectionDuration = types.Int64Null()
@@ -521,17 +521,17 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.EntropyLabelAddEl = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() && !data.SignallingDscp.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() && value.Type == gjson.Number && !data.SignallingDscp.IsNull() {
 		data.SignallingDscp = types.Int64Value(value.Int())
 	} else {
 		data.SignallingDscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() && !data.IgpSyncDelayOnSessionUp.IsNull() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() && value.Type == gjson.Number && !data.IgpSyncDelayOnSessionUp.IsNull() {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	} else {
 		data.IgpSyncDelayOnSessionUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() && !data.IgpSyncDelayOnProcRestart.IsNull() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() && value.Type == gjson.Number && !data.IgpSyncDelayOnProcRestart.IsNull() {
 		data.IgpSyncDelayOnProcRestart = types.Int64Value(value.Int())
 	} else {
 		data.IgpSyncDelayOnProcRestart = types.Int64Null()
@@ -626,22 +626,22 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.LogSessionProtection = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && !data.DiscoveryHelloHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryHelloHoldtime.IsNull() {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryHelloHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && !data.DiscoveryHelloInterval.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryHelloInterval.IsNull() {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryHelloInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() && !data.DiscoveryTargetedHelloHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryTargetedHelloHoldtime.IsNull() {
 		data.DiscoveryTargetedHelloHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryTargetedHelloHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() && !data.DiscoveryTargetedHelloInterval.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryTargetedHelloInterval.IsNull() {
 		data.DiscoveryTargetedHelloInterval = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryTargetedHelloInterval = types.Int64Null()
@@ -691,7 +691,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.NeighborDualStackTransportConnectionPreferIpv4 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() && !data.NeighborDualStackTransportConnectionMaxWait.IsNull() {
+	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() && value.Type == gjson.Number && !data.NeighborDualStackTransportConnectionMaxWait.IsNull() {
 		data.NeighborDualStackTransportConnectionMaxWait = types.Int64Value(value.Int())
 	} else {
 		data.NeighborDualStackTransportConnectionMaxWait = types.Int64Null()
@@ -728,12 +728,12 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && !data.Neighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].NeighborAddress.IsNull() {
 			data.Neighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && !data.Neighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].LabelSpaceId.IsNull() {
 			data.Neighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].LabelSpaceId = types.Int64Null()
@@ -755,7 +755,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-restart"); value.Exists() {
@@ -763,16 +763,16 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.GracefulRestart = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartReconnectTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default-vrf.implicit-ipv4.disable"); value.Exists() {
@@ -780,16 +780,16 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.DefaultVrfImplicitIpv4Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionBackoffTimeInitial = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionBackoffTimeMaximum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.SessionHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection"); value.Exists() {
@@ -797,10 +797,10 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionProtectionForAclDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session.protection.for.duration.infinite"); value.Exists() {
@@ -808,7 +808,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SessionProtectionForAclDurationInfinite = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionProtectionDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session.protection.duration.infinite"); value.Exists() {
@@ -831,13 +831,13 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EntropyLabelAddEl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SignallingDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnProcRestart = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "capabilities.sac"); value.Exists() {
@@ -890,16 +890,16 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LogSessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryTargetedHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryTargetedHelloInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "discovery.instance-tlv.disable"); value.Exists() {
@@ -927,7 +927,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.NeighborDualStackTransportConnectionPreferIpv4 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() {
+	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() && value.Type == gjson.Number {
 		data.NeighborDualStackTransportConnectionMaxWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbor.dual-stack.tlv-compliance"); value.Exists() {
@@ -939,10 +939,10 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 		data.Neighbors = make([]MPLSLDPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() {
+			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("password.disable"); cValue.Exists() {
@@ -961,7 +961,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-restart"); value.Exists() {
@@ -969,16 +969,16 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.GracefulRestart = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-reconnect-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartReconnectTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default-vrf.implicit-ipv4.disable"); value.Exists() {
@@ -986,16 +986,16 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.DefaultVrfImplicitIpv4Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.backoff.backoff-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionBackoffTimeInitial = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.backoff.maximum-session-backoff-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionBackoffTimeMaximum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.SessionHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection"); value.Exists() {
@@ -1003,10 +1003,10 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.SessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionProtectionForAclDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session.protection.for.duration.infinite"); value.Exists() {
@@ -1014,7 +1014,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.SessionProtectionForAclDurationInfinite = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "session.protection.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
 		data.SessionProtectionDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session.protection.duration.infinite"); value.Exists() {
@@ -1037,13 +1037,13 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.EntropyLabelAddEl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "signalling.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SignallingDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-proc-restart"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnProcRestart = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "capabilities.sac"); value.Exists() {
@@ -1096,16 +1096,16 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.LogSessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryTargetedHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.targeted-hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryTargetedHelloInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "discovery.instance-tlv.disable"); value.Exists() {
@@ -1133,7 +1133,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.NeighborDualStackTransportConnectionPreferIpv4 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() {
+	if value := gjson.GetBytes(res, "neighbor.dual-stack.transport-connection.max-wait"); value.Exists() && value.Type == gjson.Number {
 		data.NeighborDualStackTransportConnectionMaxWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbor.dual-stack.tlv-compliance"); value.Exists() {
@@ -1145,10 +1145,10 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 		data.Neighbors = make([]MPLSLDPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() {
+			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("password.disable"); cValue.Exists() {

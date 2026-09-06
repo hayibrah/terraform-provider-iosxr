@@ -175,12 +175,12 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Co
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Neighbors[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].Address.IsNull() {
 			data.Neighbors[i].Address = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
 		}
-		if value := r.Get("pw-id"); value.Exists() && !data.Neighbors[i].PwId.IsNull() {
+		if value := r.Get("pw-id"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].PwId.IsNull() {
 			data.Neighbors[i].PwId = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].PwId = types.Int64Null()
@@ -208,13 +208,13 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Co
 					return true
 				},
 			)
-			if value := cr.Get("mac-address"); value.Exists() && !data.Neighbors[i].StaticMacAddresses[ci].MacAddress.IsNull() {
+			if value := cr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].StaticMacAddresses[ci].MacAddress.IsNull() {
 				data.Neighbors[i].StaticMacAddresses[ci].MacAddress = types.StringValue(value.String())
 			} else {
 				data.Neighbors[i].StaticMacAddresses[ci].MacAddress = types.StringNull()
 			}
 		}
-		if value := r.Get("pw-class"); value.Exists() && !data.Neighbors[i].PwClass.IsNull() {
+		if value := r.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].PwClass.IsNull() {
 			data.Neighbors[i].PwClass = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].PwClass = types.StringNull()
@@ -236,24 +236,24 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) fromBody(ctx context.Context,
 		data.Neighbors = make([]L2VPNBridgeGroupBridgeDomainAccessVFINeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainAccessVFINeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() {
+			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainAccessVFINeighborsStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainAccessVFINeighborsStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("pw-class"); cValue.Exists() {
+			if cValue := v.Get("pw-class"); cValue.Exists() && cValue.Type == gjson.String {
 				item.PwClass = types.StringValue(cValue.String())
 			}
 			data.Neighbors = append(data.Neighbors, item)
@@ -276,24 +276,24 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFIData) fromBody(ctx context.Cont
 		data.Neighbors = make([]L2VPNBridgeGroupBridgeDomainAccessVFINeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainAccessVFINeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() {
+			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainAccessVFINeighborsStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainAccessVFINeighborsStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("pw-class"); cValue.Exists() {
+			if cValue := v.Get("pw-class"); cValue.Exists() && cValue.Type == gjson.String {
 				item.PwClass = types.StringValue(cValue.String())
 			}
 			data.Neighbors = append(data.Neighbors, item)

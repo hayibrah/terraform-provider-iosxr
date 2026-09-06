@@ -241,7 +241,7 @@ func (data *FrequencySynchronization) updateFromBody(ctx context.Context, res []
 	} else {
 		data.LogSelectionErrors = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() && !data.ClockIdentityMacAddress.IsNull() {
+	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() && value.Type == gjson.String && !data.ClockIdentityMacAddress.IsNull() {
 		data.ClockIdentityMacAddress = types.StringValue(value.String())
 	} else {
 		data.ClockIdentityMacAddress = types.StringNull()
@@ -298,7 +298,7 @@ func (data *FrequencySynchronization) fromBody(ctx context.Context, res []byte, 
 	} else {
 		data.LogSelectionErrors = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() && value.Type == gjson.String {
 		data.ClockIdentityMacAddress = types.StringValue(value.String())
 	}
 }
@@ -353,7 +353,7 @@ func (data *FrequencySynchronizationData) fromBody(ctx context.Context, res []by
 	} else {
 		data.LogSelectionErrors = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "clock-identity.mac-address"); value.Exists() && value.Type == gjson.String {
 		data.ClockIdentityMacAddress = types.StringValue(value.String())
 	}
 }

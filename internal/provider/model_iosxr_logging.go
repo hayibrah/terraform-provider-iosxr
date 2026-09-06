@@ -1033,52 +1033,52 @@ func (data Logging) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Logging) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "console"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Console.IsNull() {
+	if value := gjson.GetBytes(res, "console"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Console.IsNull() {
 		data.Console = types.StringValue(value.String())
 	} else {
 		data.Console = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap"); value.Exists() && !data.Trap.IsNull() {
+	if value := gjson.GetBytes(res, "trap"); value.Exists() && value.Type == gjson.String && !data.Trap.IsNull() {
 		data.Trap = types.StringValue(value.String())
 	} else {
 		data.Trap = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Monitor.IsNull() {
+	if value := gjson.GetBytes(res, "monitor"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Monitor.IsNull() {
 		data.Monitor = types.StringValue(value.String())
 	} else {
 		data.Monitor = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ConsoleFacility.IsNull() {
+	if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.ConsoleFacility.IsNull() {
 		data.ConsoleFacility = types.StringValue(value.String())
 	} else {
 		data.ConsoleFacility = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorMatch1.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch1.IsNull() {
 		data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorMatch2.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch2.IsNull() {
 		data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorMatch3.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch3.IsNull() {
 		data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorNomatch1.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch1.IsNull() {
 		data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorNomatch2.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch2.IsNull() {
 		data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.MonitorDiscriminatorNomatch3.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch3.IsNull() {
 		data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch3 = types.StringNull()
@@ -1128,97 +1128,97 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "archive.file-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ArchiveFilesize.IsNull() {
+	if value := gjson.GetBytes(res, "archive.file-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.ArchiveFilesize.IsNull() {
 		data.ArchiveFilesize = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveFilesize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "archive.archive-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ArchiveSize.IsNull() {
+	if value := gjson.GetBytes(res, "archive.archive-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.ArchiveSize.IsNull() {
 		data.ArchiveSize = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "archive.archive-length"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ArchiveLength.IsNull() {
+	if value := gjson.GetBytes(res, "archive.archive-length"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.ArchiveLength.IsNull() {
 		data.ArchiveLength = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveLength = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "archive.severity"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ArchiveSeverity.IsNull() {
+	if value := gjson.GetBytes(res, "archive.severity"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.ArchiveSeverity.IsNull() {
 		data.ArchiveSeverity = types.StringValue(value.String())
 	} else {
 		data.ArchiveSeverity = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "archive.threshold"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.ArchiveThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "archive.threshold"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.ArchiveThreshold.IsNull() {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.precedence"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Ipv4Precedence.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.precedence"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Ipv4Precedence.IsNull() {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv4Precedence = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.precedence"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Ipv6Precedence.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.precedence"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Ipv6Precedence.IsNull() {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv6Precedence = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "facility.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.FacilityLevel.IsNull() {
+	if value := gjson.GetBytes(res, "facility.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.FacilityLevel.IsNull() {
 		data.FacilityLevel = types.StringValue(value.String())
 	} else {
 		data.FacilityLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedEntriesCount.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.BufferedEntriesCount.IsNull() {
 		data.BufferedEntriesCount = types.Int64Value(value.Int())
 	} else {
 		data.BufferedEntriesCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedSize.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.BufferedSize.IsNull() {
 		data.BufferedSize = types.Int64Value(value.Int())
 	} else {
 		data.BufferedSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "buffered.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedLevel.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedLevel.IsNull() {
 		data.BufferedLevel = types.StringValue(value.String())
 	} else {
 		data.BufferedLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorMatch1.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorMatch1.IsNull() {
 		data.BufferedDiscriminatorMatch1 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorMatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorMatch2.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorMatch2.IsNull() {
 		data.BufferedDiscriminatorMatch2 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorMatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorMatch3.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorMatch3.IsNull() {
 		data.BufferedDiscriminatorMatch3 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorMatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorNomatch1.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorNomatch1.IsNull() {
 		data.BufferedDiscriminatorNomatch1 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorNomatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorNomatch2.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorNomatch2.IsNull() {
 		data.BufferedDiscriminatorNomatch2 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorNomatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.BufferedDiscriminatorNomatch3.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.BufferedDiscriminatorNomatch3.IsNull() {
 		data.BufferedDiscriminatorNomatch3 = types.StringValue(value.String())
 	} else {
 		data.BufferedDiscriminatorNomatch3 = types.StringNull()
@@ -1264,57 +1264,57 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("file-name"); value.Exists() && !data.File[i].FileName.IsNull() {
+		if value := r.Get("file-name"); value.Exists() && value.Type == gjson.String && !data.File[i].FileName.IsNull() {
 			data.File[i].FileName = types.StringValue(value.String())
 		} else {
 			data.File[i].FileName = types.StringNull()
 		}
-		if value := r.Get("path"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.File[i].Path.IsNull() {
+		if value := r.Get("path"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.File[i].Path.IsNull() {
 			data.File[i].Path = types.StringValue(value.String())
 		} else {
 			data.File[i].Path = types.StringNull()
 		}
-		if value := r.Get("maxfilesize"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.File[i].Maxfilesize.IsNull() {
+		if value := r.Get("maxfilesize"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.File[i].Maxfilesize.IsNull() {
 			data.File[i].Maxfilesize = types.Int64Value(value.Int())
 		} else {
 			data.File[i].Maxfilesize = types.Int64Null()
 		}
-		if value := r.Get("severity"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.File[i].Severity.IsNull() {
+		if value := r.Get("severity"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.File[i].Severity.IsNull() {
 			data.File[i].Severity = types.StringValue(value.String())
 		} else {
 			data.File[i].Severity = types.StringNull()
 		}
-		if value := r.Get("local-accounting.send-to-remote.facility.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
+		if value := r.Get("local-accounting.send-to-remote.facility.level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
 			data.File[i].LocalAccountingSendToRemoteFacilityLevel = types.StringValue(value.String())
 		} else {
 			data.File[i].LocalAccountingSendToRemoteFacilityLevel = types.StringNull()
 		}
-		if value := r.Get("discriminator.match1"); value.Exists() && !data.File[i].DiscriminatorMatch1.IsNull() {
+		if value := r.Get("discriminator.match1"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorMatch1.IsNull() {
 			data.File[i].DiscriminatorMatch1 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorMatch1 = types.StringNull()
 		}
-		if value := r.Get("discriminator.match2"); value.Exists() && !data.File[i].DiscriminatorMatch2.IsNull() {
+		if value := r.Get("discriminator.match2"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorMatch2.IsNull() {
 			data.File[i].DiscriminatorMatch2 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorMatch2 = types.StringNull()
 		}
-		if value := r.Get("discriminator.match3"); value.Exists() && !data.File[i].DiscriminatorMatch3.IsNull() {
+		if value := r.Get("discriminator.match3"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorMatch3.IsNull() {
 			data.File[i].DiscriminatorMatch3 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorMatch3 = types.StringNull()
 		}
-		if value := r.Get("discriminator.nomatch1"); value.Exists() && !data.File[i].DiscriminatorNomatch1.IsNull() {
+		if value := r.Get("discriminator.nomatch1"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorNomatch1.IsNull() {
 			data.File[i].DiscriminatorNomatch1 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorNomatch1 = types.StringNull()
 		}
-		if value := r.Get("discriminator.nomatch2"); value.Exists() && !data.File[i].DiscriminatorNomatch2.IsNull() {
+		if value := r.Get("discriminator.nomatch2"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorNomatch2.IsNull() {
 			data.File[i].DiscriminatorNomatch2 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorNomatch2 = types.StringNull()
 		}
-		if value := r.Get("discriminator.nomatch3"); value.Exists() && !data.File[i].DiscriminatorNomatch3.IsNull() {
+		if value := r.Get("discriminator.nomatch3"); value.Exists() && value.Type == gjson.String && !data.File[i].DiscriminatorNomatch3.IsNull() {
 			data.File[i].DiscriminatorNomatch3 = types.StringValue(value.String())
 		} else {
 			data.File[i].DiscriminatorNomatch3 = types.StringNull()
@@ -1337,43 +1337,43 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 		} else {
 			data.File[i].SendToRemote = types.BoolNull()
 		}
-		if value := r.Get("path.local-accounting.send-to-remote.facility"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.File[i].SendToRemoteFacility.IsNull() {
+		if value := r.Get("path.local-accounting.send-to-remote.facility"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.File[i].SendToRemoteFacility.IsNull() {
 			data.File[i].SendToRemoteFacility = types.StringValue(value.String())
 		} else {
 			data.File[i].SendToRemoteFacility = types.StringNull()
 		}
-		if value := r.Get("path.maxfilesize"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.File[i].PathMaxfilesize.IsNull() {
+		if value := r.Get("path.maxfilesize"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.File[i].PathMaxfilesize.IsNull() {
 			data.File[i].PathMaxfilesize = types.Int64Value(value.Int())
 		} else {
 			data.File[i].PathMaxfilesize = types.Int64Null()
 		}
-		if value := r.Get("path.path-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.File[i].PathPathName.IsNull() {
+		if value := r.Get("path.path-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.File[i].PathPathName.IsNull() {
 			data.File[i].PathPathName = types.StringValue(value.String())
 		} else {
 			data.File[i].PathPathName = types.StringNull()
 		}
-		if value := r.Get("path.severity"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.File[i].PathSeverity.IsNull() {
+		if value := r.Get("path.severity"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.File[i].PathSeverity.IsNull() {
 			data.File[i].PathSeverity = types.StringValue(value.String())
 		} else {
 			data.File[i].PathSeverity = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "history"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.History.IsNull() {
+	if value := gjson.GetBytes(res, "history"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.History.IsNull() {
 		data.History = types.StringValue(value.String())
 	} else {
 		data.History = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "history-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.HistorySize.IsNull() {
+	if value := gjson.GetBytes(res, "history-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.HistorySize.IsNull() {
 		data.HistorySize = types.Int64Value(value.Int())
 	} else {
 		data.HistorySize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && !data.Hostnameprefix.IsNull() {
+	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && value.Type == gjson.String && !data.Hostnameprefix.IsNull() {
 		data.Hostnameprefix = types.StringValue(value.String())
 	} else {
 		data.Hostnameprefix = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && !data.Localfilesize.IsNull() {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number && !data.Localfilesize.IsNull() {
 		data.Localfilesize = types.Int64Value(value.Int())
 	} else {
 		data.Localfilesize = types.Int64Null()
@@ -1401,7 +1401,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("source-interface-name"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.SourceInterfaces[i].Name.IsNull() {
+		if value := r.Get("source-interface-name"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].Name.IsNull() {
 			data.SourceInterfaces[i].Name = types.StringValue(value.String())
 		} else {
 			data.SourceInterfaces[i].Name = types.StringNull()
@@ -1429,18 +1429,18 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 					return true
 				},
 			)
-			if value := cr.Get("vrf-name"); value.Exists() && !data.SourceInterfaces[i].Vrfs[ci].Name.IsNull() {
+			if value := cr.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].Vrfs[ci].Name.IsNull() {
 				data.SourceInterfaces[i].Vrfs[ci].Name = types.StringValue(value.String())
 			} else {
 				data.SourceInterfaces[i].Vrfs[ci].Name = types.StringNull()
 			}
 		}
-		if value := r.Get("interface-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.SourceInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].InterfaceName.IsNull() {
 			data.SourceInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.SourceInterfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("vrf-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.SourceInterfaces[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].VrfName.IsNull() {
 			data.SourceInterfaces[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.SourceInterfaces[i].VrfName = types.StringNull()
@@ -1473,7 +1473,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.FormatBsd = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "yang"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Yang.IsNull() {
+	if value := gjson.GetBytes(res, "yang"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.Yang.IsNull() {
 		data.Yang = types.StringValue(value.String())
 	} else {
 		data.Yang = types.StringNull()
@@ -1501,7 +1501,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("rule-name"); value.Exists() && !data.SuppressRules[i].RuleName.IsNull() {
+		if value := r.Get("rule-name"); value.Exists() && value.Type == gjson.String && !data.SuppressRules[i].RuleName.IsNull() {
 			data.SuppressRules[i].RuleName = types.StringValue(value.String())
 		} else {
 			data.SuppressRules[i].RuleName = types.StringNull()
@@ -1529,17 +1529,17 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 					return true
 				},
 			)
-			if value := cr.Get("message-category"); value.Exists() && !data.SuppressRules[i].Alarms[ci].MessageCategory.IsNull() {
+			if value := cr.Get("message-category"); value.Exists() && value.Type == gjson.String && !data.SuppressRules[i].Alarms[ci].MessageCategory.IsNull() {
 				data.SuppressRules[i].Alarms[ci].MessageCategory = types.StringValue(value.String())
 			} else {
 				data.SuppressRules[i].Alarms[ci].MessageCategory = types.StringNull()
 			}
-			if value := cr.Get("group-name"); value.Exists() && !data.SuppressRules[i].Alarms[ci].GroupName.IsNull() {
+			if value := cr.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.SuppressRules[i].Alarms[ci].GroupName.IsNull() {
 				data.SuppressRules[i].Alarms[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.SuppressRules[i].Alarms[ci].GroupName = types.StringNull()
 			}
-			if value := cr.Get("message-code"); value.Exists() && !data.SuppressRules[i].Alarms[ci].MessageCode.IsNull() {
+			if value := cr.Get("message-code"); value.Exists() && value.Type == gjson.String && !data.SuppressRules[i].Alarms[ci].MessageCode.IsNull() {
 				data.SuppressRules[i].Alarms[ci].MessageCode = types.StringValue(value.String())
 			} else {
 				data.SuppressRules[i].Alarms[ci].MessageCode = types.StringNull()
@@ -1586,14 +1586,14 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 					return true
 				},
 			)
-			if value := cr.Get("location-name"); value.Exists() && !data.SuppressRules[i].ApplySourceLocations[ci].LocationName.IsNull() {
+			if value := cr.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.SuppressRules[i].ApplySourceLocations[ci].LocationName.IsNull() {
 				data.SuppressRules[i].ApplySourceLocations[ci].LocationName = types.StringValue(value.String())
 			} else {
 				data.SuppressRules[i].ApplySourceLocations[ci].LocationName = types.StringNull()
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && !data.EventsBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number && !data.EventsBufferSize.IsNull() {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.EventsBufferSize = types.Int64Null()
@@ -1621,7 +1621,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("match-string"); value.Exists() && !data.FilterMatches[i].Match.IsNull() {
+		if value := r.Get("match-string"); value.Exists() && value.Type == gjson.String && !data.FilterMatches[i].Match.IsNull() {
 			data.FilterMatches[i].Match = types.StringValue(value.String())
 		} else {
 			data.FilterMatches[i].Match = types.StringNull()
@@ -1636,82 +1636,82 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.EventsDisplayLocation = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && !data.EventsLevel.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && value.Type == gjson.String && !data.EventsLevel.IsNull() {
 		data.EventsLevel = types.StringValue(value.String())
 	} else {
 		data.EventsLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && !data.EventsThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number && !data.EventsThreshold.IsNull() {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	} else {
 		data.EventsThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && !data.EventsPrecfgSuppression.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && value.Type == gjson.String && !data.EventsPrecfgSuppression.IsNull() {
 		data.EventsPrecfgSuppression = types.StringValue(value.String())
 	} else {
 		data.EventsPrecfgSuppression = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && !data.EventsPrecfgSuppressionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number && !data.EventsPrecfgSuppressionTimeout.IsNull() {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "buffered.buffered-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.BufferedBufferedLevel.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.buffered-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.BufferedBufferedLevel.IsNull() {
 		data.BufferedBufferedLevel = types.StringValue(value.String())
 	} else {
 		data.BufferedBufferedLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.log-buffer-size"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.BufferedLogBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.log-buffer-size"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.BufferedLogBufferSize.IsNull() {
 		data.BufferedLogBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.BufferedLogBufferSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "console.console-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleConsoleLevel.IsNull() {
+	if value := gjson.GetBytes(res, "console.console-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleConsoleLevel.IsNull() {
 		data.ConsoleConsoleLevel = types.StringValue(value.String())
 	} else {
 		data.ConsoleConsoleLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.match1"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorMatch1.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.match1"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorMatch1.IsNull() {
 		data.ConsoleDiscriminatorMatch1 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorMatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.match2"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorMatch2.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.match2"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorMatch2.IsNull() {
 		data.ConsoleDiscriminatorMatch2 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorMatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.match3"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorMatch3.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.match3"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorMatch3.IsNull() {
 		data.ConsoleDiscriminatorMatch3 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorMatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorNomatch1.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorNomatch1.IsNull() {
 		data.ConsoleDiscriminatorNomatch1 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorNomatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorNomatch2.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorNomatch2.IsNull() {
 		data.ConsoleDiscriminatorNomatch2 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorNomatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ConsoleDiscriminatorNomatch3.IsNull() {
+	if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ConsoleDiscriminatorNomatch3.IsNull() {
 		data.ConsoleDiscriminatorNomatch3 = types.StringValue(value.String())
 	} else {
 		data.ConsoleDiscriminatorNomatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console.facility.all"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.FacilityAll.IsNull() {
+	if value := gjson.GetBytes(res, "console.facility.all"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.FacilityAll.IsNull() {
 		data.FacilityAll = types.StringValue(value.String())
 	} else {
 		data.FacilityAll = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "history.level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.HistoryLevel.IsNull() {
+	if value := gjson.GetBytes(res, "history.level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.HistoryLevel.IsNull() {
 		data.HistoryLevel = types.StringValue(value.String())
 	} else {
 		data.HistoryLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor.monitor-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.MonitorMonitorLevel.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.monitor-level"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.MonitorMonitorLevel.IsNull() {
 		data.MonitorMonitorLevel = types.StringValue(value.String())
 	} else {
 		data.MonitorMonitorLevel = types.StringNull()
@@ -1724,66 +1724,66 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 
 func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console"); value.Exists() {
+		if value := gjson.GetBytes(res, "console"); value.Exists() && value.Type == gjson.String {
 			data.Console = types.StringValue(value.String())
 		}
 	} else {
 		data.Console = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap"); value.Exists() {
+	if value := gjson.GetBytes(res, "trap"); value.Exists() && value.Type == gjson.String {
 		data.Trap = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor"); value.Exists() && value.Type == gjson.String {
 			data.Monitor = types.StringValue(value.String())
 		}
 	} else {
 		data.Monitor = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleFacility = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleFacility = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -1835,133 +1835,133 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveFilesize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveFilesize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveSize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveLength = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveLength = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.severity"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.severity"); value.Exists() && value.Type == gjson.String {
 			data.ArchiveSeverity = types.StringValue(value.String())
 		}
 	} else {
 		data.ArchiveSeverity = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveThreshold = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveThreshold = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
 			data.Ipv4Dscp = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && value.Type == gjson.String {
 			data.Ipv4Precedence = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv4Precedence = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
 			data.Ipv6Dscp = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv6Dscp = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && value.Type == gjson.String {
 			data.Ipv6Precedence = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv6Precedence = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "facility.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "facility.level"); value.Exists() && value.Type == gjson.String {
 			data.FacilityLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.FacilityLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedEntriesCount = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedEntriesCount = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedSize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.level"); value.Exists() && value.Type == gjson.String {
 			data.BufferedLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -1989,53 +1989,53 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.File = make([]LoggingFile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingFile{}
-			if cValue := v.Get("file-name"); cValue.Exists() {
+			if cValue := v.Get("file-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.FileName = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path"); cValue.Exists() {
+				if cValue := v.Get("path"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Path = types.StringValue(cValue.String())
 				}
 			} else {
 				item.Path = types.StringNull()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("maxfilesize"); cValue.Exists() {
+				if cValue := v.Get("maxfilesize"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.Maxfilesize = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.Maxfilesize = types.Int64Null()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("severity"); cValue.Exists() {
+				if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Severity = types.StringValue(cValue.String())
 				}
 			} else {
 				item.Severity = types.StringNull()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("local-accounting.send-to-remote.facility.level"); cValue.Exists() {
+				if cValue := v.Get("local-accounting.send-to-remote.facility.level"); cValue.Exists() && cValue.Type == gjson.String {
 					item.LocalAccountingSendToRemoteFacilityLevel = types.StringValue(cValue.String())
 				}
 			} else {
 				item.LocalAccountingSendToRemoteFacilityLevel = types.StringNull()
 			}
-			if cValue := v.Get("discriminator.match1"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match1"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch1 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.match2"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.match3"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match3"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch3 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch1"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch1"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch1 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch2"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch3"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch3"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch3 = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
@@ -2057,28 +2057,28 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 				item.SendToRemote = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.local-accounting.send-to-remote.facility"); cValue.Exists() {
+				if cValue := v.Get("path.local-accounting.send-to-remote.facility"); cValue.Exists() && cValue.Type == gjson.String {
 					item.SendToRemoteFacility = types.StringValue(cValue.String())
 				}
 			} else {
 				item.SendToRemoteFacility = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.maxfilesize"); cValue.Exists() {
+				if cValue := v.Get("path.maxfilesize"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.PathMaxfilesize = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.PathMaxfilesize = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.path-name"); cValue.Exists() {
+				if cValue := v.Get("path.path-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.PathPathName = types.StringValue(cValue.String())
 				}
 			} else {
 				item.PathPathName = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.severity"); cValue.Exists() {
+				if cValue := v.Get("path.severity"); cValue.Exists() && cValue.Type == gjson.String {
 					item.PathSeverity = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2089,23 +2089,23 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		})
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history"); value.Exists() {
+		if value := gjson.GetBytes(res, "history"); value.Exists() && value.Type == gjson.String {
 			data.History = types.StringValue(value.String())
 		}
 	} else {
 		data.History = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "history-size"); value.Exists() && value.Type == gjson.Number {
 			data.HistorySize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.HistorySize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() {
+	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && value.Type == gjson.String {
 		data.Hostnameprefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number {
 		data.Localfilesize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interfaces.source-interface"); value.Exists() {
@@ -2113,7 +2113,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingSourceInterfaces{}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("source-interface-name"); cValue.Exists() {
+				if cValue := v.Get("source-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Name = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2123,7 +2123,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 				item.Vrfs = make([]LoggingSourceInterfacesVrfs, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSourceInterfacesVrfs{}
-					if ccValue := cv.Get("vrf-name"); ccValue.Exists() {
+					if ccValue := cv.Get("vrf-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.Vrfs = append(item.Vrfs, cItem)
@@ -2131,14 +2131,14 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 				})
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("interface-name"); cValue.Exists() {
+				if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.InterfaceName = types.StringValue(cValue.String())
 				}
 			} else {
 				item.InterfaceName = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("vrf-name"); cValue.Exists() {
+				if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.VrfName = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2176,7 +2176,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.FormatBsd = types.BoolNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "yang"); value.Exists() {
+		if value := gjson.GetBytes(res, "yang"); value.Exists() && value.Type == gjson.String {
 			data.Yang = types.StringValue(value.String())
 		}
 	} else {
@@ -2186,20 +2186,20 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.SuppressRules = make([]LoggingSuppressRules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingSuppressRules{}
-			if cValue := v.Get("rule-name"); cValue.Exists() {
+			if cValue := v.Get("rule-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RuleName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("alarms.alarm"); cValue.Exists() {
 				item.Alarms = make([]LoggingSuppressRulesAlarms, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSuppressRulesAlarms{}
-					if ccValue := cv.Get("message-category"); ccValue.Exists() {
+					if ccValue := cv.Get("message-category"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MessageCategory = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("message-code"); ccValue.Exists() {
+					if ccValue := cv.Get("message-code"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MessageCode = types.StringValue(ccValue.String())
 					}
 					item.Alarms = append(item.Alarms, cItem)
@@ -2220,7 +2220,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 				item.ApplySourceLocations = make([]LoggingSuppressRulesApplySourceLocations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSuppressRulesApplySourceLocations{}
-					if ccValue := cv.Get("location-name"); ccValue.Exists() {
+					if ccValue := cv.Get("location-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.LocationName = types.StringValue(ccValue.String())
 					}
 					item.ApplySourceLocations = append(item.ApplySourceLocations, cItem)
@@ -2231,14 +2231,14 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.filter.match"); value.Exists() {
 		data.FilterMatches = make([]LoggingFilterMatches, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingFilterMatches{}
-			if cValue := v.Get("match-string"); cValue.Exists() {
+			if cValue := v.Get("match-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Match = types.StringValue(cValue.String())
 			}
 			data.FilterMatches = append(data.FilterMatches, item)
@@ -2250,97 +2250,97 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EventsDisplayLocation = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && value.Type == gjson.String {
 		data.EventsLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && value.Type == gjson.String {
 		data.EventsPrecfgSuppression = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.buffered-level"); value.Exists() && value.Type == gjson.String {
 			data.BufferedBufferedLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedBufferedLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.log-buffer-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedLogBufferSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedLogBufferSize = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.console-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.console-level"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleConsoleLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleConsoleLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch1 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch2 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch3 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch1 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch2 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch3 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.facility.all"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.facility.all"); value.Exists() && value.Type == gjson.String {
 			data.FacilityAll = types.StringValue(value.String())
 		}
 	} else {
 		data.FacilityAll = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "history.level"); value.Exists() && value.Type == gjson.String {
 			data.HistoryLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.HistoryLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor.monitor-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor.monitor-level"); value.Exists() && value.Type == gjson.String {
 			data.MonitorMonitorLevel = types.StringValue(value.String())
 		}
 	} else {
@@ -2354,66 +2354,66 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 
 func (data *LoggingData) fromBody(ctx context.Context, res []byte, version string) {
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console"); value.Exists() {
+		if value := gjson.GetBytes(res, "console"); value.Exists() && value.Type == gjson.String {
 			data.Console = types.StringValue(value.String())
 		}
 	} else {
 		data.Console = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap"); value.Exists() {
+	if value := gjson.GetBytes(res, "trap"); value.Exists() && value.Type == gjson.String {
 		data.Trap = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor"); value.Exists() && value.Type == gjson.String {
 			data.Monitor = types.StringValue(value.String())
 		}
 	} else {
 		data.Monitor = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleFacility = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleFacility = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -2465,133 +2465,133 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveFilesize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveFilesize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveSize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveLength = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveLength = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.severity"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.severity"); value.Exists() && value.Type == gjson.String {
 			data.ArchiveSeverity = types.StringValue(value.String())
 		}
 	} else {
 		data.ArchiveSeverity = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() {
+		if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
 			data.ArchiveThreshold = types.Int64Value(value.Int())
 		}
 	} else {
 		data.ArchiveThreshold = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
 			data.Ipv4Dscp = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && value.Type == gjson.String {
 			data.Ipv4Precedence = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv4Precedence = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
 			data.Ipv6Dscp = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv6Dscp = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() {
+		if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && value.Type == gjson.String {
 			data.Ipv6Precedence = types.StringValue(value.String())
 		}
 	} else {
 		data.Ipv6Precedence = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "facility.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "facility.level"); value.Exists() && value.Type == gjson.String {
 			data.FacilityLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.FacilityLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedEntriesCount = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedEntriesCount = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.logging-buffer-size"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedSize = types.Int64Null()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.level"); value.Exists() && value.Type == gjson.String {
 			data.BufferedLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.BufferedDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -2619,53 +2619,53 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.File = make([]LoggingFile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingFile{}
-			if cValue := v.Get("file-name"); cValue.Exists() {
+			if cValue := v.Get("file-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.FileName = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path"); cValue.Exists() {
+				if cValue := v.Get("path"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Path = types.StringValue(cValue.String())
 				}
 			} else {
 				item.Path = types.StringNull()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("maxfilesize"); cValue.Exists() {
+				if cValue := v.Get("maxfilesize"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.Maxfilesize = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.Maxfilesize = types.Int64Null()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("severity"); cValue.Exists() {
+				if cValue := v.Get("severity"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Severity = types.StringValue(cValue.String())
 				}
 			} else {
 				item.Severity = types.StringNull()
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("local-accounting.send-to-remote.facility.level"); cValue.Exists() {
+				if cValue := v.Get("local-accounting.send-to-remote.facility.level"); cValue.Exists() && cValue.Type == gjson.String {
 					item.LocalAccountingSendToRemoteFacilityLevel = types.StringValue(cValue.String())
 				}
 			} else {
 				item.LocalAccountingSendToRemoteFacilityLevel = types.StringNull()
 			}
-			if cValue := v.Get("discriminator.match1"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match1"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch1 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.match2"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.match3"); cValue.Exists() {
+			if cValue := v.Get("discriminator.match3"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorMatch3 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch1"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch1"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch1 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch2"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch2"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch2 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("discriminator.nomatch3"); cValue.Exists() {
+			if cValue := v.Get("discriminator.nomatch3"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscriminatorNomatch3 = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
@@ -2687,28 +2687,28 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 				item.SendToRemote = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.local-accounting.send-to-remote.facility"); cValue.Exists() {
+				if cValue := v.Get("path.local-accounting.send-to-remote.facility"); cValue.Exists() && cValue.Type == gjson.String {
 					item.SendToRemoteFacility = types.StringValue(cValue.String())
 				}
 			} else {
 				item.SendToRemoteFacility = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.maxfilesize"); cValue.Exists() {
+				if cValue := v.Get("path.maxfilesize"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.PathMaxfilesize = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.PathMaxfilesize = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.path-name"); cValue.Exists() {
+				if cValue := v.Get("path.path-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.PathPathName = types.StringValue(cValue.String())
 				}
 			} else {
 				item.PathPathName = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("path.severity"); cValue.Exists() {
+				if cValue := v.Get("path.severity"); cValue.Exists() && cValue.Type == gjson.String {
 					item.PathSeverity = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2719,23 +2719,23 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		})
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history"); value.Exists() {
+		if value := gjson.GetBytes(res, "history"); value.Exists() && value.Type == gjson.String {
 			data.History = types.StringValue(value.String())
 		}
 	} else {
 		data.History = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "history-size"); value.Exists() && value.Type == gjson.Number {
 			data.HistorySize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.HistorySize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() {
+	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && value.Type == gjson.String {
 		data.Hostnameprefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number {
 		data.Localfilesize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interfaces.source-interface"); value.Exists() {
@@ -2743,7 +2743,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingSourceInterfaces{}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("source-interface-name"); cValue.Exists() {
+				if cValue := v.Get("source-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.Name = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2753,7 +2753,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 				item.Vrfs = make([]LoggingSourceInterfacesVrfs, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSourceInterfacesVrfs{}
-					if ccValue := cv.Get("vrf-name"); ccValue.Exists() {
+					if ccValue := cv.Get("vrf-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.Vrfs = append(item.Vrfs, cItem)
@@ -2761,14 +2761,14 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 				})
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("interface-name"); cValue.Exists() {
+				if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.InterfaceName = types.StringValue(cValue.String())
 				}
 			} else {
 				item.InterfaceName = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("vrf-name"); cValue.Exists() {
+				if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 					item.VrfName = types.StringValue(cValue.String())
 				}
 			} else {
@@ -2806,7 +2806,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.FormatBsd = types.BoolNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "yang"); value.Exists() {
+		if value := gjson.GetBytes(res, "yang"); value.Exists() && value.Type == gjson.String {
 			data.Yang = types.StringValue(value.String())
 		}
 	} else {
@@ -2816,20 +2816,20 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.SuppressRules = make([]LoggingSuppressRules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingSuppressRules{}
-			if cValue := v.Get("rule-name"); cValue.Exists() {
+			if cValue := v.Get("rule-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.RuleName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("alarms.alarm"); cValue.Exists() {
 				item.Alarms = make([]LoggingSuppressRulesAlarms, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSuppressRulesAlarms{}
-					if ccValue := cv.Get("message-category"); ccValue.Exists() {
+					if ccValue := cv.Get("message-category"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MessageCategory = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("group-name"); ccValue.Exists() {
+					if ccValue := cv.Get("group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("message-code"); ccValue.Exists() {
+					if ccValue := cv.Get("message-code"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.MessageCode = types.StringValue(ccValue.String())
 					}
 					item.Alarms = append(item.Alarms, cItem)
@@ -2850,7 +2850,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 				item.ApplySourceLocations = make([]LoggingSuppressRulesApplySourceLocations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := LoggingSuppressRulesApplySourceLocations{}
-					if ccValue := cv.Get("location-name"); ccValue.Exists() {
+					if ccValue := cv.Get("location-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.LocationName = types.StringValue(ccValue.String())
 					}
 					item.ApplySourceLocations = append(item.ApplySourceLocations, cItem)
@@ -2861,14 +2861,14 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.filter.match"); value.Exists() {
 		data.FilterMatches = make([]LoggingFilterMatches, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LoggingFilterMatches{}
-			if cValue := v.Get("match-string"); cValue.Exists() {
+			if cValue := v.Get("match-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Match = types.StringValue(cValue.String())
 			}
 			data.FilterMatches = append(data.FilterMatches, item)
@@ -2880,97 +2880,97 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.EventsDisplayLocation = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && value.Type == gjson.String {
 		data.EventsLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && value.Type == gjson.String {
 		data.EventsPrecfgSuppression = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.buffered-level"); value.Exists() && value.Type == gjson.String {
 			data.BufferedBufferedLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.BufferedBufferedLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.log-buffer-size"); value.Exists() {
+		if value := gjson.GetBytes(res, "buffered.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedLogBufferSize = types.Int64Value(value.Int())
 		}
 	} else {
 		data.BufferedLogBufferSize = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.console-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.console-level"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleConsoleLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleConsoleLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match1"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch1 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match2"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch2 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.match3"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorMatch3 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch1 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch2 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.ConsoleDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.ConsoleDiscriminatorNomatch3 = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console.facility.all"); value.Exists() {
+		if value := gjson.GetBytes(res, "console.facility.all"); value.Exists() && value.Type == gjson.String {
 			data.FacilityAll = types.StringValue(value.String())
 		}
 	} else {
 		data.FacilityAll = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history.level"); value.Exists() {
+		if value := gjson.GetBytes(res, "history.level"); value.Exists() && value.Type == gjson.String {
 			data.HistoryLevel = types.StringValue(value.String())
 		}
 	} else {
 		data.HistoryLevel = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor.monitor-level"); value.Exists() {
+		if value := gjson.GetBytes(res, "monitor.monitor-level"); value.Exists() && value.Type == gjson.String {
 			data.MonitorMonitorLevel = types.StringValue(value.String())
 		}
 	} else {

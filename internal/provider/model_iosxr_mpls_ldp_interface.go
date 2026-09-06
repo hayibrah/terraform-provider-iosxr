@@ -168,17 +168,17 @@ func (data MPLSLDPInterface) GetRangeConstraints() []helpers.FieldRangeConstrain
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && !data.DiscoveryHelloHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryHelloHoldtime.IsNull() {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryHelloHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && !data.DiscoveryHelloInterval.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number && !data.DiscoveryHelloInterval.IsNull() {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	} else {
 		data.DiscoveryHelloInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && !data.DiscoveryHelloDualStackTlv.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String && !data.DiscoveryHelloDualStackTlv.IsNull() {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	} else {
 		data.DiscoveryHelloDualStackTlv = types.StringNull()
@@ -192,7 +192,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.DiscoveryQuickStartDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() && !data.IgpSyncDelayOnSessionUp.IsNull() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() && value.Type == gjson.Number && !data.IgpSyncDelayOnSessionUp.IsNull() {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	} else {
 		data.IgpSyncDelayOnSessionUp = types.Int64Null()
@@ -229,7 +229,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 				return true
 			},
 		)
-		if value := r.Get("af-name"); value.Exists() && !data.AddressFamily[i].AfName.IsNull() {
+		if value := r.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].AfName.IsNull() {
 			data.AddressFamily[i].AfName = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].AfName = types.StringNull()
@@ -243,7 +243,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 		} else {
 			data.AddressFamily[i].DiscoveryTransportAddressInterface = types.BoolNull()
 		}
-		if value := r.Get("discovery.transport-address.ip-address"); value.Exists() && !data.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() {
+		if value := r.Get("discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() {
 			data.AddressFamily[i].DiscoveryTransportAddressIp = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DiscoveryTransportAddressIp = types.StringNull()
@@ -274,13 +274,13 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "discovery.quick-start.disable"); value.Exists() {
@@ -288,7 +288,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DiscoveryQuickStartDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.disable"); value.Exists() {
@@ -300,7 +300,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 		data.AddressFamily = make([]MPLSLDPInterfaceAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPInterfaceAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() {
+			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discovery.transport-address.interface"); cValue.Exists() {
@@ -308,7 +308,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() {
+			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("igp.auto-config.disable"); cValue.Exists() {
@@ -332,13 +332,13 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "discovery.quick-start.disable"); value.Exists() {
@@ -346,7 +346,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.DiscoveryQuickStartDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.interface-sync-up-delay"); value.Exists() && value.Type == gjson.Number {
 		data.IgpSyncDelayOnSessionUp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "igp.sync.delay.on-session-up.disable"); value.Exists() {
@@ -358,7 +358,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 		data.AddressFamily = make([]MPLSLDPInterfaceAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPInterfaceAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() {
+			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discovery.transport-address.interface"); cValue.Exists() {
@@ -366,7 +366,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 			} else {
 				item.DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() {
+			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("igp.auto-config.disable"); cValue.Exists() {

@@ -101,7 +101,7 @@ func (data ExtcommunityBandwidthSet) GetRangeConstraints() []helpers.FieldRangeC
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ExtcommunityBandwidthSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *ExtcommunityBandwidthSet) updateFromBody(ctx context.Context, res []
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ExtcommunityBandwidthSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *ExtcommunityBandwidthSet) fromBody(ctx context.Context, res []byte, 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ExtcommunityBandwidthSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-bandwidth-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

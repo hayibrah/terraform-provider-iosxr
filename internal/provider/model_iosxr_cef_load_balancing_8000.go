@@ -232,7 +232,7 @@ func (data CEFLoadBalancing8000) GetRangeConstraints() []helpers.FieldRangeConst
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() && !data.PlatformLoadBalanceHashRotate.IsNull() {
+	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceHashRotate.IsNull() {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	} else {
 		data.PlatformLoadBalanceHashRotate = types.Int64Null()
@@ -260,17 +260,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv6-udp-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashOffset.IsNull() {
+		if value := r.Get("ipv6-udp-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv6-udp-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashSize.IsNull() {
+		if value := r.Get("ipv6-udp-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp[i].Ipv6UdpHashSize = types.Int64Null()
@@ -299,17 +299,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv6-tcp-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashOffset.IsNull() {
+		if value := r.Get("ipv6-tcp-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv6-tcp-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashSize.IsNull() {
+		if value := r.Get("ipv6-tcp-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp[i].Ipv6TcpHashSize = types.Int64Null()
@@ -338,17 +338,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv6-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashOffset.IsNull() {
+		if value := r.Get("ipv6-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv6-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashSize.IsNull() {
+		if value := r.Get("ipv6-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp[i].Ipv6HashSize = types.Int64Null()
@@ -377,17 +377,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv4-udp-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashOffset.IsNull() {
+		if value := r.Get("ipv4-udp-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv4-udp-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashSize.IsNull() {
+		if value := r.Get("ipv4-udp-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp[i].Ipv4UdpHashSize = types.Int64Null()
@@ -416,17 +416,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv4-tcp-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashOffset.IsNull() {
+		if value := r.Get("ipv4-tcp-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv4-tcp-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashSize.IsNull() {
+		if value := r.Get("ipv4-tcp-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp[i].Ipv4TcpHashSize = types.Int64Null()
@@ -455,17 +455,17 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("location-string"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].LocationString.IsNull() {
+		if value := r.Get("location-string"); value.Exists() && value.Type == gjson.String && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].LocationString.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].LocationString = types.StringValue(value.String())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].LocationString = types.StringNull()
 		}
-		if value := r.Get("ipv4-hash.offset"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashOffset.IsNull() {
+		if value := r.Get("ipv4-hash.offset"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashOffset.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashOffset = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashOffset = types.Int64Null()
 		}
-		if value := r.Get("ipv4-hash.size"); value.Exists() && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashSize.IsNull() {
+		if value := r.Get("ipv4-hash.size"); value.Exists() && value.Type == gjson.Number && !data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashSize.IsNull() {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashSize = types.Int64Value(value.Int())
 		} else {
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp[i].Ipv4HashSize = types.Int64Null()
@@ -487,20 +487,20 @@ func (data *CEFLoadBalancing8000) updateFromBody(ctx context.Context, res []byte
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() {
+	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() && value.Type == gjson.Number {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "platform.load-balance.fields.userdata.ipv6-udps.ipv6-udp"); value.Exists() {
 		data.PlatformLoadBalanceFieldsUserdataIpv6Udp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Udp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Udp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-udp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-udp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6UdpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-udp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-udp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6UdpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp = append(data.PlatformLoadBalanceFieldsUserdataIpv6Udp, item)
@@ -511,13 +511,13 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 		data.PlatformLoadBalanceFieldsUserdataIpv6Tcp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Tcp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Tcp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-tcp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-tcp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6TcpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-tcp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-tcp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6TcpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp = append(data.PlatformLoadBalanceFieldsUserdataIpv6Tcp, item)
@@ -528,13 +528,13 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 		data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6HashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6HashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp = append(data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp, item)
@@ -545,13 +545,13 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 		data.PlatformLoadBalanceFieldsUserdataIpv4Udp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Udp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Udp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-udp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-udp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4UdpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-udp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-udp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4UdpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp = append(data.PlatformLoadBalanceFieldsUserdataIpv4Udp, item)
@@ -562,13 +562,13 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 		data.PlatformLoadBalanceFieldsUserdataIpv4Tcp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Tcp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Tcp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-tcp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-tcp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4TcpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-tcp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-tcp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4TcpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp = append(data.PlatformLoadBalanceFieldsUserdataIpv4Tcp, item)
@@ -579,13 +579,13 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 		data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4HashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4HashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp = append(data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp, item)
@@ -604,20 +604,20 @@ func (data *CEFLoadBalancing8000) fromBody(ctx context.Context, res []byte, vers
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() {
+	if value := gjson.GetBytes(res, "platform.load-balance.hash.rotate"); value.Exists() && value.Type == gjson.Number {
 		data.PlatformLoadBalanceHashRotate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "platform.load-balance.fields.userdata.ipv6-udps.ipv6-udp"); value.Exists() {
 		data.PlatformLoadBalanceFieldsUserdataIpv6Udp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Udp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Udp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-udp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-udp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6UdpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-udp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-udp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6UdpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6Udp = append(data.PlatformLoadBalanceFieldsUserdataIpv6Udp, item)
@@ -628,13 +628,13 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, 
 		data.PlatformLoadBalanceFieldsUserdataIpv6Tcp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Tcp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6Tcp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-tcp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-tcp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6TcpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-tcp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-tcp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6TcpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6Tcp = append(data.PlatformLoadBalanceFieldsUserdataIpv6Tcp, item)
@@ -645,13 +645,13 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, 
 		data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv6-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6HashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv6-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv6-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv6HashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp = append(data.PlatformLoadBalanceFieldsUserdataIpv6NonTcpUdp, item)
@@ -662,13 +662,13 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, 
 		data.PlatformLoadBalanceFieldsUserdataIpv4Udp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Udp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Udp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-udp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-udp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4UdpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-udp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-udp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4UdpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4Udp = append(data.PlatformLoadBalanceFieldsUserdataIpv4Udp, item)
@@ -679,13 +679,13 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, 
 		data.PlatformLoadBalanceFieldsUserdataIpv4Tcp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Tcp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4Tcp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-tcp-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-tcp-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4TcpHashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-tcp-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-tcp-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4TcpHashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4Tcp = append(data.PlatformLoadBalanceFieldsUserdataIpv4Tcp, item)
@@ -696,13 +696,13 @@ func (data *CEFLoadBalancing8000Data) fromBody(ctx context.Context, res []byte, 
 		data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp = make([]CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CEFLoadBalancing8000PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp{}
-			if cValue := v.Get("location-string"); cValue.Exists() {
+			if cValue := v.Get("location-string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationString = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4-hash.offset"); cValue.Exists() {
+			if cValue := v.Get("ipv4-hash.offset"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4HashOffset = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("ipv4-hash.size"); cValue.Exists() {
+			if cValue := v.Get("ipv4-hash.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4HashSize = types.Int64Value(cValue.Int())
 			}
 			data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp = append(data.PlatformLoadBalanceFieldsUserdataIpv4NonTcpUdp, item)

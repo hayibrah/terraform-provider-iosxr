@@ -123,27 +123,27 @@ func (data RouterVRRPInterface) GetRangeConstraints() []helpers.FieldRangeConstr
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterVRRPInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() && !data.MacRefresh.IsNull() {
+	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() && value.Type == gjson.Number && !data.MacRefresh.IsNull() {
 		data.MacRefresh = types.Int64Value(value.Int())
 	} else {
 		data.MacRefresh = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() && !data.DelayMinimum.IsNull() {
+	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() && value.Type == gjson.Number && !data.DelayMinimum.IsNull() {
 		data.DelayMinimum = types.Int64Value(value.Int())
 	} else {
 		data.DelayMinimum = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() && !data.DelayReload.IsNull() {
+	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() && value.Type == gjson.Number && !data.DelayReload.IsNull() {
 		data.DelayReload = types.Int64Value(value.Int())
 	} else {
 		data.DelayReload = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && !data.BfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.BfdMinimumInterval.IsNull() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && !data.BfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.BfdMultiplier.IsNull() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.BfdMultiplier = types.Int64Null()
@@ -155,19 +155,19 @@ func (data *RouterVRRPInterface) updateFromBody(ctx context.Context, res []byte,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterVRRPInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() && value.Type == gjson.Number {
 		data.MacRefresh = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMinimum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() && value.Type == gjson.Number {
 		data.DelayReload = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 }
@@ -177,19 +177,19 @@ func (data *RouterVRRPInterface) fromBody(ctx context.Context, res []byte, versi
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterVRRPInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() {
+	if value := gjson.GetBytes(res, "mac-refresh"); value.Exists() && value.Type == gjson.Number {
 		data.MacRefresh = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.minimum"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMinimum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay.reload"); value.Exists() && value.Type == gjson.Number {
 		data.DelayReload = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 }

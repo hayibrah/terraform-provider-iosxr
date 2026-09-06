@@ -134,12 +134,12 @@ func (data *CryptoSSL) updateFromBody(ctx context.Context, res []byte, version s
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && !data.Profile[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profile[i].ProfileName.IsNull() {
 			data.Profile[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profile[i].ProfileName = types.StringNull()
 		}
-		if value := r.Get("certificate"); value.Exists() && !data.Profile[i].Certificate.IsNull() {
+		if value := r.Get("certificate"); value.Exists() && value.Type == gjson.String && !data.Profile[i].Certificate.IsNull() {
 			data.Profile[i].Certificate = types.StringValue(value.String())
 		} else {
 			data.Profile[i].Certificate = types.StringNull()
@@ -156,10 +156,10 @@ func (data *CryptoSSL) fromBody(ctx context.Context, res []byte, version string)
 		data.Profile = make([]CryptoSSLProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CryptoSSLProfile{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("certificate"); cValue.Exists() {
+			if cValue := v.Get("certificate"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Certificate = types.StringValue(cValue.String())
 			}
 			data.Profile = append(data.Profile, item)
@@ -177,10 +177,10 @@ func (data *CryptoSSLData) fromBody(ctx context.Context, res []byte, version str
 		data.Profile = make([]CryptoSSLProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CryptoSSLProfile{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("certificate"); cValue.Exists() {
+			if cValue := v.Get("certificate"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Certificate = types.StringValue(cValue.String())
 			}
 			data.Profile = append(data.Profile, item)

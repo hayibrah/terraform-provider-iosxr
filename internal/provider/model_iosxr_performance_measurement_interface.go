@@ -195,27 +195,27 @@ func (data *PerformanceMeasurementInterface) updateFromBody(ctx context.Context,
 	} else {
 		data.DelayMeasurementFallback = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() && !data.DelayMeasurementAdvertiseDelay.IsNull() {
+	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() && value.Type == gjson.Number && !data.DelayMeasurementAdvertiseDelay.IsNull() {
 		data.DelayMeasurementAdvertiseDelay = types.Int64Value(value.Int())
 	} else {
 		data.DelayMeasurementAdvertiseDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && !data.DelayMeasurementProfileName.IsNull() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String && !data.DelayMeasurementProfileName.IsNull() {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	} else {
 		data.DelayMeasurementProfileName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() && !data.DelayMeasurementStaticDelay.IsNull() {
+	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() && value.Type == gjson.Number && !data.DelayMeasurementStaticDelay.IsNull() {
 		data.DelayMeasurementStaticDelay = types.Int64Value(value.Int())
 	} else {
 		data.DelayMeasurementStaticDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() && !data.NextHopIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() && value.Type == gjson.String && !data.NextHopIpv4.IsNull() {
 		data.NextHopIpv4 = types.StringValue(value.String())
 	} else {
 		data.NextHopIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() && !data.NextHopIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() && value.Type == gjson.String && !data.NextHopIpv6.IsNull() {
 		data.NextHopIpv6 = types.StringValue(value.String())
 	} else {
 		data.NextHopIpv6 = types.StringNull()
@@ -229,7 +229,7 @@ func (data *PerformanceMeasurementInterface) updateFromBody(ctx context.Context,
 	} else {
 		data.PathTracing = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() && !data.PathTracingInterfaceId.IsNull() {
+	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() && value.Type == gjson.Number && !data.PathTracingInterfaceId.IsNull() {
 		data.PathTracingInterfaceId = types.Int64Value(value.Int())
 	} else {
 		data.PathTracingInterfaceId = types.Int64Null()
@@ -287,19 +287,19 @@ func (data *PerformanceMeasurementInterface) fromBody(ctx context.Context, res [
 	} else {
 		data.DelayMeasurementFallback = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMeasurementAdvertiseDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMeasurementStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.NextHopIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() && value.Type == gjson.String {
 		data.NextHopIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "path-tracing"); value.Exists() {
@@ -307,7 +307,7 @@ func (data *PerformanceMeasurementInterface) fromBody(ctx context.Context, res [
 	} else {
 		data.PathTracing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() && value.Type == gjson.Number {
 		data.PathTracingInterfaceId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "path-tracing.timestamp.template.st0"); value.Exists() {
@@ -347,19 +347,19 @@ func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, r
 	} else {
 		data.DelayMeasurementFallback = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.advertise-delay"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMeasurementAdvertiseDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.delay-profile.name"); value.Exists() && value.Type == gjson.String {
 		data.DelayMeasurementProfileName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "delay-measurement.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.DelayMeasurementStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "next-hop.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.NextHopIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "next-hop.ipv6"); value.Exists() && value.Type == gjson.String {
 		data.NextHopIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "path-tracing"); value.Exists() {
@@ -367,7 +367,7 @@ func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, r
 	} else {
 		data.PathTracing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() {
+	if value := gjson.GetBytes(res, "path-tracing.interface-id"); value.Exists() && value.Type == gjson.Number {
 		data.PathTracingInterfaceId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "path-tracing.timestamp.template.st0"); value.Exists() {

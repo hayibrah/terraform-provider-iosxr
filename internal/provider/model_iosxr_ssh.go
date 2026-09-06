@@ -455,7 +455,7 @@ func (data SSH) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() && !data.Timeout.IsNull() {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number && !data.Timeout.IsNull() {
 		data.Timeout = types.Int64Value(value.Int())
 	} else {
 		data.Timeout = types.Int64Null()
@@ -483,17 +483,17 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.ServerVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].VrfName.IsNull() {
 			data.ServerVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && !data.ServerVrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].Ipv4AccessList.IsNull() {
 			data.ServerVrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].Ipv4AccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.access-list"); value.Exists() && !data.ServerVrfs[i].Ipv6AccessList.IsNull() {
+		if value := r.Get("ipv6.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].Ipv6AccessList.IsNull() {
 			data.ServerVrfs[i].Ipv6AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].Ipv6AccessList = types.StringNull()
@@ -517,7 +517,7 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerV2 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() && !data.ServerRateLimit.IsNull() {
+	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() && value.Type == gjson.Number && !data.ServerRateLimit.IsNull() {
 		data.ServerRateLimit = types.Int64Value(value.Int())
 	} else {
 		data.ServerRateLimit = types.Int64Null()
@@ -567,7 +567,7 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerEnableCipher3desCbc = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() && !data.ServerSessionLimit.IsNull() {
+	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() && value.Type == gjson.Number && !data.ServerSessionLimit.IsNull() {
 		data.ServerSessionLimit = types.Int64Value(value.Int())
 	} else {
 		data.ServerSessionLimit = types.Int64Null()
@@ -581,12 +581,12 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerLogging = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() && !data.ServerDscp.IsNull() {
+	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() && value.Type == gjson.Number && !data.ServerDscp.IsNull() {
 		data.ServerDscp = types.Int64Value(value.Int())
 	} else {
 		data.ServerDscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() && !data.ServerNetconfPort.IsNull() {
+	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() && value.Type == gjson.Number && !data.ServerNetconfPort.IsNull() {
 		data.ServerNetconfPort = types.Int64Value(value.Int())
 	} else {
 		data.ServerNetconfPort = types.Int64Null()
@@ -614,17 +614,17 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.ServerNetconfVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].VrfName.IsNull() {
 			data.ServerNetconfVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && !data.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() {
 			data.ServerNetconfVrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].Ipv4AccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.access-list"); value.Exists() && !data.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() {
+		if value := r.Get("ipv6.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() {
 			data.ServerNetconfVrfs[i].Ipv6AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].Ipv6AccessList = types.StringNull()
@@ -639,12 +639,12 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerNetconfXml = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() && !data.ServerRekeyTime.IsNull() {
+	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() && value.Type == gjson.Number && !data.ServerRekeyTime.IsNull() {
 		data.ServerRekeyTime = types.Int64Value(value.Int())
 	} else {
 		data.ServerRekeyTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() && !data.ServerRekeyVolume.IsNull() {
+	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() && value.Type == gjson.Number && !data.ServerRekeyVolume.IsNull() {
 		data.ServerRekeyVolume = types.Int64Value(value.Int())
 	} else {
 		data.ServerRekeyVolume = types.Int64Null()
@@ -749,12 +749,12 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() && !data.ServerMaxAuthLimit.IsNull() {
+	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() && value.Type == gjson.Number && !data.ServerMaxAuthLimit.IsNull() {
 		data.ServerMaxAuthLimit = types.Int64Value(value.Int())
 	} else {
 		data.ServerMaxAuthLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() && !data.ServerTcpWindowScale.IsNull() {
+	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() && value.Type == gjson.Number && !data.ServerTcpWindowScale.IsNull() {
 		data.ServerTcpWindowScale = types.Int64Value(value.Int())
 	} else {
 		data.ServerTcpWindowScale = types.Int64Null()
@@ -768,7 +768,7 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ServerPortForwardingLocal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "server.port"); value.Exists() && !data.ServerPort.IsNull() {
+	if value := gjson.GetBytes(res, "server.port"); value.Exists() && value.Type == gjson.Number && !data.ServerPort.IsNull() {
 		data.ServerPort = types.Int64Value(value.Int())
 	} else {
 		data.ServerPort = types.Int64Null()
@@ -796,38 +796,38 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("username-name"); value.Exists() && !data.ServerUsernames[i].Username.IsNull() {
+		if value := r.Get("username-name"); value.Exists() && value.Type == gjson.String && !data.ServerUsernames[i].Username.IsNull() {
 			data.ServerUsernames[i].Username = types.StringValue(value.String())
 		} else {
 			data.ServerUsernames[i].Username = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && !data.ClientKnownhost.IsNull() {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String && !data.ClientKnownhost.IsNull() {
 		data.ClientKnownhost = types.StringValue(value.String())
 	} else {
 		data.ClientKnownhost = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && !data.ClientSourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String && !data.ClientSourceInterface.IsNull() {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	} else {
 		data.ClientSourceInterface = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && !data.ClientVrf.IsNull() {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String && !data.ClientVrf.IsNull() {
 		data.ClientVrf = types.StringValue(value.String())
 	} else {
 		data.ClientVrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && !data.ClientDscp.IsNull() {
+	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && value.Type == gjson.Number && !data.ClientDscp.IsNull() {
 		data.ClientDscp = types.Int64Value(value.Int())
 	} else {
 		data.ClientDscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() && !data.ClientRekeyTime.IsNull() {
+	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() && value.Type == gjson.Number && !data.ClientRekeyTime.IsNull() {
 		data.ClientRekeyTime = types.Int64Value(value.Int())
 	} else {
 		data.ClientRekeyTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() && !data.ClientRekeyVolume.IsNull() {
+	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() && value.Type == gjson.Number && !data.ClientRekeyVolume.IsNull() {
 		data.ClientRekeyVolume = types.Int64Value(value.Int())
 	} else {
 		data.ClientRekeyVolume = types.Int64Null()
@@ -887,7 +887,7 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ClientAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() && !data.ClientTcpWindowScale.IsNull() {
+	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() && value.Type == gjson.Number && !data.ClientTcpWindowScale.IsNull() {
 		data.ClientTcpWindowScale = types.Int64Value(value.Int())
 	} else {
 		data.ClientTcpWindowScale = types.Int64Null()
@@ -917,20 +917,20 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number {
 		data.Timeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.vrfs.vrf"); value.Exists() {
 		data.ServerVrfs = make([]SSHServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerVrfs = append(data.ServerVrfs, item)
@@ -947,7 +947,7 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerV2 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.disable.hmac.hmac-sha2-512"); value.Exists() {
@@ -975,7 +975,7 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerEnableCipher3desCbc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerSessionLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.logging"); value.Exists() {
@@ -983,23 +983,23 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerLogging = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.ServerDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerNetconfPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.netconf.vrfs.vrf"); value.Exists() {
 		data.ServerNetconfVrfs = make([]SSHServerNetconfVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerNetconfVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerNetconfVrfs = append(data.ServerNetconfVrfs, item)
@@ -1011,10 +1011,10 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerNetconfXml = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRekeyTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRekeyVolume = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.algorithms.key-exchanges.key-exchange"); value.Exists() {
@@ -1077,10 +1077,10 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerMaxAuthLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTcpWindowScale = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.port-forwarding.local"); value.Exists() {
@@ -1088,36 +1088,36 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerPortForwardingLocal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.usernames.username"); value.Exists() {
 		data.ServerUsernames = make([]SSHServerUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerUsernames{}
-			if cValue := v.Get("username-name"); cValue.Exists() {
+			if cValue := v.Get("username-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ServerUsernames = append(data.ServerUsernames, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String {
 		data.ClientKnownhost = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String {
 		data.ClientVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.ClientDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() && value.Type == gjson.Number {
 		data.ClientRekeyTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() && value.Type == gjson.Number {
 		data.ClientRekeyVolume = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "client.disable.hmac.hmac-sha1"); value.Exists() {
@@ -1155,7 +1155,7 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ClientAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() && value.Type == gjson.Number {
 		data.ClientTcpWindowScale = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "client.v2"); value.Exists() {
@@ -1175,20 +1175,20 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number {
 		data.Timeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.vrfs.vrf"); value.Exists() {
 		data.ServerVrfs = make([]SSHServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerVrfs = append(data.ServerVrfs, item)
@@ -1205,7 +1205,7 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerV2 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rate-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.disable.hmac.hmac-sha2-512"); value.Exists() {
@@ -1233,7 +1233,7 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerEnableCipher3desCbc = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.session-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerSessionLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.logging"); value.Exists() {
@@ -1241,23 +1241,23 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerLogging = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.ServerDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.netconf.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerNetconfPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.netconf.vrfs.vrf"); value.Exists() {
 		data.ServerNetconfVrfs = make([]SSHServerNetconfVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerNetconfVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerNetconfVrfs = append(data.ServerNetconfVrfs, item)
@@ -1269,10 +1269,10 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerNetconfXml = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rekey-time"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRekeyTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.rekey-volume"); value.Exists() && value.Type == gjson.Number {
 		data.ServerRekeyVolume = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.algorithms.key-exchanges.key-exchange"); value.Exists() {
@@ -1335,10 +1335,10 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.max-auth-limit"); value.Exists() && value.Type == gjson.Number {
 		data.ServerMaxAuthLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.tcp-window-scale"); value.Exists() && value.Type == gjson.Number {
 		data.ServerTcpWindowScale = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.port-forwarding.local"); value.Exists() {
@@ -1346,36 +1346,36 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ServerPortForwardingLocal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "server.port"); value.Exists() {
+	if value := gjson.GetBytes(res, "server.port"); value.Exists() && value.Type == gjson.Number {
 		data.ServerPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "server.usernames.username"); value.Exists() {
 		data.ServerUsernames = make([]SSHServerUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerUsernames{}
-			if cValue := v.Get("username-name"); cValue.Exists() {
+			if cValue := v.Get("username-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ServerUsernames = append(data.ServerUsernames, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String {
 		data.ClientKnownhost = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String {
 		data.ClientVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.ClientDscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.rekey-time"); value.Exists() && value.Type == gjson.Number {
 		data.ClientRekeyTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.rekey-volume"); value.Exists() && value.Type == gjson.Number {
 		data.ClientRekeyVolume = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "client.disable.hmac.hmac-sha1"); value.Exists() {
@@ -1413,7 +1413,7 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ClientAlgorithmsCiphers = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() {
+	if value := gjson.GetBytes(res, "client.tcp-window-scale"); value.Exists() && value.Type == gjson.Number {
 		data.ClientTcpWindowScale = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "client.v2"); value.Exists() {

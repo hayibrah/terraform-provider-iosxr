@@ -239,13 +239,13 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.GlobalAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.GlobalAddresses[i].Address.IsNull() {
 			data.GlobalAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.GlobalAddresses[i].Address = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() && !data.AddressLinklocal.IsNull() {
+	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() && value.Type == gjson.String && !data.AddressLinklocal.IsNull() {
 		data.AddressLinklocal = types.StringValue(value.String())
 	} else {
 		data.AddressLinklocal = types.StringNull()
@@ -259,27 +259,27 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.AddressLinklocalAutoconfig = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && !data.Priority.IsNull() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number && !data.Priority.IsNull() {
 		data.Priority = types.Int64Value(value.Int())
 	} else {
 		data.Priority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() && !data.Name.IsNull() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String && !data.Name.IsNull() {
 		data.Name = types.StringValue(value.String())
 	} else {
 		data.Name = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && !data.UnicastPeer.IsNull() {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String && !data.UnicastPeer.IsNull() {
 		data.UnicastPeer = types.StringValue(value.String())
 	} else {
 		data.UnicastPeer = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() && !data.TimerAdvertisementSeconds.IsNull() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() && value.Type == gjson.Number && !data.TimerAdvertisementSeconds.IsNull() {
 		data.TimerAdvertisementSeconds = types.Int64Value(value.Int())
 	} else {
 		data.TimerAdvertisementSeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() && !data.TimerAdvertisementMilliseconds.IsNull() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number && !data.TimerAdvertisementMilliseconds.IsNull() {
 		data.TimerAdvertisementMilliseconds = types.Int64Value(value.Int())
 	} else {
 		data.TimerAdvertisementMilliseconds = types.Int64Null()
@@ -302,7 +302,7 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.PreemptDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() && !data.PreemptDelay.IsNull() {
+	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() && value.Type == gjson.Number && !data.PreemptDelay.IsNull() {
 		data.PreemptDelay = types.Int64Value(value.Int())
 	} else {
 		data.PreemptDelay = types.Int64Null()
@@ -339,12 +339,12 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.TrackInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.TrackInterfaces[i].InterfaceName.IsNull() {
 			data.TrackInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.TrackInterfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("priority-decrement"); value.Exists() && !data.TrackInterfaces[i].PriorityDecrement.IsNull() {
+		if value := r.Get("priority-decrement"); value.Exists() && value.Type == gjson.Number && !data.TrackInterfaces[i].PriorityDecrement.IsNull() {
 			data.TrackInterfaces[i].PriorityDecrement = types.Int64Value(value.Int())
 		} else {
 			data.TrackInterfaces[i].PriorityDecrement = types.Int64Null()
@@ -373,18 +373,18 @@ func (data *RouterVRRPInterfaceIPv6) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && !data.TrackObjects[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.TrackObjects[i].ObjectName.IsNull() {
 			data.TrackObjects[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.TrackObjects[i].ObjectName = types.StringNull()
 		}
-		if value := r.Get("priority-decrement"); value.Exists() && !data.TrackObjects[i].PriorityDecrement.IsNull() {
+		if value := r.Get("priority-decrement"); value.Exists() && value.Type == gjson.Number && !data.TrackObjects[i].PriorityDecrement.IsNull() {
 			data.TrackObjects[i].PriorityDecrement = types.Int64Value(value.Int())
 		} else {
 			data.TrackObjects[i].PriorityDecrement = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() && !data.BfdFastDetectPeerIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() && value.Type == gjson.String && !data.BfdFastDetectPeerIpv6.IsNull() {
 		data.BfdFastDetectPeerIpv6 = types.StringValue(value.String())
 	} else {
 		data.BfdFastDetectPeerIpv6 = types.StringNull()
@@ -400,14 +400,14 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, v
 		data.GlobalAddresses = make([]RouterVRRPInterfaceIPv6GlobalAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6GlobalAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.GlobalAddresses = append(data.GlobalAddresses, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() && value.Type == gjson.String {
 		data.AddressLinklocal = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address.linklocal.autoconfig"); value.Exists() {
@@ -415,19 +415,19 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.AddressLinklocalAutoconfig = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
 		data.Name = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String {
 		data.UnicastPeer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
 		data.TimerAdvertisementSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
 		data.TimerAdvertisementMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timer.force"); value.Exists() {
@@ -440,7 +440,7 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.PreemptDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() && value.Type == gjson.Number {
 		data.PreemptDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "accept-mode.disable"); value.Exists() {
@@ -452,10 +452,10 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, v
 		data.TrackInterfaces = make([]RouterVRRPInterfaceIPv6TrackInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6TrackInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority-decrement"); cValue.Exists() {
+			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PriorityDecrement = types.Int64Value(cValue.Int())
 			}
 			data.TrackInterfaces = append(data.TrackInterfaces, item)
@@ -466,17 +466,17 @@ func (data *RouterVRRPInterfaceIPv6) fromBody(ctx context.Context, res []byte, v
 		data.TrackObjects = make([]RouterVRRPInterfaceIPv6TrackObjects, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6TrackObjects{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority-decrement"); cValue.Exists() {
+			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PriorityDecrement = types.Int64Value(cValue.Int())
 			}
 			data.TrackObjects = append(data.TrackObjects, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() && value.Type == gjson.String {
 		data.BfdFastDetectPeerIpv6 = types.StringValue(value.String())
 	}
 }
@@ -490,14 +490,14 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 		data.GlobalAddresses = make([]RouterVRRPInterfaceIPv6GlobalAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6GlobalAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.GlobalAddresses = append(data.GlobalAddresses, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() {
+	if value := gjson.GetBytes(res, "address.linklocal.linklocal-address"); value.Exists() && value.Type == gjson.String {
 		data.AddressLinklocal = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address.linklocal.autoconfig"); value.Exists() {
@@ -505,19 +505,19 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 	} else {
 		data.AddressLinklocalAutoconfig = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
 		data.Name = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String {
 		data.UnicastPeer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
 		data.TimerAdvertisementSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer.advertisement-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
 		data.TimerAdvertisementMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timer.force"); value.Exists() {
@@ -530,7 +530,7 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 	} else {
 		data.PreemptDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "preempt.delay"); value.Exists() && value.Type == gjson.Number {
 		data.PreemptDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "accept-mode.disable"); value.Exists() {
@@ -542,10 +542,10 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 		data.TrackInterfaces = make([]RouterVRRPInterfaceIPv6TrackInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6TrackInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority-decrement"); cValue.Exists() {
+			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PriorityDecrement = types.Int64Value(cValue.Int())
 			}
 			data.TrackInterfaces = append(data.TrackInterfaces, item)
@@ -556,17 +556,17 @@ func (data *RouterVRRPInterfaceIPv6Data) fromBody(ctx context.Context, res []byt
 		data.TrackObjects = make([]RouterVRRPInterfaceIPv6TrackObjects, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv6TrackObjects{}
-			if cValue := v.Get("object-name"); cValue.Exists() {
+			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority-decrement"); cValue.Exists() {
+			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PriorityDecrement = types.Int64Value(cValue.Int())
 			}
 			data.TrackObjects = append(data.TrackObjects, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv6"); value.Exists() && value.Type == gjson.String {
 		data.BfdFastDetectPeerIpv6 = types.StringValue(value.String())
 	}
 }

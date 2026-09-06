@@ -822,12 +822,12 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.MulticastRouteScale = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && !data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	} else {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && !data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	} else {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Null()
@@ -949,42 +949,42 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileTcamFormatAccessListIpv4FragmentOffset = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf1.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf1.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf1 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf2.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf2.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf2 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf3.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf3.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf3 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf4.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf4.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf4 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf5.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf5.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf5 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf5 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf6.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf6.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf6 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf6 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf7.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf7.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf7 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf7 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() && !data.ProfileTcamFormatAccessListIpv4Udf8.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv4Udf8.IsNull() {
 		data.ProfileTcamFormatAccessListIpv4Udf8 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv4Udf8 = types.StringNull()
@@ -1079,42 +1079,42 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileTcamFormatAccessListIpv6PacketLen = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf1.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf1.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf1 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf2.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf2.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf2 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf3.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf3.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf3 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf4.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf4.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf4 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf5.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf5.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf5 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf5 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf6.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf6.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf6 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf6 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf7.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf7.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf7 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf7 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() && !data.ProfileTcamFormatAccessListIpv6Udf8.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() && value.Type == gjson.String && !data.ProfileTcamFormatAccessListIpv6Udf8.IsNull() {
 		data.ProfileTcamFormatAccessListIpv6Udf8 = types.StringValue(value.String())
 	} else {
 		data.ProfileTcamFormatAccessListIpv6Udf8 = types.StringNull()
@@ -1155,17 +1155,17 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileQosVoqModeFairEight = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() && !data.ProfileQosL2Mode.IsNull() {
+	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() && value.Type == gjson.String && !data.ProfileQosL2Mode.IsNull() {
 		data.ProfileQosL2Mode = types.StringValue(value.String())
 	} else {
 		data.ProfileQosL2Mode = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() && !data.ProfileQosLowLatencyMode.IsNull() {
+	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() && value.Type == gjson.String && !data.ProfileQosLowLatencyMode.IsNull() {
 		data.ProfileQosLowLatencyMode = types.StringValue(value.String())
 	} else {
 		data.ProfileQosLowLatencyMode = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() && !data.ProfileQosIntraNpuOverFabric.IsNull() {
+	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() && value.Type == gjson.String && !data.ProfileQosIntraNpuOverFabric.IsNull() {
 		data.ProfileQosIntraNpuOverFabric = types.StringValue(value.String())
 	} else {
 		data.ProfileQosIntraNpuOverFabric = types.StringNull()
@@ -1188,27 +1188,27 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileQosHighWaterMarks = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() && !data.ProfileCefDarkBw.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() && value.Type == gjson.String && !data.ProfileCefDarkBw.IsNull() {
 		data.ProfileCefDarkBw = types.StringValue(value.String())
 	} else {
 		data.ProfileCefDarkBw = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() && !data.ProfileCefSropt.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() && value.Type == gjson.String && !data.ProfileCefSropt.IsNull() {
 		data.ProfileCefSropt = types.StringValue(value.String())
 	} else {
 		data.ProfileCefSropt = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() && !data.ProfileCefBgplu.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() && value.Type == gjson.String && !data.ProfileCefBgplu.IsNull() {
 		data.ProfileCefBgplu = types.StringValue(value.String())
 	} else {
 		data.ProfileCefBgplu = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() && !data.ProfileCefBgpluOverRsvpte.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() && value.Type == gjson.String && !data.ProfileCefBgpluOverRsvpte.IsNull() {
 		data.ProfileCefBgpluOverRsvpte = types.StringValue(value.String())
 	} else {
 		data.ProfileCefBgpluOverRsvpte = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() && !data.ProfileCefCbf.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() && value.Type == gjson.String && !data.ProfileCefCbf.IsNull() {
 		data.ProfileCefCbf = types.StringValue(value.String())
 	} else {
 		data.ProfileCefCbf = types.StringNull()
@@ -1218,7 +1218,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileCefCbfForwardClassList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() && !data.ProfileCefIpv6HopLimit.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() && value.Type == gjson.String && !data.ProfileCefIpv6HopLimit.IsNull() {
 		data.ProfileCefIpv6HopLimit = types.StringValue(value.String())
 	} else {
 		data.ProfileCefIpv6HopLimit = types.StringNull()
@@ -1232,7 +1232,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileCefLptsAcl = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && !data.ProfileCefLptsPifibEntryCounters.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number && !data.ProfileCefLptsPifibEntryCounters.IsNull() {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	} else {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Null()
@@ -1255,12 +1255,12 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileCefMplsoudpScale = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() && !data.ProfileCefStatsLabelAppDefault.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() && value.Type == gjson.String && !data.ProfileCefStatsLabelAppDefault.IsNull() {
 		data.ProfileCefStatsLabelAppDefault = types.StringValue(value.String())
 	} else {
 		data.ProfileCefStatsLabelAppDefault = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() && !data.ProfileCefTtlTunnelIpDecrement.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() && value.Type == gjson.String && !data.ProfileCefTtlTunnelIpDecrement.IsNull() {
 		data.ProfileCefTtlTunnelIpDecrement = types.StringValue(value.String())
 	} else {
 		data.ProfileCefTtlTunnelIpDecrement = types.StringNull()
@@ -1292,7 +1292,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileCefTeTunnelLabelOverTeCounters = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() && !data.ProfileCefIpRedirect.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() && value.Type == gjson.String && !data.ProfileCefIpRedirect.IsNull() {
 		data.ProfileCefIpRedirect = types.StringValue(value.String())
 	} else {
 		data.ProfileCefIpRedirect = types.StringNull()
@@ -1338,7 +1338,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.ProfileEncapExactInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.ProfileEncapExactInterfaces[i].InterfaceName.IsNull() {
 			data.ProfileEncapExactInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.ProfileEncapExactInterfaces[i].InterfaceName = types.StringNull()
@@ -1367,7 +1367,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfileEncapExactLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfileEncapExactLocations[i].LocationName.IsNull() {
 			data.ProfileEncapExactLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfileEncapExactLocations[i].LocationName = types.StringNull()
@@ -1391,7 +1391,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileEncapExactLocationsAllVirtual = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() && !data.ProfileStatsVoqsSharingCounters.IsNull() {
+	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() && value.Type == gjson.String && !data.ProfileStatsVoqsSharingCounters.IsNull() {
 		data.ProfileStatsVoqsSharingCounters = types.StringValue(value.String())
 	} else {
 		data.ProfileStatsVoqsSharingCounters = types.StringNull()
@@ -1414,7 +1414,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileStatsAclPermit = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() && !data.ProfileBwThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() && value.Type == gjson.String && !data.ProfileBwThreshold.IsNull() {
 		data.ProfileBwThreshold = types.StringValue(value.String())
 	} else {
 		data.ProfileBwThreshold = types.StringNull()
@@ -1442,7 +1442,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfilePriorityFlowControlLocations[i].LocationName.IsNull() {
 			data.ProfilePriorityFlowControlLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].LocationName = types.StringNull()
@@ -1470,17 +1470,17 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 					return true
 				},
 			)
-			if value := cr.Get("traffic-class-id"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId.IsNull() {
+			if value := cr.Get("traffic-class-id"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() {
+			if value := cr.Get("pause-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold-bytes"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() {
+			if value := cr.Get("pause-threshold-bytes"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes = types.Int64Null()
@@ -1494,7 +1494,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms = types.BoolNull()
 			}
-			if value := cr.Get("ms.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() {
+			if value := cr.Get("ms.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom = types.Int64Null()
@@ -1508,7 +1508,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us = types.BoolNull()
 			}
-			if value := cr.Get("us.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() {
+			if value := cr.Get("us.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom = types.Int64Null()
@@ -1522,7 +1522,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes = types.BoolNull()
 			}
-			if value := cr.Get("kbytes.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() {
+			if value := cr.Get("kbytes.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom = types.Int64Null()
@@ -1536,7 +1536,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes = types.BoolNull()
 			}
-			if value := cr.Get("mbytes.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() {
+			if value := cr.Get("mbytes.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom = types.Int64Null()
@@ -1565,32 +1565,32 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 					return true
 				},
 			)
-			if value := cr.Get("traffic-class-id"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId.IsNull() {
+			if value := cr.Get("traffic-class-id"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() {
+			if value := cr.Get("pause-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold = types.Int64Null()
 			}
-			if value := cr.Get("headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() {
+			if value := cr.Get("headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom = types.Int64Null()
 			}
-			if value := cr.Get("ecn"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() {
+			if value := cr.Get("ecn"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn = types.Int64Null()
 			}
-			if value := cr.Get("max-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() {
+			if value := cr.Get("max-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold = types.Int64Null()
 			}
-			if value := cr.Get("probability-percentage"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() {
+			if value := cr.Get("probability-percentage"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage = types.Int64Null()
@@ -1605,28 +1605,28 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcs = types.BoolNull()
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(value.Int())
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(value.Int())
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && !data.ProfileGueUdpDestPortIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortIpv4.IsNull() {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && !data.ProfileGueUdpDestPortIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortIpv6.IsNull() {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && !data.ProfileGueUdpDestPortMpls.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortMpls.IsNull() {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortMpls = types.Int64Null()
@@ -1654,7 +1654,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && !data.ProfileNpuBufferExtendedLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.ProfileNpuBufferExtendedLocations[i].LocationName.IsNull() {
 			data.ProfileNpuBufferExtendedLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.ProfileNpuBufferExtendedLocations[i].LocationName = types.StringNull()
@@ -1714,7 +1714,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileL2fibVxlanDcLeaf = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() && !data.ProfileNpuCompatibility.IsNull() {
+	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() && value.Type == gjson.String && !data.ProfileNpuCompatibility.IsNull() {
 		data.ProfileNpuCompatibility = types.StringValue(value.String())
 	} else {
 		data.ProfileNpuCompatibility = types.StringNull()
@@ -1758,10 +1758,10 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MulticastRouteScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.src-addr"); value.Exists() {
@@ -1829,28 +1829,28 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileTcamFormatAccessListIpv4FragmentOffset = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf1 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf2 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf5 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf7 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf8 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.src-addr"); value.Exists() {
@@ -1903,28 +1903,28 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileTcamFormatAccessListIpv6PacketLen = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf1 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf2 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf5 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf7 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf8 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.qos.voq-mode.four"); value.Exists() {
@@ -1947,13 +1947,13 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileQosVoqModeFairEight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosL2Mode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosLowLatencyMode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosIntraNpuOverFabric = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.qos.qos-stats-push-collection"); value.Exists() {
@@ -1966,19 +1966,19 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileQosHighWaterMarks = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefDarkBw = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefSropt = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefBgplu = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefBgpluOverRsvpte = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefCbf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.forward-class-lists.forward-class-list"); value.Exists() {
@@ -1986,7 +1986,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileCefCbfForwardClassList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefIpv6HopLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.lpts.acl"); value.Exists() {
@@ -1994,7 +1994,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileCefLptsAcl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.vxlan.ipv6-tnl-scale"); value.Exists() {
@@ -2007,10 +2007,10 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileCefMplsoudpScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefStatsLabelAppDefault = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefTtlTunnelIpDecrement = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.te-tunnel.highscale-no-ldp-over-te"); value.Exists() {
@@ -2028,7 +2028,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileCefTeTunnelLabelOverTeCounters = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefIpRedirect = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.unipath-surpf.enable"); value.Exists() {
@@ -2045,7 +2045,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 		data.ProfileEncapExactInterfaces = make([]HWModuleProfile8000ProfileEncapExactInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileEncapExactInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.ProfileEncapExactInterfaces = append(data.ProfileEncapExactInterfaces, item)
@@ -2056,7 +2056,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 		data.ProfileEncapExactLocations = make([]HWModuleProfile8000ProfileEncapExactLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileEncapExactLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			data.ProfileEncapExactLocations = append(data.ProfileEncapExactLocations, item)
@@ -2073,7 +2073,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileEncapExactLocationsAllVirtual = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() && value.Type == gjson.String {
 		data.ProfileStatsVoqsSharingCounters = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.stats.no-bvi-ingress"); value.Exists() {
@@ -2086,27 +2086,27 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileStatsAclPermit = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() && value.Type == gjson.String {
 		data.ProfileBwThreshold = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.priority-flow-control.locations.location"); value.Exists() {
 		data.ProfilePriorityFlowControlLocations = make([]HWModuleProfile8000ProfilePriorityFlowControlLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfilePriorityFlowControlLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("buffer-extended.traffic-class"); cValue.Exists() {
 				item.BufferExtendedTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThresholdBytes = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ms"); ccValue.Exists() {
@@ -2114,7 +2114,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Ms = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("us"); ccValue.Exists() {
@@ -2122,7 +2122,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Us = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("us.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("us.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.UsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("kbytes"); ccValue.Exists() {
@@ -2130,7 +2130,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Kbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.KbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("mbytes"); ccValue.Exists() {
@@ -2138,7 +2138,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Mbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					item.BufferExtendedTrafficClass = append(item.BufferExtendedTrafficClass, cItem)
@@ -2149,22 +2149,22 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 				item.BufferInternalTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Headroom = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ecn"); ccValue.Exists() {
+					if ccValue := cv.Get("ecn"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Ecn = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("max-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("max-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaxThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() {
+					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ProbabilityPercentage = types.Int64Value(ccValue.Int())
 					}
 					item.BufferInternalTrafficClass = append(item.BufferInternalTrafficClass, cItem)
@@ -2181,14 +2181,14 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 				item.NonPfcTcs = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -2198,20 +2198,20 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.npu.buffer-extended.locations.location"); value.Exists() {
 		data.ProfileNpuBufferExtendedLocations = make([]HWModuleProfile8000ProfileNpuBufferExtendedLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileNpuBufferExtendedLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bandwidth-congestion-detection.enable"); cValue.Exists() {
@@ -2248,7 +2248,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileL2fibVxlanDcLeaf = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() && value.Type == gjson.String {
 		data.ProfileNpuCompatibility = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.route.scale.ipv6-unicast.connected-prefix.high"); value.Exists() {
@@ -2278,10 +2278,10 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MulticastRouteScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.src-addr"); value.Exists() {
@@ -2349,28 +2349,28 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileTcamFormatAccessListIpv4FragmentOffset = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf1"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf1 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf2"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf2 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf3"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf4"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf5"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf5 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf6"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf7"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf7 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.udf8"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv4Udf8 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.src-addr"); value.Exists() {
@@ -2423,28 +2423,28 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileTcamFormatAccessListIpv6PacketLen = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf1"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf1 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf2"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf2 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf3"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf4"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf5"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf5 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf6"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf7"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf7 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv6.udf8"); value.Exists() && value.Type == gjson.String {
 		data.ProfileTcamFormatAccessListIpv6Udf8 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.qos.voq-mode.four"); value.Exists() {
@@ -2467,13 +2467,13 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileQosVoqModeFairEight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.l2-mode"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosL2Mode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.low-latency-mode"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosLowLatencyMode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.qos.intra-npu-over-fabric"); value.Exists() && value.Type == gjson.String {
 		data.ProfileQosIntraNpuOverFabric = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.qos.qos-stats-push-collection"); value.Exists() {
@@ -2486,19 +2486,19 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileQosHighWaterMarks = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.dark-bw"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefDarkBw = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.sropt"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefSropt = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefBgplu = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.bgplu-over-rsvpte"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefBgpluOverRsvpte = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.cbf"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefCbf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.forward-class-lists.forward-class-list"); value.Exists() {
@@ -2506,7 +2506,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileCefCbfForwardClassList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ipv6.hop-limit"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefIpv6HopLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.lpts.acl"); value.Exists() {
@@ -2514,7 +2514,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileCefLptsAcl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.vxlan.ipv6-tnl-scale"); value.Exists() {
@@ -2527,10 +2527,10 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileCefMplsoudpScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.stats.label.app-default"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefStatsLabelAppDefault = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ttl.tunnel-ip.decrement"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefTtlTunnelIpDecrement = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.te-tunnel.highscale-no-ldp-over-te"); value.Exists() {
@@ -2548,7 +2548,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileCefTeTunnelLabelOverTeCounters = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.cef.ip-redirect"); value.Exists() && value.Type == gjson.String {
 		data.ProfileCefIpRedirect = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.unipath-surpf.enable"); value.Exists() {
@@ -2565,7 +2565,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 		data.ProfileEncapExactInterfaces = make([]HWModuleProfile8000ProfileEncapExactInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileEncapExactInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.ProfileEncapExactInterfaces = append(data.ProfileEncapExactInterfaces, item)
@@ -2576,7 +2576,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 		data.ProfileEncapExactLocations = make([]HWModuleProfile8000ProfileEncapExactLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileEncapExactLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			data.ProfileEncapExactLocations = append(data.ProfileEncapExactLocations, item)
@@ -2593,7 +2593,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileEncapExactLocationsAllVirtual = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.stats.voqs-sharing-counters"); value.Exists() && value.Type == gjson.String {
 		data.ProfileStatsVoqsSharingCounters = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.stats.no-bvi-ingress"); value.Exists() {
@@ -2606,27 +2606,27 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileStatsAclPermit = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.bw-threshold"); value.Exists() && value.Type == gjson.String {
 		data.ProfileBwThreshold = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.priority-flow-control.locations.location"); value.Exists() {
 		data.ProfilePriorityFlowControlLocations = make([]HWModuleProfile8000ProfilePriorityFlowControlLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfilePriorityFlowControlLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("buffer-extended.traffic-class"); cValue.Exists() {
 				item.BufferExtendedTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThresholdBytes = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ms"); ccValue.Exists() {
@@ -2634,7 +2634,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Ms = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("us"); ccValue.Exists() {
@@ -2642,7 +2642,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Us = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("us.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("us.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.UsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("kbytes"); ccValue.Exists() {
@@ -2650,7 +2650,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Kbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.KbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("mbytes"); ccValue.Exists() {
@@ -2658,7 +2658,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Mbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					item.BufferExtendedTrafficClass = append(item.BufferExtendedTrafficClass, cItem)
@@ -2669,22 +2669,22 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 				item.BufferInternalTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("headroom"); ccValue.Exists() {
+					if ccValue := cv.Get("headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Headroom = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ecn"); ccValue.Exists() {
+					if ccValue := cv.Get("ecn"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Ecn = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("max-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("max-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaxThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() {
+					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ProbabilityPercentage = types.Int64Value(ccValue.Int())
 					}
 					item.BufferInternalTrafficClass = append(item.BufferInternalTrafficClass, cItem)
@@ -2701,14 +2701,14 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 				item.NonPfcTcs = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() && cValue.Type == gjson.Number {
 					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -2718,20 +2718,20 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.npu.buffer-extended.locations.location"); value.Exists() {
 		data.ProfileNpuBufferExtendedLocations = make([]HWModuleProfile8000ProfileNpuBufferExtendedLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := HWModuleProfile8000ProfileNpuBufferExtendedLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() {
+			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bandwidth-congestion-detection.enable"); cValue.Exists() {
@@ -2768,7 +2768,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileL2fibVxlanDcLeaf = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() {
+	if value := gjson.GetBytes(res, "profile.npu-compatibility"); value.Exists() && value.Type == gjson.String {
 		data.ProfileNpuCompatibility = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profile.route.scale.ipv6-unicast.connected-prefix.high"); value.Exists() {

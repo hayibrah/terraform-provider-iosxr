@@ -101,7 +101,7 @@ func (data ExtcommunityCostSet) GetRangeConstraints() []helpers.FieldRangeConstr
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ExtcommunityCostSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *ExtcommunityCostSet) updateFromBody(ctx context.Context, res []byte,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ExtcommunityCostSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *ExtcommunityCostSet) fromBody(ctx context.Context, res []byte, versi
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ExtcommunityCostSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-cost-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

@@ -770,12 +770,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.InterfacesDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() && !data.InterfacesDefaultProbeComputationInterval.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultProbeComputationInterval.IsNull() {
 		data.InterfacesDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultProbeComputationInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() && !data.InterfacesDefaultProbeTxInterval.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultProbeTxInterval.IsNull() {
 		data.InterfacesDefaultProbeTxInterval = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultProbeTxInterval = types.Int64Null()
@@ -798,12 +798,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.InterfacesDefaultProbeProtocolTwampLight = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() && !data.InterfacesDefaultProbeTosTrafficClass.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultProbeTosTrafficClass.IsNull() {
 		data.InterfacesDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultProbeTosTrafficClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() && !data.InterfacesDefaultProbeTosDscp.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultProbeTosDscp.IsNull() {
 		data.InterfacesDefaultProbeTosDscp = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultProbeTosDscp = types.Int64Null()
@@ -835,17 +835,17 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicDisabled = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() && !data.InterfacesDefaultAdvertisementPeriodicInterval.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementPeriodicInterval.IsNull() {
 		data.InterfacesDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() && !data.InterfacesDefaultAdvertisementPeriodicThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementPeriodicThreshold.IsNull() {
 		data.InterfacesDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() && !data.InterfacesDefaultAdvertisementPeriodicMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementPeriodicMinimumChange.IsNull() {
 		data.InterfacesDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicMinimumChange = types.Int64Null()
@@ -868,22 +868,22 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.InterfacesDefaultAdvertisementAccelerated = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() && !data.InterfacesDefaultAdvertisementAcceleratedThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementAcceleratedThreshold.IsNull() {
 		data.InterfacesDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementAcceleratedThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() && !data.InterfacesDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
 		data.InterfacesDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementAcceleratedMinimumChange = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && !data.InterfacesDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
 		data.InterfacesDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementAnomalyLossUpperBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && !data.InterfacesDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.InterfacesDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
 		data.InterfacesDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.InterfacesDefaultAdvertisementAnomalyLossLowerBound = types.Int64Null()
@@ -897,27 +897,27 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.SrPolicyDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() && !data.SrPolicyDefaultProbeComputationInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeComputationInterval.IsNull() {
 		data.SrPolicyDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeComputationInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && !data.SrPolicyDefaultProbeTxInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeTxInterval.IsNull() {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && !data.SrPolicyDefaultProbeStaticDelay.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeStaticDelay.IsNull() {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Null()
@@ -940,12 +940,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.SrPolicyDefaultProbeProtocolTwampLight = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() && !data.SrPolicyDefaultProbeTosTrafficClass.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeTosTrafficClass.IsNull() {
 		data.SrPolicyDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeTosTrafficClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && !data.SrPolicyDefaultProbeTosDscp.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultProbeTosDscp.IsNull() {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Null()
@@ -1022,17 +1022,17 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicDisabled = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() && !data.SrPolicyDefaultAdvertisementPeriodicInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementPeriodicInterval.IsNull() {
 		data.SrPolicyDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() && !data.SrPolicyDefaultAdvertisementPeriodicThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementPeriodicThreshold.IsNull() {
 		data.SrPolicyDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() && !data.SrPolicyDefaultAdvertisementPeriodicMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementPeriodicMinimumChange.IsNull() {
 		data.SrPolicyDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicMinimumChange = types.Int64Null()
@@ -1046,32 +1046,32 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.SrPolicyDefaultAdvertisementAccelerated = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() && !data.SrPolicyDefaultAdvertisementAcceleratedThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAcceleratedThreshold.IsNull() {
 		data.SrPolicyDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAcceleratedThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() && !data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
 		data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() && !data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() && !data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && !data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
 		data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && !data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
 		data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound = types.Int64Null()
@@ -1085,12 +1085,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefault = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && !data.EndpointDefaultProbeTxInterval.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeTxInterval.IsNull() {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeTxInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() && !data.EndpointDefaultProbeComputationInterval.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeComputationInterval.IsNull() {
 		data.EndpointDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeComputationInterval = types.Int64Null()
@@ -1109,27 +1109,27 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Null()
@@ -1161,7 +1161,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefaultProbeMeasurementModeLoopback = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && !data.EndpointDefaultProbeTosDscp.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultProbeTosDscp.IsNull() {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultProbeTosDscp = types.Int64Null()
@@ -1211,17 +1211,17 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicDisabled = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() && !data.EndpointDefaultAdvertisementPeriodicInterval.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementPeriodicInterval.IsNull() {
 		data.EndpointDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() && !data.EndpointDefaultAdvertisementPeriodicThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementPeriodicThreshold.IsNull() {
 		data.EndpointDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() && !data.EndpointDefaultAdvertisementPeriodicMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementPeriodicMinimumChange.IsNull() {
 		data.EndpointDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicMinimumChange = types.Int64Null()
@@ -1235,27 +1235,27 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefaultAdvertisementAccelerated = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() && !data.EndpointDefaultAdvertisementAcceleratedThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementAcceleratedThreshold.IsNull() {
 		data.EndpointDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementAcceleratedThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() && !data.EndpointDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
 		data.EndpointDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementAcceleratedMinimumChange = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() && !data.EndpointDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
 		data.EndpointDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() && !data.EndpointDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
 		data.EndpointDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && !data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
 		data.EndpointDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.EndpointDefaultAdvertisementAnomalyLossUpperBound = types.Int64Null()
@@ -1283,32 +1283,32 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && !data.Profiles[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProfileName.IsNull() {
 			data.Profiles[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProfileName = types.StringNull()
 		}
-		if value := r.Get("probe.computation-interval"); value.Exists() && !data.Profiles[i].ProbeComputationInterval.IsNull() {
+		if value := r.Get("probe.computation-interval"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeComputationInterval.IsNull() {
 			data.Profiles[i].ProbeComputationInterval = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeComputationInterval = types.Int64Null()
 		}
-		if value := r.Get("probe.tx-interval"); value.Exists() && !data.Profiles[i].ProbeTxInterval.IsNull() {
+		if value := r.Get("probe.tx-interval"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeTxInterval.IsNull() {
 			data.Profiles[i].ProbeTxInterval = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeTxInterval = types.Int64Null()
 		}
-		if value := r.Get("probe.static-delay"); value.Exists() && !data.Profiles[i].ProbeStaticDelay.IsNull() {
+		if value := r.Get("probe.static-delay"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeStaticDelay.IsNull() {
 			data.Profiles[i].ProbeStaticDelay = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeStaticDelay = types.Int64Null()
 		}
-		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
+		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringNull()
 		}
-		if value := r.Get("probe.sweep.destination.range"); value.Exists() && !data.Profiles[i].ProbeSweepDestinationRange.IsNull() {
+		if value := r.Get("probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeSweepDestinationRange.IsNull() {
 			data.Profiles[i].ProbeSweepDestinationRange = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeSweepDestinationRange = types.Int64Null()
@@ -1327,17 +1327,17 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 		}
-		if value := r.Get("probe.flow-label.from"); value.Exists() && !data.Profiles[i].ProbeFlowLabelFrom.IsNull() {
+		if value := r.Get("probe.flow-label.from"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelFrom.IsNull() {
 			data.Profiles[i].ProbeFlowLabelFrom = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelFrom = types.Int64Null()
 		}
-		if value := r.Get("probe.flow-label.to"); value.Exists() && !data.Profiles[i].ProbeFlowLabelTo.IsNull() {
+		if value := r.Get("probe.flow-label.to"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelTo.IsNull() {
 			data.Profiles[i].ProbeFlowLabelTo = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelTo = types.Int64Null()
 		}
-		if value := r.Get("probe.flow-label.increment"); value.Exists() && !data.Profiles[i].ProbeFlowLabelIncrement.IsNull() {
+		if value := r.Get("probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeFlowLabelIncrement.IsNull() {
 			data.Profiles[i].ProbeFlowLabelIncrement = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeFlowLabelIncrement = types.Int64Null()
@@ -1360,12 +1360,12 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].ProbeProtocolTwampLight = types.BoolNull()
 		}
-		if value := r.Get("probe.tos.traffic-class"); value.Exists() && !data.Profiles[i].ProbeTosTrafficClass.IsNull() {
+		if value := r.Get("probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeTosTrafficClass.IsNull() {
 			data.Profiles[i].ProbeTosTrafficClass = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeTosTrafficClass = types.Int64Null()
 		}
-		if value := r.Get("probe.tos.dscp"); value.Exists() && !data.Profiles[i].ProbeTosDscp.IsNull() {
+		if value := r.Get("probe.tos.dscp"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].ProbeTosDscp.IsNull() {
 			data.Profiles[i].ProbeTosDscp = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].ProbeTosDscp = types.Int64Null()
@@ -1442,17 +1442,17 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].AdvertisePeriodicDisabled = types.BoolNull()
 		}
-		if value := r.Get("advertisement.periodic.interval"); value.Exists() && !data.Profiles[i].AdvertisePeriodicInterval.IsNull() {
+		if value := r.Get("advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertisePeriodicInterval.IsNull() {
 			data.Profiles[i].AdvertisePeriodicInterval = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertisePeriodicInterval = types.Int64Null()
 		}
-		if value := r.Get("advertisement.periodic.threshold"); value.Exists() && !data.Profiles[i].AdvertisePeriodicThreshold.IsNull() {
+		if value := r.Get("advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertisePeriodicThreshold.IsNull() {
 			data.Profiles[i].AdvertisePeriodicThreshold = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertisePeriodicThreshold = types.Int64Null()
 		}
-		if value := r.Get("advertisement.periodic.minimum-change"); value.Exists() && !data.Profiles[i].AdvertisePeriodicMinimumChange.IsNull() {
+		if value := r.Get("advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertisePeriodicMinimumChange.IsNull() {
 			data.Profiles[i].AdvertisePeriodicMinimumChange = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertisePeriodicMinimumChange = types.Int64Null()
@@ -1466,32 +1466,32 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].AdvertiseAccelerated = types.BoolNull()
 		}
-		if value := r.Get("advertisement.accelerated.threshold"); value.Exists() && !data.Profiles[i].AdvertiseAcceleratedThreshold.IsNull() {
+		if value := r.Get("advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAcceleratedThreshold.IsNull() {
 			data.Profiles[i].AdvertiseAcceleratedThreshold = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAcceleratedThreshold = types.Int64Null()
 		}
-		if value := r.Get("advertisement.accelerated.minimum-change"); value.Exists() && !data.Profiles[i].AdvertiseAcceleratedMinimumChange.IsNull() {
+		if value := r.Get("advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAcceleratedMinimumChange.IsNull() {
 			data.Profiles[i].AdvertiseAcceleratedMinimumChange = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAcceleratedMinimumChange = types.Int64Null()
 		}
-		if value := r.Get("advertisement.anomaly-check.upper-bound"); value.Exists() && !data.Profiles[i].AdvertiseAnomalyCheckUpperBound.IsNull() {
+		if value := r.Get("advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAnomalyCheckUpperBound.IsNull() {
 			data.Profiles[i].AdvertiseAnomalyCheckUpperBound = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAnomalyCheckUpperBound = types.Int64Null()
 		}
-		if value := r.Get("advertisement.anomaly-check.lower-bound"); value.Exists() && !data.Profiles[i].AdvertiseAnomalyCheckLowerBound.IsNull() {
+		if value := r.Get("advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAnomalyCheckLowerBound.IsNull() {
 			data.Profiles[i].AdvertiseAnomalyCheckLowerBound = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAnomalyCheckLowerBound = types.Int64Null()
 		}
-		if value := r.Get("advertisement.anomaly-loss.upper-bound"); value.Exists() && !data.Profiles[i].AdvertiseAnomalyLossUpperBound.IsNull() {
+		if value := r.Get("advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAnomalyLossUpperBound.IsNull() {
 			data.Profiles[i].AdvertiseAnomalyLossUpperBound = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAnomalyLossUpperBound = types.Int64Null()
 		}
-		if value := r.Get("advertisement.anomaly-loss.lower-bound"); value.Exists() && !data.Profiles[i].AdvertiseAnomalyLossLowerBound.IsNull() {
+		if value := r.Get("advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].AdvertiseAnomalyLossLowerBound.IsNull() {
 			data.Profiles[i].AdvertiseAnomalyLossLowerBound = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].AdvertiseAnomalyLossLowerBound = types.Int64Null()
@@ -1550,10 +1550,10 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.InterfacesDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.probe.protocol.pm-mpls"); value.Exists() {
@@ -1566,10 +1566,10 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.InterfacesDefaultProbeProtocolTwampLight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -1587,13 +1587,13 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.advertisement.logging.delay-exceeded"); value.Exists() {
@@ -1606,16 +1606,16 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.InterfacesDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default"); value.Exists() {
@@ -1623,19 +1623,19 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.SrPolicyDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.protocol.pm-mpls"); value.Exists() {
@@ -1648,10 +1648,10 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.SrPolicyDefaultProbeProtocolTwampLight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -1694,13 +1694,13 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated"); value.Exists() {
@@ -1708,22 +1708,22 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.SrPolicyDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default"); value.Exists() {
@@ -1731,10 +1731,10 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.EndpointDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.explicits"); value.Exists() {
@@ -1747,19 +1747,19 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -1777,7 +1777,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.EndpointDefaultProbeMeasurementModeLoopback = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.advertisement.logging.delay-exceeded"); value.Exists() {
@@ -1805,13 +1805,13 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated"); value.Exists() {
@@ -1819,41 +1819,41 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	} else {
 		data.EndpointDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "names.name"); value.Exists() {
 		data.Profiles = make([]PerformanceMeasurementDelayProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementDelayProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.computation-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.computation-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeComputationInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tx-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.static-delay"); cValue.Exists() {
+			if cValue := v.Get("probe.static-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeStaticDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeSweepDestinationRange = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.flow-label.explicits"); cValue.Exists() {
@@ -1866,13 +1866,13 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			} else {
 				item.ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 			}
-			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelTo = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelIncrement = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.protocol.pm-mpls"); cValue.Exists() {
@@ -1885,10 +1885,10 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			} else {
 				item.ProbeProtocolTwampLight = types.BoolValue(false)
 			}
-			if cValue := v.Get("probe.tos.traffic-class"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosTrafficClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosDscp = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.measurement-mode.one-way"); cValue.Exists() {
@@ -1931,13 +1931,13 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			} else {
 				item.AdvertisePeriodicDisabled = types.BoolValue(false)
 			}
-			if cValue := v.Get("advertisement.periodic.interval"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.periodic.threshold"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.periodic.minimum-change"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.minimum-change"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicMinimumChange = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("advertisement.accelerated"); cValue.Exists() {
@@ -1945,22 +1945,22 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			} else {
 				item.AdvertiseAccelerated = types.BoolValue(false)
 			}
-			if cValue := v.Get("advertisement.accelerated.threshold"); cValue.Exists() {
+			if cValue := v.Get("advertisement.accelerated.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAcceleratedThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.accelerated.minimum-change"); cValue.Exists() {
+			if cValue := v.Get("advertisement.accelerated.minimum-change"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAcceleratedMinimumChange = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-check.upper-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-check.upper-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyCheckUpperBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-check.lower-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-check.lower-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyCheckLowerBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-loss.upper-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-loss.upper-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyLossUpperBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyLossLowerBound = types.Int64Value(cValue.Int())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
@@ -2024,10 +2024,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.InterfacesDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.probe.protocol.pm-mpls"); value.Exists() {
@@ -2040,10 +2040,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.InterfacesDefaultProbeProtocolTwampLight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -2061,13 +2061,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.InterfacesDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interfaces.default.advertisement.logging.delay-exceeded"); value.Exists() {
@@ -2080,16 +2080,16 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.InterfacesDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "interfaces.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.InterfacesDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default"); value.Exists() {
@@ -2097,19 +2097,19 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.SrPolicyDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.protocol.pm-mpls"); value.Exists() {
@@ -2122,10 +2122,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.SrPolicyDefaultProbeProtocolTwampLight = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.traffic-class"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosTrafficClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -2168,13 +2168,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.SrPolicyDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated"); value.Exists() {
@@ -2182,22 +2182,22 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.SrPolicyDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "sr-policy.default.advertisement.anomaly-loss.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default"); value.Exists() {
@@ -2205,10 +2205,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.EndpointDefault = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tx-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTxInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.computation-interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeComputationInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.explicits"); value.Exists() {
@@ -2221,19 +2221,19 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.EndpointDefaultProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.from"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelFrom = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.to"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelTo = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeSweepDestinationRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.one-way"); value.Exists() {
@@ -2251,7 +2251,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.EndpointDefaultProbeMeasurementModeLoopback = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.tos.dscp"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeTosDscp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.advertisement.logging.delay-exceeded"); value.Exists() {
@@ -2279,13 +2279,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.EndpointDefaultAdvertisementPeriodicDisabled = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.interval"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.periodic.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementPeriodicMinimumChange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated"); value.Exists() {
@@ -2293,41 +2293,41 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	} else {
 		data.EndpointDefaultAdvertisementAccelerated = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAcceleratedThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.accelerated.minimum-change"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAcceleratedMinimumChange = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyCheckUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-check.lower-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyCheckLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() {
+	if value := gjson.GetBytes(res, "endpoint.default.advertisement.anomaly-loss.upper-bound"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultAdvertisementAnomalyLossUpperBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "names.name"); value.Exists() {
 		data.Profiles = make([]PerformanceMeasurementDelayProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementDelayProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() {
+			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.computation-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.computation-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeComputationInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tx-interval"); cValue.Exists() {
+			if cValue := v.Get("probe.tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.static-delay"); cValue.Exists() {
+			if cValue := v.Get("probe.static-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeStaticDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() {
+			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeSweepDestinationRange = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.flow-label.explicits"); cValue.Exists() {
@@ -2340,13 +2340,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			} else {
 				item.ProbeFlowLabelExplicitList = types.ListNull(types.Int64Type)
 			}
-			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.from"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.to"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelTo = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() {
+			if cValue := v.Get("probe.flow-label.increment"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeFlowLabelIncrement = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.protocol.pm-mpls"); cValue.Exists() {
@@ -2359,10 +2359,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			} else {
 				item.ProbeProtocolTwampLight = types.BoolValue(false)
 			}
-			if cValue := v.Get("probe.tos.traffic-class"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosTrafficClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() {
+			if cValue := v.Get("probe.tos.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeTosDscp = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("probe.measurement-mode.one-way"); cValue.Exists() {
@@ -2405,13 +2405,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			} else {
 				item.AdvertisePeriodicDisabled = types.BoolValue(false)
 			}
-			if cValue := v.Get("advertisement.periodic.interval"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.periodic.threshold"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.periodic.minimum-change"); cValue.Exists() {
+			if cValue := v.Get("advertisement.periodic.minimum-change"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertisePeriodicMinimumChange = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("advertisement.accelerated"); cValue.Exists() {
@@ -2419,22 +2419,22 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			} else {
 				item.AdvertiseAccelerated = types.BoolValue(false)
 			}
-			if cValue := v.Get("advertisement.accelerated.threshold"); cValue.Exists() {
+			if cValue := v.Get("advertisement.accelerated.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAcceleratedThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.accelerated.minimum-change"); cValue.Exists() {
+			if cValue := v.Get("advertisement.accelerated.minimum-change"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAcceleratedMinimumChange = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-check.upper-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-check.upper-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyCheckUpperBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-check.lower-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-check.lower-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyCheckLowerBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-loss.upper-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-loss.upper-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyLossUpperBound = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() {
+			if cValue := v.Get("advertisement.anomaly-loss.lower-bound"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AdvertiseAnomalyLossLowerBound = types.Int64Value(cValue.Int())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {

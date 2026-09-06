@@ -101,7 +101,7 @@ func (data ExtcommunityRTSet) GetRangeConstraints() []helpers.FieldRangeConstrai
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ExtcommunityRTSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -113,7 +113,7 @@ func (data *ExtcommunityRTSet) updateFromBody(ctx context.Context, res []byte, v
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ExtcommunityRTSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -123,7 +123,7 @@ func (data *ExtcommunityRTSet) fromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ExtcommunityRTSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-rt-set"); value.Exists() && value.Type == gjson.String {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

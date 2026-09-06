@@ -435,12 +435,12 @@ func (data EthernetCFM) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() && !data.TracerouteCacheHoldTime.IsNull() {
+	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() && value.Type == gjson.Number && !data.TracerouteCacheHoldTime.IsNull() {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	} else {
 		data.TracerouteCacheHoldTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() && !data.TracerouteCacheSize.IsNull() {
+	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() && value.Type == gjson.Number && !data.TracerouteCacheSize.IsNull() {
 		data.TracerouteCacheSize = types.Int64Value(value.Int())
 	} else {
 		data.TracerouteCacheSize = types.Int64Null()
@@ -468,27 +468,27 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("domain-name"); value.Exists() && !data.Domains[i].DomainName.IsNull() {
+		if value := r.Get("domain-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].DomainName.IsNull() {
 			data.Domains[i].DomainName = types.StringValue(value.String())
 		} else {
 			data.Domains[i].DomainName = types.StringNull()
 		}
-		if value := r.Get("level"); value.Exists() && !data.Domains[i].Level.IsNull() {
+		if value := r.Get("level"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Level.IsNull() {
 			data.Domains[i].Level = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].Level = types.Int64Null()
 		}
-		if value := r.Get("id.dns"); value.Exists() && !data.Domains[i].IdDns.IsNull() {
+		if value := r.Get("id.dns"); value.Exists() && value.Type == gjson.String && !data.Domains[i].IdDns.IsNull() {
 			data.Domains[i].IdDns = types.StringValue(value.String())
 		} else {
 			data.Domains[i].IdDns = types.StringNull()
 		}
-		if value := r.Get("id.mac-address"); value.Exists() && !data.Domains[i].IdMacAddress.IsNull() {
+		if value := r.Get("id.mac-address"); value.Exists() && value.Type == gjson.String && !data.Domains[i].IdMacAddress.IsNull() {
 			data.Domains[i].IdMacAddress = types.StringValue(value.String())
 		} else {
 			data.Domains[i].IdMacAddress = types.StringNull()
 		}
-		if value := r.Get("id.mac-address-two-octet-integer"); value.Exists() && !data.Domains[i].IdMacAddressInteger.IsNull() {
+		if value := r.Get("id.mac-address-two-octet-integer"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].IdMacAddressInteger.IsNull() {
 			data.Domains[i].IdMacAddressInteger = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].IdMacAddressInteger = types.Int64Null()
@@ -502,7 +502,7 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.Domains[i].IdNull = types.BoolNull()
 		}
-		if value := r.Get("id.string"); value.Exists() && !data.Domains[i].IdString.IsNull() {
+		if value := r.Get("id.string"); value.Exists() && value.Type == gjson.String && !data.Domains[i].IdString.IsNull() {
 			data.Domains[i].IdString = types.StringValue(value.String())
 		} else {
 			data.Domains[i].IdString = types.StringNull()
@@ -530,17 +530,17 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 					return true
 				},
 			)
-			if value := cr.Get("service-name"); value.Exists() && !data.Domains[i].Services[ci].ServiceName.IsNull() {
+			if value := cr.Get("service-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].ServiceName.IsNull() {
 				data.Domains[i].Services[ci].ServiceName = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].ServiceName = types.StringNull()
 			}
-			if value := cr.Get("bridge.group"); value.Exists() && !data.Domains[i].Services[ci].BridgeGroup.IsNull() {
+			if value := cr.Get("bridge.group"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].BridgeGroup.IsNull() {
 				data.Domains[i].Services[ci].BridgeGroup = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].BridgeGroup = types.StringNull()
 			}
-			if value := cr.Get("bridge.bridge-domain"); value.Exists() && !data.Domains[i].Services[ci].BridgeDomain.IsNull() {
+			if value := cr.Get("bridge.bridge-domain"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].BridgeDomain.IsNull() {
 				data.Domains[i].Services[ci].BridgeDomain = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].BridgeDomain = types.StringNull()
@@ -554,82 +554,82 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 			} else {
 				data.Domains[i].Services[ci].DownMeps = types.BoolNull()
 			}
-			if value := cr.Get("flexible-xconnect.vlan-aware.evi"); value.Exists() && !data.Domains[i].Services[ci].FlexibleXconnectVlanAwareEvi.IsNull() {
+			if value := cr.Get("flexible-xconnect.vlan-aware.evi"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].FlexibleXconnectVlanAwareEvi.IsNull() {
 				data.Domains[i].Services[ci].FlexibleXconnectVlanAwareEvi = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].FlexibleXconnectVlanAwareEvi = types.Int64Null()
 			}
-			if value := cr.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); value.Exists() && !data.Domains[i].Services[ci].FlexibleXconnectVlanUnawareName.IsNull() {
+			if value := cr.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].FlexibleXconnectVlanUnawareName.IsNull() {
 				data.Domains[i].Services[ci].FlexibleXconnectVlanUnawareName = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].FlexibleXconnectVlanUnawareName = types.StringNull()
 			}
-			if value := cr.Get("xconnect.mp2mp.group"); value.Exists() && !data.Domains[i].Services[ci].XconnectMp2mpGroup.IsNull() {
+			if value := cr.Get("xconnect.mp2mp.group"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].XconnectMp2mpGroup.IsNull() {
 				data.Domains[i].Services[ci].XconnectMp2mpGroup = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].XconnectMp2mpGroup = types.StringNull()
 			}
-			if value := cr.Get("xconnect.mp2mp.cross-connect-name"); value.Exists() && !data.Domains[i].Services[ci].XconnectMp2mpName.IsNull() {
+			if value := cr.Get("xconnect.mp2mp.cross-connect-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].XconnectMp2mpName.IsNull() {
 				data.Domains[i].Services[ci].XconnectMp2mpName = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].XconnectMp2mpName = types.StringNull()
 			}
-			if value := cr.Get("xconnect.mp2mp.ce-id"); value.Exists() && !data.Domains[i].Services[ci].XconnectMp2mpCeId.IsNull() {
+			if value := cr.Get("xconnect.mp2mp.ce-id"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].XconnectMp2mpCeId.IsNull() {
 				data.Domains[i].Services[ci].XconnectMp2mpCeId = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].XconnectMp2mpCeId = types.Int64Null()
 			}
-			if value := cr.Get("xconnect.mp2mp.remote-ce-id"); value.Exists() && !data.Domains[i].Services[ci].XconnectMp2mpRemoteCeId.IsNull() {
+			if value := cr.Get("xconnect.mp2mp.remote-ce-id"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].XconnectMp2mpRemoteCeId.IsNull() {
 				data.Domains[i].Services[ci].XconnectMp2mpRemoteCeId = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].XconnectMp2mpRemoteCeId = types.Int64Null()
 			}
-			if value := cr.Get("xconnect.p2p.group"); value.Exists() && !data.Domains[i].Services[ci].XconnectP2pGroupName.IsNull() {
+			if value := cr.Get("xconnect.p2p.group"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].XconnectP2pGroupName.IsNull() {
 				data.Domains[i].Services[ci].XconnectP2pGroupName = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].XconnectP2pGroupName = types.StringNull()
 			}
-			if value := cr.Get("xconnect.p2p.cross-connect-name"); value.Exists() && !data.Domains[i].Services[ci].XconnectP2pXcName.IsNull() {
+			if value := cr.Get("xconnect.p2p.cross-connect-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].XconnectP2pXcName.IsNull() {
 				data.Domains[i].Services[ci].XconnectP2pXcName = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].XconnectP2pXcName = types.StringNull()
 			}
-			if value := cr.Get("id.icc-based.icc"); value.Exists() && !data.Domains[i].Services[ci].IdIccBasedIcc.IsNull() {
+			if value := cr.Get("id.icc-based.icc"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].IdIccBasedIcc.IsNull() {
 				data.Domains[i].Services[ci].IdIccBasedIcc = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].IdIccBasedIcc = types.StringNull()
 			}
-			if value := cr.Get("id.icc-based.umc"); value.Exists() && !data.Domains[i].Services[ci].IdIccBasedUmc.IsNull() {
+			if value := cr.Get("id.icc-based.umc"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].IdIccBasedUmc.IsNull() {
 				data.Domains[i].Services[ci].IdIccBasedUmc = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].IdIccBasedUmc = types.StringNull()
 			}
-			if value := cr.Get("id.vlanid"); value.Exists() && !data.Domains[i].Services[ci].IdVlanId.IsNull() {
+			if value := cr.Get("id.vlanid"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].IdVlanId.IsNull() {
 				data.Domains[i].Services[ci].IdVlanId = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].IdVlanId = types.Int64Null()
 			}
-			if value := cr.Get("id.number"); value.Exists() && !data.Domains[i].Services[ci].IdNumber.IsNull() {
+			if value := cr.Get("id.number"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].IdNumber.IsNull() {
 				data.Domains[i].Services[ci].IdNumber = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].IdNumber = types.Int64Null()
 			}
-			if value := cr.Get("id.string"); value.Exists() && !data.Domains[i].Services[ci].IdString.IsNull() {
+			if value := cr.Get("id.string"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].IdString.IsNull() {
 				data.Domains[i].Services[ci].IdString = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].IdString = types.StringNull()
 			}
-			if value := cr.Get("id.vpn-id.vpn-oui"); value.Exists() && !data.Domains[i].Services[ci].IdVpnIdOui.IsNull() {
+			if value := cr.Get("id.vpn-id.vpn-oui"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].IdVpnIdOui.IsNull() {
 				data.Domains[i].Services[ci].IdVpnIdOui = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].IdVpnIdOui = types.Int64Null()
 			}
-			if value := cr.Get("id.vpn-id.vpn-index"); value.Exists() && !data.Domains[i].Services[ci].IdVpnIdIndex.IsNull() {
+			if value := cr.Get("id.vpn-id.vpn-index"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].IdVpnIdIndex.IsNull() {
 				data.Domains[i].Services[ci].IdVpnIdIndex = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].IdVpnIdIndex = types.Int64Null()
 			}
-			if value := cr.Get("tags"); value.Exists() && !data.Domains[i].Services[ci].Tags.IsNull() {
+			if value := cr.Get("tags"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].Tags.IsNull() {
 				data.Domains[i].Services[ci].Tags = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].Tags = types.StringNull()
@@ -679,17 +679,17 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 			} else {
 				data.Domains[i].Services[ci].EfdProtectionSwitching = types.BoolNull()
 			}
-			if value := cr.Get("continuity-check.interval.interval-time"); value.Exists() && !data.Domains[i].Services[ci].ContinuityCheckInterval.IsNull() {
+			if value := cr.Get("continuity-check.interval.interval-time"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].ContinuityCheckInterval.IsNull() {
 				data.Domains[i].Services[ci].ContinuityCheckInterval = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].ContinuityCheckInterval = types.StringNull()
 			}
-			if value := cr.Get("continuity-check.interval.loss-threshold"); value.Exists() && !data.Domains[i].Services[ci].ContinuityCheckIntervalLossThreshold.IsNull() {
+			if value := cr.Get("continuity-check.interval.loss-threshold"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].ContinuityCheckIntervalLossThreshold.IsNull() {
 				data.Domains[i].Services[ci].ContinuityCheckIntervalLossThreshold = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].ContinuityCheckIntervalLossThreshold = types.Int64Null()
 			}
-			if value := cr.Get("continuity-check.archive.hold-time"); value.Exists() && !data.Domains[i].Services[ci].ContinuityCheckArchiveHoldTime.IsNull() {
+			if value := cr.Get("continuity-check.archive.hold-time"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].ContinuityCheckArchiveHoldTime.IsNull() {
 				data.Domains[i].Services[ci].ContinuityCheckArchiveHoldTime = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].ContinuityCheckArchiveHoldTime = types.Int64Null()
@@ -703,17 +703,17 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 			} else {
 				data.Domains[i].Services[ci].ContinuityCheckLossAutoTraceroute = types.BoolNull()
 			}
-			if value := cr.Get("maximum-meps"); value.Exists() && !data.Domains[i].Services[ci].MaximumMeps.IsNull() {
+			if value := cr.Get("maximum-meps"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].MaximumMeps.IsNull() {
 				data.Domains[i].Services[ci].MaximumMeps = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].MaximumMeps = types.Int64Null()
 			}
-			if value := cr.Get("ais.transmission.interval"); value.Exists() && !data.Domains[i].Services[ci].AisTransmissionInterval.IsNull() {
+			if value := cr.Get("ais.transmission.interval"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].AisTransmissionInterval.IsNull() {
 				data.Domains[i].Services[ci].AisTransmissionInterval = types.StringValue(value.String())
 			} else {
 				data.Domains[i].Services[ci].AisTransmissionInterval = types.StringNull()
 			}
-			if value := cr.Get("ais.transmission.cos"); value.Exists() && !data.Domains[i].Services[ci].AisTransmissionCos.IsNull() {
+			if value := cr.Get("ais.transmission.cos"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].AisTransmissionCos.IsNull() {
 				data.Domains[i].Services[ci].AisTransmissionCos = types.Int64Value(value.Int())
 			} else {
 				data.Domains[i].Services[ci].AisTransmissionCos = types.Int64Null()
@@ -795,12 +795,12 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 						return true
 					},
 				)
-				if value := ccr.Get("mep-id"); value.Exists() && !data.Domains[i].Services[ci].MepCrosschecks[cci].MepId.IsNull() {
+				if value := ccr.Get("mep-id"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Services[ci].MepCrosschecks[cci].MepId.IsNull() {
 					data.Domains[i].Services[ci].MepCrosschecks[cci].MepId = types.Int64Value(value.Int())
 				} else {
 					data.Domains[i].Services[ci].MepCrosschecks[cci].MepId = types.Int64Null()
 				}
-				if value := ccr.Get("mac-address"); value.Exists() && !data.Domains[i].Services[ci].MepCrosschecks[cci].MacAddress.IsNull() {
+				if value := ccr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.Domains[i].Services[ci].MepCrosschecks[cci].MacAddress.IsNull() {
 					data.Domains[i].Services[ci].MepCrosschecks[cci].MacAddress = types.StringValue(value.String())
 				} else {
 					data.Domains[i].Services[ci].MepCrosschecks[cci].MacAddress = types.StringNull()
@@ -950,29 +950,29 @@ func (data *EthernetCFM) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() && value.Type == gjson.Number {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() {
+	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() && value.Type == gjson.Number {
 		data.TracerouteCacheSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domains.domain"); value.Exists() {
 		data.Domains = make([]EthernetCFMDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EthernetCFMDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("level"); cValue.Exists() {
+			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Level = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("id.dns"); cValue.Exists() {
+			if cValue := v.Get("id.dns"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdDns = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("id.mac-address"); cValue.Exists() {
+			if cValue := v.Get("id.mac-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdMacAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("id.mac-address-two-octet-integer"); cValue.Exists() {
+			if cValue := v.Get("id.mac-address-two-octet-integer"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IdMacAddressInteger = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("id.null"); cValue.Exists() {
@@ -980,20 +980,20 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.IdNull = types.BoolValue(false)
 			}
-			if cValue := v.Get("id.string"); cValue.Exists() {
+			if cValue := v.Get("id.string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdString = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("services.service"); cValue.Exists() {
 				item.Services = make([]EthernetCFMDomainsServices, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := EthernetCFMDomainsServices{}
-					if ccValue := cv.Get("service-name"); ccValue.Exists() {
+					if ccValue := cv.Get("service-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ServiceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bridge.group"); ccValue.Exists() {
+					if ccValue := cv.Get("bridge.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BridgeGroup = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bridge.bridge-domain"); ccValue.Exists() {
+					if ccValue := cv.Get("bridge.bridge-domain"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BridgeDomain = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("down-meps"); ccValue.Exists() {
@@ -1001,52 +1001,52 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 					} else {
 						cItem.DownMeps = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("flexible-xconnect.vlan-aware.evi"); ccValue.Exists() {
+					if ccValue := cv.Get("flexible-xconnect.vlan-aware.evi"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.FlexibleXconnectVlanAwareEvi = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.FlexibleXconnectVlanUnawareName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.group"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectMp2mpGroup = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectMp2mpName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.ce-id"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.ce-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.XconnectMp2mpCeId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.remote-ce-id"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.remote-ce-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.XconnectMp2mpRemoteCeId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("xconnect.p2p.group"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.p2p.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectP2pGroupName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.p2p.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.p2p.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectP2pXcName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.icc-based.icc"); ccValue.Exists() {
+					if ccValue := cv.Get("id.icc-based.icc"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdIccBasedIcc = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.icc-based.umc"); ccValue.Exists() {
+					if ccValue := cv.Get("id.icc-based.umc"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdIccBasedUmc = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.vlanid"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vlanid"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVlanId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.number"); ccValue.Exists() {
+					if ccValue := cv.Get("id.number"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdNumber = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.string"); ccValue.Exists() {
+					if ccValue := cv.Get("id.string"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdString = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.vpn-id.vpn-oui"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vpn-id.vpn-oui"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVpnIdOui = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.vpn-id.vpn-index"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vpn-id.vpn-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVpnIdIndex = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("tags"); ccValue.Exists() {
+					if ccValue := cv.Get("tags"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Tags = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("mip.auto-create.all"); ccValue.Exists() {
@@ -1074,13 +1074,13 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 					} else {
 						cItem.EfdProtectionSwitching = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("continuity-check.interval.interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.interval.interval-time"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ContinuityCheckInterval = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("continuity-check.interval.loss-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.interval.loss-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ContinuityCheckIntervalLossThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("continuity-check.archive.hold-time"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.archive.hold-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ContinuityCheckArchiveHoldTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("continuity-check.loss.auto-traceroute"); ccValue.Exists() {
@@ -1088,13 +1088,13 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 					} else {
 						cItem.ContinuityCheckLossAutoTraceroute = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("maximum-meps"); ccValue.Exists() {
+					if ccValue := cv.Get("maximum-meps"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaximumMeps = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ais.transmission.interval"); ccValue.Exists() {
+					if ccValue := cv.Get("ais.transmission.interval"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.AisTransmissionInterval = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("ais.transmission.cos"); ccValue.Exists() {
+					if ccValue := cv.Get("ais.transmission.cos"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AisTransmissionCos = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("log.continuity-check.mep.changes"); ccValue.Exists() {
@@ -1131,10 +1131,10 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 						cItem.MepCrosschecks = make([]EthernetCFMDomainsServicesMepCrosschecks, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := EthernetCFMDomainsServicesMepCrosschecks{}
-							if cccValue := ccv.Get("mep-id"); cccValue.Exists() {
+							if cccValue := ccv.Get("mep-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.MepId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("mac-address"); cccValue.Exists() {
+							if cccValue := ccv.Get("mac-address"); cccValue.Exists() && cccValue.Type == gjson.String {
 								ccItem.MacAddress = types.StringValue(cccValue.String())
 							}
 							cItem.MepCrosschecks = append(cItem.MepCrosschecks, ccItem)
@@ -1231,29 +1231,29 @@ func (data *EthernetCFM) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() {
+	if value := gjson.GetBytes(res, "traceroute.cache.hold-time"); value.Exists() && value.Type == gjson.Number {
 		data.TracerouteCacheHoldTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() {
+	if value := gjson.GetBytes(res, "traceroute.cache.size"); value.Exists() && value.Type == gjson.Number {
 		data.TracerouteCacheSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domains.domain"); value.Exists() {
 		data.Domains = make([]EthernetCFMDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EthernetCFMDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() {
+			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("level"); cValue.Exists() {
+			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Level = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("id.dns"); cValue.Exists() {
+			if cValue := v.Get("id.dns"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdDns = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("id.mac-address"); cValue.Exists() {
+			if cValue := v.Get("id.mac-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdMacAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("id.mac-address-two-octet-integer"); cValue.Exists() {
+			if cValue := v.Get("id.mac-address-two-octet-integer"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IdMacAddressInteger = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("id.null"); cValue.Exists() {
@@ -1261,20 +1261,20 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.IdNull = types.BoolValue(false)
 			}
-			if cValue := v.Get("id.string"); cValue.Exists() {
+			if cValue := v.Get("id.string"); cValue.Exists() && cValue.Type == gjson.String {
 				item.IdString = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("services.service"); cValue.Exists() {
 				item.Services = make([]EthernetCFMDomainsServices, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := EthernetCFMDomainsServices{}
-					if ccValue := cv.Get("service-name"); ccValue.Exists() {
+					if ccValue := cv.Get("service-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ServiceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bridge.group"); ccValue.Exists() {
+					if ccValue := cv.Get("bridge.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BridgeGroup = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("bridge.bridge-domain"); ccValue.Exists() {
+					if ccValue := cv.Get("bridge.bridge-domain"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BridgeDomain = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("down-meps"); ccValue.Exists() {
@@ -1282,52 +1282,52 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version s
 					} else {
 						cItem.DownMeps = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("flexible-xconnect.vlan-aware.evi"); ccValue.Exists() {
+					if ccValue := cv.Get("flexible-xconnect.vlan-aware.evi"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.FlexibleXconnectVlanAwareEvi = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("flexible-xconnect.vlan-unaware.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.FlexibleXconnectVlanUnawareName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.group"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectMp2mpGroup = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectMp2mpName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.ce-id"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.ce-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.XconnectMp2mpCeId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("xconnect.mp2mp.remote-ce-id"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.mp2mp.remote-ce-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.XconnectMp2mpRemoteCeId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("xconnect.p2p.group"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.p2p.group"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectP2pGroupName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("xconnect.p2p.cross-connect-name"); ccValue.Exists() {
+					if ccValue := cv.Get("xconnect.p2p.cross-connect-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.XconnectP2pXcName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.icc-based.icc"); ccValue.Exists() {
+					if ccValue := cv.Get("id.icc-based.icc"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdIccBasedIcc = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.icc-based.umc"); ccValue.Exists() {
+					if ccValue := cv.Get("id.icc-based.umc"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdIccBasedUmc = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.vlanid"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vlanid"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVlanId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.number"); ccValue.Exists() {
+					if ccValue := cv.Get("id.number"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdNumber = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.string"); ccValue.Exists() {
+					if ccValue := cv.Get("id.string"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.IdString = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("id.vpn-id.vpn-oui"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vpn-id.vpn-oui"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVpnIdOui = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("id.vpn-id.vpn-index"); ccValue.Exists() {
+					if ccValue := cv.Get("id.vpn-id.vpn-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IdVpnIdIndex = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("tags"); ccValue.Exists() {
+					if ccValue := cv.Get("tags"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Tags = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("mip.auto-create.all"); ccValue.Exists() {
@@ -1355,13 +1355,13 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version s
 					} else {
 						cItem.EfdProtectionSwitching = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("continuity-check.interval.interval-time"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.interval.interval-time"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.ContinuityCheckInterval = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("continuity-check.interval.loss-threshold"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.interval.loss-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ContinuityCheckIntervalLossThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("continuity-check.archive.hold-time"); ccValue.Exists() {
+					if ccValue := cv.Get("continuity-check.archive.hold-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ContinuityCheckArchiveHoldTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("continuity-check.loss.auto-traceroute"); ccValue.Exists() {
@@ -1369,13 +1369,13 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version s
 					} else {
 						cItem.ContinuityCheckLossAutoTraceroute = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("maximum-meps"); ccValue.Exists() {
+					if ccValue := cv.Get("maximum-meps"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaximumMeps = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ais.transmission.interval"); ccValue.Exists() {
+					if ccValue := cv.Get("ais.transmission.interval"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.AisTransmissionInterval = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("ais.transmission.cos"); ccValue.Exists() {
+					if ccValue := cv.Get("ais.transmission.cos"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.AisTransmissionCos = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("log.continuity-check.mep.changes"); ccValue.Exists() {
@@ -1412,10 +1412,10 @@ func (data *EthernetCFMData) fromBody(ctx context.Context, res []byte, version s
 						cItem.MepCrosschecks = make([]EthernetCFMDomainsServicesMepCrosschecks, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := EthernetCFMDomainsServicesMepCrosschecks{}
-							if cccValue := ccv.Get("mep-id"); cccValue.Exists() {
+							if cccValue := ccv.Get("mep-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.MepId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("mac-address"); cccValue.Exists() {
+							if cccValue := ccv.Get("mac-address"); cccValue.Exists() && cccValue.Type == gjson.String {
 								ccItem.MacAddress = types.StringValue(cccValue.String())
 							}
 							cItem.MepCrosschecks = append(cItem.MepCrosschecks, ccItem)

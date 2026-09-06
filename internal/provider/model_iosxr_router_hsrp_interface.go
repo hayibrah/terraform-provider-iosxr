@@ -155,27 +155,27 @@ func (data *RouterHSRPInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.HsrpRedirectsDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() && !data.HsrpDelayMinimum.IsNull() {
+	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() && value.Type == gjson.Number && !data.HsrpDelayMinimum.IsNull() {
 		data.HsrpDelayMinimum = types.Int64Value(value.Int())
 	} else {
 		data.HsrpDelayMinimum = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() && !data.HsrpDelayReload.IsNull() {
+	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() && value.Type == gjson.Number && !data.HsrpDelayReload.IsNull() {
 		data.HsrpDelayReload = types.Int64Value(value.Int())
 	} else {
 		data.HsrpDelayReload = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() && !data.HsrpBfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.HsrpBfdMinimumInterval.IsNull() {
 		data.HsrpBfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.HsrpBfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() && !data.HsrpBfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.HsrpBfdMultiplier.IsNull() {
 		data.HsrpBfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.HsrpBfdMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() && !data.HsrpMacRefresh.IsNull() {
+	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() && value.Type == gjson.Number && !data.HsrpMacRefresh.IsNull() {
 		data.HsrpMacRefresh = types.Int64Value(value.Int())
 	} else {
 		data.HsrpMacRefresh = types.Int64Null()
@@ -197,19 +197,19 @@ func (data *RouterHSRPInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.HsrpRedirectsDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpDelayMinimum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpDelayReload = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpBfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpBfdMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpMacRefresh = types.Int64Value(value.Int())
 	}
 }
@@ -229,19 +229,19 @@ func (data *RouterHSRPInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.HsrpRedirectsDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.delay.minimum"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpDelayMinimum = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.delay.reload"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpDelayReload = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpBfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpBfdMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() {
+	if value := gjson.GetBytes(res, "hsrp.mac-refresh"); value.Exists() && value.Type == gjson.Number {
 		data.HsrpMacRefresh = types.Int64Value(value.Int())
 	}
 }

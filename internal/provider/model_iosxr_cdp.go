@@ -133,12 +133,12 @@ func (data *CDP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Enable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && !data.Holdtime.IsNull() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number && !data.Holdtime.IsNull() {
 		data.Holdtime = types.Int64Value(value.Int())
 	} else {
 		data.Holdtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() && !data.Timer.IsNull() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number && !data.Timer.IsNull() {
 		data.Timer = types.Int64Value(value.Int())
 	} else {
 		data.Timer = types.Int64Null()
@@ -173,10 +173,10 @@ func (data *CDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Enable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
 		data.Timer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "advertise.v1"); value.Exists() {
@@ -201,10 +201,10 @@ func (data *CDPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Enable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
 		data.Timer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "advertise.v1"); value.Exists() {

@@ -886,62 +886,62 @@ func (data NTP) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && !data.Ipv4Precedence.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && value.Type == gjson.String && !data.Ipv4Precedence.IsNull() {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv4Precedence = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && !data.Ipv6Precedence.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && value.Type == gjson.String && !data.Ipv6Precedence.IsNull() {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv6Precedence = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() && !data.AccessGroupIpv6Peer.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv6Peer.IsNull() {
 		data.AccessGroupIpv6Peer = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv6Peer = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() && !data.AccessGroupIpv6QueryOnly.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv6QueryOnly.IsNull() {
 		data.AccessGroupIpv6QueryOnly = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv6QueryOnly = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() && !data.AccessGroupIpv6Serve.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv6Serve.IsNull() {
 		data.AccessGroupIpv6Serve = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv6Serve = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() && !data.AccessGroupIpv6ServeOnly.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv6ServeOnly.IsNull() {
 		data.AccessGroupIpv6ServeOnly = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv6ServeOnly = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() && !data.AccessGroupIpv4Peer.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv4Peer.IsNull() {
 		data.AccessGroupIpv4Peer = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv4Peer = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() && !data.AccessGroupIpv4QueryOnly.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv4QueryOnly.IsNull() {
 		data.AccessGroupIpv4QueryOnly = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv4QueryOnly = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() && !data.AccessGroupIpv4Serve.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv4Serve.IsNull() {
 		data.AccessGroupIpv4Serve = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv4Serve = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() && !data.AccessGroupIpv4ServeOnly.IsNull() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupIpv4ServeOnly.IsNull() {
 		data.AccessGroupIpv4ServeOnly = types.StringValue(value.String())
 	} else {
 		data.AccessGroupIpv4ServeOnly = types.StringNull()
@@ -969,47 +969,47 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.AccessGroupVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].VrfName.IsNull() {
 			data.AccessGroupVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv6.peer"); value.Exists() && !data.AccessGroupVrfs[i].Ipv6Peer.IsNull() {
+		if value := r.Get("ipv6.peer"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv6Peer.IsNull() {
 			data.AccessGroupVrfs[i].Ipv6Peer = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv6Peer = types.StringNull()
 		}
-		if value := r.Get("ipv6.query-only"); value.Exists() && !data.AccessGroupVrfs[i].Ipv6QueryOnly.IsNull() {
+		if value := r.Get("ipv6.query-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv6QueryOnly.IsNull() {
 			data.AccessGroupVrfs[i].Ipv6QueryOnly = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv6QueryOnly = types.StringNull()
 		}
-		if value := r.Get("ipv6.serve"); value.Exists() && !data.AccessGroupVrfs[i].Ipv6Serve.IsNull() {
+		if value := r.Get("ipv6.serve"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv6Serve.IsNull() {
 			data.AccessGroupVrfs[i].Ipv6Serve = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv6Serve = types.StringNull()
 		}
-		if value := r.Get("ipv6.serve-only"); value.Exists() && !data.AccessGroupVrfs[i].Ipv6ServeOnly.IsNull() {
+		if value := r.Get("ipv6.serve-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv6ServeOnly.IsNull() {
 			data.AccessGroupVrfs[i].Ipv6ServeOnly = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv6ServeOnly = types.StringNull()
 		}
-		if value := r.Get("ipv4.peer"); value.Exists() && !data.AccessGroupVrfs[i].Ipv4Peer.IsNull() {
+		if value := r.Get("ipv4.peer"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv4Peer.IsNull() {
 			data.AccessGroupVrfs[i].Ipv4Peer = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv4Peer = types.StringNull()
 		}
-		if value := r.Get("ipv4.query-only"); value.Exists() && !data.AccessGroupVrfs[i].Ipv4QueryOnly.IsNull() {
+		if value := r.Get("ipv4.query-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv4QueryOnly.IsNull() {
 			data.AccessGroupVrfs[i].Ipv4QueryOnly = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv4QueryOnly = types.StringNull()
 		}
-		if value := r.Get("ipv4.serve"); value.Exists() && !data.AccessGroupVrfs[i].Ipv4Serve.IsNull() {
+		if value := r.Get("ipv4.serve"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv4Serve.IsNull() {
 			data.AccessGroupVrfs[i].Ipv4Serve = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv4Serve = types.StringNull()
 		}
-		if value := r.Get("ipv4.serve-only"); value.Exists() && !data.AccessGroupVrfs[i].Ipv4ServeOnly.IsNull() {
+		if value := r.Get("ipv4.serve-only"); value.Exists() && value.Type == gjson.String && !data.AccessGroupVrfs[i].Ipv4ServeOnly.IsNull() {
 			data.AccessGroupVrfs[i].Ipv4ServeOnly = types.StringValue(value.String())
 		} else {
 			data.AccessGroupVrfs[i].Ipv4ServeOnly = types.StringNull()
@@ -1047,7 +1047,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("key-number"); value.Exists() && !data.AuthenticationKeys[i].KeyNumber.IsNull() {
+		if value := r.Get("key-number"); value.Exists() && value.Type == gjson.Number && !data.AuthenticationKeys[i].KeyNumber.IsNull() {
 			data.AuthenticationKeys[i].KeyNumber = types.Int64Value(value.Int())
 		} else {
 			data.AuthenticationKeys[i].KeyNumber = types.Int64Null()
@@ -1076,7 +1076,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("key-number"); value.Exists() && !data.CmacAuthenticationKeys[i].KeyNumber.IsNull() {
+		if value := r.Get("key-number"); value.Exists() && value.Type == gjson.Number && !data.CmacAuthenticationKeys[i].KeyNumber.IsNull() {
 			data.CmacAuthenticationKeys[i].KeyNumber = types.Int64Value(value.Int())
 		} else {
 			data.CmacAuthenticationKeys[i].KeyNumber = types.Int64Null()
@@ -1105,7 +1105,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("key-number"); value.Exists() && !data.HmacSha1AuthenticationKeys[i].KeyNumber.IsNull() {
+		if value := r.Get("key-number"); value.Exists() && value.Type == gjson.Number && !data.HmacSha1AuthenticationKeys[i].KeyNumber.IsNull() {
 			data.HmacSha1AuthenticationKeys[i].KeyNumber = types.Int64Value(value.Int())
 		} else {
 			data.HmacSha1AuthenticationKeys[i].KeyNumber = types.Int64Null()
@@ -1134,18 +1134,18 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("key-number"); value.Exists() && !data.HmacSha2AuthenticationKeys[i].KeyNumber.IsNull() {
+		if value := r.Get("key-number"); value.Exists() && value.Type == gjson.Number && !data.HmacSha2AuthenticationKeys[i].KeyNumber.IsNull() {
 			data.HmacSha2AuthenticationKeys[i].KeyNumber = types.Int64Value(value.Int())
 		} else {
 			data.HmacSha2AuthenticationKeys[i].KeyNumber = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() && !data.Broadcastdelay.IsNull() {
+	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() && value.Type == gjson.Number && !data.Broadcastdelay.IsNull() {
 		data.Broadcastdelay = types.Int64Value(value.Int())
 	} else {
 		data.Broadcastdelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() && !data.DriftAgingTime.IsNull() {
+	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() && value.Type == gjson.Number && !data.DriftAgingTime.IsNull() {
 		data.DriftAgingTime = types.Int64Value(value.Int())
 	} else {
 		data.DriftAgingTime = types.Int64Null()
@@ -1213,7 +1213,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.DriftFileHarddisk = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() && !data.DriftFilename.IsNull() {
+	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() && value.Type == gjson.String && !data.DriftFilename.IsNull() {
 		data.DriftFilename = types.StringValue(value.String())
 	} else {
 		data.DriftFilename = types.StringNull()
@@ -1241,7 +1241,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -1255,17 +1255,17 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Interfaces[i].BroadcastClient = types.BoolNull()
 		}
-		if value := r.Get("broadcast.destination"); value.Exists() && !data.Interfaces[i].BroadcastDestination.IsNull() {
+		if value := r.Get("broadcast.destination"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].BroadcastDestination.IsNull() {
 			data.Interfaces[i].BroadcastDestination = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].BroadcastDestination = types.StringNull()
 		}
-		if value := r.Get("broadcast.key"); value.Exists() && !data.Interfaces[i].BroadcastKey.IsNull() {
+		if value := r.Get("broadcast.key"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].BroadcastKey.IsNull() {
 			data.Interfaces[i].BroadcastKey = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].BroadcastKey = types.Int64Null()
 		}
-		if value := r.Get("broadcast.version"); value.Exists() && !data.Interfaces[i].BroadcastVersion.IsNull() {
+		if value := r.Get("broadcast.version"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].BroadcastVersion.IsNull() {
 			data.Interfaces[i].BroadcastVersion = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].BroadcastVersion = types.Int64Null()
@@ -1303,7 +1303,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.InterfaceVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.InterfaceVrfs[i].VrfName.IsNull() {
 			data.InterfaceVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.InterfaceVrfs[i].VrfName = types.StringNull()
@@ -1331,7 +1331,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && !data.InterfaceVrfs[i].Interfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.InterfaceVrfs[i].Interfaces[ci].InterfaceName.IsNull() {
 				data.InterfaceVrfs[i].Interfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.InterfaceVrfs[i].Interfaces[ci].InterfaceName = types.StringNull()
@@ -1345,17 +1345,17 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastClient = types.BoolNull()
 			}
-			if value := cr.Get("broadcast.destination"); value.Exists() && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastDestination.IsNull() {
+			if value := cr.Get("broadcast.destination"); value.Exists() && value.Type == gjson.String && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastDestination.IsNull() {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastDestination = types.StringValue(value.String())
 			} else {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastDestination = types.StringNull()
 			}
-			if value := cr.Get("broadcast.key"); value.Exists() && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastKey.IsNull() {
+			if value := cr.Get("broadcast.key"); value.Exists() && value.Type == gjson.Number && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastKey.IsNull() {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastKey = types.Int64Value(value.Int())
 			} else {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastKey = types.Int64Null()
 			}
-			if value := cr.Get("broadcast.version"); value.Exists() && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastVersion.IsNull() {
+			if value := cr.Get("broadcast.version"); value.Exists() && value.Type == gjson.Number && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastVersion.IsNull() {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastVersion = types.Int64Value(value.Int())
 			} else {
 				data.InterfaceVrfs[i].Interfaces[ci].BroadcastVersion = types.Int64Null()
@@ -1371,7 +1371,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() && !data.PrimaryStratumNumber.IsNull() {
+	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() && value.Type == gjson.Number && !data.PrimaryStratumNumber.IsNull() {
 		data.PrimaryStratumNumber = types.Int64Value(value.Int())
 	} else {
 		data.PrimaryStratumNumber = types.Int64Null()
@@ -1385,7 +1385,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.PrimaryReferenceClock = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "max-associations"); value.Exists() && !data.MaxAssociations.IsNull() {
+	if value := gjson.GetBytes(res, "max-associations"); value.Exists() && value.Type == gjson.Number && !data.MaxAssociations.IsNull() {
 		data.MaxAssociations = types.Int64Value(value.Int())
 	} else {
 		data.MaxAssociations = types.Int64Null()
@@ -1413,32 +1413,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv4PeersServers[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv4PeersServers[i].Address.IsNull() {
 			data.Ipv4PeersServers[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4PeersServers[i].Address = types.StringNull()
 		}
-		if value := r.Get("type"); value.Exists() && !data.Ipv4PeersServers[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.Ipv4PeersServers[i].Type.IsNull() {
 			data.Ipv4PeersServers[i].Type = types.StringValue(value.String())
 		} else {
 			data.Ipv4PeersServers[i].Type = types.StringNull()
 		}
-		if value := r.Get("version"); value.Exists() && !data.Ipv4PeersServers[i].Version.IsNull() {
+		if value := r.Get("version"); value.Exists() && value.Type == gjson.Number && !data.Ipv4PeersServers[i].Version.IsNull() {
 			data.Ipv4PeersServers[i].Version = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4PeersServers[i].Version = types.Int64Null()
 		}
-		if value := r.Get("key"); value.Exists() && !data.Ipv4PeersServers[i].Key.IsNull() {
+		if value := r.Get("key"); value.Exists() && value.Type == gjson.Number && !data.Ipv4PeersServers[i].Key.IsNull() {
 			data.Ipv4PeersServers[i].Key = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4PeersServers[i].Key = types.Int64Null()
 		}
-		if value := r.Get("minpoll"); value.Exists() && !data.Ipv4PeersServers[i].Minpoll.IsNull() {
+		if value := r.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.Ipv4PeersServers[i].Minpoll.IsNull() {
 			data.Ipv4PeersServers[i].Minpoll = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4PeersServers[i].Minpoll = types.Int64Null()
 		}
-		if value := r.Get("maxpoll"); value.Exists() && !data.Ipv4PeersServers[i].Maxpoll.IsNull() {
+		if value := r.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.Ipv4PeersServers[i].Maxpoll.IsNull() {
 			data.Ipv4PeersServers[i].Maxpoll = types.Int64Value(value.Int())
 		} else {
 			data.Ipv4PeersServers[i].Maxpoll = types.Int64Null()
@@ -1470,7 +1470,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4PeersServers[i].Iburst = types.BoolNull()
 		}
-		if value := r.Get("source"); value.Exists() && !data.Ipv4PeersServers[i].Source.IsNull() {
+		if value := r.Get("source"); value.Exists() && value.Type == gjson.String && !data.Ipv4PeersServers[i].Source.IsNull() {
 			data.Ipv4PeersServers[i].Source = types.StringValue(value.String())
 		} else {
 			data.Ipv4PeersServers[i].Source = types.StringNull()
@@ -1499,32 +1499,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.Ipv6PeersServers[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Ipv6PeersServers[i].Address.IsNull() {
 			data.Ipv6PeersServers[i].Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6PeersServers[i].Address = types.StringNull()
 		}
-		if value := r.Get("type"); value.Exists() && !data.Ipv6PeersServers[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.Ipv6PeersServers[i].Type.IsNull() {
 			data.Ipv6PeersServers[i].Type = types.StringValue(value.String())
 		} else {
 			data.Ipv6PeersServers[i].Type = types.StringNull()
 		}
-		if value := r.Get("version"); value.Exists() && !data.Ipv6PeersServers[i].Version.IsNull() {
+		if value := r.Get("version"); value.Exists() && value.Type == gjson.Number && !data.Ipv6PeersServers[i].Version.IsNull() {
 			data.Ipv6PeersServers[i].Version = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6PeersServers[i].Version = types.Int64Null()
 		}
-		if value := r.Get("key"); value.Exists() && !data.Ipv6PeersServers[i].Key.IsNull() {
+		if value := r.Get("key"); value.Exists() && value.Type == gjson.Number && !data.Ipv6PeersServers[i].Key.IsNull() {
 			data.Ipv6PeersServers[i].Key = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6PeersServers[i].Key = types.Int64Null()
 		}
-		if value := r.Get("minpoll"); value.Exists() && !data.Ipv6PeersServers[i].Minpoll.IsNull() {
+		if value := r.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.Ipv6PeersServers[i].Minpoll.IsNull() {
 			data.Ipv6PeersServers[i].Minpoll = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6PeersServers[i].Minpoll = types.Int64Null()
 		}
-		if value := r.Get("maxpoll"); value.Exists() && !data.Ipv6PeersServers[i].Maxpoll.IsNull() {
+		if value := r.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.Ipv6PeersServers[i].Maxpoll.IsNull() {
 			data.Ipv6PeersServers[i].Maxpoll = types.Int64Value(value.Int())
 		} else {
 			data.Ipv6PeersServers[i].Maxpoll = types.Int64Null()
@@ -1556,12 +1556,12 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6PeersServers[i].Iburst = types.BoolNull()
 		}
-		if value := r.Get("source"); value.Exists() && !data.Ipv6PeersServers[i].Source.IsNull() {
+		if value := r.Get("source"); value.Exists() && value.Type == gjson.String && !data.Ipv6PeersServers[i].Source.IsNull() {
 			data.Ipv6PeersServers[i].Source = types.StringValue(value.String())
 		} else {
 			data.Ipv6PeersServers[i].Source = types.StringNull()
 		}
-		if value := r.Get("ipv6-address"); value.Exists() && !data.Ipv6PeersServers[i].Ipv6Address.IsNull() {
+		if value := r.Get("ipv6-address"); value.Exists() && value.Type == gjson.String && !data.Ipv6PeersServers[i].Ipv6Address.IsNull() {
 			data.Ipv6PeersServers[i].Ipv6Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6PeersServers[i].Ipv6Address = types.StringNull()
@@ -1590,32 +1590,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("fqdn-hostname"); value.Exists() && !data.HostnamePeersServers[i].FqdnHostname.IsNull() {
+		if value := r.Get("fqdn-hostname"); value.Exists() && value.Type == gjson.String && !data.HostnamePeersServers[i].FqdnHostname.IsNull() {
 			data.HostnamePeersServers[i].FqdnHostname = types.StringValue(value.String())
 		} else {
 			data.HostnamePeersServers[i].FqdnHostname = types.StringNull()
 		}
-		if value := r.Get("type"); value.Exists() && !data.HostnamePeersServers[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.HostnamePeersServers[i].Type.IsNull() {
 			data.HostnamePeersServers[i].Type = types.StringValue(value.String())
 		} else {
 			data.HostnamePeersServers[i].Type = types.StringNull()
 		}
-		if value := r.Get("version"); value.Exists() && !data.HostnamePeersServers[i].Version.IsNull() {
+		if value := r.Get("version"); value.Exists() && value.Type == gjson.Number && !data.HostnamePeersServers[i].Version.IsNull() {
 			data.HostnamePeersServers[i].Version = types.Int64Value(value.Int())
 		} else {
 			data.HostnamePeersServers[i].Version = types.Int64Null()
 		}
-		if value := r.Get("key"); value.Exists() && !data.HostnamePeersServers[i].Key.IsNull() {
+		if value := r.Get("key"); value.Exists() && value.Type == gjson.Number && !data.HostnamePeersServers[i].Key.IsNull() {
 			data.HostnamePeersServers[i].Key = types.Int64Value(value.Int())
 		} else {
 			data.HostnamePeersServers[i].Key = types.Int64Null()
 		}
-		if value := r.Get("minpoll"); value.Exists() && !data.HostnamePeersServers[i].Minpoll.IsNull() {
+		if value := r.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.HostnamePeersServers[i].Minpoll.IsNull() {
 			data.HostnamePeersServers[i].Minpoll = types.Int64Value(value.Int())
 		} else {
 			data.HostnamePeersServers[i].Minpoll = types.Int64Null()
 		}
-		if value := r.Get("maxpoll"); value.Exists() && !data.HostnamePeersServers[i].Maxpoll.IsNull() {
+		if value := r.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.HostnamePeersServers[i].Maxpoll.IsNull() {
 			data.HostnamePeersServers[i].Maxpoll = types.Int64Value(value.Int())
 		} else {
 			data.HostnamePeersServers[i].Maxpoll = types.Int64Null()
@@ -1647,7 +1647,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.HostnamePeersServers[i].Iburst = types.BoolNull()
 		}
-		if value := r.Get("source"); value.Exists() && !data.HostnamePeersServers[i].Source.IsNull() {
+		if value := r.Get("source"); value.Exists() && value.Type == gjson.String && !data.HostnamePeersServers[i].Source.IsNull() {
 			data.HostnamePeersServers[i].Source = types.StringValue(value.String())
 		} else {
 			data.HostnamePeersServers[i].Source = types.StringNull()
@@ -1676,7 +1676,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.PeersServersVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].VrfName.IsNull() {
 			data.PeersServersVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.PeersServersVrfs[i].VrfName = types.StringNull()
@@ -1704,32 +1704,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Address.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Address = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("type"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Type.IsNull() {
+			if value := cr.Get("type"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Type.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Type = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Type = types.StringNull()
 			}
-			if value := cr.Get("version"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Version.IsNull() {
+			if value := cr.Get("version"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Version.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Version = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Version = types.Int64Null()
 			}
-			if value := cr.Get("key"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Key.IsNull() {
+			if value := cr.Get("key"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Key.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Key = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Key = types.Int64Null()
 			}
-			if value := cr.Get("minpoll"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Minpoll.IsNull() {
+			if value := cr.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Minpoll.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Minpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Minpoll = types.Int64Null()
 			}
-			if value := cr.Get("maxpoll"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Maxpoll.IsNull() {
+			if value := cr.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Maxpoll.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Maxpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Maxpoll = types.Int64Null()
@@ -1761,7 +1761,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Iburst = types.BoolNull()
 			}
-			if value := cr.Get("source"); value.Exists() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Source.IsNull() {
+			if value := cr.Get("source"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Source.IsNull() {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Source = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv4PeersServers[ci].Source = types.StringNull()
@@ -1790,32 +1790,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Address.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Address = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("type"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Type.IsNull() {
+			if value := cr.Get("type"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Type.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Type = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Type = types.StringNull()
 			}
-			if value := cr.Get("version"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Version.IsNull() {
+			if value := cr.Get("version"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Version.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Version = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Version = types.Int64Null()
 			}
-			if value := cr.Get("key"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Key.IsNull() {
+			if value := cr.Get("key"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Key.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Key = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Key = types.Int64Null()
 			}
-			if value := cr.Get("minpoll"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Minpoll.IsNull() {
+			if value := cr.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Minpoll.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Minpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Minpoll = types.Int64Null()
 			}
-			if value := cr.Get("maxpoll"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Maxpoll.IsNull() {
+			if value := cr.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Maxpoll.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Maxpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Maxpoll = types.Int64Null()
@@ -1847,12 +1847,12 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Iburst = types.BoolNull()
 			}
-			if value := cr.Get("source"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Source.IsNull() {
+			if value := cr.Get("source"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Source.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Source = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Source = types.StringNull()
 			}
-			if value := cr.Get("ipv6-address"); value.Exists() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Ipv6Address.IsNull() {
+			if value := cr.Get("ipv6-address"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Ipv6Address.IsNull() {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Ipv6Address = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].Ipv6PeersServers[ci].Ipv6Address = types.StringNull()
@@ -1881,32 +1881,32 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("fqdn-hostname"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].FqdnHostname.IsNull() {
+			if value := cr.Get("fqdn-hostname"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].HostnamePeersServers[ci].FqdnHostname.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].FqdnHostname = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].FqdnHostname = types.StringNull()
 			}
-			if value := cr.Get("type"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Type.IsNull() {
+			if value := cr.Get("type"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Type.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Type = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Type = types.StringNull()
 			}
-			if value := cr.Get("version"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Version.IsNull() {
+			if value := cr.Get("version"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Version.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Version = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Version = types.Int64Null()
 			}
-			if value := cr.Get("key"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Key.IsNull() {
+			if value := cr.Get("key"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Key.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Key = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Key = types.Int64Null()
 			}
-			if value := cr.Get("minpoll"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Minpoll.IsNull() {
+			if value := cr.Get("minpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Minpoll.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Minpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Minpoll = types.Int64Null()
 			}
-			if value := cr.Get("maxpoll"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Maxpoll.IsNull() {
+			if value := cr.Get("maxpoll"); value.Exists() && value.Type == gjson.Number && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Maxpoll.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Maxpoll = types.Int64Value(value.Int())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Maxpoll = types.Int64Null()
@@ -1938,7 +1938,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Iburst = types.BoolNull()
 			}
-			if value := cr.Get("source"); value.Exists() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Source.IsNull() {
+			if value := cr.Get("source"); value.Exists() && value.Type == gjson.String && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Source.IsNull() {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Source = types.StringValue(value.String())
 			} else {
 				data.PeersServersVrfs[i].HostnamePeersServers[ci].Source = types.StringNull()
@@ -1968,7 +1968,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("key-number"); value.Exists() && !data.TrustedKeys[i].KeyNumber.IsNull() {
+		if value := r.Get("key-number"); value.Exists() && value.Type == gjson.Number && !data.TrustedKeys[i].KeyNumber.IsNull() {
 			data.TrustedKeys[i].KeyNumber = types.Int64Value(value.Int())
 		} else {
 			data.TrustedKeys[i].KeyNumber = types.Int64Null()
@@ -2001,7 +2001,7 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Passive = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() && !data.SourceInterfaceName.IsNull() {
+	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() && value.Type == gjson.String && !data.SourceInterfaceName.IsNull() {
 		data.SourceInterfaceName = types.StringValue(value.String())
 	} else {
 		data.SourceInterfaceName = types.StringNull()
@@ -2029,33 +2029,33 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && !data.SourceVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.SourceVrfs[i].VrfName.IsNull() {
 			data.SourceVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.SourceVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("interface-name"); value.Exists() && !data.SourceVrfs[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.SourceVrfs[i].InterfaceName.IsNull() {
 			data.SourceVrfs[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.SourceVrfs[i].InterfaceName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() && !data.AdminPlaneVersion.IsNull() {
+	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() && value.Type == gjson.Number && !data.AdminPlaneVersion.IsNull() {
 		data.AdminPlaneVersion = types.Int64Value(value.Int())
 	} else {
 		data.AdminPlaneVersion = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() && !data.AdminPlaneKey.IsNull() {
+	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() && value.Type == gjson.Number && !data.AdminPlaneKey.IsNull() {
 		data.AdminPlaneKey = types.Int64Value(value.Int())
 	} else {
 		data.AdminPlaneKey = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() && !data.AdminPlaneMinpoll.IsNull() {
+	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() && value.Type == gjson.Number && !data.AdminPlaneMinpoll.IsNull() {
 		data.AdminPlaneMinpoll = types.Int64Value(value.Int())
 	} else {
 		data.AdminPlaneMinpoll = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() && !data.AdminPlaneMaxpoll.IsNull() {
+	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() && value.Type == gjson.Number && !data.AdminPlaneMaxpoll.IsNull() {
 		data.AdminPlaneMaxpoll = types.Int64Value(value.Int())
 	} else {
 		data.AdminPlaneMaxpoll = types.Int64Null()
@@ -2094,71 +2094,71 @@ func (data *NTP) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6Peer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6QueryOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6Serve = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6ServeOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4Peer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4QueryOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4Serve = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4ServeOnly = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "access-group.vrfs.vrf"); value.Exists() {
 		data.AccessGroupVrfs = make([]NTPAccessGroupVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPAccessGroupVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.peer"); cValue.Exists() {
+			if cValue := v.Get("ipv6.peer"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Peer = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.query-only"); cValue.Exists() {
+			if cValue := v.Get("ipv6.query-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6QueryOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.serve"); cValue.Exists() {
+			if cValue := v.Get("ipv6.serve"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Serve = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.serve-only"); cValue.Exists() {
+			if cValue := v.Get("ipv6.serve-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServeOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.peer"); cValue.Exists() {
+			if cValue := v.Get("ipv4.peer"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Peer = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.query-only"); cValue.Exists() {
+			if cValue := v.Get("ipv4.query-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4QueryOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.serve"); cValue.Exists() {
+			if cValue := v.Get("ipv4.serve"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Serve = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.serve-only"); cValue.Exists() {
+			if cValue := v.Get("ipv4.serve-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServeOnly = types.StringValue(cValue.String())
 			}
 			data.AccessGroupVrfs = append(data.AccessGroupVrfs, item)
@@ -2174,7 +2174,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.AuthenticationKeys = make([]NTPAuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPAuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.AuthenticationKeys = append(data.AuthenticationKeys, item)
@@ -2185,7 +2185,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.CmacAuthenticationKeys = make([]NTPCmacAuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPCmacAuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.CmacAuthenticationKeys = append(data.CmacAuthenticationKeys, item)
@@ -2196,7 +2196,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.HmacSha1AuthenticationKeys = make([]NTPHmacSha1AuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHmacSha1AuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.HmacSha1AuthenticationKeys = append(data.HmacSha1AuthenticationKeys, item)
@@ -2207,17 +2207,17 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.HmacSha2AuthenticationKeys = make([]NTPHmacSha2AuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHmacSha2AuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.HmacSha2AuthenticationKeys = append(data.HmacSha2AuthenticationKeys, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() {
+	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() && value.Type == gjson.Number {
 		data.Broadcastdelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() {
+	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() && value.Type == gjson.Number {
 		data.DriftAgingTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "drift.file.bootflash"); value.Exists() {
@@ -2255,14 +2255,14 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.DriftFileHarddisk = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() && value.Type == gjson.String {
 		data.DriftFilename = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "interfaces.interface"); value.Exists() {
 		data.Interfaces = make([]NTPInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("broadcast-client"); cValue.Exists() {
@@ -2270,13 +2270,13 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.BroadcastClient = types.BoolValue(false)
 			}
-			if cValue := v.Get("broadcast.destination"); cValue.Exists() {
+			if cValue := v.Get("broadcast.destination"); cValue.Exists() && cValue.Type == gjson.String {
 				item.BroadcastDestination = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("broadcast.key"); cValue.Exists() {
+			if cValue := v.Get("broadcast.key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BroadcastKey = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("broadcast.version"); cValue.Exists() {
+			if cValue := v.Get("broadcast.version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BroadcastVersion = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -2292,14 +2292,14 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.InterfaceVrfs = make([]NTPInterfaceVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPInterfaceVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interface"); cValue.Exists() {
 				item.Interfaces = make([]NTPInterfaceVrfsInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPInterfaceVrfsInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("broadcast-client"); ccValue.Exists() {
@@ -2307,13 +2307,13 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.BroadcastClient = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("broadcast.destination"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.destination"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BroadcastDestination = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("broadcast.key"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BroadcastKey = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("broadcast.version"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BroadcastVersion = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("disable"); ccValue.Exists() {
@@ -2329,7 +2329,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() && value.Type == gjson.Number {
 		data.PrimaryStratumNumber = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "primary.primary-reference-clock"); value.Exists() {
@@ -2337,29 +2337,29 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.PrimaryReferenceClock = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "max-associations"); value.Exists() {
+	if value := gjson.GetBytes(res, "max-associations"); value.Exists() && value.Type == gjson.Number {
 		data.MaxAssociations = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "peer-server.ipv4.ipv4-peer-server"); value.Exists() {
 		data.Ipv4PeersServers = make([]NTPIpv4PeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPIpv4PeersServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -2377,7 +2377,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
 			data.Ipv4PeersServers = append(data.Ipv4PeersServers, item)
@@ -2388,22 +2388,22 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6PeersServers = make([]NTPIpv6PeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPIpv6PeersServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -2421,10 +2421,10 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Address = types.StringValue(cValue.String())
 			}
 			data.Ipv6PeersServers = append(data.Ipv6PeersServers, item)
@@ -2435,22 +2435,22 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.HostnamePeersServers = make([]NTPHostnamePeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHostnamePeersServers{}
-			if cValue := v.Get("fqdn-hostname"); cValue.Exists() {
+			if cValue := v.Get("fqdn-hostname"); cValue.Exists() && cValue.Type == gjson.String {
 				item.FqdnHostname = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -2468,7 +2468,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
 			data.HostnamePeersServers = append(data.HostnamePeersServers, item)
@@ -2479,29 +2479,29 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeersServersVrfs = make([]NTPPeersServersVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPPeersServersVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4.ipv4-peer-server"); cValue.Exists() {
 				item.Ipv4PeersServers = make([]NTPPeersServersVrfsIpv4PeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsIpv4PeersServers{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -2519,7 +2519,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
 					item.Ipv4PeersServers = append(item.Ipv4PeersServers, cItem)
@@ -2530,22 +2530,22 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv6PeersServers = make([]NTPPeersServersVrfsIpv6PeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsIpv6PeersServers{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -2563,10 +2563,10 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("ipv6-address"); ccValue.Exists() {
+					if ccValue := cv.Get("ipv6-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Ipv6Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv6PeersServers = append(item.Ipv6PeersServers, cItem)
@@ -2577,22 +2577,22 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 				item.HostnamePeersServers = make([]NTPPeersServersVrfsHostnamePeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsHostnamePeersServers{}
-					if ccValue := cv.Get("fqdn-hostname"); ccValue.Exists() {
+					if ccValue := cv.Get("fqdn-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.FqdnHostname = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -2610,7 +2610,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
 					item.HostnamePeersServers = append(item.HostnamePeersServers, cItem)
@@ -2625,7 +2625,7 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.TrustedKeys = make([]NTPTrustedKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPTrustedKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.TrustedKeys = append(data.TrustedKeys, item)
@@ -2647,33 +2647,33 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Passive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() && value.Type == gjson.String {
 		data.SourceInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "source.vrfs.vrf"); value.Exists() {
 		data.SourceVrfs = make([]NTPSourceVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPSourceVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.SourceVrfs = append(data.SourceVrfs, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneVersion = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneKey = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneMinpoll = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneMaxpoll = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "admin-plane.prefer"); value.Exists() {
@@ -2698,71 +2698,71 @@ func (data *NTP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv4.precedence"); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() {
+	if value := gjson.GetBytes(res, "ipv6.precedence"); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.peer"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6Peer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.query-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6QueryOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6Serve = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv6.serve-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv6ServeOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.peer"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4Peer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.query-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4QueryOnly = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4Serve = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() {
+	if value := gjson.GetBytes(res, "access-group.ipv4.serve-only"); value.Exists() && value.Type == gjson.String {
 		data.AccessGroupIpv4ServeOnly = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "access-group.vrfs.vrf"); value.Exists() {
 		data.AccessGroupVrfs = make([]NTPAccessGroupVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPAccessGroupVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.peer"); cValue.Exists() {
+			if cValue := v.Get("ipv6.peer"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Peer = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.query-only"); cValue.Exists() {
+			if cValue := v.Get("ipv6.query-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6QueryOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.serve"); cValue.Exists() {
+			if cValue := v.Get("ipv6.serve"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Serve = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.serve-only"); cValue.Exists() {
+			if cValue := v.Get("ipv6.serve-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6ServeOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.peer"); cValue.Exists() {
+			if cValue := v.Get("ipv4.peer"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Peer = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.query-only"); cValue.Exists() {
+			if cValue := v.Get("ipv4.query-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4QueryOnly = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.serve"); cValue.Exists() {
+			if cValue := v.Get("ipv4.serve"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4Serve = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.serve-only"); cValue.Exists() {
+			if cValue := v.Get("ipv4.serve-only"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv4ServeOnly = types.StringValue(cValue.String())
 			}
 			data.AccessGroupVrfs = append(data.AccessGroupVrfs, item)
@@ -2778,7 +2778,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.AuthenticationKeys = make([]NTPAuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPAuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.AuthenticationKeys = append(data.AuthenticationKeys, item)
@@ -2789,7 +2789,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.CmacAuthenticationKeys = make([]NTPCmacAuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPCmacAuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.CmacAuthenticationKeys = append(data.CmacAuthenticationKeys, item)
@@ -2800,7 +2800,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.HmacSha1AuthenticationKeys = make([]NTPHmacSha1AuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHmacSha1AuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.HmacSha1AuthenticationKeys = append(data.HmacSha1AuthenticationKeys, item)
@@ -2811,17 +2811,17 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.HmacSha2AuthenticationKeys = make([]NTPHmacSha2AuthenticationKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHmacSha2AuthenticationKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.HmacSha2AuthenticationKeys = append(data.HmacSha2AuthenticationKeys, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() {
+	if value := gjson.GetBytes(res, "broadcastdelay"); value.Exists() && value.Type == gjson.Number {
 		data.Broadcastdelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() {
+	if value := gjson.GetBytes(res, "drift.aging.time"); value.Exists() && value.Type == gjson.Number {
 		data.DriftAgingTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "drift.file.bootflash"); value.Exists() {
@@ -2859,14 +2859,14 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.DriftFileHarddisk = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "drift.file.file-name"); value.Exists() && value.Type == gjson.String {
 		data.DriftFilename = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "interfaces.interface"); value.Exists() {
 		data.Interfaces = make([]NTPInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("broadcast-client"); cValue.Exists() {
@@ -2874,13 +2874,13 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.BroadcastClient = types.BoolValue(false)
 			}
-			if cValue := v.Get("broadcast.destination"); cValue.Exists() {
+			if cValue := v.Get("broadcast.destination"); cValue.Exists() && cValue.Type == gjson.String {
 				item.BroadcastDestination = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("broadcast.key"); cValue.Exists() {
+			if cValue := v.Get("broadcast.key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BroadcastKey = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("broadcast.version"); cValue.Exists() {
+			if cValue := v.Get("broadcast.version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BroadcastVersion = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -2896,14 +2896,14 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.InterfaceVrfs = make([]NTPInterfaceVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPInterfaceVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interface"); cValue.Exists() {
 				item.Interfaces = make([]NTPInterfaceVrfsInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPInterfaceVrfsInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("broadcast-client"); ccValue.Exists() {
@@ -2911,13 +2911,13 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.BroadcastClient = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("broadcast.destination"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.destination"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.BroadcastDestination = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("broadcast.key"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BroadcastKey = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("broadcast.version"); ccValue.Exists() {
+					if ccValue := cv.Get("broadcast.version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BroadcastVersion = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("disable"); ccValue.Exists() {
@@ -2933,7 +2933,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() {
+	if value := gjson.GetBytes(res, "primary.stratum-number"); value.Exists() && value.Type == gjson.Number {
 		data.PrimaryStratumNumber = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "primary.primary-reference-clock"); value.Exists() {
@@ -2941,29 +2941,29 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.PrimaryReferenceClock = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "max-associations"); value.Exists() {
+	if value := gjson.GetBytes(res, "max-associations"); value.Exists() && value.Type == gjson.Number {
 		data.MaxAssociations = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "peer-server.ipv4.ipv4-peer-server"); value.Exists() {
 		data.Ipv4PeersServers = make([]NTPIpv4PeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPIpv4PeersServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -2981,7 +2981,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
 			data.Ipv4PeersServers = append(data.Ipv4PeersServers, item)
@@ -2992,22 +2992,22 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6PeersServers = make([]NTPIpv6PeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPIpv6PeersServers{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -3025,10 +3025,10 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6-address"); cValue.Exists() {
+			if cValue := v.Get("ipv6-address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Ipv6Address = types.StringValue(cValue.String())
 			}
 			data.Ipv6PeersServers = append(data.Ipv6PeersServers, item)
@@ -3039,22 +3039,22 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.HostnamePeersServers = make([]NTPHostnamePeersServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPHostnamePeersServers{}
-			if cValue := v.Get("fqdn-hostname"); cValue.Exists() {
+			if cValue := v.Get("fqdn-hostname"); cValue.Exists() && cValue.Type == gjson.String {
 				item.FqdnHostname = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() {
+			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("version"); cValue.Exists() {
+			if cValue := v.Get("version"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Version = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("key"); cValue.Exists() {
+			if cValue := v.Get("key"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Key = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("minpoll"); cValue.Exists() {
+			if cValue := v.Get("minpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Minpoll = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maxpoll"); cValue.Exists() {
+			if cValue := v.Get("maxpoll"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Maxpoll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("prefer"); cValue.Exists() {
@@ -3072,7 +3072,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Iburst = types.BoolValue(false)
 			}
-			if cValue := v.Get("source"); cValue.Exists() {
+			if cValue := v.Get("source"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Source = types.StringValue(cValue.String())
 			}
 			data.HostnamePeersServers = append(data.HostnamePeersServers, item)
@@ -3083,29 +3083,29 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeersServersVrfs = make([]NTPPeersServersVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPPeersServersVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4.ipv4-peer-server"); cValue.Exists() {
 				item.Ipv4PeersServers = make([]NTPPeersServersVrfsIpv4PeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsIpv4PeersServers{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -3123,7 +3123,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
 					item.Ipv4PeersServers = append(item.Ipv4PeersServers, cItem)
@@ -3134,22 +3134,22 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv6PeersServers = make([]NTPPeersServersVrfsIpv6PeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsIpv6PeersServers{}
-					if ccValue := cv.Get("address"); ccValue.Exists() {
+					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -3167,10 +3167,10 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("ipv6-address"); ccValue.Exists() {
+					if ccValue := cv.Get("ipv6-address"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Ipv6Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv6PeersServers = append(item.Ipv6PeersServers, cItem)
@@ -3181,22 +3181,22 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 				item.HostnamePeersServers = make([]NTPPeersServersVrfsHostnamePeersServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := NTPPeersServersVrfsHostnamePeersServers{}
-					if ccValue := cv.Get("fqdn-hostname"); ccValue.Exists() {
+					if ccValue := cv.Get("fqdn-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.FqdnHostname = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("type"); ccValue.Exists() {
+					if ccValue := cv.Get("type"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Type = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("version"); ccValue.Exists() {
+					if ccValue := cv.Get("version"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Version = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("key"); ccValue.Exists() {
+					if ccValue := cv.Get("key"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Key = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("minpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Minpoll = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maxpoll"); ccValue.Exists() {
+					if ccValue := cv.Get("maxpoll"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Maxpoll = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("prefer"); ccValue.Exists() {
@@ -3214,7 +3214,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Iburst = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() {
+					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
 						cItem.Source = types.StringValue(ccValue.String())
 					}
 					item.HostnamePeersServers = append(item.HostnamePeersServers, cItem)
@@ -3229,7 +3229,7 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.TrustedKeys = make([]NTPTrustedKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPTrustedKeys{}
-			if cValue := v.Get("key-number"); cValue.Exists() {
+			if cValue := v.Get("key-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.KeyNumber = types.Int64Value(cValue.Int())
 			}
 			data.TrustedKeys = append(data.TrustedKeys, item)
@@ -3251,33 +3251,33 @@ func (data *NTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Passive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() {
+	if value := gjson.GetBytes(res, "source.interface-name"); value.Exists() && value.Type == gjson.String {
 		data.SourceInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "source.vrfs.vrf"); value.Exists() {
 		data.SourceVrfs = make([]NTPSourceVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := NTPSourceVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("interface-name"); cValue.Exists() {
+			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.SourceVrfs = append(data.SourceVrfs, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.version"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneVersion = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.key"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneKey = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.minpoll"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneMinpoll = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() {
+	if value := gjson.GetBytes(res, "admin-plane.maxpoll"); value.Exists() && value.Type == gjson.Number {
 		data.AdminPlaneMaxpoll = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "admin-plane.prefer"); value.Exists() {

@@ -117,12 +117,12 @@ func (data IPv6AccessListOptions) GetRangeConstraints() []helpers.FieldRangeCons
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *IPv6AccessListOptions) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() && !data.LogUpdateThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() && value.Type == gjson.Number && !data.LogUpdateThreshold.IsNull() {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	} else {
 		data.LogUpdateThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() && !data.LogUpdateRate.IsNull() {
+	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() && value.Type == gjson.Number && !data.LogUpdateRate.IsNull() {
 		data.LogUpdateRate = types.Int64Value(value.Int())
 	} else {
 		data.LogUpdateRate = types.Int64Null()
@@ -152,10 +152,10 @@ func (data *IPv6AccessListOptions) updateFromBody(ctx context.Context, res []byt
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *IPv6AccessListOptions) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() && value.Type == gjson.Number {
 		data.LogUpdateRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log-update.disable"); value.Exists() {
@@ -175,10 +175,10 @@ func (data *IPv6AccessListOptions) fromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *IPv6AccessListOptionsData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() {
+	if value := gjson.GetBytes(res, "log-update.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.LogUpdateThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() {
+	if value := gjson.GetBytes(res, "log-update.rate"); value.Exists() && value.Type == gjson.Number {
 		data.LogUpdateRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log-update.disable"); value.Exists() {

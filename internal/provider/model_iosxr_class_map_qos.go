@@ -428,7 +428,7 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.MatchAny = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -476,12 +476,12 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.MatchDestinationAddressIpv4[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MatchDestinationAddressIpv4[i].Address.IsNull() {
 			data.MatchDestinationAddressIpv4[i].Address = types.StringValue(value.String())
 		} else {
 			data.MatchDestinationAddressIpv4[i].Address = types.StringNull()
 		}
-		if value := r.Get("netmask"); value.Exists() && !data.MatchDestinationAddressIpv4[i].Netmask.IsNull() {
+		if value := r.Get("netmask"); value.Exists() && value.Type == gjson.String && !data.MatchDestinationAddressIpv4[i].Netmask.IsNull() {
 			data.MatchDestinationAddressIpv4[i].Netmask = types.StringValue(value.String())
 		} else {
 			data.MatchDestinationAddressIpv4[i].Netmask = types.StringNull()
@@ -510,18 +510,18 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.MatchDestinationAddressIpv6[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MatchDestinationAddressIpv6[i].Address.IsNull() {
 			data.MatchDestinationAddressIpv6[i].Address = types.StringValue(value.String())
 		} else {
 			data.MatchDestinationAddressIpv6[i].Address = types.StringNull()
 		}
-		if value := r.Get("prefix-length"); value.Exists() && !data.MatchDestinationAddressIpv6[i].PrefixLength.IsNull() {
+		if value := r.Get("prefix-length"); value.Exists() && value.Type == gjson.Number && !data.MatchDestinationAddressIpv6[i].PrefixLength.IsNull() {
 			data.MatchDestinationAddressIpv6[i].PrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.MatchDestinationAddressIpv6[i].PrefixLength = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() && !data.MatchDestinationMac.IsNull() {
+	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() && value.Type == gjson.String && !data.MatchDestinationMac.IsNull() {
 		data.MatchDestinationMac = types.StringValue(value.String())
 	} else {
 		data.MatchDestinationMac = types.StringNull()
@@ -670,12 +670,12 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.MatchSourceAddressIpv4[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MatchSourceAddressIpv4[i].Address.IsNull() {
 			data.MatchSourceAddressIpv4[i].Address = types.StringValue(value.String())
 		} else {
 			data.MatchSourceAddressIpv4[i].Address = types.StringNull()
 		}
-		if value := r.Get("netmask"); value.Exists() && !data.MatchSourceAddressIpv4[i].Netmask.IsNull() {
+		if value := r.Get("netmask"); value.Exists() && value.Type == gjson.String && !data.MatchSourceAddressIpv4[i].Netmask.IsNull() {
 			data.MatchSourceAddressIpv4[i].Netmask = types.StringValue(value.String())
 		} else {
 			data.MatchSourceAddressIpv4[i].Netmask = types.StringNull()
@@ -704,18 +704,18 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && !data.MatchSourceAddressIpv6[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MatchSourceAddressIpv6[i].Address.IsNull() {
 			data.MatchSourceAddressIpv6[i].Address = types.StringValue(value.String())
 		} else {
 			data.MatchSourceAddressIpv6[i].Address = types.StringNull()
 		}
-		if value := r.Get("prefix-length"); value.Exists() && !data.MatchSourceAddressIpv6[i].PrefixLength.IsNull() {
+		if value := r.Get("prefix-length"); value.Exists() && value.Type == gjson.Number && !data.MatchSourceAddressIpv6[i].PrefixLength.IsNull() {
 			data.MatchSourceAddressIpv6[i].PrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.MatchSourceAddressIpv6[i].PrefixLength = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() && !data.MatchSourceMac.IsNull() {
+	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() && value.Type == gjson.String && !data.MatchSourceMac.IsNull() {
 		data.MatchSourceMac = types.StringValue(value.String())
 	} else {
 		data.MatchSourceMac = types.StringNull()
@@ -725,7 +725,7 @@ func (data *ClassMapQoS) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.MatchSourcePort = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() && !data.MatchTcpFlag.IsNull() {
+	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() && value.Type == gjson.Number && !data.MatchTcpFlag.IsNull() {
 		data.MatchTcpFlag = types.Int64Value(value.Int())
 	} else {
 		data.MatchTcpFlag = types.Int64Null()
@@ -771,7 +771,7 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.MatchAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.access-group.ipv4"); value.Exists() {
@@ -798,10 +798,10 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 		data.MatchDestinationAddressIpv4 = make([]ClassMapQoSMatchDestinationAddressIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchDestinationAddressIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
 			data.MatchDestinationAddressIpv4 = append(data.MatchDestinationAddressIpv4, item)
@@ -812,17 +812,17 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 		data.MatchDestinationAddressIpv6 = make([]ClassMapQoSMatchDestinationAddressIpv6, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchDestinationAddressIpv6{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			data.MatchDestinationAddressIpv6 = append(data.MatchDestinationAddressIpv6, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() && value.Type == gjson.String {
 		data.MatchDestinationMac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.destination-port.port-number"); value.Exists() {
@@ -934,10 +934,10 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 		data.MatchSourceAddressIpv4 = make([]ClassMapQoSMatchSourceAddressIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchSourceAddressIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
 			data.MatchSourceAddressIpv4 = append(data.MatchSourceAddressIpv4, item)
@@ -948,17 +948,17 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 		data.MatchSourceAddressIpv6 = make([]ClassMapQoSMatchSourceAddressIpv6, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchSourceAddressIpv6{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			data.MatchSourceAddressIpv6 = append(data.MatchSourceAddressIpv6, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() && value.Type == gjson.String {
 		data.MatchSourceMac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.source-port.number"); value.Exists() {
@@ -966,7 +966,7 @@ func (data *ClassMapQoS) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.MatchSourcePort = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() && value.Type == gjson.Number {
 		data.MatchTcpFlag = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "match.tcp-flag.any"); value.Exists() {
@@ -1006,7 +1006,7 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.MatchAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.access-group.ipv4"); value.Exists() {
@@ -1033,10 +1033,10 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 		data.MatchDestinationAddressIpv4 = make([]ClassMapQoSMatchDestinationAddressIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchDestinationAddressIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
 			data.MatchDestinationAddressIpv4 = append(data.MatchDestinationAddressIpv4, item)
@@ -1047,17 +1047,17 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 		data.MatchDestinationAddressIpv6 = make([]ClassMapQoSMatchDestinationAddressIpv6, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchDestinationAddressIpv6{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			data.MatchDestinationAddressIpv6 = append(data.MatchDestinationAddressIpv6, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.destination-address.mac"); value.Exists() && value.Type == gjson.String {
 		data.MatchDestinationMac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.destination-port.port-number"); value.Exists() {
@@ -1169,10 +1169,10 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 		data.MatchSourceAddressIpv4 = make([]ClassMapQoSMatchSourceAddressIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchSourceAddressIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("netmask"); cValue.Exists() {
+			if cValue := v.Get("netmask"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Netmask = types.StringValue(cValue.String())
 			}
 			data.MatchSourceAddressIpv4 = append(data.MatchSourceAddressIpv4, item)
@@ -1183,17 +1183,17 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 		data.MatchSourceAddressIpv6 = make([]ClassMapQoSMatchSourceAddressIpv6, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ClassMapQoSMatchSourceAddressIpv6{}
-			if cValue := v.Get("address"); cValue.Exists() {
+			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix-length"); cValue.Exists() {
+			if cValue := v.Get("prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			data.MatchSourceAddressIpv6 = append(data.MatchSourceAddressIpv6, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.source-address.mac"); value.Exists() && value.Type == gjson.String {
 		data.MatchSourceMac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "match.source-port.number"); value.Exists() {
@@ -1201,7 +1201,7 @@ func (data *ClassMapQoSData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.MatchSourcePort = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() {
+	if value := gjson.GetBytes(res, "match.tcp-flag.value"); value.Exists() && value.Type == gjson.Number {
 		data.MatchTcpFlag = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "match.tcp-flag.any"); value.Exists() {
