@@ -172,7 +172,7 @@ func TestAccIosxrLogging(t *testing.T) {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "format_rfc5424", "true"))
 	}
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "yang", "emergencies"))
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "yang", "debugging"))
 	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_rules.0.rule_name", "RULE1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_rules.0.alarms.0.message_category", "SECURITY"))
@@ -418,7 +418,7 @@ func testAccIosxrLoggingConfig_all() string {
 		config += `	format_rfc5424 = true` + "\n"
 	}
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	yang = "emergencies"` + "\n"
+		config += `	yang = "debugging"` + "\n"
 	}
 	config += `	suppress_rules = [{` + "\n"
 	config += `		rule_name = "RULE1"` + "\n"

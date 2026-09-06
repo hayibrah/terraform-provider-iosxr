@@ -78,7 +78,7 @@ resource "iosxr_logging" "example" {
   ]
   suppress_duplicates = true
   format_rfc5424      = true
-  yang                = "emergencies"
+  yang                = "debugging"
   suppress_rules = [
     {
       rule_name = "RULE1"
