@@ -284,7 +284,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 			{{- range .Attributes}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
 			{{- $clist := toJsonPath .YangName .XPath }}
-			if len(item.{{toGoName .TfName}}) > 0 {
+			if {{if or .AddedInVersion .RemovedInVersion}}({{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}}) && {{end}}len(item.{{toGoName .TfName}}) > 0 {
 				body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{toJsonPath .YangName .XPath}}", []interface{}{})
 				for cindex, citem := range item.{{toGoName .TfName}} {
 					{{- range .Attributes}}
@@ -319,7 +319,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 					{{- range .Attributes}}
 					{{- if or (eq .Type "List") (eq .Type "Set")}}
 					{{- $cclist := toJsonPath .YangName .XPath }}
-					if len(citem.{{toGoName .TfName}}) > 0 {
+					if {{if or .AddedInVersion .RemovedInVersion}}({{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}}) && {{end}}len(citem.{{toGoName .TfName}}) > 0 {
 						body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{toJsonPath .YangName .XPath}}", []interface{}{})
 						for ccindex, ccitem := range citem.{{toGoName .TfName}} {
 							{{- range .Attributes}}
@@ -354,7 +354,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 							{{- range .Attributes}}
 							{{- if or (eq .Type "List") (eq .Type "Set")}}
 							{{- $ccclist := toJsonPath .YangName .XPath }}
-							if len(ccitem.{{toGoName .TfName}}) > 0 {
+							if {{if or .AddedInVersion .RemovedInVersion}}({{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}}) && {{end}}len(ccitem.{{toGoName .TfName}}) > 0 {
 								body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{$cclist}}"+"."+strconv.Itoa(ccindex)+"."+"{{toJsonPath .YangName .XPath}}", []interface{}{})
 								for cccindex, cccitem := range ccitem.{{toGoName .TfName}} {
 									{{- range .Attributes}}
@@ -1664,6 +1664,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 	}
 	{{- else if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+	{{- end}}
 	for i := range state.{{toGoName .TfName}} {
 		{{- $list := (toGoName .TfName)}}
 		keys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1703,6 +1706,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			}
 				{{- else if or (eq .Type "List") (eq .Type "Set")}}
 				{{- $cxpath := getXPath .YangName .XPath}}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+				if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+				{{- end}}
 				for ci := range state.{{$list}}[i].{{toGoName .TfName}} {
 					{{- $clist := (toGoName .TfName)}}
 					ckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1742,6 +1748,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 						}
 						{{- else if or (eq .Type "List") (eq .Type "Set")}}
 						{{- $ccxpath := getXPath .YangName .XPath}}
+						{{- if or .AddedInVersion .RemovedInVersion}}
+						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+						{{- end}}
 						for cci := range state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}} {
 							{{- $cclist := (toGoName .TfName)}}
 							cckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1781,6 +1790,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								}
 								{{- else if or (eq .Type "List") (eq .Type "Set")}}
 								{{- $cccxpath := getXPath .YangName .XPath}}
+								{{- if or .AddedInVersion .RemovedInVersion}}
+								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+								{{- end}}
 								for ccci := range state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}} {
 									{{- $ccclist := (toGoName .TfName)}}
 									ccckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1827,6 +1839,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 										deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{getDeletePath .}}%v", state.getPath(), keyString, ckeyString, cckeyString, ccckeyString))
 									}
 								}
+								{{- if or .AddedInVersion .RemovedInVersion}}
+								}
+								{{- end}}
 									{{- end}}
 									{{- end}}
 									break
@@ -1836,6 +1851,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{getDeletePath .}}%v", state.getPath(), keyString, ckeyString, cckeyString))
 							}
 						}
+						{{- if or .AddedInVersion .RemovedInVersion}}
+						}
+						{{- end}}
 						{{- end}}
 						{{- end}}
 						break
@@ -1844,6 +1862,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 				if !found {
 					deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{getDeletePath .}}%v", state.getPath(), keyString, ckeyString))
 				}
+				{{- if or .AddedInVersion .RemovedInVersion}}
+				}
+				{{- end}}
 			}
 			{{- end}}
 			{{- end}}
@@ -1854,6 +1875,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			deletedItems = append(deletedItems, fmt.Sprintf("%v/{{getDeletePath .}}%v", state.getPath(), keyString))
 		}
 	}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
 	{{- end}}
 	{{- end}}
 	return deletedItems
@@ -1874,6 +1898,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 	{{- end}}
 	{{- if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+	{{- end}}
 	for i := range data.{{toGoName .TfName}} {
 		{{- $list := (toGoName .TfName)}}
 		keys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1890,6 +1917,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 		{{- end}}
 		{{- if or (eq .Type "List") (eq .Type "Set")}}
 		{{- $cxpath := getXPath .YangName .XPath}}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+		if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+		{{- end}}
 		for ci := range data.{{$list}}[i].{{toGoName .TfName}} {
 			{{- $clist := (toGoName .TfName)}}
 			ckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1906,6 +1936,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
 			{{- $ccxpath := getXPath .YangName .XPath}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+			{{- end}}
 			for cci := range data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}} {
 				{{- $cclist := (toGoName .TfName)}}
 				cckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1922,6 +1955,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
 			{{- $cccxpath := getXPath .YangName .XPath}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+			{{- end}}
 			for ccci := range data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}} {
 				{{- $ccclist := (toGoName .TfName)}}
 				ccckeys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1938,15 +1974,27 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 				{{- end}}
 				{{- end}}
 			}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+			}
+			{{- end}}
 			{{- end}}
 			{{- end}}
 		}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+		}
+		{{- end}}
 		{{- end}}
 		{{- end}}
 		}
+		{{- if or .AddedInVersion .RemovedInVersion}}
+		}
+		{{- end}}
 		{{- end}}
 		{{- end}}
 	}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
 	{{- end}}
 	{{- end}}
 	return emptyLeafsDelete
@@ -1965,6 +2013,9 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/{{getDeletePath .}}", data.getPath()))
 	}
 	{{- else if and (or (eq .Type "List") (eq .Type "Set")) (not .NoDelete)}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
+	{{- end}}
 	for i := range data.{{toGoName .TfName}} {
 		{{- $list := (toGoName .TfName)}}
 		keys := [...]string{ {{range .Attributes}}{{if .Id}}"{{getDeletePath .}}", {{end}}{{end}} }
@@ -1974,8 +2025,23 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 		for ki := range keys {
 			keyString += "["+keys[ki]+"="+keyValues[ki]+"]"
 		}
+
+		emptyKeys := true
+		{{- range .Attributes}}
+		{{- if .Id}}
+		if !reflect.ValueOf(data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}()).IsZero() {
+			emptyKeys = false
+		}
+		{{- end}}
+		{{- end}}
+		if emptyKeys {
+			continue
+		}
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/{{getDeletePath .}}%v", data.getPath(), keyString))
 	}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
 	{{- end}}
 	{{- end}}
 	return deletePaths
