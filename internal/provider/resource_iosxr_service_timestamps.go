@@ -155,14 +155,14 @@ func (r *ServiceTimestampsResource) Create(ctx context.Context, req resource.Cre
 		resp.Diagnostics.AddAttributeError(path.Root("device"), "Invalid device", fmt.Sprintf("Device '%s' does not exist in provider configuration.", plan.Device.ValueString()))
 		return
 	}
-	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Create", plan.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Create", plan.getPathForVersion(device.Version)))
 
 	if device.Managed {
 		var ops []gnmi.SetOperation
 
 		// Create object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		ops = append(ops, gnmi.Update(plan.getPathForVersion(device.Version), body))
 
 		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
@@ -181,9 +181,9 @@ func (r *ServiceTimestampsResource) Create(ctx context.Context, req resource.Cre
 		}
 	}
 
-	plan.Id = types.StringValue(plan.getPath())
+	plan.Id = types.StringValue(plan.getPathForVersion(device.Version))
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Create finished successfully", plan.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Create finished successfully", plan.getPathForVersion(device.Version)))
 
 	diags = resp.State.Set(ctx, &plan)
 	resp.Diagnostics.Append(diags...)
@@ -216,7 +216,8 @@ func (r *ServiceTimestampsResource) Read(ctx context.Context, req resource.ReadR
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{state.Id.ValueString()})
+		readPath := state.getPathForVersion(device.Version)
+		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
 				resp.State.RemoveResource(ctx)
@@ -252,7 +253,7 @@ func (r *ServiceTimestampsResource) Read(ctx context.Context, req resource.ReadR
 			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
-
+	state.Id = types.StringValue(state.getPathForVersion(device.Version))
 	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", state.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &state)
@@ -294,7 +295,7 @@ func (r *ServiceTimestampsResource) Update(ctx context.Context, req resource.Upd
 
 		// Update object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		ops = append(ops, gnmi.Update(plan.getPathForVersion(device.Version), body))
 
 		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
@@ -319,7 +320,7 @@ func (r *ServiceTimestampsResource) Update(ctx context.Context, req resource.Upd
 			return
 		}
 	}
-
+	plan.Id = types.StringValue(plan.getPathForVersion(device.Version))
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &plan)

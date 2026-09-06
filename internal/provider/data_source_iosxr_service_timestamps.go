@@ -155,13 +155,13 @@ func (d *ServiceTimestampsDataSource) Read(ctx context.Context, req datasource.R
 		return
 	}
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Read", config.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Read", config.getPathForVersion(device.Version)))
 
 	if device.Managed {
 		if !d.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{config.getPath()})
+		getResp, err := device.Client.Get(ctx, []string{config.getPathForVersion(device.Version)})
 		if err != nil {
 			resp.Diagnostics.AddError("Unable to apply gNMI Get operation", err.Error())
 			return
@@ -183,9 +183,9 @@ func (d *ServiceTimestampsDataSource) Read(ctx context.Context, req datasource.R
 		config.fromBody(ctx, respBody, device.Version)
 	}
 
-	config.Id = types.StringValue(config.getPath())
+	config.Id = types.StringValue(config.getPathForVersion(device.Version))
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", config.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", config.getPathForVersion(device.Version)))
 
 	diags = resp.State.Set(ctx, &config)
 	resp.Diagnostics.Append(diags...)

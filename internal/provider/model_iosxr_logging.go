@@ -1405,8 +1405,20 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 		data.Localfilesize = types.Int64Null()
 	}
 	for i := range data.SourceInterfaces {
-		keys := [...]string{"source-interface-name"}
-		keyValues := [...]string{data.SourceInterfaces[i].Name.ValueString()}
+		var keys []string
+		var keyValues []string
+		if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "source-interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].InterfaceName.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "vrf-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].VrfName.ValueString())
+		}
 
 		var r gjson.Result
 		gjson.GetBytes(res, "source-interfaces.source-interface").ForEach(
@@ -3215,8 +3227,20 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/suppress/duplicates", state.getPath()))
 	}
 	for i := range state.SourceInterfaces {
-		keys := [...]string{"source-interface-name"}
-		stateKeyValues := [...]string{state.SourceInterfaces[i].Name.ValueString()}
+		var keys []string
+		var stateKeyValues []string
+		if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "source-interface-name")
+			stateKeyValues = append(stateKeyValues, state.SourceInterfaces[i].Name.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "interface-name")
+			stateKeyValues = append(stateKeyValues, state.SourceInterfaces[i].InterfaceName.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "vrf-name")
+			stateKeyValues = append(stateKeyValues, state.SourceInterfaces[i].VrfName.ValueString())
+		}
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + stateKeyValues[ki] + "]"
@@ -3224,6 +3248,12 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 
 		emptyKeys := true
 		if !reflect.ValueOf(state.SourceInterfaces[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(state.SourceInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(state.SourceInterfaces[i].VrfName.ValueString()).IsZero() {
 			emptyKeys = false
 		}
 		if emptyKeys {
@@ -3236,13 +3266,13 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 			if state.SourceInterfaces[i].Name.ValueString() != data.SourceInterfaces[j].Name.ValueString() {
 				found = false
 			}
+			if state.SourceInterfaces[i].InterfaceName.ValueString() != data.SourceInterfaces[j].InterfaceName.ValueString() {
+				found = false
+			}
+			if state.SourceInterfaces[i].VrfName.ValueString() != data.SourceInterfaces[j].VrfName.ValueString() {
+				found = false
+			}
 			if found {
-				if helpers.VersionAtLeast(version, "25.4") && !state.SourceInterfaces[i].VrfName.IsNull() && data.SourceInterfaces[j].VrfName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interfaces/source-interface%v/vrf-name", state.getPath(), keyString))
-				}
-				if helpers.VersionAtLeast(version, "25.4") && !state.SourceInterfaces[i].InterfaceName.IsNull() && data.SourceInterfaces[j].InterfaceName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interfaces/source-interface%v/interface-name", state.getPath(), keyString))
-				}
 				if version == "" || !helpers.VersionAtLeast(version, "25.4") {
 					for ci := range state.SourceInterfaces[i].Vrfs {
 						ckeys := [...]string{"vrf-name"}
@@ -3540,8 +3570,20 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/suppress/duplicates", data.getPath()))
 	}
 	for i := range data.SourceInterfaces {
-		keys := [...]string{"source-interface-name"}
-		keyValues := [...]string{data.SourceInterfaces[i].Name.ValueString()}
+		var keys []string
+		var keyValues []string
+		if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "source-interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].InterfaceName.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "vrf-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].VrfName.ValueString())
+		}
 		keyString := ""
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
@@ -3703,8 +3745,20 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/suppress/duplicates", data.getPath()))
 	}
 	for i := range data.SourceInterfaces {
-		keys := [...]string{"source-interface-name"}
-		keyValues := [...]string{data.SourceInterfaces[i].Name.ValueString()}
+		var keys []string
+		var keyValues []string
+		if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "source-interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "interface-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].InterfaceName.ValueString())
+		}
+		if helpers.VersionAtLeast(version, "25.4") {
+			keys = append(keys, "vrf-name")
+			keyValues = append(keyValues, data.SourceInterfaces[i].VrfName.ValueString())
+		}
 
 		keyString := ""
 		for ki := range keys {
@@ -3713,6 +3767,12 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 
 		emptyKeys := true
 		if !reflect.ValueOf(data.SourceInterfaces[i].Name.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.SourceInterfaces[i].InterfaceName.ValueString()).IsZero() {
+			emptyKeys = false
+		}
+		if !reflect.ValueOf(data.SourceInterfaces[i].VrfName.ValueString()).IsZero() {
 			emptyKeys = false
 		}
 		if emptyKeys {

@@ -1,6 +1,7 @@
 ---
 name: str()  # The name of the resource and data source
 path: str()  # The YANG path of the resource and data source
+path_version: map(str(), str(), required=False)  # version threshold → YANG module path; overrides path at runtime for that version
 augment_path: str(required=False)  # If a different path is required to augment the definition it can be provided here
 no_delete: bool(required=False)  # Set to true if the resource path cannot be deleted (delete mode == all), e.g. a physical interface
 no_delete_attributes: bool(required=False)  # Set to true if the resource should not provide the option (delete_mode == attributes) to delete the top level attributes individually

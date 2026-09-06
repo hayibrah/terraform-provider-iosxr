@@ -118,7 +118,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 				{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 				ElementType:         types.Int64Type,
 				{{- end}}
-				{{- if and (or .Id .Reference .Mandatory) (not .RemovedInVersion)}}
+				{{- if and (or .Id .Reference .Mandatory) (not .RemovedInVersion) (not .AddedInVersion)}}
 				Required:            true,
 				{{- else}}
 				Optional:            true,
@@ -186,7 +186,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 							{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 							ElementType:         types.Int64Type,
 							{{- end}}
-							{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
+							{{- if and (or .Id .Mandatory) (not .RemovedInVersion) (not .AddedInVersion)}}
 							Required:            true,
 							{{- else}}
 							Optional:            true,
@@ -252,7 +252,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 										{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 										ElementType:         types.Int64Type,
 										{{- end}}
-										{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
+										{{- if and (or .Id .Mandatory) (not .RemovedInVersion) (not .AddedInVersion)}}
 										Required:            true,
 										{{- else}}
 										Optional:            true,
@@ -320,7 +320,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 												{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 												ElementType:         types.Int64Type,
 												{{- end}}
-												{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
+												{{- if and (or .Id .Mandatory) (not .RemovedInVersion) (not .AddedInVersion)}}
 												Required:            true,
 												{{- else}}
 												Optional:            true,
@@ -388,7 +388,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 															{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
 															ElementType:         types.Int64Type,
 															{{- end}}
-															{{- if and (or .Id .Mandatory) (not .RemovedInVersion)}}
+															{{- if and (or .Id .Mandatory) (not .RemovedInVersion) (not .AddedInVersion)}}
 															Required:            true,
 															{{- else}}
 															Optional:            true,
@@ -494,7 +494,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Create(ctx context.Conte
 	}
 
 {{- end}}
-	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Create", plan.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Create", {{if .HasPathVersion}}plan.getPathForVersion(device.Version){{else}}plan.getPath(){{end}}))
 
 
 	if device.Managed {
@@ -502,7 +502,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Create(ctx context.Conte
 
 		// Create object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		ops = append(ops, gnmi.Update({{if .HasPathVersion}}plan.getPathForVersion(device.Version){{else}}plan.getPath(){{end}}, body))
 
 		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
@@ -521,9 +521,9 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Create(ctx context.Conte
 		}
 	}
 
-	plan.Id = types.StringValue(plan.getPath())
+	plan.Id = types.StringValue({{if .HasPathVersion}}plan.getPathForVersion(device.Version){{else}}plan.getPath(){{end}})
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Create finished successfully", plan.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Create finished successfully", {{if .HasPathVersion}}plan.getPathForVersion(device.Version){{else}}plan.getPath(){{end}}))
 
 	diags = resp.State.Set(ctx, &plan)
 	resp.Diagnostics.Append(diags...)
@@ -558,7 +558,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Read(ctx context.Context
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{state.Id.ValueString()})
+		{{if .HasPathVersion}}readPath := state.getPathForVersion(device.Version){{else}}readPath := state.Id.ValueString(){{end}}
+		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
 				resp.State.RemoveResource(ctx)
@@ -594,7 +595,9 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Read(ctx context.Context
 			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
-
+{{- if .HasPathVersion}}
+	state.Id = types.StringValue(state.getPathForVersion(device.Version))
+{{- end}}
 	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", state.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &state)
@@ -646,7 +649,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Update(ctx context.Conte
 
 		// Update object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		ops = append(ops, gnmi.Update({{if .HasPathVersion}}plan.getPathForVersion(device.Version){{else}}plan.getPath(){{end}}, body))
 
 		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
@@ -672,6 +675,9 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Update(ctx context.Conte
 		}
 	}
 
+{{- if .HasPathVersion}}
+	plan.Id = types.StringValue(plan.getPathForVersion(device.Version))
+{{- end}}
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &plan)

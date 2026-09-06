@@ -127,6 +127,8 @@ type YamlConfig struct {
 	DocCategory             string                `yaml:"doc_category"`
 	Legacy                  bool                  `yaml:"legacy"` // If true, entire resource is removed/not available in this version
 	RemovedInVersion        string                // Version where entire resource was removed (set when Legacy is true)
+	PathVersion             map[string]string     `yaml:"path_version"` // version threshold → gNMI module path override
+	HasPathVersion          bool                  // True when PathVersion is non-empty (computed after merge)
 	Attributes              []YamlConfigAttribute `yaml:"attributes"`
 	TestPrerequisites       []YamlTest            `yaml:"test_prerequisites"`
 }
@@ -1240,8 +1242,17 @@ func mergeConfigs(base, override YamlConfig) YamlConfig {
 		merged.TestPrerequisites = override.TestPrerequisites
 	}
 
-	// Merge attributes - pass override version so new attributes can be marked
+	// Accumulate path_version entries from the override.
+	if len(override.PathVersion) > 0 {
+		if merged.PathVersion == nil {
+			merged.PathVersion = make(map[string]string)
+		}
+		for ver, path := range override.PathVersion {
+			merged.PathVersion[ver] = path
+		}
+	}
 
+	// Merge attributes - pass override version so new attributes can be marked
 	merged.Attributes = mergeAttributes(base.Attributes, override.Attributes, override.Version)
 
 	return merged
@@ -1441,6 +1452,7 @@ func main() {
 
 		// Detect if this resource has version-specific differences
 		unifiedConfig.HasVersionDifferences = hasVersionDifferences(unifiedConfig)
+		unifiedConfig.HasPathVersion = len(unifiedConfig.PathVersion) > 0
 
 		// Generate unified files (no version suffix due to versionSuffix: false)
 		for _, tmpl := range templates {

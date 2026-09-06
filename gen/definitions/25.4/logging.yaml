@@ -261,11 +261,13 @@ attributes:
     attributes:
       - yang_name: interface-name
         tf_name: interface_name
+        id: true
         description: "Specify interface for source address in logging transactions"
         type: String
         example: GigabitEthernet0/0/0/0
       - yang_name: vrf-name
         tf_name: vrf_name
+        id: true
         description: "Set VRF option"
         type: String
         example: default

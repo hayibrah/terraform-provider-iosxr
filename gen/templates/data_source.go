@@ -207,13 +207,13 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Read(ctx context.Conte
 		return
 	}
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Read", config.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Read", {{if .HasPathVersion}}config.getPathForVersion(device.Version){{else}}config.getPath(){{end}}))
 
 	if device.Managed {
 		if !d.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{config.getPath()})
+		getResp, err := device.Client.Get(ctx, []string{ {{if .HasPathVersion}}config.getPathForVersion(device.Version){{else}}config.getPath(){{end}}})
 		if err != nil {
 			resp.Diagnostics.AddError("Unable to apply gNMI Get operation", err.Error())
 			return
@@ -235,9 +235,9 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Read(ctx context.Conte
 		config.fromBody(ctx, respBody, device.Version)
 	}
 
-	config.Id = types.StringValue(config.getPath())
+	config.Id = types.StringValue({{if .HasPathVersion}}config.getPathForVersion(device.Version){{else}}config.getPath(){{end}})
 
-	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", config.getPath()))
+	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", {{if .HasPathVersion}}config.getPathForVersion(device.Version){{else}}config.getPath(){{end}}))
 
 	diags = resp.State.Set(ctx, &config)
 	resp.Diagnostics.Append(diags...)

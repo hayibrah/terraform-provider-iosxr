@@ -787,7 +787,8 @@ func (r *LoggingResource) Read(ctx context.Context, req resource.ReadRequest, re
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{state.Id.ValueString()})
+		readPath := state.Id.ValueString()
+		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
 				resp.State.RemoveResource(ctx)
@@ -823,7 +824,6 @@ func (r *LoggingResource) Read(ctx context.Context, req resource.ReadRequest, re
 			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", state.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &state)
@@ -894,7 +894,6 @@ func (r *LoggingResource) Update(ctx context.Context, req resource.UpdateRequest
 			return
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &plan)

@@ -212,7 +212,8 @@ func (r *TFTPClientResource) Read(ctx context.Context, req resource.ReadRequest,
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{state.Id.ValueString()})
+		readPath := state.Id.ValueString()
+		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
 				resp.State.RemoveResource(ctx)
@@ -248,7 +249,6 @@ func (r *TFTPClientResource) Read(ctx context.Context, req resource.ReadRequest,
 			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", state.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &state)
@@ -315,7 +315,6 @@ func (r *TFTPClientResource) Update(ctx context.Context, req resource.UpdateRequ
 			return
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &plan)

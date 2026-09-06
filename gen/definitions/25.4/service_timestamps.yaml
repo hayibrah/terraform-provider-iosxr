@@ -1,0 +1,17 @@
+---
+name: Service Timestamps
+# Service Timestamps moved from Cisco-IOS-XR-um-service-timestamps-cfg (24.4)
+# to Cisco-IOS-XR-um-logging-cfg (25.4+). In 25.4, Cisco-IOS-XR-um-logging-cfg
+# augments /service-cfg:service and adds the timestamps container there.
+# For gNMI, the origin is the augmenting module — Cisco-IOS-XR-um-logging-cfg.
+# Sub-path /service/timestamps is unchanged.
+#
+# path: set to the 24.4 base path (same as the base definition) so that getPath()
+# returns the correct fallback when device.Version is not configured (empty = base behavior).
+# path_version provides the full version-to-module mapping used at runtime.
+path: Cisco-IOS-XR-um-service-timestamps-cfg:/service/timestamps
+doc_category: Management
+path_version:
+  "24.4": "Cisco-IOS-XR-um-service-timestamps-cfg:/service/timestamps"
+  "25.4": "Cisco-IOS-XR-um-service-cfg:/service/Cisco-IOS-XR-um-logging-cfg:timestamps"
+# No attribute changes — sub-path and all leaves are identical across versions.

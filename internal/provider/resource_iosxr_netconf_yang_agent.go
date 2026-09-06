@@ -217,7 +217,8 @@ func (r *NetconfYangAgentResource) Read(ctx context.Context, req resource.ReadRe
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		getResp, err := device.Client.Get(ctx, []string{state.Id.ValueString()})
+		readPath := state.Id.ValueString()
+		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
 				resp.State.RemoveResource(ctx)
@@ -253,7 +254,6 @@ func (r *NetconfYangAgentResource) Read(ctx context.Context, req resource.ReadRe
 			state.updateFromBody(ctx, respBody, device.Version)
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Read finished successfully", state.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &state)
@@ -320,7 +320,6 @@ func (r *NetconfYangAgentResource) Update(ctx context.Context, req resource.Upda
 			return
 		}
 	}
-
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))
 
 	diags = resp.State.Set(ctx, &plan)
