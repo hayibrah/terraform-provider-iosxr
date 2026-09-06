@@ -669,16 +669,22 @@ func (data HWModuleProfile8000) toBody(ctx context.Context, providerVersion stri
 			if !item.LocationName.IsNull() && !item.LocationName.IsUnknown() {
 				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"location-name", item.LocationName.ValueString())
 			}
-			if !item.NonPfcTcs.IsNull() && !item.NonPfcTcs.IsUnknown() {
-				if item.NonPfcTcs.ValueBool() {
-					body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.NonPfcTcs.IsNull() && !item.NonPfcTcs.IsUnknown() {
+					if item.NonPfcTcs.ValueBool() {
+						body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs", map[string]string{})
+					}
 				}
 			}
-			if !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsUnknown() {
-				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.ValueInt64(), 10))
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsUnknown() {
+					body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.ValueInt64(), 10))
+				}
 			}
-			if !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsUnknown() {
-				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.ValueInt64(), 10))
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && !item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsUnknown() {
+					body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage", strconv.FormatInt(item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.ValueInt64(), 10))
+				}
 			}
 			if len(item.BufferExtendedTrafficClass) > 0 {
 				body, _ = sjson.Set(body, "profile.priority-flow-control.locations.location"+"."+strconv.Itoa(index)+"."+"buffer-extended.traffic-class", []interface{}{})

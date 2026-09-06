@@ -1369,11 +1369,15 @@ func (data RouterBGPNeighborGroup) toBody(ctx context.Context, providerVersion s
 					body, _ = sjson.Set(body, "address-families.address-family"+"."+strconv.Itoa(index)+"."+"bestpath.origin-as.allow.invalid", []interface{}{nil})
 				}
 			}
-			if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
-				body, _ = sjson.Set(body, "address-families.address-family"+"."+strconv.Itoa(index)+"."+"default-policy-action.in", item.DefaultPolicyActionIn.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
+					body, _ = sjson.Set(body, "address-families.address-family"+"."+strconv.Itoa(index)+"."+"default-policy-action.in", item.DefaultPolicyActionIn.ValueString())
+				}
 			}
-			if !item.DefaultPolicyActionOut.IsNull() && !item.DefaultPolicyActionOut.IsUnknown() {
-				body, _ = sjson.Set(body, "address-families.address-family"+"."+strconv.Itoa(index)+"."+"default-policy-action.out", item.DefaultPolicyActionOut.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionOut.IsNull() && !item.DefaultPolicyActionOut.IsUnknown() {
+					body, _ = sjson.Set(body, "address-families.address-family"+"."+strconv.Itoa(index)+"."+"default-policy-action.out", item.DefaultPolicyActionOut.ValueString())
+				}
 			}
 		}
 	}

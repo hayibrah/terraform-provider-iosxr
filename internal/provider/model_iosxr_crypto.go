@@ -446,14 +446,20 @@ func (data Crypto) toBody(ctx context.Context, providerVersion string) string {
 			if !item.MethodEstCredentialCertificate.IsNull() && !item.MethodEstCredentialCertificate.IsUnknown() {
 				body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"method.est.credential.certificate", item.MethodEstCredentialCertificate.ValueString())
 			}
-			if !item.EnrollmentAuthenticationProfile.IsNull() && !item.EnrollmentAuthenticationProfile.IsUnknown() {
-				body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"enrollment.authentication-profile", item.EnrollmentAuthenticationProfile.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.EnrollmentAuthenticationProfile.IsNull() && !item.EnrollmentAuthenticationProfile.IsUnknown() {
+					body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"enrollment.authentication-profile", item.EnrollmentAuthenticationProfile.ValueString())
+				}
 			}
-			if !item.ReEnrollmentAuthenticationProfile.IsNull() && !item.ReEnrollmentAuthenticationProfile.IsUnknown() {
-				body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"re-enrollment.authentication-profile", item.ReEnrollmentAuthenticationProfile.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.ReEnrollmentAuthenticationProfile.IsNull() && !item.ReEnrollmentAuthenticationProfile.IsUnknown() {
+					body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"re-enrollment.authentication-profile", item.ReEnrollmentAuthenticationProfile.ValueString())
+				}
 			}
-			if !item.SslProfile.IsNull() && !item.SslProfile.IsUnknown() {
-				body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"ssl-profile", item.SslProfile.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.SslProfile.IsNull() && !item.SslProfile.IsUnknown() {
+					body, _ = sjson.Set(body, "ca.trustpoint.trustpoints.trustpoint"+"."+strconv.Itoa(index)+"."+"ssl-profile", item.SslProfile.ValueString())
+				}
 			}
 		}
 	}

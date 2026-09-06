@@ -254,6 +254,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 		for index, item := range data.{{toGoName .TfName}} {
 			{{- range .Attributes}}
 			{{- if and (ne .Type "List") (ne .Type "Set")}}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+			if {{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}} {
+			{{- end}}
 			if !item.{{toGoName .TfName}}.IsNull() && !item.{{toGoName .TfName}}.IsUnknown() {
 				{{- if eq .Type "Int64"}}
 				body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{toJsonPath .YangName .XPath}}", strconv.FormatInt(item.{{toGoName .TfName}}.ValueInt64(), 10))
@@ -279,6 +282,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 				body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{toJsonPath .YangName .XPath}}", values)
 				{{- end}}
 			}
+			{{- if or .AddedInVersion .RemovedInVersion}}
+			}
+			{{- end}}
 			{{- end}}
 			{{- end}}
 			{{- range .Attributes}}
@@ -289,6 +295,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 				for cindex, citem := range item.{{toGoName .TfName}} {
 					{{- range .Attributes}}
 					{{- if and (ne .Type "List") (ne .Type "Set")}}
+					{{- if or .AddedInVersion .RemovedInVersion}}
+					if {{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}} {
+					{{- end}}
 					if !citem.{{toGoName .TfName}}.IsNull() && !citem.{{toGoName .TfName}}.IsUnknown() {
 						{{- if eq .Type "Int64"}}
 						body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{toJsonPath .YangName .XPath}}", strconv.FormatInt(citem.{{toGoName .TfName}}.ValueInt64(), 10))
@@ -314,6 +323,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 						body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{toJsonPath .YangName .XPath}}", values)
 						{{- end}}
 					}
+					{{- if or .AddedInVersion .RemovedInVersion}}
+					}
+					{{- end}}
 					{{- end}}
 					{{- end}}
 					{{- range .Attributes}}
@@ -324,6 +336,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 						for ccindex, ccitem := range citem.{{toGoName .TfName}} {
 							{{- range .Attributes}}
 							{{- if and (ne .Type "List") (ne .Type "Set")}}
+							{{- if or .AddedInVersion .RemovedInVersion}}
+							if {{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}} {
+							{{- end}}
 							if !ccitem.{{toGoName .TfName}}.IsNull() && !ccitem.{{toGoName .TfName}}.IsUnknown() {
 								{{- if eq .Type "Int64"}}
 								body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{$cclist}}"+"."+strconv.Itoa(ccindex)+"."+"{{toJsonPath .YangName .XPath}}", strconv.FormatInt(ccitem.{{toGoName .TfName}}.ValueInt64(), 10))
@@ -349,6 +364,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 								body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{$cclist}}"+"."+strconv.Itoa(ccindex)+"."+"{{toJsonPath .YangName .XPath}}", values)
 								{{- end}}
 							}
+							{{- if or .AddedInVersion .RemovedInVersion}}
+							}
+							{{- end}}
 							{{- end}}
 							{{- end}}
 							{{- range .Attributes}}
@@ -359,6 +377,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 								for cccindex, cccitem := range ccitem.{{toGoName .TfName}} {
 									{{- range .Attributes}}
 									{{- if and (ne .Type "List") (ne .Type "Set")}}
+									{{- if or .AddedInVersion .RemovedInVersion}}
+									if {{if .AddedInVersion}}helpers.VersionAtLeast(providerVersion, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "{{.RemovedInVersion}}")){{end}} {
+									{{- end}}
 									if !cccitem.{{toGoName .TfName}}.IsNull() && !cccitem.{{toGoName .TfName}}.IsUnknown() {
 										{{- if eq .Type "Int64"}}
 										body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{$cclist}}"+"."+strconv.Itoa(ccindex)+"."+"{{$ccclist}}"+"."+strconv.Itoa(cccindex)+"."+"{{toJsonPath .YangName .XPath}}", strconv.FormatInt(cccitem.{{toGoName .TfName}}.ValueInt64(), 10))
@@ -384,6 +405,9 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 										body, _ = sjson.Set(body, "{{$list}}"+"."+strconv.Itoa(index)+"."+"{{$clist}}"+"."+strconv.Itoa(cindex)+"."+"{{$cclist}}"+"."+strconv.Itoa(ccindex)+"."+"{{$ccclist}}"+"."+strconv.Itoa(cccindex)+"."+"{{toJsonPath .YangName .XPath}}", values)
 										{{- end}}
 									}
+									{{- if or .AddedInVersion .RemovedInVersion}}
+									}
+									{{- end}}
 									{{- end}}
 									{{- end}}
 								}

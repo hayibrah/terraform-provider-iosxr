@@ -562,17 +562,25 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 			if !item.FileName.IsNull() && !item.FileName.IsUnknown() {
 				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"file-name", item.FileName.ValueString())
 			}
-			if !item.Path.IsNull() && !item.Path.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path", item.Path.ValueString())
+			if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.Path.IsNull() && !item.Path.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path", item.Path.ValueString())
+				}
 			}
-			if !item.Maxfilesize.IsNull() && !item.Maxfilesize.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"maxfilesize", strconv.FormatInt(item.Maxfilesize.ValueInt64(), 10))
+			if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.Maxfilesize.IsNull() && !item.Maxfilesize.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"maxfilesize", strconv.FormatInt(item.Maxfilesize.ValueInt64(), 10))
+				}
 			}
-			if !item.Severity.IsNull() && !item.Severity.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"severity", item.Severity.ValueString())
+			if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.Severity.IsNull() && !item.Severity.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"severity", item.Severity.ValueString())
+				}
 			}
-			if !item.LocalAccountingSendToRemoteFacilityLevel.IsNull() && !item.LocalAccountingSendToRemoteFacilityLevel.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"local-accounting.send-to-remote.facility.level", item.LocalAccountingSendToRemoteFacilityLevel.ValueString())
+			if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.LocalAccountingSendToRemoteFacilityLevel.IsNull() && !item.LocalAccountingSendToRemoteFacilityLevel.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"local-accounting.send-to-remote.facility.level", item.LocalAccountingSendToRemoteFacilityLevel.ValueString())
+				}
 			}
 			if !item.DiscriminatorMatch1.IsNull() && !item.DiscriminatorMatch1.IsUnknown() {
 				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"discriminator.match1", item.DiscriminatorMatch1.ValueString())
@@ -592,41 +600,59 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 			if !item.DiscriminatorNomatch3.IsNull() && !item.DiscriminatorNomatch3.IsUnknown() {
 				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"discriminator.nomatch3", item.DiscriminatorNomatch3.ValueString())
 			}
-			if !item.LocalAccounting.IsNull() && !item.LocalAccounting.IsUnknown() {
-				if item.LocalAccounting.ValueBool() {
-					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.LocalAccounting.IsNull() && !item.LocalAccounting.IsUnknown() {
+					if item.LocalAccounting.ValueBool() {
+						body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting", map[string]string{})
+					}
 				}
 			}
-			if !item.SendToRemote.IsNull() && !item.SendToRemote.IsUnknown() {
-				if item.SendToRemote.ValueBool() {
-					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting.send-to-remote", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.SendToRemote.IsNull() && !item.SendToRemote.IsUnknown() {
+					if item.SendToRemote.ValueBool() {
+						body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting.send-to-remote", map[string]string{})
+					}
 				}
 			}
-			if !item.SendToRemoteFacility.IsNull() && !item.SendToRemoteFacility.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting.send-to-remote.facility", item.SendToRemoteFacility.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.SendToRemoteFacility.IsNull() && !item.SendToRemoteFacility.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.local-accounting.send-to-remote.facility", item.SendToRemoteFacility.ValueString())
+				}
 			}
-			if !item.PathMaxfilesize.IsNull() && !item.PathMaxfilesize.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.maxfilesize", strconv.FormatInt(item.PathMaxfilesize.ValueInt64(), 10))
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.PathMaxfilesize.IsNull() && !item.PathMaxfilesize.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.maxfilesize", strconv.FormatInt(item.PathMaxfilesize.ValueInt64(), 10))
+				}
 			}
-			if !item.PathPathName.IsNull() && !item.PathPathName.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.path-name", item.PathPathName.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.PathPathName.IsNull() && !item.PathPathName.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.path-name", item.PathPathName.ValueString())
+				}
 			}
-			if !item.PathSeverity.IsNull() && !item.PathSeverity.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.severity", item.PathSeverity.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.PathSeverity.IsNull() && !item.PathSeverity.IsUnknown() {
+					body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"path.severity", item.PathSeverity.ValueString())
+				}
 			}
 		}
 	}
 	if len(data.SourceInterfaces) > 0 {
 		body, _ = sjson.Set(body, "source-interfaces.source-interface", []interface{}{})
 		for index, item := range data.SourceInterfaces {
-			if !item.Name.IsNull() && !item.Name.IsUnknown() {
-				body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"source-interface-name", item.Name.ValueString())
+			if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.Name.IsNull() && !item.Name.IsUnknown() {
+					body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"source-interface-name", item.Name.ValueString())
+				}
 			}
-			if !item.InterfaceName.IsNull() && !item.InterfaceName.IsUnknown() {
-				body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"interface-name", item.InterfaceName.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.InterfaceName.IsNull() && !item.InterfaceName.IsUnknown() {
+					body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"interface-name", item.InterfaceName.ValueString())
+				}
 			}
-			if !item.VrfName.IsNull() && !item.VrfName.IsUnknown() {
-				body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"vrf-name", item.VrfName.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.VrfName.IsNull() && !item.VrfName.IsUnknown() {
+					body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"vrf-name", item.VrfName.ValueString())
+				}
 			}
 			if (providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4")) && len(item.Vrfs) > 0 {
 				body, _ = sjson.Set(body, "source-interfaces.source-interface"+"."+strconv.Itoa(index)+"."+"vrfs.vrf", []interface{}{})

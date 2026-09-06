@@ -1209,8 +1209,10 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 			if !item.RoutePolicy.IsNull() && !item.RoutePolicy.IsUnknown() {
 				body, _ = sjson.Set(body, "redistribute.ospfs.ospf"+"."+strconv.Itoa(index)+"."+"route-policy", item.RoutePolicy.ValueString())
 			}
-			if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
-				body, _ = sjson.Set(body, "redistribute.ospfs.ospf"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
+					body, _ = sjson.Set(body, "redistribute.ospfs.ospf"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+				}
 			}
 		}
 	}
@@ -1386,8 +1388,10 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 			if !item.RoutePolicy.IsNull() && !item.RoutePolicy.IsUnknown() {
 				body, _ = sjson.Set(body, "redistribute.ospfv3s.ospfv3"+"."+strconv.Itoa(index)+"."+"route-policy", item.RoutePolicy.ValueString())
 			}
-			if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
-				body, _ = sjson.Set(body, "redistribute.ospfv3s.ospfv3"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
+					body, _ = sjson.Set(body, "redistribute.ospfv3s.ospfv3"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+				}
 			}
 		}
 	}
@@ -1423,8 +1427,10 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 			if !item.RoutePolicy.IsNull() && !item.RoutePolicy.IsUnknown() {
 				body, _ = sjson.Set(body, "redistribute.eigrps.eigrp"+"."+strconv.Itoa(index)+"."+"route-policy", item.RoutePolicy.ValueString())
 			}
-			if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
-				body, _ = sjson.Set(body, "redistribute.eigrps.eigrp"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
+					body, _ = sjson.Set(body, "redistribute.eigrps.eigrp"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+				}
 			}
 		}
 	}
@@ -1480,8 +1486,10 @@ func (data RouterBGPAddressFamily) toBody(ctx context.Context, providerVersion s
 			if !item.RoutePolicy.IsNull() && !item.RoutePolicy.IsUnknown() {
 				body, _ = sjson.Set(body, "redistribute.isis-processes.isis-process"+"."+strconv.Itoa(index)+"."+"route-policy", item.RoutePolicy.ValueString())
 			}
-			if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
-				body, _ = sjson.Set(body, "redistribute.isis-processes.isis-process"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.DefaultPolicyActionIn.IsNull() && !item.DefaultPolicyActionIn.IsUnknown() {
+					body, _ = sjson.Set(body, "redistribute.isis-processes.isis-process"+"."+strconv.Itoa(index)+"."+"default-policy-action-in", item.DefaultPolicyActionIn.ValueString())
+				}
 			}
 		}
 	}

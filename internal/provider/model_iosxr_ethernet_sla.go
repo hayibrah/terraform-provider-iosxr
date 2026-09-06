@@ -322,12 +322,16 @@ func (data EthernetSLA) toBody(ctx context.Context, providerVersion string) stri
 			if !item.ThresholdsStatelessLogOnInAndAboveBin.IsNull() && !item.ThresholdsStatelessLogOnInAndAboveBin.IsUnknown() {
 				body, _ = sjson.Set(body, "statistics.measures.measure"+"."+strconv.Itoa(index)+"."+"thresholds.type.stateless.log.on.in-and-above.bin", strconv.FormatInt(item.ThresholdsStatelessLogOnInAndAboveBin.ValueInt64(), 10))
 			}
-			if !item.AggregateMinimumDelay.IsNull() && !item.AggregateMinimumDelay.IsUnknown() {
-				body, _ = sjson.Set(body, "statistics.measures.measure"+"."+strconv.Itoa(index)+"."+"aggregate.minimum-delay", strconv.FormatInt(item.AggregateMinimumDelay.ValueInt64(), 10))
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.AggregateMinimumDelay.IsNull() && !item.AggregateMinimumDelay.IsUnknown() {
+					body, _ = sjson.Set(body, "statistics.measures.measure"+"."+strconv.Itoa(index)+"."+"aggregate.minimum-delay", strconv.FormatInt(item.AggregateMinimumDelay.ValueInt64(), 10))
+				}
 			}
-			if !item.UsecMinimumDelay.IsNull() && !item.UsecMinimumDelay.IsUnknown() {
-				if item.UsecMinimumDelay.ValueBool() {
-					body, _ = sjson.Set(body, "statistics.measures.measure"+"."+strconv.Itoa(index)+"."+"aggregate.usec-minimum-delay", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.UsecMinimumDelay.IsNull() && !item.UsecMinimumDelay.IsUnknown() {
+					if item.UsecMinimumDelay.ValueBool() {
+						body, _ = sjson.Set(body, "statistics.measures.measure"+"."+strconv.Itoa(index)+"."+"aggregate.usec-minimum-delay", map[string]string{})
+					}
 				}
 			}
 		}

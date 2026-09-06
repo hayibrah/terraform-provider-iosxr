@@ -697,14 +697,18 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 			if !item.AdvertiseAnomalyLossLowerBound.IsNull() && !item.AdvertiseAnomalyLossLowerBound.IsUnknown() {
 				body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"advertisement.anomaly-loss.lower-bound", strconv.FormatInt(item.AdvertiseAnomalyLossLowerBound.ValueInt64(), 10))
 			}
-			if !item.CollectHbh.IsNull() && !item.CollectHbh.IsUnknown() {
-				if item.CollectHbh.ValueBool() {
-					body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.collect-hbh", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.CollectHbh.IsNull() && !item.CollectHbh.IsUnknown() {
+					if item.CollectHbh.ValueBool() {
+						body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.collect-hbh", map[string]string{})
+					}
 				}
 			}
-			if !item.Ntp.IsNull() && !item.Ntp.IsUnknown() {
-				if item.Ntp.ValueBool() {
-					body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.timestamp-format.ntp", map[string]string{})
+			if helpers.VersionAtLeast(providerVersion, "25.4") {
+				if !item.Ntp.IsNull() && !item.Ntp.IsUnknown() {
+					if item.Ntp.ValueBool() {
+						body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.timestamp-format.ntp", map[string]string{})
+					}
 				}
 			}
 		}
