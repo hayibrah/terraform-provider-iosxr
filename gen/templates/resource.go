@@ -96,7 +96,11 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 					{{- if len .EnumValues -}}
 					.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 					{{- end -}}
-					{{- if .VersionRanges -}}
+					{{- if len .VersionEnums -}}
+					.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"
+					{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}
+					{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+					{{- else if .VersionRanges -}}
 					.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"
 					{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}
 					{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
@@ -142,6 +146,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 					stringvalidator.RegexMatches(regexp.MustCompile(`{{.}}`), ""),
 					{{- end}}
 				},
+				{{- else if .VersionEnums}}
+				// Version-specific enum validation done at runtime in Create/Update
 				{{- else if .VersionRanges}}
 				// Version-specific range validation done at runtime in Create/Update
 				{{- else if or (ne .MinInt 0) (ne .MaxInt 0)}}
@@ -170,7 +176,9 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 								{{- if len .EnumValues -}}
 								.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 								{{- end -}}
-								{{- if .VersionRanges -}}
+								{{- if len .VersionEnums -}}
+								.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+								{{- else if .VersionRanges -}}
 								.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 								{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 								.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
@@ -178,7 +186,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 								{{- if len .DefaultValue -}}
 								.AddDefaultValueDescription("{{.DefaultValue}}")
 								{{- end -}}
-								{{- if not .VersionRanges -}}
+								{{- if and (not .VersionRanges) (not .VersionEnums) -}}
 								.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 								{{- end}}
 							{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -210,6 +218,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 								stringvalidator.RegexMatches(regexp.MustCompile(`{{.}}`), ""),
 								{{- end}}
 							},
+							{{- else if .VersionEnums}}
+							// Version-specific enum validation done at runtime in Create/Update
 							{{- else if .VersionRanges}}
 							// Version-specific range validation done at runtime in Create/Update
 							{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
@@ -238,13 +248,15 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 											{{- if len .EnumValues -}}
 											.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 											{{- end -}}
-											{{- if or (ne .MinInt 0) (ne .MaxInt 0) -}}
+											{{- if len .VersionEnums -}}
+											.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+											{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 											.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
 											{{- end -}}
 											{{- if len .DefaultValue -}}
 											.AddDefaultValueDescription("{{.DefaultValue}}")
 											{{- end -}}
-											{{- if not .VersionRanges -}}
+											{{- if and (not .VersionRanges) (not .VersionEnums) -}}
 											.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 											{{- end}}
 										{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -276,6 +288,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 											stringvalidator.RegexMatches(regexp.MustCompile(`{{.}}`), ""),
 											{{- end}}
 										},
+										{{- else if .VersionEnums}}
+										// Version-specific enum validation done at runtime in Create/Update
 										{{- else if .VersionRanges}}
 										// Version-specific range validation done at runtime in Create/Update
 										{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
@@ -344,6 +358,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 													stringvalidator.RegexMatches(regexp.MustCompile(`{{.}}`), ""),
 													{{- end}}
 												},
+												{{- else if .VersionEnums}}
+												// Version-specific enum validation done at runtime in Create/Update
 												{{- else if .VersionRanges}}
 												// Version-specific range validation done at runtime in Create/Update
 												{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
@@ -412,6 +428,8 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 																stringvalidator.RegexMatches(regexp.MustCompile(`{{.}}`), ""),
 																{{- end}}
 															},
+															{{- else if .VersionEnums}}
+															// Version-specific enum validation done at runtime in Create/Update
 															{{- else if .VersionRanges}}
 															// Version-specific range validation done at runtime in Create/Update
 															{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}

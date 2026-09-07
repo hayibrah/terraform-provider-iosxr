@@ -438,6 +438,15 @@ func (data EVPNSegmentRoutingSRv6EVI) GetRangeConstraints() []helpers.FieldRange
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data EVPNSegmentRoutingSRv6EVI) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {

@@ -1596,6 +1596,15 @@ func (data RouterBGPAddressFamily) GetRangeConstraints() []helpers.FieldRangeCon
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data RouterBGPAddressFamily) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "vrf.all.segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String && !data.VrfAllSegmentRoutingSrv6Locator.IsNull() {

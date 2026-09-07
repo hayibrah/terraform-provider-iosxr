@@ -455,6 +455,15 @@ func (data Track) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data Track) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Track) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number && !data.DelayUp.IsNull() {

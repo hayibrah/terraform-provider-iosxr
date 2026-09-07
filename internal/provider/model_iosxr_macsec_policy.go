@@ -242,6 +242,15 @@ func (data MACSecPolicy) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data MACSecPolicy) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MACSecPolicy) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "key-server-priority"); value.Exists() && value.Type == gjson.Number && !data.KeyServerPriority.IsNull() {

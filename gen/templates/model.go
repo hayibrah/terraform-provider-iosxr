@@ -514,6 +514,31 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) GetRangeConstraints() []helper
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+{{- $versionSuffix := versionSuffix .Version}}
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data {{camelCase .Name}}{{$versionSuffix}}) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	{{- if hasVersionEnums .Attributes}}
+	return []helpers.FieldEnumConstraint{
+		{{- range collectVersionEnumConstraints .Attributes ""}}
+		{
+			FieldPath: "{{.FieldPath}}",
+			VersionEnums: map[string][]string{
+				{{- range $version, $vals := .VersionEnums}}
+				"{{$version}}": { {{- range $vals}}"{{.}}", {{end}} },
+				{{- end}}
+			},
+		},
+		{{- end}}
+	}
+	{{- else}}
+	return nil
+	{{- end}}
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 
 {{- $versionSuffix := versionSuffix .Version}}

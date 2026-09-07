@@ -96,10 +96,17 @@ type FieldRangeConstraint struct {
 	VersionRanges map[string]VersionRange // version -> range (e.g., "2442" -> {Min: 30000, Max: 15000000})
 }
 
+// FieldEnumConstraint represents version-specific valid enum sets for a string field.
+type FieldEnumConstraint struct {
+	FieldPath    string
+	VersionEnums map[string][]string // version threshold → valid values for that version and above
+}
+
 // Validatable is an interface for models that support version validation
 type Validatable interface {
 	GetVersionConstraints() []FieldVersionConstraint
 	GetRangeConstraints() []FieldRangeConstraint
+	GetEnumConstraints() []FieldEnumConstraint
 }
 
 // Validate performs all version-related validations on a model
@@ -114,9 +121,10 @@ func Validate(providerVersion string, model Validatable, diagnostics *diag.Diagn
 	// Get constraints from model
 	versionConstraints := model.GetVersionConstraints()
 	rangeConstraints := model.GetRangeConstraints()
+	enumConstraints := model.GetEnumConstraints()
 
 	// Skip validation if no constraints defined
-	if len(versionConstraints) == 0 && len(rangeConstraints) == 0 {
+	if len(versionConstraints) == 0 && len(rangeConstraints) == 0 && len(enumConstraints) == 0 {
 		return true
 	}
 
@@ -128,6 +136,12 @@ func Validate(providerVersion string, model Validatable, diagnostics *diag.Diagn
 
 	// Validate version-specific ranges for integer fields
 	ValidateVersionRanges(providerVersion, model, rangeConstraints, diagnostics)
+	if diagnostics.HasError() {
+		return false
+	}
+
+	// Validate version-specific enum sets for string fields
+	ValidateVersionEnums(providerVersion, model, enumConstraints, diagnostics)
 	if diagnostics.HasError() {
 		return false
 	}
@@ -710,4 +724,146 @@ func getWidestRange(versionRanges map[string]VersionRange) (*VersionRange, strin
 	}
 
 	return &VersionRange{Min: minRange, Max: maxRange}, firstVersion
+}
+
+// ValidateVersionEnums validates string fields against their version-specific enum sets.
+// Called after ValidateVersionConstraints — fields already confirmed present and version-supported.
+func ValidateVersionEnums(
+	providerVersion string,
+	planValue interface{},
+	constraints []FieldEnumConstraint,
+	diagnostics *diag.Diagnostics,
+) {
+	if providerVersion == "" || len(constraints) == 0 {
+		return
+	}
+	for _, constraint := range constraints {
+		if !isFieldSet(planValue, constraint.FieldPath) {
+			continue
+		}
+		// Find the highest threshold satisfied by providerVersion (same algorithm as getRangeForVersion).
+		bestVersion := ""
+		for ver := range constraint.VersionEnums {
+			if VersionAtLeast(providerVersion, ver) {
+				if bestVersion == "" || VersionAtLeast(ver, bestVersion) {
+					bestVersion = ver
+				}
+			}
+		}
+		if bestVersion == "" {
+			// Provider version is below all thresholds — no enum restriction applies.
+			continue
+		}
+		validValues := constraint.VersionEnums[bestVersion]
+		value, ok := getStringFieldValue(planValue, constraint.FieldPath)
+		if !ok {
+			continue
+		}
+		allowed := false
+		for _, v := range validValues {
+			if v == value {
+				allowed = true
+				break
+			}
+		}
+		if !allowed {
+			diagnostics.AddError(
+				fmt.Sprintf("Invalid Enum Value for IOS-XR Version %s", FormatVersion(providerVersion)),
+				fmt.Sprintf(
+					"The field '%s' value '%s' is not valid for IOS-XR version %s. "+
+						"Allowed values for this version: %v.",
+					constraint.FieldPath, value,
+					FormatVersion(providerVersion), validValues,
+				),
+			)
+		}
+	}
+}
+
+// getStringFieldValue retrieves the string value of a field at the given path.
+func getStringFieldValue(planValue interface{}, fieldPath string) (string, bool) {
+	parts := strings.Split(fieldPath, ".")
+	current := reflect.ValueOf(planValue)
+
+	for i, part := range parts {
+		if current.Kind() == reflect.Ptr {
+			if current.IsNil() {
+				return "", false
+			}
+			current = current.Elem()
+		}
+		if current.Kind() != reflect.Struct {
+			return "", false
+		}
+		field := current.FieldByName(toCamelCase(part))
+		if !field.IsValid() {
+			return "", false
+		}
+		if field.Kind() == reflect.Slice {
+			if i == len(parts)-1 {
+				return "", false
+			}
+			remainingPath := strings.Join(parts[i+1:], ".")
+			for j := 0; j < field.Len(); j++ {
+				if val, ok := getStringFromValue(field.Index(j), remainingPath); ok {
+					return val, true
+				}
+			}
+			return "", false
+		}
+		if i == len(parts)-1 {
+			if v, ok := field.Interface().(types.String); ok {
+				if !v.IsNull() && !v.IsUnknown() {
+					return v.ValueString(), true
+				}
+			}
+			return "", false
+		}
+		current = field
+	}
+	return "", false
+}
+
+// getStringFromValue extracts a string from a reflect.Value by navigating a field path.
+func getStringFromValue(value reflect.Value, fieldPath string) (string, bool) {
+	parts := strings.Split(fieldPath, ".")
+	current := value
+
+	for i, part := range parts {
+		if current.Kind() == reflect.Ptr {
+			if current.IsNil() {
+				return "", false
+			}
+			current = current.Elem()
+		}
+		if current.Kind() != reflect.Struct {
+			return "", false
+		}
+		field := current.FieldByName(toCamelCase(part))
+		if !field.IsValid() {
+			return "", false
+		}
+		if field.Kind() == reflect.Slice {
+			if i == len(parts)-1 {
+				return "", false
+			}
+			remainingPath := strings.Join(parts[i+1:], ".")
+			for j := 0; j < field.Len(); j++ {
+				if val, ok := getStringFromValue(field.Index(j), remainingPath); ok {
+					return val, true
+				}
+			}
+			return "", false
+		}
+		if i == len(parts)-1 {
+			if v, ok := field.Interface().(types.String); ok {
+				if !v.IsNull() && !v.IsUnknown() {
+					return v.ValueString(), true
+				}
+			}
+			return "", false
+		}
+		current = field
+	}
+	return "", false
 }

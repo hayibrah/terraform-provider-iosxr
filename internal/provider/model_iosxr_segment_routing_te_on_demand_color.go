@@ -395,6 +395,15 @@ func (data SegmentRoutingTEOnDemandColor) GetRangeConstraints() []helpers.FieldR
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data SegmentRoutingTEOnDemandColor) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-anycast"); !data.DynamicAnycastSidInclusion.IsNull() {

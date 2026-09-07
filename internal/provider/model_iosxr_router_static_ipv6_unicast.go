@@ -463,6 +463,15 @@ func (data RouterStaticIPv6Unicast) GetRangeConstraints() []helpers.FieldRangeCo
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data RouterStaticIPv6Unicast) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterStaticIPv6Unicast) updateFromBody(ctx context.Context, res []byte, version string) {
 	for i := range data.NexthopInterfaces {

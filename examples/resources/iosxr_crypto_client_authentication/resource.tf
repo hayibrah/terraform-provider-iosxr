@@ -4,7 +4,7 @@ resource "iosxr_crypto_client_authentication" "example" {
     {
       profile_name = "EAP_PROFILE"
       password_six = "Cisco123!"
-      username     = "dot1x_client"
+      username = "dot1x_client"
     }
   ]
 }

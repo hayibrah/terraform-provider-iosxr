@@ -3,7 +3,7 @@ resource "iosxr_crypto_ssl" "example" {
   profile = [
     {
       profile_name = "MTLS_PROFILE"
-      certificate  = "CORP_PKI_CA"
+      certificate = "CORP_PKI_CA"
     }
   ]
 }

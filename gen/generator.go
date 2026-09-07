@@ -170,6 +170,7 @@ type YamlConfigAttribute struct {
 	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
 	Legacy            bool                       `yaml:"legacy"` // If true, this attribute is removed/dropped in this version
 	VersionRanges     map[string]RangeConstraint // Version-specific ranges for Int64 fields (nil if same across all versions)
+	VersionEnums      map[string][]string        // Version-specific enum sets for String fields (nil if same across all versions)
 	Attributes        []YamlConfigAttribute      `yaml:"attributes"`
 }
 
@@ -544,6 +545,101 @@ func CollectVersionRangeConstraints(attributes []YamlConfigAttribute, prefix str
 	return result
 }
 
+// stringSlicesEqual returns true if both slices contain the same elements in the same order.
+func stringSlicesEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// unionStringSlices returns a deduplicated union of a and b, preserving order (a first, then b extras).
+func unionStringSlices(a, b []string) []string {
+	seen := make(map[string]bool, len(a))
+	result := make([]string, 0, len(a)+len(b))
+	for _, v := range a {
+		if !seen[v] {
+			seen[v] = true
+			result = append(result, v)
+		}
+	}
+	for _, v := range b {
+		if !seen[v] {
+			seen[v] = true
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+// FormatVersionEnums formats per-version enum sets for markdown description.
+func FormatVersionEnums(versionEnums map[string][]string) string {
+	if len(versionEnums) == 0 {
+		return ""
+	}
+	versions := make([]string, 0, len(versionEnums))
+	for v := range versionEnums {
+		versions = append(versions, v)
+	}
+	sort.Strings(versions)
+	parts := make([]string, 0, len(versions))
+	for _, v := range versions {
+		vals := versionEnums[v]
+		quoted := make([]string, len(vals))
+		for i, val := range vals {
+			quoted[i] = fmt.Sprintf("`%s`", val)
+		}
+		parts = append(parts, fmt.Sprintf("%s (v%s)", strings.Join(quoted, ", "), FormatVersionDisplay(v)))
+	}
+	return strings.Join(parts, "; ")
+}
+
+// HasVersionEnums returns true if any attribute in the slice has version-specific enum sets.
+func HasVersionEnums(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionEnums) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionEnums(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// EnumConstraintInfo represents a field with version-specific enum constraints.
+type EnumConstraintInfo struct {
+	FieldPath    string
+	VersionEnums map[string][]string
+}
+
+// CollectVersionEnumConstraints recursively collects all attributes that have version-specific enum sets.
+func CollectVersionEnumConstraints(attributes []YamlConfigAttribute, prefix string) []EnumConstraintInfo {
+	var result []EnumConstraintInfo
+	for _, attr := range attributes {
+		fieldPath := attr.TfName
+		if prefix != "" {
+			fieldPath = prefix + "." + attr.TfName
+		}
+		if len(attr.VersionEnums) > 0 {
+			result = append(result, EnumConstraintInfo{
+				FieldPath:    fieldPath,
+				VersionEnums: attr.VersionEnums,
+			})
+		}
+		if len(attr.Attributes) > 0 {
+			nested := CollectVersionEnumConstraints(attr.Attributes, fieldPath)
+			result = append(result, nested...)
+		}
+	}
+	return result
+}
+
 // GetWidestRange calculates the widest range (min of all mins, max of all maxs) from version ranges
 // Returns a slice [min, max] for compatibility with Go templates
 func GetWidestRange(versionRanges map[string]RangeConstraint) []int64 {
@@ -598,6 +694,9 @@ var functions = template.FuncMap{
 	"hasVersionRanges":               HasVersionRanges,
 	"collectVersionRangeConstraints": CollectVersionRangeConstraints,
 	"getWidestRange":                 GetWidestRange,
+	"formatVersionEnums":             FormatVersionEnums,
+	"hasVersionEnums":                HasVersionEnums,
+	"collectVersionEnumConstraints":  CollectVersionEnumConstraints,
 }
 
 func resolvePath(e *yang.Entry, path string) *yang.Entry {
@@ -1066,7 +1165,17 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if newAttr.Example != "" {
 					result[i].Example = newAttr.Example
 				}
-				if len(newAttr.EnumValues) > 0 {
+				if len(newAttr.EnumValues) > 0 && !stringSlicesEqual(result[i].EnumValues, newAttr.EnumValues) {
+					// Enum sets differ between versions — record per-version sets and use the union at schema level.
+					if result[i].VersionEnums == nil {
+						result[i].VersionEnums = make(map[string][]string)
+						if len(result[i].EnumValues) > 0 {
+							result[i].VersionEnums["_base"] = result[i].EnumValues
+						}
+					}
+					result[i].VersionEnums[overrideVersion] = newAttr.EnumValues
+					result[i].EnumValues = unionStringSlices(result[i].EnumValues, newAttr.EnumValues)
+				} else if len(newAttr.EnumValues) > 0 {
 					result[i].EnumValues = newAttr.EnumValues
 				}
 
@@ -1178,6 +1287,12 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 		if baseRange, exists := attr.VersionRanges["_base"]; exists {
 			delete(attr.VersionRanges, "_base")
 			attr.VersionRanges[baseVersion] = baseRange
+		}
+	}
+	if attr.VersionEnums != nil {
+		if baseEnums, exists := attr.VersionEnums["_base"]; exists {
+			delete(attr.VersionEnums, "_base")
+			attr.VersionEnums[baseVersion] = baseEnums
 		}
 	}
 	for i := range attr.Attributes {

@@ -222,6 +222,15 @@ func (data RouterIGMPVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data RouterIGMPVRF) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterIGMPVRF) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dvmrp-enable"); !data.DvmrpEnable.IsNull() {

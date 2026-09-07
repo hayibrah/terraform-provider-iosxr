@@ -1510,6 +1510,15 @@ func (data RouterISISAddressFamily) GetRangeConstraints() []helpers.FieldRangeCo
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data RouterISISAddressFamily) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "distance.global"); value.Exists() && value.Type == gjson.Number && !data.Distance.IsNull() {

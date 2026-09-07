@@ -1172,6 +1172,15 @@ func (data RouterISIS) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // End of section. //template:end getRangeConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getEnumConstraints
+
+// GetEnumConstraints returns the version-specific enum constraints for string fields
+func (data RouterISIS) GetEnumConstraints() []helpers.FieldEnumConstraint {
+	return nil
+}
+
+// End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterISIS) updateFromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "segment-routing.global-block.lower-bound-of-srgb"); value.Exists() && value.Type == gjson.Number && !data.SegmentRoutingGlobalBlockLowerBound.IsNull() {
