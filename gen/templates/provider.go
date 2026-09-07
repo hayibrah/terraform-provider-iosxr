@@ -80,7 +80,7 @@ type IosxrProviderData struct {
 type IosxrProviderDataDevice struct {
 	Client          *gnmi.Client
 	Managed         bool
-	Version         string // Per-device IOS-XR version (normalized, e.g., "2442")
+	Version         string // Per-device IOS-XR version in major.minor format (e.g., "24.4", "25.4")
 	VersionDetected bool   // True if version was auto-detected
 }
 
@@ -535,7 +535,7 @@ func (p *iosxrProvider) Configure(ctx context.Context, req provider.ConfigureReq
 			if !helpers.ValidateSupportedVersion(detectedVersion) {
 				resp.Diagnostics.AddError(
 					"Unsupported IOS-XR Version",
-					fmt.Sprintf("Detected IOS-XR version '%s' for default device is not supported. Supported versions: 24.4.2 (2442)", detectedVersion),
+					fmt.Sprintf("Detected IOS-XR version '%s' for default device is not supported. %s", detectedVersion, helpers.SupportedVersionList()),
 				)
 				return
 			}
@@ -593,7 +593,7 @@ func (p *iosxrProvider) Configure(ctx context.Context, req provider.ConfigureReq
 				if !helpers.ValidateSupportedVersion(detectedVersion) {
 					resp.Diagnostics.AddError(
 						"Unsupported IOS-XR Version",
-						fmt.Sprintf("Detected IOS-XR version '%s' for device '%s' is not supported. Supported versions: 24.4.2 (2442)", detectedVersion, deviceName),
+						fmt.Sprintf("Detected IOS-XR version '%s' for device '%s' is not supported. %s", detectedVersion, deviceName, helpers.SupportedVersionList()),
 					)
 					return
 				}
@@ -638,6 +638,7 @@ func (p *iosxrProvider) Resources(ctx context.Context) []func() resource.Resourc
 func (p *iosxrProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewGnmiDataSource,
+		NewDeviceInfoDataSource,
 {{- range .UniqueDataSourceNames}}
 		New{{camelCase .}}DataSource,
 {{- end}}
