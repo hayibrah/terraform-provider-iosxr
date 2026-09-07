@@ -15,17 +15,17 @@ This resource can manage the Service Timestamps configuration.
 ```terraform
 resource "iosxr_service_timestamps" "example" {
   debug_datetime_localtime     = true
-  debug_datetime_msec          = true
   debug_datetime_show_timezone = true
   debug_datetime_year          = true
   debug_uptime                 = true
   debug_disable                = false
   log_datetime_localtime       = true
-  log_datetime_msec            = true
   log_datetime_show_timezone   = true
   log_datetime_year            = true
   log_uptime                   = true
   log_disable                  = false
+  debug_datetime_usec          = true
+  log_datetime_usec            = true
 }
 ```
 
@@ -36,16 +36,20 @@ resource "iosxr_service_timestamps" "example" {
 
 - `debug_datetime_localtime` (Boolean) Use local time zone for timestamps
 - `debug_datetime_localtime_only` (Boolean) Timestamp with date and time
+  - **Not supported from version `25.4` and above**
 - `debug_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `debug_datetime_show_timezone` (Boolean) Add time zone information to timestamp
+- `debug_datetime_usec` (Boolean) - Supported from version: `25.4`
 - `debug_datetime_year` (Boolean) Add year to timestamp
 - `debug_disable` (Boolean) Disable timestamp debug messages
 - `debug_uptime` (Boolean) Timestamp with systime uptime
 - `device` (String) A device name from the provider configuration.
 - `log_datetime_localtime` (Boolean) Use local time zone for timestamps
 - `log_datetime_localtime_only` (Boolean) Timestamp with date and time
+  - **Not supported from version `25.4` and above**
 - `log_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `log_datetime_show_timezone` (Boolean) Add time zone information to timestamp
+- `log_datetime_usec` (Boolean) - Supported from version: `25.4`
 - `log_datetime_year` (Boolean) Add Year to timestamp
 - `log_disable` (Boolean) Disable timestamp log messages
 - `log_uptime` (Boolean) Timestamp with systime uptime

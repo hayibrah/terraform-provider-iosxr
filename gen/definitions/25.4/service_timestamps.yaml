@@ -1,17 +1,34 @@
 ---
 name: Service Timestamps
-# Service Timestamps moved from Cisco-IOS-XR-um-service-timestamps-cfg (24.4)
-# to Cisco-IOS-XR-um-logging-cfg (25.4+). In 25.4, Cisco-IOS-XR-um-logging-cfg
-# augments /service-cfg:service and adds the timestamps container there.
-# For gNMI, the origin is the augmenting module — Cisco-IOS-XR-um-logging-cfg.
-# Sub-path /service/timestamps is unchanged.
-#
-# path: set to the 24.4 base path (same as the base definition) so that getPath()
-# returns the correct fallback when device.Version is not configured (empty = base behavior).
-# path_version provides the full version-to-module mapping used at runtime.
 path: Cisco-IOS-XR-um-service-timestamps-cfg:/service/timestamps
+no_delete_attributes: true
 doc_category: Management
 path_version:
   "24.4": "Cisco-IOS-XR-um-service-timestamps-cfg:/service/timestamps"
   "25.4": "Cisco-IOS-XR-um-service-cfg:/service/Cisco-IOS-XR-um-logging-cfg:timestamps"
-# No attribute changes — sub-path and all leaves are identical across versions.
+attributes:
+  # ===========================================================
+  # REMOVALS - removed between 24.4 and 25.4 (no replacement)
+  # ===========================================================
+  - yang_name: debug/datetime/localtime-only
+    legacy: true
+  - yang_name: log/datetime/localtime-only
+    legacy: true
+
+  # ===========================================================
+  # ADDITIONS - new attributes in 25.4
+  # ===========================================================
+  # debug/datetime/msec and usec are mutually exclusive via
+  # choice INCLUDE-MILLISECOND-TIMESTAMP in the 25.4 YANG model.
+  - yang_name: debug/datetime/INCLUDE-MILLISECOND-TIMESTAMP/USEC/usec
+    xpath: debug/datetime/usec
+    tf_name: debug_datetime_usec
+    type: Bool
+    type_yang_bool: presence
+    example: true
+  - yang_name: log/datetime/INCLUDE-MILLISECOND-TIMESTAMP/USEC/usec
+    xpath: log/datetime/usec
+    tf_name: log_datetime_usec
+    type: Bool
+    type_yang_bool: presence
+    example: true

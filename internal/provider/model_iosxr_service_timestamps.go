@@ -50,6 +50,8 @@ type ServiceTimestamps struct {
 	LogDatetimeYear            types.Bool   `tfsdk:"log_datetime_year"`
 	LogUptime                  types.Bool   `tfsdk:"log_uptime"`
 	LogDisable                 types.Bool   `tfsdk:"log_disable"`
+	DebugDatetimeUsec          types.Bool   `tfsdk:"debug_datetime_usec"`
+	LogDatetimeUsec            types.Bool   `tfsdk:"log_datetime_usec"`
 }
 
 type ServiceTimestampsData struct {
@@ -69,6 +71,8 @@ type ServiceTimestampsData struct {
 	LogDatetimeYear            types.Bool   `tfsdk:"log_datetime_year"`
 	LogUptime                  types.Bool   `tfsdk:"log_uptime"`
 	LogDisable                 types.Bool   `tfsdk:"log_disable"`
+	DebugDatetimeUsec          types.Bool   `tfsdk:"debug_datetime_usec"`
+	LogDatetimeUsec            types.Bool   `tfsdk:"log_datetime_usec"`
 }
 
 // End of section. //template:end types
@@ -107,9 +111,11 @@ func (data ServiceTimestampsData) getPathForVersion(providerVersion string) stri
 
 func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string) string {
 	body := "{}"
-	if !data.DebugDatetimeLocaltimeOnly.IsNull() && !data.DebugDatetimeLocaltimeOnly.IsUnknown() {
-		if data.DebugDatetimeLocaltimeOnly.ValueBool() {
-			body, _ = sjson.Set(body, "debug.datetime.localtime-only", map[string]string{})
+	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.DebugDatetimeLocaltimeOnly.IsNull() && !data.DebugDatetimeLocaltimeOnly.IsUnknown() {
+			if data.DebugDatetimeLocaltimeOnly.ValueBool() {
+				body, _ = sjson.Set(body, "debug.datetime.localtime-only", map[string]string{})
+			}
 		}
 	}
 	if !data.DebugDatetimeLocaltime.IsNull() && !data.DebugDatetimeLocaltime.IsUnknown() {
@@ -142,9 +148,11 @@ func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string
 			body, _ = sjson.Set(body, "debug.disable", map[string]string{})
 		}
 	}
-	if !data.LogDatetimeLocaltimeOnly.IsNull() && !data.LogDatetimeLocaltimeOnly.IsUnknown() {
-		if data.LogDatetimeLocaltimeOnly.ValueBool() {
-			body, _ = sjson.Set(body, "log.datetime.localtime-only", map[string]string{})
+	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.LogDatetimeLocaltimeOnly.IsNull() && !data.LogDatetimeLocaltimeOnly.IsUnknown() {
+			if data.LogDatetimeLocaltimeOnly.ValueBool() {
+				body, _ = sjson.Set(body, "log.datetime.localtime-only", map[string]string{})
+			}
 		}
 	}
 	if !data.LogDatetimeLocaltime.IsNull() && !data.LogDatetimeLocaltime.IsUnknown() {
@@ -177,6 +185,20 @@ func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string
 			body, _ = sjson.Set(body, "log.disable", map[string]string{})
 		}
 	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.DebugDatetimeUsec.IsNull() && !data.DebugDatetimeUsec.IsUnknown() {
+			if data.DebugDatetimeUsec.ValueBool() {
+				body, _ = sjson.Set(body, "debug.datetime.usec", map[string]string{})
+			}
+		}
+	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.LogDatetimeUsec.IsNull() && !data.LogDatetimeUsec.IsUnknown() {
+			if data.LogDatetimeUsec.ValueBool() {
+				body, _ = sjson.Set(body, "log.datetime.usec", map[string]string{})
+			}
+		}
+	}
 	return body
 }
 
@@ -188,6 +210,26 @@ func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string
 func (data ServiceTimestamps) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
 
+	constraints = append(constraints, []helpers.FieldVersionConstraint{
+		{
+			FieldPath: "debug_datetime_localtime_only",
+
+			RemovedInVersion: "25.4",
+		},
+		{
+			FieldPath: "log_datetime_localtime_only",
+
+			RemovedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "debug_datetime_usec",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "log_datetime_usec",
+			AddedInVersion: "25.4",
+		},
+	}...)
 	if len(constraints) == 0 {
 		return nil
 	}
@@ -207,7 +249,7 @@ func (data ServiceTimestamps) GetRangeConstraints() []helpers.FieldRangeConstrai
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); !data.DebugDatetimeLocaltimeOnly.IsNull() {
+	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.DebugDatetimeLocaltimeOnly.IsNull() {
 		if value.Exists() {
 			data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
 		} else {
@@ -270,7 +312,7 @@ func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.DebugDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "log.datetime.localtime-only"); !data.LogDatetimeLocaltimeOnly.IsNull() {
+	if value := gjson.GetBytes(res, "log.datetime.localtime-only"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.LogDatetimeLocaltimeOnly.IsNull() {
 		if value.Exists() {
 			data.LogDatetimeLocaltimeOnly = types.BoolValue(true)
 		} else {
@@ -333,6 +375,24 @@ func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.LogDisable = types.BoolNull()
 	}
+	if value := gjson.GetBytes(res, "debug.datetime.usec"); helpers.VersionAtLeast(version, "25.4") && !data.DebugDatetimeUsec.IsNull() {
+		if value.Exists() {
+			data.DebugDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.DebugDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.DebugDatetimeUsec = types.BoolNull()
+	}
+	if value := gjson.GetBytes(res, "log.datetime.usec"); helpers.VersionAtLeast(version, "25.4") && !data.LogDatetimeUsec.IsNull() {
+		if value.Exists() {
+			data.LogDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.LogDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.LogDatetimeUsec = types.BoolNull()
+	}
 }
 
 // End of section. //template:end updateFromBody
@@ -340,10 +400,14 @@ func (data *ServiceTimestamps) updateFromBody(ctx context.Context, res []byte, v
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
-		data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
+	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
+			data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
+		} else {
+			data.DebugDatetimeLocaltimeOnly = types.BoolValue(false)
+		}
 	} else {
-		data.DebugDatetimeLocaltimeOnly = types.BoolValue(false)
+		data.DebugDatetimeLocaltimeOnly = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "debug.datetime.localtime"); value.Exists() {
 		data.DebugDatetimeLocaltime = types.BoolValue(true)
@@ -375,10 +439,14 @@ func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.DebugDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.datetime.localtime-only"); value.Exists() {
-		data.LogDatetimeLocaltimeOnly = types.BoolValue(true)
+	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "log.datetime.localtime-only"); value.Exists() {
+			data.LogDatetimeLocaltimeOnly = types.BoolValue(true)
+		} else {
+			data.LogDatetimeLocaltimeOnly = types.BoolValue(false)
+		}
 	} else {
-		data.LogDatetimeLocaltimeOnly = types.BoolValue(false)
+		data.LogDatetimeLocaltimeOnly = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "log.datetime.localtime"); value.Exists() {
 		data.LogDatetimeLocaltime = types.BoolValue(true)
@@ -409,6 +477,24 @@ func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte, version
 		data.LogDisable = types.BoolValue(true)
 	} else {
 		data.LogDisable = types.BoolValue(false)
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "debug.datetime.usec"); value.Exists() {
+			data.DebugDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.DebugDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.DebugDatetimeUsec = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "log.datetime.usec"); value.Exists() {
+			data.LogDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.LogDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.LogDatetimeUsec = types.BoolNull()
 	}
 }
 
@@ -417,10 +503,14 @@ func (data *ServiceTimestamps) fromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
-		data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
+	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "debug.datetime.localtime-only"); value.Exists() {
+			data.DebugDatetimeLocaltimeOnly = types.BoolValue(true)
+		} else {
+			data.DebugDatetimeLocaltimeOnly = types.BoolValue(false)
+		}
 	} else {
-		data.DebugDatetimeLocaltimeOnly = types.BoolValue(false)
+		data.DebugDatetimeLocaltimeOnly = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "debug.datetime.localtime"); value.Exists() {
 		data.DebugDatetimeLocaltime = types.BoolValue(true)
@@ -452,10 +542,14 @@ func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.DebugDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.datetime.localtime-only"); value.Exists() {
-		data.LogDatetimeLocaltimeOnly = types.BoolValue(true)
+	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "log.datetime.localtime-only"); value.Exists() {
+			data.LogDatetimeLocaltimeOnly = types.BoolValue(true)
+		} else {
+			data.LogDatetimeLocaltimeOnly = types.BoolValue(false)
+		}
 	} else {
-		data.LogDatetimeLocaltimeOnly = types.BoolValue(false)
+		data.LogDatetimeLocaltimeOnly = types.BoolNull()
 	}
 	if value := gjson.GetBytes(res, "log.datetime.localtime"); value.Exists() {
 		data.LogDatetimeLocaltime = types.BoolValue(true)
@@ -486,6 +580,24 @@ func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, ver
 		data.LogDisable = types.BoolValue(true)
 	} else {
 		data.LogDisable = types.BoolValue(false)
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "debug.datetime.usec"); value.Exists() {
+			data.DebugDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.DebugDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.DebugDatetimeUsec = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "log.datetime.usec"); value.Exists() {
+			data.LogDatetimeUsec = types.BoolValue(true)
+		} else {
+			data.LogDatetimeUsec = types.BoolValue(false)
+		}
+	} else {
+		data.LogDatetimeUsec = types.BoolNull()
 	}
 }
 
@@ -495,6 +607,12 @@ func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, ver
 
 func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state ServiceTimestamps, version string) []string {
 	deletedItems := make([]string, 0)
+	if helpers.VersionAtLeast(version, "25.4") && !state.LogDatetimeUsec.IsNull() && data.LogDatetimeUsec.IsNull() {
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/usec", state.getPathForVersion(version)))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !state.DebugDatetimeUsec.IsNull() && data.DebugDatetimeUsec.IsNull() {
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/usec", state.getPathForVersion(version)))
+	}
 	if !state.LogDisable.IsNull() && data.LogDisable.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/disable", state.getPathForVersion(version)))
 	}
@@ -513,7 +631,7 @@ func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state Servic
 	if !state.LogDatetimeLocaltime.IsNull() && data.LogDatetimeLocaltime.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/localtime", state.getPathForVersion(version)))
 	}
-	if !state.LogDatetimeLocaltimeOnly.IsNull() && data.LogDatetimeLocaltimeOnly.IsNull() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.LogDatetimeLocaltimeOnly.IsNull() && data.LogDatetimeLocaltimeOnly.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/localtime-only", state.getPathForVersion(version)))
 	}
 	if !state.DebugDisable.IsNull() && data.DebugDisable.IsNull() {
@@ -534,7 +652,7 @@ func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state Servic
 	if !state.DebugDatetimeLocaltime.IsNull() && data.DebugDatetimeLocaltime.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/localtime", state.getPathForVersion(version)))
 	}
-	if !state.DebugDatetimeLocaltimeOnly.IsNull() && data.DebugDatetimeLocaltimeOnly.IsNull() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.DebugDatetimeLocaltimeOnly.IsNull() && data.DebugDatetimeLocaltimeOnly.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/localtime-only", state.getPathForVersion(version)))
 	}
 	return deletedItems
@@ -546,6 +664,12 @@ func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state Servic
 
 func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
+	if helpers.VersionAtLeast(version, "25.4") && !data.LogDatetimeUsec.IsNull() && !data.LogDatetimeUsec.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/usec", data.getPathForVersion(version)))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.DebugDatetimeUsec.IsNull() && !data.DebugDatetimeUsec.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/usec", data.getPathForVersion(version)))
+	}
 	if !data.LogDisable.IsNull() && !data.LogDisable.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/disable", data.getPathForVersion(version)))
 	}
@@ -564,7 +688,7 @@ func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version 
 	if !data.LogDatetimeLocaltime.IsNull() && !data.LogDatetimeLocaltime.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/localtime", data.getPathForVersion(version)))
 	}
-	if !data.LogDatetimeLocaltimeOnly.IsNull() && !data.LogDatetimeLocaltimeOnly.ValueBool() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.LogDatetimeLocaltimeOnly.IsNull() && !data.LogDatetimeLocaltimeOnly.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/localtime-only", data.getPathForVersion(version)))
 	}
 	if !data.DebugDisable.IsNull() && !data.DebugDisable.ValueBool() {
@@ -585,7 +709,7 @@ func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version 
 	if !data.DebugDatetimeLocaltime.IsNull() && !data.DebugDatetimeLocaltime.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/localtime", data.getPathForVersion(version)))
 	}
-	if !data.DebugDatetimeLocaltimeOnly.IsNull() && !data.DebugDatetimeLocaltimeOnly.ValueBool() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.DebugDatetimeLocaltimeOnly.IsNull() && !data.DebugDatetimeLocaltimeOnly.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/localtime-only", data.getPathForVersion(version)))
 	}
 	return emptyLeafsDelete
@@ -596,6 +720,12 @@ func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version 
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
 func (data *ServiceTimestamps) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
+	if helpers.VersionAtLeast(version, "25.4") && !data.LogDatetimeUsec.IsNull() {
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/usec", data.getPathForVersion(version)))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.DebugDatetimeUsec.IsNull() {
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/usec", data.getPathForVersion(version)))
+	}
 	if !data.LogDisable.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/disable", data.getPathForVersion(version)))
 	}
@@ -614,7 +744,7 @@ func (data *ServiceTimestamps) getDeletePaths(ctx context.Context, version strin
 	if !data.LogDatetimeLocaltime.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/localtime", data.getPathForVersion(version)))
 	}
-	if !data.LogDatetimeLocaltimeOnly.IsNull() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.LogDatetimeLocaltimeOnly.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/localtime-only", data.getPathForVersion(version)))
 	}
 	if !data.DebugDisable.IsNull() {
@@ -635,7 +765,7 @@ func (data *ServiceTimestamps) getDeletePaths(ctx context.Context, version strin
 	if !data.DebugDatetimeLocaltime.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/localtime", data.getPathForVersion(version)))
 	}
-	if !data.DebugDatetimeLocaltimeOnly.IsNull() {
+	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.DebugDatetimeLocaltimeOnly.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/localtime-only", data.getPathForVersion(version)))
 	}
 	return deletePaths

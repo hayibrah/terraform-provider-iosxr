@@ -123,6 +123,14 @@ func (d *ServiceTimestampsDataSource) Schema(ctx context.Context, req datasource
 				MarkdownDescription: "Disable timestamp log messages",
 				Computed:            true,
 			},
+			"debug_datetime_usec": schema.BoolAttribute{
+				MarkdownDescription: "",
+				Computed:            true,
+			},
+			"log_datetime_usec": schema.BoolAttribute{
+				MarkdownDescription: "",
+				Computed:            true,
+			},
 		},
 	}
 }

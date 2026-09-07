@@ -12,6 +12,7 @@ attributes:
     example: true
   - yang_name: debug/datetime/msec
     example: true
+    exclude_test: true
   - yang_name: debug/datetime/show-timezone
     example: true
   - yang_name: debug/datetime/year
@@ -27,6 +28,7 @@ attributes:
     example: true
   - yang_name: log/datetime/msec
     example: true
+    exclude_test: true
   - yang_name: log/datetime/show-timezone
     example: true
   - yang_name: log/datetime/year
