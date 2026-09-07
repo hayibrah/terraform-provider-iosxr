@@ -105,7 +105,10 @@ func ValidateSupportedVersion(version string) bool {
 
 // SupportedVersionList returns a human-readable description of accepted version formats.
 func SupportedVersionList() string {
-	return "MM.mm.pp (e.g. 25.2.1) or MM.mm (e.g. 25.2) — patch component is ignored, only major.minor matters"
+	return fmt.Sprintf(
+		"Major.Minor (e.g. 25.4) or Major.Minor.Patch (e.g. 25.4.2) — Note: patch version is ignored\nSupported IOS-XR versions: %s",
+		strings.Join(DefinitionVersions, ", "),
+	)
 }
 
 // DetectIosxrVersion queries a device via gNMI to detect its IOS-XR version
@@ -170,11 +173,17 @@ func detectFromCapabilities(ctx context.Context, client *gnmi.Client) (string, e
 		return "", fmt.Errorf("failed to get capabilities: %w", err)
 	}
 
-	// Try to extract version from the Version field
+	// Try to extract version from the Version field.
+	// Reject versions with major == 0 — that is the gNMI protocol spec version
+	// (e.g. "0.10.0"), not the IOS-XR software version (always >= 6.x).
 	if caps.Version != "" {
 		if v := extractVersionString(caps.Version); v != "" {
-			tflog.Info(ctx, fmt.Sprintf("Found version in gNMI capabilities Version field: %s", v))
-			return v, nil
+			major := strings.SplitN(v, ".", 2)[0]
+			if major != "0" {
+				tflog.Info(ctx, fmt.Sprintf("Found version in gNMI capabilities Version field: %s", v))
+				return v, nil
+			}
+			tflog.Debug(ctx, fmt.Sprintf("Ignoring gNMI protocol version '%s' from capabilities Version field", v))
 		}
 	}
 
@@ -303,7 +312,7 @@ Error details: %v
 Please explicitly specify the 'iosxr_version' attribute in your provider configuration:
 
   provider "iosxr" {
-    iosxr_version = "24.4.2"  # optional, auto-detected if not set
+    iosxr_version = "24.4"  # optional, auto-detected if not set
     devices = [...]
   }
 
