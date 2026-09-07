@@ -12,6 +12,7 @@ no_augment_config: bool(required=False)  # Set to true if the definition should 
 ds_description: str(required=False)  # Description for the data source
 res_description: str(required=False)  # Description for the resource
 doc_category: str()  # Documentation category for the resource
+legacy: bool(required=False)  # Set to true if the entire resource is removed in this version (used in override definitions)
 attributes: list(include('attribute'), required=False)  # List of attributes
 test_prerequisites: list(include('test_prerequisite'), required=False)  # List of test prerequisites
 ---
