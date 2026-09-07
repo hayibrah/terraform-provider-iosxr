@@ -3,8 +3,7 @@ data "iosxr_{{snakeCase .Name}}" "example" {
   # NOTE: This data source is only supported from IOS-XR version {{formatVersionDisplay .IntroducedInVersion}} and above
 {{- end}}
 {{- if ne .RemovedInVersion ""}}
-  # NOTE: This data source is not supported from IOS-XR version {{formatVersionDisplay .RemovedInVersion}} and above
-  # Only use with versions earlier than {{formatVersionDisplay .RemovedInVersion}}
+  # NOTE: Only use with versions earlier than {{formatVersionDisplay .RemovedInVersion}}
 {{- end}}
 {{- range  .Attributes}}
 {{- if and (or .Id .Reference) (len .Example)}}

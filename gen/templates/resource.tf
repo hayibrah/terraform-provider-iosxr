@@ -3,8 +3,7 @@ resource "iosxr_{{snakeCase .Name}}" "example" {
   # NOTE: This resource is only supported from IOS-XR version {{formatVersionDisplay .IntroducedInVersion}} and above
 {{- end}}
 {{- if ne .RemovedInVersion ""}}
-  # NOTE: This resource is not supported from IOS-XR version {{formatVersionDisplay .RemovedInVersion}} and above
-  # Only use with versions earlier than {{formatVersionDisplay .RemovedInVersion}}
+  # NOTE: Only use with versions earlier than {{formatVersionDisplay .RemovedInVersion}}
 {{- end}}
 {{- range  .Attributes}}
 {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample (ne .RemovedInVersion ""))}}
