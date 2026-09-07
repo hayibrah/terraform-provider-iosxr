@@ -326,7 +326,7 @@ var models254 = []string{
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-linux-networking-cfg.yang",
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-netconf-yang-cfg.yang",
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-xml-agent-cfg.yang",
-	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-tpa-cfg.yang",
+	// Cisco-IOS-XR-um-tpa-cfg removed in 25.4 (module no longer published for xr/2542)
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-performance-measurement-cfg.yang",
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-performance-mgmt-cfg.yang",
 	"https://raw.githubusercontent.com/YangModels/yang/main/vendor/cisco/xr/2542/Cisco-IOS-XR-um-ipsla-cfg.yang",

@@ -56,7 +56,7 @@ func (d *TPADataSource) Metadata(_ context.Context, req datasource.MetadataReque
 func (d *TPADataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "This data source can read the TPA configuration.",
+		MarkdownDescription: "This data source can read the TPA configuration.\n\n> **Warning:** This data source is not supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{

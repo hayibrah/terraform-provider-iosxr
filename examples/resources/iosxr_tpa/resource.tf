@@ -1,4 +1,6 @@
 resource "iosxr_tpa" "example" {
+  # NOTE: This resource is not supported from IOS-XR version 25.4 and above
+  # Only use with versions earlier than 25.4
   statistics_update_frequency = 60
   statistics_max_lpts_events  = 10000000
   statistics_max_intf_events  = 10000000

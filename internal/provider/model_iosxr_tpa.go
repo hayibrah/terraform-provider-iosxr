@@ -204,6 +204,11 @@ func (data TPA) toBody(ctx context.Context, providerVersion string) string {
 func (data TPA) GetVersionConstraints() []helpers.FieldVersionConstraint {
 	constraints := make([]helpers.FieldVersionConstraint, 0)
 
+	// Entire resource is removed in version 25.4
+	constraints = append(constraints, helpers.FieldVersionConstraint{
+		FieldPath:        "",
+		RemovedInVersion: "25.4",
+	})
 	if len(constraints) == 0 {
 		return nil
 	}
