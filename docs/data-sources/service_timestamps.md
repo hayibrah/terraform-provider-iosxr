@@ -30,7 +30,7 @@ data "iosxr_service_timestamps" "example" {
 - `debug_datetime_localtime_only` (Boolean) Timestamp with date and time
 - `debug_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `debug_datetime_show_timezone` (Boolean) Add time zone information to timestamp
-- `debug_datetime_usec` (Boolean)
+- `debug_datetime_usec` (Boolean) Include microseconds in timestamp
 - `debug_datetime_year` (Boolean) Add year to timestamp
 - `debug_disable` (Boolean) Disable timestamp debug messages
 - `debug_uptime` (Boolean) Timestamp with systime uptime
@@ -39,7 +39,7 @@ data "iosxr_service_timestamps" "example" {
 - `log_datetime_localtime_only` (Boolean) Timestamp with date and time
 - `log_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `log_datetime_show_timezone` (Boolean) Add time zone information to timestamp
-- `log_datetime_usec` (Boolean)
+- `log_datetime_usec` (Boolean) Include microseconds in timestamp
 - `log_datetime_year` (Boolean) Add Year to timestamp
 - `log_disable` (Boolean) Disable timestamp log messages
 - `log_uptime` (Boolean) Timestamp with systime uptime

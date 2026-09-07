@@ -39,7 +39,8 @@ resource "iosxr_service_timestamps" "example" {
   - **Not supported from version `25.4` and above**
 - `debug_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `debug_datetime_show_timezone` (Boolean) Add time zone information to timestamp
-- `debug_datetime_usec` (Boolean) - Supported from version: `25.4`
+- `debug_datetime_usec` (Boolean) Include microseconds in timestamp
+  - Supported from version: `25.4`
 - `debug_datetime_year` (Boolean) Add year to timestamp
 - `debug_disable` (Boolean) Disable timestamp debug messages
 - `debug_uptime` (Boolean) Timestamp with systime uptime
@@ -49,7 +50,8 @@ resource "iosxr_service_timestamps" "example" {
   - **Not supported from version `25.4` and above**
 - `log_datetime_msec` (Boolean) Include milliseconds in timestamp
 - `log_datetime_show_timezone` (Boolean) Add time zone information to timestamp
-- `log_datetime_usec` (Boolean) - Supported from version: `25.4`
+- `log_datetime_usec` (Boolean) Include microseconds in timestamp
+  - Supported from version: `25.4`
 - `log_datetime_year` (Boolean) Add Year to timestamp
 - `log_disable` (Boolean) Disable timestamp log messages
 - `log_uptime` (Boolean) Timestamp with systime uptime

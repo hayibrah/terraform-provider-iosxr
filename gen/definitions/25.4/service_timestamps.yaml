@@ -23,12 +23,14 @@ attributes:
   - yang_name: debug/datetime/INCLUDE-MILLISECOND-TIMESTAMP/USEC/usec
     xpath: debug/datetime/usec
     tf_name: debug_datetime_usec
+    description: "Include microseconds in timestamp"
     type: Bool
     type_yang_bool: presence
     example: true
   - yang_name: log/datetime/INCLUDE-MILLISECOND-TIMESTAMP/USEC/usec
     xpath: log/datetime/usec
     tf_name: log_datetime_usec
+    description: "Include microseconds in timestamp"
     type: Bool
     type_yang_bool: presence
     example: true

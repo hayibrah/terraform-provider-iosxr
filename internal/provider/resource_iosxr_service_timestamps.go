@@ -125,11 +125,11 @@ func (r *ServiceTimestampsResource) Schema(ctx context.Context, req resource.Sch
 				Optional:            true,
 			},
 			"debug_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+				MarkdownDescription: helpers.NewAttributeDescription("Include microseconds in timestamp").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 			"log_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+				MarkdownDescription: helpers.NewAttributeDescription("Include microseconds in timestamp").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 		},

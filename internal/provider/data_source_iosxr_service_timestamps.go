@@ -124,11 +124,11 @@ func (d *ServiceTimestampsDataSource) Schema(ctx context.Context, req datasource
 				Computed:            true,
 			},
 			"debug_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Include microseconds in timestamp",
 				Computed:            true,
 			},
 			"log_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Include microseconds in timestamp",
 				Computed:            true,
 			},
 		},
