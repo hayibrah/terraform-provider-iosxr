@@ -20,7 +20,8 @@ attributes:
   - yang_name: debug/uptime
     example: true
   - yang_name: debug/disable
-    example: false
+    example: true
+    exclude_test: true
   - yang_name: log/datetime/localtime-only
     example: true
     exclude_test: true
@@ -36,4 +37,5 @@ attributes:
   - yang_name: log/uptime
     example: true
   - yang_name: log/disable
-    example: false
+    example: true
+    exclude_test: true
