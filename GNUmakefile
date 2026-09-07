@@ -33,6 +33,12 @@ genall:
 	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 	go run gen/doc_category.go
 
+# Run unit tests (no device required)
+.PHONY: test-unit
+test-unit:
+	go test -v -cover -timeout 10m ./internal/provider/helpers/...
+	go test -v -cover -timeout 10m -run . gen/generator_test.go gen/generator.go
+
 # Run acceptance tests (legacy target for backward compatibility)
 .PHONY: testacc
 testacc:
