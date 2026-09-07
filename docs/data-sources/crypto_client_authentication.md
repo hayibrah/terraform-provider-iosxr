@@ -3,10 +3,13 @@
 page_title: "iosxr_crypto_client_authentication Data Source - terraform-provider-iosxr"
 subcategory: ""
 description: |-
+  This data source can read the Crypto Client Authentication configuration.
   **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_crypto_client_authentication (Data Source)
+
+This data source can read the Crypto Client Authentication configuration.
 
 > **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 
@@ -36,5 +39,5 @@ data "iosxr_crypto_client_authentication" "example" {
 Read-Only:
 
 - `password_six` (String, Sensitive) Specifies that an clear text key will follow
-- `profile_name` (String)
+- `profile_name` (String) Template that will be pinned to applications
 - `username` (String) Configure Username

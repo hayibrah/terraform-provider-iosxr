@@ -261,11 +261,11 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 							Computed:            true,
 						},
 						"local_accounting": schema.BoolAttribute{
-							MarkdownDescription: "",
+							MarkdownDescription: "Store only the command accounting logs",
 							Computed:            true,
 						},
 						"send_to_remote": schema.BoolAttribute{
-							MarkdownDescription: "",
+							MarkdownDescription: "Send the command accounting logs to syslog server",
 							Computed:            true,
 						},
 						"send_to_remote_facility": schema.StringAttribute{

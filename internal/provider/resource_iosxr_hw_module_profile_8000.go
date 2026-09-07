@@ -58,7 +58,7 @@ func (r *HWModuleProfile8000Resource) Metadata(_ context.Context, req resource.M
 func (r *HWModuleProfile8000Resource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "This resource can manage the HW Module Profile configuration on Cisco 8000 series routers.",
+		MarkdownDescription: "This resource can manage the HW Module Profile 8000 configuration.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -667,7 +667,7 @@ func (r *HWModuleProfile8000Resource) Schema(ctx context.Context, req resource.S
 							},
 						},
 						"non_pfc_tcs": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+							MarkdownDescription: helpers.NewAttributeDescription("configure to allow lossy TCs to evict.").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs": schema.Int64Attribute{

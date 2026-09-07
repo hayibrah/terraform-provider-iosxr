@@ -493,14 +493,26 @@ func (r *CryptoResource) Schema(ctx context.Context, req resource.SchemaRequest,
 						"enrollment_authentication_profile": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Authentication profile used during certificate enrollment").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 						"re_enrollment_authentication_profile": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Authentication profile used during certificate re-enrollment").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 						"ssl_profile": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("SSL profile parameters used during TLS/mTLS handshake").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 					},
 				},

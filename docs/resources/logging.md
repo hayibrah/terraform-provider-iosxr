@@ -291,7 +291,8 @@ Optional:
 - `discriminator_nomatch1` (String) Set no-match discriminator 1
 - `discriminator_nomatch2` (String) Set no-match discriminator 2
 - `discriminator_nomatch3` (String) Set no-match discriminator 3
-- `local_accounting` (Boolean) - Supported from version: `25.4`
+- `local_accounting` (Boolean) Store only the command accounting logs
+  - Supported from version: `25.4`
 - `local_accounting_send_to_remote_facility_level` (String) configure this node
   - Choices: `auth`, `cron`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `lpr`, `mail`, `news`, `sys10`, `sys11`, `sys12`, `sys13`, `sys14`, `sys9`, `syslog`, `user`, `uucp`
   - **Not supported from version `25.4` and above**
@@ -308,7 +309,8 @@ Optional:
 - `path_severity` (String) severity
   - Choices: `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning`
   - Supported from version: `25.4`
-- `send_to_remote` (Boolean) - Supported from version: `25.4`
+- `send_to_remote` (Boolean) Send the command accounting logs to syslog server
+  - Supported from version: `25.4`
 - `send_to_remote_facility` (String) Modify message logging facilities
   - Choices: `auth`, `cron`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `lpr`, `mail`, `news`, `syslog`, `user`, `uucp`
   - Supported from version: `25.4`

@@ -3,10 +3,13 @@
 page_title: "iosxr_crypto_client_authentication Resource - terraform-provider-iosxr"
 subcategory: ""
 description: |-
+  This resource can manage the Crypto Client Authentication configuration.
   **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_crypto_client_authentication (Resource)
+
+This resource can manage the Crypto Client Authentication configuration.
 
 > **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 
@@ -44,7 +47,7 @@ resource "iosxr_crypto_client_authentication" "example" {
 
 Required:
 
-- `profile_name` (String)
+- `profile_name` (String) Template that will be pinned to applications
 
 Optional:
 

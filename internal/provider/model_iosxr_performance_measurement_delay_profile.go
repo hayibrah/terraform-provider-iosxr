@@ -558,14 +558,14 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.CollectHbh.IsNull() && !data.CollectHbh.IsUnknown() {
 			if data.CollectHbh.ValueBool() {
-				body, _ = sjson.Set(body, "endpoint.default.probe.collect-hbh", map[string]string{})
+				body, _ = sjson.Set(body, "sr-policy.default.probe.collect-hbh", map[string]string{})
 			}
 		}
 	}
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.Ntp.IsNull() && !data.Ntp.IsUnknown() {
 			if data.Ntp.ValueBool() {
-				body, _ = sjson.Set(body, "endpoint.default.probe.measurement-mode.timestamp-format.ntp", map[string]string{})
+				body, _ = sjson.Set(body, "sr-policy.default.probe.timestamp-format.ntp", map[string]string{})
 			}
 		}
 	}
@@ -1524,7 +1524,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
 		if value.Exists() {
 			data.CollectHbh = types.BoolValue(true)
 		} else {
@@ -1533,7 +1533,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.CollectHbh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
 		if value.Exists() {
 			data.Ntp = types.BoolValue(true)
 		} else {
@@ -1999,7 +1999,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+		if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
 			data.CollectHbh = types.BoolValue(true)
 		} else {
 			data.CollectHbh = types.BoolValue(false)
@@ -2008,7 +2008,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 		data.CollectHbh = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+		if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
 			data.Ntp = types.BoolValue(true)
 		} else {
 			data.Ntp = types.BoolValue(false)
@@ -2473,7 +2473,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+		if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
 			data.CollectHbh = types.BoolValue(true)
 		} else {
 			data.CollectHbh = types.BoolValue(false)
@@ -2482,7 +2482,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 		data.CollectHbh = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+		if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
 			data.Ntp = types.BoolValue(true)
 		} else {
 			data.Ntp = types.BoolValue(false)
@@ -2499,10 +2499,10 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementDelayProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !state.Ntp.IsNull() && data.Ntp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", state.getPath()))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.CollectHbh.IsNull() && data.CollectHbh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", state.getPath()))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.DelayBinsExplicit.IsNull() && data.DelayBinsExplicit.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", state.getPath()))
@@ -2874,10 +2874,10 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() && !data.Ntp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() && !data.CollectHbh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
 	}
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -3031,10 +3031,10 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/timestamp-format/ntp", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/collect-hbh", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.DelayBinsExplicit.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", data.getPath()))

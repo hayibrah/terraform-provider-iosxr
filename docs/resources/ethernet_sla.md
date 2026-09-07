@@ -125,7 +125,8 @@ Optional:
 
 - `aggregate_bins` (Number) Aggregate results into a number of bins
   - Range: `2`-`100`
-- `aggregate_minimum_delay` (Number) - Range: `1`-`10000000`
+- `aggregate_minimum_delay` (Number) Specify the width of the first bin in milliseconds (or optionally microseconds), independent of the width of the other bins
+  - Range: `1`-`10000000`
   - Supported from version: `25.4`
 - `aggregate_none` (Boolean) Perform no aggregation
 - `aggregate_usec` (Boolean) Interpret the width in microseconds
@@ -162,7 +163,8 @@ Optional:
   - Range: `1`-`2147483647`
 - `thresholds_stateless_log_on_sample_count` (Number) Threshold is breached when the sample count in bins in and above a certain bin number crosses the configured sample count
   - Range: `1`-`2147483647`
-- `usec_minimum_delay` (Boolean) - Supported from version: `25.4`
+- `usec_minimum_delay` (Boolean) Interpret the minimum-delay in microseconds
+  - Supported from version: `25.4`
 
 ## Import
 

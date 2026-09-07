@@ -56,7 +56,7 @@ func (d *CryptoClientAuthenticationDataSource) Metadata(_ context.Context, req d
 func (d *CryptoClientAuthenticationDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "\n\n> **Note:** This data source is only supported from IOS-XR version 25.4 and above.",
+		MarkdownDescription: "This data source can read the Crypto Client Authentication configuration.\n\n> **Note:** This data source is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -73,7 +73,7 @@ func (d *CryptoClientAuthenticationDataSource) Schema(ctx context.Context, req d
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"profile_name": schema.StringAttribute{
-							MarkdownDescription: "",
+							MarkdownDescription: "Template that will be pinned to applications",
 							Computed:            true,
 						},
 						"password_six": schema.StringAttribute{

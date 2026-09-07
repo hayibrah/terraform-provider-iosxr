@@ -3,10 +3,13 @@
 page_title: "iosxr_cef_accounting Data Source - terraform-provider-iosxr"
 subcategory: ""
 description: |-
+  This data source can read the CEF Accounting configuration.
   **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_cef_accounting (Data Source)
+
+This data source can read the CEF Accounting configuration.
 
 > **Note:** This data source is only supported from IOS-XR version 25.4 and above.
 
@@ -27,5 +30,5 @@ data "iosxr_cef_accounting" "example" {
 
 ### Read-Only
 
-- `disable` (Boolean)
+- `disable` (Boolean) Disable all policy accounting
 - `id` (String) The path of the retrieved object.

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -83,7 +84,7 @@ func (r *MPLSTrafficEngResource) Schema(ctx context.Context, req resource.Schema
 				Optional:            true,
 			},
 			"disable": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+				MarkdownDescription: helpers.NewAttributeDescription("disable reoptimization").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 			"reoptimize_reoptimization_period_in": schema.Int64Attribute{
@@ -96,6 +97,10 @@ func (r *MPLSTrafficEngResource) Schema(ctx context.Context, req resource.Schema
 			"server_ipv4": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("IPv4 address of PCE server").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.RegexMatches(regexp.MustCompile(`(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\p{N}\p{L}]+)?`), ""),
+					stringvalidator.RegexMatches(regexp.MustCompile(`[0-9\.]*`), ""),
+				},
 			},
 		},
 	}

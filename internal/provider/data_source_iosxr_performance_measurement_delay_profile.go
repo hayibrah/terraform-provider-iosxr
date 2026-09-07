@@ -507,11 +507,11 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 							Computed:            true,
 						},
 						"collect_hbh": schema.BoolAttribute{
-							MarkdownDescription: "",
+							MarkdownDescription: "Collect hop by hop data for delay sessions",
 							Computed:            true,
 						},
 						"ntp": schema.BoolAttribute{
-							MarkdownDescription: "",
+							MarkdownDescription: "Network Time Protocol timestamp format",
 							Computed:            true,
 						},
 					},
@@ -523,11 +523,11 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 				Computed:            true,
 			},
 			"collect_hbh": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Collect hop by hop data for delay sessions",
 				Computed:            true,
 			},
 			"ntp": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Network Time Protocol timestamp format",
 				Computed:            true,
 			},
 		},

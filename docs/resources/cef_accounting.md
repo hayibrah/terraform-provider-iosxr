@@ -3,10 +3,13 @@
 page_title: "iosxr_cef_accounting Resource - terraform-provider-iosxr"
 subcategory: ""
 description: |-
+  This resource can manage the CEF Accounting configuration.
   **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 ---
 
 # iosxr_cef_accounting (Resource)
+
+This resource can manage the CEF Accounting configuration.
 
 > **Note:** This resource is only supported from IOS-XR version 25.4 and above.
 
@@ -27,7 +30,7 @@ resource "iosxr_cef_accounting" "example" {
 - `delete_mode` (String) Configure behavior when deleting/destroying the resource. Either delete the entire object (YANG container) being managed, or only delete the individual resource attributes configured explicitly and leave everything else as-is. Default value is `all`.
   - Choices: `all`, `attributes`
 - `device` (String) A device name from the provider configuration.
-- `disable` (Boolean)
+- `disable` (Boolean) Disable all policy accounting
 
 ### Read-Only
 

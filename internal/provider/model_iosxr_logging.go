@@ -262,32 +262,32 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorMatch1.IsNull() && !data.MonitorDiscriminatorMatch1.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.match1", data.MonitorDiscriminatorMatch1.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.match1", data.MonitorDiscriminatorMatch1.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorMatch2.IsNull() && !data.MonitorDiscriminatorMatch2.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.match2", data.MonitorDiscriminatorMatch2.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.match2", data.MonitorDiscriminatorMatch2.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorMatch3.IsNull() && !data.MonitorDiscriminatorMatch3.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.match3", data.MonitorDiscriminatorMatch3.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.match3", data.MonitorDiscriminatorMatch3.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorNomatch1.IsNull() && !data.MonitorDiscriminatorNomatch1.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.nomatch1", data.MonitorDiscriminatorNomatch1.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.nomatch1", data.MonitorDiscriminatorNomatch1.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorNomatch2.IsNull() && !data.MonitorDiscriminatorNomatch2.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.nomatch2", data.MonitorDiscriminatorNomatch2.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.nomatch2", data.MonitorDiscriminatorNomatch2.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.MonitorDiscriminatorNomatch3.IsNull() && !data.MonitorDiscriminatorNomatch3.IsUnknown() {
-			body, _ = sjson.Set(body, "monitor-discriminator.nomatch3", data.MonitorDiscriminatorNomatch3.ValueString())
+			body, _ = sjson.Set(body, "monitor.discriminator.nomatch3", data.MonitorDiscriminatorNomatch3.ValueString())
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
@@ -377,7 +377,7 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.BufferedEntriesCount.IsNull() && !data.BufferedEntriesCount.IsUnknown() {
-			body, _ = sjson.Set(body, "buffered.buffered-entries.count", strconv.FormatInt(data.BufferedEntriesCount.ValueInt64(), 10))
+			body, _ = sjson.Set(body, "buffered.entries-count", strconv.FormatInt(data.BufferedEntriesCount.ValueInt64(), 10))
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
@@ -441,7 +441,7 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.HistorySize.IsNull() && !data.HistorySize.IsUnknown() {
-			body, _ = sjson.Set(body, "history-size", strconv.FormatInt(data.HistorySize.ValueInt64(), 10))
+			body, _ = sjson.Set(body, "history.size", strconv.FormatInt(data.HistorySize.ValueInt64(), 10))
 		}
 	}
 	if !data.Hostnameprefix.IsNull() && !data.Hostnameprefix.IsUnknown() {
@@ -1079,32 +1079,32 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ConsoleFacility = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch1.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.match1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch1.IsNull() {
 		data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch2.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.match2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch2.IsNull() {
 		data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch3.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.match3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorMatch3.IsNull() {
 		data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch1.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.nomatch1"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch1.IsNull() {
 		data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch2.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.nomatch2"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch2.IsNull() {
 		data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch3.IsNull() {
+	if value := gjson.GetBytes(res, "monitor.discriminator.nomatch3"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.MonitorDiscriminatorNomatch3.IsNull() {
 		data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 	} else {
 		data.MonitorDiscriminatorNomatch3 = types.StringNull()
@@ -1204,7 +1204,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.FacilityLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.BufferedEntriesCount.IsNull() {
+	if value := gjson.GetBytes(res, "buffered.entries-count"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.BufferedEntriesCount.IsNull() {
 		data.BufferedEntriesCount = types.Int64Value(value.Int())
 	} else {
 		data.BufferedEntriesCount = types.Int64Null()
@@ -1389,7 +1389,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.History = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "history-size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.HistorySize.IsNull() {
+	if value := gjson.GetBytes(res, "history.size"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.HistorySize.IsNull() {
 		data.HistorySize = types.Int64Value(value.Int())
 	} else {
 		data.HistorySize = types.Int64Null()
@@ -1786,42 +1786,42 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.ConsoleFacility = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -1943,7 +1943,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.FacilityLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "buffered.entries-count"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedEntriesCount = types.Int64Value(value.Int())
 		}
 	} else {
@@ -2134,7 +2134,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 		data.History = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history-size"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "history.size"); value.Exists() && value.Type == gjson.Number {
 			data.HistorySize = types.Int64Value(value.Int())
 		}
 	} else {
@@ -2416,42 +2416,42 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.ConsoleFacility = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match1"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match2"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.match3"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.match3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorMatch3 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorMatch3 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch1"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch1 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch1 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch2"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch2 = types.StringValue(value.String())
 		}
 	} else {
 		data.MonitorDiscriminatorNomatch2 = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "monitor-discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "monitor.discriminator.nomatch3"); value.Exists() && value.Type == gjson.String {
 			data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 		}
 	} else {
@@ -2573,7 +2573,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.FacilityLevel = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "buffered.buffered-entries.count"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "buffered.entries-count"); value.Exists() && value.Type == gjson.Number {
 			data.BufferedEntriesCount = types.Int64Value(value.Int())
 		}
 	} else {
@@ -2764,7 +2764,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 		data.History = types.StringNull()
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "history-size"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "history.size"); value.Exists() && value.Type == gjson.Number {
 			data.HistorySize = types.Int64Value(value.Int())
 		}
 	} else {
@@ -3319,7 +3319,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnameprefix", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.HistorySize.IsNull() && data.HistorySize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/history-size", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/history/size", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.History.IsNull() && data.History.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/history", state.getPath()))
@@ -3433,7 +3433,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/buffered/logging-buffer-size", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.BufferedEntriesCount.IsNull() && data.BufferedEntriesCount.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/buffered/buffered-entries/count", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/buffered/entries-count", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.FacilityLevel.IsNull() && data.FacilityLevel.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/facility/level", state.getPath()))
@@ -3481,22 +3481,22 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/archive/device/disk0", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorNomatch3.IsNull() && data.MonitorDiscriminatorNomatch3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/nomatch3", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/nomatch3", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorNomatch2.IsNull() && data.MonitorDiscriminatorNomatch2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/nomatch2", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/nomatch2", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorNomatch1.IsNull() && data.MonitorDiscriminatorNomatch1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/nomatch1", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/nomatch1", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorMatch3.IsNull() && data.MonitorDiscriminatorMatch3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/match3", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/match3", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorMatch2.IsNull() && data.MonitorDiscriminatorMatch2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/match2", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/match2", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.MonitorDiscriminatorMatch1.IsNull() && data.MonitorDiscriminatorMatch1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-discriminator/match1", state.getPath()))
+		deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor/discriminator/match1", state.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ConsoleFacility.IsNull() && data.ConsoleFacility.IsNull() {
 		deletedItems = append(deletedItems, fmt.Sprintf("%v/console-logging/console-log-facility/console-facility-level", state.getPath()))
@@ -3787,7 +3787,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hostnameprefix", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.HistorySize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/history-size", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/history/size", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.History.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/history", data.getPath()))
@@ -3841,7 +3841,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/buffered/logging-buffer-size", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.BufferedEntriesCount.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/buffered/buffered-entries/count", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/buffered/entries-count", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.FacilityLevel.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/facility/level", data.getPath()))
@@ -3889,22 +3889,22 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/archive/device/disk0", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorNomatch3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/nomatch3", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/nomatch3", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorNomatch2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/nomatch2", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/nomatch2", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorNomatch1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/nomatch1", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/nomatch1", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorMatch3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/match3", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/match3", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorMatch2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/match2", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/match2", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.MonitorDiscriminatorMatch1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-discriminator/match1", data.getPath()))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor/discriminator/match1", data.getPath()))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ConsoleFacility.IsNull() {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/console-logging/console-log-facility/console-facility-level", data.getPath()))

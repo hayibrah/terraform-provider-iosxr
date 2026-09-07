@@ -316,11 +316,11 @@ func (d *PTPDataSource) Schema(ctx context.Context, req datasource.SchemaRequest
 				Computed:            true,
 			},
 			"monitor_receiver": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Enable monitor-receiver packet exchange",
 				Computed:            true,
 			},
 			"monitor_sender": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "Enable monitor-sender packet exchange",
 				Computed:            true,
 			},
 		},

@@ -336,14 +336,14 @@ func (r *EthernetSLAResource) Schema(ctx context.Context, req resource.SchemaReq
 							},
 						},
 						"aggregate_minimum_delay": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").AddIntegerRangeDescription(1, 10000000).String + "\n  - Supported from version: `25.4`",
+							MarkdownDescription: helpers.NewAttributeDescription("Specify the width of the first bin in milliseconds (or optionally microseconds), independent of the width of the other bins").AddIntegerRangeDescription(1, 10000000).String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 							Validators: []validator.Int64{
 								int64validator.Between(1, 10000000),
 							},
 						},
 						"usec_minimum_delay": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+							MarkdownDescription: helpers.NewAttributeDescription("Interpret the minimum-delay in microseconds").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 					},

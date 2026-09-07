@@ -401,11 +401,11 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 							},
 						},
 						"local_accounting": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+							MarkdownDescription: helpers.NewAttributeDescription("Store only the command accounting logs").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"send_to_remote": schema.BoolAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+							MarkdownDescription: helpers.NewAttributeDescription("Send the command accounting logs to syslog server").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 						"send_to_remote_facility": schema.StringAttribute{
@@ -425,6 +425,9 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 						"path_path_name": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("File path (e.g. /disk0: )").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 256),
+							},
 						},
 						"path_severity": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("severity").AddStringEnumDescription("alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning").String + "\n  - Supported from version: `25.4`",
@@ -492,10 +495,17 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 						"interface_name": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.RegexMatches(regexp.MustCompile(`[a-zA-Z0-9.:_/-]+`), ""),
+							},
 						},
 						"vrf_name": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Set VRF option").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 1024),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 					},
 				},
@@ -649,26 +659,44 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 			"console_discriminator_match1": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 1").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"console_discriminator_match2": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 2").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"console_discriminator_match3": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set match discriminator 3").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"console_discriminator_nomatch1": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 1").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"console_discriminator_nomatch2": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 2").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"console_discriminator_nomatch3": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Set no-match discriminator 3").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 32),
+				},
 			},
 			"facility_all": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("All supported facilities").AddStringEnumDescription("all").String + "\n  - Supported from version: `25.4`",

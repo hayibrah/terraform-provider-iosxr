@@ -411,11 +411,11 @@ func (r *PTPResource) Schema(ctx context.Context, req resource.SchemaRequest, re
 				Optional:            true,
 			},
 			"monitor_receiver": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+				MarkdownDescription: helpers.NewAttributeDescription("Enable monitor-receiver packet exchange").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 			"monitor_sender": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String + "\n  - Supported from version: `25.4`",
+				MarkdownDescription: helpers.NewAttributeDescription("Enable monitor-sender packet exchange").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
 			},
 		},

@@ -72,7 +72,7 @@ func (d *MPLSTrafficEngDataSource) Schema(ctx context.Context, req datasource.Sc
 				Computed:            true,
 			},
 			"disable": schema.BoolAttribute{
-				MarkdownDescription: "",
+				MarkdownDescription: "disable reoptimization",
 				Computed:            true,
 			},
 			"reoptimize_reoptimization_period_in": schema.Int64Attribute{

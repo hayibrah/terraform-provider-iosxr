@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -56,7 +57,7 @@ func (r *CryptoSSLResource) Metadata(_ context.Context, req resource.MetadataReq
 func (r *CryptoSSLResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
+		MarkdownDescription: "This resource can manage the Crypto SSL configuration.\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -83,12 +84,20 @@ func (r *CryptoSSLResource) Schema(ctx context.Context, req resource.SchemaReque
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"profile_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Template that will be pinned to applications").String,
 							Required:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 						"certificate": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Router certificate to be used in mTLS session, only during enrollment or bootstrap phase.").String,
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 					},
 				},

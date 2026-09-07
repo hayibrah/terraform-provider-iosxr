@@ -219,10 +219,10 @@ resource "iosxr_router_bgp_vrf_address_family" "example" {
   - Range: `0`-`4294967295`
 - `redistribute_connected_multipath` (Boolean) Enable installation of multiple paths from RIB
 - `redistribute_connected_route_policy` (String) Route policy reference
-- `redistribute_eigrp` (Attributes List) Redistribute EIGRP routes (see [below for nested schema](#nestedatt--redistribute_eigrp))
-- `redistribute_isis` (Attributes List) Redistribute ISIS routes (see [below for nested schema](#nestedatt--redistribute_isis))
-- `redistribute_ospf` (Attributes List) Redistribute OSPF routes (see [below for nested schema](#nestedatt--redistribute_ospf))
-- `redistribute_ospfv3` (Attributes List) Redistribute OSPFv3 routes (see [below for nested schema](#nestedatt--redistribute_ospfv3))
+- `redistribute_eigrp` (Attributes List) Enhanced Interior Gateway Routing Protocol (EIGRP) (see [below for nested schema](#nestedatt--redistribute_eigrp))
+- `redistribute_isis` (Attributes List) ISO IS-IS (see [below for nested schema](#nestedatt--redistribute_isis))
+- `redistribute_ospf` (Attributes List) Open Shortest Path First (OSPF) (see [below for nested schema](#nestedatt--redistribute_ospf))
+- `redistribute_ospfv3` (Attributes List) IPv6 Open Shortest Path First (OSPFv3) (see [below for nested schema](#nestedatt--redistribute_ospfv3))
 - `redistribute_rip` (Boolean) Redistribute RIP routes
 - `redistribute_rip_metric` (Number) Metric for redistributed routes
   - Range: `0`-`4294967295`

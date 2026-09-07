@@ -408,7 +408,7 @@ func (r *RouterBGPVRFAddressFamilyResource) Schema(ctx context.Context, req reso
 				},
 			},
 			"redistribute_ospf": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute OSPF routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Open Shortest Path First (OSPF)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -573,7 +573,7 @@ func (r *RouterBGPVRFAddressFamilyResource) Schema(ctx context.Context, req reso
 				},
 			},
 			"redistribute_ospfv3": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute OSPFv3 routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("IPv6 Open Shortest Path First (OSPFv3)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -738,7 +738,7 @@ func (r *RouterBGPVRFAddressFamilyResource) Schema(ctx context.Context, req reso
 				},
 			},
 			"redistribute_eigrp": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute EIGRP routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Enhanced Interior Gateway Routing Protocol (EIGRP)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -791,7 +791,7 @@ func (r *RouterBGPVRFAddressFamilyResource) Schema(ctx context.Context, req reso
 				},
 			},
 			"redistribute_isis": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute ISIS routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("ISO IS-IS").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{

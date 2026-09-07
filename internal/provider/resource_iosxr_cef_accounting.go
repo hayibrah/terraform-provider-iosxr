@@ -56,7 +56,7 @@ func (r *CEFAccountingResource) Metadata(_ context.Context, req resource.Metadat
 func (r *CEFAccountingResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
+		MarkdownDescription: "This resource can manage the CEF Accounting configuration.\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -78,7 +78,7 @@ func (r *CEFAccountingResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"disable": schema.BoolAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Disable all policy accounting").String,
 				Optional:            true,
 			},
 		},

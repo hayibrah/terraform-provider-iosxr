@@ -291,10 +291,13 @@ attributes:
   - yang_name: archive/frequency/weekly
     legacy: true
   - yang_name: archive/file-size
+    tf_name: archive_filesize
     legacy: true
   - yang_name: archive/archive-size
+    tf_name: archive_size
     legacy: true
   - yang_name: archive/archive-length
+    tf_name: archive_length
     legacy: true
   - yang_name: archive/severity
     legacy: true

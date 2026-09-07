@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -56,7 +57,7 @@ func (r *CryptoClientAuthenticationResource) Metadata(_ context.Context, req res
 func (r *CryptoClientAuthenticationResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
+		MarkdownDescription: "This resource can manage the Crypto Client Authentication configuration.\n\n> **Note:** This resource is only supported from IOS-XR version 25.4 and above.",
 
 		Attributes: map[string]schema.Attribute{
 			"device": schema.StringAttribute{
@@ -83,17 +84,29 @@ func (r *CryptoClientAuthenticationResource) Schema(ctx context.Context, req res
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"profile_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Template that will be pinned to applications").String,
 							Required:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 800),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 						"password_six": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Specifies that an clear text key will follow").String,
 							Optional:            true,
 							Sensitive:           true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 1024),
+								stringvalidator.RegexMatches(regexp.MustCompile(`(!.+)|([^!].+)`), ""),
+							},
 						},
 						"username": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Configure Username").String,
 							Optional:            true,
+							Validators: []validator.String{
+								stringvalidator.LengthBetween(1, 256),
+								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+							},
 						},
 					},
 				},

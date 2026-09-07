@@ -412,7 +412,7 @@ func (r *RouterBGPAddressFamilyResource) Schema(ctx context.Context, req resourc
 				},
 			},
 			"redistribute_ospf": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute OSPF routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Open Shortest Path First (OSPF)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -576,7 +576,7 @@ func (r *RouterBGPAddressFamilyResource) Schema(ctx context.Context, req resourc
 				},
 			},
 			"redistribute_ospfv3": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute OSPFv3 routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("IPv6 Open Shortest Path First (OSPFv3)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -740,7 +740,7 @@ func (r *RouterBGPAddressFamilyResource) Schema(ctx context.Context, req resourc
 				},
 			},
 			"redistribute_eigrp": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute EIGRP routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Enhanced Interior Gateway Routing Protocol (EIGRP)").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -792,7 +792,7 @@ func (r *RouterBGPAddressFamilyResource) Schema(ctx context.Context, req resourc
 				},
 			},
 			"redistribute_isis": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Redistribute ISIS routes").String,
+				MarkdownDescription: helpers.NewAttributeDescription("ISO IS-IS").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -1332,6 +1332,9 @@ func (r *RouterBGPAddressFamilyResource) Schema(ctx context.Context, req resourc
 			"as_based_as_list": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Enable ECMP delay for neighbor AS'es included in the AS list").String + "\n  - Supported from version: `25.4`",
 				Optional:            true,
+				Validators: []validator.String{
+					stringvalidator.LengthBetween(1, 1024),
+				},
 			},
 			"as_based_delay": schema.Int64Attribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Provide a delay interval in msecs").AddIntegerRangeDescription(10, 300000).String + "\n  - Supported from version: `25.4`",
