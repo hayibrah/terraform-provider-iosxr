@@ -25,6 +25,7 @@ resource "iosxr_hostname" "example" {
 
 - `device` (String) A device name from the provider configuration.
 - `system_network_name` (String) Set system's network name
+  - Length: `1`-`10` (v24.4), `1`-`20` (v25.4)
 
 ### Read-Only
 

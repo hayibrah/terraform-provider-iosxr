@@ -201,6 +201,23 @@ func (data Domain) GetEnumConstraints() []helpers.FieldEnumConstraint {
 }
 
 // End of section. //template:end getEnumConstraints
+// Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
+
+// GetStringLengthConstraints returns the version-specific string length constraints
+func (data Domain) GetStringLengthConstraints() []helpers.FieldStringLengthConstraint {
+	return nil
+}
+
+// End of section. //template:end getStringLengthConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getPatternConstraints
+
+// GetPatternConstraints returns the version-specific string pattern constraints
+func (data Domain) GetPatternConstraints() []helpers.FieldPatternConstraint {
+	return nil
+}
+
+// End of section. //template:end getPatternConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Domain) updateFromBody(ctx context.Context, res []byte, version string) {

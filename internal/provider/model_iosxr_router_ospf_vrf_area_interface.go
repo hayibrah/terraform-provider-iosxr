@@ -891,6 +891,23 @@ func (data RouterOSPFVRFAreaInterface) GetEnumConstraints() []helpers.FieldEnumC
 }
 
 // End of section. //template:end getEnumConstraints
+// Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
+
+// GetStringLengthConstraints returns the version-specific string length constraints
+func (data RouterOSPFVRFAreaInterface) GetStringLengthConstraints() []helpers.FieldStringLengthConstraint {
+	return nil
+}
+
+// End of section. //template:end getStringLengthConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getPatternConstraints
+
+// GetPatternConstraints returns the version-specific string pattern constraints
+func (data RouterOSPFVRFAreaInterface) GetPatternConstraints() []helpers.FieldPatternConstraint {
+	return nil
+}
+
+// End of section. //template:end getPatternConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res []byte, version string) {
