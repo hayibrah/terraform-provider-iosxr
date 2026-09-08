@@ -97,11 +97,15 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 					.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 					{{- end -}}
 					{{- if len .VersionEnums -}}
-					.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"
+					.String + "\n  - Choices: {{formatVersionEnums .VersionEnums}}"
 					{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}
 					{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 					{{- else if .VersionRanges -}}
 					.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"
+					{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}
+					{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+					{{- else if .VersionStringLengths -}}
+					.String + "\n  - Length: {{formatVersionStringLengths .VersionStringLengths}}"
 					{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}
 					{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 					{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
@@ -136,6 +140,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 				{{- if len .EnumValues}}
 				Validators: []validator.String{
 					stringvalidator.OneOf({{range .EnumValues}}"{{.}}", {{end}}),
+				},
+				{{- else if .VersionStringLengths}}
+				Validators: []validator.String{
+					stringvalidator.LengthBetween({{.StringMinLength}}, {{.StringMaxLength}}),
 				},
 				{{- else if or (len .StringPatterns) (ne .StringMinLength 0) (ne .StringMaxLength 0) }}
 				Validators: []validator.String{
@@ -177,16 +185,18 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 								.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 								{{- end -}}
 								{{- if len .VersionEnums -}}
-								.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+								.String + "\n  - Choices: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 								{{- else if .VersionRanges -}}
 								.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+								{{- else if .VersionStringLengths -}}
+								.String + "\n  - Length: {{formatVersionStringLengths .VersionStringLengths}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 								{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 								.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
 								{{- end -}}
 								{{- if len .DefaultValue -}}
 								.AddDefaultValueDescription("{{.DefaultValue}}")
 								{{- end -}}
-								{{- if and (not .VersionRanges) (not .VersionEnums) -}}
+								{{- if and (not .VersionRanges) (not .VersionEnums) (not .VersionStringLengths) -}}
 								.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 								{{- end}}
 							{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -208,6 +218,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 							{{- if len .EnumValues}}
 							Validators: []validator.String{
 								stringvalidator.OneOf({{range .EnumValues}}"{{.}}", {{end}}),
+							},
+							{{- else if .VersionStringLengths}}
+							Validators: []validator.String{
+								stringvalidator.LengthBetween({{.StringMinLength}}, {{.StringMaxLength}}),
 							},
 							{{- else if or (len .StringPatterns) (ne .StringMinLength 0) (ne .StringMaxLength 0) }}
 							Validators: []validator.String{
@@ -249,14 +263,18 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 											.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 											{{- end -}}
 											{{- if len .VersionEnums -}}
-											.String + "\n  - Enum values by version: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+											.String + "\n  - Choices: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+											{{- else if .VersionRanges -}}
+											.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+											{{- else if .VersionStringLengths -}}
+											.String + "\n  - Length: {{formatVersionStringLengths .VersionStringLengths}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 											{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 											.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
 											{{- end -}}
 											{{- if len .DefaultValue -}}
 											.AddDefaultValueDescription("{{.DefaultValue}}")
 											{{- end -}}
-											{{- if and (not .VersionRanges) (not .VersionEnums) -}}
+											{{- if and (not .VersionRanges) (not .VersionEnums) (not .VersionStringLengths) -}}
 											.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 											{{- end}}
 										{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -278,6 +296,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 										{{- if len .EnumValues}}
 										Validators: []validator.String{
 											stringvalidator.OneOf({{range .EnumValues}}"{{.}}", {{end}}),
+										},
+										{{- else if .VersionStringLengths}}
+										Validators: []validator.String{
+											stringvalidator.LengthBetween({{.StringMinLength}}, {{.StringMaxLength}}),
 										},
 										{{- else if or (len .StringPatterns) (ne .StringMinLength 0) (ne .StringMaxLength 0) }}
 										Validators: []validator.String{
@@ -318,15 +340,19 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 													{{- if len .EnumValues -}}
 													.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 													{{- end -}}
-													{{- if .VersionRanges -}}
+													{{- if len .VersionEnums -}}
+													.String + "\n  - Choices: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+													{{- else if .VersionRanges -}}
 													.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+													{{- else if .VersionStringLengths -}}
+													.String + "\n  - Length: {{formatVersionStringLengths .VersionStringLengths}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 													{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 													.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
 													{{- end -}}
 													{{- if len .DefaultValue -}}
 													.AddDefaultValueDescription("{{.DefaultValue}}")
 													{{- end -}}
-													{{- if not .VersionRanges -}}
+													{{- if and (not .VersionEnums) (not .VersionRanges) (not .VersionStringLengths) -}}
 													.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 													{{- end}}
 												{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -348,6 +374,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 												{{- if len .EnumValues}}
 												Validators: []validator.String{
 													stringvalidator.OneOf({{range .EnumValues}}"{{.}}", {{end}}),
+												},
+												{{- else if .VersionStringLengths}}
+												Validators: []validator.String{
+													stringvalidator.LengthBetween({{.StringMinLength}}, {{.StringMaxLength}}),
 												},
 												{{- else if or (len .StringPatterns) (ne .StringMinLength 0) (ne .StringMaxLength 0) }}
 												Validators: []validator.String{
@@ -388,15 +418,19 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 																{{- if len .EnumValues -}}
 																.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 																{{- end -}}
-																{{- if .VersionRanges -}}
+																{{- if len .VersionEnums -}}
+																.String + "\n  - Choices: {{formatVersionEnums .VersionEnums}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+																{{- else if .VersionRanges -}}
 																.String + "\n  - Range: {{formatVersionRanges .VersionRanges}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
+																{{- else if .VersionStringLengths -}}
+																.String + "\n  - Length: {{formatVersionStringLengths .VersionStringLengths}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 																{{- else if or (ne .MinInt 0) (ne .MaxInt 0) -}}
 																.AddIntegerRangeDescription({{.MinInt}}, {{.MaxInt}})
 																{{- end -}}
 																{{- if len .DefaultValue -}}
 																.AddDefaultValueDescription("{{.DefaultValue}}")
 																{{- end -}}
-																{{- if not .VersionRanges -}}
+																{{- if and (not .VersionEnums) (not .VersionRanges) (not .VersionStringLengths) -}}
 																.String{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 																{{- end}}
 															{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
@@ -418,6 +452,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 															{{- if len .EnumValues}}
 															Validators: []validator.String{
 																stringvalidator.OneOf({{range .EnumValues}}"{{.}}", {{end}}),
+															},
+															{{- else if .VersionStringLengths}}
+															Validators: []validator.String{
+																stringvalidator.LengthBetween({{.StringMinLength}}, {{.StringMaxLength}}),
 															},
 															{{- else if or (len .StringPatterns) (ne .StringMinLength 0) (ne .StringMaxLength 0) }}
 															Validators: []validator.String{
