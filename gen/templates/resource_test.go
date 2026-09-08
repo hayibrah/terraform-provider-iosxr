@@ -42,7 +42,7 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
     }
 	{{- end}}
 	{{- if .RemovedInVersion}}
-	if helpers.IosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}") {
+	if helpers.VersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}") {
 		t.Skipf("skipping test, resource '{{snakeCase .Name}}' is not supported from IOS-XR version {{formatVersionDisplay .RemovedInVersion}} and above (current: %s)", os.Getenv("IOSXR_VERSION"))
 	}
 	{{- end}}
