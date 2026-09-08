@@ -245,6 +245,7 @@ func (data EVPNInterface) GetEnumConstraints() []helpers.FieldEnumConstraint {
 }
 
 // End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
 
 // GetStringLengthConstraints returns the version-specific string length constraints
@@ -262,6 +263,9 @@ func (data EVPNInterface) GetPatternConstraints() []helpers.FieldPatternConstrai
 }
 
 // End of section. //template:end getPatternConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getDefaultConstraints
+// End of section. //template:end getDefaultConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EVPNInterface) updateFromBody(ctx context.Context, res []byte, version string) {

@@ -173,6 +173,7 @@ type YamlConfigAttribute struct {
 	VersionEnums         map[string][]string               // Version-specific enum sets for String fields (nil if same across all versions)
 	VersionStringLengths map[string]StringLengthConstraint // Version-specific string length constraints (nil if same across all versions)
 	VersionPatterns      map[string][]string               // Version-specific string patterns (nil if same across all versions)
+	VersionDefaults      map[string]string                 // Version-specific default values (nil if same across all versions)
 	Attributes        []YamlConfigAttribute      `yaml:"attributes"`
 }
 
@@ -776,6 +777,62 @@ func CollectVersionPatternConstraints(attributes []YamlConfigAttribute, prefix s
 	return result
 }
 
+// validateDefaultValue checks that val is parseable as the given attribute type.
+func validateDefaultValue(val, attrType string) error {
+	switch attrType {
+	case "Int64":
+		if _, err := strconv.ParseInt(val, 10, 64); err != nil {
+			return fmt.Errorf("not a valid int64")
+		}
+	case "Bool":
+		lo := strings.ToLower(val)
+		if lo != "true" && lo != "false" {
+			return fmt.Errorf("not a valid bool (expected true/false)")
+		}
+	}
+	return nil
+}
+
+// HasVersionDefaults returns true if any top-level attribute has VersionDefaults.
+func HasVersionDefaults(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionDefaults) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// HasVersionDefaultsRecursive returns true if any attribute at any nesting level has VersionDefaults.
+func HasVersionDefaultsRecursive(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionDefaults) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionDefaultsRecursive(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// FormatVersionDefaults formats per-version defaults for markdown description.
+func FormatVersionDefaults(versionDefaults map[string]string) string {
+	if len(versionDefaults) == 0 {
+		return ""
+	}
+	versions := make([]string, 0, len(versionDefaults))
+	for v := range versionDefaults {
+		versions = append(versions, v)
+	}
+	sort.Strings(versions)
+	parts := make([]string, 0, len(versions))
+	for _, v := range versions {
+		parts = append(parts, fmt.Sprintf("`%s` (v%s)", versionDefaults[v], FormatVersionDisplay(v)))
+	}
+	return strings.Join(parts, ", ")
+}
+
 // Map of templating functions
 var functions = template.FuncMap{
 	"toGoName":                       ToGoName,
@@ -810,6 +867,9 @@ var functions = template.FuncMap{
 	"collectVersionStringLengthConstraints": CollectVersionStringLengthConstraints,
 	"hasVersionPatterns":                    HasVersionPatterns,
 	"collectVersionPatternConstraints":      CollectVersionPatternConstraints,
+	"formatVersionDefaults":                 FormatVersionDefaults,
+	"hasVersionDefaults":                    HasVersionDefaults,
+	"hasVersionDefaultsRecursive":           HasVersionDefaultsRecursive,
 }
 
 func resolvePath(e *yang.Entry, path string) *yang.Entry {
@@ -1368,7 +1428,20 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 						result[i].StringMaxLength = newMax
 					}
 				}
-				if newAttr.DefaultValue != "" {
+				if newAttr.DefaultValue != "" && newAttr.DefaultValue != result[i].DefaultValue {
+					if err := validateDefaultValue(newAttr.DefaultValue, result[i].Type); err != nil {
+						log.Fatalf("attribute %q (type %s): default_value %q in %s: %v",
+							result[i].TfName, result[i].Type, newAttr.DefaultValue, overrideVersion, err)
+					}
+					if result[i].VersionDefaults == nil {
+						result[i].VersionDefaults = make(map[string]string)
+					}
+					if _, exists := result[i].VersionDefaults["_base"]; !exists && result[i].DefaultValue != "" {
+						result[i].VersionDefaults["_base"] = result[i].DefaultValue
+					}
+					result[i].VersionDefaults[overrideVersion] = newAttr.DefaultValue
+					result[i].DefaultValue = ""
+				} else if newAttr.DefaultValue != "" {
 					result[i].DefaultValue = newAttr.DefaultValue
 				}
 				if newAttr.RequiresReplace {
@@ -1454,6 +1527,12 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 		if base, exists := attr.VersionPatterns["_base"]; exists {
 			delete(attr.VersionPatterns, "_base")
 			attr.VersionPatterns[baseVersion] = base
+		}
+	}
+	if attr.VersionDefaults != nil {
+		if base, exists := attr.VersionDefaults["_base"]; exists {
+			delete(attr.VersionDefaults, "_base")
+			attr.VersionDefaults[baseVersion] = base
 		}
 	}
 	for i := range attr.Attributes {

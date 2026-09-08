@@ -107,6 +107,7 @@ func (data ExtcommunityOpaqueSet) GetEnumConstraints() []helpers.FieldEnumConstr
 }
 
 // End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
 
 // GetStringLengthConstraints returns the version-specific string length constraints
@@ -124,6 +125,9 @@ func (data ExtcommunityOpaqueSet) GetPatternConstraints() []helpers.FieldPattern
 }
 
 // End of section. //template:end getPatternConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getDefaultConstraints
+// End of section. //template:end getDefaultConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ExtcommunityOpaqueSet) updateFromBody(ctx context.Context, res []byte, version string) {

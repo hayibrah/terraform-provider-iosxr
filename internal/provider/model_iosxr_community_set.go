@@ -107,6 +107,7 @@ func (data CommunitySet) GetEnumConstraints() []helpers.FieldEnumConstraint {
 }
 
 // End of section. //template:end getEnumConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
 
 // GetStringLengthConstraints returns the version-specific string length constraints
@@ -124,6 +125,9 @@ func (data CommunitySet) GetPatternConstraints() []helpers.FieldPatternConstrain
 }
 
 // End of section. //template:end getPatternConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getDefaultConstraints
+// End of section. //template:end getDefaultConstraints
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *CommunitySet) updateFromBody(ctx context.Context, res []byte, version string) {
