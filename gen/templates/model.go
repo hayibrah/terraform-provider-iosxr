@@ -539,6 +539,56 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) GetEnumConstraints() []helpers
 
 // End of section. //template:end getEnumConstraints
 
+// Section below is generated&owned by "gen/generator.go". //template:begin getStringLengthConstraints
+{{- $versionSuffix := versionSuffix .Version}}
+
+// GetStringLengthConstraints returns the version-specific string length constraints
+func (data {{camelCase .Name}}{{$versionSuffix}}) GetStringLengthConstraints() []helpers.FieldStringLengthConstraint {
+	{{- if hasVersionStringLengths .Attributes}}
+	return []helpers.FieldStringLengthConstraint{
+		{{- range collectVersionStringLengthConstraints .Attributes ""}}
+		{
+			FieldPath: "{{.FieldPath}}",
+			VersionStringLengths: map[string]helpers.StringLengthConstraint{
+				{{- range $version, $c := .VersionStringLengths}}
+				"{{$version}}": {Min: {{$c.Min}}, Max: {{$c.Max}}},
+				{{- end}}
+			},
+		},
+		{{- end}}
+	}
+	{{- else}}
+	return nil
+	{{- end}}
+}
+
+// End of section. //template:end getStringLengthConstraints
+
+// Section below is generated&owned by "gen/generator.go". //template:begin getPatternConstraints
+{{- $versionSuffix := versionSuffix .Version}}
+
+// GetPatternConstraints returns the version-specific string pattern constraints
+func (data {{camelCase .Name}}{{$versionSuffix}}) GetPatternConstraints() []helpers.FieldPatternConstraint {
+	{{- if hasVersionPatterns .Attributes}}
+	return []helpers.FieldPatternConstraint{
+		{{- range collectVersionPatternConstraints .Attributes ""}}
+		{
+			FieldPath: "{{.FieldPath}}",
+			VersionPatterns: map[string][]string{
+				{{- range $version, $pats := .VersionPatterns}}
+				"{{$version}}": { {{- range $pats}}`{{.}}`, {{end}} },
+				{{- end}}
+			},
+		},
+		{{- end}}
+	}
+	{{- else}}
+	return nil
+	{{- end}}
+}
+
+// End of section. //template:end getPatternConstraints
+
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 
 {{- $versionSuffix := versionSuffix .Version}}

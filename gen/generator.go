@@ -169,13 +169,21 @@ type YamlConfigAttribute struct {
 	AddedInVersion    string                     // Which version introduced this attribute (e.g., "2442", "2522")
 	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
 	Legacy            bool                       `yaml:"legacy"` // If true, this attribute is removed/dropped in this version
-	VersionRanges     map[string]RangeConstraint // Version-specific ranges for Int64 fields (nil if same across all versions)
-	VersionEnums      map[string][]string        // Version-specific enum sets for String fields (nil if same across all versions)
+	VersionRanges        map[string]RangeConstraint        // Version-specific ranges for Int64 fields (nil if same across all versions)
+	VersionEnums         map[string][]string               // Version-specific enum sets for String fields (nil if same across all versions)
+	VersionStringLengths map[string]StringLengthConstraint // Version-specific string length constraints (nil if same across all versions)
+	VersionPatterns      map[string][]string               // Version-specific string patterns (nil if same across all versions)
 	Attributes        []YamlConfigAttribute      `yaml:"attributes"`
 }
 
 // RangeConstraint represents min/max constraints for a version
 type RangeConstraint struct {
+	Min int64
+	Max int64
+}
+
+// StringLengthConstraint represents string length min/max for a version
+type StringLengthConstraint struct {
 	Min int64
 	Max int64
 }
@@ -596,7 +604,7 @@ func FormatVersionEnums(versionEnums map[string][]string) string {
 		}
 		parts = append(parts, fmt.Sprintf("%s (v%s)", strings.Join(quoted, ", "), FormatVersionDisplay(v)))
 	}
-	return strings.Join(parts, "; ")
+	return strings.Join(parts, ", ")
 }
 
 // HasVersionEnums returns true if any attribute in the slice has version-specific enum sets.
@@ -668,6 +676,106 @@ func GetWidestRange(versionRanges map[string]RangeConstraint) []int64 {
 	return []int64{minRange, maxRange}
 }
 
+// FormatVersionStringLengths formats version-specific string lengths for markdown description.
+func FormatVersionStringLengths(versionStringLengths map[string]StringLengthConstraint) string {
+	if len(versionStringLengths) == 0 {
+		return ""
+	}
+	versions := make([]string, 0, len(versionStringLengths))
+	for v := range versionStringLengths {
+		versions = append(versions, v)
+	}
+	sort.Strings(versions)
+	parts := make([]string, 0, len(versions))
+	for _, v := range versions {
+		c := versionStringLengths[v]
+		parts = append(parts, fmt.Sprintf("`%d`-`%d` (v%s)", c.Min, c.Max, FormatVersionDisplay(v)))
+	}
+	return strings.Join(parts, ", ")
+}
+
+// HasVersionStringLengths returns true if any attribute has version-specific string length constraints.
+func HasVersionStringLengths(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionStringLengths) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionStringLengths(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// StringLengthConstraintInfo represents a field with version-specific string length constraints.
+type StringLengthConstraintInfo struct {
+	FieldPath            string
+	VersionStringLengths map[string]StringLengthConstraint
+}
+
+// CollectVersionStringLengthConstraints recursively collects attributes with version-specific string lengths.
+func CollectVersionStringLengthConstraints(attributes []YamlConfigAttribute, prefix string) []StringLengthConstraintInfo {
+	var result []StringLengthConstraintInfo
+	for _, attr := range attributes {
+		fieldPath := attr.TfName
+		if prefix != "" {
+			fieldPath = prefix + "." + attr.TfName
+		}
+		if len(attr.VersionStringLengths) > 0 {
+			result = append(result, StringLengthConstraintInfo{
+				FieldPath:            fieldPath,
+				VersionStringLengths: attr.VersionStringLengths,
+			})
+		}
+		if len(attr.Attributes) > 0 {
+			nested := CollectVersionStringLengthConstraints(attr.Attributes, fieldPath)
+			result = append(result, nested...)
+		}
+	}
+	return result
+}
+
+// HasVersionPatterns returns true if any attribute has version-specific string patterns.
+func HasVersionPatterns(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionPatterns) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionPatterns(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// PatternConstraintInfo represents a field with version-specific string patterns.
+type PatternConstraintInfo struct {
+	FieldPath       string
+	VersionPatterns map[string][]string
+}
+
+// CollectVersionPatternConstraints recursively collects attributes with version-specific patterns.
+func CollectVersionPatternConstraints(attributes []YamlConfigAttribute, prefix string) []PatternConstraintInfo {
+	var result []PatternConstraintInfo
+	for _, attr := range attributes {
+		fieldPath := attr.TfName
+		if prefix != "" {
+			fieldPath = prefix + "." + attr.TfName
+		}
+		if len(attr.VersionPatterns) > 0 {
+			result = append(result, PatternConstraintInfo{
+				FieldPath:       fieldPath,
+				VersionPatterns: attr.VersionPatterns,
+			})
+		}
+		if len(attr.Attributes) > 0 {
+			nested := CollectVersionPatternConstraints(attr.Attributes, fieldPath)
+			result = append(result, nested...)
+		}
+	}
+	return result
+}
+
 // Map of templating functions
 var functions = template.FuncMap{
 	"toGoName":                       ToGoName,
@@ -694,9 +802,14 @@ var functions = template.FuncMap{
 	"hasVersionRanges":               HasVersionRanges,
 	"collectVersionRangeConstraints": CollectVersionRangeConstraints,
 	"getWidestRange":                 GetWidestRange,
-	"formatVersionEnums":             FormatVersionEnums,
-	"hasVersionEnums":                HasVersionEnums,
-	"collectVersionEnumConstraints":  CollectVersionEnumConstraints,
+	"formatVersionEnums":                    FormatVersionEnums,
+	"hasVersionEnums":                       HasVersionEnums,
+	"collectVersionEnumConstraints":         CollectVersionEnumConstraints,
+	"formatVersionStringLengths":            FormatVersionStringLengths,
+	"hasVersionStringLengths":               HasVersionStringLengths,
+	"collectVersionStringLengthConstraints": CollectVersionStringLengthConstraints,
+	"hasVersionPatterns":                    HasVersionPatterns,
+	"collectVersionPatternConstraints":      CollectVersionPatternConstraints,
 }
 
 func resolvePath(e *yang.Entry, path string) *yang.Entry {
@@ -801,15 +914,19 @@ func parseAttribute(e *yang.Entry, attr *YamlConfigAttribute) {
 		} else if contains([]string{"string", "union", "leafref"}, leaf.Type.Kind.String()) {
 			attr.Type = "String"
 			if leaf.Type.Length != nil {
-				attr.StringMinLength = int64(leaf.Type.Length[0].Min.Value)
-				max := leaf.Type.Length[0].Max.Value
-				// hack to not introduce unsigned types
-				if max > math.MaxInt64 {
-					max = math.MaxInt64
+				if attr.StringMinLength == 0 {
+					attr.StringMinLength = int64(leaf.Type.Length[0].Min.Value)
 				}
-				attr.StringMaxLength = int64(max)
+				if attr.StringMaxLength == 0 {
+					max := leaf.Type.Length[0].Max.Value
+					// hack to not introduce unsigned types
+					if max > math.MaxInt64 {
+						max = math.MaxInt64
+					}
+					attr.StringMaxLength = int64(max)
+				}
 			}
-			if len(leaf.Type.Pattern) > 0 {
+			if len(leaf.Type.Pattern) > 0 && len(attr.StringPatterns) == 0 {
 				attr.StringPatterns = leaf.Type.Pattern
 			}
 		} else if contains([]string{"int8", "int16", "int32", "int64", "uint8", "uint16", "uint32", "uint64"}, leaf.Type.Kind.String()) {
@@ -1210,14 +1327,46 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 						}
 					}
 				}
-				if len(newAttr.StringPatterns) > 0 {
+				if len(newAttr.StringPatterns) > 0 && !stringSlicesEqual(result[i].StringPatterns, newAttr.StringPatterns) {
+					if result[i].VersionPatterns == nil {
+						result[i].VersionPatterns = make(map[string][]string)
+						if len(result[i].StringPatterns) > 0 {
+							result[i].VersionPatterns["_base"] = result[i].StringPatterns
+						}
+					}
+					result[i].VersionPatterns[overrideVersion] = newAttr.StringPatterns
+					result[i].StringPatterns = newAttr.StringPatterns
+				} else if len(newAttr.StringPatterns) > 0 {
 					result[i].StringPatterns = newAttr.StringPatterns
 				}
-				if newAttr.StringMinLength != 0 {
-					result[i].StringMinLength = newAttr.StringMinLength
-				}
-				if newAttr.StringMaxLength != 0 {
-					result[i].StringMaxLength = newAttr.StringMaxLength
+				baseMin := result[i].StringMinLength
+				baseMax := result[i].StringMaxLength
+				newMin := newAttr.StringMinLength
+				newMax := newAttr.StringMaxLength
+				minChanged := newMin != 0 && newMin != baseMin
+				maxChanged := newMax != 0 && newMax != baseMax
+				if minChanged || maxChanged {
+					if result[i].VersionStringLengths == nil {
+						result[i].VersionStringLengths = make(map[string]StringLengthConstraint)
+						if baseMin != 0 || baseMax != 0 {
+							result[i].VersionStringLengths["_base"] = StringLengthConstraint{Min: baseMin, Max: baseMax}
+						}
+					}
+					result[i].VersionStringLengths[overrideVersion] = StringLengthConstraint{Min: newMin, Max: newMax}
+					// Widen to most permissive span across all versions
+					if newMin != 0 && (result[i].StringMinLength == 0 || newMin < result[i].StringMinLength) {
+						result[i].StringMinLength = newMin
+					}
+					if newMax != 0 && newMax > result[i].StringMaxLength {
+						result[i].StringMaxLength = newMax
+					}
+				} else {
+					if newMin != 0 {
+						result[i].StringMinLength = newMin
+					}
+					if newMax != 0 {
+						result[i].StringMaxLength = newMax
+					}
 				}
 				if newAttr.DefaultValue != "" {
 					result[i].DefaultValue = newAttr.DefaultValue
@@ -1293,6 +1442,18 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 		if baseEnums, exists := attr.VersionEnums["_base"]; exists {
 			delete(attr.VersionEnums, "_base")
 			attr.VersionEnums[baseVersion] = baseEnums
+		}
+	}
+	if attr.VersionStringLengths != nil {
+		if base, exists := attr.VersionStringLengths["_base"]; exists {
+			delete(attr.VersionStringLengths, "_base")
+			attr.VersionStringLengths[baseVersion] = base
+		}
+	}
+	if attr.VersionPatterns != nil {
+		if base, exists := attr.VersionPatterns["_base"]; exists {
+			delete(attr.VersionPatterns, "_base")
+			attr.VersionPatterns[baseVersion] = base
 		}
 	}
 	for i := range attr.Attributes {

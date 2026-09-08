@@ -21,6 +21,7 @@ import (
 	"context"
 	"fmt"
 	"reflect"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -102,11 +103,31 @@ type FieldEnumConstraint struct {
 	VersionEnums map[string][]string // version threshold → valid values for that version and above
 }
 
+// StringLengthConstraint represents string length min/max for one version.
+type StringLengthConstraint struct {
+	Min int64
+	Max int64
+}
+
+// FieldStringLengthConstraint represents version-specific string length constraints for a field.
+type FieldStringLengthConstraint struct {
+	FieldPath            string
+	VersionStringLengths map[string]StringLengthConstraint // version threshold → {Min, Max}
+}
+
+// FieldPatternConstraint represents version-specific string patterns for a field.
+type FieldPatternConstraint struct {
+	FieldPath       string
+	VersionPatterns map[string][]string // version threshold → list of regex patterns (all must match)
+}
+
 // Validatable is an interface for models that support version validation
 type Validatable interface {
 	GetVersionConstraints() []FieldVersionConstraint
 	GetRangeConstraints() []FieldRangeConstraint
 	GetEnumConstraints() []FieldEnumConstraint
+	GetStringLengthConstraints() []FieldStringLengthConstraint
+	GetPatternConstraints() []FieldPatternConstraint
 }
 
 // Validate performs all version-related validations on a model
@@ -122,9 +143,12 @@ func Validate(providerVersion string, model Validatable, diagnostics *diag.Diagn
 	versionConstraints := model.GetVersionConstraints()
 	rangeConstraints := model.GetRangeConstraints()
 	enumConstraints := model.GetEnumConstraints()
+	stringLengthConstraints := model.GetStringLengthConstraints()
+	patternConstraints := model.GetPatternConstraints()
 
 	// Skip validation if no constraints defined
-	if len(versionConstraints) == 0 && len(rangeConstraints) == 0 && len(enumConstraints) == 0 {
+	if len(versionConstraints) == 0 && len(rangeConstraints) == 0 && len(enumConstraints) == 0 &&
+		len(stringLengthConstraints) == 0 && len(patternConstraints) == 0 {
 		return true
 	}
 
@@ -142,6 +166,18 @@ func Validate(providerVersion string, model Validatable, diagnostics *diag.Diagn
 
 	// Validate version-specific enum sets for string fields
 	ValidateVersionEnums(providerVersion, model, enumConstraints, diagnostics)
+	if diagnostics.HasError() {
+		return false
+	}
+
+	// Validate version-specific string length constraints
+	ValidateVersionStringLengths(providerVersion, model, stringLengthConstraints, diagnostics)
+	if diagnostics.HasError() {
+		return false
+	}
+
+	// Validate version-specific string patterns
+	ValidateVersionPatterns(providerVersion, model, patternConstraints, diagnostics)
 	if diagnostics.HasError() {
 		return false
 	}
@@ -776,6 +812,100 @@ func ValidateVersionEnums(
 					FormatVersion(providerVersion), validValues,
 				),
 			)
+		}
+	}
+}
+
+// ValidateVersionStringLengths validates string fields against their version-specific length constraints.
+func ValidateVersionStringLengths(
+	providerVersion string,
+	planValue interface{},
+	constraints []FieldStringLengthConstraint,
+	diagnostics *diag.Diagnostics,
+) {
+	if providerVersion == "" || len(constraints) == 0 {
+		return
+	}
+	for _, constraint := range constraints {
+		if !isFieldSet(planValue, constraint.FieldPath) {
+			continue
+		}
+		bestVersion := ""
+		for ver := range constraint.VersionStringLengths {
+			if VersionAtLeast(providerVersion, ver) {
+				if bestVersion == "" || VersionAtLeast(ver, bestVersion) {
+					bestVersion = ver
+				}
+			}
+		}
+		if bestVersion == "" {
+			continue
+		}
+		c := constraint.VersionStringLengths[bestVersion]
+		value, ok := getStringFieldValue(planValue, constraint.FieldPath)
+		if !ok {
+			continue
+		}
+		length := int64(len(value))
+		if (c.Min != 0 && length < c.Min) || (c.Max != 0 && length > c.Max) {
+			diagnostics.AddError(
+				fmt.Sprintf("Invalid String Length for IOS-XR Version %s", FormatVersion(providerVersion)),
+				fmt.Sprintf(
+					"The field '%s' value %q (length %d) is not valid for IOS-XR version %s. "+
+						"Allowed length for this version: %d–%d.",
+					constraint.FieldPath, value, length,
+					FormatVersion(providerVersion), c.Min, c.Max,
+				),
+			)
+		}
+	}
+}
+
+// ValidateVersionPatterns validates string fields against their version-specific regex patterns.
+func ValidateVersionPatterns(
+	providerVersion string,
+	planValue interface{},
+	constraints []FieldPatternConstraint,
+	diagnostics *diag.Diagnostics,
+) {
+	if providerVersion == "" || len(constraints) == 0 {
+		return
+	}
+	for _, constraint := range constraints {
+		if !isFieldSet(planValue, constraint.FieldPath) {
+			continue
+		}
+		bestVersion := ""
+		for ver := range constraint.VersionPatterns {
+			if VersionAtLeast(providerVersion, ver) {
+				if bestVersion == "" || VersionAtLeast(ver, bestVersion) {
+					bestVersion = ver
+				}
+			}
+		}
+		if bestVersion == "" {
+			continue
+		}
+		patterns := constraint.VersionPatterns[bestVersion]
+		value, ok := getStringFieldValue(planValue, constraint.FieldPath)
+		if !ok {
+			continue
+		}
+		for _, pattern := range patterns {
+			re, err := regexp.Compile(pattern)
+			if err != nil {
+				continue
+			}
+			if !re.MatchString(value) {
+				diagnostics.AddError(
+					fmt.Sprintf("Invalid Value for IOS-XR Version %s", FormatVersion(providerVersion)),
+					fmt.Sprintf(
+						"The field '%s' value %q does not match the required pattern %q for IOS-XR version %s.",
+						constraint.FieldPath, value, pattern, FormatVersion(providerVersion),
+					),
+				)
+				break
+			}
 		}
 	}
 }
