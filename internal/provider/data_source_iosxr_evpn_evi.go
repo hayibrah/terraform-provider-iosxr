@@ -411,6 +411,10 @@ func (d *EVPNEVIDataSource) Read(ctx context.Context, req datasource.ReadRequest
 				resp.Diagnostics.AddError("Unable to fetch device configuration", fetchErr.Error())
 				return
 			}
+			if helpers.IsEmptyRespBody(respBody) {
+				resp.Diagnostics.AddError("Invalid gNMI response", "Response contains no data")
+				return
+			}
 
 			config.fromBody(ctx, gjson.ParseBytes(respBody))
 		} else {

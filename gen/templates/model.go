@@ -29,7 +29,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/tidwall/sjson"

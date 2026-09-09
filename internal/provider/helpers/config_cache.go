@@ -419,10 +419,16 @@ func GetFromCache(ctx context.Context, cache *DeviceCache, specificPath string, 
 // Behaviour:
 //   - cacheEnabled=true: calls ensureWarmed (sync.Once, no-op after first call),
 //     then returns cached JSON via gjson filtering.
-//   - On cache miss or cacheEnabled=false: issues a single gNMI Get and stores
-//     the result in cache for subsequent reads within the same refresh.
+//   - On cache miss or cacheEnabled=false: uses GetWithRetry (retry + exponential
+//     backoff) to absorb post-Set device sync delays, exactly like the
+//     pre-cache generated Read logic did, and stores the result in cache for
+//     subsequent reads within the same refresh.
 //   - notFound=true when the device returns "Requested element(s) not found"
 //     (resource caller should remove itself from state).
+//   - A successful but empty ({}) response (e.g. a keys-only list entry) is
+//     NOT an error: body is returned empty ([]byte{}) with notFound=false so
+//     callers can preserve state as-is (resources) or raise their own
+//     "no data" error (data sources) — see IsEmptyRespBody.
 //   - err!=nil for all other failures (caller should add a diagnostics error).
 func ReadConfig(
 	ctx context.Context,
@@ -443,15 +449,23 @@ func ReadConfig(
 		tflog.Debug(ctx, fmt.Sprintf("device cache: MISS for %s (falling back to live gNMI Get)", resourcePath))
 	}
 
-	getResp, getErr := client.Get(ctx, []string{resourcePath})
+	getResp, notFound, getErr := GetWithRetry(ctx, client, []string{resourcePath}, resourcePath)
 	if getErr != nil {
-		if strings.Contains(getErr.Error(), "Requested element(s) not found") {
-			return nil, true, nil
-		}
 		return nil, false, fmt.Errorf("get: %w", getErr)
 	}
-	if len(getResp.Notifications) == 0 || len(getResp.Notifications[0].Update) == 0 {
-		return nil, false, fmt.Errorf("gNMI response contains no data for %s", resourcePath)
+	if notFound {
+		return nil, true, nil
+	}
+
+	if IsGnmiGetResponseEmpty(&getResp) {
+		// A successful but empty ({}) response means the element exists but
+		// the device returned no data (e.g. a keys-only list entry). Return
+		// an empty body instead of erroring so callers can preserve state
+		// as-is rather than treating this as a failure or deletion.
+		if cacheEnabled {
+			cache.Set(resourcePath, []byte{})
+		}
+		return []byte{}, false, nil
 	}
 
 	raw := getResp.Notifications[0].Update[0].Val.GetJsonIetfVal()

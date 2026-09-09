@@ -87,9 +87,9 @@ type providerDataDevice struct {
 }
 
 type IosxrProviderData struct {
-	Devices         map[string]*IosxrProviderDataDevice
-	ReuseConnection bool
-	MaxRetries      int
+	Devices           map[string]*IosxrProviderDataDevice
+	ReuseConnection   bool
+	MaxRetries        int
 	EnableConfigCache bool
 	ConfigCacheTTL    int64
 }

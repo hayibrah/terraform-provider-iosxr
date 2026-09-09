@@ -259,14 +259,22 @@ func (r *ExtcommunityBandwidthSetResource) Read(ctx context.Context, req resourc
 				return
 			}
 
-			tflog.Debug(ctx, fmt.Sprintf("respBody : %s", respBody))
-			if imp {
-				// After `terraform import` we switch to a full read so all device
-				// attributes are populated in state (fromBody overwrites everything).
-				state.fromBody(ctx, gjson.ParseBytes(respBody))
+			// A successful but empty ({}) response means the element exists but the
+			// device returned no data (e.g. a keys-only list entry). Preserve state
+			// as-is instead of overwriting it with nothing, which would cause a
+			// perpetual diff/recreate.
+			if helpers.IsEmptyRespBody(respBody) {
+				tflog.Warn(ctx, fmt.Sprintf("%s: gNMI returned empty response, preserving state as-is", resourcePath))
 			} else {
-				// Normal read: preserve config-only fields not returned by the device.
-				state.updateFromBody(ctx, gjson.ParseBytes(respBody))
+				tflog.Debug(ctx, fmt.Sprintf("respBody : %s", respBody))
+				if imp {
+					// After `terraform import` we switch to a full read so all device
+					// attributes are populated in state (fromBody overwrites everything).
+					state.fromBody(ctx, gjson.ParseBytes(respBody))
+				} else {
+					// Normal read: preserve config-only fields not returned by the device.
+					state.updateFromBody(ctx, gjson.ParseBytes(respBody))
+				}
 			}
 		} else {
 			// Serialize NETCONF operations when reuse disabled (concurrent reads allowed when reuse enabled)

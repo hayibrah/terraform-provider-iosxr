@@ -171,6 +171,10 @@ func (d *IPv4PrefixListDataSource) Read(ctx context.Context, req datasource.Read
 				resp.Diagnostics.AddError("Unable to fetch device configuration", fetchErr.Error())
 				return
 			}
+			if helpers.IsEmptyRespBody(respBody) {
+				resp.Diagnostics.AddError("Invalid gNMI response", "Response contains no data")
+				return
+			}
 
 			config.fromBody(ctx, gjson.ParseBytes(respBody))
 		} else {
