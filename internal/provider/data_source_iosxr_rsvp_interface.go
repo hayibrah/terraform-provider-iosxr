@@ -366,6 +366,8 @@ func (d *RSVPInterfaceDataSource) Read(ctx context.Context, req datasource.ReadR
 				return
 			}
 
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,
 				d.data.EnableConfigCache, d.data.ConfigCacheTTL,

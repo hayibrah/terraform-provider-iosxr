@@ -194,6 +194,8 @@ func (d *PerformanceMeasurementEndpointIPv4DataSource) Read(ctx context.Context,
 				return
 			}
 
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,
 				d.data.EnableConfigCache, d.data.ConfigCacheTTL,

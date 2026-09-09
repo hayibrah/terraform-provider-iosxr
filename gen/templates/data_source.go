@@ -210,16 +210,18 @@ func (d *{{camelCase .Name}}DataSource) Read(ctx context.Context, req datasource
 
 	if device.Managed {
 		if device.Protocol == "gnmi" {
-				// Ensure connection is healthy (reconnect if stale)
-				locked := helpers.AcquireGnmiLock(device.GetOpMutex(), device.ReuseConnection, false)
-				defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
-				if locked {
-					defer device.GetOpMutex().Unlock()
-				}
-				if err := helpers.EnsureGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection, device.MaxRetries); err != nil {
-					resp.Diagnostics.AddError("gNMI Connection Error", fmt.Sprintf("Failed to ensure connection: %s", err))
-					return
-				}
+			// Ensure connection is healthy (reconnect if stale)
+			locked := helpers.AcquireGnmiLock(device.GetOpMutex(), device.ReuseConnection, false)
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+			if locked {
+				defer device.GetOpMutex().Unlock()
+			}
+			if err := helpers.EnsureGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection, device.MaxRetries); err != nil {
+				resp.Diagnostics.AddError("gNMI Connection Error", fmt.Sprintf("Failed to ensure connection: %s", err))
+				return
+			}
+
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
 
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,

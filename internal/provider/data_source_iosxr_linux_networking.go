@@ -258,6 +258,8 @@ func (d *LinuxNetworkingDataSource) Read(ctx context.Context, req datasource.Rea
 				return
 			}
 
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,
 				d.data.EnableConfigCache, d.data.ConfigCacheTTL,

@@ -402,6 +402,8 @@ func (d *PolicyMapQoSDataSource) Read(ctx context.Context, req datasource.ReadRe
 				return
 			}
 
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,
 				d.data.EnableConfigCache, d.data.ConfigCacheTTL,

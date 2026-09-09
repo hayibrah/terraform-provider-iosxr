@@ -470,6 +470,8 @@ func (d *RouterStaticVRFIPv6MulticastDataSource) Read(ctx context.Context, req d
 				return
 			}
 
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+
 			respBody, _, fetchErr := helpers.ReadConfig(
 				ctx, device.GnmiClient, device.Cache,
 				d.data.EnableConfigCache, d.data.ConfigCacheTTL,
