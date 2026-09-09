@@ -25,6 +25,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/netascode/go-gnmi"
 	"github.com/tidwall/gjson"
 )
@@ -49,6 +50,7 @@ var allCachePaths = []string{
 	"Cisco-IOS-XR-8000-fib-platform-cfg:/cef",
 	"Cisco-IOS-XR-um-policymap-classmap-cfg:/class-map",
 	"Cisco-IOS-XR-um-cli-alias-cfg:/alias",
+	"Cisco-IOS-XR-um-clock-exr-cfg:/clock",
 	"Cisco-IOS-XR-um-control-plane-cfg:/control-plane",
 	"Cisco-IOS-XR-ifmgr-cfg:/interface-configurations",
 	"Cisco-IOS-XR-um-crypto-cfg:/crypto",
@@ -64,6 +66,7 @@ var allCachePaths = []string{
 	"Cisco-IOS-XR-um-ftp-tftp-cfg:/ftp",
 	"Cisco-IOS-XR-um-l2vpn-cfg:/generic-interface-lists",
 	"Cisco-IOS-XR-um-hostname-cfg:/hostname",
+	"Cisco-IOS-XR-um-http-client-cfg:/http",
 	"Cisco-IOS-XR-um-hw-module-profile-cfg:/hw-module",
 	"Cisco-IOS-XR-um-8000-hw-module-profile-cfg:/hw-module",
 	"Cisco-IOS-XR-um-hw-module-shut-cfg:/hw-module",
@@ -82,6 +85,7 @@ var allCachePaths = []string{
 	"Cisco-IOS-XR-um-linux-networking-cfg:/linux",
 	"Cisco-IOS-XR-um-lldp-cfg:/lldp",
 	"Cisco-IOS-XR-um-logging-cfg:/logging",
+	"Cisco-IOS-XR-um-interface-cfg:/logging",
 	"Cisco-IOS-XR-um-lpts-punt-cfg:/lpts",
 	"Cisco-IOS-XR-um-macsec-cfg:/macsec",
 	"Cisco-IOS-XR-um-macsec-cfg:/macsec-policy",
@@ -225,9 +229,11 @@ func FetchAndCache(ctx context.Context, client *gnmi.Client, cache *DeviceCache,
 
 	res, err := client.Get(ctx, paths)
 	if err != nil {
+		tflog.Debug(ctx, fmt.Sprintf("device cache: batched Get for %d paths failed: %v", len(paths), err))
 		return err
 	}
 
+	stored := 0
 	for _, notif := range res.Notifications {
 		for _, upd := range notif.Update {
 			if upd.Path == nil || upd.Val == nil {
@@ -243,8 +249,10 @@ func FetchAndCache(ctx context.Context, client *gnmi.Client, cache *DeviceCache,
 				continue
 			}
 			cache.Set(origin+":/"+elems[0].GetName(), raw)
+			stored++
 		}
 	}
+	tflog.Debug(ctx, fmt.Sprintf("device cache: 1 batched gNMI Get for %d paths stored %d cache entries", len(paths), stored))
 	return nil
 }
 
@@ -429,8 +437,10 @@ func ReadConfig(
 	if cacheEnabled {
 		ensureWarmed(ctx)
 		if cached, hit := GetFromCache(ctx, cache, resourcePath, cacheTTL); hit {
+			tflog.Debug(ctx, fmt.Sprintf("device cache: HIT for %s (served from cache, no gNMI Get)", resourcePath))
 			return cached, false, nil
 		}
+		tflog.Debug(ctx, fmt.Sprintf("device cache: MISS for %s (falling back to live gNMI Get)", resourcePath))
 	}
 
 	getResp, getErr := client.Get(ctx, []string{resourcePath})

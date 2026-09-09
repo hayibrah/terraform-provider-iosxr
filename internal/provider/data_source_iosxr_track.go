@@ -24,12 +24,14 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/tidwall/gjson"
+
+	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 )
 
 // End of section. //template:end imports
@@ -400,23 +402,52 @@ func (d *TrackDataSource) Read(ctx context.Context, req datasource.ReadRequest, 
 	tflog.Debug(ctx, fmt.Sprintf("%s: Beginning Read", resourcePath))
 
 	if device.Managed {
-		if !d.data.ReuseConnection {
-			defer device.Client.Disconnect()
+		if device.Protocol == "gnmi" {
+			// Ensure connection is healthy (reconnect if stale)
+			locked := helpers.AcquireGnmiLock(device.GetOpMutex(), device.ReuseConnection, false)
+			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
+			if locked {
+				defer device.GetOpMutex().Unlock()
+			}
+			if err := helpers.EnsureGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection, device.MaxRetries); err != nil {
+				resp.Diagnostics.AddError("gNMI Connection Error", fmt.Sprintf("Failed to ensure connection: %s", err))
+				return
+			}
+
+			respBody, _, fetchErr := helpers.ReadConfig(
+				ctx, device.GnmiClient, device.Cache,
+				d.data.EnableConfigCache, d.data.ConfigCacheTTL,
+				device.EnsureCacheWarmed, resourcePath,
+			)
+			if fetchErr != nil {
+				resp.Diagnostics.AddError("Unable to fetch device configuration", fetchErr.Error())
+				return
+			}
+
+			config.fromBody(ctx, gjson.ParseBytes(respBody))
+		} else {
+			// Serialize NETCONF operations when reuse disabled (concurrent reads allowed when reuse enabled)
+			locked := helpers.AcquireNetconfLock(device.GetOpMutex(), device.ReuseConnection, false)
+			if locked {
+				defer device.GetOpMutex().Unlock()
+			}
+			defer helpers.CloseNetconfConnection(ctx, device.NetconfClient, device.ReuseConnection)
+
+			// Ensure connection is healthy (reconnect if stale)
+			if err := helpers.EnsureNetconfConnection(ctx, device.NetconfClient, device.ReuseConnection, device.MaxRetries); err != nil {
+				resp.Diagnostics.AddError("NETCONF Connection Error", fmt.Sprintf("Failed to ensure connection: %s", err))
+				return
+			}
+
+			filter := helpers.GetSubtreeFilter(config.getXPath())
+			res, err := helpers.GetConfigWithTimeout(ctx, device.NetconfClient, "running", filter)
+			if err != nil {
+				resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Failed to retrieve object (%s), got error: %s", config.getPath(), err))
+				return
+			}
+
+			config.fromBodyXML(ctx, res.Res)
 		}
-
-		var respBody []byte
-
-		respBody, _, fetchErr := helpers.ReadConfig(
-			ctx, device.Client, device.Cache,
-			d.data.EnableConfigCache, d.data.ConfigCacheTTL,
-			device.EnsureCacheWarmed, resourcePath,
-		)
-		if fetchErr != nil {
-			resp.Diagnostics.AddError("Unable to fetch device configuration", fetchErr.Error())
-			return
-		}
-
-		config.fromBody(ctx, respBody)
 	}
 
 	config.Id = types.StringValue(resourcePath)
