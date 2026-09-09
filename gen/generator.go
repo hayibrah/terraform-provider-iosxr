@@ -309,7 +309,6 @@ type SiblingGroup struct {
 	Attributes []YamlConfigAttribute
 }
 
-
 // CacheRootPath returns the first path segment that has no key predicates or
 // format verbs — i.e. the highest-level stable container we can fetch once
 // and share across all instances of a resource type.
@@ -349,15 +348,6 @@ func CacheRootPath(p string) string {
 		return module + "/"
 	}
 	return module + "/" + firstSeg
-}
-
-func contains(s []string, str string) bool {
-	for _, v := range s {
-		if v == str {
-			return true
-		}
-	}
-	return false
 }
 
 // GroupXmlSiblings returns the xml-namespace-sibling attributes from allAttrs
