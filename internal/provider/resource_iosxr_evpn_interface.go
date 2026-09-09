@@ -387,8 +387,7 @@ func (r *EVPNInterfaceResource) Read(ctx context.Context, req resource.ReadReque
 
 			// A successful but empty ({}) response means the element exists but the
 			// device returned no data (e.g. a keys-only list entry). Preserve state
-			// as-is instead of overwriting it with nothing, which would cause a
-			// perpetual diff/recreate.
+			// as-is instead of removing it, which would cause a perpetual recreate.
 			if helpers.IsEmptyRespBody(respBody) {
 				tflog.Warn(ctx, fmt.Sprintf("%s: gNMI returned empty response, preserving state as-is", resourcePath))
 			} else {
