@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -210,16 +210,16 @@ func (data *NetconfAgentTTYData) fromBody(ctx context.Context, res []byte, versi
 func (data *NetconfAgentTTY) getDeletedItems(ctx context.Context, state NetconfAgentTTY, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SessionTimeout.IsNull() && data.SessionTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/timeout"))
 	}
 	if !state.ThrottleOffloadMemory.IsNull() && data.ThrottleOffloadMemory.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle/offload-memory", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle/offload-memory"))
 	}
 	if !state.ThrottleMemory.IsNull() && data.ThrottleMemory.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle/memory", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle/memory"))
 	}
 	if !state.ThrottleProcessRate.IsNull() && data.ThrottleProcessRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle/process-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle/process-rate"))
 	}
 	return deletedItems
 }
@@ -239,16 +239,16 @@ func (data *NetconfAgentTTY) getEmptyLeafsDelete(ctx context.Context, version st
 func (data *NetconfAgentTTY) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SessionTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/timeout"))
 	}
 	if !data.ThrottleOffloadMemory.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle/offload-memory", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle/offload-memory"))
 	}
 	if !data.ThrottleMemory.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle/memory", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle/memory"))
 	}
 	if !data.ThrottleProcessRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle/process-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle/process-rate"))
 	}
 	return deletePaths
 }

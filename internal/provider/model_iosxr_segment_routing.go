@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -236,19 +236,19 @@ func (data *SegmentRoutingData) fromBody(ctx context.Context, res []byte, versio
 func (data *SegmentRouting) getDeletedItems(ctx context.Context, state SegmentRouting, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Enable.IsNull() && data.Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "enable"))
 	}
 	if !state.GlobalBlockUpperBound.IsNull() && data.GlobalBlockUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/global-block", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "global-block"))
 	}
 	if !state.GlobalBlockLowerBound.IsNull() && data.GlobalBlockLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/global-block", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "global-block"))
 	}
 	if !state.LocalBlockUpperBound.IsNull() && data.LocalBlockUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/local-block", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "local-block"))
 	}
 	if !state.LocalBlockLowerBound.IsNull() && data.LocalBlockLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/local-block", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "local-block"))
 	}
 	return deletedItems
 }
@@ -260,7 +260,7 @@ func (data *SegmentRouting) getDeletedItems(ctx context.Context, state SegmentRo
 func (data *SegmentRouting) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Enable.IsNull() && !data.Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "enable"))
 	}
 	return emptyLeafsDelete
 }
@@ -271,19 +271,19 @@ func (data *SegmentRouting) getEmptyLeafsDelete(ctx context.Context, version str
 func (data *SegmentRouting) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "enable"))
 	}
 	if !data.GlobalBlockUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/global-block", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "global-block"))
 	}
 	if !data.GlobalBlockLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/global-block", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "global-block"))
 	}
 	if !data.LocalBlockUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/local-block", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "local-block"))
 	}
 	if !data.LocalBlockLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/local-block", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "local-block"))
 	}
 	return deletePaths
 }

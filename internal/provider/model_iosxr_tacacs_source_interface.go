@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -264,7 +265,7 @@ func (data *TACACSSourceInterface) getDeletedItems(ctx context.Context, state TA
 			}
 			if found {
 				if !state.SourceInterfaces[i].Interface.IsNull() && data.SourceInterfaces[j].Interface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/source-interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "source-interface"))
 				}
 				break
 			}
@@ -274,7 +275,7 @@ func (data *TACACSSourceInterface) getDeletedItems(ctx context.Context, state TA
 		}
 	}
 	if !state.SourceInterface.IsNull() && data.SourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-interface"))
 	}
 	return deletedItems
 }
@@ -320,7 +321,7 @@ func (data *TACACSSourceInterface) getDeletePaths(ctx context.Context, version s
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.SourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-interface"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2095,88 +2096,88 @@ func (data *HWModuleProfileData) fromBody(ctx context.Context, res []byte, versi
 func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModuleProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BgpMpPicAutoProtectEnable.IsNull() && data.BgpMpPicAutoProtectEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp-mp-pic/auto-protect/enable"))
 	}
 	if !state.FibBgpPicMultipathCoreEnable.IsNull() && data.FibBgpPicMultipathCoreEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fib-bgp-pic/multipath-core/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fib-bgp-pic/multipath-core/enable"))
 	}
 	if !state.OamFour8byteCfmMaidEnable.IsNull() && data.OamFour8byteCfmMaidEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-oam/four8byte-cfm-maid-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-oam/four8byte-cfm-maid-enable"))
 	}
 	if !state.OamSatEnable.IsNull() && data.OamSatEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-oam/sat-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-oam/sat-enable"))
 	}
 	if !state.SrPolicyV6NullLabelAutopush.IsNull() && data.SrPolicyV6NullLabelAutopush.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-sr-policy/v6-null-label-autopush", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-sr-policy/v6-null-label-autopush"))
 	}
 	if !state.OffloadFour.IsNull() && data.OffloadFour.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-offload/four", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-offload/four"))
 	}
 	if !state.OffloadThree.IsNull() && data.OffloadThree.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-offload/three", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-offload/three"))
 	}
 	if !state.OffloadTwo.IsNull() && data.OffloadTwo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-offload/two", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-offload/two"))
 	}
 	if !state.OffloadOne.IsNull() && data.OffloadOne.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-offload/one", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-offload/one"))
 	}
 	if !state.Srv6EncapsulationL3TrafficClassWithHoplimitPropagate.IsNull() && data.Srv6EncapsulationL3TrafficClassWithHoplimitPropagate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate"))
 	}
 	if !state.Srv6EncapsulationL3TrafficClassValue.IsNull() && data.Srv6EncapsulationL3TrafficClassValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/traffic-class-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/traffic-class-value"))
 	}
 	if !state.Srv6EncapsulationL3TrafficClassPolicyMap.IsNull() && data.Srv6EncapsulationL3TrafficClassPolicyMap.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map"))
 	}
 	if !state.Srv6EncapsulationL3TrafficClassPropagate.IsNull() && data.Srv6EncapsulationL3TrafficClassPropagate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate"))
 	}
 	if !state.Srv6EncapsulationL2TrafficClassValue.IsNull() && data.Srv6EncapsulationL2TrafficClassValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/traffic-class-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/traffic-class-value"))
 	}
 	if !state.Srv6EncapsulationL2TrafficClassPropagate.IsNull() && data.Srv6EncapsulationL2TrafficClassPropagate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate"))
 	}
 	if !state.Srv6ModeMicroSegmentFormatF3216PathMtu.IsNull() && data.Srv6ModeMicroSegmentFormatF3216PathMtu.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/path-mtu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/path-mtu"))
 	}
 	if !state.Srv6ModeMicroSegmentFormatF3216.IsNull() && data.Srv6ModeMicroSegmentFormatF3216.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/f3216", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/f3216"))
 	}
 	if !state.Srv6ModeBaseAndMicroSegmentF3216.IsNull() && data.Srv6ModeBaseAndMicroSegmentF3216.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base-and-micro-segment-f3216", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/base-and-micro-segment-f3216"))
 	}
 	if !state.Srv6ModeBase.IsNull() && data.Srv6ModeBase.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-segment-routing/srv6/mode/base"))
 	}
 	if !state.StatsTxScaleEnhancedIngressSr.IsNull() && data.StatsTxScaleEnhancedIngressSr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/ingress-sr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/tx-scale-enhanced/ingress-sr"))
 	}
 	if !state.StatsTxScaleEnhancedQosEnhanced.IsNull() && data.StatsTxScaleEnhancedQosEnhanced.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/qos-enhanced", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/tx-scale-enhanced/qos-enhanced"))
 	}
 	if !state.StatsTxScaleEnhancedAclPermit.IsNull() && data.StatsTxScaleEnhancedAclPermit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/acl-permit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/tx-scale-enhanced/acl-permit"))
 	}
 	if !state.StatsTxScaleEnhanced.IsNull() && data.StatsTxScaleEnhanced.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/tx-scale-enhanced"))
 	}
 	if !state.StatsIngressSrMspw.IsNull() && data.StatsIngressSrMspw.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/ingress-sr-mspw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/ingress-sr-mspw"))
 	}
 	if !state.StatsEnhancedSrPolicy.IsNull() && data.StatsEnhancedSrPolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/enh-sr-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/enh-sr-policy"))
 	}
 	if !state.StatsIngressSr.IsNull() && data.StatsIngressSr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/ingress-sr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/ingress-sr"))
 	}
 	if !state.StatsQosEnhanced.IsNull() && data.StatsQosEnhanced.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/qos-enhanced", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/qos-enhanced"))
 	}
 	if !state.StatsAclPermit.IsNull() && data.StatsAclPermit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-stats/acl-permit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-stats/acl-permit"))
 	}
 	for i := range state.NetflowSflowEnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2215,7 +2216,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 		}
 	}
 	if !state.NetflowSflowEnable.IsNull() && data.NetflowSflowEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-netflow/sflow-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-netflow/sflow-enable"))
 	}
 	for i := range state.NetflowIpfix315EnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2254,10 +2255,10 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 		}
 	}
 	if !state.NetflowIpfix315Enable.IsNull() && data.NetflowIpfix315Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-netflow/ipfix315-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-netflow/ipfix315-enable"))
 	}
 	if !state.NpuNativeModeEnable.IsNull() && data.NpuNativeModeEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-npu/native-mode-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-npu/native-mode-enable"))
 	}
 	for i := range state.ProfileQosNifHpFifoReserveLocations {
 		keys := [...]string{"location-name"}
@@ -2283,7 +2284,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileQosNifHpFifoReserveLocations[i].Percent.IsNull() && data.ProfileQosNifHpFifoReserveLocations[j].Percent.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v/percent", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", state.getPath(), keyString), "percent"))
 				}
 				break
 			}
@@ -2293,52 +2294,52 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 		}
 	}
 	if !state.ProfileQosNifHpFifoReservePercent.IsNull() && data.ProfileQosNifHpFifoReservePercent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve/percent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/nif-hp-fifo-reserve/percent"))
 	}
 	if !state.ProfileQosPolicerScale.IsNull() && data.ProfileQosPolicerScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/policer-scale/scale-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/policer-scale/scale-value"))
 	}
 	if !state.ProfileQosEgressCompensationSettingForce.IsNull() && data.ProfileQosEgressCompensationSettingForce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/egress-compensation-setting-force", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/egress-compensation-setting-force"))
 	}
 	if !state.ProfileQosGreExpClassificationEnable.IsNull() && data.ProfileQosGreExpClassificationEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/gre-exp-classification-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/gre-exp-classification-enable"))
 	}
 	if !state.ProfileQosArpIsisPriorityEnable.IsNull() && data.ProfileQosArpIsisPriorityEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/arp-isis-priority-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/arp-isis-priority-enable"))
 	}
 	if !state.ProfileQosConformAwarePolicer.IsNull() && data.ProfileQosConformAwarePolicer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/conform-aware-policer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/conform-aware-policer"))
 	}
 	if !state.ProfileQosLagScheduler.IsNull() && data.ProfileQosLagScheduler.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/lag-scheduler", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/lag-scheduler"))
 	}
 	if !state.ProfileQosWredStatsEnable.IsNull() && data.ProfileQosWredStatsEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/wred-stats-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/wred-stats-enable"))
 	}
 	if !state.ProfileQosSharedPolicerPerClassStats.IsNull() && data.ProfileQosSharedPolicerPerClassStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/shared-policer-per-class-stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/shared-policer-per-class-stats"))
 	}
 	if !state.ProfileQosEcnMarkingStats.IsNull() && data.ProfileQosEcnMarkingStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/ecn-marking-stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/ecn-marking-stats"))
 	}
 	if !state.ProfileQosStatsCollection.IsNull() && data.ProfileQosStatsCollection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/qos-stats-collection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/qos-stats-collection"))
 	}
 	if !state.ProfileQosHqosEnable.IsNull() && data.ProfileQosHqosEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/hqos-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/hqos-enable"))
 	}
 	if !state.ProfileQosFreeBufferIntThresholdClear.IsNull() && data.ProfileQosFreeBufferIntThresholdClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/clear-value-in-percent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/clear-value-in-percent"))
 	}
 	if !state.ProfileQosFreeBufferIntThresholdSet.IsNull() && data.ProfileQosFreeBufferIntThresholdSet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/free-buffer-int-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/free-buffer-int-threshold"))
 	}
 	if !state.ProfileQosQosgDscpMarkEnableSecond.IsNull() && data.ProfileQosQosgDscpMarkEnableSecond.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/qosg-dscp-mark-enable/second-dscp-precedence-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/qosg-dscp-mark-enable/second-dscp-precedence-value"))
 	}
 	if !state.ProfileQosQosgDscpMarkEnableFirst.IsNull() && data.ProfileQosQosgDscpMarkEnableFirst.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/qosg-dscp-mark-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/qosg-dscp-mark-enable"))
 	}
 	for i := range state.ProfileQosMaxClassmapSizeLocations {
 		keys := [...]string{"location-name"}
@@ -2364,7 +2365,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize.IsNull() && data.ProfileQosMaxClassmapSizeLocations[j].MaxClassmapSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v/max-classmap-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", state.getPath(), keyString), "max-classmap-size"))
 				}
 				break
 			}
@@ -2374,13 +2375,13 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 		}
 	}
 	if !state.ProfileQosMaxClassmapSize.IsNull() && data.ProfileQosMaxClassmapSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/max-classmap-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-qos/max-classmap-sizes/max-classmap-size"))
 	}
 	if !state.ProfileBundleHashPerPacketRoundRobin.IsNull() && data.ProfileBundleHashPerPacketRoundRobin.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-bundle-hash/per-packet-round-robin", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-bundle-hash/per-packet-round-robin"))
 	}
 	if !state.ProfileBundleHashIgnoreIngressPort.IsNull() && data.ProfileBundleHashIgnoreIngressPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-bundle-hash/ignore-ingress-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-bundle-hash/ignore-ingress-port"))
 	}
 	for i := range state.ProfileBundleHashIndexLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2412,7 +2413,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileBundleHashIndexLocations[i].Index.IsNull() && data.ProfileBundleHashIndexLocations[j].Index.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v/index", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", state.getPath(), keyString), "index"))
 				}
 				break
 			}
@@ -2422,43 +2423,43 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 		}
 	}
 	if !state.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() && data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/hash-polynomial-index", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/hash-polynomial-index"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmInnerL2Field.IsNull() && data.ProfileLoadBalanceAlgorithmInnerL2Field.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/inner-l2-field", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/inner-l2-field"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmPppoeDecapFatbasedHashing.IsNull() && data.ProfileLoadBalanceAlgorithmPppoeDecapFatbasedHashing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmPppoe.IsNull() && data.ProfileLoadBalanceAlgorithmPppoe.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/pppo-e"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmFatBasedHash.IsNull() && data.ProfileLoadBalanceAlgorithmFatBasedHash.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/fat-based-hash", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/fat-based-hash"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmMplsLsrLerOptimized.IsNull() && data.ProfileLoadBalanceAlgorithmMplsLsrLerOptimized.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler-optimized", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler-optimized"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmMplsLsrLer.IsNull() && data.ProfileLoadBalanceAlgorithmMplsLsrLer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmGtpMpls.IsNull() && data.ProfileLoadBalanceAlgorithmGtpMpls.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp-mpls", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/gtp-mpls"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmGtp.IsNull() && data.ProfileLoadBalanceAlgorithmGtp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/gtp"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmL3Only.IsNull() && data.ProfileLoadBalanceAlgorithmL3Only.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/l3-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/l3-only"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmMplsSafeSpeculativeParsing.IsNull() && data.ProfileLoadBalanceAlgorithmMplsSafeSpeculativeParsing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-safe-speculative-parsing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/mpls-safe-speculative-parsing"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmIpTunnel.IsNull() && data.ProfileLoadBalanceAlgorithmIpTunnel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/ip-tunnel", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/ip-tunnel"))
 	}
 	if !state.ProfileLoadBalanceAlgorithmLayer2.IsNull() && data.ProfileLoadBalanceAlgorithmLayer2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-load-balance/algorithm/layer2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile-load-balance/algorithm/layer2"))
 	}
 	return deletedItems
 }
@@ -2470,82 +2471,82 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BgpMpPicAutoProtectEnable.IsNull() && !data.BgpMpPicAutoProtectEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp-mp-pic/auto-protect/enable"))
 	}
 	if !data.FibBgpPicMultipathCoreEnable.IsNull() && !data.FibBgpPicMultipathCoreEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fib-bgp-pic/multipath-core/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "fib-bgp-pic/multipath-core/enable"))
 	}
 	if !data.OamFour8byteCfmMaidEnable.IsNull() && !data.OamFour8byteCfmMaidEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-oam/four8byte-cfm-maid-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-oam/four8byte-cfm-maid-enable"))
 	}
 	if !data.OamSatEnable.IsNull() && !data.OamSatEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-oam/sat-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-oam/sat-enable"))
 	}
 	if !data.SrPolicyV6NullLabelAutopush.IsNull() && !data.SrPolicyV6NullLabelAutopush.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-sr-policy/v6-null-label-autopush", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-sr-policy/v6-null-label-autopush"))
 	}
 	if !data.OffloadFour.IsNull() && !data.OffloadFour.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-offload/four", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-offload/four"))
 	}
 	if !data.OffloadThree.IsNull() && !data.OffloadThree.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-offload/three", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-offload/three"))
 	}
 	if !data.OffloadTwo.IsNull() && !data.OffloadTwo.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-offload/two", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-offload/two"))
 	}
 	if !data.OffloadOne.IsNull() && !data.OffloadOne.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-offload/one", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-offload/one"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassWithHoplimitPropagate.IsNull() && !data.Srv6EncapsulationL3TrafficClassWithHoplimitPropagate.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassPolicyMap.IsNull() && !data.Srv6EncapsulationL3TrafficClassPolicyMap.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassPropagate.IsNull() && !data.Srv6EncapsulationL3TrafficClassPropagate.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate"))
 	}
 	if !data.Srv6EncapsulationL2TrafficClassPropagate.IsNull() && !data.Srv6EncapsulationL2TrafficClassPropagate.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate"))
 	}
 	if !data.Srv6ModeMicroSegmentFormatF3216PathMtu.IsNull() && !data.Srv6ModeMicroSegmentFormatF3216PathMtu.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/path-mtu", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/path-mtu"))
 	}
 	if !data.Srv6ModeMicroSegmentFormatF3216.IsNull() && !data.Srv6ModeMicroSegmentFormatF3216.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/f3216", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/f3216"))
 	}
 	if !data.Srv6ModeBaseAndMicroSegmentF3216.IsNull() && !data.Srv6ModeBaseAndMicroSegmentF3216.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base-and-micro-segment-f3216", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/base-and-micro-segment-f3216"))
 	}
 	if !data.Srv6ModeBase.IsNull() && !data.Srv6ModeBase.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/base"))
 	}
 	if !data.StatsTxScaleEnhancedIngressSr.IsNull() && !data.StatsTxScaleEnhancedIngressSr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/ingress-sr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/ingress-sr"))
 	}
 	if !data.StatsTxScaleEnhancedQosEnhanced.IsNull() && !data.StatsTxScaleEnhancedQosEnhanced.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/qos-enhanced", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/qos-enhanced"))
 	}
 	if !data.StatsTxScaleEnhancedAclPermit.IsNull() && !data.StatsTxScaleEnhancedAclPermit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/acl-permit", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/acl-permit"))
 	}
 	if !data.StatsTxScaleEnhanced.IsNull() && !data.StatsTxScaleEnhanced.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced"))
 	}
 	if !data.StatsIngressSrMspw.IsNull() && !data.StatsIngressSrMspw.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/ingress-sr-mspw", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/ingress-sr-mspw"))
 	}
 	if !data.StatsEnhancedSrPolicy.IsNull() && !data.StatsEnhancedSrPolicy.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/enh-sr-policy", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/enh-sr-policy"))
 	}
 	if !data.StatsIngressSr.IsNull() && !data.StatsIngressSr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/ingress-sr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/ingress-sr"))
 	}
 	if !data.StatsQosEnhanced.IsNull() && !data.StatsQosEnhanced.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/qos-enhanced", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/qos-enhanced"))
 	}
 	if !data.StatsAclPermit.IsNull() && !data.StatsAclPermit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-stats/acl-permit", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-stats/acl-permit"))
 	}
 	for i := range data.NetflowSflowEnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2556,7 +2557,7 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.NetflowSflowEnable.IsNull() && !data.NetflowSflowEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-netflow/sflow-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-netflow/sflow-enable"))
 	}
 	for i := range data.NetflowIpfix315EnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2567,10 +2568,10 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.NetflowIpfix315Enable.IsNull() && !data.NetflowIpfix315Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-netflow/ipfix315-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-netflow/ipfix315-enable"))
 	}
 	if !data.NpuNativeModeEnable.IsNull() && !data.NpuNativeModeEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-npu/native-mode-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-npu/native-mode-enable"))
 	}
 	for i := range data.ProfileQosNifHpFifoReserveLocations {
 		keys := [...]string{"location-name"}
@@ -2581,34 +2582,34 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.ProfileQosEgressCompensationSettingForce.IsNull() && !data.ProfileQosEgressCompensationSettingForce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/egress-compensation-setting-force", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/egress-compensation-setting-force"))
 	}
 	if !data.ProfileQosGreExpClassificationEnable.IsNull() && !data.ProfileQosGreExpClassificationEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/gre-exp-classification-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/gre-exp-classification-enable"))
 	}
 	if !data.ProfileQosArpIsisPriorityEnable.IsNull() && !data.ProfileQosArpIsisPriorityEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/arp-isis-priority-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/arp-isis-priority-enable"))
 	}
 	if !data.ProfileQosConformAwarePolicer.IsNull() && !data.ProfileQosConformAwarePolicer.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/conform-aware-policer", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/conform-aware-policer"))
 	}
 	if !data.ProfileQosLagScheduler.IsNull() && !data.ProfileQosLagScheduler.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/lag-scheduler", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/lag-scheduler"))
 	}
 	if !data.ProfileQosWredStatsEnable.IsNull() && !data.ProfileQosWredStatsEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/wred-stats-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/wred-stats-enable"))
 	}
 	if !data.ProfileQosSharedPolicerPerClassStats.IsNull() && !data.ProfileQosSharedPolicerPerClassStats.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/shared-policer-per-class-stats", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/shared-policer-per-class-stats"))
 	}
 	if !data.ProfileQosEcnMarkingStats.IsNull() && !data.ProfileQosEcnMarkingStats.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/ecn-marking-stats", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/ecn-marking-stats"))
 	}
 	if !data.ProfileQosStatsCollection.IsNull() && !data.ProfileQosStatsCollection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/qos-stats-collection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/qos-stats-collection"))
 	}
 	if !data.ProfileQosHqosEnable.IsNull() && !data.ProfileQosHqosEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-qos/hqos-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-qos/hqos-enable"))
 	}
 	for i := range data.ProfileQosMaxClassmapSizeLocations {
 		keys := [...]string{"location-name"}
@@ -2619,10 +2620,10 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.ProfileBundleHashPerPacketRoundRobin.IsNull() && !data.ProfileBundleHashPerPacketRoundRobin.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-bundle-hash/per-packet-round-robin", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-bundle-hash/per-packet-round-robin"))
 	}
 	if !data.ProfileBundleHashIgnoreIngressPort.IsNull() && !data.ProfileBundleHashIgnoreIngressPort.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-bundle-hash/ignore-ingress-port", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-bundle-hash/ignore-ingress-port"))
 	}
 	for i := range data.ProfileBundleHashIndexLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2633,40 +2634,40 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.ProfileLoadBalanceAlgorithmInnerL2Field.IsNull() && !data.ProfileLoadBalanceAlgorithmInnerL2Field.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/inner-l2-field", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/inner-l2-field"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmPppoeDecapFatbasedHashing.IsNull() && !data.ProfileLoadBalanceAlgorithmPppoeDecapFatbasedHashing.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmPppoe.IsNull() && !data.ProfileLoadBalanceAlgorithmPppoe.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/pppo-e"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmFatBasedHash.IsNull() && !data.ProfileLoadBalanceAlgorithmFatBasedHash.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/fat-based-hash", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/fat-based-hash"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsLsrLerOptimized.IsNull() && !data.ProfileLoadBalanceAlgorithmMplsLsrLerOptimized.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler-optimized", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler-optimized"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsLsrLer.IsNull() && !data.ProfileLoadBalanceAlgorithmMplsLsrLer.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmGtpMpls.IsNull() && !data.ProfileLoadBalanceAlgorithmGtpMpls.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp-mpls", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/gtp-mpls"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmGtp.IsNull() && !data.ProfileLoadBalanceAlgorithmGtp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/gtp"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmL3Only.IsNull() && !data.ProfileLoadBalanceAlgorithmL3Only.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/l3-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/l3-only"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsSafeSpeculativeParsing.IsNull() && !data.ProfileLoadBalanceAlgorithmMplsSafeSpeculativeParsing.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-safe-speculative-parsing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-safe-speculative-parsing"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmIpTunnel.IsNull() && !data.ProfileLoadBalanceAlgorithmIpTunnel.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/ip-tunnel", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/ip-tunnel"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmLayer2.IsNull() && !data.ProfileLoadBalanceAlgorithmLayer2.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile-load-balance/algorithm/layer2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile-load-balance/algorithm/layer2"))
 	}
 	return emptyLeafsDelete
 }
@@ -2677,88 +2678,88 @@ func (data *HWModuleProfile) getEmptyLeafsDelete(ctx context.Context, version st
 func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BgpMpPicAutoProtectEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp-mp-pic/auto-protect/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp-mp-pic/auto-protect/enable"))
 	}
 	if !data.FibBgpPicMultipathCoreEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fib-bgp-pic/multipath-core/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fib-bgp-pic/multipath-core/enable"))
 	}
 	if !data.OamFour8byteCfmMaidEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-oam/four8byte-cfm-maid-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-oam/four8byte-cfm-maid-enable"))
 	}
 	if !data.OamSatEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-oam/sat-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-oam/sat-enable"))
 	}
 	if !data.SrPolicyV6NullLabelAutopush.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-sr-policy/v6-null-label-autopush", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-sr-policy/v6-null-label-autopush"))
 	}
 	if !data.OffloadFour.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-offload/four", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-offload/four"))
 	}
 	if !data.OffloadThree.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-offload/three", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-offload/three"))
 	}
 	if !data.OffloadTwo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-offload/two", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-offload/two"))
 	}
 	if !data.OffloadOne.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-offload/one", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-offload/one"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassWithHoplimitPropagate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class-with-hoplimit/propagate"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/traffic-class-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/traffic-class-value"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassPolicyMap.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/policy-map"))
 	}
 	if !data.Srv6EncapsulationL3TrafficClassPropagate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l3-traffic/traffic-class/propagate"))
 	}
 	if !data.Srv6EncapsulationL2TrafficClassValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/traffic-class-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/traffic-class-value"))
 	}
 	if !data.Srv6EncapsulationL2TrafficClassPropagate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/encapsulation/l2-traffic/traffic-class/propagate"))
 	}
 	if !data.Srv6ModeMicroSegmentFormatF3216PathMtu.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/path-mtu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/path-mtu"))
 	}
 	if !data.Srv6ModeMicroSegmentFormatF3216.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/micro-segment/format/f3216", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/micro-segment/format/f3216"))
 	}
 	if !data.Srv6ModeBaseAndMicroSegmentF3216.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base-and-micro-segment-f3216", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/base-and-micro-segment-f3216"))
 	}
 	if !data.Srv6ModeBase.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-segment-routing/srv6/mode/base", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-segment-routing/srv6/mode/base"))
 	}
 	if !data.StatsTxScaleEnhancedIngressSr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/ingress-sr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/ingress-sr"))
 	}
 	if !data.StatsTxScaleEnhancedQosEnhanced.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/qos-enhanced", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/qos-enhanced"))
 	}
 	if !data.StatsTxScaleEnhancedAclPermit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced/acl-permit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced/acl-permit"))
 	}
 	if !data.StatsTxScaleEnhanced.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/tx-scale-enhanced", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/tx-scale-enhanced"))
 	}
 	if !data.StatsIngressSrMspw.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/ingress-sr-mspw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/ingress-sr-mspw"))
 	}
 	if !data.StatsEnhancedSrPolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/enh-sr-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/enh-sr-policy"))
 	}
 	if !data.StatsIngressSr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/ingress-sr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/ingress-sr"))
 	}
 	if !data.StatsQosEnhanced.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/qos-enhanced", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/qos-enhanced"))
 	}
 	if !data.StatsAclPermit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-stats/acl-permit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-stats/acl-permit"))
 	}
 	for i := range data.NetflowSflowEnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2782,7 +2783,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/sflow-enable-locations/location%v", data.getPath(), keyString))
 	}
 	if !data.NetflowSflowEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/sflow-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-netflow/sflow-enable"))
 	}
 	for i := range data.NetflowIpfix315EnableLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2806,10 +2807,10 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/ipfix315-enable-locations/location%v", data.getPath(), keyString))
 	}
 	if !data.NetflowIpfix315Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/ipfix315-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-netflow/ipfix315-enable"))
 	}
 	if !data.NpuNativeModeEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-npu/native-mode-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-npu/native-mode-enable"))
 	}
 	for i := range data.ProfileQosNifHpFifoReserveLocations {
 		keys := [...]string{"location-name"}
@@ -2830,52 +2831,52 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileQosNifHpFifoReservePercent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve/percent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/nif-hp-fifo-reserve/percent"))
 	}
 	if !data.ProfileQosPolicerScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/policer-scale/scale-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/policer-scale/scale-value"))
 	}
 	if !data.ProfileQosEgressCompensationSettingForce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/egress-compensation-setting-force", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/egress-compensation-setting-force"))
 	}
 	if !data.ProfileQosGreExpClassificationEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/gre-exp-classification-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/gre-exp-classification-enable"))
 	}
 	if !data.ProfileQosArpIsisPriorityEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/arp-isis-priority-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/arp-isis-priority-enable"))
 	}
 	if !data.ProfileQosConformAwarePolicer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/conform-aware-policer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/conform-aware-policer"))
 	}
 	if !data.ProfileQosLagScheduler.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/lag-scheduler", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/lag-scheduler"))
 	}
 	if !data.ProfileQosWredStatsEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/wred-stats-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/wred-stats-enable"))
 	}
 	if !data.ProfileQosSharedPolicerPerClassStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/shared-policer-per-class-stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/shared-policer-per-class-stats"))
 	}
 	if !data.ProfileQosEcnMarkingStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/ecn-marking-stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/ecn-marking-stats"))
 	}
 	if !data.ProfileQosStatsCollection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/qos-stats-collection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/qos-stats-collection"))
 	}
 	if !data.ProfileQosHqosEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/hqos-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/hqos-enable"))
 	}
 	if !data.ProfileQosFreeBufferIntThresholdClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/clear-value-in-percent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/clear-value-in-percent"))
 	}
 	if !data.ProfileQosFreeBufferIntThresholdSet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/free-buffer-int-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/free-buffer-int-threshold"))
 	}
 	if !data.ProfileQosQosgDscpMarkEnableSecond.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/qosg-dscp-mark-enable/second-dscp-precedence-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/qosg-dscp-mark-enable/second-dscp-precedence-value"))
 	}
 	if !data.ProfileQosQosgDscpMarkEnableFirst.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/qosg-dscp-mark-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/qosg-dscp-mark-enable"))
 	}
 	for i := range data.ProfileQosMaxClassmapSizeLocations {
 		keys := [...]string{"location-name"}
@@ -2896,13 +2897,13 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileQosMaxClassmapSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/max-classmap-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/max-classmap-sizes/max-classmap-size"))
 	}
 	if !data.ProfileBundleHashPerPacketRoundRobin.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-bundle-hash/per-packet-round-robin", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-bundle-hash/per-packet-round-robin"))
 	}
 	if !data.ProfileBundleHashIgnoreIngressPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-bundle-hash/ignore-ingress-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-bundle-hash/ignore-ingress-port"))
 	}
 	for i := range data.ProfileBundleHashIndexLocations {
 		keys := [...]string{"location-name", "location-name2"}
@@ -2926,43 +2927,43 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/hash-polynomial-index", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/hash-polynomial-index"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmInnerL2Field.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/inner-l2-field", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/inner-l2-field"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmPppoeDecapFatbasedHashing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/pppo-e/decap-fatbased-hashing"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmPppoe.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/pppo-e", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/pppo-e"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmFatBasedHash.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/fat-based-hash", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/fat-based-hash"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsLsrLerOptimized.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler-optimized", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler-optimized"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsLsrLer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-lsr-ler", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-lsr-ler"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmGtpMpls.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp-mpls", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/gtp-mpls"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmGtp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/gtp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/gtp"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmL3Only.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/l3-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/l3-only"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmMplsSafeSpeculativeParsing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/mpls-safe-speculative-parsing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/mpls-safe-speculative-parsing"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmIpTunnel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/ip-tunnel", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/ip-tunnel"))
 	}
 	if !data.ProfileLoadBalanceAlgorithmLayer2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-load-balance/algorithm/layer2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/layer2"))
 	}
 	return deletePaths
 }

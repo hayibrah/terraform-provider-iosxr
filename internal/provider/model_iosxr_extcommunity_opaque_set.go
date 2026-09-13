@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *ExtcommunityOpaqueSetData) fromBody(ctx context.Context, res []byte,
 func (data *ExtcommunityOpaqueSet) getDeletedItems(ctx context.Context, state ExtcommunityOpaqueSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rpl-extended-community-opaque-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rpl-extended-community-opaque-set"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *ExtcommunityOpaqueSet) getEmptyLeafsDelete(ctx context.Context, vers
 func (data *ExtcommunityOpaqueSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpl-extended-community-opaque-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rpl-extended-community-opaque-set"))
 	}
 	return deletePaths
 }

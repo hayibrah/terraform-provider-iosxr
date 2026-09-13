@@ -447,6 +447,158 @@ func TestMergeAttributes_ReplacesYangName_ThreeVersionChain(t *testing.T) {
 }
 
 // ---------------------------------------------------------------------------
+// VersionDeleteMode merge scenarios
+// ---------------------------------------------------------------------------
+
+// Scenario 1: base has delete_parent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
+// Expected: 25.4 inherits delete_parent — no VersionDeleteMode created.
+func TestVersionDeleteMode_Scenario1_InheritDeleteParent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:     "maxfilesize",
+		TfName:       "maxfilesize",
+		DeleteParent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName: "maxfilesize",
+		TfName:   "maxfilesize",
+		// no ReplacesYangName, no delete flag
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode != nil {
+		t.Errorf("Scenario 1: VersionDeleteMode should be nil (inherited), got %v", attr.VersionDeleteMode)
+	}
+	if !attr.DeleteParent {
+		t.Error("Scenario 1: DeleteParent should remain true after inherit")
+	}
+}
+
+// Scenario 2: base has delete_grandparent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
+// Expected: 25.4 inherits delete_grandparent — no VersionDeleteMode created.
+func TestVersionDeleteMode_Scenario2_InheritDeleteGrandparent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:          "maxfilesize",
+		TfName:            "maxfilesize",
+		DeleteGrandparent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName: "maxfilesize",
+		TfName:   "maxfilesize",
+		// no ReplacesYangName, no delete flag
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode != nil {
+		t.Errorf("Scenario 2: VersionDeleteMode should be nil (inherited), got %v", attr.VersionDeleteMode)
+	}
+	if !attr.DeleteGrandparent {
+		t.Error("Scenario 2: DeleteGrandparent should remain true after inherit")
+	}
+}
+
+// Scenario 3: base has delete_parent, 25.4 has replaces_yang_name and NO delete flag.
+// Expected: version-specific map — 24.4 deletes parent, 25.4 deletes leaf directly.
+func TestVersionDeleteMode_Scenario3_ReplacementDropsDeleteParent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:     "maxfilesize",
+		TfName:       "maxfilesize",
+		DeleteParent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName:         "path/maxfilesize",
+		TfName:           "maxfilesize",
+		ReplacesYangName: "maxfilesize",
+		// no delete flag — intentionally drops parent delete
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode == nil {
+		t.Fatal("Scenario 3: VersionDeleteMode should be set")
+	}
+	if v, ok := attr.VersionDeleteMode["_base"]; !ok || v != "parent" {
+		t.Errorf("Scenario 3: expected _base=parent, got %v", attr.VersionDeleteMode)
+	}
+	if v, ok := attr.VersionDeleteMode["25.4"]; !ok || v != "" {
+		t.Errorf("Scenario 3: expected 25.4='', got %v", attr.VersionDeleteMode)
+	}
+}
+
+// Scenario 4: base has delete_parent, 25.4 has replaces_yang_name WITH delete_parent.
+// Expected: both versions delete parent — no VersionDeleteMode, static path.
+func TestVersionDeleteMode_Scenario4_ReplacementKeepsDeleteParent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:     "maxfilesize",
+		TfName:       "maxfilesize",
+		DeleteParent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName:         "path/maxfilesize",
+		TfName:           "maxfilesize",
+		ReplacesYangName: "maxfilesize",
+		DeleteParent:     true,
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode != nil {
+		t.Errorf("Scenario 4: VersionDeleteMode should be nil (same mode), got %v", attr.VersionDeleteMode)
+	}
+	if !attr.DeleteParent {
+		t.Error("Scenario 4: DeleteParent should be true")
+	}
+}
+
+// Scenario 5a: base has delete_parent, 25.4 has replaces_yang_name with NO delete flag.
+// (Same as 3, delete_grandparent variant for base.)
+func TestVersionDeleteMode_Scenario5a_ReplacementDropsDeleteGrandparent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:          "maxfilesize",
+		TfName:            "maxfilesize",
+		DeleteGrandparent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName:         "path/maxfilesize",
+		TfName:           "maxfilesize",
+		ReplacesYangName: "maxfilesize",
+		// no delete flag
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode == nil {
+		t.Fatal("Scenario 5a: VersionDeleteMode should be set")
+	}
+	if v := attr.VersionDeleteMode["_base"]; v != "grandparent" {
+		t.Errorf("Scenario 5a: expected _base=grandparent, got %q", v)
+	}
+	if v := attr.VersionDeleteMode["25.4"]; v != "" {
+		t.Errorf("Scenario 5a: expected 25.4='', got %q", v)
+	}
+}
+
+// Scenario 5b: base has delete_grandparent, 25.4 has replaces_yang_name WITH delete_grandparent.
+// Expected: no VersionDeleteMode, same mode throughout.
+func TestVersionDeleteMode_Scenario5b_ReplacementKeepsDeleteGrandparent(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:          "maxfilesize",
+		TfName:            "maxfilesize",
+		DeleteGrandparent: true,
+	}}
+	delta := []YamlConfigAttribute{{
+		YangName:          "path/maxfilesize",
+		TfName:            "maxfilesize",
+		ReplacesYangName:  "maxfilesize",
+		DeleteGrandparent: true,
+	}}
+	got := mergeAttributes(base, delta, "25.4")
+	attr := got[0]
+	if attr.VersionDeleteMode != nil {
+		t.Errorf("Scenario 5b: VersionDeleteMode should be nil, got %v", attr.VersionDeleteMode)
+	}
+	if !attr.DeleteGrandparent {
+		t.Error("Scenario 5b: DeleteGrandparent should be true")
+	}
+}
+
+// ---------------------------------------------------------------------------
 // TODO (F4a): Add GetPathVersion tests in internal/provider/helpers/version_path_test.go
 // when helpers.GetPathVersion is implemented. Test cases to cover:
 //

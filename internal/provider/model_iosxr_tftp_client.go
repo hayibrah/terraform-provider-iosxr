@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -294,16 +295,16 @@ func (data *TFTPClient) getDeletedItems(ctx context.Context, state TFTPClient, v
 			}
 			if found {
 				if !state.ClientVrfs[i].Dscp.IsNull() && data.ClientVrfs[j].Dscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "dscp"))
 				}
 				if !state.ClientVrfs[i].Timeout.IsNull() && data.ClientVrfs[j].Timeout.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v/timeout", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "timeout"))
 				}
 				if !state.ClientVrfs[i].Retries.IsNull() && data.ClientVrfs[j].Retries.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v/retries", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "retries"))
 				}
 				if !state.ClientVrfs[i].SourceInterface.IsNull() && data.ClientVrfs[j].SourceInterface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v/source-interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "source-interface"))
 				}
 				break
 			}

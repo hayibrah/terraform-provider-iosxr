@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -791,73 +791,73 @@ func (data *LLDPData) fromBody(ctx context.Context, res []byte, version string) 
 func (data *LLDP) getDeletedItems(ctx context.Context, state LLDP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TlvSelectSystemNameDisable.IsNull() && data.TlvSelectSystemNameDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tlv-select/system-name/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tlv-select/system-name/disable"))
 	}
 	if !state.TlvSelectSystemDescriptionDisable.IsNull() && data.TlvSelectSystemDescriptionDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tlv-select/system-description/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tlv-select/system-description/disable"))
 	}
 	if !state.TlvSelectSystemCapabilitiesDisable.IsNull() && data.TlvSelectSystemCapabilitiesDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tlv-select/system-capabilities/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tlv-select/system-capabilities/disable"))
 	}
 	if !state.TlvSelectPortDescriptionDisable.IsNull() && data.TlvSelectPortDescriptionDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tlv-select/port-description/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tlv-select/port-description/disable"))
 	}
 	if !state.TlvSelectManagementAddressDisable.IsNull() && data.TlvSelectManagementAddressDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tlv-select/management-address/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tlv-select/management-address/disable"))
 	}
 	if !state.ExtendedShowWidthEnable.IsNull() && data.ExtendedShowWidthEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/extended-show-width/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "extended-show-width/enable"))
 	}
 	if !state.PriorityaddrEnable.IsNull() && data.PriorityaddrEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/priorityaddr/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "priorityaddr/enable"))
 	}
 	if !state.ManagementEnable.IsNull() && data.ManagementEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management/enable"))
 	}
 	if !state.SubinterfacesTagged.IsNull() && data.SubinterfacesTagged.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/subinterfaces-tagged", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "subinterfaces-tagged"))
 	}
 	if !state.SubinterfacesEnable.IsNull() && data.SubinterfacesEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/subinterfaces/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "subinterfaces/enable"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeLocal.IsNull() && data.ChassisIdTypeLocal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/local", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/local"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeInterfaceName.IsNull() && data.ChassisIdTypeInterfaceName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/interface-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/interface-name"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeNetworkAddress.IsNull() && data.ChassisIdTypeNetworkAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/network-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/network-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeMacAddress.IsNull() && data.ChassisIdTypeMacAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/mac-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/mac-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypePortComponent.IsNull() && data.ChassisIdTypePortComponent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/port-component", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/port-component"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeInterfaceAlias.IsNull() && data.ChassisIdTypeInterfaceAlias.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/interface-alias", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/interface-alias"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ChassisIdTypeChassisComponent.IsNull() && data.ChassisIdTypeChassisComponent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id-type/chassis-component", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id-type/chassis-component"))
 	}
 	if !state.ChassisId.IsNull() && data.ChassisId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id"))
 	}
 	if !state.SystemDescription.IsNull() && data.SystemDescription.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/system-description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "system-description"))
 	}
 	if !state.SystemName.IsNull() && data.SystemName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/system-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "system-name"))
 	}
 	if !state.Reinit.IsNull() && data.Reinit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/reinit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "reinit"))
 	}
 	if !state.Timer.IsNull() && data.Timer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timer"))
 	}
 	if !state.Holdtime.IsNull() && data.Holdtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holdtime"))
 	}
 	return deletedItems
 }
@@ -869,55 +869,55 @@ func (data *LLDP) getDeletedItems(ctx context.Context, state LLDP, version strin
 func (data *LLDP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TlvSelectSystemNameDisable.IsNull() && !data.TlvSelectSystemNameDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tlv-select/system-name/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tlv-select/system-name/disable"))
 	}
 	if !data.TlvSelectSystemDescriptionDisable.IsNull() && !data.TlvSelectSystemDescriptionDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tlv-select/system-description/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tlv-select/system-description/disable"))
 	}
 	if !data.TlvSelectSystemCapabilitiesDisable.IsNull() && !data.TlvSelectSystemCapabilitiesDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tlv-select/system-capabilities/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tlv-select/system-capabilities/disable"))
 	}
 	if !data.TlvSelectPortDescriptionDisable.IsNull() && !data.TlvSelectPortDescriptionDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tlv-select/port-description/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tlv-select/port-description/disable"))
 	}
 	if !data.TlvSelectManagementAddressDisable.IsNull() && !data.TlvSelectManagementAddressDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tlv-select/management-address/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tlv-select/management-address/disable"))
 	}
 	if !data.ExtendedShowWidthEnable.IsNull() && !data.ExtendedShowWidthEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/extended-show-width/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "extended-show-width/enable"))
 	}
 	if !data.PriorityaddrEnable.IsNull() && !data.PriorityaddrEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/priorityaddr/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "priorityaddr/enable"))
 	}
 	if !data.ManagementEnable.IsNull() && !data.ManagementEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management/enable"))
 	}
 	if !data.SubinterfacesTagged.IsNull() && !data.SubinterfacesTagged.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/subinterfaces-tagged", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "subinterfaces-tagged"))
 	}
 	if !data.SubinterfacesEnable.IsNull() && !data.SubinterfacesEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/subinterfaces/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "subinterfaces/enable"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeLocal.IsNull() && !data.ChassisIdTypeLocal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/local", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/local"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeInterfaceName.IsNull() && !data.ChassisIdTypeInterfaceName.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/interface-name", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/interface-name"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeNetworkAddress.IsNull() && !data.ChassisIdTypeNetworkAddress.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/network-address", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/network-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeMacAddress.IsNull() && !data.ChassisIdTypeMacAddress.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/mac-address", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/mac-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypePortComponent.IsNull() && !data.ChassisIdTypePortComponent.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/port-component", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/port-component"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeInterfaceAlias.IsNull() && !data.ChassisIdTypeInterfaceAlias.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/interface-alias", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/interface-alias"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeChassisComponent.IsNull() && !data.ChassisIdTypeChassisComponent.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/chassis-id-type/chassis-component", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "chassis-id-type/chassis-component"))
 	}
 	return emptyLeafsDelete
 }
@@ -928,73 +928,73 @@ func (data *LLDP) getEmptyLeafsDelete(ctx context.Context, version string) []str
 func (data *LLDP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TlvSelectSystemNameDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tlv-select/system-name/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tlv-select/system-name/disable"))
 	}
 	if !data.TlvSelectSystemDescriptionDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tlv-select/system-description/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tlv-select/system-description/disable"))
 	}
 	if !data.TlvSelectSystemCapabilitiesDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tlv-select/system-capabilities/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tlv-select/system-capabilities/disable"))
 	}
 	if !data.TlvSelectPortDescriptionDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tlv-select/port-description/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tlv-select/port-description/disable"))
 	}
 	if !data.TlvSelectManagementAddressDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tlv-select/management-address/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tlv-select/management-address/disable"))
 	}
 	if !data.ExtendedShowWidthEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/extended-show-width/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "extended-show-width/enable"))
 	}
 	if !data.PriorityaddrEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/priorityaddr/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "priorityaddr/enable"))
 	}
 	if !data.ManagementEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management/enable"))
 	}
 	if !data.SubinterfacesTagged.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/subinterfaces-tagged", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "subinterfaces-tagged"))
 	}
 	if !data.SubinterfacesEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/subinterfaces/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "subinterfaces/enable"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeLocal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/local", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/local"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeInterfaceName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/interface-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/interface-name"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeNetworkAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/network-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/network-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeMacAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/mac-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/mac-address"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypePortComponent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/port-component", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/port-component"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeInterfaceAlias.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/interface-alias", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/interface-alias"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ChassisIdTypeChassisComponent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id-type/chassis-component", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id-type/chassis-component"))
 	}
 	if !data.ChassisId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id"))
 	}
 	if !data.SystemDescription.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/system-description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "system-description"))
 	}
 	if !data.SystemName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/system-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "system-name"))
 	}
 	if !data.Reinit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/reinit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "reinit"))
 	}
 	if !data.Timer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timer"))
 	}
 	if !data.Holdtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holdtime"))
 	}
 	return deletePaths
 }

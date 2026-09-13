@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -368,7 +369,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.C
 			}
 			if found {
 				if !state.Neighbors[i].PwClass.IsNull() && data.Neighbors[j].PwClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/pw-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "pw-class"))
 				}
 				for ci := range state.Neighbors[i].StaticMacAddresses {
 					ckeys := [...]string{"mac-address"}
@@ -408,7 +409,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.C
 		}
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	return deletedItems
 }
@@ -436,7 +437,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getEmptyLeafsDelete(ctx conte
 		}
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	return emptyLeafsDelete
 }
@@ -468,7 +469,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletePaths(ctx context.Co
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	return deletePaths
 }

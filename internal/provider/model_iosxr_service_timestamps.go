@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -638,52 +638,52 @@ func (data *ServiceTimestampsData) fromBody(ctx context.Context, res []byte, ver
 func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state ServiceTimestamps, version string) []string {
 	deletedItems := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !state.LogDatetimeUsec.IsNull() && data.LogDatetimeUsec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/usec", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/usec"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.DebugDatetimeUsec.IsNull() && data.DebugDatetimeUsec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/usec", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/usec"))
 	}
 	if !state.LogDisable.IsNull() && data.LogDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/disable", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/disable"))
 	}
 	if !state.LogUptime.IsNull() && data.LogUptime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/uptime", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/uptime"))
 	}
 	if !state.LogDatetimeYear.IsNull() && data.LogDatetimeYear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/year", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/year"))
 	}
 	if !state.LogDatetimeShowTimezone.IsNull() && data.LogDatetimeShowTimezone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/show-timezone", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/show-timezone"))
 	}
 	if !state.LogDatetimeMsec.IsNull() && data.LogDatetimeMsec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/msec", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/msec"))
 	}
 	if !state.LogDatetimeLocaltime.IsNull() && data.LogDatetimeLocaltime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/localtime", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.LogDatetimeLocaltimeOnly.IsNull() && data.LogDatetimeLocaltimeOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/datetime/localtime-only", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "log/datetime/localtime-only"))
 	}
 	if !state.DebugDisable.IsNull() && data.DebugDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/disable", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/disable"))
 	}
 	if !state.DebugUptime.IsNull() && data.DebugUptime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/uptime", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/uptime"))
 	}
 	if !state.DebugDatetimeYear.IsNull() && data.DebugDatetimeYear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/year", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/year"))
 	}
 	if !state.DebugDatetimeShowTimezone.IsNull() && data.DebugDatetimeShowTimezone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/show-timezone", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/show-timezone"))
 	}
 	if !state.DebugDatetimeMsec.IsNull() && data.DebugDatetimeMsec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/msec", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/msec"))
 	}
 	if !state.DebugDatetimeLocaltime.IsNull() && data.DebugDatetimeLocaltime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/localtime", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.DebugDatetimeLocaltimeOnly.IsNull() && data.DebugDatetimeLocaltimeOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/debug/datetime/localtime-only", state.getPathForVersion(version)))
+		deletedItems = append(deletedItems, path.Join(state.getPathForVersion(version), "debug/datetime/localtime-only"))
 	}
 	return deletedItems
 }
@@ -695,52 +695,52 @@ func (data *ServiceTimestamps) getDeletedItems(ctx context.Context, state Servic
 func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !data.LogDatetimeUsec.IsNull() && !data.LogDatetimeUsec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/usec", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/usec"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.DebugDatetimeUsec.IsNull() && !data.DebugDatetimeUsec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/usec", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/usec"))
 	}
 	if !data.LogDisable.IsNull() && !data.LogDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/disable", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/disable"))
 	}
 	if !data.LogUptime.IsNull() && !data.LogUptime.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/uptime", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/uptime"))
 	}
 	if !data.LogDatetimeYear.IsNull() && !data.LogDatetimeYear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/year", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/year"))
 	}
 	if !data.LogDatetimeShowTimezone.IsNull() && !data.LogDatetimeShowTimezone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/show-timezone", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/show-timezone"))
 	}
 	if !data.LogDatetimeMsec.IsNull() && !data.LogDatetimeMsec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/msec", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/msec"))
 	}
 	if !data.LogDatetimeLocaltime.IsNull() && !data.LogDatetimeLocaltime.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/localtime", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.LogDatetimeLocaltimeOnly.IsNull() && !data.LogDatetimeLocaltimeOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/datetime/localtime-only", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "log/datetime/localtime-only"))
 	}
 	if !data.DebugDisable.IsNull() && !data.DebugDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/disable", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/disable"))
 	}
 	if !data.DebugUptime.IsNull() && !data.DebugUptime.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/uptime", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/uptime"))
 	}
 	if !data.DebugDatetimeYear.IsNull() && !data.DebugDatetimeYear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/year", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/year"))
 	}
 	if !data.DebugDatetimeShowTimezone.IsNull() && !data.DebugDatetimeShowTimezone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/show-timezone", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/show-timezone"))
 	}
 	if !data.DebugDatetimeMsec.IsNull() && !data.DebugDatetimeMsec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/msec", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/msec"))
 	}
 	if !data.DebugDatetimeLocaltime.IsNull() && !data.DebugDatetimeLocaltime.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/localtime", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.DebugDatetimeLocaltimeOnly.IsNull() && !data.DebugDatetimeLocaltimeOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/debug/datetime/localtime-only", data.getPathForVersion(version)))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPathForVersion(version), "debug/datetime/localtime-only"))
 	}
 	return emptyLeafsDelete
 }
@@ -751,52 +751,52 @@ func (data *ServiceTimestamps) getEmptyLeafsDelete(ctx context.Context, version 
 func (data *ServiceTimestamps) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if helpers.VersionAtLeast(version, "25.4") && !data.LogDatetimeUsec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/usec", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/usec"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.DebugDatetimeUsec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/usec", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/usec"))
 	}
 	if !data.LogDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/disable", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/disable"))
 	}
 	if !data.LogUptime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/uptime", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/uptime"))
 	}
 	if !data.LogDatetimeYear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/year", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/year"))
 	}
 	if !data.LogDatetimeShowTimezone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/show-timezone", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/show-timezone"))
 	}
 	if !data.LogDatetimeMsec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/msec", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/msec"))
 	}
 	if !data.LogDatetimeLocaltime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/localtime", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.LogDatetimeLocaltimeOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/datetime/localtime-only", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "log/datetime/localtime-only"))
 	}
 	if !data.DebugDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/disable", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/disable"))
 	}
 	if !data.DebugUptime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/uptime", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/uptime"))
 	}
 	if !data.DebugDatetimeYear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/year", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/year"))
 	}
 	if !data.DebugDatetimeShowTimezone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/show-timezone", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/show-timezone"))
 	}
 	if !data.DebugDatetimeMsec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/msec", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/msec"))
 	}
 	if !data.DebugDatetimeLocaltime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/localtime", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/localtime"))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.DebugDatetimeLocaltimeOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/debug/datetime/localtime-only", data.getPathForVersion(version)))
+		deletePaths = append(deletePaths, path.Join(data.getPathForVersion(version), "debug/datetime/localtime-only"))
 	}
 	return deletePaths
 }

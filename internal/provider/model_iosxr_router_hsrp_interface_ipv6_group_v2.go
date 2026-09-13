@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -604,28 +605,28 @@ func (data *RouterHSRPInterfaceIPv6GroupV2Data) fromBody(ctx context.Context, re
 func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context, state RouterHSRPInterfaceIPv6GroupV2, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdFastDetectPeerInterface.IsNull() && data.BfdFastDetectPeerInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/fast-detect/peer/interface"))
 	}
 	if !state.BfdFastDetectPeerIpv6.IsNull() && data.BfdFastDetectPeerIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/fast-detect/peer/ipv6"))
 	}
 	if !state.Name.IsNull() && data.Name.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "name"))
 	}
 	if !state.MacAddress.IsNull() && data.MacAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac-address"))
 	}
 	if !state.TimersMsecHoldtime.IsNull() && data.TimersMsecHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/msec2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/msec2"))
 	}
 	if !state.TimersMsec.IsNull() && data.TimersMsec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/msec", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/msec"))
 	}
 	if !state.TimersSecondsHoldtime.IsNull() && data.TimersSecondsHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/hold-time2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/hold-time2"))
 	}
 	if !state.TimersSeconds.IsNull() && data.TimersSeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/hold-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/hold-time"))
 	}
 	for i := range state.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -651,7 +652,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 			}
 			if found {
 				if !state.TrackObjects[i].PriorityDecrement.IsNull() && data.TrackObjects[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/track-objects/track-object%v/priority-decrement", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track-objects/track-object%v", state.getPath(), keyString), "priority-decrement"))
 				}
 				break
 			}
@@ -684,7 +685,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 			}
 			if found {
 				if !state.TrackInterfaces[i].PriorityDecrement.IsNull() && data.TrackInterfaces[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/track-interfaces/track-interface%v/priority-decrement", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track-interfaces/track-interface%v", state.getPath(), keyString), "priority-decrement"))
 				}
 				break
 			}
@@ -694,19 +695,19 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 		}
 	}
 	if !state.PreemptDelay.IsNull() && data.PreemptDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preempt/delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preempt/delay"))
 	}
 	if !state.Priority.IsNull() && data.Priority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "priority"))
 	}
 	if !state.AddressLinkLocalAutoconfigLegacyCompatible.IsNull() && data.AddressLinkLocalAutoconfigLegacyCompatible.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address/link-local/autoconfig/legacy-compatible", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address/link-local/autoconfig/legacy-compatible"))
 	}
 	if !state.AddressLinkLocalAutoconfig.IsNull() && data.AddressLinkLocalAutoconfig.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address/link-local/autoconfig", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address/link-local/autoconfig"))
 	}
 	if !state.AddressLinkLocalIpv6Address.IsNull() && data.AddressLinkLocalIpv6Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address/link-local/ipv6-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address/link-local/ipv6-address"))
 	}
 	for i := range state.Addresses {
 		keys := [...]string{"address"}
@@ -764,10 +765,10 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getEmptyLeafsDelete(ctx context.Cont
 		}
 	}
 	if !data.AddressLinkLocalAutoconfigLegacyCompatible.IsNull() && !data.AddressLinkLocalAutoconfigLegacyCompatible.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address/link-local/autoconfig/legacy-compatible", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address/link-local/autoconfig/legacy-compatible"))
 	}
 	if !data.AddressLinkLocalAutoconfig.IsNull() && !data.AddressLinkLocalAutoconfig.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address/link-local/autoconfig", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address/link-local/autoconfig"))
 	}
 	for i := range data.Addresses {
 		keys := [...]string{"address"}
@@ -786,28 +787,28 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getEmptyLeafsDelete(ctx context.Cont
 func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdFastDetectPeerInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/fast-detect/peer/interface"))
 	}
 	if !data.BfdFastDetectPeerIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/fast-detect/peer/ipv6"))
 	}
 	if !data.Name.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "name"))
 	}
 	if !data.MacAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac-address"))
 	}
 	if !data.TimersMsecHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/msec2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/msec2"))
 	}
 	if !data.TimersMsec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/msec", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/msec"))
 	}
 	if !data.TimersSecondsHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/hold-time2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/hold-time2"))
 	}
 	if !data.TimersSeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/hold-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/hold-time"))
 	}
 	for i := range data.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -846,19 +847,19 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track-interfaces/track-interface%v", data.getPath(), keyString))
 	}
 	if !data.PreemptDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preempt/delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preempt/delay"))
 	}
 	if !data.Priority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "priority"))
 	}
 	if !data.AddressLinkLocalAutoconfigLegacyCompatible.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/link-local/autoconfig/legacy-compatible", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address/link-local/autoconfig/legacy-compatible"))
 	}
 	if !data.AddressLinkLocalAutoconfig.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/link-local/autoconfig", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address/link-local/autoconfig"))
 	}
 	if !data.AddressLinkLocalIpv6Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/link-local/ipv6-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address/link-local/ipv6-address"))
 	}
 	for i := range data.Addresses {
 		keys := [...]string{"address"}

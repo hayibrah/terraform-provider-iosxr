@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1613,40 +1614,40 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state RouterISISInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/multiplier"))
 	}
 	if !state.BfdMinimumInterval.IsNull() && data.BfdMinimumInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/minimum-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/minimum-interval"))
 	}
 	if !state.BfdFastDetectIpv6.IsNull() && data.BfdFastDetectIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/fast-detect/ipv6"))
 	}
 	if !state.BfdFastDetectIpv4.IsNull() && data.BfdFastDetectIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/fast-detect/ipv4"))
 	}
 	if !state.MplsLdpSyncLevel.IsNull() && data.MplsLdpSyncLevel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mpls/ldp/sync/level", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mpls/ldp/sync/level"))
 	}
 	if !state.MplsLdpSync.IsNull() && data.MplsLdpSync.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mpls/ldp/sync", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mpls/ldp/sync"))
 	}
 	if !state.DelayNormalizeOffset.IsNull() && data.DelayNormalizeOffset.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/normalize/interval/offset", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/normalize/interval/offset"))
 	}
 	if !state.DelayNormalizeInterval.IsNull() && data.DelayNormalizeInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/normalize/interval/interval-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/normalize/interval/interval-number"))
 	}
 	if !state.OverrideMetrics.IsNull() && data.OverrideMetrics.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/override/metrics", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "override/metrics"))
 	}
 	if !state.AffinityFlexAlgosAnomalies.IsNull() && data.AffinityFlexAlgosAnomalies.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/affinity/flex-algo/anomaly", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "affinity/flex-algo/anomaly"))
 	}
 	if !state.AffinityFlexAlgos.IsNull() && data.AffinityFlexAlgos.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/affinity/flex-algo/flex-algo-argument", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "affinity/flex-algo/flex-algo-argument"))
 	}
 	if !state.LinkDownFastDetect.IsNull() && data.LinkDownFastDetect.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-down/fast-detect", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-down/fast-detect"))
 	}
 	for i := range state.RetransmitThrottleIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -1672,7 +1673,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.RetransmitThrottleIntervalLevels[i].RetransmitThrottleInterval.IsNull() && data.RetransmitThrottleIntervalLevels[j].RetransmitThrottleInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/retransmit-throttle-interval-levels/retransmit-throttle-interval-level%v/retransmit-throttle-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/retransmit-throttle-interval-levels/retransmit-throttle-interval-level%v", state.getPath(), keyString), "retransmit-throttle-interval"))
 				}
 				break
 			}
@@ -1682,7 +1683,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.RetransmitThrottleInterval.IsNull() && data.RetransmitThrottleInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/retransmit-throttle-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "retransmit-throttle-interval"))
 	}
 	for i := range state.RetransmitIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -1708,7 +1709,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.RetransmitIntervalLevels[i].RetransmitInterval.IsNull() && data.RetransmitIntervalLevels[j].RetransmitInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/retransmit-interval-levels/retransmit-interval-level%v/retransmit-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/retransmit-interval-levels/retransmit-interval-level%v", state.getPath(), keyString), "retransmit-interval"))
 				}
 				break
 			}
@@ -1718,10 +1719,10 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.RetransmitInterval.IsNull() && data.RetransmitInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/retransmit-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "retransmit-interval"))
 	}
 	if !state.PointToPoint.IsNull() && data.PointToPoint.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/point-to-point", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "point-to-point"))
 	}
 	for i := range state.PriorityLevels {
 		keys := [...]string{"level-number"}
@@ -1747,7 +1748,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.PriorityLevels[i].Priority.IsNull() && data.PriorityLevels[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/priority-levels/priority-level%v/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/priority-levels/priority-level%v", state.getPath(), keyString), "priority"))
 				}
 				break
 			}
@@ -1757,10 +1758,10 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.Priority.IsNull() && data.Priority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "priority"))
 	}
 	if !state.RemotePsnpDelay.IsNull() && data.RemotePsnpDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/remote-psnp-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "remote-psnp-delay"))
 	}
 	for i := range state.HelloPasswordLevels {
 		keys := [...]string{"level-number"}
@@ -1786,22 +1787,22 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.HelloPasswordLevels[i].KeychainSendOnly.IsNull() && data.HelloPasswordLevels[j].KeychainSendOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/keychain", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "keychain"))
 				}
 				if !state.HelloPasswordLevels[i].KeychainName.IsNull() && data.HelloPasswordLevels[j].KeychainName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/keychain", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "keychain"))
 				}
 				if !state.HelloPasswordLevels[i].HmacMd5SendOnly.IsNull() && data.HelloPasswordLevels[j].HmacMd5SendOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/hmac-md5/hello-password-options", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "hmac-md5/hello-password-options"))
 				}
 				if !state.HelloPasswordLevels[i].HmacMd5Encrypted.IsNull() && data.HelloPasswordLevels[j].HmacMd5Encrypted.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/hmac-md5/hello-password-options", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "hmac-md5/hello-password-options"))
 				}
 				if !state.HelloPasswordLevels[i].TextSendOnly.IsNull() && data.HelloPasswordLevels[j].TextSendOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/text/hello-password-options", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "text/hello-password-options"))
 				}
 				if !state.HelloPasswordLevels[i].TextEncrypted.IsNull() && data.HelloPasswordLevels[j].TextEncrypted.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/text/hello-password-options", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", state.getPath(), keyString), "text/hello-password-options"))
 				}
 				break
 			}
@@ -1811,22 +1812,22 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.HelloPasswordKeychainSendOnly.IsNull() && data.HelloPasswordKeychainSendOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/keychain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/keychain"))
 	}
 	if !state.HelloPasswordKeychainName.IsNull() && data.HelloPasswordKeychainName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/keychain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/keychain"))
 	}
 	if !state.HelloPasswordHmacMd5SendOnly.IsNull() && data.HelloPasswordHmacMd5SendOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/hmac-md5/hello-password-options", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/hmac-md5/hello-password-options"))
 	}
 	if !state.HelloPasswordHmacMd5Encrypted.IsNull() && data.HelloPasswordHmacMd5Encrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/hmac-md5/hello-password-options", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/hmac-md5/hello-password-options"))
 	}
 	if !state.HelloPasswordTextSendOnly.IsNull() && data.HelloPasswordTextSendOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/text/hello-password-options", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/text/hello-password-options"))
 	}
 	if !state.HelloPasswordTextEncrypted.IsNull() && data.HelloPasswordTextEncrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/hello-password-options/text/hello-password-options", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/hello-password-options/text/hello-password-options"))
 	}
 	for i := range state.HelloPasswordAcceptsLevels {
 		keys := [...]string{"level-number"}
@@ -1852,7 +1853,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.HelloPasswordAcceptsLevels[i].Encrypted.IsNull() && data.HelloPasswordAcceptsLevels[j].Encrypted.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/accepts-levels/accepts-level%v/encrypted", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-password/accepts-levels/accepts-level%v", state.getPath(), keyString), "encrypted"))
 				}
 				break
 			}
@@ -1862,7 +1863,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.HelloPasswordAcceptEncrypted.IsNull() && data.HelloPasswordAcceptEncrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-password/accepts/encrypted", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-password/accepts/encrypted"))
 	}
 	for i := range state.LspIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -1888,7 +1889,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.LspIntervalLevels[i].LspInterval.IsNull() && data.LspIntervalLevels[j].LspInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/lsp-interval-levels/lsp-interval-level%v/lsp-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/lsp-interval-levels/lsp-interval-level%v", state.getPath(), keyString), "lsp-interval"))
 				}
 				break
 			}
@@ -1898,7 +1899,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.LspInterval.IsNull() && data.LspInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/lsp-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "lsp-interval"))
 	}
 	for i := range state.HelloMultiplierLevels {
 		keys := [...]string{"level-number"}
@@ -1924,7 +1925,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.HelloMultiplierLevels[i].HelloMultiplier.IsNull() && data.HelloMultiplierLevels[j].HelloMultiplier.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-multiplier-levels/hello-multiplier-level%v/hello-multiplier", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-multiplier-levels/hello-multiplier-level%v", state.getPath(), keyString), "hello-multiplier"))
 				}
 				break
 			}
@@ -1934,7 +1935,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.HelloMultiplier.IsNull() && data.HelloMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-multiplier"))
 	}
 	for i := range state.HelloIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -1960,7 +1961,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.HelloIntervalLevels[i].HelloInterval.IsNull() && data.HelloIntervalLevels[j].HelloInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-interval-levels/hello-interval-level%v/hello-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-interval-levels/hello-interval-level%v", state.getPath(), keyString), "hello-interval"))
 				}
 				break
 			}
@@ -1970,7 +1971,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.HelloInterval.IsNull() && data.HelloInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-interval"))
 	}
 	for i := range state.HelloPaddingLevels {
 		keys := [...]string{"level-number"}
@@ -1996,7 +1997,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.HelloPaddingLevels[i].HelloPadding.IsNull() && data.HelloPaddingLevels[j].HelloPadding.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-padding-levels/hello-padding-level%v/hello-padding", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hello-padding-levels/hello-padding-level%v", state.getPath(), keyString), "hello-padding"))
 				}
 				break
 			}
@@ -2006,7 +2007,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.HelloPadding.IsNull() && data.HelloPadding.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hello-padding", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hello-padding"))
 	}
 	for i := range state.CsnpIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2032,7 +2033,7 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 			}
 			if found {
 				if !state.CsnpIntervalLevels[i].CsnpInterval.IsNull() && data.CsnpIntervalLevels[j].CsnpInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/csnp-interval-levels/csnp-interval-level%v/csnp-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/csnp-interval-levels/csnp-interval-level%v", state.getPath(), keyString), "csnp-interval"))
 				}
 				break
 			}
@@ -2042,19 +2043,19 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 		}
 	}
 	if !state.CsnpInterval.IsNull() && data.CsnpInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/csnp-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "csnp-interval"))
 	}
 	if !state.CircuitType.IsNull() && data.CircuitType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/circuit-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "circuit-type"))
 	}
 	if !state.State.IsNull() && data.State.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/state", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "state"))
 	}
 	if !state.MeshGroupBlocked.IsNull() && data.MeshGroupBlocked.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mesh-group/blocked", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mesh-group/blocked"))
 	}
 	if !state.MeshGroup.IsNull() && data.MeshGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mesh-group/mesh-group-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mesh-group/mesh-group-number"))
 	}
 	return deletedItems
 }
@@ -2066,16 +2067,16 @@ func (data *RouterISISInterface) getDeletedItems(ctx context.Context, state Rout
 func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdFastDetectIpv6.IsNull() && !data.BfdFastDetectIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/fast-detect/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bfd/fast-detect/ipv6"))
 	}
 	if !data.BfdFastDetectIpv4.IsNull() && !data.BfdFastDetectIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/fast-detect/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bfd/fast-detect/ipv4"))
 	}
 	if !data.MplsLdpSync.IsNull() && !data.MplsLdpSync.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mpls/ldp/sync", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mpls/ldp/sync"))
 	}
 	if !data.LinkDownFastDetect.IsNull() && !data.LinkDownFastDetect.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/link-down/fast-detect", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "link-down/fast-detect"))
 	}
 	for i := range data.RetransmitThrottleIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2094,7 +2095,7 @@ func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, versio
 		}
 	}
 	if !data.PointToPoint.IsNull() && !data.PointToPoint.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/point-to-point", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "point-to-point"))
 	}
 	for i := range data.PriorityLevels {
 		keys := [...]string{"level-number"}
@@ -2112,23 +2113,23 @@ func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, versio
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.HelloPasswordLevels[i].KeychainSendOnly.IsNull() && !data.HelloPasswordLevels[i].KeychainSendOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/keychain", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", data.getPath(), keyString), "keychain"))
 		}
 		if !data.HelloPasswordLevels[i].HmacMd5SendOnly.IsNull() && !data.HelloPasswordLevels[i].HmacMd5SendOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/hmac-md5/hello-password-options", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", data.getPath(), keyString), "hmac-md5/hello-password-options"))
 		}
 		if !data.HelloPasswordLevels[i].TextSendOnly.IsNull() && !data.HelloPasswordLevels[i].TextSendOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v/text/hello-password-options", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", data.getPath(), keyString), "text/hello-password-options"))
 		}
 	}
 	if !data.HelloPasswordKeychainSendOnly.IsNull() && !data.HelloPasswordKeychainSendOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password/hello-password-options/keychain", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "hello-password/hello-password-options/keychain"))
 	}
 	if !data.HelloPasswordHmacMd5SendOnly.IsNull() && !data.HelloPasswordHmacMd5SendOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password/hello-password-options/hmac-md5/hello-password-options", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "hello-password/hello-password-options/hmac-md5/hello-password-options"))
 	}
 	if !data.HelloPasswordTextSendOnly.IsNull() && !data.HelloPasswordTextSendOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hello-password/hello-password-options/text/hello-password-options", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "hello-password/hello-password-options/text/hello-password-options"))
 	}
 	for i := range data.HelloPasswordAcceptsLevels {
 		keys := [...]string{"level-number"}
@@ -2179,7 +2180,7 @@ func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, versio
 		}
 	}
 	if !data.MeshGroupBlocked.IsNull() && !data.MeshGroupBlocked.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mesh-group/blocked", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mesh-group/blocked"))
 	}
 	return emptyLeafsDelete
 }
@@ -2190,40 +2191,40 @@ func (data *RouterISISInterface) getEmptyLeafsDelete(ctx context.Context, versio
 func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/multiplier"))
 	}
 	if !data.BfdMinimumInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/minimum-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/minimum-interval"))
 	}
 	if !data.BfdFastDetectIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/fast-detect/ipv6"))
 	}
 	if !data.BfdFastDetectIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/fast-detect/ipv4"))
 	}
 	if !data.MplsLdpSyncLevel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mpls/ldp/sync/level", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mpls/ldp/sync/level"))
 	}
 	if !data.MplsLdpSync.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mpls/ldp/sync", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mpls/ldp/sync"))
 	}
 	if !data.DelayNormalizeOffset.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/normalize/interval/offset", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/normalize/interval/offset"))
 	}
 	if !data.DelayNormalizeInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/normalize/interval/interval-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/normalize/interval/interval-number"))
 	}
 	if !data.OverrideMetrics.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/override/metrics", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "override/metrics"))
 	}
 	if !data.AffinityFlexAlgosAnomalies.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity/flex-algo/anomaly", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "affinity/flex-algo/anomaly"))
 	}
 	if !data.AffinityFlexAlgos.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity/flex-algo/flex-algo-argument", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "affinity/flex-algo/flex-algo-argument"))
 	}
 	if !data.LinkDownFastDetect.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-down/fast-detect", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-down/fast-detect"))
 	}
 	for i := range data.RetransmitThrottleIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2244,7 +2245,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-throttle-interval-levels/retransmit-throttle-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.RetransmitThrottleInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-throttle-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "retransmit-throttle-interval"))
 	}
 	for i := range data.RetransmitIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2265,10 +2266,10 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-interval-levels/retransmit-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.RetransmitInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/retransmit-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "retransmit-interval"))
 	}
 	if !data.PointToPoint.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/point-to-point", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "point-to-point"))
 	}
 	for i := range data.PriorityLevels {
 		keys := [...]string{"level-number"}
@@ -2289,10 +2290,10 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority-levels/priority-level%v", data.getPath(), keyString))
 	}
 	if !data.Priority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "priority"))
 	}
 	if !data.RemotePsnpDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/remote-psnp-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "remote-psnp-delay"))
 	}
 	for i := range data.HelloPasswordLevels {
 		keys := [...]string{"level-number"}
@@ -2313,22 +2314,22 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password-levels/hello-password-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloPasswordKeychainSendOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/keychain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/keychain"))
 	}
 	if !data.HelloPasswordKeychainName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/keychain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/keychain"))
 	}
 	if !data.HelloPasswordHmacMd5SendOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/hmac-md5/hello-password-options", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/hmac-md5/hello-password-options"))
 	}
 	if !data.HelloPasswordHmacMd5Encrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/hmac-md5/hello-password-options", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/hmac-md5/hello-password-options"))
 	}
 	if !data.HelloPasswordTextSendOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/text/hello-password-options", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/text/hello-password-options"))
 	}
 	if !data.HelloPasswordTextEncrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/hello-password-options/text/hello-password-options", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/hello-password-options/text/hello-password-options"))
 	}
 	for i := range data.HelloPasswordAcceptsLevels {
 		keys := [...]string{"level-number"}
@@ -2349,7 +2350,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/accepts-levels/accepts-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloPasswordAcceptEncrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-password/accepts/encrypted", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-password/accepts/encrypted"))
 	}
 	for i := range data.LspIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2370,7 +2371,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-interval-levels/lsp-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.LspInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/lsp-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "lsp-interval"))
 	}
 	for i := range data.HelloMultiplierLevels {
 		keys := [...]string{"level-number"}
@@ -2391,7 +2392,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-multiplier-levels/hello-multiplier-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-multiplier"))
 	}
 	for i := range data.HelloIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2412,7 +2413,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-interval-levels/hello-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-interval"))
 	}
 	for i := range data.HelloPaddingLevels {
 		keys := [...]string{"level-number"}
@@ -2433,7 +2434,7 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-padding-levels/hello-padding-level%v", data.getPath(), keyString))
 	}
 	if !data.HelloPadding.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hello-padding", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hello-padding"))
 	}
 	for i := range data.CsnpIntervalLevels {
 		keys := [...]string{"level-number"}
@@ -2454,19 +2455,19 @@ func (data *RouterISISInterface) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/csnp-interval-levels/csnp-interval-level%v", data.getPath(), keyString))
 	}
 	if !data.CsnpInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/csnp-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "csnp-interval"))
 	}
 	if !data.CircuitType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/circuit-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "circuit-type"))
 	}
 	if !data.State.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/state", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "state"))
 	}
 	if !data.MeshGroupBlocked.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mesh-group/blocked", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mesh-group/blocked"))
 	}
 	if !data.MeshGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mesh-group/mesh-group-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mesh-group/mesh-group-number"))
 	}
 	return deletePaths
 }

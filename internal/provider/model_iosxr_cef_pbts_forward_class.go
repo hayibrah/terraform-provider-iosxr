@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -223,13 +224,13 @@ func (data *CEFPBTSForwardClassData) fromBody(ctx context.Context, res []byte, v
 func (data *CEFPBTSForwardClass) getDeletedItems(ctx context.Context, state CEFPBTSForwardClass, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.FallbackToDrop.IsNull() && data.FallbackToDrop.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fallback-to/drop", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fallback-to/drop"))
 	}
 	if !state.FallbackToAny.IsNull() && data.FallbackToAny.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fallback-to/any", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fallback-to/any"))
 	}
 	if !state.FallbackToClass.IsNull() && data.FallbackToClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fallback-to/fallback-class-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fallback-to/fallback-class-number"))
 	}
 	return deletedItems
 }
@@ -241,10 +242,10 @@ func (data *CEFPBTSForwardClass) getDeletedItems(ctx context.Context, state CEFP
 func (data *CEFPBTSForwardClass) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.FallbackToDrop.IsNull() && !data.FallbackToDrop.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fallback-to/drop", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "fallback-to/drop"))
 	}
 	if !data.FallbackToAny.IsNull() && !data.FallbackToAny.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fallback-to/any", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "fallback-to/any"))
 	}
 	return emptyLeafsDelete
 }
@@ -255,13 +256,13 @@ func (data *CEFPBTSForwardClass) getEmptyLeafsDelete(ctx context.Context, versio
 func (data *CEFPBTSForwardClass) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.FallbackToDrop.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fallback-to/drop", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fallback-to/drop"))
 	}
 	if !data.FallbackToAny.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fallback-to/any", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fallback-to/any"))
 	}
 	if !data.FallbackToClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fallback-to/fallback-class-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fallback-to/fallback-class-number"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -9785,7 +9786,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllAllowAll.IsNull() && data.MgmtOobAllAllowAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/all"))
 	}
 	for i := range state.MgmtOobAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -9920,7 +9921,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllNetconf.IsNull() && data.MgmtOobAllNetconf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf"))
 	}
 	for i := range state.MgmtOobAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -10055,7 +10056,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllXml.IsNull() && data.MgmtOobAllXml.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml"))
 	}
 	for i := range state.MgmtOobAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -10124,7 +10125,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllHttp.IsNull() && data.MgmtOobAllHttp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/http"))
 	}
 	for i := range state.MgmtOobAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -10259,7 +10260,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllTftp.IsNull() && data.MgmtOobAllTftp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp"))
 	}
 	for i := range state.MgmtOobAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -10394,7 +10395,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllSnmp.IsNull() && data.MgmtOobAllSnmp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp"))
 	}
 	for i := range state.MgmtOobAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -10529,7 +10530,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllTelnet.IsNull() && data.MgmtOobAllTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet"))
 	}
 	for i := range state.MgmtOobAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -10664,13 +10665,13 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtOobAllSsh.IsNull() && data.MgmtOobAllSsh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh"))
 	}
 	if !state.MgmtOobInbandBehavior.IsNull() && data.MgmtOobInbandBehavior.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/enable-inband-behavior", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/enable-inband-behavior"))
 	}
 	if !state.MgmtOobVrf.IsNull() && data.MgmtOobVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/out-of-band/vrf"))
 	}
 	for i := range state.MgmtOobInterfaces {
 		keys := [...]string{"interface-name"}
@@ -10828,7 +10829,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].AllowAll.IsNull() && data.MgmtOobInterfaces[j].AllowAll.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/all"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].NetconfIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -10963,7 +10964,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Netconf.IsNull() && data.MgmtOobInterfaces[j].Netconf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/netconf"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].XmlIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11098,7 +11099,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Xml.IsNull() && data.MgmtOobInterfaces[j].Xml.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/xr-xml"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].HttpIpv4Hosts {
 					ckeys := [...]string{"address"}
@@ -11167,7 +11168,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Http.IsNull() && data.MgmtOobInterfaces[j].Http.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/http", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/http"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].TftpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11302,7 +11303,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Tftp.IsNull() && data.MgmtOobInterfaces[j].Tftp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/tftp"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].SnmpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11437,7 +11438,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Snmp.IsNull() && data.MgmtOobInterfaces[j].Snmp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/snmp"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].TelnetIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11572,7 +11573,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Telnet.IsNull() && data.MgmtOobInterfaces[j].Telnet.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/telnet"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].SshIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11707,7 +11708,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Ssh.IsNull() && data.MgmtOobInterfaces[j].Ssh.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/ssh"))
 				}
 				break
 			}
@@ -11849,7 +11850,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllAllowAll.IsNull() && data.MgmtInbandAllAllowAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/all"))
 	}
 	for i := range state.MgmtInbandAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -11984,7 +11985,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllNetconf.IsNull() && data.MgmtInbandAllNetconf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/netconf"))
 	}
 	for i := range state.MgmtInbandAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -12119,7 +12120,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllXml.IsNull() && data.MgmtInbandAllXml.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml"))
 	}
 	for i := range state.MgmtInbandAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -12188,7 +12189,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllHttp.IsNull() && data.MgmtInbandAllHttp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/http"))
 	}
 	for i := range state.MgmtInbandAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -12323,7 +12324,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllTftp.IsNull() && data.MgmtInbandAllTftp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/tftp"))
 	}
 	for i := range state.MgmtInbandAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -12458,7 +12459,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllSnmp.IsNull() && data.MgmtInbandAllSnmp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/snmp"))
 	}
 	for i := range state.MgmtInbandAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -12593,7 +12594,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllTelnet.IsNull() && data.MgmtInbandAllTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/telnet"))
 	}
 	for i := range state.MgmtInbandAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -12728,7 +12729,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 		}
 	}
 	if !state.MgmtInbandAllSsh.IsNull() && data.MgmtInbandAllSsh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "management-plane/inband/interfaces/all/allow/ssh"))
 	}
 	for i := range state.MgmtInbandInterfaces {
 		keys := [...]string{"interface-name"}
@@ -12886,7 +12887,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].AllowAll.IsNull() && data.MgmtInbandInterfaces[j].AllowAll.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/all"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].NetconfIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13021,7 +13022,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Netconf.IsNull() && data.MgmtInbandInterfaces[j].Netconf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/netconf"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].XmlIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13156,7 +13157,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Xml.IsNull() && data.MgmtInbandInterfaces[j].Xml.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/xr-xml"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].HttpIpv4Hosts {
 					ckeys := [...]string{"address"}
@@ -13225,7 +13226,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Http.IsNull() && data.MgmtInbandInterfaces[j].Http.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/http", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/http"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TftpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13360,7 +13361,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Tftp.IsNull() && data.MgmtInbandInterfaces[j].Tftp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/tftp"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SnmpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13495,7 +13496,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Snmp.IsNull() && data.MgmtInbandInterfaces[j].Snmp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/snmp"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TelnetIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13630,7 +13631,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Telnet.IsNull() && data.MgmtInbandInterfaces[j].Telnet.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/telnet"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SshIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13765,7 +13766,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Ssh.IsNull() && data.MgmtInbandInterfaces[j].Ssh.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/ssh"))
 				}
 				break
 			}
@@ -13816,7 +13817,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllAllowAll.IsNull() && !data.MgmtOobAllAllowAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all"))
 	}
 	for i := range data.MgmtOobAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -13851,7 +13852,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllNetconf.IsNull() && !data.MgmtOobAllNetconf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf"))
 	}
 	for i := range data.MgmtOobAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -13886,7 +13887,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllXml.IsNull() && !data.MgmtOobAllXml.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml"))
 	}
 	for i := range data.MgmtOobAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -13905,7 +13906,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllHttp.IsNull() && !data.MgmtOobAllHttp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/http"))
 	}
 	for i := range data.MgmtOobAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -13940,7 +13941,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllTftp.IsNull() && !data.MgmtOobAllTftp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp"))
 	}
 	for i := range data.MgmtOobAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -13975,7 +13976,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllSnmp.IsNull() && !data.MgmtOobAllSnmp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp"))
 	}
 	for i := range data.MgmtOobAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14010,7 +14011,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllTelnet.IsNull() && !data.MgmtOobAllTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet"))
 	}
 	for i := range data.MgmtOobAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14045,10 +14046,10 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtOobAllSsh.IsNull() && !data.MgmtOobAllSsh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh"))
 	}
 	if !data.MgmtOobInbandBehavior.IsNull() && !data.MgmtOobInbandBehavior.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/enable-inband-behavior", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/out-of-band/enable-inband-behavior"))
 	}
 	for i := range data.MgmtOobInterfaces {
 		keys := [...]string{"interface-name"}
@@ -14090,7 +14091,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].AllowAll.IsNull() && !data.MgmtOobInterfaces[i].AllowAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/all"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].NetconfIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14125,7 +14126,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Netconf.IsNull() && !data.MgmtOobInterfaces[i].Netconf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/netconf"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].XmlIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14160,7 +14161,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Xml.IsNull() && !data.MgmtOobInterfaces[i].Xml.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/xr-xml"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].HttpIpv4Hosts {
 			ckeys := [...]string{"address"}
@@ -14179,7 +14180,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Http.IsNull() && !data.MgmtOobInterfaces[i].Http.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/http", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/http"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].TftpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14214,7 +14215,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Tftp.IsNull() && !data.MgmtOobInterfaces[i].Tftp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/tftp"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].SnmpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14249,7 +14250,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Snmp.IsNull() && !data.MgmtOobInterfaces[i].Snmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/snmp"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].TelnetIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14284,7 +14285,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Telnet.IsNull() && !data.MgmtOobInterfaces[i].Telnet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/telnet"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].SshIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14319,7 +14320,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Ssh.IsNull() && !data.MgmtOobInterfaces[i].Ssh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/ssh"))
 		}
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv6Hosts {
@@ -14355,7 +14356,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllAllowAll.IsNull() && !data.MgmtInbandAllAllowAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/all"))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14390,7 +14391,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllNetconf.IsNull() && !data.MgmtInbandAllNetconf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/netconf"))
 	}
 	for i := range data.MgmtInbandAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14425,7 +14426,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllXml.IsNull() && !data.MgmtInbandAllXml.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml"))
 	}
 	for i := range data.MgmtInbandAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -14444,7 +14445,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllHttp.IsNull() && !data.MgmtInbandAllHttp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/http"))
 	}
 	for i := range data.MgmtInbandAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14479,7 +14480,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllTftp.IsNull() && !data.MgmtInbandAllTftp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/tftp"))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14514,7 +14515,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllSnmp.IsNull() && !data.MgmtInbandAllSnmp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/snmp"))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14549,7 +14550,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllTelnet.IsNull() && !data.MgmtInbandAllTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/telnet"))
 	}
 	for i := range data.MgmtInbandAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -14584,7 +14585,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.MgmtInbandAllSsh.IsNull() && !data.MgmtInbandAllSsh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/ssh"))
 	}
 	for i := range data.MgmtInbandInterfaces {
 		keys := [...]string{"interface-name"}
@@ -14626,7 +14627,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].AllowAll.IsNull() && !data.MgmtInbandInterfaces[i].AllowAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/all"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].NetconfIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14661,7 +14662,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Netconf.IsNull() && !data.MgmtInbandInterfaces[i].Netconf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/netconf"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].XmlIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14696,7 +14697,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Xml.IsNull() && !data.MgmtInbandInterfaces[i].Xml.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/xr-xml"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].HttpIpv4Hosts {
 			ckeys := [...]string{"address"}
@@ -14715,7 +14716,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Http.IsNull() && !data.MgmtInbandInterfaces[i].Http.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/http", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/http"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].TftpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14750,7 +14751,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Tftp.IsNull() && !data.MgmtInbandInterfaces[i].Tftp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/tftp"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].SnmpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14785,7 +14786,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Snmp.IsNull() && !data.MgmtInbandInterfaces[i].Snmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/snmp"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].TelnetIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14820,7 +14821,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Telnet.IsNull() && !data.MgmtInbandInterfaces[i].Telnet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/telnet"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].SshIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14855,7 +14856,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Ssh.IsNull() && !data.MgmtInbandInterfaces[i].Ssh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/ssh"))
 		}
 	}
 	return emptyLeafsDelete
@@ -14945,7 +14946,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllAllowAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all"))
 	}
 	for i := range data.MgmtOobAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15026,7 +15027,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllNetconf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf"))
 	}
 	for i := range data.MgmtOobAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15107,7 +15108,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllXml.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml"))
 	}
 	for i := range data.MgmtOobAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15149,7 +15150,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllHttp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/http"))
 	}
 	for i := range data.MgmtOobAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15230,7 +15231,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllTftp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp"))
 	}
 	for i := range data.MgmtOobAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15311,7 +15312,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllSnmp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp"))
 	}
 	for i := range data.MgmtOobAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15392,7 +15393,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet"))
 	}
 	for i := range data.MgmtOobAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15473,13 +15474,13 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtOobAllSsh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh"))
 	}
 	if !data.MgmtOobInbandBehavior.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/enable-inband-behavior", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/enable-inband-behavior"))
 	}
 	if !data.MgmtOobVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/vrf"))
 	}
 	for i := range data.MgmtOobInterfaces {
 		keys := [...]string{"interface-name"}
@@ -15578,7 +15579,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllAllowAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/all"))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15659,7 +15660,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllNetconf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/netconf"))
 	}
 	for i := range data.MgmtInbandAllXmlIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15740,7 +15741,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllXml.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml"))
 	}
 	for i := range data.MgmtInbandAllHttpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15782,7 +15783,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllHttp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/http"))
 	}
 	for i := range data.MgmtInbandAllTftpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15863,7 +15864,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllTftp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/tftp"))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15944,7 +15945,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllSnmp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/snmp"))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv6Hosts {
 		keys := [...]string{"address"}
@@ -16025,7 +16026,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/telnet"))
 	}
 	for i := range data.MgmtInbandAllSshIpv6Hosts {
 		keys := [...]string{"address"}
@@ -16106,7 +16107,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MgmtInbandAllSsh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/ssh"))
 	}
 	for i := range data.MgmtInbandInterfaces {
 		keys := [...]string{"interface-name"}

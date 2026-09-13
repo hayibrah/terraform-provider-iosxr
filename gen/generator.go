@@ -167,7 +167,7 @@ type YamlConfigAttribute struct {
 	NoDelete          bool                       `yaml:"no_delete"`
 	TestTags          []string                   `yaml:"test_tags"`
 	MinimumTestValue  string                     `yaml:"minimum_test_value"`
-	AddedInVersion    string                     // Which version introduced this attribute (e.g., "2442", "2522")
+	AddedInVersion    string                     // Which version introduced this attribute (e.g., "25.4", "26.2") — dot-separated major.minor, matches gen/definitions/ subdirectory names
 	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
 	Legacy            bool                       `yaml:"legacy"` // If true, this attribute is removed/dropped in this version
 	VersionRanges        map[string]RangeConstraint        // Version-specific ranges for Int64 fields (nil if same across all versions)
@@ -177,8 +177,9 @@ type YamlConfigAttribute struct {
 	VersionDefaults      map[string]string                 // Version-specific default values (nil if same across all versions)
 	ReplacesYangName string            `yaml:"replaces_yang_name"`
 	ReplacesXPath    string            // preserved from base XPath before it is cleared
-	VersionYangNames map[string]string // computed during merge: version → yang_name
-	MovedInVersion   string            // earliest version with new path (derived in fixAttributeBaseVersion)
+	VersionYangNames  map[string]string // computed during merge: version → yang_name
+	MovedInVersion    string            // earliest version with new path (derived in fixAttributeBaseVersion)
+	VersionDeleteMode map[string]string // Version-specific delete mode: "" (direct), "parent", "grandparent". Nil if mode is uniform across all versions.
 	Attributes        []YamlConfigAttribute      `yaml:"attributes"`
 }
 
@@ -405,6 +406,101 @@ func GetDeletePath(attribute YamlConfigAttribute) string {
 		return RemoveLastPathElement(path)
 	}
 	return path
+}
+
+// GetDeletePathExpr returns a Go expression string for the delete path of attr,
+// accounting for both VersionYangNames (renamed paths) and VersionDeleteMode
+// (changed delete modes). Models KeyPathExpr at generator.go:303.
+//
+// Returns a quoted static path for the fast path, or
+// helpers.SelectYangPath(versionVar, map[string]string{...}, "default") for
+// attributes whose effective delete path differs across versions.
+func GetDeletePathExpr(attr YamlConfigAttribute, versionVar string) string {
+	// Fast path: no per-version variation on path or mode.
+	if len(attr.VersionYangNames) == 0 && len(attr.VersionDeleteMode) == 0 {
+		return fmt.Sprintf("%q", GetDeletePath(attr))
+	}
+	// Fast path: VersionYangNames set but delete flags not active, no VersionDeleteMode.
+	if !attr.DeleteParent && !attr.DeleteGrandparent && len(attr.VersionDeleteMode) == 0 {
+		return fmt.Sprintf("%q", GetDeletePath(attr))
+	}
+
+	// Slow path: compute the effective delete path per version.
+	allVersions := make(map[string]string)
+	for v := range attr.VersionYangNames {
+		allVersions[v] = ""
+	}
+	for v := range attr.VersionDeleteMode {
+		allVersions[v] = ""
+	}
+
+	baseYangName := attr.ReplacesYangName
+	if baseYangName == "" {
+		baseYangName = attr.YangName
+	}
+	// baseMode: derive from OLDEST key in VersionDeleteMode (after fixAttributeBaseVersion
+	// replaced "_base"). DO NOT use attr.DeleteGrandparent/attr.DeleteParent — OR-merged.
+	var baseMode string
+	if len(attr.VersionDeleteMode) > 0 {
+		oldestKey := sortedVersionKeys(attr.VersionDeleteMode)[0]
+		baseMode = attr.VersionDeleteMode[oldestKey]
+	} else if attr.DeleteGrandparent {
+		baseMode = "grandparent"
+	} else if attr.DeleteParent {
+		baseMode = "parent"
+	}
+	defaultPath := applyDeleteMode(GetXPath(baseYangName, attr.ReplacesXPath), baseMode)
+
+	var entries []string
+	for _, v := range sortedVersionKeys(allVersions) {
+		yn := attr.YangName
+		xp := attr.XPath
+		if name, ok := attr.VersionYangNames[v]; ok {
+			yn = name
+			// Mirror KeyPathExpr: thread correct XPath for choice/case attributes.
+			if yn == attr.ReplacesYangName {
+				xp = attr.ReplacesXPath
+			} else if yn != attr.YangName {
+				xp = ""
+			}
+		}
+		mode := baseMode
+		if m, ok := attr.VersionDeleteMode[v]; ok {
+			mode = m
+		}
+		entries = append(entries, fmt.Sprintf("%q: %q", v, applyDeleteMode(GetXPath(yn, xp), mode)))
+	}
+	return fmt.Sprintf("helpers.SelectYangPath(%s, map[string]string{%s}, %q)",
+		versionVar, strings.Join(entries, ", "), defaultPath)
+}
+
+func applyDeleteMode(p, mode string) string {
+	switch mode {
+	case "grandparent":
+		return RemoveLastPathElement(RemoveLastPathElement(p))
+	case "parent":
+		return RemoveLastPathElement(p)
+	default:
+		return p
+	}
+}
+
+// HasVersionDeleteMode returns true if any attribute (recursively) triggers the slow
+// path of GetDeletePathExpr — has a non-nil VersionDeleteMode OR has VersionYangNames
+// with delete_parent/grandparent active.
+func HasVersionDeleteMode(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionDeleteMode) > 0 {
+			return true
+		}
+		if (attr.DeleteParent || attr.DeleteGrandparent) && len(attr.VersionYangNames) > 0 {
+			return true
+		}
+		if HasVersionDeleteMode(attr.Attributes) {
+			return true
+		}
+	}
+	return false
 }
 
 func ReverseAttributes(attributes []YamlConfigAttribute) []YamlConfigAttribute {
@@ -970,6 +1066,7 @@ var functions = template.FuncMap{
 	"removeLastPathElement":          RemoveLastPathElement,
 	"getXPath":                       GetXPath,
 	"getDeletePath":                  GetDeletePath,
+	"getDeletePathExpr":              GetDeletePathExpr,
 	"reverseAttributes":              ReverseAttributes,
 	"collectVersionConstraints":      CollectVersionConstraints,
 	"hasVersionConstraints":          HasVersionConstraints,
@@ -1577,11 +1674,44 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if newAttr.NoAugmentConfig {
 					result[i].NoAugmentConfig = newAttr.NoAugmentConfig
 				}
-				if newAttr.DeleteParent {
-					result[i].DeleteParent = newAttr.DeleteParent
-				}
+				// Determine delete modes for version-diff logic.
+				overrideMode := ""
 				if newAttr.DeleteGrandparent {
-					result[i].DeleteGrandparent = newAttr.DeleteGrandparent
+					overrideMode = "grandparent"
+				} else if newAttr.DeleteParent {
+					overrideMode = "parent"
+				}
+				baseMode := ""
+				if result[i].DeleteGrandparent {
+					baseMode = "grandparent"
+				} else if result[i].DeleteParent {
+					baseMode = "parent"
+				}
+				if overrideMode != baseMode && newAttr.ReplacesYangName != "" {
+					// Replacement with a different delete mode → per-version map.
+					// Only replacements (replaces_yang_name set) can intentionally change
+					// the delete mode; a non-replacing override without a delete flag
+					// inherits the base mode via OR merge below.
+					if result[i].VersionDeleteMode == nil {
+						result[i].VersionDeleteMode = make(map[string]string)
+						result[i].VersionDeleteMode["_base"] = baseMode
+					}
+					result[i].VersionDeleteMode[overrideVersion] = overrideMode
+					if newAttr.DeleteParent {
+						result[i].DeleteParent = true
+					}
+					if newAttr.DeleteGrandparent {
+						result[i].DeleteGrandparent = true
+					}
+				} else {
+					// Same mode, or no replaces_yang_name — OR-only merge.
+					// Non-replacing overrides inherit the base delete mode implicitly.
+					if newAttr.DeleteParent {
+						result[i].DeleteParent = newAttr.DeleteParent
+					}
+					if newAttr.DeleteGrandparent {
+						result[i].DeleteGrandparent = newAttr.DeleteGrandparent
+					}
 				}
 				if newAttr.NoDelete {
 					result[i].NoDelete = newAttr.NoDelete
@@ -1682,6 +1812,12 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 		if base, exists := attr.VersionDefaults["_base"]; exists {
 			delete(attr.VersionDefaults, "_base")
 			attr.VersionDefaults[baseVersion] = base
+		}
+	}
+	if attr.VersionDeleteMode != nil {
+		if baseMode, exists := attr.VersionDeleteMode["_base"]; exists {
+			delete(attr.VersionDeleteMode, "_base")
+			attr.VersionDeleteMode[baseVersion] = baseMode
 		}
 	}
 	if attr.VersionYangNames != nil {

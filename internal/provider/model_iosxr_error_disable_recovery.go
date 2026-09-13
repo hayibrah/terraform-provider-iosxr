@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -466,64 +466,64 @@ func (data *ErrorDisableRecoveryData) fromBody(ctx context.Context, res []byte, 
 func (data *ErrorDisableRecovery) getDeletedItems(ctx context.Context, state ErrorDisableRecovery, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LinkOamDampeningInterval.IsNull() && data.LinkOamDampeningInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-dampening", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-dampening"))
 	}
 	if !state.OtTrackStateChangeInterval.IsNull() && data.OtTrackStateChangeInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ot-track-state-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ot-track-state-change"))
 	}
 	if !state.L2vpnBportMacMoveInterval.IsNull() && data.L2vpnBportMacMoveInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/l2vpn-bport-mac-move", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "l2vpn-bport-mac-move"))
 	}
 	if !state.PvrstPvidMismatchInterval.IsNull() && data.PvrstPvidMismatchInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pvrst-pvid-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pvrst-pvid-mismatch"))
 	}
 	if !state.UdldLoopbackInterval.IsNull() && data.UdldLoopbackInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/udld-loopback", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "udld-loopback"))
 	}
 	if !state.UdldTimeoutInterval.IsNull() && data.UdldTimeoutInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/udld-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "udld-timeout"))
 	}
 	if !state.UdldNeighborMismatchInterval.IsNull() && data.UdldNeighborMismatchInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/udld-neighbor-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "udld-neighbor-mismatch"))
 	}
 	if !state.UdldUnidirectionalInterval.IsNull() && data.UdldUnidirectionalInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/udld-unidirectional", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "udld-unidirectional"))
 	}
 	if !state.ClusterMinlinksInterval.IsNull() && data.ClusterMinlinksInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/cluster-minlinks", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "cluster-minlinks"))
 	}
 	if !state.ClusterUdldInterval.IsNull() && data.ClusterUdldInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/cluster-udld", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "cluster-udld"))
 	}
 	if !state.StpLegacyBpduInterval.IsNull() && data.StpLegacyBpduInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/stp-legacy-bpdu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "stp-legacy-bpdu"))
 	}
 	if !state.StpBpduGuardInterval.IsNull() && data.StpBpduGuardInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/stp-bpdu-guard", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "stp-bpdu-guard"))
 	}
 	if !state.LinkOamThresholdBreachedInterval.IsNull() && data.LinkOamThresholdBreachedInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-threshold-breached", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-threshold-breached"))
 	}
 	if !state.LinkOamCriticalEventInterval.IsNull() && data.LinkOamCriticalEventInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-critical-event", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-critical-event"))
 	}
 	if !state.LinkOamDyingGaspInterval.IsNull() && data.LinkOamDyingGaspInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-dying-gasp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-dying-gasp"))
 	}
 	if !state.LinkOamLinkFaultInterval.IsNull() && data.LinkOamLinkFaultInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-link-fault", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-link-fault"))
 	}
 	if !state.LinkOamMiswiredInterval.IsNull() && data.LinkOamMiswiredInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-miswired", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-miswired"))
 	}
 	if !state.LinkOamCapabilitiesConflictInterval.IsNull() && data.LinkOamCapabilitiesConflictInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-capabilities-conflict", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-capabilities-conflict"))
 	}
 	if !state.LinkOamDiscoveryTimeoutInterval.IsNull() && data.LinkOamDiscoveryTimeoutInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-discovery-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-discovery-timeout"))
 	}
 	if !state.LinkOamSessionDownInterval.IsNull() && data.LinkOamSessionDownInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-oam-session-down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-oam-session-down"))
 	}
 	return deletedItems
 }
@@ -543,64 +543,64 @@ func (data *ErrorDisableRecovery) getEmptyLeafsDelete(ctx context.Context, versi
 func (data *ErrorDisableRecovery) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LinkOamDampeningInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-dampening", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-dampening"))
 	}
 	if !data.OtTrackStateChangeInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ot-track-state-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ot-track-state-change"))
 	}
 	if !data.L2vpnBportMacMoveInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/l2vpn-bport-mac-move", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "l2vpn-bport-mac-move"))
 	}
 	if !data.PvrstPvidMismatchInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pvrst-pvid-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pvrst-pvid-mismatch"))
 	}
 	if !data.UdldLoopbackInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/udld-loopback", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "udld-loopback"))
 	}
 	if !data.UdldTimeoutInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/udld-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "udld-timeout"))
 	}
 	if !data.UdldNeighborMismatchInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/udld-neighbor-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "udld-neighbor-mismatch"))
 	}
 	if !data.UdldUnidirectionalInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/udld-unidirectional", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "udld-unidirectional"))
 	}
 	if !data.ClusterMinlinksInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cluster-minlinks", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "cluster-minlinks"))
 	}
 	if !data.ClusterUdldInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cluster-udld", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "cluster-udld"))
 	}
 	if !data.StpLegacyBpduInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/stp-legacy-bpdu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "stp-legacy-bpdu"))
 	}
 	if !data.StpBpduGuardInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/stp-bpdu-guard", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "stp-bpdu-guard"))
 	}
 	if !data.LinkOamThresholdBreachedInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-threshold-breached", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-threshold-breached"))
 	}
 	if !data.LinkOamCriticalEventInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-critical-event", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-critical-event"))
 	}
 	if !data.LinkOamDyingGaspInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-dying-gasp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-dying-gasp"))
 	}
 	if !data.LinkOamLinkFaultInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-link-fault", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-link-fault"))
 	}
 	if !data.LinkOamMiswiredInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-miswired", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-miswired"))
 	}
 	if !data.LinkOamCapabilitiesConflictInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-capabilities-conflict", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-capabilities-conflict"))
 	}
 	if !data.LinkOamDiscoveryTimeoutInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-discovery-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-discovery-timeout"))
 	}
 	if !data.LinkOamSessionDownInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-oam-session-down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-oam-session-down"))
 	}
 	return deletePaths
 }

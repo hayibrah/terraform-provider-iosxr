@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -249,7 +250,7 @@ func (data *CryptoSSL) getDeletedItems(ctx context.Context, state CryptoSSL, ver
 			}
 			if found {
 				if !state.Profile[i].Certificate.IsNull() && data.Profile[j].Certificate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/certificate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "certificate"))
 				}
 				break
 			}

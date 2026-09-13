@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -592,7 +593,7 @@ func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byt
 func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state RouterVRRPInterfaceIPv4, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdFastDetectPeerIpv4.IsNull() && data.BfdFastDetectPeerIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/fast-detect/peer/ipv4"))
 	}
 	for i := range state.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -618,7 +619,7 @@ func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state 
 			}
 			if found {
 				if !state.TrackObjects[i].PriorityDecrement.IsNull() && data.TrackObjects[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/track/objects/object%v/priority-decrement", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track/objects/object%v", state.getPath(), keyString), "priority-decrement"))
 				}
 				break
 			}
@@ -651,7 +652,7 @@ func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state 
 			}
 			if found {
 				if !state.TrackInterfaces[i].PriorityDecrement.IsNull() && data.TrackInterfaces[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/track/interfaces/interface%v/priority-decrement", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track/interfaces/interface%v", state.getPath(), keyString), "priority-decrement"))
 				}
 				break
 			}
@@ -661,22 +662,22 @@ func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state 
 		}
 	}
 	if !state.AcceptModeDisable.IsNull() && data.AcceptModeDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/accept-mode/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "accept-mode/disable"))
 	}
 	if !state.PreemptDelay.IsNull() && data.PreemptDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preempt/delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preempt/delay"))
 	}
 	if !state.PreemptDisable.IsNull() && data.PreemptDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preempt/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preempt/disable"))
 	}
 	if !state.TimerForce.IsNull() && data.TimerForce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timer/force", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timer/force"))
 	}
 	if !state.TimerAdvertisementMilliseconds.IsNull() && data.TimerAdvertisementMilliseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timer/advertisement-time-in-milliseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timer/advertisement-time-in-milliseconds"))
 	}
 	if !state.TimerAdvertisementSeconds.IsNull() && data.TimerAdvertisementSeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timer/advertisement-time-in-seconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timer/advertisement-time-in-seconds"))
 	}
 	for i := range state.SecondaryAddresses {
 		keys := [...]string{"address"}
@@ -709,19 +710,19 @@ func (data *RouterVRRPInterfaceIPv4) getDeletedItems(ctx context.Context, state 
 		}
 	}
 	if !state.UnicastPeer.IsNull() && data.UnicastPeer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/unicast-peer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "unicast-peer"))
 	}
 	if !state.TextAuthentication.IsNull() && data.TextAuthentication.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/text-authentication", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "text-authentication"))
 	}
 	if !state.Name.IsNull() && data.Name.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "name"))
 	}
 	if !state.Priority.IsNull() && data.Priority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "priority"))
 	}
 	if !state.Address.IsNull() && data.Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address"))
 	}
 	return deletedItems
 }
@@ -749,13 +750,13 @@ func (data *RouterVRRPInterfaceIPv4) getEmptyLeafsDelete(ctx context.Context, ve
 		}
 	}
 	if !data.AcceptModeDisable.IsNull() && !data.AcceptModeDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/accept-mode/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "accept-mode/disable"))
 	}
 	if !data.PreemptDisable.IsNull() && !data.PreemptDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/preempt/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "preempt/disable"))
 	}
 	if !data.TimerForce.IsNull() && !data.TimerForce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/timer/force", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "timer/force"))
 	}
 	for i := range data.SecondaryAddresses {
 		keys := [...]string{"address"}
@@ -774,7 +775,7 @@ func (data *RouterVRRPInterfaceIPv4) getEmptyLeafsDelete(ctx context.Context, ve
 func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdFastDetectPeerIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/fast-detect/peer/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/fast-detect/peer/ipv4"))
 	}
 	for i := range data.TrackObjects {
 		keys := [...]string{"object-name"}
@@ -813,22 +814,22 @@ func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context, version
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/track/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.AcceptModeDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/accept-mode/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "accept-mode/disable"))
 	}
 	if !data.PreemptDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preempt/delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preempt/delay"))
 	}
 	if !data.PreemptDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preempt/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preempt/disable"))
 	}
 	if !data.TimerForce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timer/force", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timer/force"))
 	}
 	if !data.TimerAdvertisementMilliseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timer/advertisement-time-in-milliseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timer/advertisement-time-in-milliseconds"))
 	}
 	if !data.TimerAdvertisementSeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timer/advertisement-time-in-seconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timer/advertisement-time-in-seconds"))
 	}
 	for i := range data.SecondaryAddresses {
 		keys := [...]string{"address"}
@@ -849,19 +850,19 @@ func (data *RouterVRRPInterfaceIPv4) getDeletePaths(ctx context.Context, version
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/secondary-addresses/secondary-address%v", data.getPath(), keyString))
 	}
 	if !data.UnicastPeer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/unicast-peer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "unicast-peer"))
 	}
 	if !data.TextAuthentication.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/text-authentication", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "text-authentication"))
 	}
 	if !data.Name.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "name"))
 	}
 	if !data.Priority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "priority"))
 	}
 	if !data.Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address"))
 	}
 	return deletePaths
 }

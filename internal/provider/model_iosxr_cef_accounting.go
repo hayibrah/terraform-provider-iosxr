@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -171,7 +171,7 @@ func (data *CEFAccountingData) fromBody(ctx context.Context, res []byte, version
 func (data *CEFAccounting) getDeletedItems(ctx context.Context, state CEFAccounting, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Disable.IsNull() && data.Disable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "segment-routing/policies/srv6/disable"))
 	}
 	return deletedItems
 }
@@ -183,7 +183,7 @@ func (data *CEFAccounting) getDeletedItems(ctx context.Context, state CEFAccount
 func (data *CEFAccounting) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Disable.IsNull() && !data.Disable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "segment-routing/policies/srv6/disable"))
 	}
 	return emptyLeafsDelete
 }
@@ -194,7 +194,7 @@ func (data *CEFAccounting) getEmptyLeafsDelete(ctx context.Context, version stri
 func (data *CEFAccounting) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Disable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/policies/srv6/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing/policies/srv6/disable"))
 	}
 	return deletePaths
 }

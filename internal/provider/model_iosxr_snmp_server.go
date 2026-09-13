@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -5018,37 +5019,37 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.InformPending.IsNull() && data.InformPending.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/inform/pending", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "inform/pending"))
 	}
 	if !state.InformTimeout.IsNull() && data.InformTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/inform/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "inform/timeout"))
 	}
 	if !state.InformRetries.IsNull() && data.InformRetries.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/inform/retries", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "inform/retries"))
 	}
 	if !state.LoggingThresholdPduProcessing.IsNull() && data.LoggingThresholdPduProcessing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/threshold/pdu-processing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/threshold/pdu-processing"))
 	}
 	if !state.LoggingThresholdOidProcessing.IsNull() && data.LoggingThresholdOidProcessing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/threshold/oid-processing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/threshold/oid-processing"))
 	}
 	if !state.TimeoutsPduStats.IsNull() && data.TimeoutsPduStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeouts/pdu/stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeouts/pdu/stats"))
 	}
 	if !state.TimeoutsThreshold.IsNull() && data.TimeoutsThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeouts/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeouts/threshold"))
 	}
 	if !state.TimeoutsInQdrop.IsNull() && data.TimeoutsInQdrop.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeouts/in-qdrop", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeouts/in-qdrop"))
 	}
 	if !state.TimeoutsDuplicate.IsNull() && data.TimeoutsDuplicate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeouts/duplicate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeouts/duplicate"))
 	}
 	if !state.TimeoutsSubagent.IsNull() && data.TimeoutsSubagent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeouts/subagent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeouts/subagent"))
 	}
 	if !state.OidPollStats.IsNull() && data.OidPollStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oid-poll-stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oid-poll-stats"))
 	}
 	for i := range state.Users {
 		keys := [...]string{"user-name"}
@@ -5074,85 +5075,85 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Users[i].V3Systemowner.IsNull() && data.Users[j].V3Systemowner.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/systemowner", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/systemowner"))
 				}
 				if !state.Users[i].V3Ipv6.IsNull() && data.Users[j].V3Ipv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/ipv6"))
 				}
 				if !state.Users[i].V3Ipv4.IsNull() && data.Users[j].V3Ipv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/ipv4"))
 				}
 				if !state.Users[i].V3PrivAesAes256EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes256EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-256/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-256/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes256EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes256EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-256/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-256/encryption-default"))
 				}
 				if !state.Users[i].V3PrivAesAes192EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes192EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-192/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-192/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes192EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes192EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-192/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-192/encryption-default"))
 				}
 				if !state.Users[i].V3PrivAesAes128EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes128EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-128/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-128/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes128EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes128EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/priv/aes/aes-128/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-128/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha512EncryptionDefault.IsNull() && data.Users[j].V3AuthSha512EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha-512/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-512/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha512EncryptionAes.IsNull() && data.Users[j].V3AuthSha512EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha-512/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-512/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthSha256EncryptionDefault.IsNull() && data.Users[j].V3AuthSha256EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha-256/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-256/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha256EncryptionAes.IsNull() && data.Users[j].V3AuthSha256EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha-256/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-256/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthShaEncryptionDefault.IsNull() && data.Users[j].V3AuthShaEncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha/encryption-default"))
 				}
 				if !state.Users[i].V3AuthShaEncryptionAes.IsNull() && data.Users[j].V3AuthShaEncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/sha/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthMd5EncryptionDefault.IsNull() && data.Users[j].V3AuthMd5EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/md5/encryption-default", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/md5/encryption-default"))
 				}
 				if !state.Users[i].V3AuthMd5EncryptionAes.IsNull() && data.Users[j].V3AuthMd5EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3/auth/md5/encryption-aes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/md5/encryption-aes"))
 				}
 				if !state.Users[i].V3.IsNull() && data.Users[j].V3.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v3", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3"))
 				}
 				if !state.Users[i].V2cSystemowner.IsNull() && data.Users[j].V2cSystemowner.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v2c/systemowner", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/systemowner"))
 				}
 				if !state.Users[i].V2cIpv6.IsNull() && data.Users[j].V2cIpv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v2c/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/ipv6"))
 				}
 				if !state.Users[i].V2cIpv4.IsNull() && data.Users[j].V2cIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v2c/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/ipv4"))
 				}
 				if !state.Users[i].V2c.IsNull() && data.Users[j].V2c.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v2c", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c"))
 				}
 				if !state.Users[i].V1Systemowner.IsNull() && data.Users[j].V1Systemowner.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v1/systemowner", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/systemowner"))
 				}
 				if !state.Users[i].V1Ipv6.IsNull() && data.Users[j].V1Ipv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v1/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/ipv6"))
 				}
 				if !state.Users[i].V1Ipv4.IsNull() && data.Users[j].V1Ipv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v1/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/ipv4"))
 				}
 				if !state.Users[i].V1.IsNull() && data.Users[j].V1.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/v1", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1"))
 				}
 				if !state.Users[i].GroupName.IsNull() && data.Users[j].GroupName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v/group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "group-name"))
 				}
 				break
 			}
@@ -5185,10 +5186,10 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.EngineIdRemotes[i].UdpPort.IsNull() && data.EngineIdRemotes[j].UdpPort.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/engine-id/remotes/remote%v/udp-port", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/engine-id/remotes/remote%v", state.getPath(), keyString), "udp-port"))
 				}
 				if !state.EngineIdRemotes[i].EngineId.IsNull() && data.EngineIdRemotes[j].EngineId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/engine-id/remotes/remote%v/engine-id", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/engine-id/remotes/remote%v", state.getPath(), keyString), "engine-id"))
 				}
 				break
 			}
@@ -5198,7 +5199,7 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 		}
 	}
 	if !state.EngineIdLocal.IsNull() && data.EngineIdLocal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/engine-id/local", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "engine-id/local"))
 	}
 	for i := range state.Groups {
 		keys := [...]string{"group-name"}
@@ -5224,73 +5225,73 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Groups[i].V3Ipv6.IsNull() && data.Groups[j].V3Ipv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/ipv6"))
 				}
 				if !state.Groups[i].V3Ipv4.IsNull() && data.Groups[j].V3Ipv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/ipv4"))
 				}
 				if !state.Groups[i].V3Notify.IsNull() && data.Groups[j].V3Notify.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/notify", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/notify"))
 				}
 				if !state.Groups[i].V3Context.IsNull() && data.Groups[j].V3Context.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/context", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/context"))
 				}
 				if !state.Groups[i].V3Write.IsNull() && data.Groups[j].V3Write.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/write", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/write"))
 				}
 				if !state.Groups[i].V3Read.IsNull() && data.Groups[j].V3Read.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/read", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/read"))
 				}
 				if !state.Groups[i].V3Noauth.IsNull() && data.Groups[j].V3Noauth.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/noauth", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/noauth"))
 				}
 				if !state.Groups[i].V3Auth.IsNull() && data.Groups[j].V3Auth.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/auth", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/auth"))
 				}
 				if !state.Groups[i].V3Priv.IsNull() && data.Groups[j].V3Priv.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v3/priv", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/priv"))
 				}
 				if !state.Groups[i].V2cIpv6.IsNull() && data.Groups[j].V2cIpv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/ipv6"))
 				}
 				if !state.Groups[i].V2cIpv4.IsNull() && data.Groups[j].V2cIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/ipv4"))
 				}
 				if !state.Groups[i].V2cNotify.IsNull() && data.Groups[j].V2cNotify.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/notify", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/notify"))
 				}
 				if !state.Groups[i].V2cContext.IsNull() && data.Groups[j].V2cContext.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/context", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/context"))
 				}
 				if !state.Groups[i].V2cWrite.IsNull() && data.Groups[j].V2cWrite.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/write", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/write"))
 				}
 				if !state.Groups[i].V2cRead.IsNull() && data.Groups[j].V2cRead.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c/read", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/read"))
 				}
 				if !state.Groups[i].V2c.IsNull() && data.Groups[j].V2c.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v2c", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c"))
 				}
 				if !state.Groups[i].V1Ipv6.IsNull() && data.Groups[j].V1Ipv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/ipv6"))
 				}
 				if !state.Groups[i].V1Ipv4.IsNull() && data.Groups[j].V1Ipv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/ipv4"))
 				}
 				if !state.Groups[i].V1Notify.IsNull() && data.Groups[j].V1Notify.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/notify", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/notify"))
 				}
 				if !state.Groups[i].V1Context.IsNull() && data.Groups[j].V1Context.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/context", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/context"))
 				}
 				if !state.Groups[i].V1Write.IsNull() && data.Groups[j].V1Write.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/write", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/write"))
 				}
 				if !state.Groups[i].V1Read.IsNull() && data.Groups[j].V1Read.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1/read", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/read"))
 				}
 				if !state.Groups[i].V1.IsNull() && data.Groups[j].V1.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/v1", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1"))
 				}
 				break
 			}
@@ -5300,40 +5301,40 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 		}
 	}
 	if !state.DropReportAclIpv6.IsNull() && data.DropReportAclIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/drop/report/acl/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "drop/report/acl/ipv6"))
 	}
 	if !state.DropReportAclIpv4.IsNull() && data.DropReportAclIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/drop/report/acl/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "drop/report/acl/ipv4"))
 	}
 	if !state.DropUnknownUser.IsNull() && data.DropUnknownUser.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/drop/unknown-user", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "drop/unknown-user"))
 	}
 	if !state.Ipv6Dscp.IsNull() && data.Ipv6Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/dscp"))
 	}
 	if !state.Ipv4Dscp.IsNull() && data.Ipv4Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/dscp"))
 	}
 	if !state.TrapDelayTimer.IsNull() && data.TrapDelayTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap/delay-timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap/delay-timer"))
 	}
 	if !state.TrapAuthenticationVrfDisable.IsNull() && data.TrapAuthenticationVrfDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap/authentication/vrf/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap/authentication/vrf/disable"))
 	}
 	if !state.TrapThrottleTime.IsNull() && data.TrapThrottleTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap/throttle-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap/throttle-time"))
 	}
 	if !state.TrapSourcePort.IsNull() && data.TrapSourcePort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap-source/port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap-source/port"))
 	}
 	if !state.TrapSourceIpv6.IsNull() && data.TrapSourceIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap-source/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap-source/ipv6"))
 	}
 	if !state.TrapSourceIpv4.IsNull() && data.TrapSourceIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap-source/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap-source/ipv4"))
 	}
 	if !state.TrapSource.IsNull() && data.TrapSource.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap-source/both", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap-source/both"))
 	}
 	for i := range state.Views {
 		keys := [...]string{"view-name"}
@@ -5382,10 +5383,10 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Views[i].MibViewFamilies[ci].Excluded.IsNull() && data.Views[j].MibViewFamilies[cj].Excluded.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v/.", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", state.getPath(), keyString, ckeyString), "."))
 							}
 							if !state.Views[i].MibViewFamilies[ci].Included.IsNull() && data.Views[j].MibViewFamilies[cj].Included.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v/.", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", state.getPath(), keyString, ckeyString), "."))
 							}
 							break
 						}
@@ -5448,13 +5449,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsEncryptedAes[ci].VersionV2c.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5487,13 +5488,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5526,13 +5527,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5565,13 +5566,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5604,13 +5605,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5643,13 +5644,13 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v/version/v3", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v/version/v2c", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v/udp-port", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "udp-port"))
 							}
 							break
 						}
@@ -5666,271 +5667,271 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 		}
 	}
 	if !state.TrapsSystem.IsNull() && data.TrapsSystem.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-system-cfg:system", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-system-cfg:system"))
 	}
 	if !state.TrapsSyslog.IsNull() && data.TrapsSyslog.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog"))
 	}
 	if !state.TrapsPower.IsNull() && data.TrapsPower.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-power-cfg:power", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-power-cfg:power"))
 	}
 	if !state.TrapsPimRpMappingChange.IsNull() && data.TrapsPimRpMappingChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change"))
 	}
 	if !state.TrapsPimInvalidMessageReceived.IsNull() && data.TrapsPimInvalidMessageReceived.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received"))
 	}
 	if !state.TrapsPimInterfaceStateChange.IsNull() && data.TrapsPimInterfaceStateChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change"))
 	}
 	if !state.TrapsPimNeighborChange.IsNull() && data.TrapsPimNeighborChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change"))
 	}
 	if !state.TrapsMplsLdpThreshold.IsNull() && data.TrapsMplsLdpThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold"))
 	}
 	if !state.TrapsMplsLdpUp.IsNull() && data.TrapsMplsLdpUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up"))
 	}
 	if !state.TrapsMplsLdpDown.IsNull() && data.TrapsMplsLdpDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down"))
 	}
 	if !state.TrapsIpsla.IsNull() && data.TrapsIpsla.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla"))
 	}
 	if !state.TrapsFruCtrl.IsNull() && data.TrapsFruCtrl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl"))
 	}
 	if !state.TrapsFlashRemoval.IsNull() && data.TrapsFlashRemoval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal"))
 	}
 	if !state.TrapsFlashInsertion.IsNull() && data.TrapsFlashInsertion.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion"))
 	}
 	if !state.TrapsEntityStateOperstatus.IsNull() && data.TrapsEntityStateOperstatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus"))
 	}
 	if !state.TrapsEntityStateSwitchover.IsNull() && data.TrapsEntityStateSwitchover.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover"))
 	}
 	if !state.TrapsEntityRedundancyStatus.IsNull() && data.TrapsEntityRedundancyStatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status"))
 	}
 	if !state.TrapsEntityRedundancySwitchover.IsNull() && data.TrapsEntityRedundancySwitchover.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover"))
 	}
 	if !state.TrapsEntityRedundancyAll.IsNull() && data.TrapsEntityRedundancyAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all"))
 	}
 	if !state.TrapsCiscoEntityExt.IsNull() && data.TrapsCiscoEntityExt.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext"))
 	}
 	if !state.TrapsEntity.IsNull() && data.TrapsEntity.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:entity", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:entity"))
 	}
 	if !state.TrapsCopyComplete.IsNull() && data.TrapsCopyComplete.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete"))
 	}
 	if !state.TrapsBridgemib.IsNull() && data.TrapsBridgemib.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib"))
 	}
 	if !state.TrapsAlarm.IsNull() && data.TrapsAlarm.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm"))
 	}
 	if !state.TrapsVrrpEvents.IsNull() && data.TrapsVrrpEvents.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events"))
 	}
 	if !state.TrapsIsisLspErrorDetected.IsNull() && data.TrapsIsisLspErrorDetected.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected"))
 	}
 	if !state.TrapsIsisAdjacencyChange.IsNull() && data.TrapsIsisAdjacencyChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change"))
 	}
 	if !state.TrapsIsisProtocolsSupportedMismatch.IsNull() && data.TrapsIsisProtocolsSupportedMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch"))
 	}
 	if !state.TrapsIsisOrigLspBuffSizeMismatch.IsNull() && data.TrapsIsisOrigLspBuffSizeMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch"))
 	}
 	if !state.TrapsIsisLspTooLargeToPropagate.IsNull() && data.TrapsIsisLspTooLargeToPropagate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate"))
 	}
 	if !state.TrapsIsisRejectedAdjacency.IsNull() && data.TrapsIsisRejectedAdjacency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency"))
 	}
 	if !state.TrapsIsisAreaMismatch.IsNull() && data.TrapsIsisAreaMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch"))
 	}
 	if !state.TrapsIsisVersionSkew.IsNull() && data.TrapsIsisVersionSkew.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew"))
 	}
 	if !state.TrapsIsisAuthenticationFailure.IsNull() && data.TrapsIsisAuthenticationFailure.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure"))
 	}
 	if !state.TrapsIsisAuthenticationTypeFailure.IsNull() && data.TrapsIsisAuthenticationTypeFailure.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure"))
 	}
 	if !state.TrapsIsisSequenceNumberSkip.IsNull() && data.TrapsIsisSequenceNumberSkip.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip"))
 	}
 	if !state.TrapsIsisOwnLspPurge.IsNull() && data.TrapsIsisOwnLspPurge.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge"))
 	}
 	if !state.TrapsIsisMaxAreaAddressesMismatch.IsNull() && data.TrapsIsisMaxAreaAddressesMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch"))
 	}
 	if !state.TrapsIsisIdLenMismatch.IsNull() && data.TrapsIsisIdLenMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch"))
 	}
 	if !state.TrapsIsisAttemptToExceedMaxSequence.IsNull() && data.TrapsIsisAttemptToExceedMaxSequence.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence"))
 	}
 	if !state.TrapsIsisCorruptedLspDetected.IsNull() && data.TrapsIsisCorruptedLspDetected.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected"))
 	}
 	if !state.TrapsIsisManualAddressDrops.IsNull() && data.TrapsIsisManualAddressDrops.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops"))
 	}
 	if !state.TrapsIsisDatabaseOverload.IsNull() && data.TrapsIsisDatabaseOverload.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload"))
 	}
 	if !state.TrapsIsisAll.IsNull() && data.TrapsIsisAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all"))
 	}
 	if !state.TrapsHsrp.IsNull() && data.TrapsHsrp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp"))
 	}
 	if !state.TrapsBgpEnableUpdown.IsNull() && data.TrapsBgpEnableUpdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown"))
 	}
 	if !state.TrapsBgpEnableCiscoBgp4Mib.IsNull() && data.TrapsBgpEnableCiscoBgp4Mib.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib"))
 	}
 	if !state.TrapsBgpCbgpTwoUpdown.IsNull() && data.TrapsBgpCbgpTwoUpdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown"))
 	}
 	if !state.TrapsBgpCbgpTwoEnable.IsNull() && data.TrapsBgpCbgpTwoEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable"))
 	}
 	if !state.TrapsNtp.IsNull() && data.TrapsNtp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ntp-cfg:ntp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-ntp-cfg:ntp"))
 	}
 	if !state.TrapsMplsTrafficEngUp.IsNull() && data.TrapsMplsTrafficEngUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up"))
 	}
 	if !state.TrapsMplsTrafficEngReroute.IsNull() && data.TrapsMplsTrafficEngReroute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute"))
 	}
 	if !state.TrapsMplsTrafficEngReoptimize.IsNull() && data.TrapsMplsTrafficEngReoptimize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize"))
 	}
 	if !state.TrapsMplsTrafficEngP2mpUp.IsNull() && data.TrapsMplsTrafficEngP2mpUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up"))
 	}
 	if !state.TrapsMplsTrafficEngP2mpDown.IsNull() && data.TrapsMplsTrafficEngP2mpDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down"))
 	}
 	if !state.TrapsMplsTrafficEngDown.IsNull() && data.TrapsMplsTrafficEngDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down"))
 	}
 	if !state.TrapsMplsTrafficEngCiscoExtReroutePendingClear.IsNull() && data.TrapsMplsTrafficEngCiscoExtReroutePendingClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear"))
 	}
 	if !state.TrapsMplsTrafficEngCiscoExtReroutePending.IsNull() && data.TrapsMplsTrafficEngCiscoExtReroutePending.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending"))
 	}
 	if !state.TrapsMplsTrafficEngCiscoExtPreempt.IsNull() && data.TrapsMplsTrafficEngCiscoExtPreempt.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt"))
 	}
 	if !state.TrapsMplsTrafficEngCiscoExtInsuffBw.IsNull() && data.TrapsMplsTrafficEngCiscoExtInsuffBw.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw"))
 	}
 	if !state.TrapsMplsTrafficEngCiscoExtBringupFail.IsNull() && data.TrapsMplsTrafficEngCiscoExtBringupFail.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail"))
 	}
 	if !state.TrapsMplsTrafficEngCisco.IsNull() && data.TrapsMplsTrafficEngCisco.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco"))
 	}
 	if !state.TrapsMplsL3vpnMaxThresholdReissueNotifTime.IsNull() && data.TrapsMplsL3vpnMaxThresholdReissueNotifTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-reissue-notif-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-reissue-notif-time"))
 	}
 	if !state.TrapsMplsL3vpnMaxThresholdCleared.IsNull() && data.TrapsMplsL3vpnMaxThresholdCleared.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared"))
 	}
 	if !state.TrapsMplsL3vpnMaxThresholdExceeded.IsNull() && data.TrapsMplsL3vpnMaxThresholdExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded"))
 	}
 	if !state.TrapsMplsL3vpnMidThresholdExceeded.IsNull() && data.TrapsMplsL3vpnMidThresholdExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded"))
 	}
 	if !state.TrapsMplsL3vpnVrfDown.IsNull() && data.TrapsMplsL3vpnVrfDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down"))
 	}
 	if !state.TrapsMplsL3vpnVrfUp.IsNull() && data.TrapsMplsL3vpnVrfUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up"))
 	}
 	if !state.TrapsMplsL3vpnAll.IsNull() && data.TrapsMplsL3vpnAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all"))
 	}
 	if !state.TrapsSensor.IsNull() && data.TrapsSensor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor"))
 	}
 	if !state.TrapsRf.IsNull() && data.TrapsRf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf"))
 	}
 	if !state.TrapsEthernetOamEvents.IsNull() && data.TrapsEthernetOamEvents.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events"))
 	}
 	if !state.TrapsCfm.IsNull() && data.TrapsCfm.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm"))
 	}
 	if !state.TrapsConfig.IsNull() && data.TrapsConfig.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config"))
 	}
 	if !state.TrapsBfd.IsNull() && data.TrapsBfd.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd"))
 	}
 	if !state.TrapsVplsFullClear.IsNull() && data.TrapsVplsFullClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear"))
 	}
 	if !state.TrapsVplsFullRaise.IsNull() && data.TrapsVplsFullRaise.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise"))
 	}
 	if !state.TrapsVplsStatus.IsNull() && data.TrapsVplsStatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status"))
 	}
 	if !state.TrapsVplsAll.IsNull() && data.TrapsVplsAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all"))
 	}
 	if !state.TrapsL2vpnCisco.IsNull() && data.TrapsL2vpnCisco.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco"))
 	}
 	if !state.TrapsL2vpnVcDown.IsNull() && data.TrapsL2vpnVcDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down"))
 	}
 	if !state.TrapsL2vpnVcUp.IsNull() && data.TrapsL2vpnVcUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up"))
 	}
 	if !state.TrapsL2vpnAll.IsNull() && data.TrapsL2vpnAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all"))
 	}
 	if !state.TrapsSnmpAll.IsNull() && data.TrapsSnmpAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/all"))
 	}
 	if !state.TrapsSnmpLinkdown.IsNull() && data.TrapsSnmpLinkdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/linkdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/linkdown"))
 	}
 	if !state.TrapsSnmpLinkup.IsNull() && data.TrapsSnmpLinkup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/linkup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/linkup"))
 	}
 	if !state.TrapsSnmpWarmstart.IsNull() && data.TrapsSnmpWarmstart.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/warmstart", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/warmstart"))
 	}
 	if !state.TrapsSnmpColdstart.IsNull() && data.TrapsSnmpColdstart.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/coldstart", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/coldstart"))
 	}
 	if !state.TrapsSnmpAuthentication.IsNull() && data.TrapsSnmpAuthentication.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traps/snmp/authentication", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traps/snmp/authentication"))
 	}
 	for i := range state.Communities {
 		keys := [...]string{"community-string"}
@@ -5956,25 +5957,25 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Communities[i].Ipv6.IsNull() && data.Communities[j].Ipv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ipv6"))
 				}
 				if !state.Communities[i].Ipv4.IsNull() && data.Communities[j].Ipv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ipv4"))
 				}
 				if !state.Communities[i].Systemowner.IsNull() && data.Communities[j].Systemowner.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/systemowner", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "systemowner"))
 				}
 				if !state.Communities[i].Sdrowner.IsNull() && data.Communities[j].Sdrowner.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/sdrowner", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "sdrowner"))
 				}
 				if !state.Communities[i].Rw.IsNull() && data.Communities[j].Rw.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/rw", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "rw"))
 				}
 				if !state.Communities[i].Ro.IsNull() && data.Communities[j].Ro.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/ro", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ro"))
 				}
 				if !state.Communities[i].View.IsNull() && data.Communities[j].View.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/view", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "view"))
 				}
 				break
 			}
@@ -5984,31 +5985,31 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 		}
 	}
 	if !state.OverloadThrottleRate.IsNull() && data.OverloadThrottleRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/overload-throttle-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "overload-throttle-rate"))
 	}
 	if !state.OverloadControl.IsNull() && data.OverloadControl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/overload-control", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "overload-control"))
 	}
 	if !state.ThrottleTime.IsNull() && data.ThrottleTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle-time"))
 	}
 	if !state.QueueLength.IsNull() && data.QueueLength.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/queue-length", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "queue-length"))
 	}
 	if !state.TrapTimeout.IsNull() && data.TrapTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/trap-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap-timeout"))
 	}
 	if !state.Packetsize.IsNull() && data.Packetsize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/packetsize", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "packetsize"))
 	}
 	if !state.ChassisId.IsNull() && data.ChassisId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/chassis-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "chassis-id"))
 	}
 	if !state.Contact.IsNull() && data.Contact.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/contact", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "contact"))
 	}
 	if !state.Location.IsNull() && data.Location.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/location", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "location"))
 	}
 	return deletedItems
 }
@@ -6020,7 +6021,7 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.OidPollStats.IsNull() && !data.OidPollStats.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oid-poll-stats", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oid-poll-stats"))
 	}
 	for i := range data.Users {
 		keys := [...]string{"user-name"}
@@ -6030,22 +6031,22 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Users[i].V3Systemowner.IsNull() && !data.Users[i].V3Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v3/systemowner", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v3/systemowner"))
 		}
 		if !data.Users[i].V3.IsNull() && !data.Users[i].V3.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v3", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v3"))
 		}
 		if !data.Users[i].V2cSystemowner.IsNull() && !data.Users[i].V2cSystemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v2c/systemowner", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v2c/systemowner"))
 		}
 		if !data.Users[i].V2c.IsNull() && !data.Users[i].V2c.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v2c", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v2c"))
 		}
 		if !data.Users[i].V1Systemowner.IsNull() && !data.Users[i].V1Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v1/systemowner", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v1/systemowner"))
 		}
 		if !data.Users[i].V1.IsNull() && !data.Users[i].V1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/users/user%v/v1", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v1"))
 		}
 	}
 	for i := range data.EngineIdRemotes {
@@ -6064,26 +6065,26 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Groups[i].V3Noauth.IsNull() && !data.Groups[i].V3Noauth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/groups/group%v/v3/noauth", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/noauth"))
 		}
 		if !data.Groups[i].V3Auth.IsNull() && !data.Groups[i].V3Auth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/groups/group%v/v3/auth", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/auth"))
 		}
 		if !data.Groups[i].V3Priv.IsNull() && !data.Groups[i].V3Priv.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/groups/group%v/v3/priv", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/priv"))
 		}
 		if !data.Groups[i].V2c.IsNull() && !data.Groups[i].V2c.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/groups/group%v/v2c", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v2c"))
 		}
 		if !data.Groups[i].V1.IsNull() && !data.Groups[i].V1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/groups/group%v/v1", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v1"))
 		}
 	}
 	if !data.DropUnknownUser.IsNull() && !data.DropUnknownUser.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/drop/unknown-user", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "drop/unknown-user"))
 	}
 	if !data.TrapAuthenticationVrfDisable.IsNull() && !data.TrapAuthenticationVrfDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/trap/authentication/vrf/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "trap/authentication/vrf/disable"))
 	}
 	for i := range data.Views {
 		keys := [...]string{"view-name"}
@@ -6100,10 +6101,10 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Views[i].MibViewFamilies[ci].Excluded.IsNull() && !data.Views[i].MibViewFamilies[ci].Excluded.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v/.", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", data.getPath(), keyString, ckeyString), "."))
 			}
 			if !data.Views[i].MibViewFamilies[ci].Included.IsNull() && !data.Views[i].MibViewFamilies[ci].Included.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v/.", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", data.getPath(), keyString, ckeyString), "."))
 			}
 		}
 	}
@@ -6122,7 +6123,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsEncryptedAes[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsEncryptedAes[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].InformsEncryptedDefault {
@@ -6133,7 +6134,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].InformsUnencryptedStrings {
@@ -6144,7 +6145,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsEncryptedAes {
@@ -6155,7 +6156,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsEncryptedDefault {
@@ -6166,7 +6167,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsUnencryptedStrings {
@@ -6177,273 +6178,273 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v/version/v2c", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", data.getPath(), keyString, ckeyString), "version/v2c"))
 			}
 		}
 	}
 	if !data.TrapsSystem.IsNull() && !data.TrapsSystem.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-system-cfg:system", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-system-cfg:system"))
 	}
 	if !data.TrapsSyslog.IsNull() && !data.TrapsSyslog.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog"))
 	}
 	if !data.TrapsPower.IsNull() && !data.TrapsPower.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-power-cfg:power", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-power-cfg:power"))
 	}
 	if !data.TrapsPimRpMappingChange.IsNull() && !data.TrapsPimRpMappingChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change"))
 	}
 	if !data.TrapsPimInvalidMessageReceived.IsNull() && !data.TrapsPimInvalidMessageReceived.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received"))
 	}
 	if !data.TrapsPimInterfaceStateChange.IsNull() && !data.TrapsPimInterfaceStateChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change"))
 	}
 	if !data.TrapsPimNeighborChange.IsNull() && !data.TrapsPimNeighborChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change"))
 	}
 	if !data.TrapsMplsLdpThreshold.IsNull() && !data.TrapsMplsLdpThreshold.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold"))
 	}
 	if !data.TrapsMplsLdpUp.IsNull() && !data.TrapsMplsLdpUp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up"))
 	}
 	if !data.TrapsMplsLdpDown.IsNull() && !data.TrapsMplsLdpDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down"))
 	}
 	if !data.TrapsIpsla.IsNull() && !data.TrapsIpsla.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla"))
 	}
 	if !data.TrapsFruCtrl.IsNull() && !data.TrapsFruCtrl.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl"))
 	}
 	if !data.TrapsFlashRemoval.IsNull() && !data.TrapsFlashRemoval.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal"))
 	}
 	if !data.TrapsFlashInsertion.IsNull() && !data.TrapsFlashInsertion.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion"))
 	}
 	if !data.TrapsEntityStateOperstatus.IsNull() && !data.TrapsEntityStateOperstatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus"))
 	}
 	if !data.TrapsEntityStateSwitchover.IsNull() && !data.TrapsEntityStateSwitchover.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover"))
 	}
 	if !data.TrapsEntityRedundancyStatus.IsNull() && !data.TrapsEntityRedundancyStatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status"))
 	}
 	if !data.TrapsEntityRedundancySwitchover.IsNull() && !data.TrapsEntityRedundancySwitchover.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover"))
 	}
 	if !data.TrapsEntityRedundancyAll.IsNull() && !data.TrapsEntityRedundancyAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all"))
 	}
 	if !data.TrapsCiscoEntityExt.IsNull() && !data.TrapsCiscoEntityExt.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext"))
 	}
 	if !data.TrapsEntity.IsNull() && !data.TrapsEntity.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:entity", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:entity"))
 	}
 	if !data.TrapsCopyComplete.IsNull() && !data.TrapsCopyComplete.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete"))
 	}
 	if !data.TrapsBridgemib.IsNull() && !data.TrapsBridgemib.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib"))
 	}
 	if !data.TrapsAlarm.IsNull() && !data.TrapsAlarm.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm"))
 	}
 	if !data.TrapsVrrpEvents.IsNull() && !data.TrapsVrrpEvents.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events"))
 	}
 	if !data.TrapsIsisLspErrorDetected.IsNull() && !data.TrapsIsisLspErrorDetected.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected"))
 	}
 	if !data.TrapsIsisAdjacencyChange.IsNull() && !data.TrapsIsisAdjacencyChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change"))
 	}
 	if !data.TrapsIsisProtocolsSupportedMismatch.IsNull() && !data.TrapsIsisProtocolsSupportedMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch"))
 	}
 	if !data.TrapsIsisOrigLspBuffSizeMismatch.IsNull() && !data.TrapsIsisOrigLspBuffSizeMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch"))
 	}
 	if !data.TrapsIsisLspTooLargeToPropagate.IsNull() && !data.TrapsIsisLspTooLargeToPropagate.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate"))
 	}
 	if !data.TrapsIsisRejectedAdjacency.IsNull() && !data.TrapsIsisRejectedAdjacency.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency"))
 	}
 	if !data.TrapsIsisAreaMismatch.IsNull() && !data.TrapsIsisAreaMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch"))
 	}
 	if !data.TrapsIsisVersionSkew.IsNull() && !data.TrapsIsisVersionSkew.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew"))
 	}
 	if !data.TrapsIsisAuthenticationFailure.IsNull() && !data.TrapsIsisAuthenticationFailure.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure"))
 	}
 	if !data.TrapsIsisAuthenticationTypeFailure.IsNull() && !data.TrapsIsisAuthenticationTypeFailure.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure"))
 	}
 	if !data.TrapsIsisSequenceNumberSkip.IsNull() && !data.TrapsIsisSequenceNumberSkip.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip"))
 	}
 	if !data.TrapsIsisOwnLspPurge.IsNull() && !data.TrapsIsisOwnLspPurge.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge"))
 	}
 	if !data.TrapsIsisMaxAreaAddressesMismatch.IsNull() && !data.TrapsIsisMaxAreaAddressesMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch"))
 	}
 	if !data.TrapsIsisIdLenMismatch.IsNull() && !data.TrapsIsisIdLenMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch"))
 	}
 	if !data.TrapsIsisAttemptToExceedMaxSequence.IsNull() && !data.TrapsIsisAttemptToExceedMaxSequence.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence"))
 	}
 	if !data.TrapsIsisCorruptedLspDetected.IsNull() && !data.TrapsIsisCorruptedLspDetected.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected"))
 	}
 	if !data.TrapsIsisManualAddressDrops.IsNull() && !data.TrapsIsisManualAddressDrops.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops"))
 	}
 	if !data.TrapsIsisDatabaseOverload.IsNull() && !data.TrapsIsisDatabaseOverload.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload"))
 	}
 	if !data.TrapsIsisAll.IsNull() && !data.TrapsIsisAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all"))
 	}
 	if !data.TrapsHsrp.IsNull() && !data.TrapsHsrp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp"))
 	}
 	if !data.TrapsBgpEnableUpdown.IsNull() && !data.TrapsBgpEnableUpdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown"))
 	}
 	if !data.TrapsBgpEnableCiscoBgp4Mib.IsNull() && !data.TrapsBgpEnableCiscoBgp4Mib.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib"))
 	}
 	if !data.TrapsBgpCbgpTwoUpdown.IsNull() && !data.TrapsBgpCbgpTwoUpdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown"))
 	}
 	if !data.TrapsBgpCbgpTwoEnable.IsNull() && !data.TrapsBgpCbgpTwoEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable"))
 	}
 	if !data.TrapsNtp.IsNull() && !data.TrapsNtp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ntp-cfg:ntp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ntp-cfg:ntp"))
 	}
 	if !data.TrapsMplsTrafficEngUp.IsNull() && !data.TrapsMplsTrafficEngUp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up"))
 	}
 	if !data.TrapsMplsTrafficEngReroute.IsNull() && !data.TrapsMplsTrafficEngReroute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute"))
 	}
 	if !data.TrapsMplsTrafficEngReoptimize.IsNull() && !data.TrapsMplsTrafficEngReoptimize.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize"))
 	}
 	if !data.TrapsMplsTrafficEngP2mpUp.IsNull() && !data.TrapsMplsTrafficEngP2mpUp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up"))
 	}
 	if !data.TrapsMplsTrafficEngP2mpDown.IsNull() && !data.TrapsMplsTrafficEngP2mpDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down"))
 	}
 	if !data.TrapsMplsTrafficEngDown.IsNull() && !data.TrapsMplsTrafficEngDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtReroutePendingClear.IsNull() && !data.TrapsMplsTrafficEngCiscoExtReroutePendingClear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtReroutePending.IsNull() && !data.TrapsMplsTrafficEngCiscoExtReroutePending.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtPreempt.IsNull() && !data.TrapsMplsTrafficEngCiscoExtPreempt.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtInsuffBw.IsNull() && !data.TrapsMplsTrafficEngCiscoExtInsuffBw.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtBringupFail.IsNull() && !data.TrapsMplsTrafficEngCiscoExtBringupFail.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail"))
 	}
 	if !data.TrapsMplsTrafficEngCisco.IsNull() && !data.TrapsMplsTrafficEngCisco.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco"))
 	}
 	if !data.TrapsMplsL3vpnMaxThresholdCleared.IsNull() && !data.TrapsMplsL3vpnMaxThresholdCleared.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared"))
 	}
 	if !data.TrapsMplsL3vpnMaxThresholdExceeded.IsNull() && !data.TrapsMplsL3vpnMaxThresholdExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded"))
 	}
 	if !data.TrapsMplsL3vpnMidThresholdExceeded.IsNull() && !data.TrapsMplsL3vpnMidThresholdExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded"))
 	}
 	if !data.TrapsMplsL3vpnVrfDown.IsNull() && !data.TrapsMplsL3vpnVrfDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down"))
 	}
 	if !data.TrapsMplsL3vpnVrfUp.IsNull() && !data.TrapsMplsL3vpnVrfUp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up"))
 	}
 	if !data.TrapsMplsL3vpnAll.IsNull() && !data.TrapsMplsL3vpnAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all"))
 	}
 	if !data.TrapsSensor.IsNull() && !data.TrapsSensor.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor"))
 	}
 	if !data.TrapsRf.IsNull() && !data.TrapsRf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf"))
 	}
 	if !data.TrapsEthernetOamEvents.IsNull() && !data.TrapsEthernetOamEvents.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events"))
 	}
 	if !data.TrapsCfm.IsNull() && !data.TrapsCfm.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm"))
 	}
 	if !data.TrapsConfig.IsNull() && !data.TrapsConfig.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config"))
 	}
 	if !data.TrapsBfd.IsNull() && !data.TrapsBfd.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd"))
 	}
 	if !data.TrapsVplsFullClear.IsNull() && !data.TrapsVplsFullClear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear"))
 	}
 	if !data.TrapsVplsFullRaise.IsNull() && !data.TrapsVplsFullRaise.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise"))
 	}
 	if !data.TrapsVplsStatus.IsNull() && !data.TrapsVplsStatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status"))
 	}
 	if !data.TrapsVplsAll.IsNull() && !data.TrapsVplsAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all"))
 	}
 	if !data.TrapsL2vpnCisco.IsNull() && !data.TrapsL2vpnCisco.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco"))
 	}
 	if !data.TrapsL2vpnVcDown.IsNull() && !data.TrapsL2vpnVcDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down"))
 	}
 	if !data.TrapsL2vpnVcUp.IsNull() && !data.TrapsL2vpnVcUp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up"))
 	}
 	if !data.TrapsL2vpnAll.IsNull() && !data.TrapsL2vpnAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all"))
 	}
 	if !data.TrapsSnmpAll.IsNull() && !data.TrapsSnmpAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/all"))
 	}
 	if !data.TrapsSnmpLinkdown.IsNull() && !data.TrapsSnmpLinkdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/linkdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/linkdown"))
 	}
 	if !data.TrapsSnmpLinkup.IsNull() && !data.TrapsSnmpLinkup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/linkup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/linkup"))
 	}
 	if !data.TrapsSnmpWarmstart.IsNull() && !data.TrapsSnmpWarmstart.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/warmstart", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/warmstart"))
 	}
 	if !data.TrapsSnmpColdstart.IsNull() && !data.TrapsSnmpColdstart.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/coldstart", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/coldstart"))
 	}
 	if !data.TrapsSnmpAuthentication.IsNull() && !data.TrapsSnmpAuthentication.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traps/snmp/authentication", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traps/snmp/authentication"))
 	}
 	for i := range data.Communities {
 		keys := [...]string{"community-string"}
@@ -6453,16 +6454,16 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Communities[i].Systemowner.IsNull() && !data.Communities[i].Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/systemowner", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "systemowner"))
 		}
 		if !data.Communities[i].Sdrowner.IsNull() && !data.Communities[i].Sdrowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/sdrowner", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "sdrowner"))
 		}
 		if !data.Communities[i].Rw.IsNull() && !data.Communities[i].Rw.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/rw", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "rw"))
 		}
 		if !data.Communities[i].Ro.IsNull() && !data.Communities[i].Ro.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v/ro", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "ro"))
 		}
 	}
 	return emptyLeafsDelete
@@ -6474,37 +6475,37 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.InformPending.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/inform/pending", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "inform/pending"))
 	}
 	if !data.InformTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/inform/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "inform/timeout"))
 	}
 	if !data.InformRetries.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/inform/retries", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "inform/retries"))
 	}
 	if !data.LoggingThresholdPduProcessing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/threshold/pdu-processing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/threshold/pdu-processing"))
 	}
 	if !data.LoggingThresholdOidProcessing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/threshold/oid-processing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/threshold/oid-processing"))
 	}
 	if !data.TimeoutsPduStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeouts/pdu/stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeouts/pdu/stats"))
 	}
 	if !data.TimeoutsThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeouts/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeouts/threshold"))
 	}
 	if !data.TimeoutsInQdrop.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeouts/in-qdrop", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeouts/in-qdrop"))
 	}
 	if !data.TimeoutsDuplicate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeouts/duplicate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeouts/duplicate"))
 	}
 	if !data.TimeoutsSubagent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeouts/subagent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeouts/subagent"))
 	}
 	if !data.OidPollStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oid-poll-stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oid-poll-stats"))
 	}
 	for i := range data.Users {
 		keys := [...]string{"user-name"}
@@ -6543,7 +6544,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/engine-id/remotes/remote%v", data.getPath(), keyString))
 	}
 	if !data.EngineIdLocal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/engine-id/local", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "engine-id/local"))
 	}
 	for i := range data.Groups {
 		keys := [...]string{"group-name"}
@@ -6564,40 +6565,40 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
 	}
 	if !data.DropReportAclIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/drop/report/acl/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "drop/report/acl/ipv6"))
 	}
 	if !data.DropReportAclIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/drop/report/acl/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "drop/report/acl/ipv4"))
 	}
 	if !data.DropUnknownUser.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/drop/unknown-user", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "drop/unknown-user"))
 	}
 	if !data.Ipv6Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/dscp"))
 	}
 	if !data.Ipv4Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/dscp"))
 	}
 	if !data.TrapDelayTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap/delay-timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap/delay-timer"))
 	}
 	if !data.TrapAuthenticationVrfDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap/authentication/vrf/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap/authentication/vrf/disable"))
 	}
 	if !data.TrapThrottleTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap/throttle-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap/throttle-time"))
 	}
 	if !data.TrapSourcePort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap-source/port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap-source/port"))
 	}
 	if !data.TrapSourceIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap-source/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap-source/ipv6"))
 	}
 	if !data.TrapSourceIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap-source/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap-source/ipv4"))
 	}
 	if !data.TrapSource.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap-source/both", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap-source/both"))
 	}
 	for i := range data.Views {
 		keys := [...]string{"view-name"}
@@ -6636,271 +6637,271 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString))
 	}
 	if !data.TrapsSystem.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-system-cfg:system", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-system-cfg:system"))
 	}
 	if !data.TrapsSyslog.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-syslog-cfg:syslog"))
 	}
 	if !data.TrapsPower.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-power-cfg:power", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-power-cfg:power"))
 	}
 	if !data.TrapsPimRpMappingChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/rp-mapping-change"))
 	}
 	if !data.TrapsPimInvalidMessageReceived.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/invalid-message-received"))
 	}
 	if !data.TrapsPimInterfaceStateChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/interface-state-change"))
 	}
 	if !data.TrapsPimNeighborChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-pim-cfg:pim/neighbor-change"))
 	}
 	if !data.TrapsMplsLdpThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/threshold"))
 	}
 	if !data.TrapsMplsLdpUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/up"))
 	}
 	if !data.TrapsMplsLdpDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-mpls-ldp-cfg:mpls/ldp/down"))
 	}
 	if !data.TrapsIpsla.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-ipsla-cfg:ipsla"))
 	}
 	if !data.TrapsFruCtrl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-fru-ctrl-cfg:fru-ctrl"))
 	}
 	if !data.TrapsFlashRemoval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/removal"))
 	}
 	if !data.TrapsFlashInsertion.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-flash-cfg:flash/insertion"))
 	}
 	if !data.TrapsEntityStateOperstatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/operstatus"))
 	}
 	if !data.TrapsEntityStateSwitchover.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-state-cfg:entity-state/switchover"))
 	}
 	if !data.TrapsEntityRedundancyStatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/status"))
 	}
 	if !data.TrapsEntityRedundancySwitchover.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/switchover"))
 	}
 	if !data.TrapsEntityRedundancyAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-redundancy-cfg:entity-redundancy/all"))
 	}
 	if !data.TrapsCiscoEntityExt.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:cisco-entity-ext"))
 	}
 	if !data.TrapsEntity.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-entity-cfg:entity", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-entity-cfg:entity"))
 	}
 	if !data.TrapsCopyComplete.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-config-copy-cfg:copy-complete"))
 	}
 	if !data.TrapsBridgemib.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-bridgemib-cfg:bridgemib"))
 	}
 	if !data.TrapsAlarm.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-alarm-cfg:alarm"))
 	}
 	if !data.TrapsVrrpEvents.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-vrrp-cfg:vrrp/events"))
 	}
 	if !data.TrapsIsisLspErrorDetected.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-error-detected"))
 	}
 	if !data.TrapsIsisAdjacencyChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/adjacency-change"))
 	}
 	if !data.TrapsIsisProtocolsSupportedMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/protocols-supported-mismatch"))
 	}
 	if !data.TrapsIsisOrigLspBuffSizeMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/orig-lsp-buff-size-mismatch"))
 	}
 	if !data.TrapsIsisLspTooLargeToPropagate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/lsp-too-large-to-propagate"))
 	}
 	if !data.TrapsIsisRejectedAdjacency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/rejected-adjacency"))
 	}
 	if !data.TrapsIsisAreaMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/area-mismatch"))
 	}
 	if !data.TrapsIsisVersionSkew.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/version-skew"))
 	}
 	if !data.TrapsIsisAuthenticationFailure.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-failure"))
 	}
 	if !data.TrapsIsisAuthenticationTypeFailure.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/authentication-type-failure"))
 	}
 	if !data.TrapsIsisSequenceNumberSkip.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/sequence-number-skip"))
 	}
 	if !data.TrapsIsisOwnLspPurge.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/own-lsp-purge"))
 	}
 	if !data.TrapsIsisMaxAreaAddressesMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/max-area-addresses-mismatch"))
 	}
 	if !data.TrapsIsisIdLenMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/id-len-mismatch"))
 	}
 	if !data.TrapsIsisAttemptToExceedMaxSequence.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/attempt-to-exceed-max-sequence"))
 	}
 	if !data.TrapsIsisCorruptedLspDetected.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/corrupted-lsp-detected"))
 	}
 	if !data.TrapsIsisManualAddressDrops.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/manual-address-drops"))
 	}
 	if !data.TrapsIsisDatabaseOverload.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/database-overload"))
 	}
 	if !data.TrapsIsisAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-isis-cfg:isis/all"))
 	}
 	if !data.TrapsHsrp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-hsrp-cfg:hsrp"))
 	}
 	if !data.TrapsBgpEnableUpdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/updown"))
 	}
 	if !data.TrapsBgpEnableCiscoBgp4Mib.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/enable/cisco-bgp4-mib"))
 	}
 	if !data.TrapsBgpCbgpTwoUpdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/updown"))
 	}
 	if !data.TrapsBgpCbgpTwoEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-router-bgp-cfg:bgp/cbgp-two/enable"))
 	}
 	if !data.TrapsNtp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ntp-cfg:ntp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ntp-cfg:ntp"))
 	}
 	if !data.TrapsMplsTrafficEngUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/up"))
 	}
 	if !data.TrapsMplsTrafficEngReroute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reroute"))
 	}
 	if !data.TrapsMplsTrafficEngReoptimize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/reoptimize"))
 	}
 	if !data.TrapsMplsTrafficEngP2mpUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/up"))
 	}
 	if !data.TrapsMplsTrafficEngP2mpDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/p2mp/down"))
 	}
 	if !data.TrapsMplsTrafficEngDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/down"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtReroutePendingClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending-clear"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtReroutePending.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/reroute-pending"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtPreempt.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/preempt"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtInsuffBw.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/insuff-bw"))
 	}
 	if !data.TrapsMplsTrafficEngCiscoExtBringupFail.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco-ext/bringup-fail"))
 	}
 	if !data.TrapsMplsTrafficEngCisco.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-te-cfg:mpls/traffic-eng/cisco"))
 	}
 	if !data.TrapsMplsL3vpnMaxThresholdReissueNotifTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-reissue-notif-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-reissue-notif-time"))
 	}
 	if !data.TrapsMplsL3vpnMaxThresholdCleared.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-cleared"))
 	}
 	if !data.TrapsMplsL3vpnMaxThresholdExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/max-threshold-exceeded"))
 	}
 	if !data.TrapsMplsL3vpnMidThresholdExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/mid-threshold-exceeded"))
 	}
 	if !data.TrapsMplsL3vpnVrfDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-down"))
 	}
 	if !data.TrapsMplsL3vpnVrfUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/vrf-up"))
 	}
 	if !data.TrapsMplsL3vpnAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls/l3vpn/all"))
 	}
 	if !data.TrapsSensor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensor"))
 	}
 	if !data.TrapsRf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-mibs-rfmib-cfg:rf"))
 	}
 	if !data.TrapsEthernetOamEvents.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ethernet-oam-cfg:ethernet/oam/events"))
 	}
 	if !data.TrapsCfm.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-ethernet-cfm-cfg:cfm"))
 	}
 	if !data.TrapsConfig.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-cfg-mibs-cfg:config"))
 	}
 	if !data.TrapsBfd.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-bfd-sbfd-cfg:bfd"))
 	}
 	if !data.TrapsVplsFullClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-clear"))
 	}
 	if !data.TrapsVplsFullRaise.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/full-raise"))
 	}
 	if !data.TrapsVplsStatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/status"))
 	}
 	if !data.TrapsVplsAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:vpls/all"))
 	}
 	if !data.TrapsL2vpnCisco.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/cisco"))
 	}
 	if !data.TrapsL2vpnVcDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-down"))
 	}
 	if !data.TrapsL2vpnVcUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/vc-up"))
 	}
 	if !data.TrapsL2vpnAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-l2vpn-cfg:l2vpn/all"))
 	}
 	if !data.TrapsSnmpAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/all"))
 	}
 	if !data.TrapsSnmpLinkdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/linkdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/linkdown"))
 	}
 	if !data.TrapsSnmpLinkup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/linkup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/linkup"))
 	}
 	if !data.TrapsSnmpWarmstart.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/warmstart", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/warmstart"))
 	}
 	if !data.TrapsSnmpColdstart.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/coldstart", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/coldstart"))
 	}
 	if !data.TrapsSnmpAuthentication.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traps/snmp/authentication", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/snmp/authentication"))
 	}
 	for i := range data.Communities {
 		keys := [...]string{"community-string"}
@@ -6921,31 +6922,31 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString))
 	}
 	if !data.OverloadThrottleRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/overload-throttle-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "overload-throttle-rate"))
 	}
 	if !data.OverloadControl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/overload-control", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "overload-control"))
 	}
 	if !data.ThrottleTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle-time"))
 	}
 	if !data.QueueLength.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/queue-length", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "queue-length"))
 	}
 	if !data.TrapTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trap-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap-timeout"))
 	}
 	if !data.Packetsize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/packetsize", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "packetsize"))
 	}
 	if !data.ChassisId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/chassis-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "chassis-id"))
 	}
 	if !data.Contact.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/contact", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "contact"))
 	}
 	if !data.Location.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/location", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "location"))
 	}
 	return deletePaths
 }

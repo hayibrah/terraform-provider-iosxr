@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -649,73 +650,73 @@ func (data *EVPNInterfaceData) fromBody(ctx context.Context, res []byte, version
 func (data *EVPNInterface) getDeletedItems(ctx context.Context, state EVPNInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AccessSignalBundleDown.IsNull() && data.AccessSignalBundleDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/access-signal/bundle-down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "access-signal/bundle-down"))
 	}
 	if !state.EthernetSegmentConvergenceNexthopTracking.IsNull() && data.EthernetSegmentConvergenceNexthopTracking.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/convergence/nexthop-tracking", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/convergence/nexthop-tracking"))
 	}
 	if !state.EthernetSegmentConvergenceMacMobility.IsNull() && data.EthernetSegmentConvergenceMacMobility.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/convergence/mac-mobility", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/convergence/mac-mobility"))
 	}
 	if !state.EthernetSegmentConvergenceReroute.IsNull() && data.EthernetSegmentConvergenceReroute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/convergence/reroute", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/convergence/reroute"))
 	}
 	if !state.EthernetSegmentBgpRt.IsNull() && data.EthernetSegmentBgpRt.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/bgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/bgp"))
 	}
 	if !state.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && data.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/preference-based", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/preference-based"))
 	}
 	if !state.EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() && data.EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/preference-based", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/preference-based"))
 	}
 	if !state.EthernetSegmentServiceCarvingMulticastHrwG.IsNull() && data.EthernetSegmentServiceCarvingMulticastHrwG.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !state.EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() && data.EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !state.EthernetSegmentServiceCarvingHrw.IsNull() && data.EthernetSegmentServiceCarvingHrw.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/hrw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/hrw"))
 	}
 	if !state.EthernetSegmentServiceCarvingManualSecondary.IsNull() && data.EthernetSegmentServiceCarvingManualSecondary.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/manual/secondary", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/manual/secondary"))
 	}
 	if !state.EthernetSegmentServiceCarvingManualPrimary.IsNull() && data.EthernetSegmentServiceCarvingManualPrimary.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/service-carving/manual/primary", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/service-carving/manual/primary"))
 	}
 	if !state.EthernetSegmentForceSingleHomed.IsNull() && data.EthernetSegmentForceSingleHomed.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/force/single-homed", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/force/single-homed"))
 	}
 	if !state.EthernetSegmentLoadBalancingModeSingleFlowActive.IsNull() && data.EthernetSegmentLoadBalancingModeSingleFlowActive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-flow-active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/load-balancing-mode/single-flow-active"))
 	}
 	if !state.EthernetSegmentLoadBalancingModeSingleActive.IsNull() && data.EthernetSegmentLoadBalancingModeSingleActive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/load-balancing-mode/single-active"))
 	}
 	if !state.EthernetSegmentLoadBalancingModePortActive.IsNull() && data.EthernetSegmentLoadBalancingModePortActive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/port-active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/load-balancing-mode/port-active"))
 	}
 	if !state.EthernetSegmentLoadBalancingModeAllActive.IsNull() && data.EthernetSegmentLoadBalancingModeAllActive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/all-active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/load-balancing-mode/all-active"))
 	}
 	if !state.EthernetSegmentEsiZero.IsNull() && data.EthernetSegmentEsiZero.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ethernet-segment/identifier/type/zero", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ethernet-segment/identifier/type/zero"))
 	}
 	if !state.TimersAcDebounce.IsNull() && data.TimersAcDebounce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/ac-debounce", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/ac-debounce"))
 	}
 	if !state.TimersCarving.IsNull() && data.TimersCarving.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/carving", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/carving"))
 	}
 	if !state.TimersRecovery.IsNull() && data.TimersRecovery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/recovery", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/recovery"))
 	}
 	if !state.TimersPeering.IsNull() && data.TimersPeering.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/peering", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/peering"))
 	}
 	if !state.CoreIsolationGroup.IsNull() && data.CoreIsolationGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/core-isolation-group", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "core-isolation-group"))
 	}
 	return deletedItems
 }
@@ -727,43 +728,43 @@ func (data *EVPNInterface) getDeletedItems(ctx context.Context, state EVPNInterf
 func (data *EVPNInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.AccessSignalBundleDown.IsNull() && !data.AccessSignalBundleDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/access-signal/bundle-down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "access-signal/bundle-down"))
 	}
 	if !data.EthernetSegmentConvergenceNexthopTracking.IsNull() && !data.EthernetSegmentConvergenceNexthopTracking.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/convergence/nexthop-tracking", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/convergence/nexthop-tracking"))
 	}
 	if !data.EthernetSegmentConvergenceMacMobility.IsNull() && !data.EthernetSegmentConvergenceMacMobility.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/convergence/mac-mobility", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/convergence/mac-mobility"))
 	}
 	if !data.EthernetSegmentConvergenceReroute.IsNull() && !data.EthernetSegmentConvergenceReroute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/convergence/reroute", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/convergence/reroute"))
 	}
 	if !data.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && !data.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/service-carving/preference-based", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/service-carving/preference-based"))
 	}
 	if !data.EthernetSegmentServiceCarvingMulticastHrwG.IsNull() && !data.EthernetSegmentServiceCarvingMulticastHrwG.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !data.EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() && !data.EthernetSegmentServiceCarvingMulticastHrwSG.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !data.EthernetSegmentServiceCarvingHrw.IsNull() && !data.EthernetSegmentServiceCarvingHrw.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/service-carving/hrw", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/service-carving/hrw"))
 	}
 	if !data.EthernetSegmentForceSingleHomed.IsNull() && !data.EthernetSegmentForceSingleHomed.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/force/single-homed", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/force/single-homed"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeSingleFlowActive.IsNull() && !data.EthernetSegmentLoadBalancingModeSingleFlowActive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-flow-active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/single-flow-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeSingleActive.IsNull() && !data.EthernetSegmentLoadBalancingModeSingleActive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/single-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModePortActive.IsNull() && !data.EthernetSegmentLoadBalancingModePortActive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/port-active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/port-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeAllActive.IsNull() && !data.EthernetSegmentLoadBalancingModeAllActive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/all-active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/all-active"))
 	}
 	return emptyLeafsDelete
 }
@@ -774,73 +775,73 @@ func (data *EVPNInterface) getEmptyLeafsDelete(ctx context.Context, version stri
 func (data *EVPNInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AccessSignalBundleDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-signal/bundle-down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-signal/bundle-down"))
 	}
 	if !data.EthernetSegmentConvergenceNexthopTracking.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/convergence/nexthop-tracking", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/convergence/nexthop-tracking"))
 	}
 	if !data.EthernetSegmentConvergenceMacMobility.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/convergence/mac-mobility", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/convergence/mac-mobility"))
 	}
 	if !data.EthernetSegmentConvergenceReroute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/convergence/reroute", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/convergence/reroute"))
 	}
 	if !data.EthernetSegmentBgpRt.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/bgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/bgp"))
 	}
 	if !data.EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/preference-based", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/preference-based"))
 	}
 	if !data.EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/preference-based", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/preference-based"))
 	}
 	if !data.EthernetSegmentServiceCarvingMulticastHrwG.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !data.EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/multicast"))
 	}
 	if !data.EthernetSegmentServiceCarvingHrw.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/hrw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/hrw"))
 	}
 	if !data.EthernetSegmentServiceCarvingManualSecondary.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/manual/secondary", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/manual/secondary"))
 	}
 	if !data.EthernetSegmentServiceCarvingManualPrimary.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/service-carving/manual/primary", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/service-carving/manual/primary"))
 	}
 	if !data.EthernetSegmentForceSingleHomed.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/force/single-homed", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/force/single-homed"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeSingleFlowActive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-flow-active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/single-flow-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeSingleActive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/single-active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/single-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModePortActive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/port-active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/port-active"))
 	}
 	if !data.EthernetSegmentLoadBalancingModeAllActive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/load-balancing-mode/all-active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/load-balancing-mode/all-active"))
 	}
 	if !data.EthernetSegmentEsiZero.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ethernet-segment/identifier/type/zero", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/identifier/type/zero"))
 	}
 	if !data.TimersAcDebounce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/ac-debounce", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/ac-debounce"))
 	}
 	if !data.TimersCarving.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/carving", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/carving"))
 	}
 	if !data.TimersRecovery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/recovery", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/recovery"))
 	}
 	if !data.TimersPeering.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/peering", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/peering"))
 	}
 	if !data.CoreIsolationGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/core-isolation-group", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "core-isolation-group"))
 	}
 	return deletePaths
 }

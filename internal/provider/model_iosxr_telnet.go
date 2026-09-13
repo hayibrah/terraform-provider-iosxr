@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -405,7 +406,7 @@ func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet, version s
 			}
 			if found {
 				if !state.VrfsDscp[i].Ipv4Dscp.IsNull() && data.VrfsDscp[j].Ipv4Dscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf-dscp%v/ipv4/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf-dscp%v", state.getPath(), keyString), "ipv4/dscp"))
 				}
 				break
 			}
@@ -438,16 +439,16 @@ func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet, version s
 			}
 			if found {
 				if !state.Vrfs[i].Ipv6ServerAccessList.IsNull() && data.Vrfs[j].Ipv6ServerAccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/access-list"))
 				}
 				if !state.Vrfs[i].Ipv6ServerMaxServers.IsNull() && data.Vrfs[j].Ipv6ServerMaxServers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/max-servers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/max-servers"))
 				}
 				if !state.Vrfs[i].Ipv4ServerAccessList.IsNull() && data.Vrfs[j].Ipv4ServerAccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/access-list"))
 				}
 				if !state.Vrfs[i].Ipv4ServerMaxServers.IsNull() && data.Vrfs[j].Ipv4ServerMaxServers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/max-servers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/max-servers"))
 				}
 				break
 			}
@@ -457,10 +458,10 @@ func (data *Telnet) getDeletedItems(ctx context.Context, state Telnet, version s
 		}
 	}
 	if !state.Ipv6ClientSourceInterface.IsNull() && data.Ipv6ClientSourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/client/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/client/source-interface"))
 	}
 	if !state.Ipv4ClientSourceInterface.IsNull() && data.Ipv4ClientSourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/client/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/client/source-interface"))
 	}
 	return deletedItems
 }
@@ -532,10 +533,10 @@ func (data *Telnet) getDeletePaths(ctx context.Context, version string) []string
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.Ipv6ClientSourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/client/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/client/source-interface"))
 	}
 	if !data.Ipv4ClientSourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/client/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/client/source-interface"))
 	}
 	return deletePaths
 }

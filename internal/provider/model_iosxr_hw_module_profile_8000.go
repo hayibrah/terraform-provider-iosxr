@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2831,28 +2832,28 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWModuleProfile8000, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ProfileIrbThroughputOptimized.IsNull() && data.ProfileIrbThroughputOptimized.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/irb/throughput-optimized", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/irb/throughput-optimized"))
 	}
 	if !state.ProfileFlowspecIpv6PacketLenEnable.IsNull() && data.ProfileFlowspecIpv6PacketLenEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/flowspec/ipv6-packet-len-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/flowspec/ipv6-packet-len-enable"))
 	}
 	if !state.ProfileRouteScaleIpv6UnicastConnectedPrefixHigh.IsNull() && data.ProfileRouteScaleIpv6UnicastConnectedPrefixHigh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/route/scale/ipv6-unicast/connected-prefix/high", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/route/scale/ipv6-unicast/connected-prefix/high"))
 	}
 	if !state.ProfileNpuCompatibility.IsNull() && data.ProfileNpuCompatibility.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/npu-compatibility", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/npu-compatibility"))
 	}
 	if !state.ProfileL2fibVxlanDcLeaf.IsNull() && data.ProfileL2fibVxlanDcLeaf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/l2fib/vxlan-dc-leaf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/l2fib/vxlan-dc-leaf"))
 	}
 	if !state.ProfileL2fibHigherScale.IsNull() && data.ProfileL2fibHigherScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/l2fib/L2-high-scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/l2fib/L2-high-scale"))
 	}
 	if !state.ProfileL2fibBridgeFlushConvergence.IsNull() && data.ProfileL2fibBridgeFlushConvergence.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/l2fib/bridge-flush-convergence", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/l2fib/bridge-flush-convergence"))
 	}
 	if !state.ProfileL2fibPwStats.IsNull() && data.ProfileL2fibPwStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/l2fib/pw-stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/l2fib/pw-stats"))
 	}
 	for i := range state.ProfileNpuBufferExtendedLocations {
 		keys := [...]string{"location-name"}
@@ -2878,10 +2879,10 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 			if found {
 				if !state.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.IsNull() && data.ProfileNpuBufferExtendedLocations[j].BandwidthCongestionProtectEnable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v/bandwidth-congestion-protect/enable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", state.getPath(), keyString), "bandwidth-congestion-protect/enable"))
 				}
 				if !state.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.IsNull() && data.ProfileNpuBufferExtendedLocations[j].BandwidthCongestionDetectionEnable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v/bandwidth-congestion-detection/enable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", state.getPath(), keyString), "bandwidth-congestion-detection/enable"))
 				}
 				break
 			}
@@ -2891,13 +2892,13 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 		}
 	}
 	if !state.ProfileGueUdpDestPortMpls.IsNull() && data.ProfileGueUdpDestPortMpls.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/gue/udp-dest-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/gue/udp-dest-port"))
 	}
 	if !state.ProfileGueUdpDestPortIpv6.IsNull() && data.ProfileGueUdpDestPortIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/gue/udp-dest-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/gue/udp-dest-port"))
 	}
 	if !state.ProfileGueUdpDestPortIpv4.IsNull() && data.ProfileGueUdpDestPortIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/gue/udp-dest-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/gue/udp-dest-port"))
 	}
 	for i := range state.ProfilePriorityFlowControlLocations {
 		keys := [...]string{"location-name"}
@@ -2923,13 +2924,13 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs/max-non-pfc-voqs/hbm-buffers-percentage", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/hbm-buffers-percentage"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs/max-non-pfc-voqs/number-of-evict-voqs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/number-of-evict-voqs"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs"))
 				}
 				for ci := range state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
 					ckeys := [...]string{"traffic-class-id"}
@@ -2955,19 +2956,19 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 						}
 						if found {
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].ProbabilityPercentage.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v/probability-percentage", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "probability-percentage"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].MaxThreshold.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v/max-threshold", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "max-threshold"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].Ecn.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v/ecn", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "ecn"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].Headroom.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v/headroom", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].PauseThreshold.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v/pause-threshold", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold"))
 							}
 							break
 						}
@@ -3000,34 +3001,34 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 						}
 						if found {
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].MbytesHeadroom.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/mbytes/headroom", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "mbytes/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Mbytes.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/mbytes", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "mbytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].KbytesHeadroom.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/kbytes/headroom", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "kbytes/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Kbytes.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/kbytes", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "kbytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].UsHeadroom.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/us/headroom", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "us/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Us.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/us", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "us"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].MsHeadroom.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/ms/headroom", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "ms/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Ms.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/ms", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "ms"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].PauseThresholdBytes.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/pause-threshold-bytes", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold-bytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].PauseThreshold.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/pause-threshold", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold"))
 							}
 							break
 						}
@@ -3044,22 +3045,22 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 		}
 	}
 	if !state.ProfileBwThreshold.IsNull() && data.ProfileBwThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/bw-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/bw-threshold"))
 	}
 	if !state.ProfileStatsAclPermit.IsNull() && data.ProfileStatsAclPermit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/stats/acl-permit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/stats/acl-permit"))
 	}
 	if !state.ProfileStatsNoBviIngress.IsNull() && data.ProfileStatsNoBviIngress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/stats/no-bvi-ingress", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/stats/no-bvi-ingress"))
 	}
 	if !state.ProfileStatsVoqsSharingCounters.IsNull() && data.ProfileStatsVoqsSharingCounters.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/stats/voqs-sharing-counters", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/stats/voqs-sharing-counters"))
 	}
 	if !state.ProfileEncapExactLocationsAllVirtual.IsNull() && data.ProfileEncapExactLocationsAllVirtual.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/encap-exact/locations", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/encap-exact/locations"))
 	}
 	if !state.ProfileEncapExactLocationsAll.IsNull() && data.ProfileEncapExactLocationsAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/encap-exact/locations", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/encap-exact/locations"))
 	}
 	for i := range state.ProfileEncapExactLocations {
 		keys := [...]string{"location-name"}
@@ -3122,214 +3123,214 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 		}
 	}
 	if !state.ProfileCefSourceRtbhEnable.IsNull() && data.ProfileCefSourceRtbhEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/source-rtbh/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/source-rtbh/enable"))
 	}
 	if !state.ProfileCefUnipathSurpfEnable.IsNull() && data.ProfileCefUnipathSurpfEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/unipath-surpf/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/unipath-surpf/enable"))
 	}
 	if !state.ProfileCefIpRedirect.IsNull() && data.ProfileCefIpRedirect.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/ip-redirect", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/ip-redirect"))
 	}
 	if !state.ProfileCefTeTunnelLabelOverTeCounters.IsNull() && data.ProfileCefTeTunnelLabelOverTeCounters.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/te-tunnel/label-over-te-counters", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/te-tunnel/label-over-te-counters"))
 	}
 	if !state.ProfileCefTeTunnelHighscaleLdpOverTeNoSrOverSrte.IsNull() && data.ProfileCefTeTunnelHighscaleLdpOverTeNoSrOverSrte.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte"))
 	}
 	if !state.ProfileCefTeTunnelHighscaleNoLdpOverTe.IsNull() && data.ProfileCefTeTunnelHighscaleNoLdpOverTe.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-no-ldp-over-te", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/te-tunnel/highscale-no-ldp-over-te"))
 	}
 	if !state.ProfileCefTtlTunnelIpDecrement.IsNull() && data.ProfileCefTtlTunnelIpDecrement.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/ttl/tunnel-ip/decrement", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/ttl/tunnel-ip/decrement"))
 	}
 	if !state.ProfileCefStatsLabelAppDefault.IsNull() && data.ProfileCefStatsLabelAppDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/stats/label/app-default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/stats/label/app-default"))
 	}
 	if !state.ProfileCefMplsoudpScale.IsNull() && data.ProfileCefMplsoudpScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/mplsoudp/scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/mplsoudp/scale"))
 	}
 	if !state.ProfileCefVxlanIpv6TnlScale.IsNull() && data.ProfileCefVxlanIpv6TnlScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/vxlan/ipv6-tnl-scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/vxlan/ipv6-tnl-scale"))
 	}
 	if !state.ProfileCefLptsPifibEntryCounters.IsNull() && data.ProfileCefLptsPifibEntryCounters.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/lpts/pifib-entry-counters", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/lpts/pifib-entry-counters"))
 	}
 	if !state.ProfileCefLptsAcl.IsNull() && data.ProfileCefLptsAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/lpts/acl", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/lpts/acl"))
 	}
 	if !state.ProfileCefIpv6HopLimit.IsNull() && data.ProfileCefIpv6HopLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/ipv6/hop-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/ipv6/hop-limit"))
 	}
 	if !state.ProfileCefCbfForwardClassList.IsNull() && data.ProfileCefCbfForwardClassList.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/forward-class-lists/forward-class-list", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/forward-class-lists/forward-class-list"))
 	}
 	if !state.ProfileCefCbf.IsNull() && data.ProfileCefCbf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/cbf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/cbf"))
 	}
 	if !state.ProfileCefBgpluOverRsvpte.IsNull() && data.ProfileCefBgpluOverRsvpte.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/bgplu-over-rsvpte", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/bgplu-over-rsvpte"))
 	}
 	if !state.ProfileCefBgplu.IsNull() && data.ProfileCefBgplu.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/bgplu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/bgplu"))
 	}
 	if !state.ProfileCefSropt.IsNull() && data.ProfileCefSropt.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/sropt", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/sropt"))
 	}
 	if !state.ProfileCefDarkBw.IsNull() && data.ProfileCefDarkBw.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/cef/dark-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/cef/dark-bw"))
 	}
 	if !state.ProfileQosHighWaterMarks.IsNull() && data.ProfileQosHighWaterMarks.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/high-water-marks", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/high-water-marks"))
 	}
 	if !state.ProfileQosQosStatsPushCollection.IsNull() && data.ProfileQosQosStatsPushCollection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/qos-stats-push-collection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/qos-stats-push-collection"))
 	}
 	if !state.ProfileQosIntraNpuOverFabric.IsNull() && data.ProfileQosIntraNpuOverFabric.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/intra-npu-over-fabric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/intra-npu-over-fabric"))
 	}
 	if !state.ProfileQosLowLatencyMode.IsNull() && data.ProfileQosLowLatencyMode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/low-latency-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/low-latency-mode"))
 	}
 	if !state.ProfileQosL2Mode.IsNull() && data.ProfileQosL2Mode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/l2-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/l2-mode"))
 	}
 	if !state.ProfileQosVoqModeFairEight.IsNull() && data.ProfileQosVoqModeFairEight.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/voq-mode/fair-eight", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/voq-mode/fair-eight"))
 	}
 	if !state.ProfileQosVoqModeFairFour.IsNull() && data.ProfileQosVoqModeFairFour.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/voq-mode/fair-four", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/voq-mode/fair-four"))
 	}
 	if !state.ProfileQosVoqModeEight.IsNull() && data.ProfileQosVoqModeEight.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/voq-mode/eight", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/voq-mode/eight"))
 	}
 	if !state.ProfileQosVoqModeFour.IsNull() && data.ProfileQosVoqModeFour.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/qos/voq-mode/four", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/qos/voq-mode/four"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf8.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf8.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf8", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf8"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf7.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf7.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf7", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf7"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf6.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf5.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf5.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf5", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf5"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf4.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf3.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf3", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf3"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf2.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf2"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6Udf1.IsNull() && data.ProfileTcamFormatAccessListIpv6Udf1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6/udf1"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6PacketLen.IsNull() && data.ProfileTcamFormatAccessListIpv6PacketLen.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6DstObjectGroup.IsNull() && data.ProfileTcamFormatAccessListIpv6DstObjectGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6SrcObjectGroup.IsNull() && data.ProfileTcamFormatAccessListIpv6SrcObjectGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6TcpFlags.IsNull() && data.ProfileTcamFormatAccessListIpv6TcpFlags.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6FragBit.IsNull() && data.ProfileTcamFormatAccessListIpv6FragBit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6TrafficClass.IsNull() && data.ProfileTcamFormatAccessListIpv6TrafficClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6NextHdr.IsNull() && data.ProfileTcamFormatAccessListIpv6NextHdr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6DstPort.IsNull() && data.ProfileTcamFormatAccessListIpv6DstPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6DstAddr.IsNull() && data.ProfileTcamFormatAccessListIpv6DstAddr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv6SrcAddr.IsNull() && data.ProfileTcamFormatAccessListIpv6SrcAddr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf8.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf8.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf8", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf8"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf7.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf7.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf7", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf7"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf6.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf6"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf5.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf5.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf5", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf5"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf4.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf3.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf3", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf3"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf2.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf2"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Udf1.IsNull() && data.ProfileTcamFormatAccessListIpv4Udf1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4/udf1"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4FragmentOffset.IsNull() && data.ProfileTcamFormatAccessListIpv4FragmentOffset.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4PacketLen.IsNull() && data.ProfileTcamFormatAccessListIpv4PacketLen.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4DstObjectGroup.IsNull() && data.ProfileTcamFormatAccessListIpv4DstObjectGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4SrcObjectGroup.IsNull() && data.ProfileTcamFormatAccessListIpv4SrcObjectGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4FragBit.IsNull() && data.ProfileTcamFormatAccessListIpv4FragBit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4TcpFlags.IsNull() && data.ProfileTcamFormatAccessListIpv4TcpFlags.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4TtlMatch.IsNull() && data.ProfileTcamFormatAccessListIpv4TtlMatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Precedence.IsNull() && data.ProfileTcamFormatAccessListIpv4Precedence.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4Proto.IsNull() && data.ProfileTcamFormatAccessListIpv4Proto.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4DstPort.IsNull() && data.ProfileTcamFormatAccessListIpv4DstPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4SrcPort.IsNull() && data.ProfileTcamFormatAccessListIpv4SrcPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4DstAddr.IsNull() && data.ProfileTcamFormatAccessListIpv4DstAddr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFormatAccessListIpv4SrcAddr.IsNull() && data.ProfileTcamFormatAccessListIpv4SrcAddr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !state.ProfileTcamFibIpv6UnicastPercent.IsNull() && data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/fib/ipv6/unicast/percent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/fib/ipv6/unicast/percent"))
 	}
 	if !state.ProfileTcamFibIpv4UnicastPercent.IsNull() && data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/tcam/fib/ipv4/unicast/percent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profile/tcam/fib/ipv4/unicast/percent"))
 	}
 	if !state.MulticastRouteScale.IsNull() && data.MulticastRouteScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/route-scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/route-scale"))
 	}
 	return deletedItems
 }
@@ -3341,25 +3342,25 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ProfileIrbThroughputOptimized.IsNull() && !data.ProfileIrbThroughputOptimized.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/irb/throughput-optimized", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/irb/throughput-optimized"))
 	}
 	if !data.ProfileFlowspecIpv6PacketLenEnable.IsNull() && !data.ProfileFlowspecIpv6PacketLenEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/flowspec/ipv6-packet-len-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/flowspec/ipv6-packet-len-enable"))
 	}
 	if !data.ProfileRouteScaleIpv6UnicastConnectedPrefixHigh.IsNull() && !data.ProfileRouteScaleIpv6UnicastConnectedPrefixHigh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/route/scale/ipv6-unicast/connected-prefix/high", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/route/scale/ipv6-unicast/connected-prefix/high"))
 	}
 	if !data.ProfileL2fibVxlanDcLeaf.IsNull() && !data.ProfileL2fibVxlanDcLeaf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/l2fib/vxlan-dc-leaf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/l2fib/vxlan-dc-leaf"))
 	}
 	if !data.ProfileL2fibHigherScale.IsNull() && !data.ProfileL2fibHigherScale.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/l2fib/L2-high-scale", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/l2fib/L2-high-scale"))
 	}
 	if !data.ProfileL2fibBridgeFlushConvergence.IsNull() && !data.ProfileL2fibBridgeFlushConvergence.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/l2fib/bridge-flush-convergence", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/l2fib/bridge-flush-convergence"))
 	}
 	if !data.ProfileL2fibPwStats.IsNull() && !data.ProfileL2fibPwStats.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/l2fib/pw-stats", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/l2fib/pw-stats"))
 	}
 	for i := range data.ProfileNpuBufferExtendedLocations {
 		keys := [...]string{"location-name"}
@@ -3369,10 +3370,10 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.IsNull() && !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v/bandwidth-congestion-protect/enable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString), "bandwidth-congestion-protect/enable"))
 		}
 		if !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.IsNull() && !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v/bandwidth-congestion-detection/enable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString), "bandwidth-congestion-detection/enable"))
 		}
 	}
 	for i := range data.ProfilePriorityFlowControlLocations {
@@ -3383,7 +3384,7 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/non-pfc-tcs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", data.getPath(), keyString), "buffer-extended/non-pfc-tcs"))
 		}
 		for ci := range data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
 			ckeys := [...]string{"traffic-class-id"}
@@ -3401,30 +3402,30 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/mbytes", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "mbytes"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/kbytes", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "kbytes"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/us", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "us"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v/ms", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "ms"))
 			}
 		}
 	}
 	if !data.ProfileStatsAclPermit.IsNull() && !data.ProfileStatsAclPermit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/stats/acl-permit", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/stats/acl-permit"))
 	}
 	if !data.ProfileStatsNoBviIngress.IsNull() && !data.ProfileStatsNoBviIngress.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/stats/no-bvi-ingress", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/stats/no-bvi-ingress"))
 	}
 	if !data.ProfileEncapExactLocationsAllVirtual.IsNull() && !data.ProfileEncapExactLocationsAllVirtual.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/encap-exact/locations", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/encap-exact/locations"))
 	}
 	if !data.ProfileEncapExactLocationsAll.IsNull() && !data.ProfileEncapExactLocationsAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/encap-exact/locations", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/encap-exact/locations"))
 	}
 	for i := range data.ProfileEncapExactLocations {
 		keys := [...]string{"location-name"}
@@ -3443,118 +3444,118 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 		}
 	}
 	if !data.ProfileCefSourceRtbhEnable.IsNull() && !data.ProfileCefSourceRtbhEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/source-rtbh/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/source-rtbh/enable"))
 	}
 	if !data.ProfileCefUnipathSurpfEnable.IsNull() && !data.ProfileCefUnipathSurpfEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/unipath-surpf/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/unipath-surpf/enable"))
 	}
 	if !data.ProfileCefTeTunnelLabelOverTeCounters.IsNull() && !data.ProfileCefTeTunnelLabelOverTeCounters.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/te-tunnel/label-over-te-counters", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/te-tunnel/label-over-te-counters"))
 	}
 	if !data.ProfileCefTeTunnelHighscaleLdpOverTeNoSrOverSrte.IsNull() && !data.ProfileCefTeTunnelHighscaleLdpOverTeNoSrOverSrte.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte"))
 	}
 	if !data.ProfileCefTeTunnelHighscaleNoLdpOverTe.IsNull() && !data.ProfileCefTeTunnelHighscaleNoLdpOverTe.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-no-ldp-over-te", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/te-tunnel/highscale-no-ldp-over-te"))
 	}
 	if !data.ProfileCefMplsoudpScale.IsNull() && !data.ProfileCefMplsoudpScale.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/mplsoudp/scale", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/mplsoudp/scale"))
 	}
 	if !data.ProfileCefVxlanIpv6TnlScale.IsNull() && !data.ProfileCefVxlanIpv6TnlScale.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/vxlan/ipv6-tnl-scale", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/vxlan/ipv6-tnl-scale"))
 	}
 	if !data.ProfileCefLptsAcl.IsNull() && !data.ProfileCefLptsAcl.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/cef/lpts/acl", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/cef/lpts/acl"))
 	}
 	if !data.ProfileQosHighWaterMarks.IsNull() && !data.ProfileQosHighWaterMarks.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/high-water-marks", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/high-water-marks"))
 	}
 	if !data.ProfileQosQosStatsPushCollection.IsNull() && !data.ProfileQosQosStatsPushCollection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/qos-stats-push-collection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/qos-stats-push-collection"))
 	}
 	if !data.ProfileQosVoqModeFairEight.IsNull() && !data.ProfileQosVoqModeFairEight.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/voq-mode/fair-eight", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/voq-mode/fair-eight"))
 	}
 	if !data.ProfileQosVoqModeFairFour.IsNull() && !data.ProfileQosVoqModeFairFour.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/voq-mode/fair-four", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/voq-mode/fair-four"))
 	}
 	if !data.ProfileQosVoqModeEight.IsNull() && !data.ProfileQosVoqModeEight.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/voq-mode/eight", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/voq-mode/eight"))
 	}
 	if !data.ProfileQosVoqModeFour.IsNull() && !data.ProfileQosVoqModeFour.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/qos/voq-mode/four", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/qos/voq-mode/four"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6PacketLen.IsNull() && !data.ProfileTcamFormatAccessListIpv6PacketLen.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstObjectGroup.IsNull() && !data.ProfileTcamFormatAccessListIpv6DstObjectGroup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6SrcObjectGroup.IsNull() && !data.ProfileTcamFormatAccessListIpv6SrcObjectGroup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6TcpFlags.IsNull() && !data.ProfileTcamFormatAccessListIpv6TcpFlags.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6FragBit.IsNull() && !data.ProfileTcamFormatAccessListIpv6FragBit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6TrafficClass.IsNull() && !data.ProfileTcamFormatAccessListIpv6TrafficClass.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6NextHdr.IsNull() && !data.ProfileTcamFormatAccessListIpv6NextHdr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstPort.IsNull() && !data.ProfileTcamFormatAccessListIpv6DstPort.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstAddr.IsNull() && !data.ProfileTcamFormatAccessListIpv6DstAddr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6SrcAddr.IsNull() && !data.ProfileTcamFormatAccessListIpv6SrcAddr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4FragmentOffset.IsNull() && !data.ProfileTcamFormatAccessListIpv4FragmentOffset.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4PacketLen.IsNull() && !data.ProfileTcamFormatAccessListIpv4PacketLen.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstObjectGroup.IsNull() && !data.ProfileTcamFormatAccessListIpv4DstObjectGroup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcObjectGroup.IsNull() && !data.ProfileTcamFormatAccessListIpv4SrcObjectGroup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4FragBit.IsNull() && !data.ProfileTcamFormatAccessListIpv4FragBit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4TcpFlags.IsNull() && !data.ProfileTcamFormatAccessListIpv4TcpFlags.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4TtlMatch.IsNull() && !data.ProfileTcamFormatAccessListIpv4TtlMatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Precedence.IsNull() && !data.ProfileTcamFormatAccessListIpv4Precedence.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Proto.IsNull() && !data.ProfileTcamFormatAccessListIpv4Proto.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstPort.IsNull() && !data.ProfileTcamFormatAccessListIpv4DstPort.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcPort.IsNull() && !data.ProfileTcamFormatAccessListIpv4SrcPort.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstAddr.IsNull() && !data.ProfileTcamFormatAccessListIpv4DstAddr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcAddr.IsNull() && !data.ProfileTcamFormatAccessListIpv4SrcAddr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.MulticastRouteScale.IsNull() && !data.MulticastRouteScale.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/route-scale", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/route-scale"))
 	}
 	return emptyLeafsDelete
 }
@@ -3565,28 +3566,28 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ProfileIrbThroughputOptimized.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/irb/throughput-optimized", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/irb/throughput-optimized"))
 	}
 	if !data.ProfileFlowspecIpv6PacketLenEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/flowspec/ipv6-packet-len-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/flowspec/ipv6-packet-len-enable"))
 	}
 	if !data.ProfileRouteScaleIpv6UnicastConnectedPrefixHigh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/route/scale/ipv6-unicast/connected-prefix/high", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/route/scale/ipv6-unicast/connected-prefix/high"))
 	}
 	if !data.ProfileNpuCompatibility.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/npu-compatibility", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/npu-compatibility"))
 	}
 	if !data.ProfileL2fibVxlanDcLeaf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/l2fib/vxlan-dc-leaf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/l2fib/vxlan-dc-leaf"))
 	}
 	if !data.ProfileL2fibHigherScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/l2fib/L2-high-scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/l2fib/L2-high-scale"))
 	}
 	if !data.ProfileL2fibBridgeFlushConvergence.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/l2fib/bridge-flush-convergence", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/l2fib/bridge-flush-convergence"))
 	}
 	if !data.ProfileL2fibPwStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/l2fib/pw-stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/l2fib/pw-stats"))
 	}
 	for i := range data.ProfileNpuBufferExtendedLocations {
 		keys := [...]string{"location-name"}
@@ -3607,13 +3608,13 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileGueUdpDestPortMpls.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/gue/udp-dest-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/gue/udp-dest-port"))
 	}
 	if !data.ProfileGueUdpDestPortIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/gue/udp-dest-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/gue/udp-dest-port"))
 	}
 	if !data.ProfileGueUdpDestPortIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/gue/udp-dest-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/gue/udp-dest-port"))
 	}
 	for i := range data.ProfilePriorityFlowControlLocations {
 		keys := [...]string{"location-name"}
@@ -3634,22 +3635,22 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", data.getPath(), keyString))
 	}
 	if !data.ProfileBwThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/bw-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/bw-threshold"))
 	}
 	if !data.ProfileStatsAclPermit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/stats/acl-permit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/stats/acl-permit"))
 	}
 	if !data.ProfileStatsNoBviIngress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/stats/no-bvi-ingress", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/stats/no-bvi-ingress"))
 	}
 	if !data.ProfileStatsVoqsSharingCounters.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/stats/voqs-sharing-counters", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/stats/voqs-sharing-counters"))
 	}
 	if !data.ProfileEncapExactLocationsAllVirtual.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/locations", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/encap-exact/locations"))
 	}
 	if !data.ProfileEncapExactLocationsAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/locations", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/encap-exact/locations"))
 	}
 	for i := range data.ProfileEncapExactLocations {
 		keys := [...]string{"location-name"}
@@ -3688,214 +3689,214 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.ProfileCefSourceRtbhEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/source-rtbh/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/source-rtbh/enable"))
 	}
 	if !data.ProfileCefUnipathSurpfEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/unipath-surpf/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/unipath-surpf/enable"))
 	}
 	if !data.ProfileCefIpRedirect.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/ip-redirect", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/ip-redirect"))
 	}
 	if !data.ProfileCefTeTunnelLabelOverTeCounters.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/te-tunnel/label-over-te-counters", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/te-tunnel/label-over-te-counters"))
 	}
 	if !data.ProfileCefTeTunnelHighscaleLdpOverTeNoSrOverSrte.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/te-tunnel/highscale-ldp-over-te-no-sr-over-srte"))
 	}
 	if !data.ProfileCefTeTunnelHighscaleNoLdpOverTe.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/te-tunnel/highscale-no-ldp-over-te", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/te-tunnel/highscale-no-ldp-over-te"))
 	}
 	if !data.ProfileCefTtlTunnelIpDecrement.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/ttl/tunnel-ip/decrement", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/ttl/tunnel-ip/decrement"))
 	}
 	if !data.ProfileCefStatsLabelAppDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/stats/label/app-default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/stats/label/app-default"))
 	}
 	if !data.ProfileCefMplsoudpScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/mplsoudp/scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/mplsoudp/scale"))
 	}
 	if !data.ProfileCefVxlanIpv6TnlScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/vxlan/ipv6-tnl-scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/vxlan/ipv6-tnl-scale"))
 	}
 	if !data.ProfileCefLptsPifibEntryCounters.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/lpts/pifib-entry-counters", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/lpts/pifib-entry-counters"))
 	}
 	if !data.ProfileCefLptsAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/lpts/acl", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/lpts/acl"))
 	}
 	if !data.ProfileCefIpv6HopLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/ipv6/hop-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/ipv6/hop-limit"))
 	}
 	if !data.ProfileCefCbfForwardClassList.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/forward-class-lists/forward-class-list", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/forward-class-lists/forward-class-list"))
 	}
 	if !data.ProfileCefCbf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/cbf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/cbf"))
 	}
 	if !data.ProfileCefBgpluOverRsvpte.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/bgplu-over-rsvpte", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/bgplu-over-rsvpte"))
 	}
 	if !data.ProfileCefBgplu.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/bgplu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/bgplu"))
 	}
 	if !data.ProfileCefSropt.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/sropt", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/sropt"))
 	}
 	if !data.ProfileCefDarkBw.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/cef/dark-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/dark-bw"))
 	}
 	if !data.ProfileQosHighWaterMarks.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/high-water-marks", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/high-water-marks"))
 	}
 	if !data.ProfileQosQosStatsPushCollection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/qos-stats-push-collection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/qos-stats-push-collection"))
 	}
 	if !data.ProfileQosIntraNpuOverFabric.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/intra-npu-over-fabric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/intra-npu-over-fabric"))
 	}
 	if !data.ProfileQosLowLatencyMode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/low-latency-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/low-latency-mode"))
 	}
 	if !data.ProfileQosL2Mode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/l2-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/l2-mode"))
 	}
 	if !data.ProfileQosVoqModeFairEight.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/voq-mode/fair-eight", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/voq-mode/fair-eight"))
 	}
 	if !data.ProfileQosVoqModeFairFour.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/voq-mode/fair-four", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/voq-mode/fair-four"))
 	}
 	if !data.ProfileQosVoqModeEight.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/voq-mode/eight", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/voq-mode/eight"))
 	}
 	if !data.ProfileQosVoqModeFour.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/qos/voq-mode/four", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/qos/voq-mode/four"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf8.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf8", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf8"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf7.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf7", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf7"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf5.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf5", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf5"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf3", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf3"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf2"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6Udf1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6/udf1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6/udf1"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6PacketLen.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstObjectGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6SrcObjectGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6TcpFlags.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6FragBit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6TrafficClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6NextHdr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6DstAddr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv6SrcAddr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf8.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf8", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf8"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf7.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf7", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf7"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf6"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf5.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf5", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf5"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf3", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf3"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf2"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Udf1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4/udf1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4/udf1"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4FragmentOffset.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4PacketLen.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstObjectGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcObjectGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4FragBit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4TcpFlags.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4TtlMatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Precedence.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4Proto.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4DstAddr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFormatAccessListIpv4SrcAddr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/format/access-list/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/format/access-list/ipv4"))
 	}
 	if !data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/fib/ipv6/unicast/percent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/fib/ipv6/unicast/percent"))
 	}
 	if !data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/tcam/fib/ipv4/unicast/percent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/tcam/fib/ipv4/unicast/percent"))
 	}
 	if !data.MulticastRouteScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/route-scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/route-scale"))
 	}
 	return deletePaths
 }

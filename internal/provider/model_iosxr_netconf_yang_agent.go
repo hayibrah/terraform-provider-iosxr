@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -304,28 +304,28 @@ func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte, vers
 func (data *NetconfYangAgent) getDeletedItems(ctx context.Context, state NetconfYangAgent, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.NetconfV1StreamingDisabled.IsNull() && data.NetconfV1StreamingDisabled.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/netconf1.0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "netconf1.0"))
 	}
 	if !state.NetconfV1.IsNull() && data.NetconfV1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/netconf1.0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "netconf1.0"))
 	}
 	if !state.SessionAbsoluteTimeout.IsNull() && data.SessionAbsoluteTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/absolute-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/absolute-timeout"))
 	}
 	if !state.SessionIdleTimeout.IsNull() && data.SessionIdleTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/idle-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/idle-timeout"))
 	}
 	if !state.SessionLimit.IsNull() && data.SessionLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/limit"))
 	}
 	if !state.RateLimit.IsNull() && data.RateLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rate-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rate-limit"))
 	}
 	if !state.WithDefaultsSupport.IsNull() && data.WithDefaultsSupport.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/with-defaults-support/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "with-defaults-support/enable"))
 	}
 	if !state.Ssh.IsNull() && data.Ssh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssh"))
 	}
 	return deletedItems
 }
@@ -337,13 +337,13 @@ func (data *NetconfYangAgent) getDeletedItems(ctx context.Context, state Netconf
 func (data *NetconfYangAgent) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.NetconfV1StreamingDisabled.IsNull() && !data.NetconfV1StreamingDisabled.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/netconf1.0", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "netconf1.0"))
 	}
 	if !data.WithDefaultsSupport.IsNull() && !data.WithDefaultsSupport.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/with-defaults-support/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "with-defaults-support/enable"))
 	}
 	if !data.Ssh.IsNull() && !data.Ssh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ssh"))
 	}
 	return emptyLeafsDelete
 }
@@ -354,28 +354,28 @@ func (data *NetconfYangAgent) getEmptyLeafsDelete(ctx context.Context, version s
 func (data *NetconfYangAgent) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.NetconfV1StreamingDisabled.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/netconf1.0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "netconf1.0"))
 	}
 	if !data.NetconfV1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/netconf1.0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "netconf1.0"))
 	}
 	if !data.SessionAbsoluteTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/absolute-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/absolute-timeout"))
 	}
 	if !data.SessionIdleTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/idle-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/idle-timeout"))
 	}
 	if !data.SessionLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/limit"))
 	}
 	if !data.RateLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rate-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rate-limit"))
 	}
 	if !data.WithDefaultsSupport.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/with-defaults-support/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "with-defaults-support/enable"))
 	}
 	if !data.Ssh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssh"))
 	}
 	return deletePaths
 }

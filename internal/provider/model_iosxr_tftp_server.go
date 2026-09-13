@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -354,28 +355,28 @@ func (data *TFTPServer) getDeletedItems(ctx context.Context, state TFTPServer, v
 			}
 			if found {
 				if !state.Vrfs[i].Ipv6ServerDscp.IsNull() && data.Vrfs[j].Ipv6ServerDscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/dscp"))
 				}
 				if !state.Vrfs[i].Ipv6ServerHomedir.IsNull() && data.Vrfs[j].Ipv6ServerHomedir.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/homedir", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/homedir"))
 				}
 				if !state.Vrfs[i].Ipv6ServerMaxServers.IsNull() && data.Vrfs[j].Ipv6ServerMaxServers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/max-servers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/max-servers"))
 				}
 				if !state.Vrfs[i].Ipv6ServerAccessList.IsNull() && data.Vrfs[j].Ipv6ServerAccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/server/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/server/access-list"))
 				}
 				if !state.Vrfs[i].Ipv4ServerDscp.IsNull() && data.Vrfs[j].Ipv4ServerDscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/dscp"))
 				}
 				if !state.Vrfs[i].Ipv4ServerHomedir.IsNull() && data.Vrfs[j].Ipv4ServerHomedir.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/homedir", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/homedir"))
 				}
 				if !state.Vrfs[i].Ipv4ServerMaxServers.IsNull() && data.Vrfs[j].Ipv4ServerMaxServers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/max-servers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/max-servers"))
 				}
 				if !state.Vrfs[i].Ipv4ServerAccessList.IsNull() && data.Vrfs[j].Ipv4ServerAccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/server/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/server/access-list"))
 				}
 				break
 			}

@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -386,34 +386,34 @@ func (data *MPLSOAMData) fromBody(ctx context.Context, res []byte, version strin
 func (data *MPLSOAM) getDeletedItems(ctx context.Context, state MPLSOAM, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.OamDpmDownstreamEcmpFaults.IsNull() && data.OamDpmDownstreamEcmpFaults.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/dpm/downstream-ecmp-faults"))
 	}
 	if !state.OamDpmInterval.IsNull() && data.OamDpmInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/dpm/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/dpm/interval"))
 	}
 	if !state.OamDpmPps.IsNull() && data.OamDpmPps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/dpm/pps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/dpm/pps"))
 	}
 	if !state.OamEchoRevisionFour.IsNull() && data.OamEchoRevisionFour.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/revision/four", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/revision/four"))
 	}
 	if !state.OamEchoRevisionThree.IsNull() && data.OamEchoRevisionThree.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/revision/three", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/revision/three"))
 	}
 	if !state.OamEchoRevisionTwo.IsNull() && data.OamEchoRevisionTwo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/revision/two", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/revision/two"))
 	}
 	if !state.OamEchoRevisionOne.IsNull() && data.OamEchoRevisionOne.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/revision/one", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/revision/one"))
 	}
 	if !state.OamEchoReplyModeControlChannelAllowReverseLsp.IsNull() && data.OamEchoReplyModeControlChannelAllowReverseLsp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/reply-mode/control-channel/allow-reverse-lsp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/reply-mode/control-channel/allow-reverse-lsp"))
 	}
 	if !state.OamEchoDisableVendorExtension.IsNull() && data.OamEchoDisableVendorExtension.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam/echo/disable-vendor-extension", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam/echo/disable-vendor-extension"))
 	}
 	if !state.Oam.IsNull() && data.Oam.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/oam", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "oam"))
 	}
 	return deletedItems
 }
@@ -425,28 +425,28 @@ func (data *MPLSOAM) getDeletedItems(ctx context.Context, state MPLSOAM, version
 func (data *MPLSOAM) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.OamDpmDownstreamEcmpFaults.IsNull() && !data.OamDpmDownstreamEcmpFaults.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/dpm/downstream-ecmp-faults"))
 	}
 	if !data.OamEchoRevisionFour.IsNull() && !data.OamEchoRevisionFour.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/revision/four", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/revision/four"))
 	}
 	if !data.OamEchoRevisionThree.IsNull() && !data.OamEchoRevisionThree.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/revision/three", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/revision/three"))
 	}
 	if !data.OamEchoRevisionTwo.IsNull() && !data.OamEchoRevisionTwo.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/revision/two", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/revision/two"))
 	}
 	if !data.OamEchoRevisionOne.IsNull() && !data.OamEchoRevisionOne.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/revision/one", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/revision/one"))
 	}
 	if !data.OamEchoReplyModeControlChannelAllowReverseLsp.IsNull() && !data.OamEchoReplyModeControlChannelAllowReverseLsp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/reply-mode/control-channel/allow-reverse-lsp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/reply-mode/control-channel/allow-reverse-lsp"))
 	}
 	if !data.OamEchoDisableVendorExtension.IsNull() && !data.OamEchoDisableVendorExtension.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam/echo/disable-vendor-extension", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam/echo/disable-vendor-extension"))
 	}
 	if !data.Oam.IsNull() && !data.Oam.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/oam", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "oam"))
 	}
 	return emptyLeafsDelete
 }
@@ -457,34 +457,34 @@ func (data *MPLSOAM) getEmptyLeafsDelete(ctx context.Context, version string) []
 func (data *MPLSOAM) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.OamDpmDownstreamEcmpFaults.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/dpm/downstream-ecmp-faults", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/dpm/downstream-ecmp-faults"))
 	}
 	if !data.OamDpmInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/dpm/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/dpm/interval"))
 	}
 	if !data.OamDpmPps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/dpm/pps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/dpm/pps"))
 	}
 	if !data.OamEchoRevisionFour.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/revision/four", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/revision/four"))
 	}
 	if !data.OamEchoRevisionThree.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/revision/three", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/revision/three"))
 	}
 	if !data.OamEchoRevisionTwo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/revision/two", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/revision/two"))
 	}
 	if !data.OamEchoRevisionOne.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/revision/one", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/revision/one"))
 	}
 	if !data.OamEchoReplyModeControlChannelAllowReverseLsp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/reply-mode/control-channel/allow-reverse-lsp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/reply-mode/control-channel/allow-reverse-lsp"))
 	}
 	if !data.OamEchoDisableVendorExtension.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam/echo/disable-vendor-extension", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam/echo/disable-vendor-extension"))
 	}
 	if !data.Oam.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/oam", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "oam"))
 	}
 	return deletePaths
 }

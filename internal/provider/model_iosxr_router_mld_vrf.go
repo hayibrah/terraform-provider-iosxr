@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -549,19 +550,19 @@ func (data *RouterMLDVRFData) fromBody(ctx context.Context, res []byte, version 
 func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.MissedPacketsMemberReport.IsNull() && data.MissedPacketsMemberReport.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/member-report", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "missed-packets/member-report"))
 	}
 	if !state.MissedPacketsSsmQuery.IsNull() && data.MissedPacketsSsmQuery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/ssm-query", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "missed-packets/ssm-query"))
 	}
 	if !state.MissedPacketsGrpSpecQuery.IsNull() && data.MissedPacketsGrpSpecQuery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/grp-spec-query", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "missed-packets/grp-spec-query"))
 	}
 	if !state.MissedPacketsGenQuery.IsNull() && data.MissedPacketsGenQuery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/missed-packets/gen-query", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "missed-packets/gen-query"))
 	}
 	if !state.SsmMapQueryDns.IsNull() && data.SsmMapQueryDns.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssm/map/query/dns", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssm/map/query/dns"))
 	}
 	for i := range state.SsmMapStatics {
 		keys := [...]string{"address"}
@@ -587,7 +588,7 @@ func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVR
 			}
 			if found {
 				if !state.SsmMapStatics[i].AccessList.IsNull() && data.SsmMapStatics[j].AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ssm/map/statics/static%v/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssm/map/statics/static%v", state.getPath(), keyString), "access-list"))
 				}
 				break
 			}
@@ -597,43 +598,43 @@ func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVR
 		}
 	}
 	if !state.AccessGroup.IsNull() && data.AccessGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/access-group", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "access-group"))
 	}
 	if !state.ExplicitTrackingDisable.IsNull() && data.ExplicitTrackingDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/explicit-tracking/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "explicit-tracking/disable"))
 	}
 	if !state.ExplicitTrackingAcl.IsNull() && data.ExplicitTrackingAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/explicit-tracking/access-list", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "explicit-tracking/access-list"))
 	}
 	if !state.ExplicitTracking.IsNull() && data.ExplicitTracking.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/explicit-tracking", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "explicit-tracking"))
 	}
 	if !state.QueryMaxResponseTime.IsNull() && data.QueryMaxResponseTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/query-max-response-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "query-max-response-time"))
 	}
 	if !state.QueryTimeout.IsNull() && data.QueryTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/query-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "query-timeout"))
 	}
 	if !state.QueryInterval.IsNull() && data.QueryInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/query-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "query-interval"))
 	}
 	if !state.Version.IsNull() && data.Version.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version"))
 	}
 	if !state.MaximumGroupsPerInterfaceAcl.IsNull() && data.MaximumGroupsPerInterfaceAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/maximum/groups-per-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "maximum/groups-per-interface"))
 	}
 	if !state.MaximumGroupsPerInterfaceThreshold.IsNull() && data.MaximumGroupsPerInterfaceThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/maximum/groups-per-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "maximum/groups-per-interface"))
 	}
 	if !state.MaximumGroupsPerInterface.IsNull() && data.MaximumGroupsPerInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/maximum/groups-per-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "maximum/groups-per-interface"))
 	}
 	if !state.MaximumGroups.IsNull() && data.MaximumGroups.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/maximum/groups", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "maximum/groups"))
 	}
 	if !state.RobustnessVariable.IsNull() && data.RobustnessVariable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/robustness-variable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "robustness-variable"))
 	}
 	return deletedItems
 }
@@ -645,7 +646,7 @@ func (data *RouterMLDVRF) getDeletedItems(ctx context.Context, state RouterMLDVR
 func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SsmMapQueryDns.IsNull() && !data.SsmMapQueryDns.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ssm/map/query/dns"))
 	}
 	for i := range data.SsmMapStatics {
 		keys := [...]string{"address"}
@@ -656,10 +657,10 @@ func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context, version strin
 		}
 	}
 	if !data.ExplicitTrackingDisable.IsNull() && !data.ExplicitTrackingDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/explicit-tracking/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "explicit-tracking/disable"))
 	}
 	if !data.ExplicitTracking.IsNull() && !data.ExplicitTracking.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/explicit-tracking", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "explicit-tracking"))
 	}
 	return emptyLeafsDelete
 }
@@ -670,19 +671,19 @@ func (data *RouterMLDVRF) getEmptyLeafsDelete(ctx context.Context, version strin
 func (data *RouterMLDVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.MissedPacketsMemberReport.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/member-report", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "missed-packets/member-report"))
 	}
 	if !data.MissedPacketsSsmQuery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/ssm-query", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "missed-packets/ssm-query"))
 	}
 	if !data.MissedPacketsGrpSpecQuery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/grp-spec-query", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "missed-packets/grp-spec-query"))
 	}
 	if !data.MissedPacketsGenQuery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/missed-packets/gen-query", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "missed-packets/gen-query"))
 	}
 	if !data.SsmMapQueryDns.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/query/dns", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssm/map/query/dns"))
 	}
 	for i := range data.SsmMapStatics {
 		keys := [...]string{"address"}
@@ -703,43 +704,43 @@ func (data *RouterMLDVRF) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
 	}
 	if !data.AccessGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-group", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-group"))
 	}
 	if !data.ExplicitTrackingDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/explicit-tracking/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "explicit-tracking/disable"))
 	}
 	if !data.ExplicitTrackingAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/explicit-tracking/access-list", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "explicit-tracking/access-list"))
 	}
 	if !data.ExplicitTracking.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/explicit-tracking", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "explicit-tracking"))
 	}
 	if !data.QueryMaxResponseTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/query-max-response-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "query-max-response-time"))
 	}
 	if !data.QueryTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/query-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "query-timeout"))
 	}
 	if !data.QueryInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/query-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "query-interval"))
 	}
 	if !data.Version.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version"))
 	}
 	if !data.MaximumGroupsPerInterfaceAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/maximum/groups-per-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum/groups-per-interface"))
 	}
 	if !data.MaximumGroupsPerInterfaceThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/maximum/groups-per-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum/groups-per-interface"))
 	}
 	if !data.MaximumGroupsPerInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/maximum/groups-per-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum/groups-per-interface"))
 	}
 	if !data.MaximumGroups.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/maximum/groups", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum/groups"))
 	}
 	if !data.RobustnessVariable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/robustness-variable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "robustness-variable"))
 	}
 	return deletePaths
 }

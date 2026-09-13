@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2557,151 +2558,151 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state InterfaceTunnelTE, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Destination.IsNull() && data.Destination.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:destination", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:destination"))
 	}
 	if !state.BfdEncapGal.IsNull() && data.BfdEncapGal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal"))
 	}
 	if !state.BfdDampeningSecondaryWait.IsNull() && data.BfdDampeningSecondaryWait.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/secondary-wait", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/secondary-wait"))
 	}
 	if !state.BfdDampeningMaximumWait.IsNull() && data.BfdDampeningMaximumWait.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/maximum-wait", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/maximum-wait"))
 	}
 	if !state.BfdDampeningInitialWait.IsNull() && data.BfdDampeningInitialWait.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/initial-wait", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/initial-wait"))
 	}
 	if !state.BfdLspPingDisable.IsNull() && data.BfdLspPingDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable"))
 	}
 	if !state.BfdLspPingInterval.IsNull() && data.BfdLspPingInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/interval"))
 	}
 	if !state.BfdBringupTimeout.IsNull() && data.BfdBringupTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/bringup-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/bringup-timeout"))
 	}
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/multiplier"))
 	}
 	if !state.BfdMinimumInterval.IsNull() && data.BfdMinimumInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/minimum-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/minimum-interval"))
 	}
 	if !state.BfdSbfd.IsNull() && data.BfdSbfd.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd"))
 	}
 	if !state.BfdFastDetect.IsNull() && data.BfdFastDetect.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd"))
 	}
 	if !state.BidirectionalAssociationCoRoutedSignalingProtectionObjectDisable.IsNull() && data.BidirectionalAssociationCoRoutedSignalingProtectionObjectDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable"))
 	}
 	if !state.BidirectionalAssociationCoRoutedWrapProtection.IsNull() && data.BidirectionalAssociationCoRoutedWrapProtection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection"))
 	}
 	if !state.BidirectionalAssociationCoRoutedFaultOam.IsNull() && data.BidirectionalAssociationCoRoutedFaultOam.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam"))
 	}
 	if !state.BidirectionalAssociationCorouted.IsNull() && data.BidirectionalAssociationCorouted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed"))
 	}
 	if !state.BidirectionalAssociationGlobalId.IsNull() && data.BidirectionalAssociationGlobalId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !state.BidirectionalAssociationSourceAddress.IsNull() && data.BidirectionalAssociationSourceAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !state.BidirectionalAssociationId.IsNull() && data.BidirectionalAssociationId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !state.PathSelectionDelayLimit.IsNull() && data.PathSelectionDelayLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/delay-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/delay-limit"))
 	}
 	if !state.PathSelectionCostLimit.IsNull() && data.PathSelectionCostLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/cost-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/cost-limit"))
 	}
 	if !state.PathSelectionHopLimit.IsNull() && data.PathSelectionHopLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/hop-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/hop-limit"))
 	}
 	if !state.PathSelectionTiebreakerRandom.IsNull() && data.PathSelectionTiebreakerRandom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !state.PathSelectionTiebreakerMaxFill.IsNull() && data.PathSelectionTiebreakerMaxFill.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !state.PathSelectionTiebreakerMinFill.IsNull() && data.PathSelectionTiebreakerMinFill.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !state.PathSelectionMetricDelay.IsNull() && data.PathSelectionMetricDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !state.PathSelectionMetricTe.IsNull() && data.PathSelectionMetricTe.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !state.PathSelectionMetricIgp.IsNull() && data.PathSelectionMetricIgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !state.SoftPreemption.IsNull() && data.SoftPreemption.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption"))
 	}
 	if !state.PathProtectionNonRevertive.IsNull() && data.PathProtectionNonRevertive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive"))
 	}
 	if !state.PathProtectionSrlgDiverse.IsNull() && data.PathProtectionSrlgDiverse.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse"))
 	}
 	if !state.PathProtection.IsNull() && data.PathProtection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection"))
 	}
 	if !state.AutoBwResignalLastBandwidthTimeout.IsNull() && data.AutoBwResignalLastBandwidthTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/resignal/last-bandwidth/time-out", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/resignal/last-bandwidth/time-out"))
 	}
 	if !state.AutoBwUnderflowLimit.IsNull() && data.AutoBwUnderflowLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !state.AutoBwUnderflowMin.IsNull() && data.AutoBwUnderflowMin.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !state.AutoBwUnderflowThreshold.IsNull() && data.AutoBwUnderflowThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !state.AutoBwOverflowLimit.IsNull() && data.AutoBwOverflowLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !state.AutoBwOverflowMin.IsNull() && data.AutoBwOverflowMin.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !state.AutoBwOverflowThreshold.IsNull() && data.AutoBwOverflowThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !state.AutoBwAdjustmentThresholdMin.IsNull() && data.AutoBwAdjustmentThresholdMin.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold"))
 	}
 	if !state.AutoBwAdjustmentThresholdPercent.IsNull() && data.AutoBwAdjustmentThresholdPercent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold"))
 	}
 	if !state.AutoBwCollectOnly.IsNull() && data.AutoBwCollectOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only"))
 	}
 	if !state.AutoBwLimitMax.IsNull() && data.AutoBwLimitMax.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit"))
 	}
 	if !state.AutoBwLimitMin.IsNull() && data.AutoBwLimitMin.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit"))
 	}
 	if !state.PolicyClasses.IsNull() && data.PolicyClasses.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:policy-class/tunnel-policy-class-values/tunnel-policy-class-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:policy-class/tunnel-policy-class-values/tunnel-policy-class-value"))
 	}
 	if !state.BindingSidMplsLabel.IsNull() && data.BindingSidMplsLabel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:binding-sid/mpls", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid/mpls"))
 	}
 	if !state.RecordRoute.IsNull() && data.RecordRoute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:record-route", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:record-route"))
 	}
 	if !state.PriorityHold.IsNull() && data.PriorityHold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:priority"))
 	}
 	if !state.PrioritySetup.IsNull() && data.PrioritySetup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:priority"))
 	}
 	for i := range state.PathOptions {
 		keys := [...]string{"preference"}
@@ -2727,46 +2728,46 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PathOptions[i].LockdownSticky.IsNull() && data.PathOptions[j].LockdownSticky.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/lockdown/sticky", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "lockdown/sticky"))
 				}
 				if !state.PathOptions[i].Lockdown.IsNull() && data.PathOptions[j].Lockdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/lockdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "lockdown"))
 				}
 				if !state.PathOptions[i].ProtectedByIndexSecondary.IsNull() && data.PathOptions[j].ProtectedByIndexSecondary.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/protected-by/index-secondary", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "protected-by/index-secondary"))
 				}
 				if !state.PathOptions[i].ProtectedByIndex.IsNull() && data.PathOptions[j].ProtectedByIndex.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/protected-by", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "protected-by"))
 				}
 				if !state.PathOptions[i].AttributeSet.IsNull() && data.PathOptions[j].AttributeSet.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/attribute-set/attribute-set-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "attribute-set/attribute-set-name"))
 				}
 				if !state.PathOptions[i].IsisLevel.IsNull() && data.PathOptions[j].IsisLevel.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/isis/level", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "isis/level"))
 				}
 				if !state.PathOptions[i].IsisInstance.IsNull() && data.PathOptions[j].IsisInstance.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/isis", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "isis"))
 				}
 				if !state.PathOptions[i].OspfAreaIpFormat.IsNull() && data.PathOptions[j].OspfAreaIpFormat.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/ospf/area/ip-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf/area/ip-address"))
 				}
 				if !state.PathOptions[i].OspfAreaId.IsNull() && data.PathOptions[j].OspfAreaId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/ospf/area/decimal", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf/area/decimal"))
 				}
 				if !state.PathOptions[i].OspfInstance.IsNull() && data.PathOptions[j].OspfInstance.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/ospf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf"))
 				}
 				if !state.PathOptions[i].ExplicitPathVerbatim.IsNull() && data.PathOptions[j].ExplicitPathVerbatim.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/explicit/verbatim", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit/verbatim"))
 				}
 				if !state.PathOptions[i].ExplicitPathName.IsNull() && data.PathOptions[j].ExplicitPathName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/explicit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit"))
 				}
 				if !state.PathOptions[i].ExplicitPathId.IsNull() && data.PathOptions[j].ExplicitPathId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/explicit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit"))
 				}
 				if !state.PathOptions[i].Dynamic.IsNull() && data.PathOptions[j].Dynamic.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/dynamic", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "dynamic"))
 				}
 				break
 			}
@@ -2776,85 +2777,85 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 		}
 	}
 	if !state.SignalledName.IsNull() && data.SignalledName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-name"))
 	}
 	if !state.LoggingEventsAll.IsNull() && data.LoggingEventsAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all"))
 	}
 	if !state.LoggingEventsBfdStatus.IsNull() && data.LoggingEventsBfdStatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status"))
 	}
 	if !state.LoggingEventsPcalcFailure.IsNull() && data.LoggingEventsPcalcFailure.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure"))
 	}
 	if !state.LoggingEventsLspInsufficientBw.IsNull() && data.LoggingEventsLspInsufficientBw.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth"))
 	}
 	if !state.LoggingEventsLspSwitchover.IsNull() && data.LoggingEventsLspSwitchover.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover"))
 	}
 	if !state.LoggingEventsLspRecordRoute.IsNull() && data.LoggingEventsLspRecordRoute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route"))
 	}
 	if !state.LoggingEventsLspReroute.IsNull() && data.LoggingEventsLspReroute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute"))
 	}
 	if !state.LoggingEventsLspBwChange.IsNull() && data.LoggingEventsLspBwChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change"))
 	}
 	if !state.LoggingEventsLspReoptimizeAttempts.IsNull() && data.LoggingEventsLspReoptimizeAttempts.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts"))
 	}
 	if !state.LoggingEventsLspReoptimize.IsNull() && data.LoggingEventsLspReoptimize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize"))
 	}
 	if !state.LoggingEventsLspState.IsNull() && data.LoggingEventsLspState.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state"))
 	}
 	if !state.LoadShare.IsNull() && data.LoadShare.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:load-share", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:load-share"))
 	}
 	if !state.ForwardingAdjacencyIncludeIpv6.IsNull() && data.ForwardingAdjacencyIncludeIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6"))
 	}
 	if !state.ForwardingAdjacencyHoldtime.IsNull() && data.ForwardingAdjacencyHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/holdtime"))
 	}
 	if !state.ForwardingAdjacency.IsNull() && data.ForwardingAdjacency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency"))
 	}
 	if !state.ForwardClass.IsNull() && data.ForwardClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forward-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"))
 	}
 	if !state.FastRerouteProtectBandwidth.IsNull() && data.FastRerouteProtectBandwidth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth"))
 	}
 	if !state.FastRerouteProtectNode.IsNull() && data.FastRerouteProtectNode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node"))
 	}
 	if !state.FastReroute.IsNull() && data.FastReroute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute"))
 	}
 	if !state.SignalledBandwidthSubPool.IsNull() && data.SignalledBandwidthSubPool.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool"))
 	}
 	if !state.SignalledBandwidthClassType.IsNull() && data.SignalledBandwidthClassType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/class-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/class-type"))
 	}
 	if !state.SignalledBandwidth.IsNull() && data.SignalledBandwidth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth"))
 	}
 	if !state.BackupBwUnlimited.IsNull() && data.BackupBwUnlimited.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !state.BackupBwValue.IsNull() && data.BackupBwValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !state.BackupBwClassType.IsNull() && data.BackupBwClassType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !state.BackupBwPoolType.IsNull() && data.BackupBwPoolType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	for i := range state.AutorouteDestinations {
 		keys := [...]string{"address"}
@@ -2887,67 +2888,67 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 		}
 	}
 	if !state.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() && data.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing"))
 	}
 	if !state.AutorouteAnnounceIncludeIpv6.IsNull() && data.AutorouteAnnounceIncludeIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6"))
 	}
 	if !state.AutorouteAnnounceMetric.IsNull() && data.AutorouteAnnounceMetric.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !state.AutorouteAnnounceMetricRelative.IsNull() && data.AutorouteAnnounceMetricRelative.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !state.AutorouteAnnounceMetricAbsolute.IsNull() && data.AutorouteAnnounceMetricAbsolute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !state.AutorouteAnnounce.IsNull() && data.AutorouteAnnounce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce"))
 	}
 	if !state.AffinityMask.IsNull() && data.AffinityMask.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:affinity/mask", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:affinity/mask"))
 	}
 	if !state.AffinityValue.IsNull() && data.AffinityValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:affinity/affinity-attribute-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:affinity/affinity-attribute-value"))
 	}
 	if !state.MplsMtu.IsNull() && data.MplsMtu.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-mpls-cfg:mpls/mtu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-if-mpls-cfg:mpls/mtu"))
 	}
 	if !state.Ipv6TtlPropagateDisable.IsNull() && data.Ipv6TtlPropagateDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable"))
 	}
 	if !state.Ipv6Enable.IsNull() && data.Ipv6Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable"))
 	}
 	if !state.Ipv4TtlPropagateDisable.IsNull() && data.Ipv4TtlPropagateDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable"))
 	}
 	if !state.Ipv4ForwardingEnable.IsNull() && data.Ipv4ForwardingEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable"))
 	}
 	if !state.Ipv4Unnumbered.IsNull() && data.Ipv4Unnumbered.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/unnumbered", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/unnumbered"))
 	}
 	if !state.Ipv4Netmask.IsNull() && data.Ipv4Netmask.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))
 	}
 	if !state.Ipv4Address.IsNull() && data.Ipv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))
 	}
 	if !state.LoadInterval.IsNull() && data.LoadInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-statistics-cfg:load-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-statistics-cfg:load-interval"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	if !state.Bandwidth.IsNull() && data.Bandwidth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth"))
 	}
 	if !state.LoggingEventsLinkStatus.IsNull() && data.LoggingEventsLinkStatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/events/link-status", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/events/link-status"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	return deletedItems
 }
@@ -2959,64 +2960,64 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdEncapGal.IsNull() && !data.BfdEncapGal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal"))
 	}
 	if !data.BfdLspPingDisable.IsNull() && !data.BfdLspPingDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable"))
 	}
 	if !data.BfdSbfd.IsNull() && !data.BfdSbfd.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd"))
 	}
 	if !data.BfdFastDetect.IsNull() && !data.BfdFastDetect.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd"))
 	}
 	if !data.BidirectionalAssociationCoRoutedSignalingProtectionObjectDisable.IsNull() && !data.BidirectionalAssociationCoRoutedSignalingProtectionObjectDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable"))
 	}
 	if !data.BidirectionalAssociationCoRoutedWrapProtection.IsNull() && !data.BidirectionalAssociationCoRoutedWrapProtection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection"))
 	}
 	if !data.BidirectionalAssociationCoRoutedFaultOam.IsNull() && !data.BidirectionalAssociationCoRoutedFaultOam.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam"))
 	}
 	if !data.BidirectionalAssociationCorouted.IsNull() && !data.BidirectionalAssociationCorouted.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed"))
 	}
 	if !data.PathSelectionTiebreakerRandom.IsNull() && !data.PathSelectionTiebreakerRandom.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionTiebreakerMaxFill.IsNull() && !data.PathSelectionTiebreakerMaxFill.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionTiebreakerMinFill.IsNull() && !data.PathSelectionTiebreakerMinFill.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionMetricDelay.IsNull() && !data.PathSelectionMetricDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.PathSelectionMetricTe.IsNull() && !data.PathSelectionMetricTe.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.PathSelectionMetricIgp.IsNull() && !data.PathSelectionMetricIgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.SoftPreemption.IsNull() && !data.SoftPreemption.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption"))
 	}
 	if !data.PathProtectionNonRevertive.IsNull() && !data.PathProtectionNonRevertive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive"))
 	}
 	if !data.PathProtectionSrlgDiverse.IsNull() && !data.PathProtectionSrlgDiverse.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse"))
 	}
 	if !data.PathProtection.IsNull() && !data.PathProtection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection"))
 	}
 	if !data.AutoBwCollectOnly.IsNull() && !data.AutoBwCollectOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only"))
 	}
 	if !data.RecordRoute.IsNull() && !data.RecordRoute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:record-route", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:record-route"))
 	}
 	for i := range data.PathOptions {
 		keys := [...]string{"preference"}
@@ -3026,71 +3027,71 @@ func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PathOptions[i].LockdownSticky.IsNull() && !data.PathOptions[i].LockdownSticky.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/lockdown/sticky", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "lockdown/sticky"))
 		}
 		if !data.PathOptions[i].Lockdown.IsNull() && !data.PathOptions[i].Lockdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/lockdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "lockdown"))
 		}
 		if !data.PathOptions[i].ExplicitPathVerbatim.IsNull() && !data.PathOptions[i].ExplicitPathVerbatim.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/explicit/verbatim", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "explicit/verbatim"))
 		}
 		if !data.PathOptions[i].Dynamic.IsNull() && !data.PathOptions[i].Dynamic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v/dynamic", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "dynamic"))
 		}
 	}
 	if !data.LoggingEventsAll.IsNull() && !data.LoggingEventsAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all"))
 	}
 	if !data.LoggingEventsBfdStatus.IsNull() && !data.LoggingEventsBfdStatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status"))
 	}
 	if !data.LoggingEventsPcalcFailure.IsNull() && !data.LoggingEventsPcalcFailure.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure"))
 	}
 	if !data.LoggingEventsLspInsufficientBw.IsNull() && !data.LoggingEventsLspInsufficientBw.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth"))
 	}
 	if !data.LoggingEventsLspSwitchover.IsNull() && !data.LoggingEventsLspSwitchover.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover"))
 	}
 	if !data.LoggingEventsLspRecordRoute.IsNull() && !data.LoggingEventsLspRecordRoute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route"))
 	}
 	if !data.LoggingEventsLspReroute.IsNull() && !data.LoggingEventsLspReroute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute"))
 	}
 	if !data.LoggingEventsLspBwChange.IsNull() && !data.LoggingEventsLspBwChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change"))
 	}
 	if !data.LoggingEventsLspReoptimizeAttempts.IsNull() && !data.LoggingEventsLspReoptimizeAttempts.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts"))
 	}
 	if !data.LoggingEventsLspReoptimize.IsNull() && !data.LoggingEventsLspReoptimize.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize"))
 	}
 	if !data.LoggingEventsLspState.IsNull() && !data.LoggingEventsLspState.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state"))
 	}
 	if !data.ForwardingAdjacencyIncludeIpv6.IsNull() && !data.ForwardingAdjacencyIncludeIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6"))
 	}
 	if !data.ForwardingAdjacency.IsNull() && !data.ForwardingAdjacency.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency"))
 	}
 	if !data.FastRerouteProtectBandwidth.IsNull() && !data.FastRerouteProtectBandwidth.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth"))
 	}
 	if !data.FastRerouteProtectNode.IsNull() && !data.FastRerouteProtectNode.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node"))
 	}
 	if !data.FastReroute.IsNull() && !data.FastReroute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute"))
 	}
 	if !data.SignalledBandwidthSubPool.IsNull() && !data.SignalledBandwidthSubPool.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool"))
 	}
 	if !data.BackupBwUnlimited.IsNull() && !data.BackupBwUnlimited.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	for i := range data.AutorouteDestinations {
 		keys := [...]string{"address"}
@@ -3101,31 +3102,31 @@ func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version 
 		}
 	}
 	if !data.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() && !data.AutorouteAnnounceExcludeTrafficSegmentRouting.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing"))
 	}
 	if !data.AutorouteAnnounceIncludeIpv6.IsNull() && !data.AutorouteAnnounceIncludeIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6"))
 	}
 	if !data.AutorouteAnnounce.IsNull() && !data.AutorouteAnnounce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce"))
 	}
 	if !data.Ipv6TtlPropagateDisable.IsNull() && !data.Ipv6TtlPropagateDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable"))
 	}
 	if !data.Ipv6Enable.IsNull() && !data.Ipv6Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable"))
 	}
 	if !data.Ipv4TtlPropagateDisable.IsNull() && !data.Ipv4TtlPropagateDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable"))
 	}
 	if !data.Ipv4ForwardingEnable.IsNull() && !data.Ipv4ForwardingEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable"))
 	}
 	if !data.LoggingEventsLinkStatus.IsNull() && !data.LoggingEventsLinkStatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/events/link-status", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/events/link-status"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	return emptyLeafsDelete
 }
@@ -3136,151 +3137,151 @@ func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version 
 func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Destination.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:destination", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:destination"))
 	}
 	if !data.BfdEncapGal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/encap-mode/gal"))
 	}
 	if !data.BfdDampeningSecondaryWait.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/secondary-wait", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/secondary-wait"))
 	}
 	if !data.BfdDampeningMaximumWait.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/maximum-wait", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/maximum-wait"))
 	}
 	if !data.BfdDampeningInitialWait.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/initial-wait", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/dampening/initial-wait"))
 	}
 	if !data.BfdLspPingDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/disable"))
 	}
 	if !data.BfdLspPingInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/lsp-ping/interval"))
 	}
 	if !data.BfdBringupTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/bringup-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/bringup-timeout"))
 	}
 	if !data.BfdMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/multiplier"))
 	}
 	if !data.BfdMinimumInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/minimum-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/minimum-interval"))
 	}
 	if !data.BfdSbfd.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd/fast-detect/sbfd"))
 	}
 	if !data.BfdFastDetect.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bfd", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bfd"))
 	}
 	if !data.BidirectionalAssociationCoRoutedSignalingProtectionObjectDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/signaling/protection-object/disable"))
 	}
 	if !data.BidirectionalAssociationCoRoutedWrapProtection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/wrap-protection"))
 	}
 	if !data.BidirectionalAssociationCoRoutedFaultOam.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed/fault-oam"))
 	}
 	if !data.BidirectionalAssociationCorouted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/type/co-routed"))
 	}
 	if !data.BidirectionalAssociationGlobalId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !data.BidirectionalAssociationSourceAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !data.BidirectionalAssociationId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional/association/id"))
 	}
 	if !data.PathSelectionDelayLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/delay-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/delay-limit"))
 	}
 	if !data.PathSelectionCostLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/cost-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/cost-limit"))
 	}
 	if !data.PathSelectionHopLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/hop-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/hop-limit"))
 	}
 	if !data.PathSelectionTiebreakerRandom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionTiebreakerMaxFill.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionTiebreakerMinFill.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/tiebreaker"))
 	}
 	if !data.PathSelectionMetricDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.PathSelectionMetricTe.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.PathSelectionMetricIgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-selection/metric"))
 	}
 	if !data.SoftPreemption.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:soft-preemption"))
 	}
 	if !data.PathProtectionNonRevertive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/protection-mode/non-revertive"))
 	}
 	if !data.PathProtectionSrlgDiverse.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection/srlg-diverse"))
 	}
 	if !data.PathProtection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-protection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-protection"))
 	}
 	if !data.AutoBwResignalLastBandwidthTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/resignal/last-bandwidth/time-out", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/resignal/last-bandwidth/time-out"))
 	}
 	if !data.AutoBwUnderflowLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !data.AutoBwUnderflowMin.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !data.AutoBwUnderflowThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/underflow"))
 	}
 	if !data.AutoBwOverflowLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !data.AutoBwOverflowMin.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !data.AutoBwOverflowThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/overflow"))
 	}
 	if !data.AutoBwAdjustmentThresholdMin.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold"))
 	}
 	if !data.AutoBwAdjustmentThresholdPercent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/adjustment-threshold"))
 	}
 	if !data.AutoBwCollectOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/collect-bw-only"))
 	}
 	if !data.AutoBwLimitMax.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit"))
 	}
 	if !data.AutoBwLimitMin.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw/bw-limit"))
 	}
 	if !data.PolicyClasses.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:policy-class/tunnel-policy-class-values/tunnel-policy-class-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:policy-class/tunnel-policy-class-values/tunnel-policy-class-value"))
 	}
 	if !data.BindingSidMplsLabel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:binding-sid/mpls", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid/mpls"))
 	}
 	if !data.RecordRoute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:record-route", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:record-route"))
 	}
 	if !data.PriorityHold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:priority"))
 	}
 	if !data.PrioritySetup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:priority"))
 	}
 	for i := range data.PathOptions {
 		keys := [...]string{"preference"}
@@ -3301,85 +3302,85 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString))
 	}
 	if !data.SignalledName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-name"))
 	}
 	if !data.LoggingEventsAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/all"))
 	}
 	if !data.LoggingEventsBfdStatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/bfd-status"))
 	}
 	if !data.LoggingEventsPcalcFailure.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/pcalc-failure"))
 	}
 	if !data.LoggingEventsLspInsufficientBw.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/insufficient-bandwidth"))
 	}
 	if !data.LoggingEventsLspSwitchover.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/switchover"))
 	}
 	if !data.LoggingEventsLspRecordRoute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/record-route"))
 	}
 	if !data.LoggingEventsLspReroute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reroute"))
 	}
 	if !data.LoggingEventsLspBwChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/bw-change"))
 	}
 	if !data.LoggingEventsLspReoptimizeAttempts.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize-attempts"))
 	}
 	if !data.LoggingEventsLspReoptimize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/reoptimize"))
 	}
 	if !data.LoggingEventsLspState.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:logging/events/lsp-status/state"))
 	}
 	if !data.LoadShare.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:load-share", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:load-share"))
 	}
 	if !data.ForwardingAdjacencyIncludeIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/include-ipv6"))
 	}
 	if !data.ForwardingAdjacencyHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency/holdtime"))
 	}
 	if !data.ForwardingAdjacency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency"))
 	}
 	if !data.ForwardClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:forward-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"))
 	}
 	if !data.FastRerouteProtectBandwidth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/bandwidth"))
 	}
 	if !data.FastRerouteProtectNode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute/protect/node"))
 	}
 	if !data.FastReroute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:fast-reroute"))
 	}
 	if !data.SignalledBandwidthSubPool.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/sub-pool"))
 	}
 	if !data.SignalledBandwidthClassType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/class-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth/class-type"))
 	}
 	if !data.SignalledBandwidth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth"))
 	}
 	if !data.BackupBwUnlimited.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !data.BackupBwValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !data.BackupBwClassType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	if !data.BackupBwPoolType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:backup-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw"))
 	}
 	for i := range data.AutorouteDestinations {
 		keys := [...]string{"address"}
@@ -3400,67 +3401,67 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination%v", data.getPath(), keyString))
 	}
 	if !data.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing"))
 	}
 	if !data.AutorouteAnnounceIncludeIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/include-ipv6"))
 	}
 	if !data.AutorouteAnnounceMetric.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !data.AutorouteAnnounceMetricRelative.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !data.AutorouteAnnounceMetricAbsolute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/metric"))
 	}
 	if !data.AutorouteAnnounce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce"))
 	}
 	if !data.AffinityMask.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:affinity/mask", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:affinity/mask"))
 	}
 	if !data.AffinityValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:affinity/affinity-attribute-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:affinity/affinity-attribute-value"))
 	}
 	if !data.MplsMtu.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-mpls-cfg:mpls/mtu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-if-mpls-cfg:mpls/mtu"))
 	}
 	if !data.Ipv6TtlPropagateDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable"))
 	}
 	if !data.Ipv6Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:enable"))
 	}
 	if !data.Ipv4TtlPropagateDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:ttl-propagate/disable"))
 	}
 	if !data.Ipv4ForwardingEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:forwarding-enable"))
 	}
 	if !data.Ipv4Unnumbered.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/unnumbered", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/unnumbered"))
 	}
 	if !data.Ipv4Netmask.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))
 	}
 	if !data.Ipv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))
 	}
 	if !data.LoadInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-statistics-cfg:load-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-statistics-cfg:load-interval"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	if !data.Bandwidth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth"))
 	}
 	if !data.LoggingEventsLinkStatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/events/link-status", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/events/link-status"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	return deletePaths
 }

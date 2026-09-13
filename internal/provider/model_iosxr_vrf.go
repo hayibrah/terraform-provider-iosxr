@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -4070,10 +4071,10 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.RemoteRouteFilteringDisable.IsNull() && data.RemoteRouteFilteringDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/remote-route-filtering/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "remote-route-filtering/disable"))
 	}
 	if !state.VpnId.IsNull() && data.VpnId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/vpn/id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "vpn/id"))
 	}
 	for i := range state.Ipv6MulticastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5084,229 +5085,229 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 		}
 	}
 	if !state.RdIpv4AddressIndex.IsNull() && data.RdIpv4AddressIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address"))
 	}
 	if !state.RdIpv4Address.IsNull() && data.RdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address"))
 	}
 	if !state.RdFourByteAsIndex.IsNull() && data.RdFourByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as"))
 	}
 	if !state.RdFourByteAsNumber.IsNull() && data.RdFourByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as"))
 	}
 	if !state.RdTwoByteAsIndex.IsNull() && data.RdTwoByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as"))
 	}
 	if !state.RdTwoByteAsNumber.IsNull() && data.RdTwoByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as"))
 	}
 	if !state.Ipv6Flowspec.IsNull() && data.Ipv6Flowspec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/flowspec", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/flowspec"))
 	}
 	if !state.Ipv6MulticastMaxPrefixThreshold.IsNull() && data.Ipv6MulticastMaxPrefixThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv6MulticastMaxPrefixLimit.IsNull() && data.Ipv6MulticastMaxPrefixLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv6MulticastExportToDefaultVrfAllowImportedVpn.IsNull() && data.Ipv6MulticastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv6MulticastExportToDefaultVrfRoutePolicy.IsNull() && data.Ipv6MulticastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !state.Ipv6MulticastExportToVrfAllowBestExternal.IsNull() && data.Ipv6MulticastExportToVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !state.Ipv6MulticastExportToVrfAllowBackup.IsNull() && data.Ipv6MulticastExportToVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !state.Ipv6MulticastExportToVrfAllowImportedVpn.IsNull() && data.Ipv6MulticastExportToVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv6MulticastImportFromDefaultVrfRoutePolicy.IsNull() && data.Ipv6MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !state.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv6MulticastImportFromVrfAllowBestExternal.IsNull() && data.Ipv6MulticastImportFromVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !state.Ipv6MulticastImportFromVrfAllowBackup.IsNull() && data.Ipv6MulticastImportFromVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !state.Ipv6MulticastImportFromVrfAdvertiseAsVpn.IsNull() && data.Ipv6MulticastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv6MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && data.Ipv6MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !state.Ipv6MulticastExportRoutePolicy.IsNull() && data.Ipv6MulticastExportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !state.Ipv6MulticastImportRoutePolicy.IsNull() && data.Ipv6MulticastImportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !state.Ipv6Multicast.IsNull() && data.Ipv6Multicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/multicast"))
 	}
 	if !state.Ipv6UnicastMaxPrefixThreshold.IsNull() && data.Ipv6UnicastMaxPrefixThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv6UnicastMaxPrefixLimit.IsNull() && data.Ipv6UnicastMaxPrefixLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv6UnicastExportToDefaultVrfAllowImportedVpn.IsNull() && data.Ipv6UnicastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv6UnicastExportToDefaultVrfRoutePolicy.IsNull() && data.Ipv6UnicastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !state.Ipv6UnicastExportToVrfAllowBestExternal.IsNull() && data.Ipv6UnicastExportToVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !state.Ipv6UnicastExportToVrfAllowBackup.IsNull() && data.Ipv6UnicastExportToVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !state.Ipv6UnicastExportToVrfAllowImportedVpn.IsNull() && data.Ipv6UnicastExportToVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv6UnicastImportFromDefaultVrfRoutePolicy.IsNull() && data.Ipv6UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !state.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv6UnicastImportFromVrfAllowBestExternal.IsNull() && data.Ipv6UnicastImportFromVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !state.Ipv6UnicastImportFromVrfAllowBackup.IsNull() && data.Ipv6UnicastImportFromVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !state.Ipv6UnicastImportFromVrfAdvertiseAsVpn.IsNull() && data.Ipv6UnicastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv6UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && data.Ipv6UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !state.Ipv6UnicastExportRoutePolicy.IsNull() && data.Ipv6UnicastExportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !state.Ipv6UnicastImportRoutePolicy.IsNull() && data.Ipv6UnicastImportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !state.Ipv6Unicast.IsNull() && data.Ipv6Unicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/unicast"))
 	}
 	if !state.Ipv4Flowspec.IsNull() && data.Ipv4Flowspec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/flowspec", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/flowspec"))
 	}
 	if !state.Ipv4MulticastMaxPrefixThreshold.IsNull() && data.Ipv4MulticastMaxPrefixThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv4MulticastMaxPrefixLimit.IsNull() && data.Ipv4MulticastMaxPrefixLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv4MulticastExportToDefaultVrfAllowImportedVpn.IsNull() && data.Ipv4MulticastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv4MulticastExportToDefaultVrfRoutePolicy.IsNull() && data.Ipv4MulticastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !state.Ipv4MulticastExportToVrfAllowBestExternal.IsNull() && data.Ipv4MulticastExportToVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !state.Ipv4MulticastExportToVrfAllowBackup.IsNull() && data.Ipv4MulticastExportToVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !state.Ipv4MulticastExportToVrfAllowImportedVpn.IsNull() && data.Ipv4MulticastExportToVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv4MulticastImportFromDefaultVrfRoutePolicy.IsNull() && data.Ipv4MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !state.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv4MulticastImportFromVrfAllowBestExternal.IsNull() && data.Ipv4MulticastImportFromVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !state.Ipv4MulticastImportFromVrfAllowBackup.IsNull() && data.Ipv4MulticastImportFromVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !state.Ipv4MulticastImportFromVrfAdvertiseAsVpn.IsNull() && data.Ipv4MulticastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv4MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && data.Ipv4MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !state.Ipv4MulticastExportRoutePolicy.IsNull() && data.Ipv4MulticastExportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !state.Ipv4MulticastImportRoutePolicy.IsNull() && data.Ipv4MulticastImportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !state.Ipv4Multicast.IsNull() && data.Ipv4Multicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/multicast"))
 	}
 	if !state.Ipv4UnicastMaxPrefixThreshold.IsNull() && data.Ipv4UnicastMaxPrefixThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv4UnicastMaxPrefixLimit.IsNull() && data.Ipv4UnicastMaxPrefixLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !state.Ipv4UnicastExportToDefaultVrfAllowImportedVpn.IsNull() && data.Ipv4UnicastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv4UnicastExportToDefaultVrfRoutePolicy.IsNull() && data.Ipv4UnicastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !state.Ipv4UnicastExportToVrfAllowBestExternal.IsNull() && data.Ipv4UnicastExportToVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !state.Ipv4UnicastExportToVrfAllowBackup.IsNull() && data.Ipv4UnicastExportToVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !state.Ipv4UnicastExportToVrfAllowImportedVpn.IsNull() && data.Ipv4UnicastExportToVrfAllowImportedVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !state.Ipv4UnicastImportFromDefaultVrfRoutePolicy.IsNull() && data.Ipv4UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !state.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv4UnicastImportFromVrfAllowBestExternal.IsNull() && data.Ipv4UnicastImportFromVrfAllowBestExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !state.Ipv4UnicastImportFromVrfAllowBackup.IsNull() && data.Ipv4UnicastImportFromVrfAllowBackup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !state.Ipv4UnicastImportFromVrfAdvertiseAsVpn.IsNull() && data.Ipv4UnicastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !state.Ipv4UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && data.Ipv4UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !state.Ipv4UnicastExportRoutePolicy.IsNull() && data.Ipv4UnicastExportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !state.Ipv4UnicastImportRoutePolicy.IsNull() && data.Ipv4UnicastImportRoutePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !state.Ipv4Unicast.IsNull() && data.Ipv4Unicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/unicast"))
 	}
 	if !state.EvpnRouteSync.IsNull() && data.EvpnRouteSync.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync"))
 	}
 	if !state.FallbackVrf.IsNull() && data.FallbackVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fallback-vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fallback-vrf"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	return deletedItems
 }
@@ -5318,7 +5319,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 func (data *VRF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.RemoteRouteFilteringDisable.IsNull() && !data.RemoteRouteFilteringDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/remote-route-filtering/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "remote-route-filtering/disable"))
 	}
 	for i := range data.Ipv6MulticastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5513,130 +5514,130 @@ func (data *VRF) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 		}
 	}
 	if !data.Ipv6Flowspec.IsNull() && !data.Ipv6Flowspec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/flowspec", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/flowspec"))
 	}
 	if !data.Ipv6MulticastExportToDefaultVrfAllowImportedVpn.IsNull() && !data.Ipv6MulticastExportToDefaultVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowBestExternal.IsNull() && !data.Ipv6MulticastExportToVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowBackup.IsNull() && !data.Ipv6MulticastExportToVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowImportedVpn.IsNull() && !data.Ipv6MulticastExportToVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && !data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAllowBestExternal.IsNull() && !data.Ipv6MulticastImportFromVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAllowBackup.IsNull() && !data.Ipv6MulticastImportFromVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAdvertiseAsVpn.IsNull() && !data.Ipv6MulticastImportFromVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && !data.Ipv6MulticastImportFromBridgeDomainAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv6Multicast.IsNull() && !data.Ipv6Multicast.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/multicast"))
 	}
 	if !data.Ipv6UnicastExportToDefaultVrfAllowImportedVpn.IsNull() && !data.Ipv6UnicastExportToDefaultVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowBestExternal.IsNull() && !data.Ipv6UnicastExportToVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowBackup.IsNull() && !data.Ipv6UnicastExportToVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowImportedVpn.IsNull() && !data.Ipv6UnicastExportToVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && !data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAllowBestExternal.IsNull() && !data.Ipv6UnicastImportFromVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAllowBackup.IsNull() && !data.Ipv6UnicastImportFromVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAdvertiseAsVpn.IsNull() && !data.Ipv6UnicastImportFromVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && !data.Ipv6UnicastImportFromBridgeDomainAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv6Unicast.IsNull() && !data.Ipv6Unicast.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/unicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/unicast"))
 	}
 	if !data.Ipv4Flowspec.IsNull() && !data.Ipv4Flowspec.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/flowspec", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/flowspec"))
 	}
 	if !data.Ipv4MulticastExportToDefaultVrfAllowImportedVpn.IsNull() && !data.Ipv4MulticastExportToDefaultVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowBestExternal.IsNull() && !data.Ipv4MulticastExportToVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowBackup.IsNull() && !data.Ipv4MulticastExportToVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowImportedVpn.IsNull() && !data.Ipv4MulticastExportToVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && !data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAllowBestExternal.IsNull() && !data.Ipv4MulticastImportFromVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAllowBackup.IsNull() && !data.Ipv4MulticastImportFromVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAdvertiseAsVpn.IsNull() && !data.Ipv4MulticastImportFromVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && !data.Ipv4MulticastImportFromBridgeDomainAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv4Multicast.IsNull() && !data.Ipv4Multicast.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/multicast"))
 	}
 	if !data.Ipv4UnicastExportToDefaultVrfAllowImportedVpn.IsNull() && !data.Ipv4UnicastExportToDefaultVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowBestExternal.IsNull() && !data.Ipv4UnicastExportToVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowBackup.IsNull() && !data.Ipv4UnicastExportToVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowImportedVpn.IsNull() && !data.Ipv4UnicastExportToVrfAllowImportedVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() && !data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAllowBestExternal.IsNull() && !data.Ipv4UnicastImportFromVrfAllowBestExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAllowBackup.IsNull() && !data.Ipv4UnicastImportFromVrfAllowBackup.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAdvertiseAsVpn.IsNull() && !data.Ipv4UnicastImportFromVrfAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() && !data.Ipv4UnicastImportFromBridgeDomainAdvertiseAsVpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv4Unicast.IsNull() && !data.Ipv4Unicast.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/unicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/unicast"))
 	}
 	return emptyLeafsDelete
 }
@@ -5647,10 +5648,10 @@ func (data *VRF) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.RemoteRouteFilteringDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/remote-route-filtering/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "remote-route-filtering/disable"))
 	}
 	if !data.VpnId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vpn/id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "vpn/id"))
 	}
 	for i := range data.Ipv6MulticastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -6229,229 +6230,229 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
 	}
 	if !data.RdIpv4AddressIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address"))
 	}
 	if !data.RdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address"))
 	}
 	if !data.RdFourByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as"))
 	}
 	if !data.RdFourByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/four-byte-as"))
 	}
 	if !data.RdTwoByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as"))
 	}
 	if !data.RdTwoByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/two-byte-as"))
 	}
 	if !data.Ipv6Flowspec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/flowspec", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/flowspec"))
 	}
 	if !data.Ipv6MulticastMaxPrefixThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv6MulticastMaxPrefixLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv6MulticastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6MulticastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv6MulticastExportToVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv6MulticastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv6MulticastExportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !data.Ipv6MulticastImportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !data.Ipv6Multicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/multicast"))
 	}
 	if !data.Ipv6UnicastMaxPrefixThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv6UnicastMaxPrefixLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv6UnicastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6UnicastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv6UnicastExportToVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv6UnicastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv6UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv6UnicastExportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !data.Ipv6UnicastImportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !data.Ipv6Unicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/unicast"))
 	}
 	if !data.Ipv4Flowspec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/flowspec", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/flowspec"))
 	}
 	if !data.Ipv4MulticastMaxPrefixThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv4MulticastMaxPrefixLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv4MulticastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4MulticastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv4MulticastExportToVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv4MulticastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4MulticastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv4MulticastExportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !data.Ipv4MulticastImportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !data.Ipv4Multicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/multicast"))
 	}
 	if !data.Ipv4UnicastMaxPrefixThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv4UnicastMaxPrefixLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-rib-cfg:maximum"))
 	}
 	if !data.Ipv4UnicastExportToDefaultVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4UnicastExportToDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/default-vrf/route-policy"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/best-external"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow/backup"))
 	}
 	if !data.Ipv4UnicastExportToVrfAllowImportedVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/to/vrf/allow-imported-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/route-policy"))
 	}
 	if !data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/default-vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAllowBestExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/best-external"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAllowBackup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/allow/backup"))
 	}
 	if !data.Ipv4UnicastImportFromVrfAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/vrf/advertise-as-vpn"))
 	}
 	if !data.Ipv4UnicastImportFromBridgeDomainAdvertiseAsVpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/from/bridge-domain/advertise-as-vpn"))
 	}
 	if !data.Ipv4UnicastExportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-policy"))
 	}
 	if !data.Ipv4UnicastImportRoutePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-policy"))
 	}
 	if !data.Ipv4Unicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/unicast"))
 	}
 	if !data.EvpnRouteSync.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync"))
 	}
 	if !data.FallbackVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fallback-vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fallback-vrf"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -429,43 +430,43 @@ func (data *PerformanceMeasurementInterfaceData) fromBody(ctx context.Context, r
 func (data *PerformanceMeasurementInterface) getDeletedItems(ctx context.Context, state PerformanceMeasurementInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PathTracingTimestampTemplateSt3.IsNull() && data.PathTracingTimestampTemplateSt3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !state.PathTracingTimestampTemplateSt2.IsNull() && data.PathTracingTimestampTemplateSt2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !state.PathTracingTimestampTemplateSt1.IsNull() && data.PathTracingTimestampTemplateSt1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !state.PathTracingTimestampTemplateSt0.IsNull() && data.PathTracingTimestampTemplateSt0.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !state.PathTracingInterfaceId.IsNull() && data.PathTracingInterfaceId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/interface-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/interface-id"))
 	}
 	if !state.PathTracing.IsNull() && data.PathTracing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing"))
 	}
 	if !state.NextHopIpv6.IsNull() && data.NextHopIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/next-hop/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "next-hop/ipv6"))
 	}
 	if !state.NextHopIpv4.IsNull() && data.NextHopIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/next-hop/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "next-hop/ipv4"))
 	}
 	if !state.DelayMeasurementStaticDelay.IsNull() && data.DelayMeasurementStaticDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-measurement/static-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-measurement/static-delay"))
 	}
 	if !state.DelayMeasurementProfileName.IsNull() && data.DelayMeasurementProfileName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-measurement/delay-profile/name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-measurement/delay-profile/name"))
 	}
 	if !state.DelayMeasurementAdvertiseDelay.IsNull() && data.DelayMeasurementAdvertiseDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-measurement", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-measurement"))
 	}
 	if !state.DelayMeasurementFallback.IsNull() && data.DelayMeasurementFallback.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-measurement", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-measurement"))
 	}
 	if !state.DelayMeasurement.IsNull() && data.DelayMeasurement.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-measurement", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-measurement"))
 	}
 	return deletedItems
 }
@@ -477,25 +478,25 @@ func (data *PerformanceMeasurementInterface) getDeletedItems(ctx context.Context
 func (data *PerformanceMeasurementInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PathTracingTimestampTemplateSt3.IsNull() && !data.PathTracingTimestampTemplateSt3.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !data.PathTracingTimestampTemplateSt2.IsNull() && !data.PathTracingTimestampTemplateSt2.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !data.PathTracingTimestampTemplateSt1.IsNull() && !data.PathTracingTimestampTemplateSt1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !data.PathTracingTimestampTemplateSt0.IsNull() && !data.PathTracingTimestampTemplateSt0.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !data.PathTracing.IsNull() && !data.PathTracing.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing"))
 	}
 	if !data.DelayMeasurementFallback.IsNull() && !data.DelayMeasurementFallback.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/delay-measurement", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "delay-measurement"))
 	}
 	if !data.DelayMeasurement.IsNull() && !data.DelayMeasurement.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/delay-measurement", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "delay-measurement"))
 	}
 	return emptyLeafsDelete
 }
@@ -506,43 +507,43 @@ func (data *PerformanceMeasurementInterface) getEmptyLeafsDelete(ctx context.Con
 func (data *PerformanceMeasurementInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PathTracingTimestampTemplateSt3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !data.PathTracingTimestampTemplateSt2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !data.PathTracingTimestampTemplateSt1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !data.PathTracingTimestampTemplateSt0.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !data.PathTracingInterfaceId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/interface-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/interface-id"))
 	}
 	if !data.PathTracing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing"))
 	}
 	if !data.NextHopIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/next-hop/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "next-hop/ipv6"))
 	}
 	if !data.NextHopIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/next-hop/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "next-hop/ipv4"))
 	}
 	if !data.DelayMeasurementStaticDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-measurement/static-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement/static-delay"))
 	}
 	if !data.DelayMeasurementProfileName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-measurement/delay-profile/name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement/delay-profile/name"))
 	}
 	if !data.DelayMeasurementAdvertiseDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-measurement", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement"))
 	}
 	if !data.DelayMeasurementFallback.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-measurement", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement"))
 	}
 	if !data.DelayMeasurement.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-measurement", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement"))
 	}
 	return deletePaths
 }

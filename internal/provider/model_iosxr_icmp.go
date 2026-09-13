@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -334,28 +334,28 @@ func (data *ICMPData) fromBody(ctx context.Context, res []byte, version string) 
 func (data *ICMP) getDeletedItems(ctx context.Context, state ICMP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Ipv6SourceRfc.IsNull() && data.Ipv6SourceRfc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/source", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/source"))
 	}
 	if !state.Ipv6SourceVrf.IsNull() && data.Ipv6SourceVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/source", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/source"))
 	}
 	if !state.Ipv4RateLimitUnreachableDfDisable.IsNull() && data.Ipv4RateLimitUnreachableDfDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/df", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/rate-limit/unreachable/df"))
 	}
 	if !state.Ipv4RateLimitUnreachableDfRate.IsNull() && data.Ipv4RateLimitUnreachableDfRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/df", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/rate-limit/unreachable/df"))
 	}
 	if !state.Ipv4RateLimitUnreachableDisable.IsNull() && data.Ipv4RateLimitUnreachableDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/rate-limit/unreachable/disable"))
 	}
 	if !state.Ipv4RateLimitUnreachableRate.IsNull() && data.Ipv4RateLimitUnreachableRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/rate-limit/unreachable/rate"))
 	}
 	if !state.Ipv4SourceRfc.IsNull() && data.Ipv4SourceRfc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/source", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/source"))
 	}
 	if !state.Ipv4SourceVrf.IsNull() && data.Ipv4SourceVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/source", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/source"))
 	}
 	return deletedItems
 }
@@ -367,22 +367,22 @@ func (data *ICMP) getDeletedItems(ctx context.Context, state ICMP, version strin
 func (data *ICMP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Ipv6SourceRfc.IsNull() && !data.Ipv6SourceRfc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/source", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6/source"))
 	}
 	if !data.Ipv6SourceVrf.IsNull() && !data.Ipv6SourceVrf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/source", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6/source"))
 	}
 	if !data.Ipv4RateLimitUnreachableDfDisable.IsNull() && !data.Ipv4RateLimitUnreachableDfDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/df", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/df"))
 	}
 	if !data.Ipv4RateLimitUnreachableDisable.IsNull() && !data.Ipv4RateLimitUnreachableDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/disable"))
 	}
 	if !data.Ipv4SourceRfc.IsNull() && !data.Ipv4SourceRfc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/source", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/source"))
 	}
 	if !data.Ipv4SourceVrf.IsNull() && !data.Ipv4SourceVrf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/source", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/source"))
 	}
 	return emptyLeafsDelete
 }
@@ -393,28 +393,28 @@ func (data *ICMP) getEmptyLeafsDelete(ctx context.Context, version string) []str
 func (data *ICMP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Ipv6SourceRfc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/source", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/source"))
 	}
 	if !data.Ipv6SourceVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/source", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/source"))
 	}
 	if !data.Ipv4RateLimitUnreachableDfDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/df", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/df"))
 	}
 	if !data.Ipv4RateLimitUnreachableDfRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/df", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/df"))
 	}
 	if !data.Ipv4RateLimitUnreachableDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/disable"))
 	}
 	if !data.Ipv4RateLimitUnreachableRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/rate-limit/unreachable/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/rate-limit/unreachable/rate"))
 	}
 	if !data.Ipv4SourceRfc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/source", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/source"))
 	}
 	if !data.Ipv4SourceVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/source", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/source"))
 	}
 	return deletePaths
 }

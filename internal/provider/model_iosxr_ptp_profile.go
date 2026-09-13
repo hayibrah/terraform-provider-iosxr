@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2493,7 +2494,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.InteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() && data.InteropIngressConversionClockClassMappings[j].ClockClassToMapTo.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/clock-class/mappings/mapping%v/clock-class-to-map-to", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interop/ingress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString), "clock-class-to-map-to"))
 				}
 				break
 			}
@@ -2503,19 +2504,19 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 		}
 	}
 	if !state.InteropIngressConversionClockClassDefault.IsNull() && data.InteropIngressConversionClockClassDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/clock-class/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/ingress-conversion/clock-class/default"))
 	}
 	if !state.InteropIngressConversionOffsetScaledLogVariance.IsNull() && data.InteropIngressConversionOffsetScaledLogVariance.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/offset-scaled-log-variance", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/ingress-conversion/offset-scaled-log-variance"))
 	}
 	if !state.InteropIngressConversionClockAccuracy.IsNull() && data.InteropIngressConversionClockAccuracy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/clock-accuracy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/ingress-conversion/clock-accuracy"))
 	}
 	if !state.InteropIngressConversionPriority2.IsNull() && data.InteropIngressConversionPriority2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/priority2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/ingress-conversion/priority2"))
 	}
 	if !state.InteropIngressConversionPriority1.IsNull() && data.InteropIngressConversionPriority1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/ingress-conversion/priority1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/ingress-conversion/priority1"))
 	}
 	for i := range state.InteropEgressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -2541,7 +2542,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.InteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() && data.InteropEgressConversionClockClassMappings[j].ClockClassToMapTo.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/clock-class/mappings/mapping%v/clock-class-to-map-to", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interop/egress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString), "clock-class-to-map-to"))
 				}
 				break
 			}
@@ -2551,34 +2552,34 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 		}
 	}
 	if !state.InteropEgressConversionClockClassDefault.IsNull() && data.InteropEgressConversionClockClassDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/clock-class/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/egress-conversion/clock-class/default"))
 	}
 	if !state.InteropEgressConversionOffsetScaledLogVariance.IsNull() && data.InteropEgressConversionOffsetScaledLogVariance.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/offset-scaled-log-variance", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/egress-conversion/offset-scaled-log-variance"))
 	}
 	if !state.InteropEgressConversionClockAccuracy.IsNull() && data.InteropEgressConversionClockAccuracy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/clock-accuracy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/egress-conversion/clock-accuracy"))
 	}
 	if !state.InteropEgressConversionPriority2.IsNull() && data.InteropEgressConversionPriority2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/priority2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/egress-conversion/priority2"))
 	}
 	if !state.InteropEgressConversionPriority1.IsNull() && data.InteropEgressConversionPriority1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/egress-conversion/priority1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/egress-conversion/priority1"))
 	}
 	if !state.InteropDomain.IsNull() && data.InteropDomain.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/domain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/domain"))
 	}
 	if !state.InteropProfileG82752.IsNull() && data.InteropProfileG82752.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/profile/g-8275-2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/profile/g-8275-2"))
 	}
 	if !state.InteropProfileG82751.IsNull() && data.InteropProfileG82751.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/profile/g-8275-1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/profile/g-8275-1"))
 	}
 	if !state.InteropProfileG82651.IsNull() && data.InteropProfileG82651.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/profile/g-8265-1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/profile/g-8265-1"))
 	}
 	if !state.InteropProfileDefault.IsNull() && data.InteropProfileDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interop/profile/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interop/profile/default"))
 	}
 	for i := range state.MasterEthernets {
 		keys := [...]string{"address"}
@@ -2604,31 +2605,31 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.MasterEthernets[i].Milliseconds.IsNull() && data.MasterEthernets[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/milliseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "milliseconds"))
 				}
 				if !state.MasterEthernets[i].Microseconds.IsNull() && data.MasterEthernets[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/microseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "microseconds"))
 				}
 				if !state.MasterEthernets[i].Nanoseconds.IsNull() && data.MasterEthernets[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/nanoseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "nanoseconds"))
 				}
 				if !state.MasterEthernets[i].DelayAsymmetry.IsNull() && data.MasterEthernets[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/delay-asymmetry", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "delay-asymmetry"))
 				}
 				if !state.MasterEthernets[i].NonNegotiated.IsNull() && data.MasterEthernets[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				if !state.MasterEthernets[i].MulticastMixed.IsNull() && data.MasterEthernets[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterEthernets[i].Multicast.IsNull() && data.MasterEthernets[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterEthernets[i].ClockClass.IsNull() && data.MasterEthernets[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/clock-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "clock-class"))
 				}
 				if !state.MasterEthernets[i].Priority.IsNull() && data.MasterEthernets[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ethernets/ethernet%v/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", state.getPath(), keyString), "priority"))
 				}
 				break
 			}
@@ -2661,31 +2662,31 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.MasterIpv6s[i].Milliseconds.IsNull() && data.MasterIpv6s[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/milliseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "milliseconds"))
 				}
 				if !state.MasterIpv6s[i].Microseconds.IsNull() && data.MasterIpv6s[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/microseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "microseconds"))
 				}
 				if !state.MasterIpv6s[i].Nanoseconds.IsNull() && data.MasterIpv6s[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/nanoseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "nanoseconds"))
 				}
 				if !state.MasterIpv6s[i].DelayAsymmetry.IsNull() && data.MasterIpv6s[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/delay-asymmetry", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "delay-asymmetry"))
 				}
 				if !state.MasterIpv6s[i].NonNegotiated.IsNull() && data.MasterIpv6s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				if !state.MasterIpv6s[i].MulticastMixed.IsNull() && data.MasterIpv6s[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterIpv6s[i].Multicast.IsNull() && data.MasterIpv6s[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterIpv6s[i].ClockClass.IsNull() && data.MasterIpv6s[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/clock-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "clock-class"))
 				}
 				if !state.MasterIpv6s[i].Priority.IsNull() && data.MasterIpv6s[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", state.getPath(), keyString), "priority"))
 				}
 				break
 			}
@@ -2718,31 +2719,31 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.MasterIpv4s[i].Milliseconds.IsNull() && data.MasterIpv4s[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/milliseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "milliseconds"))
 				}
 				if !state.MasterIpv4s[i].Microseconds.IsNull() && data.MasterIpv4s[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/microseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "microseconds"))
 				}
 				if !state.MasterIpv4s[i].Nanoseconds.IsNull() && data.MasterIpv4s[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/nanoseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "nanoseconds"))
 				}
 				if !state.MasterIpv4s[i].DelayAsymmetry.IsNull() && data.MasterIpv4s[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/delay-asymmetry", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "delay-asymmetry"))
 				}
 				if !state.MasterIpv4s[i].NonNegotiated.IsNull() && data.MasterIpv4s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				if !state.MasterIpv4s[i].MulticastMixed.IsNull() && data.MasterIpv4s[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterIpv4s[i].Multicast.IsNull() && data.MasterIpv4s[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/multicast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "multicast"))
 				}
 				if !state.MasterIpv4s[i].ClockClass.IsNull() && data.MasterIpv4s[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/clock-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "clock-class"))
 				}
 				if !state.MasterIpv4s[i].Priority.IsNull() && data.MasterIpv4s[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", state.getPath(), keyString), "priority"))
 				}
 				break
 			}
@@ -2775,7 +2776,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.SlaveEthernets[i].NonNegotiated.IsNull() && data.SlaveEthernets[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/subordinate/ethernets/ethernet%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subordinate/ethernets/ethernet%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				break
 			}
@@ -2808,7 +2809,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.SlaveIpv6s[i].NonNegotiated.IsNull() && data.SlaveIpv6s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/subordinate/ipv6s/ipv6%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subordinate/ipv6s/ipv6%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				break
 			}
@@ -2841,7 +2842,7 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 			}
 			if found {
 				if !state.SlaveIpv4s[i].NonNegotiated.IsNull() && data.SlaveIpv4s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v/non-negotiated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v", state.getPath(), keyString), "non-negotiated"))
 				}
 				break
 			}
@@ -2851,127 +2852,127 @@ func (data *PTPProfile) getDeletedItems(ctx context.Context, state PTPProfile, v
 		}
 	}
 	if !state.UnicastGrantInvalidRequestDeny.IsNull() && data.UnicastGrantInvalidRequestDeny.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/unicast-grant/invalid-request/deny", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "unicast-grant/invalid-request/deny"))
 	}
 	if !state.UnicastGrantInvalidRequestReduce.IsNull() && data.UnicastGrantInvalidRequestReduce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/unicast-grant/invalid-request/reduce", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "unicast-grant/invalid-request/reduce"))
 	}
 	if !state.DelayResponseTimeout.IsNull() && data.DelayResponseTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-response/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-response/timeout"))
 	}
 	if !state.DelayResponseGrantDuration.IsNull() && data.DelayResponseGrantDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-response/grant-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-response/grant-duration"))
 	}
 	if !state.DelayAsymmetryUnitMilliseconds.IsNull() && data.DelayAsymmetryUnitMilliseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/milliseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "milliseconds"))
 	}
 	if !state.DelayAsymmetryUnitMicroseconds.IsNull() && data.DelayAsymmetryUnitMicroseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/microseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "microseconds"))
 	}
 	if !state.DelayAsymmetryUnitNanoseconds.IsNull() && data.DelayAsymmetryUnitNanoseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nanoseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nanoseconds"))
 	}
 	if !state.DelayAsymmetryValue.IsNull() && data.DelayAsymmetryValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-asymmetry", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-asymmetry"))
 	}
 	if !state.Ipv6HopLimit.IsNull() && data.Ipv6HopLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hop-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6-hop-limit"))
 	}
 	if !state.Ipv4Ttl.IsNull() && data.Ipv4Ttl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-ttl", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4-ttl"))
 	}
 	if !state.DscpGeneral.IsNull() && data.DscpGeneral.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/general-dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "general-dscp"))
 	}
 	if !state.DscpEvent.IsNull() && data.DscpEvent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/event-dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "event-dscp"))
 	}
 	if !state.Dscp.IsNull() && data.Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dscp"))
 	}
 	if !state.CosGeneral.IsNull() && data.CosGeneral.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/general-cos", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "general-cos"))
 	}
 	if !state.CosEvent.IsNull() && data.CosEvent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/event-cos", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "event-cos"))
 	}
 	if !state.Cos.IsNull() && data.Cos.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/cos", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "cos"))
 	}
 	if !state.DelayRequestFrequency.IsNull() && data.DelayRequestFrequency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-request/frequency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-request/frequency"))
 	}
 	if !state.DelayRequestInterval.IsNull() && data.DelayRequestInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-request/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-request/interval"))
 	}
 	if !state.SyncTimeout.IsNull() && data.SyncTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sync/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sync/timeout"))
 	}
 	if !state.SyncGrantDuration.IsNull() && data.SyncGrantDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sync/grant-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sync/grant-duration"))
 	}
 	if !state.SyncFrequency.IsNull() && data.SyncFrequency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sync/frequency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sync/frequency"))
 	}
 	if !state.SyncInterval.IsNull() && data.SyncInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sync/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sync/interval"))
 	}
 	if !state.AnnounceGrantDuration.IsNull() && data.AnnounceGrantDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/announce/grant-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "announce/grant-duration"))
 	}
 	if !state.AnnounceTimeout.IsNull() && data.AnnounceTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/announce/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "announce/timeout"))
 	}
 	if !state.AnnounceFrequency.IsNull() && data.AnnounceFrequency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/announce/frequency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "announce/frequency"))
 	}
 	if !state.AnnounceInterval.IsNull() && data.AnnounceInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/announce/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "announce/interval"))
 	}
 	if !state.ClockOperationTwoStep.IsNull() && data.ClockOperationTwoStep.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/operation/two-step", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/operation/two-step"))
 	}
 	if !state.ClockOperationOneStep.IsNull() && data.ClockOperationOneStep.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/operation/one-step", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/operation/one-step"))
 	}
 	if !state.TransportEthernet.IsNull() && data.TransportEthernet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/ethernet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/ethernet"))
 	}
 	if !state.TransportIpv6.IsNull() && data.TransportIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/ipv6"))
 	}
 	if !state.TransportIpv4.IsNull() && data.TransportIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/ipv4"))
 	}
 	if !state.MulticastTargetAddressEthernetMacAddress0180C200000e.IsNull() && data.MulticastTargetAddressEthernetMacAddress0180C200000e.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/target-address/ethernet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !state.MulticastTargetAddressEthernetMacAddress011b19000000.IsNull() && data.MulticastTargetAddressEthernetMacAddress011b19000000.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/target-address/ethernet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !state.MulticastDisable.IsNull() && data.MulticastDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast"))
 	}
 	if !state.MulticastMixed.IsNull() && data.MulticastMixed.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast"))
 	}
 	if !state.Multicast.IsNull() && data.Multicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast"))
 	}
 	if !state.SourceIpv6Address.IsNull() && data.SourceIpv6Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source/ipv6/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source/ipv6/address"))
 	}
 	if !state.SourceIpv4Address.IsNull() && data.SourceIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source/ipv4/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source/ipv4/address"))
 	}
 	if !state.PortStateAny.IsNull() && data.PortStateAny.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/port/state/any", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "port/state/any"))
 	}
 	if !state.PortStateMasterOnly.IsNull() && data.PortStateMasterOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/port/state/primary-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "port/state/primary-only"))
 	}
 	if !state.PortStateSlaveOnly.IsNull() && data.PortStateSlaveOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/port/state/subordinate-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "port/state/subordinate-only"))
 	}
 	return deletedItems
 }
@@ -2999,16 +3000,16 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 		}
 	}
 	if !data.InteropProfileG82752.IsNull() && !data.InteropProfileG82752.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interop/profile/g-8275-2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interop/profile/g-8275-2"))
 	}
 	if !data.InteropProfileG82751.IsNull() && !data.InteropProfileG82751.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interop/profile/g-8275-1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interop/profile/g-8275-1"))
 	}
 	if !data.InteropProfileG82651.IsNull() && !data.InteropProfileG82651.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interop/profile/g-8265-1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interop/profile/g-8265-1"))
 	}
 	if !data.InteropProfileDefault.IsNull() && !data.InteropProfileDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interop/profile/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interop/profile/default"))
 	}
 	for i := range data.MasterEthernets {
 		keys := [...]string{"address"}
@@ -3018,22 +3019,22 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MasterEthernets[i].Milliseconds.IsNull() && !data.MasterEthernets[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/milliseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "milliseconds"))
 		}
 		if !data.MasterEthernets[i].Microseconds.IsNull() && !data.MasterEthernets[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/microseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "microseconds"))
 		}
 		if !data.MasterEthernets[i].Nanoseconds.IsNull() && !data.MasterEthernets[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/nanoseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "nanoseconds"))
 		}
 		if !data.MasterEthernets[i].NonNegotiated.IsNull() && !data.MasterEthernets[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "non-negotiated"))
 		}
 		if !data.MasterEthernets[i].MulticastMixed.IsNull() && !data.MasterEthernets[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "multicast"))
 		}
 		if !data.MasterEthernets[i].Multicast.IsNull() && !data.MasterEthernets[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ethernets/ethernet%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ethernets/ethernet%v", data.getPath(), keyString), "multicast"))
 		}
 	}
 	for i := range data.MasterIpv6s {
@@ -3044,22 +3045,22 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MasterIpv6s[i].Milliseconds.IsNull() && !data.MasterIpv6s[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/milliseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "milliseconds"))
 		}
 		if !data.MasterIpv6s[i].Microseconds.IsNull() && !data.MasterIpv6s[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/microseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "microseconds"))
 		}
 		if !data.MasterIpv6s[i].Nanoseconds.IsNull() && !data.MasterIpv6s[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/nanoseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "nanoseconds"))
 		}
 		if !data.MasterIpv6s[i].NonNegotiated.IsNull() && !data.MasterIpv6s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "non-negotiated"))
 		}
 		if !data.MasterIpv6s[i].MulticastMixed.IsNull() && !data.MasterIpv6s[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "multicast"))
 		}
 		if !data.MasterIpv6s[i].Multicast.IsNull() && !data.MasterIpv6s[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv6s/ipv6%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv6s/ipv6%v", data.getPath(), keyString), "multicast"))
 		}
 	}
 	for i := range data.MasterIpv4s {
@@ -3070,22 +3071,22 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MasterIpv4s[i].Milliseconds.IsNull() && !data.MasterIpv4s[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/milliseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "milliseconds"))
 		}
 		if !data.MasterIpv4s[i].Microseconds.IsNull() && !data.MasterIpv4s[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/microseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "microseconds"))
 		}
 		if !data.MasterIpv4s[i].Nanoseconds.IsNull() && !data.MasterIpv4s[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/nanoseconds", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "nanoseconds"))
 		}
 		if !data.MasterIpv4s[i].NonNegotiated.IsNull() && !data.MasterIpv4s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "non-negotiated"))
 		}
 		if !data.MasterIpv4s[i].MulticastMixed.IsNull() && !data.MasterIpv4s[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "multicast"))
 		}
 		if !data.MasterIpv4s[i].Multicast.IsNull() && !data.MasterIpv4s[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/primary/ipv4s/ipv4%v/multicast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/primary/ipv4s/ipv4%v", data.getPath(), keyString), "multicast"))
 		}
 	}
 	for i := range data.SlaveEthernets {
@@ -3096,7 +3097,7 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SlaveEthernets[i].NonNegotiated.IsNull() && !data.SlaveEthernets[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/subordinate/ethernets/ethernet%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/subordinate/ethernets/ethernet%v", data.getPath(), keyString), "non-negotiated"))
 		}
 	}
 	for i := range data.SlaveIpv6s {
@@ -3107,7 +3108,7 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SlaveIpv6s[i].NonNegotiated.IsNull() && !data.SlaveIpv6s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/subordinate/ipv6s/ipv6%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/subordinate/ipv6s/ipv6%v", data.getPath(), keyString), "non-negotiated"))
 		}
 	}
 	for i := range data.SlaveIpv4s {
@@ -3118,62 +3119,62 @@ func (data *PTPProfile) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SlaveIpv4s[i].NonNegotiated.IsNull() && !data.SlaveIpv4s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v/non-negotiated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString), "non-negotiated"))
 		}
 	}
 	if !data.UnicastGrantInvalidRequestDeny.IsNull() && !data.UnicastGrantInvalidRequestDeny.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/unicast-grant/invalid-request/deny", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "unicast-grant/invalid-request/deny"))
 	}
 	if !data.UnicastGrantInvalidRequestReduce.IsNull() && !data.UnicastGrantInvalidRequestReduce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/unicast-grant/invalid-request/reduce", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "unicast-grant/invalid-request/reduce"))
 	}
 	if !data.DelayAsymmetryUnitMilliseconds.IsNull() && !data.DelayAsymmetryUnitMilliseconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/milliseconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "milliseconds"))
 	}
 	if !data.DelayAsymmetryUnitMicroseconds.IsNull() && !data.DelayAsymmetryUnitMicroseconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/microseconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "microseconds"))
 	}
 	if !data.DelayAsymmetryUnitNanoseconds.IsNull() && !data.DelayAsymmetryUnitNanoseconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nanoseconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nanoseconds"))
 	}
 	if !data.ClockOperationTwoStep.IsNull() && !data.ClockOperationTwoStep.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/operation/two-step", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/operation/two-step"))
 	}
 	if !data.ClockOperationOneStep.IsNull() && !data.ClockOperationOneStep.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/operation/one-step", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/operation/one-step"))
 	}
 	if !data.TransportEthernet.IsNull() && !data.TransportEthernet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/ethernet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/ethernet"))
 	}
 	if !data.TransportIpv6.IsNull() && !data.TransportIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/ipv6"))
 	}
 	if !data.TransportIpv4.IsNull() && !data.TransportIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/ipv4"))
 	}
 	if !data.MulticastTargetAddressEthernetMacAddress0180C200000e.IsNull() && !data.MulticastTargetAddressEthernetMacAddress0180C200000e.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/target-address/ethernet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !data.MulticastTargetAddressEthernetMacAddress011b19000000.IsNull() && !data.MulticastTargetAddressEthernetMacAddress011b19000000.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/target-address/ethernet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !data.MulticastDisable.IsNull() && !data.MulticastDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.MulticastMixed.IsNull() && !data.MulticastMixed.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.Multicast.IsNull() && !data.Multicast.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.PortStateAny.IsNull() && !data.PortStateAny.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/port/state/any", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "port/state/any"))
 	}
 	if !data.PortStateMasterOnly.IsNull() && !data.PortStateMasterOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/port/state/primary-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "port/state/primary-only"))
 	}
 	if !data.PortStateSlaveOnly.IsNull() && !data.PortStateSlaveOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/port/state/subordinate-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "port/state/subordinate-only"))
 	}
 	return emptyLeafsDelete
 }
@@ -3202,19 +3203,19 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
 	if !data.InteropIngressConversionClockClassDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/clock-class/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/ingress-conversion/clock-class/default"))
 	}
 	if !data.InteropIngressConversionOffsetScaledLogVariance.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/offset-scaled-log-variance", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/ingress-conversion/offset-scaled-log-variance"))
 	}
 	if !data.InteropIngressConversionClockAccuracy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/clock-accuracy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/ingress-conversion/clock-accuracy"))
 	}
 	if !data.InteropIngressConversionPriority2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/priority2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/ingress-conversion/priority2"))
 	}
 	if !data.InteropIngressConversionPriority1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/ingress-conversion/priority1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/ingress-conversion/priority1"))
 	}
 	for i := range data.InteropEgressConversionClockClassMappings {
 		keys := [...]string{"clock-class-to-map-from"}
@@ -3235,34 +3236,34 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
 	}
 	if !data.InteropEgressConversionClockClassDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/clock-class/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/egress-conversion/clock-class/default"))
 	}
 	if !data.InteropEgressConversionOffsetScaledLogVariance.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/offset-scaled-log-variance", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/egress-conversion/offset-scaled-log-variance"))
 	}
 	if !data.InteropEgressConversionClockAccuracy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/clock-accuracy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/egress-conversion/clock-accuracy"))
 	}
 	if !data.InteropEgressConversionPriority2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/priority2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/egress-conversion/priority2"))
 	}
 	if !data.InteropEgressConversionPriority1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/egress-conversion/priority1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/egress-conversion/priority1"))
 	}
 	if !data.InteropDomain.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/domain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/domain"))
 	}
 	if !data.InteropProfileG82752.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/profile/g-8275-2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/profile/g-8275-2"))
 	}
 	if !data.InteropProfileG82751.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/profile/g-8275-1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/profile/g-8275-1"))
 	}
 	if !data.InteropProfileG82651.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/profile/g-8265-1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/profile/g-8265-1"))
 	}
 	if !data.InteropProfileDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interop/profile/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interop/profile/default"))
 	}
 	for i := range data.MasterEthernets {
 		keys := [...]string{"address"}
@@ -3373,127 +3374,127 @@ func (data *PTPProfile) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString))
 	}
 	if !data.UnicastGrantInvalidRequestDeny.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/unicast-grant/invalid-request/deny", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "unicast-grant/invalid-request/deny"))
 	}
 	if !data.UnicastGrantInvalidRequestReduce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/unicast-grant/invalid-request/reduce", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "unicast-grant/invalid-request/reduce"))
 	}
 	if !data.DelayResponseTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-response/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-response/timeout"))
 	}
 	if !data.DelayResponseGrantDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-response/grant-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-response/grant-duration"))
 	}
 	if !data.DelayAsymmetryUnitMilliseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/milliseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "milliseconds"))
 	}
 	if !data.DelayAsymmetryUnitMicroseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/microseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "microseconds"))
 	}
 	if !data.DelayAsymmetryUnitNanoseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nanoseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nanoseconds"))
 	}
 	if !data.DelayAsymmetryValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-asymmetry", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-asymmetry"))
 	}
 	if !data.Ipv6HopLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6-hop-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6-hop-limit"))
 	}
 	if !data.Ipv4Ttl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4-ttl", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4-ttl"))
 	}
 	if !data.DscpGeneral.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/general-dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "general-dscp"))
 	}
 	if !data.DscpEvent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/event-dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "event-dscp"))
 	}
 	if !data.Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dscp"))
 	}
 	if !data.CosGeneral.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/general-cos", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "general-cos"))
 	}
 	if !data.CosEvent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/event-cos", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "event-cos"))
 	}
 	if !data.Cos.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cos", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "cos"))
 	}
 	if !data.DelayRequestFrequency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-request/frequency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-request/frequency"))
 	}
 	if !data.DelayRequestInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-request/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-request/interval"))
 	}
 	if !data.SyncTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sync/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sync/timeout"))
 	}
 	if !data.SyncGrantDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sync/grant-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sync/grant-duration"))
 	}
 	if !data.SyncFrequency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sync/frequency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sync/frequency"))
 	}
 	if !data.SyncInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sync/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sync/interval"))
 	}
 	if !data.AnnounceGrantDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/announce/grant-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "announce/grant-duration"))
 	}
 	if !data.AnnounceTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/announce/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "announce/timeout"))
 	}
 	if !data.AnnounceFrequency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/announce/frequency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "announce/frequency"))
 	}
 	if !data.AnnounceInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/announce/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "announce/interval"))
 	}
 	if !data.ClockOperationTwoStep.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/operation/two-step", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/operation/two-step"))
 	}
 	if !data.ClockOperationOneStep.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/operation/one-step", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/operation/one-step"))
 	}
 	if !data.TransportEthernet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/ethernet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/ethernet"))
 	}
 	if !data.TransportIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/ipv6"))
 	}
 	if !data.TransportIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/ipv4"))
 	}
 	if !data.MulticastTargetAddressEthernetMacAddress0180C200000e.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/target-address/ethernet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !data.MulticastTargetAddressEthernetMacAddress011b19000000.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/target-address/ethernet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/target-address/ethernet"))
 	}
 	if !data.MulticastDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.MulticastMixed.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.Multicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast"))
 	}
 	if !data.SourceIpv6Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source/ipv6/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source/ipv6/address"))
 	}
 	if !data.SourceIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source/ipv4/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source/ipv4/address"))
 	}
 	if !data.PortStateAny.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/port/state/any", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "port/state/any"))
 	}
 	if !data.PortStateMasterOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/port/state/primary-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "port/state/primary-only"))
 	}
 	if !data.PortStateSlaveOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/port/state/subordinate-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "port/state/subordinate-only"))
 	}
 	return deletePaths
 }

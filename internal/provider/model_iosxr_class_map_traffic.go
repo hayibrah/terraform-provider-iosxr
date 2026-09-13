@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1219,22 +1220,22 @@ func (data *ClassMapTrafficData) fromBody(ctx context.Context, res []byte, versi
 func (data *ClassMapTraffic) getDeletedItems(ctx context.Context, state ClassMapTraffic, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.MatchVlanInner.IsNull() && data.MatchVlanInner.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/vlan-inner/vlan-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/vlan-inner/vlan-id"))
 	}
 	if !state.MatchVlan.IsNull() && data.MatchVlan.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/vlan/vlan-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/vlan/vlan-id"))
 	}
 	if !state.MatchTcpFlagAny.IsNull() && data.MatchTcpFlagAny.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/tcp-flag/any", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/tcp-flag/any"))
 	}
 	if !state.MatchTcpFlag.IsNull() && data.MatchTcpFlag.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/tcp-flag/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/tcp-flag/value"))
 	}
 	if !state.MatchSourcePort.IsNull() && data.MatchSourcePort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/source-port/number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/source-port/number"))
 	}
 	if !state.MatchSourceMac.IsNull() && data.MatchSourceMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/source-address/mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/source-address/mac"))
 	}
 	for i := range state.MatchSourceAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1309,67 +1310,67 @@ func (data *ClassMapTraffic) getDeletedItems(ctx context.Context, state ClassMap
 		}
 	}
 	if !state.MatchProtocol.IsNull() && data.MatchProtocol.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/protocol/number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/protocol/number"))
 	}
 	if !state.MatchPrecedenceIpv6.IsNull() && data.MatchPrecedenceIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/precedence-ipv6/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/precedence-ipv6/value"))
 	}
 	if !state.MatchPrecedenceIpv4.IsNull() && data.MatchPrecedenceIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/precedence-ipv4/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/precedence-ipv4/value"))
 	}
 	if !state.MatchPrecedence.IsNull() && data.MatchPrecedence.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/precedence/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/precedence/value"))
 	}
 	if !state.MatchPacketLength.IsNull() && data.MatchPacketLength.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/packet/length/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/packet/length/value"))
 	}
 	if !state.MatchMplsExperimentalTopmost.IsNull() && data.MatchMplsExperimentalTopmost.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/mpls/experimental/topmost/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/mpls/experimental/topmost/label"))
 	}
 	if !state.MatchIpv6IcmpType.IsNull() && data.MatchIpv6IcmpType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/ipv6/icmp-type/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/ipv6/icmp-type/value"))
 	}
 	if !state.MatchIpv6IcmpCode.IsNull() && data.MatchIpv6IcmpCode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/ipv6/icmp-code/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/ipv6/icmp-code/value"))
 	}
 	if !state.MatchIpv4IcmpType.IsNull() && data.MatchIpv4IcmpType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/ipv4/icmp-type/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/ipv4/icmp-type/value"))
 	}
 	if !state.MatchIpv4IcmpCode.IsNull() && data.MatchIpv4IcmpCode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/ipv4/icmp-code/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/ipv4/icmp-code/value"))
 	}
 	if !state.MatchFragmentTypeLastFragment.IsNull() && data.MatchFragmentTypeLastFragment.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/fragment-type/last-fragment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/fragment-type/last-fragment"))
 	}
 	if !state.MatchFragmentTypeIsFragment.IsNull() && data.MatchFragmentTypeIsFragment.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/fragment-type/is-fragment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/fragment-type/is-fragment"))
 	}
 	if !state.MatchFragmentTypeFirstFragment.IsNull() && data.MatchFragmentTypeFirstFragment.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/fragment-type/first-fragment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/fragment-type/first-fragment"))
 	}
 	if !state.MatchFragmentTypeDontFragment.IsNull() && data.MatchFragmentTypeDontFragment.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/fragment-type/dont-fragment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/fragment-type/dont-fragment"))
 	}
 	if !state.MatchFlowTag.IsNull() && data.MatchFlowTag.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/flow-tag/tag-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/flow-tag/tag-number"))
 	}
 	if !state.MatchEthertype.IsNull() && data.MatchEthertype.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/ethertype/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/ethertype/value"))
 	}
 	if !state.MatchDscpIpv6.IsNull() && data.MatchDscpIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/dscp-ipv6/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/dscp-ipv6/value"))
 	}
 	if !state.MatchDscpIpv4.IsNull() && data.MatchDscpIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/dscp-ipv4/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/dscp-ipv4/value"))
 	}
 	if !state.MatchDscp.IsNull() && data.MatchDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/dscp/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/dscp/value"))
 	}
 	if !state.MatchDestinationPort.IsNull() && data.MatchDestinationPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/destination-port/port-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/destination-port/port-number"))
 	}
 	if !state.MatchDestinationMac.IsNull() && data.MatchDestinationMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/destination-address/mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/destination-address/mac"))
 	}
 	for i := range state.MatchDestinationAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1444,25 +1445,25 @@ func (data *ClassMapTraffic) getDeletedItems(ctx context.Context, state ClassMap
 		}
 	}
 	if !state.MatchCosInner.IsNull() && data.MatchCosInner.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/cos-inner/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/cos-inner/value"))
 	}
 	if !state.MatchCos.IsNull() && data.MatchCos.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/cos/value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/cos/value"))
 	}
 	if !state.MatchAccessGroupIpv6.IsNull() && data.MatchAccessGroupIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/access-group/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/access-group/ipv6"))
 	}
 	if !state.MatchAccessGroupIpv4.IsNull() && data.MatchAccessGroupIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match/access-group/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match/access-group/ipv4"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	if !state.MatchAny.IsNull() && data.MatchAny.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match-any", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match-any"))
 	}
 	if !state.MatchAll.IsNull() && data.MatchAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/match-all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "match-all"))
 	}
 	return deletedItems
 }
@@ -1474,7 +1475,7 @@ func (data *ClassMapTraffic) getDeletedItems(ctx context.Context, state ClassMap
 func (data *ClassMapTraffic) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.MatchTcpFlagAny.IsNull() && !data.MatchTcpFlagAny.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/tcp-flag/any", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match/tcp-flag/any"))
 	}
 	for i := range data.MatchSourceAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1493,16 +1494,16 @@ func (data *ClassMapTraffic) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.MatchFragmentTypeLastFragment.IsNull() && !data.MatchFragmentTypeLastFragment.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/fragment-type/last-fragment", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match/fragment-type/last-fragment"))
 	}
 	if !data.MatchFragmentTypeIsFragment.IsNull() && !data.MatchFragmentTypeIsFragment.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/fragment-type/is-fragment", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match/fragment-type/is-fragment"))
 	}
 	if !data.MatchFragmentTypeFirstFragment.IsNull() && !data.MatchFragmentTypeFirstFragment.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/fragment-type/first-fragment", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match/fragment-type/first-fragment"))
 	}
 	if !data.MatchFragmentTypeDontFragment.IsNull() && !data.MatchFragmentTypeDontFragment.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match/fragment-type/dont-fragment", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match/fragment-type/dont-fragment"))
 	}
 	for i := range data.MatchDestinationAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1521,10 +1522,10 @@ func (data *ClassMapTraffic) getEmptyLeafsDelete(ctx context.Context, version st
 		}
 	}
 	if !data.MatchAny.IsNull() && !data.MatchAny.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match-any", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match-any"))
 	}
 	if !data.MatchAll.IsNull() && !data.MatchAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/match-all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "match-all"))
 	}
 	return emptyLeafsDelete
 }
@@ -1535,22 +1536,22 @@ func (data *ClassMapTraffic) getEmptyLeafsDelete(ctx context.Context, version st
 func (data *ClassMapTraffic) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.MatchVlanInner.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/vlan-inner/vlan-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/vlan-inner/vlan-id"))
 	}
 	if !data.MatchVlan.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/vlan/vlan-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/vlan/vlan-id"))
 	}
 	if !data.MatchTcpFlagAny.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/tcp-flag/any", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/tcp-flag/any"))
 	}
 	if !data.MatchTcpFlag.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/tcp-flag/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/tcp-flag/value"))
 	}
 	if !data.MatchSourcePort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-port/number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/source-port/number"))
 	}
 	if !data.MatchSourceMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/source-address/mac"))
 	}
 	for i := range data.MatchSourceAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1595,67 +1596,67 @@ func (data *ClassMapTraffic) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/ipv4/address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MatchProtocol.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/protocol/number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/protocol/number"))
 	}
 	if !data.MatchPrecedenceIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/precedence-ipv6/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/precedence-ipv6/value"))
 	}
 	if !data.MatchPrecedenceIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/precedence-ipv4/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/precedence-ipv4/value"))
 	}
 	if !data.MatchPrecedence.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/precedence/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/precedence/value"))
 	}
 	if !data.MatchPacketLength.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/packet/length/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/packet/length/value"))
 	}
 	if !data.MatchMplsExperimentalTopmost.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/mpls/experimental/topmost/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/mpls/experimental/topmost/label"))
 	}
 	if !data.MatchIpv6IcmpType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/ipv6/icmp-type/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/ipv6/icmp-type/value"))
 	}
 	if !data.MatchIpv6IcmpCode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/ipv6/icmp-code/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/ipv6/icmp-code/value"))
 	}
 	if !data.MatchIpv4IcmpType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/ipv4/icmp-type/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/ipv4/icmp-type/value"))
 	}
 	if !data.MatchIpv4IcmpCode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/ipv4/icmp-code/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/ipv4/icmp-code/value"))
 	}
 	if !data.MatchFragmentTypeLastFragment.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/fragment-type/last-fragment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/fragment-type/last-fragment"))
 	}
 	if !data.MatchFragmentTypeIsFragment.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/fragment-type/is-fragment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/fragment-type/is-fragment"))
 	}
 	if !data.MatchFragmentTypeFirstFragment.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/fragment-type/first-fragment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/fragment-type/first-fragment"))
 	}
 	if !data.MatchFragmentTypeDontFragment.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/fragment-type/dont-fragment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/fragment-type/dont-fragment"))
 	}
 	if !data.MatchFlowTag.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/flow-tag/tag-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/flow-tag/tag-number"))
 	}
 	if !data.MatchEthertype.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/ethertype/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/ethertype/value"))
 	}
 	if !data.MatchDscpIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/dscp-ipv6/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/dscp-ipv6/value"))
 	}
 	if !data.MatchDscpIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/dscp-ipv4/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/dscp-ipv4/value"))
 	}
 	if !data.MatchDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/dscp/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/dscp/value"))
 	}
 	if !data.MatchDestinationPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-port/port-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/destination-port/port-number"))
 	}
 	if !data.MatchDestinationMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/destination-address/mac"))
 	}
 	for i := range data.MatchDestinationAddressIpv6 {
 		keys := [...]string{"address", "prefix-length"}
@@ -1700,25 +1701,25 @@ func (data *ClassMapTraffic) getDeletePaths(ctx context.Context, version string)
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/ipv4/address-prefix%v", data.getPath(), keyString))
 	}
 	if !data.MatchCosInner.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/cos-inner/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/cos-inner/value"))
 	}
 	if !data.MatchCos.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/cos/value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/cos/value"))
 	}
 	if !data.MatchAccessGroupIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/access-group/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/access-group/ipv6"))
 	}
 	if !data.MatchAccessGroupIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/access-group/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/access-group/ipv4"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	if !data.MatchAny.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match-any", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match-any"))
 	}
 	if !data.MatchAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match-all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "match-all"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1147,28 +1148,28 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ScheduleEveryForUnit.IsNull() && data.ScheduleEveryForUnit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/for/unit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/for/unit"))
 	}
 	if !state.ScheduleEveryForTime.IsNull() && data.ScheduleEveryForTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/for/time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/for/time"))
 	}
 	if !state.ScheduleEveryAtMinutes.IsNull() && data.ScheduleEveryAtMinutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/at/minutes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/at/minutes"))
 	}
 	if !state.ScheduleEveryAtHours.IsNull() && data.ScheduleEveryAtHours.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/at/hours", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/at/hours"))
 	}
 	if !state.ScheduleEveryHours.IsNull() && data.ScheduleEveryHours.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/interval-in-hours", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/interval-in-hours"))
 	}
 	if !state.ScheduleEveryMinutes.IsNull() && data.ScheduleEveryMinutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/interval-in-minutes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/interval-in-minutes"))
 	}
 	if !state.ScheduleEveryDay.IsNull() && data.ScheduleEveryDay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/day", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/day"))
 	}
 	if !state.ScheduleEveryWeekOn.IsNull() && data.ScheduleEveryWeekOn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/every/week/on", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "schedule/every/week/on"))
 	}
 	for i := range state.StatisticsMeasure {
 		keys := [...]string{"type"}
@@ -1194,70 +1195,70 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA,
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && data.StatisticsMeasure[j].UsecMinimumDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec-minimum-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/usec-minimum-delay"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() && data.StatisticsMeasure[j].AggregateMinimumDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/minimum-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/minimum-delay"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateless/log/on/in-and-above/bin", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateless/log/on/sample-count", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateless/log/on/mean-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateless/log/on/max-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/efd/on/in-and-above/bin", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/efd/on/sample-count", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/efd/on/mean-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/efd/on/max-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/log/on/in-and-above/bin", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/log/on/sample-count", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/log/on/mean-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/thresholds/type/stateful/log/on/max-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].BucketsArchive.IsNull() && data.StatisticsMeasure[j].BucketsArchive.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/buckets/archive", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/archive"))
 				}
 				if !state.StatisticsMeasure[i].BucketsProbes.IsNull() && data.StatisticsMeasure[j].BucketsProbes.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/buckets/probes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/probes"))
 				}
 				if !state.StatisticsMeasure[i].BucketsSize.IsNull() && data.StatisticsMeasure[j].BucketsSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/buckets/size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/size"))
 				}
 				if !state.StatisticsMeasure[i].AggregateUsec.IsNull() && data.StatisticsMeasure[j].AggregateUsec.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/usec"))
 				}
 				if !state.StatisticsMeasure[i].AggregateWidthPercentage.IsNull() && data.StatisticsMeasure[j].AggregateWidthPercentage.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/width-tenths", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/width-tenths"))
 				}
 				if !state.StatisticsMeasure[i].AggregateWidth.IsNull() && data.StatisticsMeasure[j].AggregateWidth.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/width", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/width"))
 				}
 				if !state.StatisticsMeasure[i].AggregateBins.IsNull() && data.StatisticsMeasure[j].AggregateBins.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/bins", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/bins"))
 				}
 				if !state.StatisticsMeasure[i].AggregateNone.IsNull() && data.StatisticsMeasure[j].AggregateNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/none"))
 				}
 				break
 			}
@@ -1267,61 +1268,61 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA,
 		}
 	}
 	if !state.ProbeSyntheticLossCalculationPackets.IsNull() && data.ProbeSyntheticLossCalculationPackets.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/synthetic/loss/calculation/packets", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/synthetic/loss/calculation/packets"))
 	}
 	if !state.ProbePriority.IsNull() && data.ProbePriority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/priority"))
 	}
 	if !state.ProbePacketTestPatternHex.IsNull() && data.ProbePacketTestPatternHex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/packet/test/pattern/hex", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/packet/test/pattern/hex"))
 	}
 	if !state.ProbePacketSize.IsNull() && data.ProbePacketSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/packet/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/packet/size"))
 	}
 	if !state.ProbeSendBurstPacketIntervalMilliseconds.IsNull() && data.ProbeSendBurstPacketIntervalMilliseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/packet/interval-in-milliseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/packet/interval-in-milliseconds"))
 	}
 	if !state.ProbeSendBurstPacketIntervalSeconds.IsNull() && data.ProbeSendBurstPacketIntervalSeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/packet/interval-in-seconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/packet/interval-in-seconds"))
 	}
 	if !state.ProbeSendBurstPacketCount.IsNull() && data.ProbeSendBurstPacketCount.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/packet/count", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/packet/count"))
 	}
 	if !state.ProbeSendBurstEveryHours.IsNull() && data.ProbeSendBurstEveryHours.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/every/hours", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/every/hours"))
 	}
 	if !state.ProbeSendBurstEveryMinutes.IsNull() && data.ProbeSendBurstEveryMinutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/every/minutes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/every/minutes"))
 	}
 	if !state.ProbeSendBurstEverySeconds.IsNull() && data.ProbeSendBurstEverySeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/every/seconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/every/seconds"))
 	}
 	if !state.ProbeSendBurstEveryInterval.IsNull() && data.ProbeSendBurstEveryInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/every/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/every/interval"))
 	}
 	if !state.ProbeSendBurstOnce.IsNull() && data.ProbeSendBurstOnce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/burst/once", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/burst/once"))
 	}
 	if !state.ProbeSendPacketEveryHours.IsNull() && data.ProbeSendPacketEveryHours.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/every/hours", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/every/hours"))
 	}
 	if !state.ProbeSendPacketEveryMinutes.IsNull() && data.ProbeSendPacketEveryMinutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/every/minutes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/every/minutes"))
 	}
 	if !state.ProbeSendPacketEverySeconds.IsNull() && data.ProbeSendPacketEverySeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/every/seconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/every/seconds"))
 	}
 	if !state.ProbeSendPacketEveryMilliseconds.IsNull() && data.ProbeSendPacketEveryMilliseconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/every/milliseconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/every/milliseconds"))
 	}
 	if !state.ProbeSendPacketEveryInterval.IsNull() && data.ProbeSendPacketEveryInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/every/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/every/interval"))
 	}
 	if !state.ProbeSendPacketOnce.IsNull() && data.ProbeSendPacketOnce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/probe/send/packet/once", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "probe/send/packet/once"))
 	}
 	if !state.Type.IsNull() && data.Type.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type"))
 	}
 	return deletedItems
 }
@@ -1333,7 +1334,7 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA,
 func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ScheduleEveryDay.IsNull() && !data.ScheduleEveryDay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/schedule/every/day", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "schedule/every/day"))
 	}
 	for i := range data.StatisticsMeasure {
 		keys := [...]string{"type"}
@@ -1343,44 +1344,44 @@ func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context, version string
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && !data.StatisticsMeasure[i].UsecMinimumDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec-minimum-delay", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/usec-minimum-delay"))
 		}
 		if !data.StatisticsMeasure[i].BucketsProbes.IsNull() && !data.StatisticsMeasure[i].BucketsProbes.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/statistics/measures/measure%v/buckets/probes", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "buckets/probes"))
 		}
 		if !data.StatisticsMeasure[i].AggregateUsec.IsNull() && !data.StatisticsMeasure[i].AggregateUsec.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/usec", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/usec"))
 		}
 		if !data.StatisticsMeasure[i].AggregateNone.IsNull() && !data.StatisticsMeasure[i].AggregateNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/statistics/measures/measure%v/aggregate/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/none"))
 		}
 	}
 	if !data.ProbeSendBurstEveryHours.IsNull() && !data.ProbeSendBurstEveryHours.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/burst/every/hours", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/burst/every/hours"))
 	}
 	if !data.ProbeSendBurstEveryMinutes.IsNull() && !data.ProbeSendBurstEveryMinutes.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/burst/every/minutes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/burst/every/minutes"))
 	}
 	if !data.ProbeSendBurstEverySeconds.IsNull() && !data.ProbeSendBurstEverySeconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/burst/every/seconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/burst/every/seconds"))
 	}
 	if !data.ProbeSendBurstOnce.IsNull() && !data.ProbeSendBurstOnce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/burst/once", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/burst/once"))
 	}
 	if !data.ProbeSendPacketEveryHours.IsNull() && !data.ProbeSendPacketEveryHours.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/packet/every/hours", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/packet/every/hours"))
 	}
 	if !data.ProbeSendPacketEveryMinutes.IsNull() && !data.ProbeSendPacketEveryMinutes.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/packet/every/minutes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/packet/every/minutes"))
 	}
 	if !data.ProbeSendPacketEverySeconds.IsNull() && !data.ProbeSendPacketEverySeconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/packet/every/seconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/packet/every/seconds"))
 	}
 	if !data.ProbeSendPacketEveryMilliseconds.IsNull() && !data.ProbeSendPacketEveryMilliseconds.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/packet/every/milliseconds", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/packet/every/milliseconds"))
 	}
 	if !data.ProbeSendPacketOnce.IsNull() && !data.ProbeSendPacketOnce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/probe/send/packet/once", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "probe/send/packet/once"))
 	}
 	return emptyLeafsDelete
 }
@@ -1391,28 +1392,28 @@ func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *EthernetSLA) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ScheduleEveryForUnit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/for/unit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/for/unit"))
 	}
 	if !data.ScheduleEveryForTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/for/time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/for/time"))
 	}
 	if !data.ScheduleEveryAtMinutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/at/minutes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/at/minutes"))
 	}
 	if !data.ScheduleEveryAtHours.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/at/hours", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/at/hours"))
 	}
 	if !data.ScheduleEveryHours.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/interval-in-hours", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/interval-in-hours"))
 	}
 	if !data.ScheduleEveryMinutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/interval-in-minutes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/interval-in-minutes"))
 	}
 	if !data.ScheduleEveryDay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/day", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/day"))
 	}
 	if !data.ScheduleEveryWeekOn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/every/week/on", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "schedule/every/week/on"))
 	}
 	for i := range data.StatisticsMeasure {
 		keys := [...]string{"type"}
@@ -1433,61 +1434,61 @@ func (data *EthernetSLA) getDeletePaths(ctx context.Context, version string) []s
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString))
 	}
 	if !data.ProbeSyntheticLossCalculationPackets.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/synthetic/loss/calculation/packets", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/synthetic/loss/calculation/packets"))
 	}
 	if !data.ProbePriority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/priority"))
 	}
 	if !data.ProbePacketTestPatternHex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/packet/test/pattern/hex", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/packet/test/pattern/hex"))
 	}
 	if !data.ProbePacketSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/packet/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/packet/size"))
 	}
 	if !data.ProbeSendBurstPacketIntervalMilliseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/packet/interval-in-milliseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/packet/interval-in-milliseconds"))
 	}
 	if !data.ProbeSendBurstPacketIntervalSeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/packet/interval-in-seconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/packet/interval-in-seconds"))
 	}
 	if !data.ProbeSendBurstPacketCount.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/packet/count", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/packet/count"))
 	}
 	if !data.ProbeSendBurstEveryHours.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/every/hours", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/every/hours"))
 	}
 	if !data.ProbeSendBurstEveryMinutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/every/minutes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/every/minutes"))
 	}
 	if !data.ProbeSendBurstEverySeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/every/seconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/every/seconds"))
 	}
 	if !data.ProbeSendBurstEveryInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/every/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/every/interval"))
 	}
 	if !data.ProbeSendBurstOnce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/burst/once", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/burst/once"))
 	}
 	if !data.ProbeSendPacketEveryHours.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/every/hours", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/every/hours"))
 	}
 	if !data.ProbeSendPacketEveryMinutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/every/minutes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/every/minutes"))
 	}
 	if !data.ProbeSendPacketEverySeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/every/seconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/every/seconds"))
 	}
 	if !data.ProbeSendPacketEveryMilliseconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/every/milliseconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/every/milliseconds"))
 	}
 	if !data.ProbeSendPacketEveryInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/every/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/every/interval"))
 	}
 	if !data.ProbeSendPacketOnce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/probe/send/packet/once", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/send/packet/once"))
 	}
 	if !data.Type.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type"))
 	}
 	return deletePaths
 }

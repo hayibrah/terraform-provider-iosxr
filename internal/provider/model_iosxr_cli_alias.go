@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -407,7 +408,7 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.ConfigAliases[i].Command.IsNull() && data.ConfigAliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/config/alias%v/aliased-config-command", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/config/alias%v", state.getPath(), keyString), "aliased-config-command"))
 				}
 				break
 			}
@@ -440,7 +441,7 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.ExecAliases[i].Command.IsNull() && data.ExecAliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/alias%v/aliased-exec-command", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/alias%v", state.getPath(), keyString), "aliased-exec-command"))
 				}
 				break
 			}
@@ -473,7 +474,7 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.Aliases[i].Command.IsNull() && data.Aliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/aliases/alias%v/alias-body", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aliases/alias%v", state.getPath(), keyString), "alias-body"))
 				}
 				break
 			}

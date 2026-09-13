@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -983,28 +984,28 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.TelnetTransparent.IsNull() && data.TelnetTransparent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-telnet-cfg:telnet/transparent"))
 	}
 	if !state.Pager.IsNull() && data.Pager.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-timestamp-cfg:pager", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-timestamp-cfg:pager"))
 	}
 	if !state.TimestampDisable.IsNull() && data.TimestampDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-timestamp-cfg:timestamp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-timestamp-cfg:timestamp"))
 	}
 	if !state.Length.IsNull() && data.Length.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:length", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-general-cfg:length"))
 	}
 	if !state.Width.IsNull() && data.Width.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:width", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-general-cfg:width"))
 	}
 	if !state.AbsoluteTimeout.IsNull() && data.AbsoluteTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:absolute-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"))
 	}
 	if !state.ExecTimeoutSeconds.IsNull() && data.ExecTimeoutSeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout"))
 	}
 	if !state.ExecTimeoutMinutes.IsNull() && data.ExecTimeoutMinutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout"))
 	}
 	for i := range state.UsersGroup {
 		keys := [...]string{"group-name"}
@@ -1037,97 +1038,97 @@ func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault,
 		}
 	}
 	if !state.TimeoutLoginResponse.IsNull() && data.TimeoutLoginResponse.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:timeout/login/response", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout/login/response"))
 	}
 	if !state.SecretEncrypted.IsNull() && data.SecretEncrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:secret/five", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:secret/five"))
 	}
 	if !state.PasswordEncrypted.IsNull() && data.PasswordEncrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:password/seven", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:password/seven"))
 	}
 	if !state.AccountingCommands.IsNull() && data.AccountingCommands.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/commands", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/commands"))
 	}
 	if !state.AccountingExec.IsNull() && data.AccountingExec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/exec", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/exec"))
 	}
 	if !state.AuthorizationCommands.IsNull() && data.AuthorizationCommands.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/commands", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/commands"))
 	}
 	if !state.AuthorizationEventmanager.IsNull() && data.AuthorizationEventmanager.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/eventmanager", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/eventmanager"))
 	}
 	if !state.AuthorizationExec.IsNull() && data.AuthorizationExec.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/exec", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/exec"))
 	}
 	if !state.LoginAuthentication.IsNull() && data.LoginAuthentication.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:login/authentication", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:login/authentication"))
 	}
 	if !state.CliWhitespaceCompletion.IsNull() && data.CliWhitespaceCompletion.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/cli/whitespace/completion", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "cli/whitespace/completion"))
 	}
 	if !state.SessionLimit.IsNull() && data.SessionLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session-limit"))
 	}
 	if !state.TransportPreferredSsh.IsNull() && data.TransportPreferredSsh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/preferred/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/preferred/ssh"))
 	}
 	if !state.TransportPreferredTelnet.IsNull() && data.TransportPreferredTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/preferred/telnet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/preferred/telnet"))
 	}
 	if !state.TransportPreferredNone.IsNull() && data.TransportPreferredNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/preferred/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/preferred/none"))
 	}
 	if !state.TransportOutputTelnet.IsNull() && data.TransportOutputTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/output/telnet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/output/telnet"))
 	}
 	if !state.TransportOutputSshTelnet.IsNull() && data.TransportOutputSshTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/output/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/output/ssh"))
 	}
 	if !state.TransportOutputSsh.IsNull() && data.TransportOutputSsh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/output/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/output/ssh"))
 	}
 	if !state.TransportOutputNone.IsNull() && data.TransportOutputNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/output/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/output/none"))
 	}
 	if !state.TransportOutputAll.IsNull() && data.TransportOutputAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/output/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/output/all"))
 	}
 	if !state.TransportInputAll.IsNull() && data.TransportInputAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/input/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/input/all"))
 	}
 	if !state.TransportInputTelnet.IsNull() && data.TransportInputTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/input/telnet", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/input/telnet"))
 	}
 	if !state.TransportInputSshTelnet.IsNull() && data.TransportInputSshTelnet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/input/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/input/ssh"))
 	}
 	if !state.TransportInputSsh.IsNull() && data.TransportInputSsh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/input/ssh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/input/ssh"))
 	}
 	if !state.TransportInputNone.IsNull() && data.TransportInputNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/input/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/input/none"))
 	}
 	if !state.SessionTimeoutOutput.IsNull() && data.SessionTimeoutOutput.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session-timeout"))
 	}
 	if !state.SessionTimeout.IsNull() && data.SessionTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session-timeout"))
 	}
 	if !state.EscapeCharacter.IsNull() && data.EscapeCharacter.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/escape-character", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "escape-character"))
 	}
 	if !state.DisconnectCharacter.IsNull() && data.DisconnectCharacter.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/disconnect-character", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "disconnect-character"))
 	}
 	if !state.AccessClassEgress.IsNull() && data.AccessClassEgress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/access-class/egress", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "access-class/egress"))
 	}
 	if !state.AccessClassIngress.IsNull() && data.AccessClassIngress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/access-class/ingress", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "access-class/ingress"))
 	}
 	if !state.Autocommand.IsNull() && data.Autocommand.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autocommand", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autocommand"))
 	}
 	return deletedItems
 }
@@ -1139,10 +1140,10 @@ func (data *LineDefault) getDeletedItems(ctx context.Context, state LineDefault,
 func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TelnetTransparent.IsNull() && !data.TelnetTransparent.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-telnet-cfg:telnet/transparent"))
 	}
 	if !data.TimestampDisable.IsNull() && !data.TimestampDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-timestamp-cfg:timestamp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-timestamp-cfg:timestamp"))
 	}
 	for i := range data.UsersGroup {
 		keys := [...]string{"group-name"}
@@ -1153,49 +1154,49 @@ func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context, version string
 		}
 	}
 	if !data.CliWhitespaceCompletion.IsNull() && !data.CliWhitespaceCompletion.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/cli/whitespace/completion", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "cli/whitespace/completion"))
 	}
 	if !data.TransportPreferredSsh.IsNull() && !data.TransportPreferredSsh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/preferred/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/preferred/ssh"))
 	}
 	if !data.TransportPreferredTelnet.IsNull() && !data.TransportPreferredTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/preferred/telnet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/preferred/telnet"))
 	}
 	if !data.TransportPreferredNone.IsNull() && !data.TransportPreferredNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/preferred/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/preferred/none"))
 	}
 	if !data.TransportOutputTelnet.IsNull() && !data.TransportOutputTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/output/telnet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/output/telnet"))
 	}
 	if !data.TransportOutputSshTelnet.IsNull() && !data.TransportOutputSshTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/output/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/output/ssh"))
 	}
 	if !data.TransportOutputSsh.IsNull() && !data.TransportOutputSsh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/output/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/output/ssh"))
 	}
 	if !data.TransportOutputNone.IsNull() && !data.TransportOutputNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/output/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/output/none"))
 	}
 	if !data.TransportOutputAll.IsNull() && !data.TransportOutputAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/output/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/output/all"))
 	}
 	if !data.TransportInputAll.IsNull() && !data.TransportInputAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/input/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/input/all"))
 	}
 	if !data.TransportInputTelnet.IsNull() && !data.TransportInputTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/input/telnet", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/input/telnet"))
 	}
 	if !data.TransportInputSshTelnet.IsNull() && !data.TransportInputSshTelnet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/input/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/input/ssh"))
 	}
 	if !data.TransportInputSsh.IsNull() && !data.TransportInputSsh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/input/ssh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/input/ssh"))
 	}
 	if !data.TransportInputNone.IsNull() && !data.TransportInputNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport/input/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport/input/none"))
 	}
 	if !data.SessionTimeoutOutput.IsNull() && !data.SessionTimeoutOutput.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/session-timeout", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "session-timeout"))
 	}
 	return emptyLeafsDelete
 }
@@ -1206,28 +1207,28 @@ func (data *LineDefault) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *LineDefault) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.TelnetTransparent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-telnet-cfg:telnet/transparent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-telnet-cfg:telnet/transparent"))
 	}
 	if !data.Pager.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-timestamp-cfg:pager", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-timestamp-cfg:pager"))
 	}
 	if !data.TimestampDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-timestamp-cfg:timestamp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-timestamp-cfg:timestamp"))
 	}
 	if !data.Length.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:length", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-general-cfg:length"))
 	}
 	if !data.Width.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:width", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-general-cfg:width"))
 	}
 	if !data.AbsoluteTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-general-cfg:absolute-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"))
 	}
 	if !data.ExecTimeoutSeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout"))
 	}
 	if !data.ExecTimeoutMinutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout"))
 	}
 	for i := range data.UsersGroup {
 		keys := [...]string{"group-name"}
@@ -1248,97 +1249,97 @@ func (data *LineDefault) getDeletePaths(ctx context.Context, version string) []s
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:users/group%v", data.getPath(), keyString))
 	}
 	if !data.TimeoutLoginResponse.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:timeout/login/response", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout/login/response"))
 	}
 	if !data.SecretEncrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:secret/five", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:secret/five"))
 	}
 	if !data.PasswordEncrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:password/seven", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:password/seven"))
 	}
 	if !data.AccountingCommands.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/commands", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/commands"))
 	}
 	if !data.AccountingExec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/exec", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting/exec"))
 	}
 	if !data.AuthorizationCommands.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/commands", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/commands"))
 	}
 	if !data.AuthorizationEventmanager.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/eventmanager", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/eventmanager"))
 	}
 	if !data.AuthorizationExec.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/exec", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization/exec"))
 	}
 	if !data.LoginAuthentication.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:login/authentication", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:login/authentication"))
 	}
 	if !data.CliWhitespaceCompletion.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cli/whitespace/completion", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "cli/whitespace/completion"))
 	}
 	if !data.SessionLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session-limit"))
 	}
 	if !data.TransportPreferredSsh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/preferred/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/preferred/ssh"))
 	}
 	if !data.TransportPreferredTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/preferred/telnet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/preferred/telnet"))
 	}
 	if !data.TransportPreferredNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/preferred/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/preferred/none"))
 	}
 	if !data.TransportOutputTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/output/telnet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/output/telnet"))
 	}
 	if !data.TransportOutputSshTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/output/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/output/ssh"))
 	}
 	if !data.TransportOutputSsh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/output/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/output/ssh"))
 	}
 	if !data.TransportOutputNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/output/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/output/none"))
 	}
 	if !data.TransportOutputAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/output/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/output/all"))
 	}
 	if !data.TransportInputAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/input/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/input/all"))
 	}
 	if !data.TransportInputTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/input/telnet", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/input/telnet"))
 	}
 	if !data.TransportInputSshTelnet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/input/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/input/ssh"))
 	}
 	if !data.TransportInputSsh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/input/ssh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/input/ssh"))
 	}
 	if !data.TransportInputNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/input/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/input/none"))
 	}
 	if !data.SessionTimeoutOutput.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session-timeout"))
 	}
 	if !data.SessionTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session-timeout"))
 	}
 	if !data.EscapeCharacter.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/escape-character", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "escape-character"))
 	}
 	if !data.DisconnectCharacter.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/disconnect-character", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "disconnect-character"))
 	}
 	if !data.AccessClassEgress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-class/egress", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-class/egress"))
 	}
 	if !data.AccessClassIngress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-class/ingress", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-class/ingress"))
 	}
 	if !data.Autocommand.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autocommand", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autocommand"))
 	}
 	return deletePaths
 }

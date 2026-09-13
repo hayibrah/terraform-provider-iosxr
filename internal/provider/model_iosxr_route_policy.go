@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *RoutePolicyData) fromBody(ctx context.Context, res []byte, version s
 func (data *RoutePolicy) getDeletedItems(ctx context.Context, state RoutePolicy, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rpl-route-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rpl-route-policy"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *RoutePolicy) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *RoutePolicy) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpl-route-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rpl-route-policy"))
 	}
 	return deletePaths
 }

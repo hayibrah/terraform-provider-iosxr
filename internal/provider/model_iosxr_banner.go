@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *BannerData) fromBody(ctx context.Context, res []byte, version string
 func (data *Banner) getDeletedItems(ctx context.Context, state Banner, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Line.IsNull() && data.Line.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/line", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "line"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *Banner) getEmptyLeafsDelete(ctx context.Context, version string) []s
 func (data *Banner) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Line.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/line", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "line"))
 	}
 	return deletePaths
 }

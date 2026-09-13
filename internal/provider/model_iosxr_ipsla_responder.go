@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -810,13 +811,13 @@ func (data *IPSLAResponder) getDeletedItems(ctx context.Context, state IPSLAResp
 			}
 			if found {
 				if !state.TwampLightSessions[i].Timeout.IsNull() && data.TwampLightSessions[j].Timeout.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/twamp-light/test-session/session%v/timeout", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/twamp-light/test-session/session%v", state.getPath(), keyString), "timeout"))
 				}
 				if !state.TwampLightSessions[i].Encryption.IsNull() && data.TwampLightSessions[j].Encryption.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/twamp-light/test-session/session%v/encryption", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/twamp-light/test-session/session%v", state.getPath(), keyString), "encryption"))
 				}
 				if !state.TwampLightSessions[i].Authentication.IsNull() && data.TwampLightSessions[j].Authentication.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/twamp-light/test-session/session%v/authentication", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/twamp-light/test-session/session%v", state.getPath(), keyString), "authentication"))
 				}
 				for ci := range state.TwampLightSessions[i].LocalIpv6Addresses {
 					ckeys := [...]string{"address", "local-port"}
@@ -982,10 +983,10 @@ func (data *IPSLAResponder) getDeletedItems(ctx context.Context, state IPSLAResp
 		}
 	}
 	if !state.TwampTimeout.IsNull() && data.TwampTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/twamp/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "twamp/timeout"))
 	}
 	if !state.Twamp.IsNull() && data.Twamp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/twamp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "twamp"))
 	}
 	for i := range state.TypeUdpIpv4 {
 		keys := [...]string{"address"}
@@ -1064,10 +1065,10 @@ func (data *IPSLAResponder) getEmptyLeafsDelete(ctx context.Context, version str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.TwampLightSessions[i].Encryption.IsNull() && !data.TwampLightSessions[i].Encryption.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/twamp-light/test-session/session%v/encryption", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/twamp-light/test-session/session%v", data.getPath(), keyString), "encryption"))
 		}
 		if !data.TwampLightSessions[i].Authentication.IsNull() && !data.TwampLightSessions[i].Authentication.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/twamp-light/test-session/session%v/authentication", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/twamp-light/test-session/session%v", data.getPath(), keyString), "authentication"))
 		}
 		for ci := range data.TwampLightSessions[i].LocalIpv6Addresses {
 			ckeys := [...]string{"address", "local-port"}
@@ -1103,7 +1104,7 @@ func (data *IPSLAResponder) getEmptyLeafsDelete(ctx context.Context, version str
 		}
 	}
 	if !data.Twamp.IsNull() && !data.Twamp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/twamp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "twamp"))
 	}
 	for i := range data.TypeUdpIpv4 {
 		keys := [...]string{"address"}
@@ -1148,10 +1149,10 @@ func (data *IPSLAResponder) getDeletePaths(ctx context.Context, version string) 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/twamp-light/test-session/session%v", data.getPath(), keyString))
 	}
 	if !data.TwampTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/twamp/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "twamp/timeout"))
 	}
 	if !data.Twamp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/twamp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "twamp"))
 	}
 	for i := range data.TypeUdpIpv4 {
 		keys := [...]string{"address"}

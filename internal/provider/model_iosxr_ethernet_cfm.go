@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1590,49 +1591,49 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM,
 						}
 						if found {
 							if !state.Domains[i].Services[ci].ReportDefectsRdi.IsNull() && data.Domains[j].Services[cj].ReportDefectsRdi.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/rdi", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/rdi"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsPeerPortDown.IsNull() && data.Domains[j].Services[cj].ReportDefectsPeerPortDown.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/peer-port-down", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/peer-port-down"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsMissing.IsNull() && data.Domains[j].Services[cj].ReportDefectsMissing.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/missing", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/missing"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsWrongInterval.IsNull() && data.Domains[j].Services[cj].ReportDefectsWrongInterval.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-interval", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/wrong-interval"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsOurMepid.IsNull() && data.Domains[j].Services[cj].ReportDefectsOurMepid.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/our-mepid", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/our-mepid"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsOurMac.IsNull() && data.Domains[j].Services[cj].ReportDefectsOurMac.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/our-mac", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/our-mac"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsWrongLevel.IsNull() && data.Domains[j].Services[cj].ReportDefectsWrongLevel.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-level", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/wrong-level"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsWrongMaid.IsNull() && data.Domains[j].Services[cj].ReportDefectsWrongMaid.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-maid", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/wrong-maid"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsIeeeMacRemoteErrorXcon.IsNull() && data.Domains[j].Services[cj].ReportDefectsIeeeMacRemoteErrorXcon.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/mac-remote-error-xcon", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/ieee/mac-remote-error-xcon"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsIeeeRemoteErrorXcon.IsNull() && data.Domains[j].Services[cj].ReportDefectsIeeeRemoteErrorXcon.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/remote-error-xcon", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/ieee/remote-error-xcon"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsIeeeErrorXcon.IsNull() && data.Domains[j].Services[cj].ReportDefectsIeeeErrorXcon.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/error-xcon", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/ieee/error-xcon"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsIeeeXcon.IsNull() && data.Domains[j].Services[cj].ReportDefectsIeeeXcon.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/xcon", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/ieee/xcon"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsAll.IsNull() && data.Domains[j].Services[cj].ReportDefectsAll.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/all", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/all"))
 							}
 							if !state.Domains[i].Services[ci].ReportDefectsNone.IsNull() && data.Domains[j].Services[cj].ReportDefectsNone.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/none", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "report/defects/none"))
 							}
 							if !state.Domains[i].Services[ci].MepCrosscheckAuto.IsNull() && data.Domains[j].Services[cj].MepCrosscheckAuto.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/mep/crosscheck/auto", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "mep/crosscheck/auto"))
 							}
 							for cci := range state.Domains[i].Services[ci].MepCrosschecks {
 								cckeys := [...]string{"mep-id"}
@@ -1658,7 +1659,7 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM,
 									}
 									if found {
 										if !state.Domains[i].Services[ci].MepCrosschecks[cci].MacAddress.IsNull() && data.Domains[j].Services[cj].MepCrosschecks[ccj].MacAddress.IsNull() {
-											deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/mep/crosscheck/mep-ids/mep-id%v/mac-address", state.getPath(), keyString, ckeyString, cckeyString))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v/mep/crosscheck/mep-ids/mep-id%v", state.getPath(), keyString, ckeyString, cckeyString), "mac-address"))
 										}
 										break
 									}
@@ -1668,115 +1669,115 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM,
 								}
 							}
 							if !state.Domains[i].Services[ci].LogEfd.IsNull() && data.Domains[j].Services[cj].LogEfd.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/efd", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/efd"))
 							}
 							if !state.Domains[i].Services[ci].LogCsf.IsNull() && data.Domains[j].Services[cj].LogCsf.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/csf", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/csf"))
 							}
 							if !state.Domains[i].Services[ci].LogAis.IsNull() && data.Domains[j].Services[cj].LogAis.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/ais", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/ais"))
 							}
 							if !state.Domains[i].Services[ci].LogCrosscheckErrors.IsNull() && data.Domains[j].Services[cj].LogCrosscheckErrors.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/crosscheck/errors", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/crosscheck/errors"))
 							}
 							if !state.Domains[i].Services[ci].LogContinuityCheckErrors.IsNull() && data.Domains[j].Services[cj].LogContinuityCheckErrors.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/continuity-check/errors", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/continuity-check/errors"))
 							}
 							if !state.Domains[i].Services[ci].LogContinuityCheckMepChanges.IsNull() && data.Domains[j].Services[cj].LogContinuityCheckMepChanges.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/continuity-check/mep/changes", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "log/continuity-check/mep/changes"))
 							}
 							if !state.Domains[i].Services[ci].AisTransmissionCos.IsNull() && data.Domains[j].Services[cj].AisTransmissionCos.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/ais/transmission/cos", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "ais/transmission/cos"))
 							}
 							if !state.Domains[i].Services[ci].AisTransmissionInterval.IsNull() && data.Domains[j].Services[cj].AisTransmissionInterval.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/ais/transmission/interval", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "ais/transmission/interval"))
 							}
 							if !state.Domains[i].Services[ci].MaximumMeps.IsNull() && data.Domains[j].Services[cj].MaximumMeps.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/maximum-meps", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "maximum-meps"))
 							}
 							if !state.Domains[i].Services[ci].ContinuityCheckLossAutoTraceroute.IsNull() && data.Domains[j].Services[cj].ContinuityCheckLossAutoTraceroute.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/continuity-check/loss/auto-traceroute", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "continuity-check/loss/auto-traceroute"))
 							}
 							if !state.Domains[i].Services[ci].ContinuityCheckArchiveHoldTime.IsNull() && data.Domains[j].Services[cj].ContinuityCheckArchiveHoldTime.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/continuity-check/archive/hold-time", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "continuity-check/archive/hold-time"))
 							}
 							if !state.Domains[i].Services[ci].ContinuityCheckIntervalLossThreshold.IsNull() && data.Domains[j].Services[cj].ContinuityCheckIntervalLossThreshold.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/continuity-check/interval/loss-threshold", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "continuity-check/interval/loss-threshold"))
 							}
 							if !state.Domains[i].Services[ci].ContinuityCheckInterval.IsNull() && data.Domains[j].Services[cj].ContinuityCheckInterval.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/continuity-check/interval/interval-time", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "continuity-check/interval/interval-time"))
 							}
 							if !state.Domains[i].Services[ci].EfdProtectionSwitching.IsNull() && data.Domains[j].Services[cj].EfdProtectionSwitching.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/efd/protection-switching", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "efd/protection-switching"))
 							}
 							if !state.Domains[i].Services[ci].Efd.IsNull() && data.Domains[j].Services[cj].Efd.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/efd", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "efd"))
 							}
 							if !state.Domains[i].Services[ci].MipAutoCreateCcmLearning.IsNull() && data.Domains[j].Services[cj].MipAutoCreateCcmLearning.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/ccm-learning", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "mip/auto-create/ccm-learning"))
 							}
 							if !state.Domains[i].Services[ci].MipAutoCreateLowerMepOnly.IsNull() && data.Domains[j].Services[cj].MipAutoCreateLowerMepOnly.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/lower-mep-only", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "mip/auto-create/lower-mep-only"))
 							}
 							if !state.Domains[i].Services[ci].MipAutoCreateAll.IsNull() && data.Domains[j].Services[cj].MipAutoCreateAll.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/all", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "mip/auto-create/all"))
 							}
 							if !state.Domains[i].Services[ci].Tags.IsNull() && data.Domains[j].Services[cj].Tags.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/tags", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "tags"))
 							}
 							if !state.Domains[i].Services[ci].IdVpnIdIndex.IsNull() && data.Domains[j].Services[cj].IdVpnIdIndex.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/vpn-id/vpn-index", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/vpn-id/vpn-index"))
 							}
 							if !state.Domains[i].Services[ci].IdVpnIdOui.IsNull() && data.Domains[j].Services[cj].IdVpnIdOui.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/vpn-id/vpn-oui", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/vpn-id/vpn-oui"))
 							}
 							if !state.Domains[i].Services[ci].IdString.IsNull() && data.Domains[j].Services[cj].IdString.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/string", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/string"))
 							}
 							if !state.Domains[i].Services[ci].IdNumber.IsNull() && data.Domains[j].Services[cj].IdNumber.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/number", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/number"))
 							}
 							if !state.Domains[i].Services[ci].IdVlanId.IsNull() && data.Domains[j].Services[cj].IdVlanId.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/vlanid", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/vlanid"))
 							}
 							if !state.Domains[i].Services[ci].IdIccBasedUmc.IsNull() && data.Domains[j].Services[cj].IdIccBasedUmc.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/icc-based/umc", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/icc-based/umc"))
 							}
 							if !state.Domains[i].Services[ci].IdIccBasedIcc.IsNull() && data.Domains[j].Services[cj].IdIccBasedIcc.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/id/icc-based/icc", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "id/icc-based/icc"))
 							}
 							if !state.Domains[i].Services[ci].XconnectP2pXcName.IsNull() && data.Domains[j].Services[cj].XconnectP2pXcName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/p2p/cross-connect-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/p2p/cross-connect-name"))
 							}
 							if !state.Domains[i].Services[ci].XconnectP2pGroupName.IsNull() && data.Domains[j].Services[cj].XconnectP2pGroupName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/p2p/group", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/p2p/group"))
 							}
 							if !state.Domains[i].Services[ci].XconnectMp2mpRemoteCeId.IsNull() && data.Domains[j].Services[cj].XconnectMp2mpRemoteCeId.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/mp2mp/remote-ce-id", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/mp2mp/remote-ce-id"))
 							}
 							if !state.Domains[i].Services[ci].XconnectMp2mpCeId.IsNull() && data.Domains[j].Services[cj].XconnectMp2mpCeId.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/mp2mp/ce-id", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/mp2mp/ce-id"))
 							}
 							if !state.Domains[i].Services[ci].XconnectMp2mpName.IsNull() && data.Domains[j].Services[cj].XconnectMp2mpName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/mp2mp/cross-connect-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/mp2mp/cross-connect-name"))
 							}
 							if !state.Domains[i].Services[ci].XconnectMp2mpGroup.IsNull() && data.Domains[j].Services[cj].XconnectMp2mpGroup.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/xconnect/mp2mp/group", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "xconnect/mp2mp/group"))
 							}
 							if !state.Domains[i].Services[ci].FlexibleXconnectVlanUnawareName.IsNull() && data.Domains[j].Services[cj].FlexibleXconnectVlanUnawareName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/flexible-xconnect/vlan-unaware/cross-connect-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "flexible-xconnect/vlan-unaware/cross-connect-name"))
 							}
 							if !state.Domains[i].Services[ci].FlexibleXconnectVlanAwareEvi.IsNull() && data.Domains[j].Services[cj].FlexibleXconnectVlanAwareEvi.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/flexible-xconnect/vlan-aware/evi", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "flexible-xconnect/vlan-aware/evi"))
 							}
 							if !state.Domains[i].Services[ci].DownMeps.IsNull() && data.Domains[j].Services[cj].DownMeps.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/down-meps", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "down-meps"))
 							}
 							if !state.Domains[i].Services[ci].BridgeDomain.IsNull() && data.Domains[j].Services[cj].BridgeDomain.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/bridge/bridge-domain", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "bridge/bridge-domain"))
 							}
 							if !state.Domains[i].Services[ci].BridgeGroup.IsNull() && data.Domains[j].Services[cj].BridgeGroup.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/services/service%v/bridge/group", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", state.getPath(), keyString, ckeyString), "bridge/group"))
 							}
 							break
 						}
@@ -1786,22 +1787,22 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM,
 					}
 				}
 				if !state.Domains[i].IdString.IsNull() && data.Domains[j].IdString.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/id/string", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "id/string"))
 				}
 				if !state.Domains[i].IdNull.IsNull() && data.Domains[j].IdNull.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/id/null", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "id/null"))
 				}
 				if !state.Domains[i].IdMacAddressInteger.IsNull() && data.Domains[j].IdMacAddressInteger.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/id/mac-address-two-octet-integer", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "id/mac-address-two-octet-integer"))
 				}
 				if !state.Domains[i].IdMacAddress.IsNull() && data.Domains[j].IdMacAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/id/mac-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "id/mac-address"))
 				}
 				if !state.Domains[i].IdDns.IsNull() && data.Domains[j].IdDns.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/id/dns", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "id/dns"))
 				}
 				if !state.Domains[i].Level.IsNull() && data.Domains[j].Level.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/level", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "level"))
 				}
 				break
 			}
@@ -1811,10 +1812,10 @@ func (data *EthernetCFM) getDeletedItems(ctx context.Context, state EthernetCFM,
 		}
 	}
 	if !state.TracerouteCacheSize.IsNull() && data.TracerouteCacheSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traceroute/cache/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traceroute/cache/size"))
 	}
 	if !state.TracerouteCacheHoldTime.IsNull() && data.TracerouteCacheHoldTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traceroute/cache/hold-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traceroute/cache/hold-time"))
 	}
 	return deletedItems
 }
@@ -1840,49 +1841,49 @@ func (data *EthernetCFM) getEmptyLeafsDelete(ctx context.Context, version string
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsRdi.IsNull() && !data.Domains[i].Services[ci].ReportDefectsRdi.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/rdi", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/rdi"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsPeerPortDown.IsNull() && !data.Domains[i].Services[ci].ReportDefectsPeerPortDown.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/peer-port-down", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/peer-port-down"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsMissing.IsNull() && !data.Domains[i].Services[ci].ReportDefectsMissing.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/missing", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/missing"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsWrongInterval.IsNull() && !data.Domains[i].Services[ci].ReportDefectsWrongInterval.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-interval", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/wrong-interval"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsOurMepid.IsNull() && !data.Domains[i].Services[ci].ReportDefectsOurMepid.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/our-mepid", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/our-mepid"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsOurMac.IsNull() && !data.Domains[i].Services[ci].ReportDefectsOurMac.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/our-mac", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/our-mac"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsWrongLevel.IsNull() && !data.Domains[i].Services[ci].ReportDefectsWrongLevel.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-level", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/wrong-level"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsWrongMaid.IsNull() && !data.Domains[i].Services[ci].ReportDefectsWrongMaid.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/wrong-maid", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/wrong-maid"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsIeeeMacRemoteErrorXcon.IsNull() && !data.Domains[i].Services[ci].ReportDefectsIeeeMacRemoteErrorXcon.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/mac-remote-error-xcon", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/ieee/mac-remote-error-xcon"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsIeeeRemoteErrorXcon.IsNull() && !data.Domains[i].Services[ci].ReportDefectsIeeeRemoteErrorXcon.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/remote-error-xcon", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/ieee/remote-error-xcon"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsIeeeErrorXcon.IsNull() && !data.Domains[i].Services[ci].ReportDefectsIeeeErrorXcon.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/error-xcon", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/ieee/error-xcon"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsIeeeXcon.IsNull() && !data.Domains[i].Services[ci].ReportDefectsIeeeXcon.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/ieee/xcon", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/ieee/xcon"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsAll.IsNull() && !data.Domains[i].Services[ci].ReportDefectsAll.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/all", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/all"))
 			}
 			if !data.Domains[i].Services[ci].ReportDefectsNone.IsNull() && !data.Domains[i].Services[ci].ReportDefectsNone.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/report/defects/none", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "report/defects/none"))
 			}
 			if !data.Domains[i].Services[ci].MepCrosscheckAuto.IsNull() && !data.Domains[i].Services[ci].MepCrosscheckAuto.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/mep/crosscheck/auto", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "mep/crosscheck/auto"))
 			}
 			for cci := range data.Domains[i].Services[ci].MepCrosschecks {
 				cckeys := [...]string{"mep-id"}
@@ -1893,47 +1894,47 @@ func (data *EthernetCFM) getEmptyLeafsDelete(ctx context.Context, version string
 				}
 			}
 			if !data.Domains[i].Services[ci].LogEfd.IsNull() && !data.Domains[i].Services[ci].LogEfd.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/efd", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/efd"))
 			}
 			if !data.Domains[i].Services[ci].LogCsf.IsNull() && !data.Domains[i].Services[ci].LogCsf.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/csf", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/csf"))
 			}
 			if !data.Domains[i].Services[ci].LogAis.IsNull() && !data.Domains[i].Services[ci].LogAis.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/ais", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/ais"))
 			}
 			if !data.Domains[i].Services[ci].LogCrosscheckErrors.IsNull() && !data.Domains[i].Services[ci].LogCrosscheckErrors.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/crosscheck/errors", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/crosscheck/errors"))
 			}
 			if !data.Domains[i].Services[ci].LogContinuityCheckErrors.IsNull() && !data.Domains[i].Services[ci].LogContinuityCheckErrors.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/continuity-check/errors", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/continuity-check/errors"))
 			}
 			if !data.Domains[i].Services[ci].LogContinuityCheckMepChanges.IsNull() && !data.Domains[i].Services[ci].LogContinuityCheckMepChanges.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/log/continuity-check/mep/changes", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "log/continuity-check/mep/changes"))
 			}
 			if !data.Domains[i].Services[ci].ContinuityCheckLossAutoTraceroute.IsNull() && !data.Domains[i].Services[ci].ContinuityCheckLossAutoTraceroute.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/continuity-check/loss/auto-traceroute", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "continuity-check/loss/auto-traceroute"))
 			}
 			if !data.Domains[i].Services[ci].EfdProtectionSwitching.IsNull() && !data.Domains[i].Services[ci].EfdProtectionSwitching.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/efd/protection-switching", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "efd/protection-switching"))
 			}
 			if !data.Domains[i].Services[ci].Efd.IsNull() && !data.Domains[i].Services[ci].Efd.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/efd", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "efd"))
 			}
 			if !data.Domains[i].Services[ci].MipAutoCreateCcmLearning.IsNull() && !data.Domains[i].Services[ci].MipAutoCreateCcmLearning.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/ccm-learning", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "mip/auto-create/ccm-learning"))
 			}
 			if !data.Domains[i].Services[ci].MipAutoCreateLowerMepOnly.IsNull() && !data.Domains[i].Services[ci].MipAutoCreateLowerMepOnly.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/lower-mep-only", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "mip/auto-create/lower-mep-only"))
 			}
 			if !data.Domains[i].Services[ci].MipAutoCreateAll.IsNull() && !data.Domains[i].Services[ci].MipAutoCreateAll.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/mip/auto-create/all", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "mip/auto-create/all"))
 			}
 			if !data.Domains[i].Services[ci].DownMeps.IsNull() && !data.Domains[i].Services[ci].DownMeps.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/services/service%v/down-meps", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v/services/service%v", data.getPath(), keyString, ckeyString), "down-meps"))
 			}
 		}
 		if !data.Domains[i].IdNull.IsNull() && !data.Domains[i].IdNull.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/domains/domain%v/id/null", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/domains/domain%v", data.getPath(), keyString), "id/null"))
 		}
 	}
 	return emptyLeafsDelete
@@ -1963,10 +1964,10 @@ func (data *EthernetCFM) getDeletePaths(ctx context.Context, version string) []s
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/domains/domain%v", data.getPath(), keyString))
 	}
 	if !data.TracerouteCacheSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traceroute/cache/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traceroute/cache/size"))
 	}
 	if !data.TracerouteCacheHoldTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traceroute/cache/hold-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traceroute/cache/hold-time"))
 	}
 	return deletePaths
 }

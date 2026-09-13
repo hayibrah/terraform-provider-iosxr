@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -161,7 +161,7 @@ func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte, version s
 func (data *BGPASFormat) getDeletedItems(ctx context.Context, state BGPASFormat, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AsFormat.IsNull() && data.AsFormat.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/as-format", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "as-format"))
 	}
 	return deletedItems
 }
@@ -181,7 +181,7 @@ func (data *BGPASFormat) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *BGPASFormat) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AsFormat.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/as-format", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "as-format"))
 	}
 	return deletePaths
 }

@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -372,37 +372,37 @@ func (data *IPv6Data) fromBody(ctx context.Context, res []byte, version string) 
 func (data *IPv6) getDeletedItems(ctx context.Context, state IPv6, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PathMtuTimeout.IsNull() && data.PathMtuTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-mtu/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-mtu/timeout"))
 	}
 	if !state.PathMtuEnable.IsNull() && data.PathMtuEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-mtu/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-mtu/enable"))
 	}
 	if !state.AssemblerOverlapFragDropEnable.IsNull() && data.AssemblerOverlapFragDropEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/assembler/overlap-frag-drop/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "assembler/overlap-frag-drop/enable"))
 	}
 	if !state.AssemblerFragHdrIncompleteEnable.IsNull() && data.AssemblerFragHdrIncompleteEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/assembler/frag-hdr-incomplete/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "assembler/frag-hdr-incomplete/enable"))
 	}
 	if !state.AssemblerReassemblerDropEnable.IsNull() && data.AssemblerReassemblerDropEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/assembler/reassembler-drop/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "assembler/reassembler-drop/enable"))
 	}
 	if !state.AssemblerMaxPackets.IsNull() && data.AssemblerMaxPackets.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/assembler/max-packets", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "assembler/max-packets"))
 	}
 	if !state.AssemblerTimeout.IsNull() && data.AssemblerTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/assembler/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "assembler/timeout"))
 	}
 	if !state.SourceRoute.IsNull() && data.SourceRoute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-route", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-route"))
 	}
 	if !state.IcmpErrorIntervalBucketSize.IsNull() && data.IcmpErrorIntervalBucketSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/icmp/error-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "icmp/error-interval"))
 	}
 	if !state.IcmpErrorInterval.IsNull() && data.IcmpErrorInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/icmp/error-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "icmp/error-interval"))
 	}
 	if !state.HopLimit.IsNull() && data.HopLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/hop-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "hop-limit"))
 	}
 	return deletedItems
 }
@@ -414,19 +414,19 @@ func (data *IPv6) getDeletedItems(ctx context.Context, state IPv6, version strin
 func (data *IPv6) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PathMtuEnable.IsNull() && !data.PathMtuEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-mtu/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-mtu/enable"))
 	}
 	if !data.AssemblerOverlapFragDropEnable.IsNull() && !data.AssemblerOverlapFragDropEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/assembler/overlap-frag-drop/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "assembler/overlap-frag-drop/enable"))
 	}
 	if !data.AssemblerFragHdrIncompleteEnable.IsNull() && !data.AssemblerFragHdrIncompleteEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/assembler/frag-hdr-incomplete/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "assembler/frag-hdr-incomplete/enable"))
 	}
 	if !data.AssemblerReassemblerDropEnable.IsNull() && !data.AssemblerReassemblerDropEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/assembler/reassembler-drop/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "assembler/reassembler-drop/enable"))
 	}
 	if !data.SourceRoute.IsNull() && !data.SourceRoute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/source-route", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "source-route"))
 	}
 	return emptyLeafsDelete
 }
@@ -437,37 +437,37 @@ func (data *IPv6) getEmptyLeafsDelete(ctx context.Context, version string) []str
 func (data *IPv6) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PathMtuTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-mtu/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-mtu/timeout"))
 	}
 	if !data.PathMtuEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-mtu/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-mtu/enable"))
 	}
 	if !data.AssemblerOverlapFragDropEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/assembler/overlap-frag-drop/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "assembler/overlap-frag-drop/enable"))
 	}
 	if !data.AssemblerFragHdrIncompleteEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/assembler/frag-hdr-incomplete/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "assembler/frag-hdr-incomplete/enable"))
 	}
 	if !data.AssemblerReassemblerDropEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/assembler/reassembler-drop/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "assembler/reassembler-drop/enable"))
 	}
 	if !data.AssemblerMaxPackets.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/assembler/max-packets", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "assembler/max-packets"))
 	}
 	if !data.AssemblerTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/assembler/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "assembler/timeout"))
 	}
 	if !data.SourceRoute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-route", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-route"))
 	}
 	if !data.IcmpErrorIntervalBucketSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/icmp/error-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "icmp/error-interval"))
 	}
 	if !data.IcmpErrorInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/icmp/error-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "icmp/error-interval"))
 	}
 	if !data.HopLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hop-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "hop-limit"))
 	}
 	return deletePaths
 }

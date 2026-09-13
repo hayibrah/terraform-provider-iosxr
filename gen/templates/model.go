@@ -24,6 +24,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 	"reflect"
 
@@ -1890,7 +1891,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 	{{- range reverseAttributes .Attributes}}
 	{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{toGoName .TfName}}.IsNull() && data.{{toGoName .TfName}}.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/{{getDeletePath .}}", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}))
+		deletedItems = append(deletedItems, path.Join({{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
 	}
 	{{- else if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
@@ -1954,7 +1955,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{toGoName .TfName}}.IsNull() {
-				deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString))
+				deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString), {{getDeletePathExpr . "version"}}))
 			}
 				{{- else if or (eq .Type "List") (eq .Type "Set")}}
 				{{- $cxpath := getXPath .YangName .XPath}}
@@ -2018,7 +2019,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 						{{- range reverseAttributes .Attributes}}
 						{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{toGoName .TfName}}.IsNull() {
-							deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString))
+							deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString), {{getDeletePathExpr . "version"}}))
 						}
 						{{- else if or (eq .Type "List") (eq .Type "Set")}}
 						{{- $ccxpath := getXPath .YangName .XPath}}
@@ -2082,7 +2083,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								{{- range reverseAttributes .Attributes}}
 								{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{$cclist}}[ccj].{{toGoName .TfName}}.IsNull() {
-									deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString))
+									deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString), {{getDeletePathExpr . "version"}}))
 								}
 								{{- else if or (eq .Type "List") (eq .Type "Set")}}
 								{{- $cccxpath := getXPath .YangName .XPath}}
@@ -2146,7 +2147,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 										{{- range reverseAttributes .Attributes}}
 										{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 										if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{$cclist}}[ccj].{{$ccclist}}[cccj].{{toGoName .TfName}}.IsNull() {
-											deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString), {{getDeletePathExpr . "version"}}))
 										}
 											{{- end}}
 											{{- end}}
@@ -2211,7 +2212,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 	{{- range reverseAttributes .Attributes}}
 	{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{toGoName .TfName}}.IsNull() && !data.{{toGoName .TfName}}.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join({{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
 	}
 	{{- end}}
 	{{- if or (eq .Type "List") (eq .Type "Set")}}
@@ -2252,7 +2253,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 		{{- range reverseAttributes .Attributes}}
 		{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 		if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{toGoName .TfName}}.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/{{$xpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString), {{getDeletePathExpr . "version"}}))
 		}
 		{{- end}}
 		{{- if or (eq .Type "List") (eq .Type "Set")}}
@@ -2293,7 +2294,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString), {{getDeletePathExpr . "version"}}))
 			}
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
@@ -2334,7 +2335,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString), {{getDeletePathExpr . "version"}}))
 			}
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
@@ -2375,7 +2376,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 				{{- range reverseAttributes .Attributes}}
 				{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 				if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool() {
-					emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString))
+					emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString), {{getDeletePathExpr . "version"}}))
 				}
 				{{- end}}
 				{{- end}}
@@ -2416,7 +2417,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 	{{- range reverseAttributes .Attributes}}
 	{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{toGoName .TfName}}.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/{{getDeletePath .}}", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}))
+		deletePaths = append(deletePaths, path.Join({{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
 	}
 	{{- else if and (or (eq .Type "List") (eq .Type "Set")) (not .NoDelete)}}
 	{{- if or .AddedInVersion .RemovedInVersion}}

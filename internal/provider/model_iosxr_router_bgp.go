@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -5931,37 +5932,37 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 			}
 			if found {
 				if !state.RpkiServers[i].Shutdown.IsNull() && data.RpkiServers[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "shutdown"))
 				}
 				if !state.RpkiServers[i].BindSourceInterface.IsNull() && data.RpkiServers[j].BindSourceInterface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/bind-source/interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "bind-source/interface"))
 				}
 				if !state.RpkiServers[i].TransportSshPort.IsNull() && data.RpkiServers[j].TransportSshPort.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/transport/ssh", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "transport/ssh"))
 				}
 				if !state.RpkiServers[i].TransportTcpPort.IsNull() && data.RpkiServers[j].TransportTcpPort.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/transport/tcp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "transport/tcp"))
 				}
 				if !state.RpkiServers[i].Password.IsNull() && data.RpkiServers[j].Password.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/password", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "password"))
 				}
 				if !state.RpkiServers[i].Username.IsNull() && data.RpkiServers[j].Username.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/username", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "username"))
 				}
 				if !state.RpkiServers[i].PurgeTime.IsNull() && data.RpkiServers[j].PurgeTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/purge-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "purge-time"))
 				}
 				if !state.RpkiServers[i].ResponseTimeOff.IsNull() && data.RpkiServers[j].ResponseTimeOff.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/response-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "response-time"))
 				}
 				if !state.RpkiServers[i].ResponseTimeSeconds.IsNull() && data.RpkiServers[j].ResponseTimeSeconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/response-time/response-time-seconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "response-time/response-time-seconds"))
 				}
 				if !state.RpkiServers[i].RefreshTimeOff.IsNull() && data.RpkiServers[j].RefreshTimeOff.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/refresh-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "refresh-time"))
 				}
 				if !state.RpkiServers[i].RefreshTimeSeconds.IsNull() && data.RpkiServers[j].RefreshTimeSeconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/rpki/servers/server%v/refresh-time/refresh-time-seconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", state.getPath(), keyString), "refresh-time/refresh-time-seconds"))
 				}
 				break
 			}
@@ -6019,97 +6020,97 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 		}
 	}
 	if !state.BfdMinimumInterval.IsNull() && data.BfdMinimumInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/minimum-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/minimum-interval"))
 	}
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/multiplier"))
 	}
 	if !state.UpdateOutLogging.IsNull() && data.UpdateOutLogging.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/out/logging", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/out/logging"))
 	}
 	if !state.UpdateInErrorHandlingExtendedIbgp.IsNull() && data.UpdateInErrorHandlingExtendedIbgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/in/error-handling/extended/ibgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/in/error-handling/extended/ibgp"))
 	}
 	if !state.UpdateInErrorHandlingExtendedEbgp.IsNull() && data.UpdateInErrorHandlingExtendedEbgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/in/error-handling/extended/ebgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/in/error-handling/extended/ebgp"))
 	}
 	if !state.UpdateInErrorHandlingBasicIbgpDisable.IsNull() && data.UpdateInErrorHandlingBasicIbgpDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/in/error-handling/basic/ibgp/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/in/error-handling/basic/ibgp/disable"))
 	}
 	if !state.UpdateInErrorHandlingBasicEbgpDisable.IsNull() && data.UpdateInErrorHandlingBasicEbgpDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/in/error-handling/basic/ebgp/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/in/error-handling/basic/ebgp/disable"))
 	}
 	if !state.UpdateLimit.IsNull() && data.UpdateLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/limit"))
 	}
 	if !state.OpenconfigRibTelemetry.IsNull() && data.OpenconfigRibTelemetry.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/openconfig/rib-telemetry", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "openconfig/rib-telemetry"))
 	}
 	if !state.IbgpPolicyOutEnforceModifications.IsNull() && data.IbgpPolicyOutEnforceModifications.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ibgp/policy/out/enforce-modifications", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ibgp/policy/out/enforce-modifications"))
 	}
 	if !state.NsrDisable.IsNull() && data.NsrDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nsr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nsr"))
 	}
 	if !state.Nsr.IsNull() && data.Nsr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nsr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nsr"))
 	}
 	if !state.TimersBgpHoldtimeMinimumAcceptableHoldtime.IsNull() && data.TimersBgpHoldtimeMinimumAcceptableHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/holdtime"))
 	}
 	if !state.TimersBgpHoldtime.IsNull() && data.TimersBgpHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/holdtime"))
 	}
 	if !state.TimersBgpHolddownZeroMinimumAcceptableHoldtime.IsNull() && data.TimersBgpHolddownZeroMinimumAcceptableHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/zero", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/zero"))
 	}
 	if !state.TimersBgpHolddownZeroMinimumAcceptableZero.IsNull() && data.TimersBgpHolddownZeroMinimumAcceptableZero.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/zero", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/zero"))
 	}
 	if !state.TimersBgpHolddownZero.IsNull() && data.TimersBgpHolddownZero.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/zero", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/zero"))
 	}
 	if !state.TimersBgpKeepaliveInterval.IsNull() && data.TimersBgpKeepaliveInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timers/bgp/keepalive-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timers/bgp/keepalive-interval"))
 	}
 	if !state.BgpOriginAsValidationTime.IsNull() && data.BgpOriginAsValidationTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/origin-as/validation/time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/origin-as/validation/time"))
 	}
 	if !state.BgpOriginAsValidationTimeOff.IsNull() && data.BgpOriginAsValidationTimeOff.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/origin-as/validation/time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/origin-as/validation/time"))
 	}
 	if !state.BgpOriginAsValidationSignalIbgp.IsNull() && data.BgpOriginAsValidationSignalIbgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/origin-as/validation/signal/ibgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/origin-as/validation/signal/ibgp"))
 	}
 	if !state.BgpMaximumNeighbor.IsNull() && data.BgpMaximumNeighbor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/maximum/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/maximum/neighbor"))
 	}
 	if !state.BgpUpdateDelayAlways.IsNull() && data.BgpUpdateDelayAlways.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/update-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/update-delay"))
 	}
 	if !state.BgpUpdateDelay.IsNull() && data.BgpUpdateDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/update-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/update-delay"))
 	}
 	if !state.BgpInstallDiversion.IsNull() && data.BgpInstallDiversion.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/install/diversion", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/install/diversion"))
 	}
 	if !state.BgpGracefulRestartRetainNbrRoutesDisable.IsNull() && data.BgpGracefulRestartRetainNbrRoutesDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/retain-nbr-routes/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/retain-nbr-routes/disable"))
 	}
 	if !state.BgpGracefulRestartGracefulReset.IsNull() && data.BgpGracefulRestartGracefulReset.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/graceful-reset", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/graceful-reset"))
 	}
 	if !state.BgpGracefulRestartStalepathTime.IsNull() && data.BgpGracefulRestartStalepathTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/stalepath-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/stalepath-time"))
 	}
 	if !state.BgpGracefulRestartRestartTime.IsNull() && data.BgpGracefulRestartRestartTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/restart-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/restart-time"))
 	}
 	if !state.BgpGracefulRestartPurgeTime.IsNull() && data.BgpGracefulRestartPurgeTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/purge-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/purge-time"))
 	}
 	if !state.BgpGracefulRestartEnable.IsNull() && data.BgpGracefulRestartEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/graceful-restart/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/graceful-restart/enable"))
 	}
 	for i := range state.BgpConfederationPeers {
 		keys := [...]string{"peer-as-number"}
@@ -6142,151 +6143,151 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 		}
 	}
 	if !state.BgpConfederationIdentifier.IsNull() && data.BgpConfederationIdentifier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/confederation/identifier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/confederation/identifier"))
 	}
 	if !state.BgpMultipathAsPathIgnoreOnwards.IsNull() && data.BgpMultipathAsPathIgnoreOnwards.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/multipath/as-path/ignore/onwards", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/multipath/as-path/ignore/onwards"))
 	}
 	if !state.BgpMultipathUseClusterListLength.IsNull() && data.BgpMultipathUseClusterListLength.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/multipath/use/cluster-list-length", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/multipath/use/cluster-list-length"))
 	}
 	if !state.BgpLogTotalPathsWarnThreshold.IsNull() && data.BgpLogTotalPathsWarnThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/total-paths", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/total-paths"))
 	}
 	if !state.BgpLogTotalPaths.IsNull() && data.BgpLogTotalPaths.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/total-paths", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/total-paths"))
 	}
 	if !state.BgpLogMemoryThresholdCritical.IsNull() && data.BgpLogMemoryThresholdCritical.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/memory-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/memory-threshold"))
 	}
 	if !state.BgpLogMemoryThresholdWarning.IsNull() && data.BgpLogMemoryThresholdWarning.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/memory-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/memory-threshold"))
 	}
 	if !state.BgpLogMessageDisable.IsNull() && data.BgpLogMessageDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/message/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/message/disable"))
 	}
 	if !state.BgpLogNeighborChangesDisable.IsNull() && data.BgpLogNeighborChangesDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/neighbor/changes/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/neighbor/changes/disable"))
 	}
 	if !state.BgpLogNeighborChangesDetail.IsNull() && data.BgpLogNeighborChangesDetail.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/log/neighbor/changes/detail", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/log/neighbor/changes/detail"))
 	}
 	if !state.BgpFastExternalFalloverDisable.IsNull() && data.BgpFastExternalFalloverDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/fast-external-fallover/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/fast-external-fallover/disable"))
 	}
 	if !state.BgpEnforceFirstAsDisable.IsNull() && data.BgpEnforceFirstAsDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/enforce-first-as/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/enforce-first-as/disable"))
 	}
 	if !state.BgpDefaultLocalPreference.IsNull() && data.BgpDefaultLocalPreference.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/default/local-preference", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/default/local-preference"))
 	}
 	if !state.BgpClusterIdIpFormat.IsNull() && data.BgpClusterIdIpFormat.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/cluster-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/cluster-id"))
 	}
 	if !state.BgpClusterId32bitFormat.IsNull() && data.BgpClusterId32bitFormat.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/cluster-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/cluster-id"))
 	}
 	if !state.BgpBestpathSrPolicyForce.IsNull() && data.BgpBestpathSrPolicyForce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/sr-policy/force", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/sr-policy/force"))
 	}
 	if !state.BgpBestpathSrPolicyPrefer.IsNull() && data.BgpBestpathSrPolicyPrefer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/sr-policy/prefer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/sr-policy/prefer"))
 	}
 	if !state.BgpBestpathOriginAsAllowInvalid.IsNull() && data.BgpBestpathOriginAsAllowInvalid.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/origin-as/allow/invalid", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/origin-as/allow/invalid"))
 	}
 	if !state.BgpBestpathOriginAsUseValidity.IsNull() && data.BgpBestpathOriginAsUseValidity.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/origin-as/use/validity", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/origin-as/use/validity"))
 	}
 	if !state.BgpBestpathAsPathMultipathRelax.IsNull() && data.BgpBestpathAsPathMultipathRelax.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/as-path/multipath-relax", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/as-path/multipath-relax"))
 	}
 	if !state.BgpBestpathAsPathIgnore.IsNull() && data.BgpBestpathAsPathIgnore.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/as-path/ignore", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/as-path/ignore"))
 	}
 	if !state.BgpBestpathMedAlways.IsNull() && data.BgpBestpathMedAlways.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/med/always", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/med/always"))
 	}
 	if !state.BgpBestpathMedMissingAsWorst.IsNull() && data.BgpBestpathMedMissingAsWorst.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/med/missing-as-worst", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/med/missing-as-worst"))
 	}
 	if !state.BgpBestpathIgpMetricSrPolicy.IsNull() && data.BgpBestpathIgpMetricSrPolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/igp-metric/sr-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/igp-metric/sr-policy"))
 	}
 	if !state.BgpBestpathIgpMetricIgnore.IsNull() && data.BgpBestpathIgpMetricIgnore.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/igp-metric/ignore", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/igp-metric/ignore"))
 	}
 	if !state.BgpBestpathAigpIgnore.IsNull() && data.BgpBestpathAigpIgnore.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/aigp/ignore", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/aigp/ignore"))
 	}
 	if !state.BgpBestpathCompareRouterid.IsNull() && data.BgpBestpathCompareRouterid.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/compare-routerid", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/compare-routerid"))
 	}
 	if !state.BgpBestpathCostCommunityIgnore.IsNull() && data.BgpBestpathCostCommunityIgnore.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/bestpath/cost-community/ignore", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/bestpath/cost-community/ignore"))
 	}
 	if !state.BgpAutoPolicySoftResetDisable.IsNull() && data.BgpAutoPolicySoftResetDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/auto-policy-soft-reset/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/auto-policy-soft-reset/disable"))
 	}
 	if !state.BgpAsPathLoopcheck.IsNull() && data.BgpAsPathLoopcheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/as-path-loopcheck", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/as-path-loopcheck"))
 	}
 	if !state.BgpLptsSecureBinding.IsNull() && data.BgpLptsSecureBinding.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/lpts-secure-binding", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/lpts-secure-binding"))
 	}
 	if !state.BgpReadOnly.IsNull() && data.BgpReadOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/read-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/read-only"))
 	}
 	if !state.BgpScanTime.IsNull() && data.BgpScanTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/scan-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/scan-time"))
 	}
 	if !state.BgpUnsafeEbgpPolicy.IsNull() && data.BgpUnsafeEbgpPolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/unsafe-ebgp-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/unsafe-ebgp-policy"))
 	}
 	if !state.BgpRouterId.IsNull() && data.BgpRouterId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/router-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/router-id"))
 	}
 	if !state.BgpRedistributeInternal.IsNull() && data.BgpRedistributeInternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/redistribute-internal", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/redistribute-internal"))
 	}
 	if !state.SlowPeerDetectionDisable.IsNull() && data.SlowPeerDetectionDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/slow-peer/detection-disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "slow-peer/detection-disable"))
 	}
 	if !state.SlowPeerDynamicThreshold.IsNull() && data.SlowPeerDynamicThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/slow-peer/dynamic/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "slow-peer/dynamic/threshold"))
 	}
 	if !state.SlowPeerDynamic.IsNull() && data.SlowPeerDynamic.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/slow-peer/dynamic", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "slow-peer/dynamic"))
 	}
 	if !state.NexthopSrteMetricDisable.IsNull() && data.NexthopSrteMetricDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nexthop/srte-metric/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nexthop/srte-metric/disable"))
 	}
 	if !state.NexthopResolutionAllowDefault.IsNull() && data.NexthopResolutionAllowDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nexthop/resolution/allow-default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nexthop/resolution/allow-default"))
 	}
 	if !state.NexthopValidationColorExtcommDisable.IsNull() && data.NexthopValidationColorExtcommDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nexthop/validation/color-extcomm/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nexthop/validation/color-extcomm/disable"))
 	}
 	if !state.NexthopValidationColorExtcommSrPolicy.IsNull() && data.NexthopValidationColorExtcommSrPolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nexthop/validation/color-extcomm/sr-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nexthop/validation/color-extcomm/sr-policy"))
 	}
 	if !state.NexthopMplsForwardingIbgp.IsNull() && data.NexthopMplsForwardingIbgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/nexthop/mpls/forwarding/ibgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "nexthop/mpls/forwarding/ibgp"))
 	}
 	if !state.SocketSendBufferSizeWrite.IsNull() && data.SocketSendBufferSizeWrite.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/socket/send-buffer-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "socket/send-buffer-size"))
 	}
 	if !state.SocketSendBufferSize.IsNull() && data.SocketSendBufferSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/socket/send-buffer-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "socket/send-buffer-size"))
 	}
 	if !state.SocketReceiveBufferSizeRead.IsNull() && data.SocketReceiveBufferSizeRead.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/socket/receive-buffer-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "socket/receive-buffer-size"))
 	}
 	if !state.SocketReceiveBufferSize.IsNull() && data.SocketReceiveBufferSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/socket/receive-buffer-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "socket/receive-buffer-size"))
 	}
 	if !state.DefaultInformationOriginate.IsNull() && data.DefaultInformationOriginate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/default-information/originate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "default-information/originate"))
 	}
 	for i := range state.AsLists {
 		keys := [...]string{"as-list-name"}
@@ -6401,10 +6402,10 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 						}
 						if found {
 							if !state.AttributeFilterGroups[i].AttributeCodeRanges[ci].TreatAsWithdraw.IsNull() && data.AttributeFilterGroups[j].AttributeCodeRanges[cj].TreatAsWithdraw.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v/treat-as-withdraw", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v", state.getPath(), keyString, ckeyString), "treat-as-withdraw"))
 							}
 							if !state.AttributeFilterGroups[i].AttributeCodeRanges[ci].Discard.IsNull() && data.AttributeFilterGroups[j].AttributeCodeRanges[cj].Discard.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v/discard", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v", state.getPath(), keyString, ckeyString), "discard"))
 							}
 							break
 						}
@@ -6541,10 +6542,10 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 		}
 	}
 	if !state.GracefulMaintenanceActivateRetainRoutes.IsNull() && data.GracefulMaintenanceActivateRetainRoutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/graceful-maintenance/activate/retain-routes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "graceful-maintenance/activate/retain-routes"))
 	}
 	if !state.GracefulMaintenanceActivateAllNeighbors.IsNull() && data.GracefulMaintenanceActivateAllNeighbors.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/graceful-maintenance/activate/all-neighbors", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "graceful-maintenance/activate/all-neighbors"))
 	}
 	for i := range state.Neighbors {
 		keys := [...]string{"address"}
@@ -6570,100 +6571,100 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 			}
 			if found {
 				if !state.Neighbors[i].GracefulMaintenanceBandwidthAwareInheritanceDisable.IsNull() && data.Neighbors[j].GracefulMaintenanceBandwidthAwareInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/bandwidth-aware"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceBandwidthAwareBandwidthThresholdHigh.IsNull() && data.Neighbors[j].GracefulMaintenanceBandwidthAwareBandwidthThresholdHigh.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware/bandwidth-threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/bandwidth-aware/bandwidth-threshold"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceBandwidthAwareBandwidthThreshold.IsNull() && data.Neighbors[j].GracefulMaintenanceBandwidthAwareBandwidthThreshold.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware/bandwidth-threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/bandwidth-aware/bandwidth-threshold"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceBandwidthAwarePercentageThresholdHigh.IsNull() && data.Neighbors[j].GracefulMaintenanceBandwidthAwarePercentageThresholdHigh.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware/percentage-threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/bandwidth-aware/percentage-threshold"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceBandwidthAwarePercentageThreshold.IsNull() && data.Neighbors[j].GracefulMaintenanceBandwidthAwarePercentageThreshold.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware/percentage-threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/bandwidth-aware/percentage-threshold"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceAsPrependsInheritanceDisable.IsNull() && data.Neighbors[j].GracefulMaintenanceAsPrependsInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/as-prepends", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/as-prepends"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceAsPrependsNumber.IsNull() && data.Neighbors[j].GracefulMaintenanceAsPrependsNumber.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/as-prepends", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/as-prepends"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceLocalPreferenceInheritanceDisable.IsNull() && data.Neighbors[j].GracefulMaintenanceLocalPreferenceInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/local-preference", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/local-preference"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceLocalPreference.IsNull() && data.Neighbors[j].GracefulMaintenanceLocalPreference.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/local-preference", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/local-preference"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceActivateInheritanceDisable.IsNull() && data.Neighbors[j].GracefulMaintenanceActivateInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/activate/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/activate/inheritance-disable"))
 				}
 				if !state.Neighbors[i].GracefulMaintenanceActivate.IsNull() && data.Neighbors[j].GracefulMaintenanceActivate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/activate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-maintenance/activate"))
 				}
 				if !state.Neighbors[i].UpdateInErrorHandlingTreatAsWithdraw.IsNull() && data.Neighbors[j].UpdateInErrorHandlingTreatAsWithdraw.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/error-handling/treat-as-withdraw", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/error-handling/treat-as-withdraw"))
 				}
 				if !state.Neighbors[i].UpdateInErrorHandlingAvoidReset.IsNull() && data.Neighbors[j].UpdateInErrorHandlingAvoidReset.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/error-handling/avoid-reset", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/error-handling/avoid-reset"))
 				}
 				if !state.Neighbors[i].UpdateInLabeledUnicastEquivalentInheritanceDisable.IsNull() && data.Neighbors[j].UpdateInLabeledUnicastEquivalentInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/labeled-unicast/equivalent/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/labeled-unicast/equivalent/inheritance-disable"))
 				}
 				if !state.Neighbors[i].UpdateInLabeledUnicastEquivalent.IsNull() && data.Neighbors[j].UpdateInLabeledUnicastEquivalent.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/labeled-unicast/equivalent", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/labeled-unicast/equivalent"))
 				}
 				if !state.Neighbors[i].UpdateInFilteringAttributeFilterGroup.IsNull() && data.Neighbors[j].UpdateInFilteringAttributeFilterGroup.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/filtering/attribute-filter/group", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/filtering/attribute-filter/group"))
 				}
 				if !state.Neighbors[i].UpdateInFilteringLoggingDisable.IsNull() && data.Neighbors[j].UpdateInFilteringLoggingDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/filtering/logging/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/filtering/logging/disable"))
 				}
 				if !state.Neighbors[i].UpdateInFilteringMessageBuffersType.IsNull() && data.Neighbors[j].UpdateInFilteringMessageBuffersType.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/filtering/message/buffers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/filtering/message/buffers"))
 				}
 				if !state.Neighbors[i].UpdateInFilteringMessageBuffers.IsNull() && data.Neighbors[j].UpdateInFilteringMessageBuffers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/filtering/message/buffers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update/in/filtering/message/buffers"))
 				}
 				if !state.Neighbors[i].BestpathOriginAsAllowInvalid.IsNull() && data.Neighbors[j].BestpathOriginAsAllowInvalid.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bestpath/origin-as/allow/invalid", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bestpath/origin-as/allow/invalid"))
 				}
 				if !state.Neighbors[i].SendExtendedCommunityEbgpInheritanceDisable.IsNull() && data.Neighbors[j].SendExtendedCommunityEbgpInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/send-extended-community-ebgp/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "send-extended-community-ebgp/inheritance-disable"))
 				}
 				if !state.Neighbors[i].SendExtendedCommunityEbgp.IsNull() && data.Neighbors[j].SendExtendedCommunityEbgp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/send-extended-community-ebgp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "send-extended-community-ebgp"))
 				}
 				if !state.Neighbors[i].OriginAsValidationDisable.IsNull() && data.Neighbors[j].OriginAsValidationDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/origin-as/validation/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "origin-as/validation/disable"))
 				}
 				if !state.Neighbors[i].DefaultPolicyActionOut.IsNull() && data.Neighbors[j].DefaultPolicyActionOut.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/default-policy-action/out", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "default-policy-action/out"))
 				}
 				if !state.Neighbors[i].DefaultPolicyActionIn.IsNull() && data.Neighbors[j].DefaultPolicyActionIn.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/default-policy-action/in", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "default-policy-action/in"))
 				}
 				if !state.Neighbors[i].AsOverride.IsNull() && data.Neighbors[j].AsOverride.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/as-override", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "as-override"))
 				}
 				if !state.Neighbors[i].Dampening.IsNull() && data.Neighbors[j].Dampening.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dampening", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dampening"))
 				}
 				if !state.Neighbors[i].AoInheritanceDisable.IsNull() && data.Neighbors[j].AoInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ao", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ao"))
 				}
 				if !state.Neighbors[i].AoKeyChainAcceptMismatch.IsNull() && data.Neighbors[j].AoKeyChainAcceptMismatch.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ao/key-chain-name/accept-ao-mismatch-connection", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ao/key-chain-name/accept-ao-mismatch-connection"))
 				}
 				if !state.Neighbors[i].AoKeyChainIncludeTcpOptions.IsNull() && data.Neighbors[j].AoKeyChainIncludeTcpOptions.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ao/key-chain-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ao/key-chain-name"))
 				}
 				if !state.Neighbors[i].AoKeyChainName.IsNull() && data.Neighbors[j].AoKeyChainName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ao/key-chain-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ao/key-chain-name"))
 				}
 				if !state.Neighbors[i].PeerNodeSidIndex.IsNull() && data.Neighbors[j].PeerNodeSidIndex.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/peer-node-sid/index", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "peer-node-sid/index"))
 				}
 				for ci := range state.Neighbors[i].PeerSets {
 					ckeys := [...]string{"peer"}
@@ -6696,238 +6697,238 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 					}
 				}
 				if !state.Neighbors[i].EgressEngineeringInheritanceDisable.IsNull() && data.Neighbors[j].EgressEngineeringInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/egress-engineering/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "egress-engineering/inheritance-disable"))
 				}
 				if !state.Neighbors[i].EgressEngineering.IsNull() && data.Neighbors[j].EgressEngineering.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/egress-engineering", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "egress-engineering"))
 				}
 				if !state.Neighbors[i].AllowasIn.IsNull() && data.Neighbors[j].AllowasIn.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/allowas-in/number-of-occurrences-of-as-number", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "allowas-in/number-of-occurrences-of-as-number"))
 				}
 				if !state.Neighbors[i].IdleWatchTime.IsNull() && data.Neighbors[j].IdleWatchTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/idle-watch-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "idle-watch-time"))
 				}
 				if !state.Neighbors[i].ClusterIdIpFormat.IsNull() && data.Neighbors[j].ClusterIdIpFormat.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/cluster-id", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "cluster-id"))
 				}
 				if !state.Neighbors[i].ClusterId32bitFormat.IsNull() && data.Neighbors[j].ClusterId32bitFormat.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/cluster-id", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "cluster-id"))
 				}
 				if !state.Neighbors[i].EnforceFirstAs.IsNull() && data.Neighbors[j].EnforceFirstAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/enforce-first-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "enforce-first-as"))
 				}
 				if !state.Neighbors[i].GracefulRestartStalepathTime.IsNull() && data.Neighbors[j].GracefulRestartStalepathTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/stalepath-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/stalepath-time"))
 				}
 				if !state.Neighbors[i].GracefulRestartRestartTime.IsNull() && data.Neighbors[j].GracefulRestartRestartTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/restart-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/restart-time"))
 				}
 				if !state.Neighbors[i].GracefulRestartHelperOnlyInheritanceDisable.IsNull() && data.Neighbors[j].GracefulRestartHelperOnlyInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/helper-only/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/helper-only/inheritance-disable"))
 				}
 				if !state.Neighbors[i].GracefulRestartHelperOnly.IsNull() && data.Neighbors[j].GracefulRestartHelperOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/helper-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/helper-only"))
 				}
 				if !state.Neighbors[i].GracefulRestartDisable.IsNull() && data.Neighbors[j].GracefulRestartDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/graceful-restart-enable/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/graceful-restart-enable/disable"))
 				}
 				if !state.Neighbors[i].GracefulRestart.IsNull() && data.Neighbors[j].GracefulRestart.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/graceful-restart-enable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "graceful-restart/graceful-restart-enable"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressFourByteAsInheritanceDisable.IsNull() && data.Neighbors[j].CapabilitySuppressFourByteAsInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/four-byte-as/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/four-byte-as/inheritance-disable"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressFourByteAs.IsNull() && data.Neighbors[j].CapabilitySuppressFourByteAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/four-byte-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/four-byte-as"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressExtendedNexthopEncodingInheritanceDisable.IsNull() && data.Neighbors[j].CapabilitySuppressExtendedNexthopEncodingInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/extended-nexthop-encoding/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/extended-nexthop-encoding/inheritance-disable"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressExtendedNexthopEncoding.IsNull() && data.Neighbors[j].CapabilitySuppressExtendedNexthopEncoding.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/extended-nexthop-encoding", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/extended-nexthop-encoding"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressAllInheritanceDisable.IsNull() && data.Neighbors[j].CapabilitySuppressAllInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/all/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/all/inheritance-disable"))
 				}
 				if !state.Neighbors[i].CapabilitySuppressAll.IsNull() && data.Neighbors[j].CapabilitySuppressAll.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/all", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/suppress/all"))
 				}
 				if !state.Neighbors[i].CapabilityAdditionalPathsReceiveDisable.IsNull() && data.Neighbors[j].CapabilityAdditionalPathsReceiveDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/receive/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/additional-paths/receive/disable"))
 				}
 				if !state.Neighbors[i].CapabilityAdditionalPathsReceive.IsNull() && data.Neighbors[j].CapabilityAdditionalPathsReceive.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/receive", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/additional-paths/receive"))
 				}
 				if !state.Neighbors[i].CapabilityAdditionalPathsSendDisable.IsNull() && data.Neighbors[j].CapabilityAdditionalPathsSendDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/send/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/additional-paths/send/disable"))
 				}
 				if !state.Neighbors[i].CapabilityAdditionalPathsSend.IsNull() && data.Neighbors[j].CapabilityAdditionalPathsSend.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/send", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "capability/additional-paths/send"))
 				}
 				if !state.Neighbors[i].Precedence.IsNull() && data.Neighbors[j].Precedence.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/precedence", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "precedence"))
 				}
 				if !state.Neighbors[i].Dscp.IsNull() && data.Neighbors[j].Dscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dscp"))
 				}
 				if !state.Neighbors[i].SessionOpenMode.IsNull() && data.Neighbors[j].SessionOpenMode.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/session-open-mode", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "session-open-mode"))
 				}
 				if !state.Neighbors[i].TtlSecurityInheritanceDisable.IsNull() && data.Neighbors[j].TtlSecurityInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ttl-security/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ttl-security/inheritance-disable"))
 				}
 				if !state.Neighbors[i].TtlSecurity.IsNull() && data.Neighbors[j].TtlSecurity.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ttl-security", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ttl-security"))
 				}
 				if !state.Neighbors[i].EbgpSendExtcommunityDmzInheritanceDisable.IsNull() && data.Neighbors[j].EbgpSendExtcommunityDmzInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 				}
 				if !state.Neighbors[i].EbgpSendExtcommunityDmzCumulative.IsNull() && data.Neighbors[j].EbgpSendExtcommunityDmzCumulative.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 				}
 				if !state.Neighbors[i].EbgpSendExtcommunityDmz.IsNull() && data.Neighbors[j].EbgpSendExtcommunityDmz.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 				}
 				if !state.Neighbors[i].EbgpRecvExtcommunityDmzInheritanceDisable.IsNull() && data.Neighbors[j].EbgpRecvExtcommunityDmzInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-recv-extcommunity-dmz/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-recv-extcommunity-dmz/inheritance-disable"))
 				}
 				if !state.Neighbors[i].EbgpRecvExtcommunityDmz.IsNull() && data.Neighbors[j].EbgpRecvExtcommunityDmz.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-recv-extcommunity-dmz", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-recv-extcommunity-dmz"))
 				}
 				if !state.Neighbors[i].DmzLinkBandwidthInheritanceDisable.IsNull() && data.Neighbors[j].DmzLinkBandwidthInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dmz-link-bandwidth/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dmz-link-bandwidth/inheritance-disable"))
 				}
 				if !state.Neighbors[i].DmzLinkBandwidth.IsNull() && data.Neighbors[j].DmzLinkBandwidth.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dmz-link-bandwidth", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dmz-link-bandwidth"))
 				}
 				if !state.Neighbors[i].LocalAddressSubnetMask.IsNull() && data.Neighbors[j].LocalAddressSubnetMask.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-address-subnet", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-address-subnet"))
 				}
 				if !state.Neighbors[i].LocalAddressSubnetPrefix.IsNull() && data.Neighbors[j].LocalAddressSubnetPrefix.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-address-subnet", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-address-subnet"))
 				}
 				if !state.Neighbors[i].UpdateSource.IsNull() && data.Neighbors[j].UpdateSource.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/update-source", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "update-source"))
 				}
 				if !state.Neighbors[i].LogMessageOutInheritanceDisable.IsNull() && data.Neighbors[j].LogMessageOutInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/out", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/out"))
 				}
 				if !state.Neighbors[i].LogMessageOutDisable.IsNull() && data.Neighbors[j].LogMessageOutDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/out", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/out"))
 				}
 				if !state.Neighbors[i].LogMessageOutSize.IsNull() && data.Neighbors[j].LogMessageOutSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/out", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/out"))
 				}
 				if !state.Neighbors[i].LogMessageInInheritanceDisable.IsNull() && data.Neighbors[j].LogMessageInInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/in", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/in"))
 				}
 				if !state.Neighbors[i].LogMessageInDisable.IsNull() && data.Neighbors[j].LogMessageInDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/in", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/in"))
 				}
 				if !state.Neighbors[i].LogMessageInSize.IsNull() && data.Neighbors[j].LogMessageInSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/in", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/message/in"))
 				}
 				if !state.Neighbors[i].LogNeighborChangesInheritanceDisable.IsNull() && data.Neighbors[j].LogNeighborChangesInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/neighbor/changes"))
 				}
 				if !state.Neighbors[i].LogNeighborChangesDisable.IsNull() && data.Neighbors[j].LogNeighborChangesDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/neighbor/changes"))
 				}
 				if !state.Neighbors[i].LogNeighborChangesDetail.IsNull() && data.Neighbors[j].LogNeighborChangesDetail.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "log/neighbor/changes"))
 				}
 				if !state.Neighbors[i].LocalAddressInheritanceDisable.IsNull() && data.Neighbors[j].LocalAddressInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local/address"))
 				}
 				if !state.Neighbors[i].LocalAddress.IsNull() && data.Neighbors[j].LocalAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local/address"))
 				}
 				if !state.Neighbors[i].TimersHoldtimeMinimumAcceptableHoldtime.IsNull() && data.Neighbors[j].TimersHoldtimeMinimumAcceptableHoldtime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/holdtime", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/holdtime"))
 				}
 				if !state.Neighbors[i].TimersHoldtime.IsNull() && data.Neighbors[j].TimersHoldtime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/holdtime", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/holdtime"))
 				}
 				if !state.Neighbors[i].TimersHolddownZeroMinimumAcceptableHoldtime.IsNull() && data.Neighbors[j].TimersHolddownZeroMinimumAcceptableHoldtime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/zero", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/zero"))
 				}
 				if !state.Neighbors[i].TimersHolddownZeroMinimumAcceptableZero.IsNull() && data.Neighbors[j].TimersHolddownZeroMinimumAcceptableZero.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/zero", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/zero"))
 				}
 				if !state.Neighbors[i].TimersHolddownZero.IsNull() && data.Neighbors[j].TimersHolddownZero.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/zero", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/zero"))
 				}
 				if !state.Neighbors[i].TimersKeepaliveInterval.IsNull() && data.Neighbors[j].TimersKeepaliveInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/timers/keepalive-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "timers/keepalive-interval"))
 				}
 				if !state.Neighbors[i].Shutdown.IsNull() && data.Neighbors[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "shutdown"))
 				}
 				if !state.Neighbors[i].FastFalloverInheritanceDisable.IsNull() && data.Neighbors[j].FastFalloverInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/fast-fallover/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "fast-fallover/inheritance-disable"))
 				}
 				if !state.Neighbors[i].FastFallover.IsNull() && data.Neighbors[j].FastFallover.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/fast-fallover", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "fast-fallover"))
 				}
 				if !state.Neighbors[i].SendBufferSizeWrite.IsNull() && data.Neighbors[j].SendBufferSizeWrite.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/send-buffer-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "send-buffer-size"))
 				}
 				if !state.Neighbors[i].SendBufferSize.IsNull() && data.Neighbors[j].SendBufferSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/send-buffer-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "send-buffer-size"))
 				}
 				if !state.Neighbors[i].ReceiveBufferSizeRead.IsNull() && data.Neighbors[j].ReceiveBufferSizeRead.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/receive-buffer-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "receive-buffer-size"))
 				}
 				if !state.Neighbors[i].ReceiveBufferSize.IsNull() && data.Neighbors[j].ReceiveBufferSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/receive-buffer-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "receive-buffer-size"))
 				}
 				if !state.Neighbors[i].PasswordInheritanceDisable.IsNull() && data.Neighbors[j].PasswordInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/password/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "password/inheritance-disable"))
 				}
 				if !state.Neighbors[i].Password.IsNull() && data.Neighbors[j].Password.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/password/encrypted", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "password/encrypted"))
 				}
 				if !state.Neighbors[i].LocalAsNoPrependReplaceAsDualAs.IsNull() && data.Neighbors[j].LocalAsNoPrependReplaceAsDualAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-as/as/no-prepend/replace-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-as/as/no-prepend/replace-as"))
 				}
 				if !state.Neighbors[i].LocalAsNoPrependReplaceAs.IsNull() && data.Neighbors[j].LocalAsNoPrependReplaceAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-as/as/no-prepend", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-as/as/no-prepend"))
 				}
 				if !state.Neighbors[i].LocalAsNoPrepend.IsNull() && data.Neighbors[j].LocalAsNoPrepend.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-as"))
 				}
 				if !state.Neighbors[i].LocalAs.IsNull() && data.Neighbors[j].LocalAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-as"))
 				}
 				if !state.Neighbors[i].LocalAsInheritanceDisable.IsNull() && data.Neighbors[j].LocalAsInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/local-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "local-as"))
 				}
 				if !state.Neighbors[i].KeychainInheritanceDisable.IsNull() && data.Neighbors[j].KeychainInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/keychain", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "keychain"))
 				}
 				if !state.Neighbors[i].KeychainName.IsNull() && data.Neighbors[j].KeychainName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/keychain", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "keychain"))
 				}
 				if !state.Neighbors[i].BfdFastDetectStrictModeNegotiateOverride.IsNull() && data.Neighbors[j].BfdFastDetectStrictModeNegotiateOverride.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode-negotiate/override", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/fast-detect/strict-mode-negotiate/override"))
 				}
 				if !state.Neighbors[i].BfdFastDetectStrictModeNegotiate.IsNull() && data.Neighbors[j].BfdFastDetectStrictModeNegotiate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode-negotiate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/fast-detect/strict-mode-negotiate"))
 				}
 				if !state.Neighbors[i].BfdFastDetectDisable.IsNull() && data.Neighbors[j].BfdFastDetectDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/fast-detect/disable"))
 				}
 				if !state.Neighbors[i].BfdFastDetectStrictMode.IsNull() && data.Neighbors[j].BfdFastDetectStrictMode.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/fast-detect/strict-mode"))
 				}
 				if !state.Neighbors[i].BfdFastDetect.IsNull() && data.Neighbors[j].BfdFastDetect.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/fast-detect"))
 				}
 				if !state.Neighbors[i].BfdMultiplier.IsNull() && data.Neighbors[j].BfdMultiplier.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/multiplier", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/multiplier"))
 				}
 				if !state.Neighbors[i].BfdMinimumInterval.IsNull() && data.Neighbors[j].BfdMinimumInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/minimum-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "bfd/minimum-interval"))
 				}
 				for ci := range state.Neighbors[i].BmpActivateServers {
 					ckeys := [...]string{"server-number"}
@@ -6960,61 +6961,61 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 					}
 				}
 				if !state.Neighbors[i].TcpIpOnlyPreferredInheritanceDisable.IsNull() && data.Neighbors[j].TcpIpOnlyPreferredInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/ip-only-preferred/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/ip-only-preferred/inheritance-disable"))
 				}
 				if !state.Neighbors[i].TcpIpOnlyPreferred.IsNull() && data.Neighbors[j].TcpIpOnlyPreferred.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/ip-only-preferred", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/ip-only-preferred"))
 				}
 				if !state.Neighbors[i].TcpMtuDiscoveryInheritanceDisable.IsNull() && data.Neighbors[j].TcpMtuDiscoveryInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mtu-discovery/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/mtu-discovery/inheritance-disable"))
 				}
 				if !state.Neighbors[i].TcpMtuDiscovery.IsNull() && data.Neighbors[j].TcpMtuDiscovery.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mtu-discovery", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/mtu-discovery"))
 				}
 				if !state.Neighbors[i].TcpMssInheritanceDisable.IsNull() && data.Neighbors[j].TcpMssInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mss/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/mss/inheritance-disable"))
 				}
 				if !state.Neighbors[i].TcpMssValue.IsNull() && data.Neighbors[j].TcpMssValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mss/tcp-initial-maximum-segment-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "tcp/mss/tcp-initial-maximum-segment-size"))
 				}
 				if !state.Neighbors[i].EbgpMultihopMpls.IsNull() && data.Neighbors[j].EbgpMultihopMpls.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-multihop/mpls", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-multihop/mpls"))
 				}
 				if !state.Neighbors[i].EbgpMultihopMaximumHopCount.IsNull() && data.Neighbors[j].EbgpMultihopMaximumHopCount.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-multihop/maximum-hop-count", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ebgp-multihop/maximum-hop-count"))
 				}
 				if !state.Neighbors[i].IgnoreConnectedCheckInheritanceDisable.IsNull() && data.Neighbors[j].IgnoreConnectedCheckInheritanceDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ignore-connected-check/inheritance-disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ignore-connected-check/inheritance-disable"))
 				}
 				if !state.Neighbors[i].IgnoreConnectedCheck.IsNull() && data.Neighbors[j].IgnoreConnectedCheck.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/ignore-connected-check", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "ignore-connected-check"))
 				}
 				if !state.Neighbors[i].Description.IsNull() && data.Neighbors[j].Description.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/description", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "description"))
 				}
 				if !state.Neighbors[i].AdvertisementIntervalMilliseconds.IsNull() && data.Neighbors[j].AdvertisementIntervalMilliseconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/advertisement-interval/advertisement-interval-time-in-milliseconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "advertisement-interval/advertisement-interval-time-in-milliseconds"))
 				}
 				if !state.Neighbors[i].AdvertisementIntervalSeconds.IsNull() && data.Neighbors[j].AdvertisementIntervalSeconds.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/advertisement-interval/advertisement-interval-time-in-seconds", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "advertisement-interval/advertisement-interval-time-in-seconds"))
 				}
 				if !state.Neighbors[i].UseSessionGroup.IsNull() && data.Neighbors[j].UseSessionGroup.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/use/session-group", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "use/session-group"))
 				}
 				if !state.Neighbors[i].UseNeighborGroup.IsNull() && data.Neighbors[j].UseNeighborGroup.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/use/neighbor-group", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "use/neighbor-group"))
 				}
 				if !state.Neighbors[i].AsPathLoopcheckOut.IsNull() && data.Neighbors[j].AsPathLoopcheckOut.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/as-path-loopcheck/out", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "as-path-loopcheck/out"))
 				}
 				if !state.Neighbors[i].RemoteAsList.IsNull() && data.Neighbors[j].RemoteAsList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/remote-as-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "remote-as-list"))
 				}
 				if !state.Neighbors[i].MaximumPeers.IsNull() && data.Neighbors[j].MaximumPeers.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/maximum-peers", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "maximum-peers"))
 				}
 				if !state.Neighbors[i].RemoteAs.IsNull() && data.Neighbors[j].RemoteAs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/remote-as", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "remote-as"))
 				}
 				break
 			}
@@ -7024,16 +7025,16 @@ func (data *RouterBGP) getDeletedItems(ctx context.Context, state RouterBGP, ver
 		}
 	}
 	if !state.SegmentRoutingSrv6UsidAllocationWideLocalIdBlock.IsNull() && data.SegmentRoutingSrv6UsidAllocationWideLocalIdBlock.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/srv6/usid/allocation/wide-local-id-block", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "segment-routing/srv6/usid/allocation/wide-local-id-block"))
 	}
 	if !state.SegmentRoutingSrv6Locator.IsNull() && data.SegmentRoutingSrv6Locator.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/srv6/locator", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "segment-routing/srv6/locator"))
 	}
 	if !state.Mvpn.IsNull() && data.Mvpn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mvpn", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mvpn"))
 	}
 	if !state.DefaultMetric.IsNull() && data.DefaultMetric.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/default-metric", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "default-metric"))
 	}
 	return deletedItems
 }
@@ -7052,13 +7053,13 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RpkiServers[i].Shutdown.IsNull() && !data.RpkiServers[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/rpki/servers/server%v/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", data.getPath(), keyString), "shutdown"))
 		}
 		if !data.RpkiServers[i].ResponseTimeOff.IsNull() && !data.RpkiServers[i].ResponseTimeOff.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/rpki/servers/server%v/response-time", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", data.getPath(), keyString), "response-time"))
 		}
 		if !data.RpkiServers[i].RefreshTimeOff.IsNull() && !data.RpkiServers[i].RefreshTimeOff.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/rpki/servers/server%v/refresh-time", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/rpki/servers/server%v", data.getPath(), keyString), "refresh-time"))
 		}
 	}
 	for i := range data.RpkiRoutes {
@@ -7070,58 +7071,58 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 		}
 	}
 	if !data.UpdateOutLogging.IsNull() && !data.UpdateOutLogging.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/out/logging", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/out/logging"))
 	}
 	if !data.UpdateInErrorHandlingExtendedIbgp.IsNull() && !data.UpdateInErrorHandlingExtendedIbgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/in/error-handling/extended/ibgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/in/error-handling/extended/ibgp"))
 	}
 	if !data.UpdateInErrorHandlingExtendedEbgp.IsNull() && !data.UpdateInErrorHandlingExtendedEbgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/in/error-handling/extended/ebgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/in/error-handling/extended/ebgp"))
 	}
 	if !data.UpdateInErrorHandlingBasicIbgpDisable.IsNull() && !data.UpdateInErrorHandlingBasicIbgpDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/in/error-handling/basic/ibgp/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/in/error-handling/basic/ibgp/disable"))
 	}
 	if !data.UpdateInErrorHandlingBasicEbgpDisable.IsNull() && !data.UpdateInErrorHandlingBasicEbgpDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/in/error-handling/basic/ebgp/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/in/error-handling/basic/ebgp/disable"))
 	}
 	if !data.OpenconfigRibTelemetry.IsNull() && !data.OpenconfigRibTelemetry.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/openconfig/rib-telemetry", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "openconfig/rib-telemetry"))
 	}
 	if !data.IbgpPolicyOutEnforceModifications.IsNull() && !data.IbgpPolicyOutEnforceModifications.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ibgp/policy/out/enforce-modifications", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ibgp/policy/out/enforce-modifications"))
 	}
 	if !data.NsrDisable.IsNull() && !data.NsrDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nsr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nsr"))
 	}
 	if !data.Nsr.IsNull() && !data.Nsr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nsr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nsr"))
 	}
 	if !data.TimersBgpHolddownZeroMinimumAcceptableZero.IsNull() && !data.TimersBgpHolddownZeroMinimumAcceptableZero.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/timers/bgp/zero", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "timers/bgp/zero"))
 	}
 	if !data.TimersBgpHolddownZero.IsNull() && !data.TimersBgpHolddownZero.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/timers/bgp/zero", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "timers/bgp/zero"))
 	}
 	if !data.BgpOriginAsValidationTimeOff.IsNull() && !data.BgpOriginAsValidationTimeOff.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/origin-as/validation/time", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/origin-as/validation/time"))
 	}
 	if !data.BgpOriginAsValidationSignalIbgp.IsNull() && !data.BgpOriginAsValidationSignalIbgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/origin-as/validation/signal/ibgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/origin-as/validation/signal/ibgp"))
 	}
 	if !data.BgpUpdateDelayAlways.IsNull() && !data.BgpUpdateDelayAlways.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/update-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/update-delay"))
 	}
 	if !data.BgpInstallDiversion.IsNull() && !data.BgpInstallDiversion.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/install/diversion", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/install/diversion"))
 	}
 	if !data.BgpGracefulRestartRetainNbrRoutesDisable.IsNull() && !data.BgpGracefulRestartRetainNbrRoutesDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/graceful-restart/retain-nbr-routes/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/graceful-restart/retain-nbr-routes/disable"))
 	}
 	if !data.BgpGracefulRestartGracefulReset.IsNull() && !data.BgpGracefulRestartGracefulReset.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/graceful-restart/graceful-reset", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/graceful-restart/graceful-reset"))
 	}
 	if !data.BgpGracefulRestartEnable.IsNull() && !data.BgpGracefulRestartEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/graceful-restart/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/graceful-restart/enable"))
 	}
 	for i := range data.BgpConfederationPeers {
 		keys := [...]string{"peer-as-number"}
@@ -7132,106 +7133,106 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 		}
 	}
 	if !data.BgpMultipathAsPathIgnoreOnwards.IsNull() && !data.BgpMultipathAsPathIgnoreOnwards.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/multipath/as-path/ignore/onwards", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/multipath/as-path/ignore/onwards"))
 	}
 	if !data.BgpMultipathUseClusterListLength.IsNull() && !data.BgpMultipathUseClusterListLength.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/multipath/use/cluster-list-length", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/multipath/use/cluster-list-length"))
 	}
 	if !data.BgpLogMessageDisable.IsNull() && !data.BgpLogMessageDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/log/message/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/log/message/disable"))
 	}
 	if !data.BgpLogNeighborChangesDisable.IsNull() && !data.BgpLogNeighborChangesDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/log/neighbor/changes/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/log/neighbor/changes/disable"))
 	}
 	if !data.BgpLogNeighborChangesDetail.IsNull() && !data.BgpLogNeighborChangesDetail.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/log/neighbor/changes/detail", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/log/neighbor/changes/detail"))
 	}
 	if !data.BgpFastExternalFalloverDisable.IsNull() && !data.BgpFastExternalFalloverDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/fast-external-fallover/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/fast-external-fallover/disable"))
 	}
 	if !data.BgpEnforceFirstAsDisable.IsNull() && !data.BgpEnforceFirstAsDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/enforce-first-as/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/enforce-first-as/disable"))
 	}
 	if !data.BgpBestpathSrPolicyForce.IsNull() && !data.BgpBestpathSrPolicyForce.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/sr-policy/force", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/sr-policy/force"))
 	}
 	if !data.BgpBestpathSrPolicyPrefer.IsNull() && !data.BgpBestpathSrPolicyPrefer.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/sr-policy/prefer", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/sr-policy/prefer"))
 	}
 	if !data.BgpBestpathOriginAsAllowInvalid.IsNull() && !data.BgpBestpathOriginAsAllowInvalid.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/origin-as/allow/invalid", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/origin-as/allow/invalid"))
 	}
 	if !data.BgpBestpathOriginAsUseValidity.IsNull() && !data.BgpBestpathOriginAsUseValidity.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/origin-as/use/validity", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/origin-as/use/validity"))
 	}
 	if !data.BgpBestpathAsPathMultipathRelax.IsNull() && !data.BgpBestpathAsPathMultipathRelax.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/as-path/multipath-relax", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/as-path/multipath-relax"))
 	}
 	if !data.BgpBestpathAsPathIgnore.IsNull() && !data.BgpBestpathAsPathIgnore.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/as-path/ignore", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/as-path/ignore"))
 	}
 	if !data.BgpBestpathMedAlways.IsNull() && !data.BgpBestpathMedAlways.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/med/always", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/med/always"))
 	}
 	if !data.BgpBestpathMedMissingAsWorst.IsNull() && !data.BgpBestpathMedMissingAsWorst.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/med/missing-as-worst", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/med/missing-as-worst"))
 	}
 	if !data.BgpBestpathIgpMetricSrPolicy.IsNull() && !data.BgpBestpathIgpMetricSrPolicy.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/igp-metric/sr-policy", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/igp-metric/sr-policy"))
 	}
 	if !data.BgpBestpathIgpMetricIgnore.IsNull() && !data.BgpBestpathIgpMetricIgnore.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/igp-metric/ignore", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/igp-metric/ignore"))
 	}
 	if !data.BgpBestpathAigpIgnore.IsNull() && !data.BgpBestpathAigpIgnore.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/aigp/ignore", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/aigp/ignore"))
 	}
 	if !data.BgpBestpathCompareRouterid.IsNull() && !data.BgpBestpathCompareRouterid.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/compare-routerid", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/compare-routerid"))
 	}
 	if !data.BgpBestpathCostCommunityIgnore.IsNull() && !data.BgpBestpathCostCommunityIgnore.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/bestpath/cost-community/ignore", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/bestpath/cost-community/ignore"))
 	}
 	if !data.BgpAutoPolicySoftResetDisable.IsNull() && !data.BgpAutoPolicySoftResetDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/auto-policy-soft-reset/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/auto-policy-soft-reset/disable"))
 	}
 	if !data.BgpAsPathLoopcheck.IsNull() && !data.BgpAsPathLoopcheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/as-path-loopcheck", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/as-path-loopcheck"))
 	}
 	if !data.BgpLptsSecureBinding.IsNull() && !data.BgpLptsSecureBinding.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/lpts-secure-binding", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/lpts-secure-binding"))
 	}
 	if !data.BgpReadOnly.IsNull() && !data.BgpReadOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/read-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/read-only"))
 	}
 	if !data.BgpUnsafeEbgpPolicy.IsNull() && !data.BgpUnsafeEbgpPolicy.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/unsafe-ebgp-policy", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/unsafe-ebgp-policy"))
 	}
 	if !data.BgpRedistributeInternal.IsNull() && !data.BgpRedistributeInternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bgp/redistribute-internal", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bgp/redistribute-internal"))
 	}
 	if !data.SlowPeerDetectionDisable.IsNull() && !data.SlowPeerDetectionDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/slow-peer/detection-disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "slow-peer/detection-disable"))
 	}
 	if !data.SlowPeerDynamic.IsNull() && !data.SlowPeerDynamic.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/slow-peer/dynamic", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "slow-peer/dynamic"))
 	}
 	if !data.NexthopSrteMetricDisable.IsNull() && !data.NexthopSrteMetricDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nexthop/srte-metric/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nexthop/srte-metric/disable"))
 	}
 	if !data.NexthopResolutionAllowDefault.IsNull() && !data.NexthopResolutionAllowDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nexthop/resolution/allow-default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nexthop/resolution/allow-default"))
 	}
 	if !data.NexthopValidationColorExtcommDisable.IsNull() && !data.NexthopValidationColorExtcommDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nexthop/validation/color-extcomm/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nexthop/validation/color-extcomm/disable"))
 	}
 	if !data.NexthopValidationColorExtcommSrPolicy.IsNull() && !data.NexthopValidationColorExtcommSrPolicy.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nexthop/validation/color-extcomm/sr-policy", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nexthop/validation/color-extcomm/sr-policy"))
 	}
 	if !data.NexthopMplsForwardingIbgp.IsNull() && !data.NexthopMplsForwardingIbgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/nexthop/mpls/forwarding/ibgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "nexthop/mpls/forwarding/ibgp"))
 	}
 	if !data.DefaultInformationOriginate.IsNull() && !data.DefaultInformationOriginate.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/default-information/originate", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "default-information/originate"))
 	}
 	for i := range data.AsLists {
 		keys := [...]string{"as-list-name"}
@@ -7264,10 +7265,10 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.AttributeFilterGroups[i].AttributeCodeRanges[ci].TreatAsWithdraw.IsNull() && !data.AttributeFilterGroups[i].AttributeCodeRanges[ci].TreatAsWithdraw.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v/treat-as-withdraw", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v", data.getPath(), keyString, ckeyString), "treat-as-withdraw"))
 			}
 			if !data.AttributeFilterGroups[i].AttributeCodeRanges[ci].Discard.IsNull() && !data.AttributeFilterGroups[i].AttributeCodeRanges[ci].Discard.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v/discard", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/attribute-filter/groups/group%v/attributes/attribute-code-ranges/attribute-code-range%v", data.getPath(), keyString, ckeyString), "discard"))
 			}
 		}
 	}
@@ -7304,10 +7305,10 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 		}
 	}
 	if !data.GracefulMaintenanceActivateRetainRoutes.IsNull() && !data.GracefulMaintenanceActivateRetainRoutes.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/graceful-maintenance/activate/retain-routes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "graceful-maintenance/activate/retain-routes"))
 	}
 	if !data.GracefulMaintenanceActivateAllNeighbors.IsNull() && !data.GracefulMaintenanceActivateAllNeighbors.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/graceful-maintenance/activate/all-neighbors", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "graceful-maintenance/activate/all-neighbors"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"address"}
@@ -7317,46 +7318,46 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].GracefulMaintenanceBandwidthAwareInheritanceDisable.IsNull() && !data.Neighbors[i].GracefulMaintenanceBandwidthAwareInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/bandwidth-aware", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-maintenance/bandwidth-aware"))
 		}
 		if !data.Neighbors[i].GracefulMaintenanceAsPrependsInheritanceDisable.IsNull() && !data.Neighbors[i].GracefulMaintenanceAsPrependsInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/as-prepends", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-maintenance/as-prepends"))
 		}
 		if !data.Neighbors[i].GracefulMaintenanceLocalPreferenceInheritanceDisable.IsNull() && !data.Neighbors[i].GracefulMaintenanceLocalPreferenceInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/local-preference", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-maintenance/local-preference"))
 		}
 		if !data.Neighbors[i].GracefulMaintenanceActivateInheritanceDisable.IsNull() && !data.Neighbors[i].GracefulMaintenanceActivateInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/activate/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-maintenance/activate/inheritance-disable"))
 		}
 		if !data.Neighbors[i].GracefulMaintenanceActivate.IsNull() && !data.Neighbors[i].GracefulMaintenanceActivate.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-maintenance/activate", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-maintenance/activate"))
 		}
 		if !data.Neighbors[i].UpdateInLabeledUnicastEquivalentInheritanceDisable.IsNull() && !data.Neighbors[i].UpdateInLabeledUnicastEquivalentInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/labeled-unicast/equivalent/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "update/in/labeled-unicast/equivalent/inheritance-disable"))
 		}
 		if !data.Neighbors[i].UpdateInLabeledUnicastEquivalent.IsNull() && !data.Neighbors[i].UpdateInLabeledUnicastEquivalent.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/labeled-unicast/equivalent", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "update/in/labeled-unicast/equivalent"))
 		}
 		if !data.Neighbors[i].UpdateInFilteringLoggingDisable.IsNull() && !data.Neighbors[i].UpdateInFilteringLoggingDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/update/in/filtering/logging/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "update/in/filtering/logging/disable"))
 		}
 		if !data.Neighbors[i].BestpathOriginAsAllowInvalid.IsNull() && !data.Neighbors[i].BestpathOriginAsAllowInvalid.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bestpath/origin-as/allow/invalid", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bestpath/origin-as/allow/invalid"))
 		}
 		if !data.Neighbors[i].SendExtendedCommunityEbgpInheritanceDisable.IsNull() && !data.Neighbors[i].SendExtendedCommunityEbgpInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/send-extended-community-ebgp/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "send-extended-community-ebgp/inheritance-disable"))
 		}
 		if !data.Neighbors[i].SendExtendedCommunityEbgp.IsNull() && !data.Neighbors[i].SendExtendedCommunityEbgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/send-extended-community-ebgp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "send-extended-community-ebgp"))
 		}
 		if !data.Neighbors[i].OriginAsValidationDisable.IsNull() && !data.Neighbors[i].OriginAsValidationDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/origin-as/validation/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "origin-as/validation/disable"))
 		}
 		if !data.Neighbors[i].AoInheritanceDisable.IsNull() && !data.Neighbors[i].AoInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ao", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ao"))
 		}
 		if !data.Neighbors[i].AoKeyChainAcceptMismatch.IsNull() && !data.Neighbors[i].AoKeyChainAcceptMismatch.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ao/key-chain-name/accept-ao-mismatch-connection", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ao/key-chain-name/accept-ao-mismatch-connection"))
 		}
 		for ci := range data.Neighbors[i].PeerSets {
 			ckeys := [...]string{"peer"}
@@ -7367,151 +7368,151 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 			}
 		}
 		if !data.Neighbors[i].EgressEngineeringInheritanceDisable.IsNull() && !data.Neighbors[i].EgressEngineeringInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/egress-engineering/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "egress-engineering/inheritance-disable"))
 		}
 		if !data.Neighbors[i].EgressEngineering.IsNull() && !data.Neighbors[i].EgressEngineering.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/egress-engineering", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "egress-engineering"))
 		}
 		if !data.Neighbors[i].GracefulRestartHelperOnlyInheritanceDisable.IsNull() && !data.Neighbors[i].GracefulRestartHelperOnlyInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/helper-only/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-restart/helper-only/inheritance-disable"))
 		}
 		if !data.Neighbors[i].GracefulRestartHelperOnly.IsNull() && !data.Neighbors[i].GracefulRestartHelperOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/helper-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-restart/helper-only"))
 		}
 		if !data.Neighbors[i].GracefulRestartDisable.IsNull() && !data.Neighbors[i].GracefulRestartDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/graceful-restart-enable/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-restart/graceful-restart-enable/disable"))
 		}
 		if !data.Neighbors[i].GracefulRestart.IsNull() && !data.Neighbors[i].GracefulRestart.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/graceful-restart/graceful-restart-enable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "graceful-restart/graceful-restart-enable"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressFourByteAsInheritanceDisable.IsNull() && !data.Neighbors[i].CapabilitySuppressFourByteAsInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/four-byte-as/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/four-byte-as/inheritance-disable"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressFourByteAs.IsNull() && !data.Neighbors[i].CapabilitySuppressFourByteAs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/four-byte-as", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/four-byte-as"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressExtendedNexthopEncodingInheritanceDisable.IsNull() && !data.Neighbors[i].CapabilitySuppressExtendedNexthopEncodingInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/extended-nexthop-encoding/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/extended-nexthop-encoding/inheritance-disable"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressExtendedNexthopEncoding.IsNull() && !data.Neighbors[i].CapabilitySuppressExtendedNexthopEncoding.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/extended-nexthop-encoding", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/extended-nexthop-encoding"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressAllInheritanceDisable.IsNull() && !data.Neighbors[i].CapabilitySuppressAllInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/all/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/all/inheritance-disable"))
 		}
 		if !data.Neighbors[i].CapabilitySuppressAll.IsNull() && !data.Neighbors[i].CapabilitySuppressAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/suppress/all", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/suppress/all"))
 		}
 		if !data.Neighbors[i].CapabilityAdditionalPathsReceiveDisable.IsNull() && !data.Neighbors[i].CapabilityAdditionalPathsReceiveDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/receive/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/additional-paths/receive/disable"))
 		}
 		if !data.Neighbors[i].CapabilityAdditionalPathsReceive.IsNull() && !data.Neighbors[i].CapabilityAdditionalPathsReceive.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/receive", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/additional-paths/receive"))
 		}
 		if !data.Neighbors[i].CapabilityAdditionalPathsSendDisable.IsNull() && !data.Neighbors[i].CapabilityAdditionalPathsSendDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/send/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/additional-paths/send/disable"))
 		}
 		if !data.Neighbors[i].CapabilityAdditionalPathsSend.IsNull() && !data.Neighbors[i].CapabilityAdditionalPathsSend.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/capability/additional-paths/send", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "capability/additional-paths/send"))
 		}
 		if !data.Neighbors[i].TtlSecurityInheritanceDisable.IsNull() && !data.Neighbors[i].TtlSecurityInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ttl-security/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ttl-security/inheritance-disable"))
 		}
 		if !data.Neighbors[i].TtlSecurity.IsNull() && !data.Neighbors[i].TtlSecurity.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ttl-security", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ttl-security"))
 		}
 		if !data.Neighbors[i].EbgpSendExtcommunityDmzInheritanceDisable.IsNull() && !data.Neighbors[i].EbgpSendExtcommunityDmzInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 		}
 		if !data.Neighbors[i].EbgpSendExtcommunityDmzCumulative.IsNull() && !data.Neighbors[i].EbgpSendExtcommunityDmzCumulative.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 		}
 		if !data.Neighbors[i].EbgpSendExtcommunityDmz.IsNull() && !data.Neighbors[i].EbgpSendExtcommunityDmz.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-send-extcommunity-dmz", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-send-extcommunity-dmz"))
 		}
 		if !data.Neighbors[i].EbgpRecvExtcommunityDmzInheritanceDisable.IsNull() && !data.Neighbors[i].EbgpRecvExtcommunityDmzInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-recv-extcommunity-dmz/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-recv-extcommunity-dmz/inheritance-disable"))
 		}
 		if !data.Neighbors[i].EbgpRecvExtcommunityDmz.IsNull() && !data.Neighbors[i].EbgpRecvExtcommunityDmz.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-recv-extcommunity-dmz", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-recv-extcommunity-dmz"))
 		}
 		if !data.Neighbors[i].DmzLinkBandwidthInheritanceDisable.IsNull() && !data.Neighbors[i].DmzLinkBandwidthInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/dmz-link-bandwidth/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "dmz-link-bandwidth/inheritance-disable"))
 		}
 		if !data.Neighbors[i].DmzLinkBandwidth.IsNull() && !data.Neighbors[i].DmzLinkBandwidth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/dmz-link-bandwidth", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "dmz-link-bandwidth"))
 		}
 		if !data.Neighbors[i].LogMessageOutInheritanceDisable.IsNull() && !data.Neighbors[i].LogMessageOutInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/out", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/message/out"))
 		}
 		if !data.Neighbors[i].LogMessageOutDisable.IsNull() && !data.Neighbors[i].LogMessageOutDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/out", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/message/out"))
 		}
 		if !data.Neighbors[i].LogMessageInInheritanceDisable.IsNull() && !data.Neighbors[i].LogMessageInInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/in", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/message/in"))
 		}
 		if !data.Neighbors[i].LogMessageInDisable.IsNull() && !data.Neighbors[i].LogMessageInDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/message/in", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/message/in"))
 		}
 		if !data.Neighbors[i].LogNeighborChangesInheritanceDisable.IsNull() && !data.Neighbors[i].LogNeighborChangesInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/neighbor/changes"))
 		}
 		if !data.Neighbors[i].LogNeighborChangesDisable.IsNull() && !data.Neighbors[i].LogNeighborChangesDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/neighbor/changes"))
 		}
 		if !data.Neighbors[i].LogNeighborChangesDetail.IsNull() && !data.Neighbors[i].LogNeighborChangesDetail.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/log/neighbor/changes", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "log/neighbor/changes"))
 		}
 		if !data.Neighbors[i].LocalAddressInheritanceDisable.IsNull() && !data.Neighbors[i].LocalAddressInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/local/address", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "local/address"))
 		}
 		if !data.Neighbors[i].TimersHolddownZeroMinimumAcceptableZero.IsNull() && !data.Neighbors[i].TimersHolddownZeroMinimumAcceptableZero.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/timers/zero", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "timers/zero"))
 		}
 		if !data.Neighbors[i].TimersHolddownZero.IsNull() && !data.Neighbors[i].TimersHolddownZero.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/timers/zero", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "timers/zero"))
 		}
 		if !data.Neighbors[i].Shutdown.IsNull() && !data.Neighbors[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "shutdown"))
 		}
 		if !data.Neighbors[i].FastFalloverInheritanceDisable.IsNull() && !data.Neighbors[i].FastFalloverInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/fast-fallover/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "fast-fallover/inheritance-disable"))
 		}
 		if !data.Neighbors[i].FastFallover.IsNull() && !data.Neighbors[i].FastFallover.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/fast-fallover", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "fast-fallover"))
 		}
 		if !data.Neighbors[i].PasswordInheritanceDisable.IsNull() && !data.Neighbors[i].PasswordInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/password/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "password/inheritance-disable"))
 		}
 		if !data.Neighbors[i].LocalAsNoPrependReplaceAsDualAs.IsNull() && !data.Neighbors[i].LocalAsNoPrependReplaceAsDualAs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/local-as/as/no-prepend/replace-as", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "local-as/as/no-prepend/replace-as"))
 		}
 		if !data.Neighbors[i].LocalAsNoPrependReplaceAs.IsNull() && !data.Neighbors[i].LocalAsNoPrependReplaceAs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/local-as/as/no-prepend", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "local-as/as/no-prepend"))
 		}
 		if !data.Neighbors[i].LocalAsNoPrepend.IsNull() && !data.Neighbors[i].LocalAsNoPrepend.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/local-as", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "local-as"))
 		}
 		if !data.Neighbors[i].LocalAsInheritanceDisable.IsNull() && !data.Neighbors[i].LocalAsInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/local-as", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "local-as"))
 		}
 		if !data.Neighbors[i].KeychainInheritanceDisable.IsNull() && !data.Neighbors[i].KeychainInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/keychain", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "keychain"))
 		}
 		if !data.Neighbors[i].BfdFastDetectStrictModeNegotiateOverride.IsNull() && !data.Neighbors[i].BfdFastDetectStrictModeNegotiateOverride.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode-negotiate/override", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bfd/fast-detect/strict-mode-negotiate/override"))
 		}
 		if !data.Neighbors[i].BfdFastDetectStrictModeNegotiate.IsNull() && !data.Neighbors[i].BfdFastDetectStrictModeNegotiate.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode-negotiate", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bfd/fast-detect/strict-mode-negotiate"))
 		}
 		if !data.Neighbors[i].BfdFastDetectDisable.IsNull() && !data.Neighbors[i].BfdFastDetectDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bfd/fast-detect/disable"))
 		}
 		if !data.Neighbors[i].BfdFastDetectStrictMode.IsNull() && !data.Neighbors[i].BfdFastDetectStrictMode.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect/strict-mode", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bfd/fast-detect/strict-mode"))
 		}
 		if !data.Neighbors[i].BfdFastDetect.IsNull() && !data.Neighbors[i].BfdFastDetect.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/bfd/fast-detect", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "bfd/fast-detect"))
 		}
 		for ci := range data.Neighbors[i].BmpActivateServers {
 			ckeys := [...]string{"server-number"}
@@ -7522,35 +7523,35 @@ func (data *RouterBGP) getEmptyLeafsDelete(ctx context.Context, version string) 
 			}
 		}
 		if !data.Neighbors[i].TcpIpOnlyPreferredInheritanceDisable.IsNull() && !data.Neighbors[i].TcpIpOnlyPreferredInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/ip-only-preferred/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "tcp/ip-only-preferred/inheritance-disable"))
 		}
 		if !data.Neighbors[i].TcpIpOnlyPreferred.IsNull() && !data.Neighbors[i].TcpIpOnlyPreferred.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/ip-only-preferred", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "tcp/ip-only-preferred"))
 		}
 		if !data.Neighbors[i].TcpMtuDiscoveryInheritanceDisable.IsNull() && !data.Neighbors[i].TcpMtuDiscoveryInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mtu-discovery/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "tcp/mtu-discovery/inheritance-disable"))
 		}
 		if !data.Neighbors[i].TcpMtuDiscovery.IsNull() && !data.Neighbors[i].TcpMtuDiscovery.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mtu-discovery", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "tcp/mtu-discovery"))
 		}
 		if !data.Neighbors[i].TcpMssInheritanceDisable.IsNull() && !data.Neighbors[i].TcpMssInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/tcp/mss/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "tcp/mss/inheritance-disable"))
 		}
 		if !data.Neighbors[i].EbgpMultihopMpls.IsNull() && !data.Neighbors[i].EbgpMultihopMpls.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ebgp-multihop/mpls", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ebgp-multihop/mpls"))
 		}
 		if !data.Neighbors[i].IgnoreConnectedCheckInheritanceDisable.IsNull() && !data.Neighbors[i].IgnoreConnectedCheckInheritanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ignore-connected-check/inheritance-disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ignore-connected-check/inheritance-disable"))
 		}
 		if !data.Neighbors[i].IgnoreConnectedCheck.IsNull() && !data.Neighbors[i].IgnoreConnectedCheck.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/ignore-connected-check", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "ignore-connected-check"))
 		}
 	}
 	if !data.SegmentRoutingSrv6UsidAllocationWideLocalIdBlock.IsNull() && !data.SegmentRoutingSrv6UsidAllocationWideLocalIdBlock.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/segment-routing/srv6/usid/allocation/wide-local-id-block", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "segment-routing/srv6/usid/allocation/wide-local-id-block"))
 	}
 	if !data.Mvpn.IsNull() && !data.Mvpn.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mvpn", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mvpn"))
 	}
 	return emptyLeafsDelete
 }
@@ -7606,97 +7607,97 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context, version string) []str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpki/routes/route%v", data.getPath(), keyString))
 	}
 	if !data.BfdMinimumInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/minimum-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/minimum-interval"))
 	}
 	if !data.BfdMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/multiplier"))
 	}
 	if !data.UpdateOutLogging.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/out/logging", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/out/logging"))
 	}
 	if !data.UpdateInErrorHandlingExtendedIbgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/in/error-handling/extended/ibgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/in/error-handling/extended/ibgp"))
 	}
 	if !data.UpdateInErrorHandlingExtendedEbgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/in/error-handling/extended/ebgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/in/error-handling/extended/ebgp"))
 	}
 	if !data.UpdateInErrorHandlingBasicIbgpDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/in/error-handling/basic/ibgp/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/in/error-handling/basic/ibgp/disable"))
 	}
 	if !data.UpdateInErrorHandlingBasicEbgpDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/in/error-handling/basic/ebgp/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/in/error-handling/basic/ebgp/disable"))
 	}
 	if !data.UpdateLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/limit"))
 	}
 	if !data.OpenconfigRibTelemetry.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/openconfig/rib-telemetry", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "openconfig/rib-telemetry"))
 	}
 	if !data.IbgpPolicyOutEnforceModifications.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ibgp/policy/out/enforce-modifications", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ibgp/policy/out/enforce-modifications"))
 	}
 	if !data.NsrDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nsr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nsr"))
 	}
 	if !data.Nsr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nsr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nsr"))
 	}
 	if !data.TimersBgpHoldtimeMinimumAcceptableHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/holdtime"))
 	}
 	if !data.TimersBgpHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/holdtime"))
 	}
 	if !data.TimersBgpHolddownZeroMinimumAcceptableHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/zero", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/zero"))
 	}
 	if !data.TimersBgpHolddownZeroMinimumAcceptableZero.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/zero", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/zero"))
 	}
 	if !data.TimersBgpHolddownZero.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/zero", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/zero"))
 	}
 	if !data.TimersBgpKeepaliveInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timers/bgp/keepalive-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/bgp/keepalive-interval"))
 	}
 	if !data.BgpOriginAsValidationTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/origin-as/validation/time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/origin-as/validation/time"))
 	}
 	if !data.BgpOriginAsValidationTimeOff.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/origin-as/validation/time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/origin-as/validation/time"))
 	}
 	if !data.BgpOriginAsValidationSignalIbgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/origin-as/validation/signal/ibgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/origin-as/validation/signal/ibgp"))
 	}
 	if !data.BgpMaximumNeighbor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/maximum/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/maximum/neighbor"))
 	}
 	if !data.BgpUpdateDelayAlways.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/update-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/update-delay"))
 	}
 	if !data.BgpUpdateDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/update-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/update-delay"))
 	}
 	if !data.BgpInstallDiversion.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/install/diversion", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/install/diversion"))
 	}
 	if !data.BgpGracefulRestartRetainNbrRoutesDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/retain-nbr-routes/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/retain-nbr-routes/disable"))
 	}
 	if !data.BgpGracefulRestartGracefulReset.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/graceful-reset", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/graceful-reset"))
 	}
 	if !data.BgpGracefulRestartStalepathTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/stalepath-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/stalepath-time"))
 	}
 	if !data.BgpGracefulRestartRestartTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/restart-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/restart-time"))
 	}
 	if !data.BgpGracefulRestartPurgeTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/purge-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/purge-time"))
 	}
 	if !data.BgpGracefulRestartEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/graceful-restart/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/graceful-restart/enable"))
 	}
 	for i := range data.BgpConfederationPeers {
 		keys := [...]string{"peer-as-number"}
@@ -7717,151 +7718,151 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context, version string) []str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/confederation/peers%v", data.getPath(), keyString))
 	}
 	if !data.BgpConfederationIdentifier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/confederation/identifier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/confederation/identifier"))
 	}
 	if !data.BgpMultipathAsPathIgnoreOnwards.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/multipath/as-path/ignore/onwards", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/multipath/as-path/ignore/onwards"))
 	}
 	if !data.BgpMultipathUseClusterListLength.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/multipath/use/cluster-list-length", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/multipath/use/cluster-list-length"))
 	}
 	if !data.BgpLogTotalPathsWarnThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/total-paths", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/total-paths"))
 	}
 	if !data.BgpLogTotalPaths.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/total-paths", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/total-paths"))
 	}
 	if !data.BgpLogMemoryThresholdCritical.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/memory-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/memory-threshold"))
 	}
 	if !data.BgpLogMemoryThresholdWarning.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/memory-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/memory-threshold"))
 	}
 	if !data.BgpLogMessageDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/message/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/message/disable"))
 	}
 	if !data.BgpLogNeighborChangesDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/neighbor/changes/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/neighbor/changes/disable"))
 	}
 	if !data.BgpLogNeighborChangesDetail.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/log/neighbor/changes/detail", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/log/neighbor/changes/detail"))
 	}
 	if !data.BgpFastExternalFalloverDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/fast-external-fallover/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/fast-external-fallover/disable"))
 	}
 	if !data.BgpEnforceFirstAsDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/enforce-first-as/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/enforce-first-as/disable"))
 	}
 	if !data.BgpDefaultLocalPreference.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/default/local-preference", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/default/local-preference"))
 	}
 	if !data.BgpClusterIdIpFormat.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/cluster-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/cluster-id"))
 	}
 	if !data.BgpClusterId32bitFormat.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/cluster-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/cluster-id"))
 	}
 	if !data.BgpBestpathSrPolicyForce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/sr-policy/force", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/sr-policy/force"))
 	}
 	if !data.BgpBestpathSrPolicyPrefer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/sr-policy/prefer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/sr-policy/prefer"))
 	}
 	if !data.BgpBestpathOriginAsAllowInvalid.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/origin-as/allow/invalid", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/origin-as/allow/invalid"))
 	}
 	if !data.BgpBestpathOriginAsUseValidity.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/origin-as/use/validity", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/origin-as/use/validity"))
 	}
 	if !data.BgpBestpathAsPathMultipathRelax.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/as-path/multipath-relax", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/as-path/multipath-relax"))
 	}
 	if !data.BgpBestpathAsPathIgnore.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/as-path/ignore", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/as-path/ignore"))
 	}
 	if !data.BgpBestpathMedAlways.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/med/always", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/med/always"))
 	}
 	if !data.BgpBestpathMedMissingAsWorst.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/med/missing-as-worst", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/med/missing-as-worst"))
 	}
 	if !data.BgpBestpathIgpMetricSrPolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/igp-metric/sr-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/igp-metric/sr-policy"))
 	}
 	if !data.BgpBestpathIgpMetricIgnore.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/igp-metric/ignore", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/igp-metric/ignore"))
 	}
 	if !data.BgpBestpathAigpIgnore.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/aigp/ignore", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/aigp/ignore"))
 	}
 	if !data.BgpBestpathCompareRouterid.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/compare-routerid", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/compare-routerid"))
 	}
 	if !data.BgpBestpathCostCommunityIgnore.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/bestpath/cost-community/ignore", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/bestpath/cost-community/ignore"))
 	}
 	if !data.BgpAutoPolicySoftResetDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/auto-policy-soft-reset/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/auto-policy-soft-reset/disable"))
 	}
 	if !data.BgpAsPathLoopcheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/as-path-loopcheck", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/as-path-loopcheck"))
 	}
 	if !data.BgpLptsSecureBinding.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/lpts-secure-binding", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/lpts-secure-binding"))
 	}
 	if !data.BgpReadOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/read-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/read-only"))
 	}
 	if !data.BgpScanTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/scan-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/scan-time"))
 	}
 	if !data.BgpUnsafeEbgpPolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/unsafe-ebgp-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/unsafe-ebgp-policy"))
 	}
 	if !data.BgpRouterId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/router-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/router-id"))
 	}
 	if !data.BgpRedistributeInternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/redistribute-internal", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/redistribute-internal"))
 	}
 	if !data.SlowPeerDetectionDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/slow-peer/detection-disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "slow-peer/detection-disable"))
 	}
 	if !data.SlowPeerDynamicThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/slow-peer/dynamic/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "slow-peer/dynamic/threshold"))
 	}
 	if !data.SlowPeerDynamic.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/slow-peer/dynamic", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "slow-peer/dynamic"))
 	}
 	if !data.NexthopSrteMetricDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop/srte-metric/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nexthop/srte-metric/disable"))
 	}
 	if !data.NexthopResolutionAllowDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop/resolution/allow-default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nexthop/resolution/allow-default"))
 	}
 	if !data.NexthopValidationColorExtcommDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop/validation/color-extcomm/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nexthop/validation/color-extcomm/disable"))
 	}
 	if !data.NexthopValidationColorExtcommSrPolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop/validation/color-extcomm/sr-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nexthop/validation/color-extcomm/sr-policy"))
 	}
 	if !data.NexthopMplsForwardingIbgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/nexthop/mpls/forwarding/ibgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "nexthop/mpls/forwarding/ibgp"))
 	}
 	if !data.SocketSendBufferSizeWrite.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/socket/send-buffer-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "socket/send-buffer-size"))
 	}
 	if !data.SocketSendBufferSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/socket/send-buffer-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "socket/send-buffer-size"))
 	}
 	if !data.SocketReceiveBufferSizeRead.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/socket/receive-buffer-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "socket/receive-buffer-size"))
 	}
 	if !data.SocketReceiveBufferSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/socket/receive-buffer-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "socket/receive-buffer-size"))
 	}
 	if !data.DefaultInformationOriginate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/default-information/originate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "default-information/originate"))
 	}
 	for i := range data.AsLists {
 		keys := [...]string{"as-list-name"}
@@ -7972,10 +7973,10 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context, version string) []str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-maintenance/activate/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.GracefulMaintenanceActivateRetainRoutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-maintenance/activate/retain-routes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "graceful-maintenance/activate/retain-routes"))
 	}
 	if !data.GracefulMaintenanceActivateAllNeighbors.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-maintenance/activate/all-neighbors", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "graceful-maintenance/activate/all-neighbors"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"address"}
@@ -7996,16 +7997,16 @@ func (data *RouterBGP) getDeletePaths(ctx context.Context, version string) []str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.SegmentRoutingSrv6UsidAllocationWideLocalIdBlock.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/srv6/usid/allocation/wide-local-id-block", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing/srv6/usid/allocation/wide-local-id-block"))
 	}
 	if !data.SegmentRoutingSrv6Locator.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/srv6/locator", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing/srv6/locator"))
 	}
 	if !data.Mvpn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mvpn", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mvpn"))
 	}
 	if !data.DefaultMetric.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/default-metric", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "default-metric"))
 	}
 	return deletePaths
 }

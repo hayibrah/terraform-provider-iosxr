@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -939,10 +940,10 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.InheritLocations[i].Indexes[ci].Priority.IsNull() && data.InheritLocations[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v/priority", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
 							}
 							if !state.InheritLocations[i].Indexes[ci].Value.IsNull() && data.InheritLocations[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v/value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
 							}
 							break
 						}
@@ -1005,10 +1006,10 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Groups[i].Indexes[ci].Priority.IsNull() && data.Groups[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/indexes/index%v/priority", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
 							}
 							if !state.Groups[i].Indexes[ci].Value.IsNull() && data.Groups[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/indexes/index%v/value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
 							}
 							break
 						}
@@ -1071,7 +1072,7 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Interfaces[i].Groups[ci].GroupName.IsNull() && data.Interfaces[j].Groups[cj].GroupName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/groups/group%v/group-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/groups/group%v", state.getPath(), keyString, ckeyString), "group-name"))
 							}
 							break
 						}
@@ -1134,10 +1135,10 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Interfaces[i].Indexes[ci].Priority.IsNull() && data.Interfaces[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v/priority", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
 							}
 							if !state.Interfaces[i].Indexes[ci].Value.IsNull() && data.Interfaces[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v/value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
 							}
 							break
 						}
@@ -1147,10 +1148,10 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 					}
 				}
 				if !state.Interfaces[i].IncludeOpticalPriority.IsNull() && data.Interfaces[j].IncludeOpticalPriority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/include-optical/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "include-optical/priority"))
 				}
 				if !state.Interfaces[i].IncludeOptical.IsNull() && data.Interfaces[j].IncludeOptical.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/include-optical", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "include-optical"))
 				}
 				break
 			}
@@ -1183,10 +1184,10 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 			}
 			if found {
 				if !state.Names[i].Description.IsNull() && data.Names[j].Description.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/description", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "description"))
 				}
 				if !state.Names[i].Value.IsNull() && data.Names[j].Value.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "value"))
 				}
 				break
 			}
@@ -1268,7 +1269,7 @@ func (data *SRLG) getEmptyLeafsDelete(ctx context.Context, version string) []str
 			}
 		}
 		if !data.Interfaces[i].IncludeOptical.IsNull() && !data.Interfaces[i].IncludeOptical.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/include-optical", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "include-optical"))
 		}
 	}
 	for i := range data.Names {

@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -256,19 +256,19 @@ func (data *CDPData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *CDP) getDeletedItems(ctx context.Context, state CDP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LogAdjacencyChanges.IsNull() && data.LogAdjacencyChanges.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/adjacency/changes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log/adjacency/changes"))
 	}
 	if !state.AdvertiseV1.IsNull() && data.AdvertiseV1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/advertise", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "advertise"))
 	}
 	if !state.Timer.IsNull() && data.Timer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timer"))
 	}
 	if !state.Holdtime.IsNull() && data.Holdtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holdtime"))
 	}
 	if !state.Enable.IsNull() && data.Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "enable"))
 	}
 	return deletedItems
 }
@@ -280,13 +280,13 @@ func (data *CDP) getDeletedItems(ctx context.Context, state CDP, version string)
 func (data *CDP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LogAdjacencyChanges.IsNull() && !data.LogAdjacencyChanges.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/adjacency/changes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log/adjacency/changes"))
 	}
 	if !data.AdvertiseV1.IsNull() && !data.AdvertiseV1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/advertise", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "advertise"))
 	}
 	if !data.Enable.IsNull() && !data.Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "enable"))
 	}
 	return emptyLeafsDelete
 }
@@ -297,19 +297,19 @@ func (data *CDP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *CDP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LogAdjacencyChanges.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/adjacency/changes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log/adjacency/changes"))
 	}
 	if !data.AdvertiseV1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/advertise", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "advertise"))
 	}
 	if !data.Timer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timer"))
 	}
 	if !data.Holdtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holdtime"))
 	}
 	if !data.Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "enable"))
 	}
 	return deletePaths
 }

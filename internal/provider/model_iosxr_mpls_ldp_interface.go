@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -445,16 +446,16 @@ func (data *MPLSLDPInterface) getDeletedItems(ctx context.Context, state MPLSLDP
 			}
 			if found {
 				if !state.AddressFamily[i].MldpDisable.IsNull() && data.AddressFamily[j].MldpDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/mldp/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "mldp/disable"))
 				}
 				if !state.AddressFamily[i].IgpAutoConfigDisable.IsNull() && data.AddressFamily[j].IgpAutoConfigDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/igp/auto-config/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "igp/auto-config/disable"))
 				}
 				if !state.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() && data.AddressFamily[j].DiscoveryTransportAddressIp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/discovery/transport-address/ip-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "discovery/transport-address/ip-address"))
 				}
 				if !state.AddressFamily[i].DiscoveryTransportAddressInterface.IsNull() && data.AddressFamily[j].DiscoveryTransportAddressInterface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/discovery/transport-address/interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "discovery/transport-address/interface"))
 				}
 				break
 			}
@@ -464,22 +465,22 @@ func (data *MPLSLDPInterface) getDeletedItems(ctx context.Context, state MPLSLDP
 		}
 	}
 	if !state.IgpSyncDelayOnSessionUpDisable.IsNull() && data.IgpSyncDelayOnSessionUpDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/igp/sync/delay/on-session-up/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "igp/sync/delay/on-session-up/disable"))
 	}
 	if !state.IgpSyncDelayOnSessionUp.IsNull() && data.IgpSyncDelayOnSessionUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/igp/sync/delay/on-session-up/interface-sync-up-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "igp/sync/delay/on-session-up/interface-sync-up-delay"))
 	}
 	if !state.DiscoveryQuickStartDisable.IsNull() && data.DiscoveryQuickStartDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/discovery/quick-start/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "discovery/quick-start/disable"))
 	}
 	if !state.DiscoveryHelloDualStackTlv.IsNull() && data.DiscoveryHelloDualStackTlv.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/discovery/hello/dual-stack-tlv", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "discovery/hello/dual-stack-tlv"))
 	}
 	if !state.DiscoveryHelloInterval.IsNull() && data.DiscoveryHelloInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/discovery/hello/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "discovery/hello/interval"))
 	}
 	if !state.DiscoveryHelloHoldtime.IsNull() && data.DiscoveryHelloHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/discovery/hello/holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "discovery/hello/holdtime"))
 	}
 	return deletedItems
 }
@@ -498,20 +499,20 @@ func (data *MPLSLDPInterface) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AddressFamily[i].MldpDisable.IsNull() && !data.AddressFamily[i].MldpDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-families/address-family%v/mldp/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "mldp/disable"))
 		}
 		if !data.AddressFamily[i].IgpAutoConfigDisable.IsNull() && !data.AddressFamily[i].IgpAutoConfigDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-families/address-family%v/igp/auto-config/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "igp/auto-config/disable"))
 		}
 		if !data.AddressFamily[i].DiscoveryTransportAddressInterface.IsNull() && !data.AddressFamily[i].DiscoveryTransportAddressInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-families/address-family%v/discovery/transport-address/interface", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "discovery/transport-address/interface"))
 		}
 	}
 	if !data.IgpSyncDelayOnSessionUpDisable.IsNull() && !data.IgpSyncDelayOnSessionUpDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/igp/sync/delay/on-session-up/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "igp/sync/delay/on-session-up/disable"))
 	}
 	if !data.DiscoveryQuickStartDisable.IsNull() && !data.DiscoveryQuickStartDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/discovery/quick-start/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "discovery/quick-start/disable"))
 	}
 	return emptyLeafsDelete
 }
@@ -540,22 +541,22 @@ func (data *MPLSLDPInterface) getDeletePaths(ctx context.Context, version string
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString))
 	}
 	if !data.IgpSyncDelayOnSessionUpDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/igp/sync/delay/on-session-up/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "igp/sync/delay/on-session-up/disable"))
 	}
 	if !data.IgpSyncDelayOnSessionUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/igp/sync/delay/on-session-up/interface-sync-up-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "igp/sync/delay/on-session-up/interface-sync-up-delay"))
 	}
 	if !data.DiscoveryQuickStartDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/discovery/quick-start/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "discovery/quick-start/disable"))
 	}
 	if !data.DiscoveryHelloDualStackTlv.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/discovery/hello/dual-stack-tlv", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "discovery/hello/dual-stack-tlv"))
 	}
 	if !data.DiscoveryHelloInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/discovery/hello/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "discovery/hello/interval"))
 	}
 	if !data.DiscoveryHelloHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/discovery/hello/holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "discovery/hello/holdtime"))
 	}
 	return deletePaths
 }

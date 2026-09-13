@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *RDSetData) fromBody(ctx context.Context, res []byte, version string)
 func (data *RDSet) getDeletedItems(ctx context.Context, state RDSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rplrd-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rplrd-set"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *RDSet) getEmptyLeafsDelete(ctx context.Context, version string) []st
 func (data *RDSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rplrd-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rplrd-set"))
 	}
 	return deletePaths
 }

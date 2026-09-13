@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -436,49 +436,49 @@ func (data *CEFData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *CEF) getDeletedItems(ctx context.Context, state CEF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() && data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration"))
 	}
 	if !state.LoadBalancingRecursiveOorModeDlbResourceThreshold.IsNull() && data.LoadBalancingRecursiveOorModeDlbResourceThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/dlb/resource-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/dlb/resource-threshold"))
 	}
 	if !state.LoadBalancingRecursiveOorModeDampeningResourceThreshold.IsNull() && data.LoadBalancingRecursiveOorModeDampeningResourceThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/dampening/resource-threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/dampening/resource-threshold"))
 	}
 	if !state.LoadBalancingRecursiveOorModeDampeningAndDlb.IsNull() && data.LoadBalancingRecursiveOorModeDampeningAndDlb.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb"))
 	}
 	if !state.LoadBalancingModeHierarchicalUcmpGroupSize.IsNull() && data.LoadBalancingModeHierarchicalUcmpGroupSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/mode/hierarchical/ucmp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/mode/hierarchical/ucmp"))
 	}
 	if !state.LoadBalancingModeHierarchicalEcmpMinPaths.IsNull() && data.LoadBalancingModeHierarchicalEcmpMinPaths.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/mode/hierarchical/ecmp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/mode/hierarchical/ecmp"))
 	}
 	if !state.LtraceMultiplier.IsNull() && data.LtraceMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-multiplier"))
 	}
 	if !state.ProactiveArpNdEnable.IsNull() && data.ProactiveArpNdEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/proactive-arp-nd/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "proactive-arp-nd/enable"))
 	}
 	if !state.ConsistentHashingAutoRecovery.IsNull() && data.ConsistentHashingAutoRecovery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/consistent-hashing/auto-recovery", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "consistent-hashing/auto-recovery"))
 	}
 	if !state.EncapSharingDisable.IsNull() && data.EncapSharingDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/encap-sharing/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "encap-sharing/disable"))
 	}
 	if !state.RetrySyslogTimer.IsNull() && data.RetrySyslogTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/retry/syslog-timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "retry/syslog-timer"))
 	}
 	if !state.RetryTimeout.IsNull() && data.RetryTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/retry/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "retry/timeout"))
 	}
 	if !state.RetryServiceTime.IsNull() && data.RetryServiceTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/retry/service-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "retry/service-time"))
 	}
 	if !state.PlatformLsmFrrHoldtime.IsNull() && data.PlatformLsmFrrHoldtime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/platform/lsm/frr-holdtime", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "platform/lsm/frr-holdtime"))
 	}
 	if !state.AdjacencyRouteOverrideRib.IsNull() && data.AdjacencyRouteOverrideRib.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/adjacency/route/override/rib", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "adjacency/route/override/rib"))
 	}
 	return deletedItems
 }
@@ -490,19 +490,19 @@ func (data *CEF) getDeletedItems(ctx context.Context, state CEF, version string)
 func (data *CEF) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LoadBalancingRecursiveOorModeDampeningAndDlb.IsNull() && !data.LoadBalancingRecursiveOorModeDampeningAndDlb.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb"))
 	}
 	if !data.ProactiveArpNdEnable.IsNull() && !data.ProactiveArpNdEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/proactive-arp-nd/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "proactive-arp-nd/enable"))
 	}
 	if !data.ConsistentHashingAutoRecovery.IsNull() && !data.ConsistentHashingAutoRecovery.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/consistent-hashing/auto-recovery", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "consistent-hashing/auto-recovery"))
 	}
 	if !data.EncapSharingDisable.IsNull() && !data.EncapSharingDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/encap-sharing/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "encap-sharing/disable"))
 	}
 	if !data.AdjacencyRouteOverrideRib.IsNull() && !data.AdjacencyRouteOverrideRib.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/adjacency/route/override/rib", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "adjacency/route/override/rib"))
 	}
 	return emptyLeafsDelete
 }
@@ -513,49 +513,49 @@ func (data *CEF) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *CEF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/max-duration"))
 	}
 	if !data.LoadBalancingRecursiveOorModeDlbResourceThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/dlb/resource-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/dlb/resource-threshold"))
 	}
 	if !data.LoadBalancingRecursiveOorModeDampeningResourceThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb/dampening/resource-threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb/dampening/resource-threshold"))
 	}
 	if !data.LoadBalancingRecursiveOorModeDampeningAndDlb.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/recursive/oor/mode/dampening-and-dlb", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/recursive/oor/mode/dampening-and-dlb"))
 	}
 	if !data.LoadBalancingModeHierarchicalUcmpGroupSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/mode/hierarchical/ucmp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/mode/hierarchical/ucmp"))
 	}
 	if !data.LoadBalancingModeHierarchicalEcmpMinPaths.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/mode/hierarchical/ecmp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/mode/hierarchical/ecmp"))
 	}
 	if !data.LtraceMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-multiplier"))
 	}
 	if !data.ProactiveArpNdEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/proactive-arp-nd/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "proactive-arp-nd/enable"))
 	}
 	if !data.ConsistentHashingAutoRecovery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/consistent-hashing/auto-recovery", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "consistent-hashing/auto-recovery"))
 	}
 	if !data.EncapSharingDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/encap-sharing/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "encap-sharing/disable"))
 	}
 	if !data.RetrySyslogTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/retry/syslog-timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "retry/syslog-timer"))
 	}
 	if !data.RetryTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/retry/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "retry/timeout"))
 	}
 	if !data.RetryServiceTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/retry/service-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "retry/service-time"))
 	}
 	if !data.PlatformLsmFrrHoldtime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/platform/lsm/frr-holdtime", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "platform/lsm/frr-holdtime"))
 	}
 	if !data.AdjacencyRouteOverrideRib.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/adjacency/route/override/rib", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "adjacency/route/override/rib"))
 	}
 	return deletePaths
 }

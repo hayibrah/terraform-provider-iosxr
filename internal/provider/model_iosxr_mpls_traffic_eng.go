@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -274,16 +274,16 @@ func (data *MPLSTrafficEngData) fromBody(ctx context.Context, res []byte, versio
 func (data *MPLSTrafficEng) getDeletedItems(ctx context.Context, state MPLSTrafficEng, version string) []string {
 	deletedItems := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !state.ServerIpv4.IsNull() && data.ServerIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic-eng/pce/server/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traffic-eng/pce/server/ipv4"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.ReoptimizeReoptimizationPeriodIn.IsNull() && data.ReoptimizeReoptimizationPeriodIn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic-eng/pce/reoptimize/reoptimization-period-in", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traffic-eng/pce/reoptimize/reoptimization-period-in"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.Disable.IsNull() && data.Disable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic-eng/pce/reoptimize/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traffic-eng/pce/reoptimize/disable"))
 	}
 	if !state.TrafficEng.IsNull() && data.TrafficEng.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/traffic-eng", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "traffic-eng"))
 	}
 	return deletedItems
 }
@@ -295,10 +295,10 @@ func (data *MPLSTrafficEng) getDeletedItems(ctx context.Context, state MPLSTraff
 func (data *MPLSTrafficEng) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !data.Disable.IsNull() && !data.Disable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traffic-eng/pce/reoptimize/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traffic-eng/pce/reoptimize/disable"))
 	}
 	if !data.TrafficEng.IsNull() && !data.TrafficEng.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/traffic-eng", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "traffic-eng"))
 	}
 	return emptyLeafsDelete
 }
@@ -309,16 +309,16 @@ func (data *MPLSTrafficEng) getEmptyLeafsDelete(ctx context.Context, version str
 func (data *MPLSTrafficEng) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if helpers.VersionAtLeast(version, "25.4") && !data.ServerIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic-eng/pce/server/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traffic-eng/pce/server/ipv4"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.ReoptimizeReoptimizationPeriodIn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic-eng/pce/reoptimize/reoptimization-period-in", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traffic-eng/pce/reoptimize/reoptimization-period-in"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.Disable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic-eng/pce/reoptimize/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traffic-eng/pce/reoptimize/disable"))
 	}
 	if !data.TrafficEng.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/traffic-eng", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "traffic-eng"))
 	}
 	return deletePaths
 }

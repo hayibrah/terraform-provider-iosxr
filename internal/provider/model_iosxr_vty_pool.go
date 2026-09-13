@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -375,13 +376,13 @@ func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool, version
 			}
 			if found {
 				if !state.Pools[i].LineTemplate.IsNull() && data.Pools[j].LineTemplate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/pools/pool%v/line-template", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "line-template"))
 				}
 				if !state.Pools[i].LastVty.IsNull() && data.Pools[j].LastVty.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/pools/pool%v/last-vty-number", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "last-vty-number"))
 				}
 				if !state.Pools[i].FirstVty.IsNull() && data.Pools[j].FirstVty.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/pools/pool%v/first-vty-number", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "first-vty-number"))
 				}
 				break
 			}
@@ -391,22 +392,22 @@ func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool, version
 		}
 	}
 	if !state.EemLineTemplate.IsNull() && data.EemLineTemplate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/eem", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "eem"))
 	}
 	if !state.EemLastVty.IsNull() && data.EemLastVty.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/eem", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "eem"))
 	}
 	if !state.EemFirstVty.IsNull() && data.EemFirstVty.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/eem", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "eem"))
 	}
 	if !state.DefaultLineTemplate.IsNull() && data.DefaultLineTemplate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "default"))
 	}
 	if !state.DefaultLastVty.IsNull() && data.DefaultLastVty.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "default"))
 	}
 	if !state.DefaultFirstVty.IsNull() && data.DefaultFirstVty.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "default"))
 	}
 	return deletedItems
 }
@@ -452,22 +453,22 @@ func (data *VTYPool) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/pools/pool%v", data.getPath(), keyString))
 	}
 	if !data.EemLineTemplate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/eem", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "eem"))
 	}
 	if !data.EemLastVty.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/eem", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "eem"))
 	}
 	if !data.EemFirstVty.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/eem", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "eem"))
 	}
 	if !data.DefaultLineTemplate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "default"))
 	}
 	if !data.DefaultLastVty.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "default"))
 	}
 	if !data.DefaultFirstVty.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "default"))
 	}
 	return deletePaths
 }

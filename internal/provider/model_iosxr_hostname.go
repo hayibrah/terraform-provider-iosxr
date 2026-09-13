@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -160,7 +160,7 @@ func (data *HostnameData) fromBody(ctx context.Context, res []byte, version stri
 func (data *Hostname) getDeletedItems(ctx context.Context, state Hostname, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SystemNetworkName.IsNull() && data.SystemNetworkName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/system-network-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "system-network-name"))
 	}
 	return deletedItems
 }
@@ -180,7 +180,7 @@ func (data *Hostname) getEmptyLeafsDelete(ctx context.Context, version string) [
 func (data *Hostname) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SystemNetworkName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/system-network-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "system-network-name"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -393,22 +394,22 @@ func (data *TACACSServerData) fromBody(ctx context.Context, res []byte, version 
 func (data *TACACSServer) getDeletedItems(ctx context.Context, state TACACSServer, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Ipv6Dscp.IsNull() && data.Ipv6Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/dscp"))
 	}
 	if !state.Ipv4Dscp.IsNull() && data.Ipv4Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/dscp"))
 	}
 	if !state.HolddownTime.IsNull() && data.HolddownTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holddown-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holddown-time"))
 	}
 	if !state.Timeout.IsNull() && data.Timeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeout"))
 	}
 	if !state.KeyType6.IsNull() && data.KeyType6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/key/six", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "key/six"))
 	}
 	if !state.KeyType7.IsNull() && data.KeyType7.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/key/seven", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "key/seven"))
 	}
 	for i := range state.Hosts {
 		keys := [...]string{"ordering-index", "address", "port"}
@@ -446,22 +447,22 @@ func (data *TACACSServer) getDeletedItems(ctx context.Context, state TACACSServe
 			}
 			if found {
 				if !state.Hosts[i].SingleConnectionIdleTimeout.IsNull() && data.Hosts[j].SingleConnectionIdleTimeout.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/single-connection-idle-timeout", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "single-connection-idle-timeout"))
 				}
 				if !state.Hosts[i].SingleConnection.IsNull() && data.Hosts[j].SingleConnection.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/single-connection", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "single-connection"))
 				}
 				if !state.Hosts[i].KeyType6.IsNull() && data.Hosts[j].KeyType6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/key/six", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "key/six"))
 				}
 				if !state.Hosts[i].KeyType7.IsNull() && data.Hosts[j].KeyType7.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/key/seven", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "key/seven"))
 				}
 				if !state.Hosts[i].HolddownTime.IsNull() && data.Hosts[j].HolddownTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/holddown-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "holddown-time"))
 				}
 				if !state.Hosts[i].Timeout.IsNull() && data.Hosts[j].Timeout.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/timeout", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "timeout"))
 				}
 				break
 			}
@@ -487,7 +488,7 @@ func (data *TACACSServer) getEmptyLeafsDelete(ctx context.Context, version strin
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Hosts[i].SingleConnection.IsNull() && !data.Hosts[i].SingleConnection.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/hosts/host%v/single-connection", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString), "single-connection"))
 		}
 	}
 	return emptyLeafsDelete
@@ -499,22 +500,22 @@ func (data *TACACSServer) getEmptyLeafsDelete(ctx context.Context, version strin
 func (data *TACACSServer) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Ipv6Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/dscp"))
 	}
 	if !data.Ipv4Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/dscp"))
 	}
 	if !data.HolddownTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holddown-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holddown-time"))
 	}
 	if !data.Timeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeout"))
 	}
 	if !data.KeyType6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/key/six", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "key/six"))
 	}
 	if !data.KeyType7.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/key/seven", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "key/seven"))
 	}
 	for i := range data.Hosts {
 		keys := [...]string{"ordering-index", "address", "port"}

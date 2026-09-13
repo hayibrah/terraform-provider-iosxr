@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -842,64 +843,64 @@ func (data *SNMPServerMIBData) fromBody(ctx context.Context, res []byte, version
 func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServerMIB, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.EntityindexPersist.IsNull() && data.EntityindexPersist.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist"))
 	}
 	if !state.NotificationLogMibSize.IsNull() && data.NotificationLogMibSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/size"))
 	}
 	if !state.NotificationLogMibDisable.IsNull() && data.NotificationLogMibDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable"))
 	}
 	if !state.NotificationLogMibGlobalSize.IsNull() && data.NotificationLogMibGlobalSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-size"))
 	}
 	if !state.NotificationLogMibGlobalAgeOut.IsNull() && data.NotificationLogMibGlobalAgeOut.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-age-out", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-age-out"))
 	}
 	if !state.NotificationLogMibDefault.IsNull() && data.NotificationLogMibDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default"))
 	}
 	if !state.MroutemibSendAllVrf.IsNull() && data.MroutemibSendAllVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf"))
 	}
 	if !state.CmplsteextstdmibCacheTimer.IsNull() && data.CmplsteextstdmibCacheTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextstdmib/cache/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextstdmib/cache/timer"))
 	}
 	if !state.CmplsteextmibCacheTimer.IsNull() && data.CmplsteextmibCacheTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextmib/cache/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextmib/cache/timer"))
 	}
 	if !state.FrrmibCacheTimer.IsNull() && data.FrrmibCacheTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:frrmib/cache/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:frrmib/cache/timer"))
 	}
 	if !state.Mplsp2mpmibCacheTimer.IsNull() && data.Mplsp2mpmibCacheTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplsp2mpmib/cache/timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplsp2mpmib/cache/timer"))
 	}
 	if !state.MplstemibCacheTimersRefresh.IsNull() && data.MplstemibCacheTimersRefresh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/refresh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/refresh"))
 	}
 	if !state.MplstemibCacheTimersGarbageCollect.IsNull() && data.MplstemibCacheTimersGarbageCollect.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/garbage-collect", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/garbage-collect"))
 	}
 	if !state.SensormibCache.IsNull() && data.SensormibCache.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache"))
 	}
 	if !state.RfmibEntphyindex.IsNull() && data.RfmibEntphyindex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex"))
 	}
 	if !state.IfmibInternalCacheMaxDuration.IsNull() && data.IfmibInternalCacheMaxDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/internal/cache/max-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/internal/cache/max-duration"))
 	}
 	if !state.IfmibIpsubscriber.IsNull() && data.IfmibIpsubscriber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber"))
 	}
 	if !state.IfmibStatsCache.IsNull() && data.IfmibStatsCache.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache"))
 	}
 	if !state.IfmibIfaliasLong.IsNull() && data.IfmibIfaliasLong.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long"))
 	}
 	if !state.TrapLinkIetf.IsNull() && data.TrapLinkIetf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf"))
 	}
 	for i := range state.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -925,13 +926,13 @@ func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServer
 			}
 			if found {
 				if !state.Interfaces[i].IndexPersistence.IsNull() && data.Interfaces[j].IndexPersistence.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/index/persistence", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "index/persistence"))
 				}
 				if !state.Interfaces[i].NotificationLinkupdownDisable.IsNull() && data.Interfaces[j].NotificationLinkupdownDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/notification/linkupdown/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "notification/linkupdown/disable"))
 				}
 				if !state.Interfaces[i].NotificationLinkupdownEnable.IsNull() && data.Interfaces[j].NotificationLinkupdownEnable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/notification/linkupdown/enable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "notification/linkupdown/enable"))
 				}
 				break
 			}
@@ -941,22 +942,22 @@ func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServer
 		}
 	}
 	if !state.IfindexPersist.IsNull() && data.IfindexPersist.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist"))
 	}
 	if !state.CbqosmibMemberStats.IsNull() && data.CbqosmibMemberStats.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats"))
 	}
 	if !state.CbqosmibPersist.IsNull() && data.CbqosmibPersist.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist"))
 	}
 	if !state.CbqosmibCacheServicePolicyCount.IsNull() && data.CbqosmibCacheServicePolicyCount.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/service-policy/count", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/service-policy/count"))
 	}
 	if !state.CbqosmibCacheRefreshTime.IsNull() && data.CbqosmibCacheRefreshTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/refresh/time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/refresh/time"))
 	}
 	if !state.CbqosmibCache.IsNull() && data.CbqosmibCache.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache"))
 	}
 	return deletedItems
 }
@@ -968,34 +969,34 @@ func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServer
 func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.EntityindexPersist.IsNull() && !data.EntityindexPersist.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist"))
 	}
 	if !data.NotificationLogMibDisable.IsNull() && !data.NotificationLogMibDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable"))
 	}
 	if !data.NotificationLogMibDefault.IsNull() && !data.NotificationLogMibDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default"))
 	}
 	if !data.MroutemibSendAllVrf.IsNull() && !data.MroutemibSendAllVrf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf"))
 	}
 	if !data.SensormibCache.IsNull() && !data.SensormibCache.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache"))
 	}
 	if !data.RfmibEntphyindex.IsNull() && !data.RfmibEntphyindex.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex"))
 	}
 	if !data.IfmibIpsubscriber.IsNull() && !data.IfmibIpsubscriber.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber"))
 	}
 	if !data.IfmibStatsCache.IsNull() && !data.IfmibStatsCache.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache"))
 	}
 	if !data.IfmibIfaliasLong.IsNull() && !data.IfmibIfaliasLong.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long"))
 	}
 	if !data.TrapLinkIetf.IsNull() && !data.TrapLinkIetf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf"))
 	}
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1005,26 +1006,26 @@ func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].IndexPersistence.IsNull() && !data.Interfaces[i].IndexPersistence.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/index/persistence", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "index/persistence"))
 		}
 		if !data.Interfaces[i].NotificationLinkupdownDisable.IsNull() && !data.Interfaces[i].NotificationLinkupdownDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/notification/linkupdown/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "notification/linkupdown/disable"))
 		}
 		if !data.Interfaces[i].NotificationLinkupdownEnable.IsNull() && !data.Interfaces[i].NotificationLinkupdownEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v/notification/linkupdown/enable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "notification/linkupdown/enable"))
 		}
 	}
 	if !data.IfindexPersist.IsNull() && !data.IfindexPersist.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist"))
 	}
 	if !data.CbqosmibMemberStats.IsNull() && !data.CbqosmibMemberStats.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats"))
 	}
 	if !data.CbqosmibPersist.IsNull() && !data.CbqosmibPersist.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist"))
 	}
 	if !data.CbqosmibCache.IsNull() && !data.CbqosmibCache.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache"))
 	}
 	return emptyLeafsDelete
 }
@@ -1035,64 +1036,64 @@ func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context, version stri
 func (data *SNMPServerMIB) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.EntityindexPersist.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-traps-entity-cfg:entityindex/persist"))
 	}
 	if !data.NotificationLogMibSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/size"))
 	}
 	if !data.NotificationLogMibDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/disable"))
 	}
 	if !data.NotificationLogMibGlobalSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-size"))
 	}
 	if !data.NotificationLogMibGlobalAgeOut.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-age-out", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/global-age-out"))
 	}
 	if !data.NotificationLogMibDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-notification-log-mib-cfg:notification-log-mib/default"))
 	}
 	if !data.MroutemibSendAllVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-snmp-server-mroutemib-cfg:mroutemib/send-all-vrf"))
 	}
 	if !data.CmplsteextstdmibCacheTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextstdmib/cache/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextstdmib/cache/timer"))
 	}
 	if !data.CmplsteextmibCacheTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextmib/cache/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:cmplsteextmib/cache/timer"))
 	}
 	if !data.FrrmibCacheTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:frrmib/cache/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:frrmib/cache/timer"))
 	}
 	if !data.Mplsp2mpmibCacheTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplsp2mpmib/cache/timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplsp2mpmib/cache/timer"))
 	}
 	if !data.MplstemibCacheTimersRefresh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/refresh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/refresh"))
 	}
 	if !data.MplstemibCacheTimersGarbageCollect.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/garbage-collect", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:mplstemib/cache/timers/garbage-collect"))
 	}
 	if !data.SensormibCache.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-sensormib-cfg:sensormib/cache"))
 	}
 	if !data.RfmibEntphyindex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-rfmib-cfg:rfmib/entphyindex"))
 	}
 	if !data.IfmibInternalCacheMaxDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/internal/cache/max-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/internal/cache/max-duration"))
 	}
 	if !data.IfmibIpsubscriber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ipsubscriber"))
 	}
 	if !data.IfmibStatsCache.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/stats/cache"))
 	}
 	if !data.IfmibIfaliasLong.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifmib/ifalias/long"))
 	}
 	if !data.TrapLinkIetf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:trap/link/ietf"))
 	}
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1113,22 +1114,22 @@ func (data *SNMPServerMIB) getDeletePaths(ctx context.Context, version string) [
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.IfindexPersist.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist"))
 	}
 	if !data.CbqosmibMemberStats.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/member-stats"))
 	}
 	if !data.CbqosmibPersist.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/persist"))
 	}
 	if !data.CbqosmibCacheServicePolicyCount.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/service-policy/count", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/service-policy/count"))
 	}
 	if !data.CbqosmibCacheRefreshTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/refresh/time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache/refresh/time"))
 	}
 	if !data.CbqosmibCache.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-cbqosmib-cfg:cbqosmib/cache"))
 	}
 	return deletePaths
 }

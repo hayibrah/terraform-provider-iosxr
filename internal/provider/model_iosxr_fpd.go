@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -249,16 +249,16 @@ func (data *FPDData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *FPD) getDeletedItems(ctx context.Context, state FPD, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AutoReloadDisable.IsNull() && data.AutoReloadDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-reload/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-reload/disable"))
 	}
 	if !state.AutoReloadEnable.IsNull() && data.AutoReloadEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-reload/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-reload/enable"))
 	}
 	if !state.AutoUpgradeDisable.IsNull() && data.AutoUpgradeDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-upgrade/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-upgrade/disable"))
 	}
 	if !state.AutoUpgradeEnable.IsNull() && data.AutoUpgradeEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-upgrade/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-upgrade/enable"))
 	}
 	return deletedItems
 }
@@ -270,16 +270,16 @@ func (data *FPD) getDeletedItems(ctx context.Context, state FPD, version string)
 func (data *FPD) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.AutoReloadDisable.IsNull() && !data.AutoReloadDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-reload/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-reload/disable"))
 	}
 	if !data.AutoReloadEnable.IsNull() && !data.AutoReloadEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-reload/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-reload/enable"))
 	}
 	if !data.AutoUpgradeDisable.IsNull() && !data.AutoUpgradeDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-upgrade/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-upgrade/disable"))
 	}
 	if !data.AutoUpgradeEnable.IsNull() && !data.AutoUpgradeEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-upgrade/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-upgrade/enable"))
 	}
 	return emptyLeafsDelete
 }
@@ -290,16 +290,16 @@ func (data *FPD) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *FPD) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AutoReloadDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-reload/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-reload/disable"))
 	}
 	if !data.AutoReloadEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-reload/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-reload/enable"))
 	}
 	if !data.AutoUpgradeDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-upgrade/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-upgrade/disable"))
 	}
 	if !data.AutoUpgradeEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-upgrade/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-upgrade/enable"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1112,40 +1113,40 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, versi
 			}
 			if found {
 				if !state.Profiles[i].AnonymousReportingOnly.IsNull() && data.Profiles[j].AnonymousReportingOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/anonymous-reporting-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "anonymous-reporting-only"))
 				}
 				if !state.Profiles[i].ReportingSmartLicensingDataDisable.IsNull() && data.Profiles[j].ReportingSmartLicensingDataDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-licensing-data/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "reporting/smart-licensing-data/disable"))
 				}
 				if !state.Profiles[i].ReportingSmartLicensingData.IsNull() && data.Profiles[j].ReportingSmartLicensingData.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-licensing-data", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "reporting/smart-licensing-data"))
 				}
 				if !state.Profiles[i].ReportingSmartCallHomeDataDisable.IsNull() && data.Profiles[j].ReportingSmartCallHomeDataDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-call-home-data/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "reporting/smart-call-home-data/disable"))
 				}
 				if !state.Profiles[i].ReportingSmartCallHomeData.IsNull() && data.Profiles[j].ReportingSmartCallHomeData.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-call-home-data", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "reporting/smart-call-home-data"))
 				}
 				if !state.Profiles[i].DestinationTransportMethodHttpDisable.IsNull() && data.Profiles[j].DestinationTransportMethodHttpDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/http/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/transport-method/http/disable"))
 				}
 				if !state.Profiles[i].DestinationTransportMethodHttp.IsNull() && data.Profiles[j].DestinationTransportMethodHttp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/http", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/transport-method/http"))
 				}
 				if !state.Profiles[i].DestinationTransportMethodEmailDisable.IsNull() && data.Profiles[j].DestinationTransportMethodEmailDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/email/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/transport-method/email/disable"))
 				}
 				if !state.Profiles[i].DestinationTransportMethodEmail.IsNull() && data.Profiles[j].DestinationTransportMethodEmail.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/email", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/transport-method/email"))
 				}
 				if !state.Profiles[i].DestinationMsgFormatLong.IsNull() && data.Profiles[j].DestinationMsgFormatLong.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/preferred-msg-format/long-text", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/preferred-msg-format/long-text"))
 				}
 				if !state.Profiles[i].DestinationMsgFormatShort.IsNull() && data.Profiles[j].DestinationMsgFormatShort.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/preferred-msg-format/short-text", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/preferred-msg-format/short-text"))
 				}
 				if !state.Profiles[i].DestinationMessageSizeLimit.IsNull() && data.Profiles[j].DestinationMessageSizeLimit.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/destination/message-size-limit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "destination/message-size-limit"))
 				}
 				for ci := range state.Profiles[i].DestinationAddresses {
 					ckeys := [...]string{"address-type", "destination-address"}
@@ -1184,7 +1185,7 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, versi
 					}
 				}
 				if !state.Profiles[i].Active.IsNull() && data.Profiles[j].Active.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v/active", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "active"))
 				}
 				break
 			}
@@ -1194,64 +1195,64 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, versi
 		}
 	}
 	if !state.AaaAuthorizationUsername.IsNull() && data.AaaAuthorizationUsername.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/aaa-authorization/username", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "aaa-authorization/username"))
 	}
 	if !state.AaaAuthorization.IsNull() && data.AaaAuthorization.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/aaa-authorization/active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "aaa-authorization/active"))
 	}
 	if !state.Vrf.IsNull() && data.Vrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "vrf"))
 	}
 	if !state.SyslogThrottling.IsNull() && data.SyslogThrottling.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/syslog-throttling", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "syslog-throttling"))
 	}
 	if !state.SourceInterface.IsNull() && data.SourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-interface"))
 	}
 	if !state.HttpProxyPort.IsNull() && data.HttpProxyPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/http-proxy/port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "http-proxy/port"))
 	}
 	if !state.HttpProxyName.IsNull() && data.HttpProxyName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/http-proxy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "http-proxy"))
 	}
 	if !state.DataPrivacyLevelHigh.IsNull() && data.DataPrivacyLevelHigh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/data-privacy/level/high", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "data-privacy/level/high"))
 	}
 	if !state.DataPrivacyLevelNormal.IsNull() && data.DataPrivacyLevelNormal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/data-privacy/level/normal", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "data-privacy/level/normal"))
 	}
 	if !state.DataPrivacyHostname.IsNull() && data.DataPrivacyHostname.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/data-privacy/hostname", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "data-privacy/hostname"))
 	}
 	if !state.RateLimit.IsNull() && data.RateLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rate-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rate-limit"))
 	}
 	if !state.SiteId.IsNull() && data.SiteId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/site-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "site-id"))
 	}
 	if !state.ContractId.IsNull() && data.ContractId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/contract-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "contract-id"))
 	}
 	if !state.CustomerId.IsNull() && data.CustomerId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/customer-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "customer-id"))
 	}
 	if !state.StreetAddress.IsNull() && data.StreetAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/street-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "street-address"))
 	}
 	if !state.PhoneNumber.IsNull() && data.PhoneNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/phone-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "phone-number"))
 	}
 	if !state.ContactSmartLicensing.IsNull() && data.ContactSmartLicensing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/contact/smart-licensing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "contact/smart-licensing"))
 	}
 	if !state.ContactEmail.IsNull() && data.ContactEmail.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/contact-email-addr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "contact-email-addr"))
 	}
 	if !state.SenderReplyTo.IsNull() && data.SenderReplyTo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sender/reply-to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sender/reply-to"))
 	}
 	if !state.SenderFrom.IsNull() && data.SenderFrom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sender/from", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sender/from"))
 	}
 	for i := range state.MailServers {
 		keys := [...]string{"mail-server-name"}
@@ -1277,7 +1278,7 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, versi
 			}
 			if found {
 				if !state.MailServers[i].Priority.IsNull() && data.MailServers[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/mail-servers/mail-server%v/priority", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mail-servers/mail-server%v", state.getPath(), keyString), "priority"))
 				}
 				break
 			}
@@ -1287,7 +1288,7 @@ func (data *CallHome) getDeletedItems(ctx context.Context, state CallHome, versi
 		}
 	}
 	if !state.ServiceActive.IsNull() && data.ServiceActive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/service/active", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "service/active"))
 	}
 	return deletedItems
 }
@@ -1306,37 +1307,37 @@ func (data *CallHome) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Profiles[i].AnonymousReportingOnly.IsNull() && !data.Profiles[i].AnonymousReportingOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/anonymous-reporting-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "anonymous-reporting-only"))
 		}
 		if !data.Profiles[i].ReportingSmartLicensingDataDisable.IsNull() && !data.Profiles[i].ReportingSmartLicensingDataDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-licensing-data/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "reporting/smart-licensing-data/disable"))
 		}
 		if !data.Profiles[i].ReportingSmartLicensingData.IsNull() && !data.Profiles[i].ReportingSmartLicensingData.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-licensing-data", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "reporting/smart-licensing-data"))
 		}
 		if !data.Profiles[i].ReportingSmartCallHomeDataDisable.IsNull() && !data.Profiles[i].ReportingSmartCallHomeDataDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-call-home-data/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "reporting/smart-call-home-data/disable"))
 		}
 		if !data.Profiles[i].ReportingSmartCallHomeData.IsNull() && !data.Profiles[i].ReportingSmartCallHomeData.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/reporting/smart-call-home-data", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "reporting/smart-call-home-data"))
 		}
 		if !data.Profiles[i].DestinationTransportMethodHttpDisable.IsNull() && !data.Profiles[i].DestinationTransportMethodHttpDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/http/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/transport-method/http/disable"))
 		}
 		if !data.Profiles[i].DestinationTransportMethodHttp.IsNull() && !data.Profiles[i].DestinationTransportMethodHttp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/http", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/transport-method/http"))
 		}
 		if !data.Profiles[i].DestinationTransportMethodEmailDisable.IsNull() && !data.Profiles[i].DestinationTransportMethodEmailDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/email/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/transport-method/email/disable"))
 		}
 		if !data.Profiles[i].DestinationTransportMethodEmail.IsNull() && !data.Profiles[i].DestinationTransportMethodEmail.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/transport-method/email", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/transport-method/email"))
 		}
 		if !data.Profiles[i].DestinationMsgFormatLong.IsNull() && !data.Profiles[i].DestinationMsgFormatLong.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/preferred-msg-format/long-text", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/preferred-msg-format/long-text"))
 		}
 		if !data.Profiles[i].DestinationMsgFormatShort.IsNull() && !data.Profiles[i].DestinationMsgFormatShort.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/destination/preferred-msg-format/short-text", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "destination/preferred-msg-format/short-text"))
 		}
 		for ci := range data.Profiles[i].DestinationAddresses {
 			ckeys := [...]string{"address-type", "destination-address"}
@@ -1347,26 +1348,26 @@ func (data *CallHome) getEmptyLeafsDelete(ctx context.Context, version string) [
 			}
 		}
 		if !data.Profiles[i].Active.IsNull() && !data.Profiles[i].Active.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile%v/active", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString), "active"))
 		}
 	}
 	if !data.AaaAuthorization.IsNull() && !data.AaaAuthorization.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/aaa-authorization/active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "aaa-authorization/active"))
 	}
 	if !data.SyslogThrottling.IsNull() && !data.SyslogThrottling.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/syslog-throttling", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "syslog-throttling"))
 	}
 	if !data.DataPrivacyLevelHigh.IsNull() && !data.DataPrivacyLevelHigh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/data-privacy/level/high", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "data-privacy/level/high"))
 	}
 	if !data.DataPrivacyLevelNormal.IsNull() && !data.DataPrivacyLevelNormal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/data-privacy/level/normal", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "data-privacy/level/normal"))
 	}
 	if !data.DataPrivacyHostname.IsNull() && !data.DataPrivacyHostname.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/data-privacy/hostname", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "data-privacy/hostname"))
 	}
 	if !data.ContactSmartLicensing.IsNull() && !data.ContactSmartLicensing.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/contact/smart-licensing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "contact/smart-licensing"))
 	}
 	for i := range data.MailServers {
 		keys := [...]string{"mail-server-name"}
@@ -1377,7 +1378,7 @@ func (data *CallHome) getEmptyLeafsDelete(ctx context.Context, version string) [
 		}
 	}
 	if !data.ServiceActive.IsNull() && !data.ServiceActive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/service/active", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "service/active"))
 	}
 	return emptyLeafsDelete
 }
@@ -1406,64 +1407,64 @@ func (data *CallHome) getDeletePaths(ctx context.Context, version string) []stri
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
 	}
 	if !data.AaaAuthorizationUsername.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/aaa-authorization/username", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "aaa-authorization/username"))
 	}
 	if !data.AaaAuthorization.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/aaa-authorization/active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "aaa-authorization/active"))
 	}
 	if !data.Vrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "vrf"))
 	}
 	if !data.SyslogThrottling.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/syslog-throttling", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "syslog-throttling"))
 	}
 	if !data.SourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-interface"))
 	}
 	if !data.HttpProxyPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/http-proxy/port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "http-proxy/port"))
 	}
 	if !data.HttpProxyName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/http-proxy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "http-proxy"))
 	}
 	if !data.DataPrivacyLevelHigh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/data-privacy/level/high", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "data-privacy/level/high"))
 	}
 	if !data.DataPrivacyLevelNormal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/data-privacy/level/normal", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "data-privacy/level/normal"))
 	}
 	if !data.DataPrivacyHostname.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/data-privacy/hostname", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "data-privacy/hostname"))
 	}
 	if !data.RateLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rate-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rate-limit"))
 	}
 	if !data.SiteId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/site-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "site-id"))
 	}
 	if !data.ContractId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/contract-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "contract-id"))
 	}
 	if !data.CustomerId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/customer-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "customer-id"))
 	}
 	if !data.StreetAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/street-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "street-address"))
 	}
 	if !data.PhoneNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/phone-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "phone-number"))
 	}
 	if !data.ContactSmartLicensing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/contact/smart-licensing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "contact/smart-licensing"))
 	}
 	if !data.ContactEmail.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/contact-email-addr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "contact-email-addr"))
 	}
 	if !data.SenderReplyTo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sender/reply-to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sender/reply-to"))
 	}
 	if !data.SenderFrom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sender/from", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sender/from"))
 	}
 	for i := range data.MailServers {
 		keys := [...]string{"mail-server-name"}
@@ -1484,7 +1485,7 @@ func (data *CallHome) getDeletePaths(ctx context.Context, version string) []stri
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mail-servers/mail-server%v", data.getPath(), keyString))
 	}
 	if !data.ServiceActive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/service/active", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "service/active"))
 	}
 	return deletePaths
 }

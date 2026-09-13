@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -665,76 +666,76 @@ func (data *MACSecPolicyData) fromBody(ctx context.Context, res []byte, version 
 func (data *MACSecPolicy) getDeletedItems(ctx context.Context, state MACSecPolicy, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LoggingSakRekeySummaryInterval.IsNull() && data.LoggingSakRekeySummaryInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/sak-rekey/summary-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/sak-rekey/summary-interval"))
 	}
 	if !state.LoggingSakRekeyDisable.IsNull() && data.LoggingSakRekeyDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/sak-rekey", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/sak-rekey"))
 	}
 	if !state.PpkSksProfile.IsNull() && data.PpkSksProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ppk/sks-profile", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ppk/sks-profile"))
 	}
 	if !state.Ppk.IsNull() && data.Ppk.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ppk", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ppk"))
 	}
 	if !state.AllowLldpInClear.IsNull() && data.AllowLldpInClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/allow/lldp-in-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "allow/lldp-in-clear"))
 	}
 	if !state.AllowPauseFrameInClear.IsNull() && data.AllowPauseFrameInClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/allow/pause-frame-in-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "allow/pause-frame-in-clear"))
 	}
 	if !state.AllowLacpInClear.IsNull() && data.AllowLacpInClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/allow/lacp-in-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "allow/lacp-in-clear"))
 	}
 	if !state.MaxAn.IsNull() && data.MaxAn.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/max-an", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "max-an"))
 	}
 	if !state.ImposeOverheadOnBundle.IsNull() && data.ImposeOverheadOnBundle.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/impose-overhead-on-bundle", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "impose-overhead-on-bundle"))
 	}
 	if !state.EnableLegacySakWrite.IsNull() && data.EnableLegacySakWrite.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable-legacy-sak-write", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "enable-legacy-sak-write"))
 	}
 	if !state.EnableLegacyFallback.IsNull() && data.EnableLegacyFallback.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable-legacy-fallback", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "enable-legacy-fallback"))
 	}
 	if !state.SuspendForDisable.IsNull() && data.SuspendForDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/suspend-for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "suspend-for"))
 	}
 	if !state.SuspendOnRequestDisable.IsNull() && data.SuspendOnRequestDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/suspend-on-request", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "suspend-on-request"))
 	}
 	if !state.UseEapolPaeInIcv.IsNull() && data.UseEapolPaeInIcv.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/use-eapol-pae-in-icv", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "use-eapol-pae-in-icv"))
 	}
 	if !state.DelayProtection.IsNull() && data.DelayProtection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay-protection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay-protection"))
 	}
 	if !state.IncludeIcvIndicator.IsNull() && data.IncludeIcvIndicator.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/include-icv-indicator", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "include-icv-indicator"))
 	}
 	if !state.SakRekeyIntervalSeconds.IsNull() && data.SakRekeyIntervalSeconds.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sak-rekey-interval/seconds", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sak-rekey-interval/seconds"))
 	}
 	if !state.PolicyException.IsNull() && data.PolicyException.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/policy-exception", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "policy-exception"))
 	}
 	if !state.VlanTagsInClear.IsNull() && data.VlanTagsInClear.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/vlan-tags-in-clear", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "vlan-tags-in-clear"))
 	}
 	if !state.SecurityPolicy.IsNull() && data.SecurityPolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/security-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "security-policy"))
 	}
 	if !state.ConfOffset.IsNull() && data.ConfOffset.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/conf-offset", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "conf-offset"))
 	}
 	if !state.WindowSize.IsNull() && data.WindowSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/window-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "window-size"))
 	}
 	if !state.CipherSuite.IsNull() && data.CipherSuite.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/cipher-suite", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "cipher-suite"))
 	}
 	if !state.KeyServerPriority.IsNull() && data.KeyServerPriority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/key-server-priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "key-server-priority"))
 	}
 	return deletedItems
 }
@@ -746,43 +747,43 @@ func (data *MACSecPolicy) getDeletedItems(ctx context.Context, state MACSecPolic
 func (data *MACSecPolicy) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LoggingSakRekeyDisable.IsNull() && !data.LoggingSakRekeyDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/sak-rekey", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/sak-rekey"))
 	}
 	if !data.Ppk.IsNull() && !data.Ppk.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ppk", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ppk"))
 	}
 	if !data.AllowLldpInClear.IsNull() && !data.AllowLldpInClear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/allow/lldp-in-clear", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "allow/lldp-in-clear"))
 	}
 	if !data.AllowPauseFrameInClear.IsNull() && !data.AllowPauseFrameInClear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/allow/pause-frame-in-clear", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "allow/pause-frame-in-clear"))
 	}
 	if !data.AllowLacpInClear.IsNull() && !data.AllowLacpInClear.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/allow/lacp-in-clear", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "allow/lacp-in-clear"))
 	}
 	if !data.ImposeOverheadOnBundle.IsNull() && !data.ImposeOverheadOnBundle.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/impose-overhead-on-bundle", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "impose-overhead-on-bundle"))
 	}
 	if !data.EnableLegacySakWrite.IsNull() && !data.EnableLegacySakWrite.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable-legacy-sak-write", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "enable-legacy-sak-write"))
 	}
 	if !data.EnableLegacyFallback.IsNull() && !data.EnableLegacyFallback.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable-legacy-fallback", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "enable-legacy-fallback"))
 	}
 	if !data.SuspendForDisable.IsNull() && !data.SuspendForDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/suspend-for", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "suspend-for"))
 	}
 	if !data.SuspendOnRequestDisable.IsNull() && !data.SuspendOnRequestDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/suspend-on-request", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "suspend-on-request"))
 	}
 	if !data.UseEapolPaeInIcv.IsNull() && !data.UseEapolPaeInIcv.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/use-eapol-pae-in-icv", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "use-eapol-pae-in-icv"))
 	}
 	if !data.DelayProtection.IsNull() && !data.DelayProtection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/delay-protection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "delay-protection"))
 	}
 	if !data.IncludeIcvIndicator.IsNull() && !data.IncludeIcvIndicator.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/include-icv-indicator", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "include-icv-indicator"))
 	}
 	return emptyLeafsDelete
 }
@@ -793,76 +794,76 @@ func (data *MACSecPolicy) getEmptyLeafsDelete(ctx context.Context, version strin
 func (data *MACSecPolicy) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LoggingSakRekeySummaryInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/sak-rekey/summary-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/sak-rekey/summary-interval"))
 	}
 	if !data.LoggingSakRekeyDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/sak-rekey", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/sak-rekey"))
 	}
 	if !data.PpkSksProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ppk/sks-profile", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ppk/sks-profile"))
 	}
 	if !data.Ppk.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ppk", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ppk"))
 	}
 	if !data.AllowLldpInClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/allow/lldp-in-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "allow/lldp-in-clear"))
 	}
 	if !data.AllowPauseFrameInClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/allow/pause-frame-in-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "allow/pause-frame-in-clear"))
 	}
 	if !data.AllowLacpInClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/allow/lacp-in-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "allow/lacp-in-clear"))
 	}
 	if !data.MaxAn.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/max-an", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "max-an"))
 	}
 	if !data.ImposeOverheadOnBundle.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/impose-overhead-on-bundle", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "impose-overhead-on-bundle"))
 	}
 	if !data.EnableLegacySakWrite.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable-legacy-sak-write", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "enable-legacy-sak-write"))
 	}
 	if !data.EnableLegacyFallback.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable-legacy-fallback", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "enable-legacy-fallback"))
 	}
 	if !data.SuspendForDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/suspend-for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "suspend-for"))
 	}
 	if !data.SuspendOnRequestDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/suspend-on-request", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "suspend-on-request"))
 	}
 	if !data.UseEapolPaeInIcv.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/use-eapol-pae-in-icv", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "use-eapol-pae-in-icv"))
 	}
 	if !data.DelayProtection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay-protection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-protection"))
 	}
 	if !data.IncludeIcvIndicator.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/include-icv-indicator", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "include-icv-indicator"))
 	}
 	if !data.SakRekeyIntervalSeconds.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sak-rekey-interval/seconds", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sak-rekey-interval/seconds"))
 	}
 	if !data.PolicyException.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/policy-exception", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "policy-exception"))
 	}
 	if !data.VlanTagsInClear.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vlan-tags-in-clear", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "vlan-tags-in-clear"))
 	}
 	if !data.SecurityPolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/security-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "security-policy"))
 	}
 	if !data.ConfOffset.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/conf-offset", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "conf-offset"))
 	}
 	if !data.WindowSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/window-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "window-size"))
 	}
 	if !data.CipherSuite.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cipher-suite", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "cipher-suite"))
 	}
 	if !data.KeyServerPriority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/key-server-priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "key-server-priority"))
 	}
 	return deletePaths
 }

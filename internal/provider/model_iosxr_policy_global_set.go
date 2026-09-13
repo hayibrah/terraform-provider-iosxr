@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -160,7 +160,7 @@ func (data *PolicyGlobalSetData) fromBody(ctx context.Context, res []byte, versi
 func (data *PolicyGlobalSet) getDeletedItems(ctx context.Context, state PolicyGlobalSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/policy-global-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "policy-global-set"))
 	}
 	return deletedItems
 }
@@ -180,7 +180,7 @@ func (data *PolicyGlobalSet) getEmptyLeafsDelete(ctx context.Context, version st
 func (data *PolicyGlobalSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/policy-global-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "policy-global-set"))
 	}
 	return deletePaths
 }

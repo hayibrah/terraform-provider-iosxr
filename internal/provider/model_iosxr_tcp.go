@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -582,10 +583,10 @@ func (data *TCP) getDeletedItems(ctx context.Context, state TCP, version string)
 						}
 						if found {
 							if !state.AoKeychains[i].Keys[ci].ReceiveId.IsNull() && data.AoKeychains[j].Keys[cj].ReceiveId.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v/receive-id", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v", state.getPath(), keyString, ckeyString), "receive-id"))
 							}
 							if !state.AoKeychains[i].Keys[ci].SendId.IsNull() && data.AoKeychains[j].Keys[cj].SendId.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v/send-id", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v", state.getPath(), keyString, ckeyString), "send-id"))
 							}
 							break
 						}
@@ -602,40 +603,40 @@ func (data *TCP) getDeletedItems(ctx context.Context, state TCP, version string)
 		}
 	}
 	if !state.Ao.IsNull() && data.Ao.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ao", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ao"))
 	}
 	if !state.AcceptRate.IsNull() && data.AcceptRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/accept-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "accept-rate"))
 	}
 	if !state.Mss.IsNull() && data.Mss.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mss", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mss"))
 	}
 	if !state.SelectiveAck.IsNull() && data.SelectiveAck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/selective-ack", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "selective-ack"))
 	}
 	if !state.ThrottleHighWaterMark.IsNull() && data.ThrottleHighWaterMark.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/high-water-mark-throttling", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "high-water-mark-throttling"))
 	}
 	if !state.Throttle.IsNull() && data.Throttle.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle"))
 	}
 	if !state.Timestamp.IsNull() && data.Timestamp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timestamp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timestamp"))
 	}
 	if !state.ReceiveQueue.IsNull() && data.ReceiveQueue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/receive-queue", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "receive-queue"))
 	}
 	if !state.PathMtuDiscoveryAgeTimer.IsNull() && data.PathMtuDiscoveryAgeTimer.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-mtu-discovery/age-timer", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-mtu-discovery/age-timer"))
 	}
 	if !state.PathMtuDiscovery.IsNull() && data.PathMtuDiscovery.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-mtu-discovery", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-mtu-discovery"))
 	}
 	if !state.SynwaitTime.IsNull() && data.SynwaitTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/synwait-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "synwait-time"))
 	}
 	if !state.WindowSize.IsNull() && data.WindowSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/window-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "window-size"))
 	}
 	return deletedItems
 }
@@ -663,16 +664,16 @@ func (data *TCP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 		}
 	}
 	if !data.Ao.IsNull() && !data.Ao.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ao", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ao"))
 	}
 	if !data.SelectiveAck.IsNull() && !data.SelectiveAck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/selective-ack", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "selective-ack"))
 	}
 	if !data.Timestamp.IsNull() && !data.Timestamp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/timestamp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "timestamp"))
 	}
 	if !data.PathMtuDiscovery.IsNull() && !data.PathMtuDiscovery.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-mtu-discovery", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-mtu-discovery"))
 	}
 	return emptyLeafsDelete
 }
@@ -701,40 +702,40 @@ func (data *TCP) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ao/keychains/keychain%v", data.getPath(), keyString))
 	}
 	if !data.Ao.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ao", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ao"))
 	}
 	if !data.AcceptRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/accept-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "accept-rate"))
 	}
 	if !data.Mss.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mss", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mss"))
 	}
 	if !data.SelectiveAck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/selective-ack", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "selective-ack"))
 	}
 	if !data.ThrottleHighWaterMark.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/high-water-mark-throttling", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "high-water-mark-throttling"))
 	}
 	if !data.Throttle.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle"))
 	}
 	if !data.Timestamp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timestamp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timestamp"))
 	}
 	if !data.ReceiveQueue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/receive-queue", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "receive-queue"))
 	}
 	if !data.PathMtuDiscoveryAgeTimer.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-mtu-discovery/age-timer", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-mtu-discovery/age-timer"))
 	}
 	if !data.PathMtuDiscovery.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-mtu-discovery", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-mtu-discovery"))
 	}
 	if !data.SynwaitTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/synwait-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "synwait-time"))
 	}
 	if !data.WindowSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/window-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "window-size"))
 	}
 	return deletePaths
 }

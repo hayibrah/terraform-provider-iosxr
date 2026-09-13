@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -977,19 +978,19 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state PerformanceMeasurement, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.PathTracingTimestampTemplateSt3.IsNull() && data.PathTracingTimestampTemplateSt3.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !state.PathTracingTimestampTemplateSt2.IsNull() && data.PathTracingTimestampTemplateSt2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !state.PathTracingTimestampTemplateSt1.IsNull() && data.PathTracingTimestampTemplateSt1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !state.PathTracingTimestampTemplateSt0.IsNull() && data.PathTracingTimestampTemplateSt0.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !state.PathTracing.IsNull() && data.PathTracing.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/path-tracing", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "path-tracing"))
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses {
 		keys := [...]string{"address"}
@@ -1256,28 +1257,28 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 		}
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp2/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp2/label"))
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp1Label.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp1Label.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp1/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp1/label"))
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp2Label.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp2Label.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp2/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp2/label"))
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp1Label.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp1Label.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp1/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp1/label"))
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierSrcPort.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierSrcPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/querier-src-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/querier-src-port"))
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierDstPort.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierDstPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/querier-dst-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/querier-dst-port"))
 	}
 	if !state.SourceAddressIpv6.IsNull() && data.SourceAddressIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address/ipv6"))
 	}
 	if !state.SourceAddressIpv4.IsNull() && data.SourceAddressIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address/ipv4"))
 	}
 	return deletedItems
 }
@@ -1289,19 +1290,19 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 func (data *PerformanceMeasurement) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.PathTracingTimestampTemplateSt3.IsNull() && !data.PathTracingTimestampTemplateSt3.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !data.PathTracingTimestampTemplateSt2.IsNull() && !data.PathTracingTimestampTemplateSt2.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !data.PathTracingTimestampTemplateSt1.IsNull() && !data.PathTracingTimestampTemplateSt1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !data.PathTracingTimestampTemplateSt0.IsNull() && !data.PathTracingTimestampTemplateSt0.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !data.PathTracing.IsNull() && !data.PathTracing.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/path-tracing", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "path-tracing"))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses {
 		keys := [...]string{"address"}
@@ -1376,19 +1377,19 @@ func (data *PerformanceMeasurement) getEmptyLeafsDelete(ctx context.Context, ver
 func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.PathTracingTimestampTemplateSt3.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st3", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st3"))
 	}
 	if !data.PathTracingTimestampTemplateSt2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st2"))
 	}
 	if !data.PathTracingTimestampTemplateSt1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st1"))
 	}
 	if !data.PathTracingTimestampTemplateSt0.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing/timestamp/template/st0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing/timestamp/template/st0"))
 	}
 	if !data.PathTracing.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path-tracing", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "path-tracing"))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses {
 		keys := [...]string{"address"}
@@ -1547,28 +1548,28 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4%v", data.getPath(), keyString))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp2/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp2/label"))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp1Label.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp1/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp1/label"))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp2Label.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp2/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp2/label"))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv4Timestamp1Label.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp1/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv4/timestamp1/label"))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierSrcPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/querier-src-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/querier-src-port"))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedQuerierDstPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/unauthenticated/querier-dst-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/querier-dst-port"))
 	}
 	if !data.SourceAddressIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address/ipv6"))
 	}
 	if !data.SourceAddressIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address/ipv4"))
 	}
 	return deletePaths
 }

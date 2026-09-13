@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1131,22 +1132,22 @@ func (data *EVPNStitchingVNIData) fromBody(ctx context.Context, res []byte, vers
 func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNStitchingVNI, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ReOriginationDisable.IsNull() && data.ReOriginationDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/re-origination-disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "re-origination-disable"))
 	}
 	if !state.UnknownUnicastSuppression.IsNull() && data.UnknownUnicastSuppression.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/unknown-unicast-suppression", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "unknown-unicast-suppression"))
 	}
 	if !state.AdvertiseMac.IsNull() && data.AdvertiseMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/advertise-mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "advertise-mac"))
 	}
 	if !state.PreferredNexthopModulo.IsNull() && data.PreferredNexthopModulo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preferred-nexthop/modulo", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preferred-nexthop/modulo"))
 	}
 	if !state.PreferredNexthopHighestIp.IsNull() && data.PreferredNexthopHighestIp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preferred-nexthop/highest-ip", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preferred-nexthop/highest-ip"))
 	}
 	if !state.PreferredNexthopLowestIp.IsNull() && data.PreferredNexthopLowestIp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/preferred-nexthop/lowest-ip", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "preferred-nexthop/lowest-ip"))
 	}
 	for i := range state.BgpRouteTargetExportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -1473,25 +1474,25 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 		}
 	}
 	if !state.BgpRdIpv4AddressIndex.IsNull() && data.BgpRdIpv4AddressIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/ipv4-address-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !state.BgpRdIpv4Address.IsNull() && data.BgpRdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/ipv4-address"))
 	}
 	if !state.BgpRdFourByteAsIndex.IsNull() && data.BgpRdFourByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/four-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !state.BgpRdFourByteAsNumber.IsNull() && data.BgpRdFourByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/four-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/four-byte-as-number"))
 	}
 	if !state.BgpRdTwoByteAsIndex.IsNull() && data.BgpRdTwoByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/two-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !state.BgpRdTwoByteAsNumber.IsNull() && data.BgpRdTwoByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/rd/two-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bgp/rd/two-byte-as-number"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	return deletedItems
 }
@@ -1503,22 +1504,22 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 func (data *EVPNStitchingVNI) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ReOriginationDisable.IsNull() && !data.ReOriginationDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/re-origination-disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "re-origination-disable"))
 	}
 	if !data.UnknownUnicastSuppression.IsNull() && !data.UnknownUnicastSuppression.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/unknown-unicast-suppression", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "unknown-unicast-suppression"))
 	}
 	if !data.AdvertiseMac.IsNull() && !data.AdvertiseMac.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/advertise-mac", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "advertise-mac"))
 	}
 	if !data.PreferredNexthopModulo.IsNull() && !data.PreferredNexthopModulo.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/preferred-nexthop/modulo", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "preferred-nexthop/modulo"))
 	}
 	if !data.PreferredNexthopHighestIp.IsNull() && !data.PreferredNexthopHighestIp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/preferred-nexthop/highest-ip", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "preferred-nexthop/highest-ip"))
 	}
 	if !data.PreferredNexthopLowestIp.IsNull() && !data.PreferredNexthopLowestIp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/preferred-nexthop/lowest-ip", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "preferred-nexthop/lowest-ip"))
 	}
 	for i := range data.BgpRouteTargetExportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -1601,22 +1602,22 @@ func (data *EVPNStitchingVNI) getEmptyLeafsDelete(ctx context.Context, version s
 func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ReOriginationDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/re-origination-disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "re-origination-disable"))
 	}
 	if !data.UnknownUnicastSuppression.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/unknown-unicast-suppression", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "unknown-unicast-suppression"))
 	}
 	if !data.AdvertiseMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/advertise-mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "advertise-mac"))
 	}
 	if !data.PreferredNexthopModulo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preferred-nexthop/modulo", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preferred-nexthop/modulo"))
 	}
 	if !data.PreferredNexthopHighestIp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preferred-nexthop/highest-ip", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preferred-nexthop/highest-ip"))
 	}
 	if !data.PreferredNexthopLowestIp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/preferred-nexthop/lowest-ip", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "preferred-nexthop/lowest-ip"))
 	}
 	for i := range data.BgpRouteTargetExportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -1808,25 +1809,25 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
 	if !data.BgpRdIpv4AddressIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/ipv4-address-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !data.BgpRdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/ipv4-address"))
 	}
 	if !data.BgpRdFourByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/four-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !data.BgpRdFourByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/four-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/four-byte-as-number"))
 	}
 	if !data.BgpRdTwoByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/two-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !data.BgpRdTwoByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/rd/two-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/two-byte-as-number"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	return deletePaths
 }

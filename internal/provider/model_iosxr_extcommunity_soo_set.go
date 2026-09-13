@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *ExtcommunitySOOSetData) fromBody(ctx context.Context, res []byte, ve
 func (data *ExtcommunitySOOSet) getDeletedItems(ctx context.Context, state ExtcommunitySOOSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rpl-extended-community-soo-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rpl-extended-community-soo-set"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *ExtcommunitySOOSet) getEmptyLeafsDelete(ctx context.Context, version
 func (data *ExtcommunitySOOSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rpl-extended-community-soo-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rpl-extended-community-soo-set"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *OSPFAreaSetData) fromBody(ctx context.Context, res []byte, version s
 func (data *OSPFAreaSet) getDeletedItems(ctx context.Context, state OSPFAreaSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/rplospf-area-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rplospf-area-set"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *OSPFAreaSet) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *OSPFAreaSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rplospf-area-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rplospf-area-set"))
 	}
 	return deletePaths
 }

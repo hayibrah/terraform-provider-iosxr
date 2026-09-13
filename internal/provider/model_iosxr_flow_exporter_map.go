@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -480,64 +481,64 @@ func (data *FlowExporterMapData) fromBody(ctx context.Context, res []byte, versi
 func (data *FlowExporterMap) getDeletedItems(ctx context.Context, state FlowExporterMap, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.VersionOptionsVrfTableTimeout.IsNull() && data.VersionOptionsVrfTableTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/options/vrf-table/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/options/vrf-table/timeout"))
 	}
 	if !state.VersionOptionsClassTableTimeout.IsNull() && data.VersionOptionsClassTableTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/options/class-table/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/options/class-table/timeout"))
 	}
 	if !state.VersionOptionsSamplerTableTimeout.IsNull() && data.VersionOptionsSamplerTableTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/options/sampler-table/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/options/sampler-table/timeout"))
 	}
 	if !state.VersionOptionsInterfaceTableTimeout.IsNull() && data.VersionOptionsInterfaceTableTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/options/interface-table/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/options/interface-table/timeout"))
 	}
 	if !state.VersionTemplateTimeout.IsNull() && data.VersionTemplateTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/template/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/template/timeout"))
 	}
 	if !state.VersionTemplateOptionsTimeout.IsNull() && data.VersionTemplateOptionsTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/template/options/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/template/options/timeout"))
 	}
 	if !state.VersionTemplateDataTimeout.IsNull() && data.VersionTemplateDataTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/template/data/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/template/data/timeout"))
 	}
 	if !state.VersionExportFormat.IsNull() && data.VersionExportFormat.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/version/export-format", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "version/export-format"))
 	}
 	if !state.DfbitSet.IsNull() && data.DfbitSet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dfbit/set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dfbit/set"))
 	}
 	if !state.PacketLength.IsNull() && data.PacketLength.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/packet-length", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "packet-length"))
 	}
 	if !state.TransportUdp.IsNull() && data.TransportUdp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport/udp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport/udp"))
 	}
 	if !state.Dscp.IsNull() && data.Dscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dscp"))
 	}
 	if !state.RouterIdIpv6Address.IsNull() && data.RouterIdIpv6Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/router-id/router-id-address/ipv6-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "router-id/router-id-address/ipv6-address"))
 	}
 	if !state.RouterIdIpv4Address.IsNull() && data.RouterIdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/router-id/router-id-address/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "router-id/router-id-address/ipv4-address"))
 	}
 	if !state.SourceAddressIpv6Address.IsNull() && data.SourceAddressIpv6Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address/ipv6-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address/ipv6-address"))
 	}
 	if !state.SourceAddressIpv4Address.IsNull() && data.SourceAddressIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address/ipv4-address"))
 	}
 	if !state.Source.IsNull() && data.Source.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source"))
 	}
 	if !state.DestinationVrf.IsNull() && data.DestinationVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/destination/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "destination/vrf"))
 	}
 	if !state.DestinationIpv6Address.IsNull() && data.DestinationIpv6Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/destination/ipv6-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "destination/ipv6-address"))
 	}
 	if !state.DestinationIpv4Address.IsNull() && data.DestinationIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/destination/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "destination/ipv4-address"))
 	}
 	return deletedItems
 }
@@ -549,7 +550,7 @@ func (data *FlowExporterMap) getDeletedItems(ctx context.Context, state FlowExpo
 func (data *FlowExporterMap) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.DfbitSet.IsNull() && !data.DfbitSet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dfbit/set", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dfbit/set"))
 	}
 	return emptyLeafsDelete
 }
@@ -560,64 +561,64 @@ func (data *FlowExporterMap) getEmptyLeafsDelete(ctx context.Context, version st
 func (data *FlowExporterMap) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.VersionOptionsVrfTableTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/options/vrf-table/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/options/vrf-table/timeout"))
 	}
 	if !data.VersionOptionsClassTableTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/options/class-table/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/options/class-table/timeout"))
 	}
 	if !data.VersionOptionsSamplerTableTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/options/sampler-table/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/options/sampler-table/timeout"))
 	}
 	if !data.VersionOptionsInterfaceTableTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/options/interface-table/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/options/interface-table/timeout"))
 	}
 	if !data.VersionTemplateTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/template/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/template/timeout"))
 	}
 	if !data.VersionTemplateOptionsTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/template/options/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/template/options/timeout"))
 	}
 	if !data.VersionTemplateDataTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/template/data/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/template/data/timeout"))
 	}
 	if !data.VersionExportFormat.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/version/export-format", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "version/export-format"))
 	}
 	if !data.DfbitSet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dfbit/set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dfbit/set"))
 	}
 	if !data.PacketLength.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/packet-length", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "packet-length"))
 	}
 	if !data.TransportUdp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport/udp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport/udp"))
 	}
 	if !data.Dscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dscp"))
 	}
 	if !data.RouterIdIpv6Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/router-id/router-id-address/ipv6-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "router-id/router-id-address/ipv6-address"))
 	}
 	if !data.RouterIdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/router-id/router-id-address/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "router-id/router-id-address/ipv4-address"))
 	}
 	if !data.SourceAddressIpv6Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address/ipv6-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address/ipv6-address"))
 	}
 	if !data.SourceAddressIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address/ipv4-address"))
 	}
 	if !data.Source.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source"))
 	}
 	if !data.DestinationVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/destination/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "destination/vrf"))
 	}
 	if !data.DestinationIpv6Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/destination/ipv6-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "destination/ipv6-address"))
 	}
 	if !data.DestinationIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/destination/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "destination/ipv4-address"))
 	}
 	return deletePaths
 }

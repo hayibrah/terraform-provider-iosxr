@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *ESISetData) fromBody(ctx context.Context, res []byte, version string
 func (data *ESISet) getDeletedItems(ctx context.Context, state ESISet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/esi-set-as-text", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "esi-set-as-text"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *ESISet) getEmptyLeafsDelete(ctx context.Context, version string) []s
 func (data *ESISet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/esi-set-as-text", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "esi-set-as-text"))
 	}
 	return deletePaths
 }

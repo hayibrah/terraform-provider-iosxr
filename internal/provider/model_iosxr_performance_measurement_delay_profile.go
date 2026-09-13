@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2529,13 +2530,13 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementDelayProfile, version string) []string {
 	deletedItems := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !state.Ntp.IsNull() && data.Ntp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.CollectHbh.IsNull() && data.CollectHbh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/collect-hbh"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.DelayBinsExplicit.IsNull() && data.DelayBinsExplicit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/histogram/delay-bins/explicit"))
 	}
 	for i := range state.Profiles {
 		keys := [...]string{"profile-name"}
@@ -2561,106 +2562,106 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].Ntp.IsNull() && data.Profiles[j].Ntp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/timestamp-format/ntp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/timestamp-format/ntp"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].CollectHbh.IsNull() && data.Profiles[j].CollectHbh.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/collect-hbh", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/collect-hbh"))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyLossLowerBound.IsNull() && data.Profiles[j].AdvertiseAnomalyLossLowerBound.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/anomaly-loss/lower-bound", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/anomaly-loss/lower-bound"))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyLossUpperBound.IsNull() && data.Profiles[j].AdvertiseAnomalyLossUpperBound.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/anomaly-loss/upper-bound", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/anomaly-loss/upper-bound"))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyCheckLowerBound.IsNull() && data.Profiles[j].AdvertiseAnomalyCheckLowerBound.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/anomaly-check/lower-bound", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/anomaly-check/lower-bound"))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyCheckUpperBound.IsNull() && data.Profiles[j].AdvertiseAnomalyCheckUpperBound.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/anomaly-check/upper-bound", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/anomaly-check/upper-bound"))
 				}
 				if !state.Profiles[i].AdvertiseAcceleratedMinimumChange.IsNull() && data.Profiles[j].AdvertiseAcceleratedMinimumChange.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/accelerated/minimum-change", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/accelerated/minimum-change"))
 				}
 				if !state.Profiles[i].AdvertiseAcceleratedThreshold.IsNull() && data.Profiles[j].AdvertiseAcceleratedThreshold.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/accelerated/threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/accelerated/threshold"))
 				}
 				if !state.Profiles[i].AdvertiseAccelerated.IsNull() && data.Profiles[j].AdvertiseAccelerated.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/accelerated", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/accelerated"))
 				}
 				if !state.Profiles[i].AdvertisePeriodicMinimumChange.IsNull() && data.Profiles[j].AdvertisePeriodicMinimumChange.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/periodic/minimum-change", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/periodic/minimum-change"))
 				}
 				if !state.Profiles[i].AdvertisePeriodicThreshold.IsNull() && data.Profiles[j].AdvertisePeriodicThreshold.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/periodic/threshold", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/periodic/threshold"))
 				}
 				if !state.Profiles[i].AdvertisePeriodicInterval.IsNull() && data.Profiles[j].AdvertisePeriodicInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/periodic/interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/periodic/interval"))
 				}
 				if !state.Profiles[i].AdvertisePeriodicDisabled.IsNull() && data.Profiles[j].AdvertisePeriodicDisabled.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/periodic/disabled", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/periodic/disabled"))
 				}
 				if !state.Profiles[i].AdvertiseThresholdCheckMaximumDelay.IsNull() && data.Profiles[j].AdvertiseThresholdCheckMaximumDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/maximum-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/threshold-check/maximum-delay"))
 				}
 				if !state.Profiles[i].AdvertiseThresholdCheckMinimumDelay.IsNull() && data.Profiles[j].AdvertiseThresholdCheckMinimumDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/minimum-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/threshold-check/minimum-delay"))
 				}
 				if !state.Profiles[i].AdvertiseThresholdCheckAverageDelay.IsNull() && data.Profiles[j].AdvertiseThresholdCheckAverageDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/average-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/threshold-check/average-delay"))
 				}
 				if !state.Profiles[i].AdvertiseLoggingDelayExceeded.IsNull() && data.Profiles[j].AdvertiseLoggingDelayExceeded.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/advertisement/logging/delay-exceeded", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "advertisement/logging/delay-exceeded"))
 				}
 				if !state.Profiles[i].ProbeMeasurementModeLoopback.IsNull() && data.Profiles[j].ProbeMeasurementModeLoopback.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/loopback", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/measurement-mode/loopback"))
 				}
 				if !state.Profiles[i].ProbeMeasurementModeTwoWay.IsNull() && data.Profiles[j].ProbeMeasurementModeTwoWay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/two-way", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/measurement-mode/two-way"))
 				}
 				if !state.Profiles[i].ProbeMeasurementModeOneWay.IsNull() && data.Profiles[j].ProbeMeasurementModeOneWay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/one-way", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/measurement-mode/one-way"))
 				}
 				if !state.Profiles[i].ProbeTosDscp.IsNull() && data.Profiles[j].ProbeTosDscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/tos/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/tos/dscp"))
 				}
 				if !state.Profiles[i].ProbeTosTrafficClass.IsNull() && data.Profiles[j].ProbeTosTrafficClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/tos/traffic-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/tos/traffic-class"))
 				}
 				if !state.Profiles[i].ProbeProtocolTwampLight.IsNull() && data.Profiles[j].ProbeProtocolTwampLight.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/protocol/twamp-light", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/protocol/twamp-light"))
 				}
 				if !state.Profiles[i].ProbeProtocolPmMpls.IsNull() && data.Profiles[j].ProbeProtocolPmMpls.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/protocol/pm-mpls", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/protocol/pm-mpls"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelIncrement.IsNull() && data.Profiles[j].ProbeFlowLabelIncrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/increment", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/increment"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelTo.IsNull() && data.Profiles[j].ProbeFlowLabelTo.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/to", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/to"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelFrom.IsNull() && data.Profiles[j].ProbeFlowLabelFrom.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/from", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/from"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelExplicitList.IsNull() && data.Profiles[j].ProbeFlowLabelExplicitList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits/explicit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/explicits/explicit"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelExplicit.IsNull() && data.Profiles[j].ProbeFlowLabelExplicit.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/explicits"))
 				}
 				if !state.Profiles[i].ProbeSweepDestinationRange.IsNull() && data.Profiles[j].ProbeSweepDestinationRange.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/sweep/destination/range", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/sweep/destination/range"))
 				}
 				if !state.Profiles[i].ProbeSweepDestinationIpv4.IsNull() && data.Profiles[j].ProbeSweepDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/sweep/destination/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/sweep/destination/ipv4"))
 				}
 				if !state.Profiles[i].ProbeStaticDelay.IsNull() && data.Profiles[j].ProbeStaticDelay.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/static-delay", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/static-delay"))
 				}
 				if !state.Profiles[i].ProbeTxInterval.IsNull() && data.Profiles[j].ProbeTxInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/tx-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/tx-interval"))
 				}
 				if !state.Profiles[i].ProbeComputationInterval.IsNull() && data.Profiles[j].ProbeComputationInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/computation-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/computation-interval"))
 				}
 				break
 			}
@@ -2670,229 +2671,229 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 		}
 	}
 	if !state.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() && data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-loss/upper-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !state.EndpointDefaultAdvertisementAnomalyCheckLowerBound.IsNull() && data.EndpointDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-check/lower-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/anomaly-check/lower-bound"))
 	}
 	if !state.EndpointDefaultAdvertisementAnomalyCheckUpperBound.IsNull() && data.EndpointDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-check/upper-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/anomaly-check/upper-bound"))
 	}
 	if !state.EndpointDefaultAdvertisementAcceleratedMinimumChange.IsNull() && data.EndpointDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/accelerated/minimum-change"))
 	}
 	if !state.EndpointDefaultAdvertisementAcceleratedThreshold.IsNull() && data.EndpointDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/accelerated/threshold"))
 	}
 	if !state.EndpointDefaultAdvertisementAccelerated.IsNull() && data.EndpointDefaultAdvertisementAccelerated.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/accelerated"))
 	}
 	if !state.EndpointDefaultAdvertisementPeriodicMinimumChange.IsNull() && data.EndpointDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/periodic/minimum-change"))
 	}
 	if !state.EndpointDefaultAdvertisementPeriodicThreshold.IsNull() && data.EndpointDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/periodic/threshold"))
 	}
 	if !state.EndpointDefaultAdvertisementPeriodicInterval.IsNull() && data.EndpointDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/periodic/interval"))
 	}
 	if !state.EndpointDefaultAdvertisementPeriodicDisabled.IsNull() && data.EndpointDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/disabled", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/periodic/disabled"))
 	}
 	if !state.EndpointDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() && data.EndpointDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/maximum-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !state.EndpointDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() && data.EndpointDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/minimum-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !state.EndpointDefaultAdvertisementThresholdCheckAverageDelay.IsNull() && data.EndpointDefaultAdvertisementThresholdCheckAverageDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/average-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/threshold-check/average-delay"))
 	}
 	if !state.EndpointDefaultAdvertisementLoggingDelayExceeded.IsNull() && data.EndpointDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/advertisement/logging/delay-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/advertisement/logging/delay-exceeded"))
 	}
 	if !state.EndpointDefaultProbeTosDscp.IsNull() && data.EndpointDefaultProbeTosDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/tos/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/tos/dscp"))
 	}
 	if !state.EndpointDefaultProbeMeasurementModeLoopback.IsNull() && data.EndpointDefaultProbeMeasurementModeLoopback.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/loopback", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/measurement-mode/loopback"))
 	}
 	if !state.EndpointDefaultProbeMeasurementModeTwoWay.IsNull() && data.EndpointDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/two-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/measurement-mode/two-way"))
 	}
 	if !state.EndpointDefaultProbeMeasurementModeOneWay.IsNull() && data.EndpointDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/one-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/measurement-mode/one-way"))
 	}
 	if !state.EndpointDefaultProbeSweepDestinationRange.IsNull() && data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/range", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/sweep/destination/range"))
 	}
 	if !state.EndpointDefaultProbeSweepDestinationIpv4.IsNull() && data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/sweep/destination/ipv4"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelIncrement.IsNull() && data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/increment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/increment"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelTo.IsNull() && data.EndpointDefaultProbeFlowLabelTo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/to"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelFrom.IsNull() && data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/from", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/from"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelExplicitList.IsNull() && data.EndpointDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits/explicit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/explicits/explicit"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelExplicit.IsNull() && data.EndpointDefaultProbeFlowLabelExplicit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !state.EndpointDefaultProbeComputationInterval.IsNull() && data.EndpointDefaultProbeComputationInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/computation-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/computation-interval"))
 	}
 	if !state.EndpointDefaultProbeTxInterval.IsNull() && data.EndpointDefaultProbeTxInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/tx-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/tx-interval"))
 	}
 	if !state.EndpointDefault.IsNull() && data.EndpointDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAnomalyLossLowerBound.IsNull() && data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-loss/lower-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/anomaly-loss/lower-bound"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAnomalyLossUpperBound.IsNull() && data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-loss/upper-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound.IsNull() && data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-check/lower-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/anomaly-check/lower-bound"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound.IsNull() && data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-check/upper-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/anomaly-check/upper-bound"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAcceleratedMinimumChange.IsNull() && data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/accelerated/minimum-change"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAcceleratedThreshold.IsNull() && data.SrPolicyDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/accelerated/threshold"))
 	}
 	if !state.SrPolicyDefaultAdvertisementAccelerated.IsNull() && data.SrPolicyDefaultAdvertisementAccelerated.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/accelerated"))
 	}
 	if !state.SrPolicyDefaultAdvertisementPeriodicMinimumChange.IsNull() && data.SrPolicyDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/periodic/minimum-change"))
 	}
 	if !state.SrPolicyDefaultAdvertisementPeriodicThreshold.IsNull() && data.SrPolicyDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/periodic/threshold"))
 	}
 	if !state.SrPolicyDefaultAdvertisementPeriodicInterval.IsNull() && data.SrPolicyDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/periodic/interval"))
 	}
 	if !state.SrPolicyDefaultAdvertisementPeriodicDisabled.IsNull() && data.SrPolicyDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/disabled", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/periodic/disabled"))
 	}
 	if !state.SrPolicyDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() && data.SrPolicyDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/maximum-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !state.SrPolicyDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() && data.SrPolicyDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/minimum-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !state.SrPolicyDefaultAdvertisementThresholdCheckAverageDelay.IsNull() && data.SrPolicyDefaultAdvertisementThresholdCheckAverageDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/average-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/threshold-check/average-delay"))
 	}
 	if !state.SrPolicyDefaultAdvertisementLoggingDelayExceeded.IsNull() && data.SrPolicyDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/advertisement/logging/delay-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/advertisement/logging/delay-exceeded"))
 	}
 	if !state.SrPolicyDefaultProbeMeasurementModeLoopback.IsNull() && data.SrPolicyDefaultProbeMeasurementModeLoopback.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/loopback", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/measurement-mode/loopback"))
 	}
 	if !state.SrPolicyDefaultProbeMeasurementModeTwoWay.IsNull() && data.SrPolicyDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/two-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/measurement-mode/two-way"))
 	}
 	if !state.SrPolicyDefaultProbeMeasurementModeOneWay.IsNull() && data.SrPolicyDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/one-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/measurement-mode/one-way"))
 	}
 	if !state.SrPolicyDefaultProbeTosDscp.IsNull() && data.SrPolicyDefaultProbeTosDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/tos/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/tos/dscp"))
 	}
 	if !state.SrPolicyDefaultProbeTosTrafficClass.IsNull() && data.SrPolicyDefaultProbeTosTrafficClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/tos/traffic-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/tos/traffic-class"))
 	}
 	if !state.SrPolicyDefaultProbeProtocolTwampLight.IsNull() && data.SrPolicyDefaultProbeProtocolTwampLight.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/protocol/twamp-light", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/protocol/twamp-light"))
 	}
 	if !state.SrPolicyDefaultProbeProtocolPmMpls.IsNull() && data.SrPolicyDefaultProbeProtocolPmMpls.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/protocol/pm-mpls", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/protocol/pm-mpls"))
 	}
 	if !state.SrPolicyDefaultProbeSweepDestinationRange.IsNull() && data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/range", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/sweep/destination/range"))
 	}
 	if !state.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() && data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/sweep/destination/ipv4"))
 	}
 	if !state.SrPolicyDefaultProbeStaticDelay.IsNull() && data.SrPolicyDefaultProbeStaticDelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/static-delay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/static-delay"))
 	}
 	if !state.SrPolicyDefaultProbeTxInterval.IsNull() && data.SrPolicyDefaultProbeTxInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/tx-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/tx-interval"))
 	}
 	if !state.SrPolicyDefaultProbeComputationInterval.IsNull() && data.SrPolicyDefaultProbeComputationInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/computation-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/computation-interval"))
 	}
 	if !state.SrPolicyDefault.IsNull() && data.SrPolicyDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default"))
 	}
 	if !state.InterfacesDefaultAdvertisementAnomalyLossLowerBound.IsNull() && data.InterfacesDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/anomaly-loss/lower-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/anomaly-loss/lower-bound"))
 	}
 	if !state.InterfacesDefaultAdvertisementAnomalyLossUpperBound.IsNull() && data.InterfacesDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/anomaly-loss/upper-bound", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !state.InterfacesDefaultAdvertisementAcceleratedMinimumChange.IsNull() && data.InterfacesDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/accelerated/minimum-change"))
 	}
 	if !state.InterfacesDefaultAdvertisementAcceleratedThreshold.IsNull() && data.InterfacesDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/accelerated/threshold"))
 	}
 	if !state.InterfacesDefaultAdvertisementAccelerated.IsNull() && data.InterfacesDefaultAdvertisementAccelerated.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/accelerated"))
 	}
 	if !state.InterfacesDefaultAdvertisementLoggingDelayExceeded.IsNull() && data.InterfacesDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/logging/delay-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/logging/delay-exceeded"))
 	}
 	if !state.InterfacesDefaultAdvertisementPeriodicMinimumChange.IsNull() && data.InterfacesDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/minimum-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/periodic/minimum-change"))
 	}
 	if !state.InterfacesDefaultAdvertisementPeriodicThreshold.IsNull() && data.InterfacesDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/periodic/threshold"))
 	}
 	if !state.InterfacesDefaultAdvertisementPeriodicInterval.IsNull() && data.InterfacesDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/periodic/interval"))
 	}
 	if !state.InterfacesDefaultAdvertisementPeriodicDisabled.IsNull() && data.InterfacesDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/disabled", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/advertisement/periodic/disabled"))
 	}
 	if !state.InterfacesDefaultProbeMeasurementModeTwoWay.IsNull() && data.InterfacesDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/two-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/measurement-mode/two-way"))
 	}
 	if !state.InterfacesDefaultProbeMeasurementModeOneWay.IsNull() && data.InterfacesDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/one-way", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/measurement-mode/one-way"))
 	}
 	if !state.InterfacesDefaultProbeTosDscp.IsNull() && data.InterfacesDefaultProbeTosDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/tos/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/tos/dscp"))
 	}
 	if !state.InterfacesDefaultProbeTosTrafficClass.IsNull() && data.InterfacesDefaultProbeTosTrafficClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/tos/traffic-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/tos/traffic-class"))
 	}
 	if !state.InterfacesDefaultProbeProtocolTwampLight.IsNull() && data.InterfacesDefaultProbeProtocolTwampLight.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/protocol/twamp-light", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/protocol/twamp-light"))
 	}
 	if !state.InterfacesDefaultProbeProtocolPmMpls.IsNull() && data.InterfacesDefaultProbeProtocolPmMpls.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/protocol/pm-mpls", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/protocol/pm-mpls"))
 	}
 	if !state.InterfacesDefaultProbeTxInterval.IsNull() && data.InterfacesDefaultProbeTxInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/tx-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/tx-interval"))
 	}
 	if !state.InterfacesDefaultProbeComputationInterval.IsNull() && data.InterfacesDefaultProbeComputationInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default/probe/computation-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/computation-interval"))
 	}
 	if !state.InterfacesDefault.IsNull() && data.InterfacesDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default"))
 	}
 	return deletedItems
 }
@@ -2904,10 +2905,10 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() && !data.Ntp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() && !data.CollectHbh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/collect-hbh"))
 	}
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -2917,140 +2918,140 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].Ntp.IsNull() && !data.Profiles[i].Ntp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/timestamp-format/ntp", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/timestamp-format/ntp"))
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].CollectHbh.IsNull() && !data.Profiles[i].CollectHbh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/collect-hbh", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/collect-hbh"))
 		}
 		if !data.Profiles[i].AdvertiseAccelerated.IsNull() && !data.Profiles[i].AdvertiseAccelerated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/accelerated", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/accelerated"))
 		}
 		if !data.Profiles[i].AdvertisePeriodicDisabled.IsNull() && !data.Profiles[i].AdvertisePeriodicDisabled.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/periodic/disabled", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/periodic/disabled"))
 		}
 		if !data.Profiles[i].AdvertiseThresholdCheckMaximumDelay.IsNull() && !data.Profiles[i].AdvertiseThresholdCheckMaximumDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/maximum-delay", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/threshold-check/maximum-delay"))
 		}
 		if !data.Profiles[i].AdvertiseThresholdCheckMinimumDelay.IsNull() && !data.Profiles[i].AdvertiseThresholdCheckMinimumDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/minimum-delay", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/threshold-check/minimum-delay"))
 		}
 		if !data.Profiles[i].AdvertiseThresholdCheckAverageDelay.IsNull() && !data.Profiles[i].AdvertiseThresholdCheckAverageDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/threshold-check/average-delay", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/threshold-check/average-delay"))
 		}
 		if !data.Profiles[i].AdvertiseLoggingDelayExceeded.IsNull() && !data.Profiles[i].AdvertiseLoggingDelayExceeded.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/advertisement/logging/delay-exceeded", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "advertisement/logging/delay-exceeded"))
 		}
 		if !data.Profiles[i].ProbeMeasurementModeLoopback.IsNull() && !data.Profiles[i].ProbeMeasurementModeLoopback.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/loopback", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/measurement-mode/loopback"))
 		}
 		if !data.Profiles[i].ProbeMeasurementModeTwoWay.IsNull() && !data.Profiles[i].ProbeMeasurementModeTwoWay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/two-way", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/measurement-mode/two-way"))
 		}
 		if !data.Profiles[i].ProbeMeasurementModeOneWay.IsNull() && !data.Profiles[i].ProbeMeasurementModeOneWay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/measurement-mode/one-way", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/measurement-mode/one-way"))
 		}
 		if !data.Profiles[i].ProbeProtocolTwampLight.IsNull() && !data.Profiles[i].ProbeProtocolTwampLight.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/protocol/twamp-light", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/protocol/twamp-light"))
 		}
 		if !data.Profiles[i].ProbeProtocolPmMpls.IsNull() && !data.Profiles[i].ProbeProtocolPmMpls.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/protocol/pm-mpls", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/protocol/pm-mpls"))
 		}
 		if !data.Profiles[i].ProbeFlowLabelExplicit.IsNull() && !data.Profiles[i].ProbeFlowLabelExplicit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/flow-label/explicits"))
 		}
 	}
 	if !data.EndpointDefaultAdvertisementAccelerated.IsNull() && !data.EndpointDefaultAdvertisementAccelerated.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/accelerated"))
 	}
 	if !data.EndpointDefaultAdvertisementPeriodicDisabled.IsNull() && !data.EndpointDefaultAdvertisementPeriodicDisabled.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/disabled", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/periodic/disabled"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() && !data.EndpointDefaultAdvertisementThresholdCheckMaximumDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/maximum-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() && !data.EndpointDefaultAdvertisementThresholdCheckMinimumDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/minimum-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckAverageDelay.IsNull() && !data.EndpointDefaultAdvertisementThresholdCheckAverageDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/average-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/average-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementLoggingDelayExceeded.IsNull() && !data.EndpointDefaultAdvertisementLoggingDelayExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/advertisement/logging/delay-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeLoopback.IsNull() && !data.EndpointDefaultProbeMeasurementModeLoopback.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/loopback", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/loopback"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeTwoWay.IsNull() && !data.EndpointDefaultProbeMeasurementModeTwoWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/two-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/two-way"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeOneWay.IsNull() && !data.EndpointDefaultProbeMeasurementModeOneWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/one-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/one-way"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicit.IsNull() && !data.EndpointDefaultProbeFlowLabelExplicit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !data.EndpointDefault.IsNull() && !data.EndpointDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAccelerated.IsNull() && !data.SrPolicyDefaultAdvertisementAccelerated.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/accelerated"))
 	}
 	if !data.SrPolicyDefaultAdvertisementPeriodicDisabled.IsNull() && !data.SrPolicyDefaultAdvertisementPeriodicDisabled.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/disabled", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/periodic/disabled"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() && !data.SrPolicyDefaultAdvertisementThresholdCheckMaximumDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/maximum-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() && !data.SrPolicyDefaultAdvertisementThresholdCheckMinimumDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/minimum-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckAverageDelay.IsNull() && !data.SrPolicyDefaultAdvertisementThresholdCheckAverageDelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/average-delay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/average-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementLoggingDelayExceeded.IsNull() && !data.SrPolicyDefaultAdvertisementLoggingDelayExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/advertisement/logging/delay-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeLoopback.IsNull() && !data.SrPolicyDefaultProbeMeasurementModeLoopback.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/loopback", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/loopback"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeTwoWay.IsNull() && !data.SrPolicyDefaultProbeMeasurementModeTwoWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/two-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/two-way"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeOneWay.IsNull() && !data.SrPolicyDefaultProbeMeasurementModeOneWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/one-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/one-way"))
 	}
 	if !data.SrPolicyDefaultProbeProtocolTwampLight.IsNull() && !data.SrPolicyDefaultProbeProtocolTwampLight.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/protocol/twamp-light", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/protocol/twamp-light"))
 	}
 	if !data.SrPolicyDefaultProbeProtocolPmMpls.IsNull() && !data.SrPolicyDefaultProbeProtocolPmMpls.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/protocol/pm-mpls", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/protocol/pm-mpls"))
 	}
 	if !data.SrPolicyDefault.IsNull() && !data.SrPolicyDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default"))
 	}
 	if !data.InterfacesDefaultAdvertisementAccelerated.IsNull() && !data.InterfacesDefaultAdvertisementAccelerated.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/advertisement/accelerated"))
 	}
 	if !data.InterfacesDefaultAdvertisementLoggingDelayExceeded.IsNull() && !data.InterfacesDefaultAdvertisementLoggingDelayExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/advertisement/logging/delay-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.InterfacesDefaultAdvertisementPeriodicDisabled.IsNull() && !data.InterfacesDefaultAdvertisementPeriodicDisabled.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/disabled", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/advertisement/periodic/disabled"))
 	}
 	if !data.InterfacesDefaultProbeMeasurementModeTwoWay.IsNull() && !data.InterfacesDefaultProbeMeasurementModeTwoWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/two-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/probe/measurement-mode/two-way"))
 	}
 	if !data.InterfacesDefaultProbeMeasurementModeOneWay.IsNull() && !data.InterfacesDefaultProbeMeasurementModeOneWay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/one-way", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/probe/measurement-mode/one-way"))
 	}
 	if !data.InterfacesDefaultProbeProtocolTwampLight.IsNull() && !data.InterfacesDefaultProbeProtocolTwampLight.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/probe/protocol/twamp-light", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/probe/protocol/twamp-light"))
 	}
 	if !data.InterfacesDefaultProbeProtocolPmMpls.IsNull() && !data.InterfacesDefaultProbeProtocolPmMpls.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default/probe/protocol/pm-mpls", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/probe/protocol/pm-mpls"))
 	}
 	if !data.InterfacesDefault.IsNull() && !data.InterfacesDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default"))
 	}
 	return emptyLeafsDelete
 }
@@ -3061,13 +3062,13 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/timestamp-format/ntp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/collect-hbh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/collect-hbh"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.DelayBinsExplicit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/histogram/delay-bins/explicit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/histogram/delay-bins/explicit"))
 	}
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -3088,229 +3089,229 @@ func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Conte
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
 	}
 	if !data.EndpointDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-loss/upper-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !data.EndpointDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-check/lower-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/anomaly-check/lower-bound"))
 	}
 	if !data.EndpointDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/anomaly-check/upper-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/anomaly-check/upper-bound"))
 	}
 	if !data.EndpointDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/accelerated/minimum-change"))
 	}
 	if !data.EndpointDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/accelerated/threshold"))
 	}
 	if !data.EndpointDefaultAdvertisementAccelerated.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/accelerated", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/accelerated"))
 	}
 	if !data.EndpointDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/periodic/minimum-change"))
 	}
 	if !data.EndpointDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/periodic/threshold"))
 	}
 	if !data.EndpointDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/periodic/interval"))
 	}
 	if !data.EndpointDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/periodic/disabled", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/periodic/disabled"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/maximum-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/minimum-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementThresholdCheckAverageDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/threshold-check/average-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/threshold-check/average-delay"))
 	}
 	if !data.EndpointDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/advertisement/logging/delay-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.EndpointDefaultProbeTosDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/tos/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/tos/dscp"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeLoopback.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/loopback", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/loopback"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/two-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/two-way"))
 	}
 	if !data.EndpointDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/measurement-mode/one-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/one-way"))
 	}
 	if !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/range", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/sweep/destination/range"))
 	}
 	if !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/sweep/destination/ipv4"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/increment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/increment"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/to"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/from", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/from"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits/explicit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits/explicit"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !data.EndpointDefaultProbeComputationInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/computation-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/computation-interval"))
 	}
 	if !data.EndpointDefaultProbeTxInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/tx-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/tx-interval"))
 	}
 	if !data.EndpointDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-loss/lower-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/anomaly-loss/lower-bound"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-loss/upper-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAnomalyCheckLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-check/lower-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/anomaly-check/lower-bound"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAnomalyCheckUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/anomaly-check/upper-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/anomaly-check/upper-bound"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/accelerated/minimum-change"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/accelerated/threshold"))
 	}
 	if !data.SrPolicyDefaultAdvertisementAccelerated.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/accelerated", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/accelerated"))
 	}
 	if !data.SrPolicyDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/periodic/minimum-change"))
 	}
 	if !data.SrPolicyDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/periodic/threshold"))
 	}
 	if !data.SrPolicyDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/periodic/interval"))
 	}
 	if !data.SrPolicyDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/periodic/disabled", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/periodic/disabled"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckMaximumDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/maximum-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/maximum-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckMinimumDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/minimum-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/minimum-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementThresholdCheckAverageDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/threshold-check/average-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/threshold-check/average-delay"))
 	}
 	if !data.SrPolicyDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/advertisement/logging/delay-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeLoopback.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/loopback", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/loopback"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/two-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/two-way"))
 	}
 	if !data.SrPolicyDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/measurement-mode/one-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/measurement-mode/one-way"))
 	}
 	if !data.SrPolicyDefaultProbeTosDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/tos/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/tos/dscp"))
 	}
 	if !data.SrPolicyDefaultProbeTosTrafficClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/tos/traffic-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/tos/traffic-class"))
 	}
 	if !data.SrPolicyDefaultProbeProtocolTwampLight.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/protocol/twamp-light", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/protocol/twamp-light"))
 	}
 	if !data.SrPolicyDefaultProbeProtocolPmMpls.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/protocol/pm-mpls", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/protocol/pm-mpls"))
 	}
 	if !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/range", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/sweep/destination/range"))
 	}
 	if !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/sweep/destination/ipv4"))
 	}
 	if !data.SrPolicyDefaultProbeStaticDelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/static-delay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/static-delay"))
 	}
 	if !data.SrPolicyDefaultProbeTxInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/tx-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/tx-interval"))
 	}
 	if !data.SrPolicyDefaultProbeComputationInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/computation-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/computation-interval"))
 	}
 	if !data.SrPolicyDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default"))
 	}
 	if !data.InterfacesDefaultAdvertisementAnomalyLossLowerBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/anomaly-loss/lower-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/anomaly-loss/lower-bound"))
 	}
 	if !data.InterfacesDefaultAdvertisementAnomalyLossUpperBound.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/anomaly-loss/upper-bound", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/anomaly-loss/upper-bound"))
 	}
 	if !data.InterfacesDefaultAdvertisementAcceleratedMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/accelerated/minimum-change"))
 	}
 	if !data.InterfacesDefaultAdvertisementAcceleratedThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/accelerated/threshold"))
 	}
 	if !data.InterfacesDefaultAdvertisementAccelerated.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/accelerated", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/accelerated"))
 	}
 	if !data.InterfacesDefaultAdvertisementLoggingDelayExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/logging/delay-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/logging/delay-exceeded"))
 	}
 	if !data.InterfacesDefaultAdvertisementPeriodicMinimumChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/minimum-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/periodic/minimum-change"))
 	}
 	if !data.InterfacesDefaultAdvertisementPeriodicThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/periodic/threshold"))
 	}
 	if !data.InterfacesDefaultAdvertisementPeriodicInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/periodic/interval"))
 	}
 	if !data.InterfacesDefaultAdvertisementPeriodicDisabled.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/advertisement/periodic/disabled", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/advertisement/periodic/disabled"))
 	}
 	if !data.InterfacesDefaultProbeMeasurementModeTwoWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/two-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/measurement-mode/two-way"))
 	}
 	if !data.InterfacesDefaultProbeMeasurementModeOneWay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/measurement-mode/one-way", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/measurement-mode/one-way"))
 	}
 	if !data.InterfacesDefaultProbeTosDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/tos/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/tos/dscp"))
 	}
 	if !data.InterfacesDefaultProbeTosTrafficClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/tos/traffic-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/tos/traffic-class"))
 	}
 	if !data.InterfacesDefaultProbeProtocolTwampLight.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/protocol/twamp-light", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/protocol/twamp-light"))
 	}
 	if !data.InterfacesDefaultProbeProtocolPmMpls.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/protocol/pm-mpls", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/protocol/pm-mpls"))
 	}
 	if !data.InterfacesDefaultProbeTxInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/tx-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/tx-interval"))
 	}
 	if !data.InterfacesDefaultProbeComputationInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default/probe/computation-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/computation-interval"))
 	}
 	if !data.InterfacesDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default"))
 	}
 	return deletePaths
 }

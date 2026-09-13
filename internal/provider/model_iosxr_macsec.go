@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -197,10 +197,10 @@ func (data *MACSecData) fromBody(ctx context.Context, res []byte, version string
 func (data *MACSec) getDeletedItems(ctx context.Context, state MACSec, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Fips.IsNull() && data.Fips.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fips", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fips"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	return deletedItems
 }
@@ -212,10 +212,10 @@ func (data *MACSec) getDeletedItems(ctx context.Context, state MACSec, version s
 func (data *MACSec) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Fips.IsNull() && !data.Fips.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fips", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "fips"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	return emptyLeafsDelete
 }
@@ -226,10 +226,10 @@ func (data *MACSec) getEmptyLeafsDelete(ctx context.Context, version string) []s
 func (data *MACSec) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Fips.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fips", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fips"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	return deletePaths
 }

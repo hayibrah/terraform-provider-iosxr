@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -230,16 +230,16 @@ func (data *IPv6AccessListOptionsData) fromBody(ctx context.Context, res []byte,
 func (data *IPv6AccessListOptions) getDeletedItems(ctx context.Context, state IPv6AccessListOptions, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.IcmpOff.IsNull() && data.IcmpOff.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/icmp-off", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "icmp-off"))
 	}
 	if !state.LogUpdateDisable.IsNull() && data.LogUpdateDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log-update/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log-update/disable"))
 	}
 	if !state.LogUpdateRate.IsNull() && data.LogUpdateRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log-update/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log-update/rate"))
 	}
 	if !state.LogUpdateThreshold.IsNull() && data.LogUpdateThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log-update/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log-update/threshold"))
 	}
 	return deletedItems
 }
@@ -251,10 +251,10 @@ func (data *IPv6AccessListOptions) getDeletedItems(ctx context.Context, state IP
 func (data *IPv6AccessListOptions) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.IcmpOff.IsNull() && !data.IcmpOff.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/icmp-off", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "icmp-off"))
 	}
 	if !data.LogUpdateDisable.IsNull() && !data.LogUpdateDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log-update/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log-update/disable"))
 	}
 	return emptyLeafsDelete
 }
@@ -265,16 +265,16 @@ func (data *IPv6AccessListOptions) getEmptyLeafsDelete(ctx context.Context, vers
 func (data *IPv6AccessListOptions) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.IcmpOff.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/icmp-off", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "icmp-off"))
 	}
 	if !data.LogUpdateDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log-update/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log-update/disable"))
 	}
 	if !data.LogUpdateRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log-update/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log-update/rate"))
 	}
 	if !data.LogUpdateThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log-update/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log-update/threshold"))
 	}
 	return deletePaths
 }

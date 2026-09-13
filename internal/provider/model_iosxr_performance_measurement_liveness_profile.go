@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -906,40 +907,40 @@ func (data *PerformanceMeasurementLivenessProfile) getDeletedItems(ctx context.C
 			}
 			if found {
 				if !state.Profiles[i].NpuOffload.IsNull() && data.Profiles[j].NpuOffload.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/npu-offload", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "npu-offload"))
 				}
 				if !state.Profiles[i].ProbeTosDscp.IsNull() && data.Profiles[j].ProbeTosDscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/tos/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/tos/dscp"))
 				}
 				if !state.Profiles[i].ProbeSweepDestinationRange.IsNull() && data.Profiles[j].ProbeSweepDestinationRange.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/sweep/destination/range", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/sweep/destination/range"))
 				}
 				if !state.Profiles[i].ProbeSweepDestinationIpv4.IsNull() && data.Profiles[j].ProbeSweepDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/sweep/destination/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/sweep/destination/ipv4"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelIncrement.IsNull() && data.Profiles[j].ProbeFlowLabelIncrement.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/increment", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/increment"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelTo.IsNull() && data.Profiles[j].ProbeFlowLabelTo.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/to", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/to"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelFrom.IsNull() && data.Profiles[j].ProbeFlowLabelFrom.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/from", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/from"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelExplicitList.IsNull() && data.Profiles[j].ProbeFlowLabelExplicitList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits/explicit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/explicits/explicit"))
 				}
 				if !state.Profiles[i].ProbeFlowLabelExplicit.IsNull() && data.Profiles[j].ProbeFlowLabelExplicit.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/flow-label/explicits"))
 				}
 				if !state.Profiles[i].ProbeTxInterval.IsNull() && data.Profiles[j].ProbeTxInterval.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/probe/tx-interval", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "probe/tx-interval"))
 				}
 				if !state.Profiles[i].LivenessDetectionLoggingStateChange.IsNull() && data.Profiles[j].LivenessDetectionLoggingStateChange.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/liveness-detection/logging/state-change", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "liveness-detection/logging/state-change"))
 				}
 				if !state.Profiles[i].LivenessDetectionMultiplier.IsNull() && data.Profiles[j].LivenessDetectionMultiplier.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v/liveness-detection/multiplier", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "liveness-detection/multiplier"))
 				}
 				break
 			}
@@ -949,76 +950,76 @@ func (data *PerformanceMeasurementLivenessProfile) getDeletedItems(ctx context.C
 		}
 	}
 	if !state.EndpointDefaultLivenessDetectionLoggingStateChange.IsNull() && data.EndpointDefaultLivenessDetectionLoggingStateChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/liveness-detection/logging/state-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/liveness-detection/logging/state-change"))
 	}
 	if !state.EndpointDefaultLivenessDetectionMultiplier.IsNull() && data.EndpointDefaultLivenessDetectionMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/liveness-detection/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/liveness-detection/multiplier"))
 	}
 	if !state.EndpointDefaultProbeTosDscp.IsNull() && data.EndpointDefaultProbeTosDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/tos/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/tos/dscp"))
 	}
 	if !state.EndpointDefaultProbeSweepDestinationRange.IsNull() && data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/range", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/sweep/destination/range"))
 	}
 	if !state.EndpointDefaultProbeSweepDestinationIpv4.IsNull() && data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/sweep/destination/ipv4"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelIncrement.IsNull() && data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/increment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/increment"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelTo.IsNull() && data.EndpointDefaultProbeFlowLabelTo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/to"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelFrom.IsNull() && data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/from", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/from"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelExplicitList.IsNull() && data.EndpointDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits/explicit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/explicits/explicit"))
 	}
 	if !state.EndpointDefaultProbeFlowLabelExplicit.IsNull() && data.EndpointDefaultProbeFlowLabelExplicit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !state.EndpointDefaultProbeTxInterval.IsNull() && data.EndpointDefaultProbeTxInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default/probe/tx-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/tx-interval"))
 	}
 	if !state.EndpointDefault.IsNull() && data.EndpointDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/endpoint/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default"))
 	}
 	if !state.SrPolicyDefaultNpuOffload.IsNull() && data.SrPolicyDefaultNpuOffload.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/npu-offload", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/npu-offload"))
 	}
 	if !state.SrPolicyDefaultProbeTosDscp.IsNull() && data.SrPolicyDefaultProbeTosDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/tos/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/tos/dscp"))
 	}
 	if !state.SrPolicyDefaultProbeSweepDestinationRange.IsNull() && data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/range", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/sweep/destination/range"))
 	}
 	if !state.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() && data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/sweep/destination/ipv4"))
 	}
 	if !state.SrPolicyDefaultProbeFlowLabelIncrement.IsNull() && data.SrPolicyDefaultProbeFlowLabelIncrement.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/increment", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/flow-label/increment"))
 	}
 	if !state.SrPolicyDefaultProbeFlowLabelTo.IsNull() && data.SrPolicyDefaultProbeFlowLabelTo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/flow-label/to"))
 	}
 	if !state.SrPolicyDefaultProbeFlowLabelFrom.IsNull() && data.SrPolicyDefaultProbeFlowLabelFrom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/from", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/flow-label/from"))
 	}
 	if !state.SrPolicyDefaultProbeFlowLabelExplicitList.IsNull() && data.SrPolicyDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/explicits/explicit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/flow-label/explicits/explicit"))
 	}
 	if !state.SrPolicyDefaultProbeFlowLabelExplicit.IsNull() && data.SrPolicyDefaultProbeFlowLabelExplicit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/explicits", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/flow-label/explicits"))
 	}
 	if !state.SrPolicyDefaultProbeTxInterval.IsNull() && data.SrPolicyDefaultProbeTxInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/probe/tx-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/tx-interval"))
 	}
 	if !state.SrPolicyDefaultLivenessDetectionMultiplier.IsNull() && data.SrPolicyDefaultLivenessDetectionMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default/liveness-detection/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/liveness-detection/multiplier"))
 	}
 	if !state.SrPolicyDefault.IsNull() && data.SrPolicyDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/sr-policy/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default"))
 	}
 	return deletedItems
 }
@@ -1037,32 +1038,32 @@ func (data *PerformanceMeasurementLivenessProfile) getEmptyLeafsDelete(ctx conte
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Profiles[i].NpuOffload.IsNull() && !data.Profiles[i].NpuOffload.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/npu-offload", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "npu-offload"))
 		}
 		if !data.Profiles[i].ProbeFlowLabelExplicit.IsNull() && !data.Profiles[i].ProbeFlowLabelExplicit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/probe/flow-label/explicits", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "probe/flow-label/explicits"))
 		}
 		if !data.Profiles[i].LivenessDetectionLoggingStateChange.IsNull() && !data.Profiles[i].LivenessDetectionLoggingStateChange.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/names/name%v/liveness-detection/logging/state-change", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/names/name%v", data.getPath(), keyString), "liveness-detection/logging/state-change"))
 		}
 	}
 	if !data.EndpointDefaultLivenessDetectionLoggingStateChange.IsNull() && !data.EndpointDefaultLivenessDetectionLoggingStateChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/liveness-detection/logging/state-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/liveness-detection/logging/state-change"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicit.IsNull() && !data.EndpointDefaultProbeFlowLabelExplicit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !data.EndpointDefault.IsNull() && !data.EndpointDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/endpoint/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default"))
 	}
 	if !data.SrPolicyDefaultNpuOffload.IsNull() && !data.SrPolicyDefaultNpuOffload.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/npu-offload", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/npu-offload"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelExplicit.IsNull() && !data.SrPolicyDefaultProbeFlowLabelExplicit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/explicits", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/explicits"))
 	}
 	if !data.SrPolicyDefault.IsNull() && !data.SrPolicyDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/sr-policy/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default"))
 	}
 	return emptyLeafsDelete
 }
@@ -1091,76 +1092,76 @@ func (data *PerformanceMeasurementLivenessProfile) getDeletePaths(ctx context.Co
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
 	}
 	if !data.EndpointDefaultLivenessDetectionLoggingStateChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/liveness-detection/logging/state-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/liveness-detection/logging/state-change"))
 	}
 	if !data.EndpointDefaultLivenessDetectionMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/liveness-detection/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/liveness-detection/multiplier"))
 	}
 	if !data.EndpointDefaultProbeTosDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/tos/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/tos/dscp"))
 	}
 	if !data.EndpointDefaultProbeSweepDestinationRange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/range", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/sweep/destination/range"))
 	}
 	if !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/sweep/destination/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/sweep/destination/ipv4"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelIncrement.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/increment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/increment"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelTo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/to"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelFrom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/from", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/from"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits/explicit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits/explicit"))
 	}
 	if !data.EndpointDefaultProbeFlowLabelExplicit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/flow-label/explicits", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/flow-label/explicits"))
 	}
 	if !data.EndpointDefaultProbeTxInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default/probe/tx-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/tx-interval"))
 	}
 	if !data.EndpointDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/endpoint/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default"))
 	}
 	if !data.SrPolicyDefaultNpuOffload.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/npu-offload", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/npu-offload"))
 	}
 	if !data.SrPolicyDefaultProbeTosDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/tos/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/tos/dscp"))
 	}
 	if !data.SrPolicyDefaultProbeSweepDestinationRange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/range", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/sweep/destination/range"))
 	}
 	if !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/sweep/destination/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/sweep/destination/ipv4"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelIncrement.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/increment", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/increment"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelTo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/to"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelFrom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/from", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/from"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelExplicitList.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/explicits/explicit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/explicits/explicit"))
 	}
 	if !data.SrPolicyDefaultProbeFlowLabelExplicit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/flow-label/explicits", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/flow-label/explicits"))
 	}
 	if !data.SrPolicyDefaultProbeTxInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/probe/tx-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/tx-interval"))
 	}
 	if !data.SrPolicyDefaultLivenessDetectionMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default/liveness-detection/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/liveness-detection/multiplier"))
 	}
 	if !data.SrPolicyDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sr-policy/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default"))
 	}
 	return deletePaths
 }

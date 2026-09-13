@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *RadiusSourceInterfaceData) fromBody(ctx context.Context, res []byte,
 func (data *RadiusSourceInterface) getDeletedItems(ctx context.Context, state RadiusSourceInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SourceInterface.IsNull() && data.SourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-interface"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *RadiusSourceInterface) getEmptyLeafsDelete(ctx context.Context, vers
 func (data *RadiusSourceInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-interface"))
 	}
 	return deletePaths
 }

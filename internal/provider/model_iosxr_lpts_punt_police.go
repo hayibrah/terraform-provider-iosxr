@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -626,16 +627,16 @@ func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntP
 			}
 			if found {
 				if !state.Interfaces[i].BcastDisabled.IsNull() && data.Interfaces[j].BcastDisabled.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/bcast/disabled", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bcast/disabled"))
 				}
 				if !state.Interfaces[i].BcastRate.IsNull() && data.Interfaces[j].BcastRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/bcast/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bcast/rate"))
 				}
 				if !state.Interfaces[i].McastDisabled.IsNull() && data.Interfaces[j].McastDisabled.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mcast/disabled", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mcast/disabled"))
 				}
 				if !state.Interfaces[i].McastRate.IsNull() && data.Interfaces[j].McastRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mcast/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mcast/rate"))
 				}
 				break
 			}
@@ -668,28 +669,28 @@ func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntP
 			}
 			if found {
 				if !state.Domains[i].ProtocolIpv6NdProxyRate.IsNull() && data.Domains[j].ProtocolIpv6NdProxyRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/ipv6-nd-proxy/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/ipv6-nd-proxy/rate"))
 				}
 				if !state.Domains[i].ProtocolSsfpRate.IsNull() && data.Domains[j].ProtocolSsfpRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/ssfp/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/ssfp/rate"))
 				}
 				if !state.Domains[i].ProtocolLldpRate.IsNull() && data.Domains[j].ProtocolLldpRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/lldp/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/lldp/rate"))
 				}
 				if !state.Domains[i].ProtocolLacpRate.IsNull() && data.Domains[j].ProtocolLacpRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/lacp/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/lacp/rate"))
 				}
 				if !state.Domains[i].ProtocolCdpRate.IsNull() && data.Domains[j].ProtocolCdpRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/cdp/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/cdp/rate"))
 				}
 				if !state.Domains[i].ProtocolArpRate.IsNull() && data.Domains[j].ProtocolArpRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/protocol/arp/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "protocol/arp/rate"))
 				}
 				if !state.Domains[i].BcastRate.IsNull() && data.Domains[j].BcastRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/bcast/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "bcast/rate"))
 				}
 				if !state.Domains[i].McastRate.IsNull() && data.Domains[j].McastRate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/domains/domain%v/mcast/rate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/domains/domain%v", state.getPath(), keyString), "mcast/rate"))
 				}
 				break
 			}
@@ -699,28 +700,28 @@ func (data *LPTSPuntPolice) getDeletedItems(ctx context.Context, state LPTSPuntP
 		}
 	}
 	if !state.ProtocolIpv6NdProxyRate.IsNull() && data.ProtocolIpv6NdProxyRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/ipv6-nd-proxy/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/ipv6-nd-proxy/rate"))
 	}
 	if !state.ProtocolSsfpRate.IsNull() && data.ProtocolSsfpRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/ssfp/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/ssfp/rate"))
 	}
 	if !state.ProtocolLldpRate.IsNull() && data.ProtocolLldpRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/lldp/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/lldp/rate"))
 	}
 	if !state.ProtocolLacpRate.IsNull() && data.ProtocolLacpRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/lacp/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/lacp/rate"))
 	}
 	if !state.ProtocolCdpRate.IsNull() && data.ProtocolCdpRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/cdp/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/cdp/rate"))
 	}
 	if !state.ProtocolArpRate.IsNull() && data.ProtocolArpRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/arp/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protocol/arp/rate"))
 	}
 	if !state.BcastRate.IsNull() && data.BcastRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bcast/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bcast/rate"))
 	}
 	if !state.McastRate.IsNull() && data.McastRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mcast/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mcast/rate"))
 	}
 	return deletedItems
 }
@@ -739,10 +740,10 @@ func (data *LPTSPuntPolice) getEmptyLeafsDelete(ctx context.Context, version str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].BcastDisabled.IsNull() && !data.Interfaces[i].BcastDisabled.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/bcast/disabled", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "bcast/disabled"))
 		}
 		if !data.Interfaces[i].McastDisabled.IsNull() && !data.Interfaces[i].McastDisabled.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mcast/disabled", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mcast/disabled"))
 		}
 	}
 	for i := range data.Domains {
@@ -798,28 +799,28 @@ func (data *LPTSPuntPolice) getDeletePaths(ctx context.Context, version string) 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/domains/domain%v", data.getPath(), keyString))
 	}
 	if !data.ProtocolIpv6NdProxyRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/ipv6-nd-proxy/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/ipv6-nd-proxy/rate"))
 	}
 	if !data.ProtocolSsfpRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/ssfp/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/ssfp/rate"))
 	}
 	if !data.ProtocolLldpRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/lldp/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/lldp/rate"))
 	}
 	if !data.ProtocolLacpRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/lacp/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/lacp/rate"))
 	}
 	if !data.ProtocolCdpRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/cdp/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/cdp/rate"))
 	}
 	if !data.ProtocolArpRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/arp/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/arp/rate"))
 	}
 	if !data.BcastRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bcast/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bcast/rate"))
 	}
 	if !data.McastRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mcast/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mcast/rate"))
 	}
 	return deletePaths
 }

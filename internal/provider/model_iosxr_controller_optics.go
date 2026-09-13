@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -308,25 +309,25 @@ func (data *ControllerOpticsData) fromBody(ctx context.Context, res []byte, vers
 func (data *ControllerOptics) getDeletedItems(ctx context.Context, state ControllerOptics, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Breakout.IsNull() && data.Breakout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-optics-driver-cfg:breakout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-optics-driver-cfg:breakout"))
 	}
 	if !state.Speed.IsNull() && data.Speed.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-optics-speed-cfg:speed", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-optics-speed-cfg:speed"))
 	}
 	if !state.TransceiverDisable.IsNull() && data.TransceiverDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable"))
 	}
 	if !state.PerformanceMonitoring.IsNull() && data.PerformanceMonitoring.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/optics-performance-monitoring", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "Cisco-IOS-XR-controller-optics-cfg:optics/optics-performance-monitoring"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	if !state.LinkStatus.IsNull() && data.LinkStatus.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/link-status", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "link-status"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	return deletedItems
 }
@@ -338,13 +339,13 @@ func (data *ControllerOptics) getDeletedItems(ctx context.Context, state Control
 func (data *ControllerOptics) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.TransceiverDisable.IsNull() && !data.TransceiverDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable"))
 	}
 	if !data.LinkStatus.IsNull() && !data.LinkStatus.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/link-status", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "link-status"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	return emptyLeafsDelete
 }
@@ -355,25 +356,25 @@ func (data *ControllerOptics) getEmptyLeafsDelete(ctx context.Context, version s
 func (data *ControllerOptics) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Breakout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-optics-driver-cfg:breakout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-optics-driver-cfg:breakout"))
 	}
 	if !data.Speed.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-optics-speed-cfg:speed", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-optics-speed-cfg:speed"))
 	}
 	if !data.TransceiverDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-controller-optics-cfg:optics/transceiver/disable"))
 	}
 	if !data.PerformanceMonitoring.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-controller-optics-cfg:optics/optics-performance-monitoring", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-controller-optics-cfg:optics/optics-performance-monitoring"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	if !data.LinkStatus.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/link-status", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "link-status"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	return deletePaths
 }

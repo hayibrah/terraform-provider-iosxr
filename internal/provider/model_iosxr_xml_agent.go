@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -763,13 +764,13 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 			}
 			if found {
 				if !state.Vrfs[i].Ipv4AccessList.IsNull() && data.Vrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv4/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
 				}
 				if !state.Vrfs[i].Ipv6AccessList.IsNull() && data.Vrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/ipv6/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
 				}
 				if !state.Vrfs[i].Shutdown.IsNull() && data.Vrfs[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "shutdown"))
 				}
 				break
 			}
@@ -779,25 +780,25 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 		}
 	}
 	if !state.SessionTimeout.IsNull() && data.SessionTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/timeout"))
 	}
 	if !state.ThrottleMemory.IsNull() && data.ThrottleMemory.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle/memory", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle/memory"))
 	}
 	if !state.ThrottleProcessRate.IsNull() && data.ThrottleProcessRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/throttle/process-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "throttle/process-rate"))
 	}
 	if !state.IterationSize.IsNull() && data.IterationSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/iteration/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "iteration/size"))
 	}
 	if !state.StreamingSize.IsNull() && data.StreamingSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/streaming/on/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "streaming/on/size"))
 	}
 	if !state.Ipv4Disable.IsNull() && data.Ipv4Disable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/disable"))
 	}
 	if !state.Ipv6Enable.IsNull() && data.Ipv6Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/enable"))
 	}
 	for i := range state.SslVrfs {
 		keys := [...]string{"vrf-name"}
@@ -823,10 +824,10 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 			}
 			if found {
 				if !state.SslVrfs[i].Ipv4AccessList.IsNull() && data.SslVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/vrfs/vrf%v/ipv4/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
 				}
 				if !state.SslVrfs[i].Shutdown.IsNull() && data.SslVrfs[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/vrfs/vrf%v/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", state.getPath(), keyString), "shutdown"))
 				}
 				break
 			}
@@ -836,43 +837,43 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 		}
 	}
 	if !state.SslSessionTimeout.IsNull() && data.SslSessionTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/session/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl/session/timeout"))
 	}
 	if !state.SslThrottleMemory.IsNull() && data.SslThrottleMemory.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/throttle/memory", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl/throttle/memory"))
 	}
 	if !state.SslThrottleProcessRate.IsNull() && data.SslThrottleProcessRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/throttle/process-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl/throttle/process-rate"))
 	}
 	if !state.SslIterationSize.IsNull() && data.SslIterationSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/iteration/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl/iteration/size"))
 	}
 	if !state.SslStreamingSize.IsNull() && data.SslStreamingSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/streaming/on/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl/streaming/on/size"))
 	}
 	if !state.SslEnable.IsNull() && data.SslEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ssl"))
 	}
 	if !state.TtySessionTimeout.IsNull() && data.TtySessionTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty/session/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty/session/timeout"))
 	}
 	if !state.TtyThrottleMemory.IsNull() && data.TtyThrottleMemory.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty/throttle/memory", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty/throttle/memory"))
 	}
 	if !state.TtyThrottleProcessRate.IsNull() && data.TtyThrottleProcessRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty/throttle/process-rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty/throttle/process-rate"))
 	}
 	if !state.TtyIterationSize.IsNull() && data.TtyIterationSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty/iteration/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty/iteration/size"))
 	}
 	if !state.TtyStreamingSize.IsNull() && data.TtyStreamingSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty/streaming/on/size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty/streaming/on/size"))
 	}
 	if !state.TtyEnable.IsNull() && data.TtyEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tty", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tty"))
 	}
 	if !state.Enable.IsNull() && data.Enable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "enable"))
 	}
 	return deletedItems
 }
@@ -891,14 +892,14 @@ func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Vrfs[i].Shutdown.IsNull() && !data.Vrfs[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/vrfs/vrf%v/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "shutdown"))
 		}
 	}
 	if !data.Ipv4Disable.IsNull() && !data.Ipv4Disable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv4/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv4/disable"))
 	}
 	if !data.Ipv6Enable.IsNull() && !data.Ipv6Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6/enable"))
 	}
 	for i := range data.SslVrfs {
 		keys := [...]string{"vrf-name"}
@@ -908,17 +909,17 @@ func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SslVrfs[i].Shutdown.IsNull() && !data.SslVrfs[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssl/vrfs/vrf%v/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", data.getPath(), keyString), "shutdown"))
 		}
 	}
 	if !data.SslEnable.IsNull() && !data.SslEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ssl", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ssl"))
 	}
 	if !data.TtyEnable.IsNull() && !data.TtyEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tty", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tty"))
 	}
 	if !data.Enable.IsNull() && !data.Enable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "enable"))
 	}
 	return emptyLeafsDelete
 }
@@ -947,25 +948,25 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context, version string) []stri
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.SessionTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/timeout"))
 	}
 	if !data.ThrottleMemory.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle/memory", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle/memory"))
 	}
 	if !data.ThrottleProcessRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/throttle/process-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "throttle/process-rate"))
 	}
 	if !data.IterationSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/iteration/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "iteration/size"))
 	}
 	if !data.StreamingSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/streaming/on/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "streaming/on/size"))
 	}
 	if !data.Ipv4Disable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/disable"))
 	}
 	if !data.Ipv6Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/enable"))
 	}
 	for i := range data.SslVrfs {
 		keys := [...]string{"vrf-name"}
@@ -986,43 +987,43 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context, version string) []stri
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.SslSessionTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/session/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/session/timeout"))
 	}
 	if !data.SslThrottleMemory.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/throttle/memory", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/throttle/memory"))
 	}
 	if !data.SslThrottleProcessRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/throttle/process-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/throttle/process-rate"))
 	}
 	if !data.SslIterationSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/iteration/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/iteration/size"))
 	}
 	if !data.SslStreamingSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/streaming/on/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/streaming/on/size"))
 	}
 	if !data.SslEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl"))
 	}
 	if !data.TtySessionTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty/session/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty/session/timeout"))
 	}
 	if !data.TtyThrottleMemory.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty/throttle/memory", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty/throttle/memory"))
 	}
 	if !data.TtyThrottleProcessRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty/throttle/process-rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty/throttle/process-rate"))
 	}
 	if !data.TtyIterationSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty/iteration/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty/iteration/size"))
 	}
 	if !data.TtyStreamingSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty/streaming/on/size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty/streaming/on/size"))
 	}
 	if !data.TtyEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tty", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tty"))
 	}
 	if !data.Enable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "enable"))
 	}
 	return deletePaths
 }

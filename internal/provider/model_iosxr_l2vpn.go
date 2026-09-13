@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1335,85 +1336,85 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string)
 func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.SnmpMibPseudowireStatistics.IsNull() && data.SnmpMibPseudowireStatistics.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "snmp/mib/pseudowire/statistics"))
 	}
 	if !state.SnmpMibInterfaceFormatExternal.IsNull() && data.SnmpMibInterfaceFormatExternal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/snmp/mib/interface/format/external", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "snmp/mib/interface/format/external"))
 	}
 	if !state.PwRoutingBgpRdIpv4AddressAssignedNumber.IsNull() && data.PwRoutingBgpRdIpv4AddressAssignedNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/ipv4-address-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !state.PwRoutingBgpRdIpv4Address.IsNull() && data.PwRoutingBgpRdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/ipv4-address"))
 	}
 	if !state.PwRoutingBgpRdFourByteAsAssignedNumber.IsNull() && data.PwRoutingBgpRdFourByteAsAssignedNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/four-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !state.PwRoutingBgpRdFourByteAsNumber.IsNull() && data.PwRoutingBgpRdFourByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/four-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/four-byte-as-number"))
 	}
 	if !state.PwRoutingBgpRdTwoByteAsAssignedNumber.IsNull() && data.PwRoutingBgpRdTwoByteAsAssignedNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/two-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !state.PwRoutingBgpRdTwoByteAsNumber.IsNull() && data.PwRoutingBgpRdTwoByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/bgp/rd/two-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/bgp/rd/two-byte-as-number"))
 	}
 	if !state.PwRoutingGlobalId.IsNull() && data.PwRoutingGlobalId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-routing/global-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-routing/global-id"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpMtuMismatchIgnore.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpMtuMismatchIgnore.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore"))
 	}
 	if !state.LoggingPwheReplicationDisable.IsNull() && data.LoggingPwheReplicationDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/pwhe-replication/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/pwhe-replication/disable"))
 	}
 	if !state.LoggingNsr.IsNull() && data.LoggingNsr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/nsr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/nsr"))
 	}
 	if !state.LoggingVfi.IsNull() && data.LoggingVfi.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/vfi", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/vfi"))
 	}
 	if !state.LoggingBridgeDomain.IsNull() && data.LoggingBridgeDomain.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/bridge-domain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/bridge-domain"))
 	}
 	if !state.LoggingPseudowire.IsNull() && data.LoggingPseudowire.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/pseudowire", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/pseudowire"))
 	}
 	if !state.MacLimitThreshold.IsNull() && data.MacLimitThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/threshold"))
 	}
 	if !state.NeighborsAllLdpFlap.IsNull() && data.NeighborsAllLdpFlap.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/all/ldp/flap", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "neighbors/all/ldp/flap"))
 	}
 	if !state.PwGrouping.IsNull() && data.PwGrouping.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-grouping", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-grouping"))
 	}
 	if !state.TcnPropagation.IsNull() && data.TcnPropagation.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/tcn-propagation", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "tcn-propagation"))
 	}
 	if !state.PwOamRefreshTransmit.IsNull() && data.PwOamRefreshTransmit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-oam/refresh/transmit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-oam/refresh/transmit"))
 	}
 	if !state.CapabilityHighMode.IsNull() && data.CapabilityHighMode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/capability/high-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "capability/high-mode"))
 	}
 	if !state.CapabilitySingleMode.IsNull() && data.CapabilitySingleMode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/capability/single-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "capability/single-mode"))
 	}
 	if !state.LoadBalancingFlowSrcDstIp.IsNull() && data.LoadBalancingFlowSrcDstIp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/flow/src-dst-ip", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/flow/src-dst-ip"))
 	}
 	if !state.LoadBalancingFlowSrcDstMac.IsNull() && data.LoadBalancingFlowSrcDstMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/load-balancing/flow/src-dst-mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "load-balancing/flow/src-dst-mac"))
 	}
 	if !state.PwStatusDisable.IsNull() && data.PwStatusDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pw-status/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pw-status/disable"))
 	}
 	if !state.IgnoreMtuMismatchAd.IsNull() && data.IgnoreMtuMismatchAd.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ignore-mtu-mismatch-ad", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ignore-mtu-mismatch-ad"))
 	}
 	if !state.IgnoreMtuMismatch.IsNull() && data.IgnoreMtuMismatch.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ignore-mtu-mismatch", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ignore-mtu-mismatch"))
 	}
 	for i := range state.FlexibleXconnectServiceVlanAwareEvis {
 		keys := [...]string{"vpn-id"}
@@ -1595,7 +1596,7 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 			}
 			if found {
 				if !state.RedundancyIccpGroups[i].MultiHomingNodeId.IsNull() && data.RedundancyIccpGroups[j].MultiHomingNodeId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/multi-homing/node-id", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v", state.getPath(), keyString), "multi-homing/node-id"))
 				}
 				for ci := range state.RedundancyIccpGroups[i].Interfaces {
 					ckeys := [...]string{"interface-name"}
@@ -1621,16 +1622,16 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 						}
 						if found {
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].RecoveryDelay.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].RecoveryDelay.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v/recovery/delay", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "recovery/delay"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].MacFlushStpTcn.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v/mac-flush/stp-tcn", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "mac-flush/stp-tcn"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].SecondaryVlan.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v/secondary/vlan", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "secondary/vlan"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].PrimaryVlan.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v/primary/vlan", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "primary/vlan"))
 							}
 							break
 						}
@@ -1647,10 +1648,10 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 		}
 	}
 	if !state.RouterId.IsNull() && data.RouterId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/router-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "router-id"))
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	return deletedItems
 }
@@ -1662,58 +1663,58 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SnmpMibPseudowireStatistics.IsNull() && !data.SnmpMibPseudowireStatistics.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "snmp/mib/pseudowire/statistics"))
 	}
 	if !data.SnmpMibInterfaceFormatExternal.IsNull() && !data.SnmpMibInterfaceFormatExternal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/snmp/mib/interface/format/external", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "snmp/mib/interface/format/external"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpMtuMismatchIgnore.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgpMtuMismatchIgnore.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore"))
 	}
 	if !data.LoggingPwheReplicationDisable.IsNull() && !data.LoggingPwheReplicationDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/pwhe-replication/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/pwhe-replication/disable"))
 	}
 	if !data.LoggingNsr.IsNull() && !data.LoggingNsr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/nsr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/nsr"))
 	}
 	if !data.LoggingVfi.IsNull() && !data.LoggingVfi.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/vfi", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/vfi"))
 	}
 	if !data.LoggingBridgeDomain.IsNull() && !data.LoggingBridgeDomain.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/bridge-domain", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/bridge-domain"))
 	}
 	if !data.LoggingPseudowire.IsNull() && !data.LoggingPseudowire.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/pseudowire", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/pseudowire"))
 	}
 	if !data.NeighborsAllLdpFlap.IsNull() && !data.NeighborsAllLdpFlap.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/all/ldp/flap", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "neighbors/all/ldp/flap"))
 	}
 	if !data.PwGrouping.IsNull() && !data.PwGrouping.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/pw-grouping", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "pw-grouping"))
 	}
 	if !data.TcnPropagation.IsNull() && !data.TcnPropagation.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/tcn-propagation", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "tcn-propagation"))
 	}
 	if !data.CapabilityHighMode.IsNull() && !data.CapabilityHighMode.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/capability/high-mode", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "capability/high-mode"))
 	}
 	if !data.CapabilitySingleMode.IsNull() && !data.CapabilitySingleMode.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/capability/single-mode", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "capability/single-mode"))
 	}
 	if !data.LoadBalancingFlowSrcDstIp.IsNull() && !data.LoadBalancingFlowSrcDstIp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/load-balancing/flow/src-dst-ip", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "load-balancing/flow/src-dst-ip"))
 	}
 	if !data.LoadBalancingFlowSrcDstMac.IsNull() && !data.LoadBalancingFlowSrcDstMac.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/load-balancing/flow/src-dst-mac", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "load-balancing/flow/src-dst-mac"))
 	}
 	if !data.PwStatusDisable.IsNull() && !data.PwStatusDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/pw-status/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "pw-status/disable"))
 	}
 	if !data.IgnoreMtuMismatchAd.IsNull() && !data.IgnoreMtuMismatchAd.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ignore-mtu-mismatch-ad", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ignore-mtu-mismatch-ad"))
 	}
 	if !data.IgnoreMtuMismatch.IsNull() && !data.IgnoreMtuMismatch.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ignore-mtu-mismatch", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ignore-mtu-mismatch"))
 	}
 	for i := range data.FlexibleXconnectServiceVlanAwareEvis {
 		keys := [...]string{"vpn-id"}
@@ -1770,7 +1771,7 @@ func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context, version string) []st
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.IsNull() && !data.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v/mac-flush/stp-tcn", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", data.getPath(), keyString, ckeyString), "mac-flush/stp-tcn"))
 			}
 		}
 	}
@@ -1783,85 +1784,85 @@ func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context, version string) []st
 func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.SnmpMibPseudowireStatistics.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/snmp/mib/pseudowire/statistics", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "snmp/mib/pseudowire/statistics"))
 	}
 	if !data.SnmpMibInterfaceFormatExternal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/snmp/mib/interface/format/external", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "snmp/mib/interface/format/external"))
 	}
 	if !data.PwRoutingBgpRdIpv4AddressAssignedNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/ipv4-address-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !data.PwRoutingBgpRdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/ipv4-address"))
 	}
 	if !data.PwRoutingBgpRdFourByteAsAssignedNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/four-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !data.PwRoutingBgpRdFourByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/four-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/four-byte-as-number"))
 	}
 	if !data.PwRoutingBgpRdTwoByteAsAssignedNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/two-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !data.PwRoutingBgpRdTwoByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/bgp/rd/two-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/bgp/rd/two-byte-as-number"))
 	}
 	if !data.PwRoutingGlobalId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-routing/global-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-routing/global-id"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpMtuMismatchIgnore.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/mtu/mismatch/ignore"))
 	}
 	if !data.LoggingPwheReplicationDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/pwhe-replication/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/pwhe-replication/disable"))
 	}
 	if !data.LoggingNsr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/nsr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/nsr"))
 	}
 	if !data.LoggingVfi.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/vfi", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/vfi"))
 	}
 	if !data.LoggingBridgeDomain.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/bridge-domain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/bridge-domain"))
 	}
 	if !data.LoggingPseudowire.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/pseudowire", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/pseudowire"))
 	}
 	if !data.MacLimitThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/threshold"))
 	}
 	if !data.NeighborsAllLdpFlap.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/all/ldp/flap", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "neighbors/all/ldp/flap"))
 	}
 	if !data.PwGrouping.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-grouping", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-grouping"))
 	}
 	if !data.TcnPropagation.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/tcn-propagation", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "tcn-propagation"))
 	}
 	if !data.PwOamRefreshTransmit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-oam/refresh/transmit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-oam/refresh/transmit"))
 	}
 	if !data.CapabilityHighMode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/capability/high-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "capability/high-mode"))
 	}
 	if !data.CapabilitySingleMode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/capability/single-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "capability/single-mode"))
 	}
 	if !data.LoadBalancingFlowSrcDstIp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/flow/src-dst-ip", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/flow/src-dst-ip"))
 	}
 	if !data.LoadBalancingFlowSrcDstMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/load-balancing/flow/src-dst-mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "load-balancing/flow/src-dst-mac"))
 	}
 	if !data.PwStatusDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pw-status/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pw-status/disable"))
 	}
 	if !data.IgnoreMtuMismatchAd.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ignore-mtu-mismatch-ad", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ignore-mtu-mismatch-ad"))
 	}
 	if !data.IgnoreMtuMismatch.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ignore-mtu-mismatch", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ignore-mtu-mismatch"))
 	}
 	for i := range data.FlexibleXconnectServiceVlanAwareEvis {
 		keys := [...]string{"vpn-id"}
@@ -1918,10 +1919,10 @@ func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/redundancy/iccp/groups/group%v", data.getPath(), keyString))
 	}
 	if !data.RouterId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/router-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "router-id"))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	return deletePaths
 }

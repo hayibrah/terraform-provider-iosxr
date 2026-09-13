@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -1177,187 +1178,187 @@ func (data *RSVPInterfaceData) fromBody(ctx context.Context, res []byte, version
 func (data *RSVPInterface) getDeletedItems(ctx context.Context, state RSVPInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AuthenticationLifeTime.IsNull() && data.AuthenticationLifeTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/life-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/life-time"))
 	}
 	if !state.AuthenticationWindowSize.IsNull() && data.AuthenticationWindowSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/window-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/window-size"))
 	}
 	if !state.AuthenticationKeyChain.IsNull() && data.AuthenticationKeyChain.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/key-source/key-chain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/key-source/key-chain"))
 	}
 	if !state.SignallingHelloGracefulRestartInterfaceBased.IsNull() && data.SignallingHelloGracefulRestartInterfaceBased.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/hello/graceful-restart/interface-based", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/hello/graceful-restart/interface-based"))
 	}
 	if !state.SignallingRefreshReductionBundleMaxSize.IsNull() && data.SignallingRefreshReductionBundleMaxSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/bundle-max-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/bundle-max-size"))
 	}
 	if !state.SignallingRefreshReductionSummaryMaxSize.IsNull() && data.SignallingRefreshReductionSummaryMaxSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/summary/max-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/summary/max-size"))
 	}
 	if !state.SignallingRefreshReductionReliableSummaryRefresh.IsNull() && data.SignallingRefreshReductionReliableSummaryRefresh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/summary-refresh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/reliable/summary-refresh"))
 	}
 	if !state.SignallingRefreshReductionReliableRetransmitQueueDepth.IsNull() && data.SignallingRefreshReductionReliableRetransmitQueueDepth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/retransmit-queue-depth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/reliable/retransmit-queue-depth"))
 	}
 	if !state.SignallingRefreshReductionReliableRetransmitTime.IsNull() && data.SignallingRefreshReductionReliableRetransmitTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/retransmit-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/reliable/retransmit-time"))
 	}
 	if !state.SignallingRefreshReductionReliableAckMaxSize.IsNull() && data.SignallingRefreshReductionReliableAckMaxSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/ack-max-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/reliable/ack-max-size"))
 	}
 	if !state.SignallingRefreshReductionReliableAckHoldTime.IsNull() && data.SignallingRefreshReductionReliableAckHoldTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/ack-hold-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/reliable/ack-hold-time"))
 	}
 	if !state.SignallingRefreshReductionDisable.IsNull() && data.SignallingRefreshReductionDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/reduction/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/reduction/disable"))
 	}
 	if !state.SignallingRefreshOobMissed.IsNull() && data.SignallingRefreshOobMissed.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/out-of-band/missed", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/out-of-band/missed"))
 	}
 	if !state.SignallingRefreshOobInterval.IsNull() && data.SignallingRefreshOobInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/out-of-band/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/out-of-band/interval"))
 	}
 	if !state.SignallingRefreshMissed.IsNull() && data.SignallingRefreshMissed.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/missed", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/missed"))
 	}
 	if !state.SignallingRefreshInterval.IsNull() && data.SignallingRefreshInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/refresh/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/refresh/interval"))
 	}
 	if !state.SignallingRateLimitInterval.IsNull() && data.SignallingRateLimitInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/rate-limit/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/rate-limit/interval"))
 	}
 	if !state.SignallingRateLimitRate.IsNull() && data.SignallingRateLimitRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/rate-limit/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/rate-limit/rate"))
 	}
 	if !state.SignallingRateLimitEnable.IsNull() && data.SignallingRateLimitEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/rate-limit/enable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/rate-limit/enable"))
 	}
 	if !state.SignallingDscp.IsNull() && data.SignallingDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/dscp"))
 	}
 	if !state.BandwidthMamPercentageBc1Total.IsNull() && data.BandwidthMamPercentageBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !state.BandwidthMamPercentageBc0Total.IsNull() && data.BandwidthMamPercentageBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !state.BandwidthMamPercentageFlow.IsNull() && data.BandwidthMamPercentageFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !state.BandwidthMamPercentageTotal.IsNull() && data.BandwidthMamPercentageTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !state.BandwidthMamBc1Total.IsNull() && data.BandwidthMamBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !state.BandwidthMamBc0Total.IsNull() && data.BandwidthMamBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !state.BandwidthMamFlow.IsNull() && data.BandwidthMamFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !state.BandwidthMamTotal.IsNull() && data.BandwidthMamTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !state.BandwidthRdmBc1Total.IsNull() && data.BandwidthRdmBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/bc0/bc1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/bc0/bc1"))
 	}
 	if !state.BandwidthRdmBc0Flow.IsNull() && data.BandwidthRdmBc0Flow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/bc0"))
 	}
 	if !state.BandwidthRdmBc0Total.IsNull() && data.BandwidthRdmBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/bc0"))
 	}
 	if !state.BandwidthRdmSubPoolTotal.IsNull() && data.BandwidthRdmSubPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/sub-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/sub-pool"))
 	}
 	if !state.BandwidthRdmGlobalPoolFlow.IsNull() && data.BandwidthRdmGlobalPoolFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/global-pool"))
 	}
 	if !state.BandwidthRdmGlobalPoolTotal.IsNull() && data.BandwidthRdmGlobalPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/global-pool"))
 	}
 	if !state.BandwidthRdmFlow.IsNull() && data.BandwidthRdmFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/largest-reservable-flow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/largest-reservable-flow"))
 	}
 	if !state.BandwidthRdmTotal.IsNull() && data.BandwidthRdmTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/total-reservable-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/total-reservable-bandwidth"))
 	}
 	if !state.BandwidthRdmPercentageBc1Total.IsNull() && data.BandwidthRdmPercentageBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0/bc1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/bc0/bc1"))
 	}
 	if !state.BandwidthRdmPercentageBc0Flow.IsNull() && data.BandwidthRdmPercentageBc0Flow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/bc0"))
 	}
 	if !state.BandwidthRdmPercentageBc0Total.IsNull() && data.BandwidthRdmPercentageBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/bc0"))
 	}
 	if !state.BandwidthRdmPercentageSubPoolTotal.IsNull() && data.BandwidthRdmPercentageSubPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/sub-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/sub-pool"))
 	}
 	if !state.BandwidthRdmPercentageGlobalPoolFlow.IsNull() && data.BandwidthRdmPercentageGlobalPoolFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/global-pool"))
 	}
 	if !state.BandwidthRdmPercentageGlobalPoolTotal.IsNull() && data.BandwidthRdmPercentageGlobalPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/global-pool"))
 	}
 	if !state.BandwidthRdmPercentageFlow.IsNull() && data.BandwidthRdmPercentageFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/largest-reservable-flow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/largest-reservable-flow"))
 	}
 	if !state.BandwidthRdmPercentageTotal.IsNull() && data.BandwidthRdmPercentageTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/total-reservable-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/total-reservable-bandwidth"))
 	}
 	if !state.BandwidthPercentageBc1Total.IsNull() && data.BandwidthPercentageBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/bc0/bc1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/bc0/bc1"))
 	}
 	if !state.BandwidthPercentageBc0Flow.IsNull() && data.BandwidthPercentageBc0Flow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/bc0"))
 	}
 	if !state.BandwidthPercentageBc0Total.IsNull() && data.BandwidthPercentageBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/bc0"))
 	}
 	if !state.BandwidthPercentageSubPoolTotal.IsNull() && data.BandwidthPercentageSubPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/sub-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/sub-pool"))
 	}
 	if !state.BandwidthPercentageGlobalPoolFlow.IsNull() && data.BandwidthPercentageGlobalPoolFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/global-pool"))
 	}
 	if !state.BandwidthPercentageGlobalPoolTotal.IsNull() && data.BandwidthPercentageGlobalPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/global-pool"))
 	}
 	if !state.BandwidthPercentageFlow.IsNull() && data.BandwidthPercentageFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/largest-reservable-flow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/largest-reservable-flow"))
 	}
 	if !state.BandwidthPercentageTotal.IsNull() && data.BandwidthPercentageTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/percentage/total-reservable-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/percentage/total-reservable-bandwidth"))
 	}
 	if !state.BandwidthBc1Total.IsNull() && data.BandwidthBc1Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/bc0/bc1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/bc0/bc1"))
 	}
 	if !state.BandwidthBc0Flow.IsNull() && data.BandwidthBc0Flow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/bc0"))
 	}
 	if !state.BandwidthBc0Total.IsNull() && data.BandwidthBc0Total.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/bc0"))
 	}
 	if !state.BandwidthSubPoolTotal.IsNull() && data.BandwidthSubPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/sub-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/sub-pool"))
 	}
 	if !state.BandwidthGlobalPoolFlow.IsNull() && data.BandwidthGlobalPoolFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/global-pool"))
 	}
 	if !state.BandwidthGlobalPoolTotal.IsNull() && data.BandwidthGlobalPoolTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/global-pool", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/global-pool"))
 	}
 	if !state.BandwidthFlow.IsNull() && data.BandwidthFlow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/largest-reservable-flow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/largest-reservable-flow"))
 	}
 	if !state.BandwidthTotal.IsNull() && data.BandwidthTotal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/total-reservable-bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/total-reservable-bandwidth"))
 	}
 	if !state.BandwidthDefault.IsNull() && data.BandwidthDefault.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/default", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/default"))
 	}
 	return deletedItems
 }
@@ -1369,19 +1370,19 @@ func (data *RSVPInterface) getDeletedItems(ctx context.Context, state RSVPInterf
 func (data *RSVPInterface) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.SignallingHelloGracefulRestartInterfaceBased.IsNull() && !data.SignallingHelloGracefulRestartInterfaceBased.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/hello/graceful-restart/interface-based", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/hello/graceful-restart/interface-based"))
 	}
 	if !data.SignallingRefreshReductionReliableSummaryRefresh.IsNull() && !data.SignallingRefreshReductionReliableSummaryRefresh.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/summary-refresh", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/summary-refresh"))
 	}
 	if !data.SignallingRefreshReductionDisable.IsNull() && !data.SignallingRefreshReductionDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/refresh/reduction/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/refresh/reduction/disable"))
 	}
 	if !data.SignallingRateLimitEnable.IsNull() && !data.SignallingRateLimitEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/rate-limit/enable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/rate-limit/enable"))
 	}
 	if !data.BandwidthDefault.IsNull() && !data.BandwidthDefault.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bandwidth/default", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bandwidth/default"))
 	}
 	return emptyLeafsDelete
 }
@@ -1392,187 +1393,187 @@ func (data *RSVPInterface) getEmptyLeafsDelete(ctx context.Context, version stri
 func (data *RSVPInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AuthenticationLifeTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/life-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/life-time"))
 	}
 	if !data.AuthenticationWindowSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/window-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/window-size"))
 	}
 	if !data.AuthenticationKeyChain.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/key-source/key-chain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/key-source/key-chain"))
 	}
 	if !data.SignallingHelloGracefulRestartInterfaceBased.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/hello/graceful-restart/interface-based", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/hello/graceful-restart/interface-based"))
 	}
 	if !data.SignallingRefreshReductionBundleMaxSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/bundle-max-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/bundle-max-size"))
 	}
 	if !data.SignallingRefreshReductionSummaryMaxSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/summary/max-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/summary/max-size"))
 	}
 	if !data.SignallingRefreshReductionReliableSummaryRefresh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/summary-refresh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/summary-refresh"))
 	}
 	if !data.SignallingRefreshReductionReliableRetransmitQueueDepth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/retransmit-queue-depth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/retransmit-queue-depth"))
 	}
 	if !data.SignallingRefreshReductionReliableRetransmitTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/retransmit-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/retransmit-time"))
 	}
 	if !data.SignallingRefreshReductionReliableAckMaxSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/ack-max-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/ack-max-size"))
 	}
 	if !data.SignallingRefreshReductionReliableAckHoldTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/reliable/ack-hold-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/reliable/ack-hold-time"))
 	}
 	if !data.SignallingRefreshReductionDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/reduction/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/reduction/disable"))
 	}
 	if !data.SignallingRefreshOobMissed.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/out-of-band/missed", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/out-of-band/missed"))
 	}
 	if !data.SignallingRefreshOobInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/out-of-band/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/out-of-band/interval"))
 	}
 	if !data.SignallingRefreshMissed.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/missed", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/missed"))
 	}
 	if !data.SignallingRefreshInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/refresh/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/refresh/interval"))
 	}
 	if !data.SignallingRateLimitInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/rate-limit/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/rate-limit/interval"))
 	}
 	if !data.SignallingRateLimitRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/rate-limit/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/rate-limit/rate"))
 	}
 	if !data.SignallingRateLimitEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/rate-limit/enable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/rate-limit/enable"))
 	}
 	if !data.SignallingDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/dscp"))
 	}
 	if !data.BandwidthMamPercentageBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !data.BandwidthMamPercentageBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !data.BandwidthMamPercentageFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !data.BandwidthMamPercentageTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable-bw"))
 	}
 	if !data.BandwidthMamBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !data.BandwidthMamBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !data.BandwidthMamFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !data.BandwidthMamTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/max-reservable-bw", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/max-reservable-bw"))
 	}
 	if !data.BandwidthRdmBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/bc0/bc1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/bc0/bc1"))
 	}
 	if !data.BandwidthRdmBc0Flow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/bc0"))
 	}
 	if !data.BandwidthRdmBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/bc0"))
 	}
 	if !data.BandwidthRdmSubPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/sub-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/sub-pool"))
 	}
 	if !data.BandwidthRdmGlobalPoolFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/global-pool"))
 	}
 	if !data.BandwidthRdmGlobalPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/global-pool"))
 	}
 	if !data.BandwidthRdmFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/largest-reservable-flow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/largest-reservable-flow"))
 	}
 	if !data.BandwidthRdmTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/total-reservable-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/total-reservable-bandwidth"))
 	}
 	if !data.BandwidthRdmPercentageBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0/bc1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/bc0/bc1"))
 	}
 	if !data.BandwidthRdmPercentageBc0Flow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/bc0"))
 	}
 	if !data.BandwidthRdmPercentageBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/bc0"))
 	}
 	if !data.BandwidthRdmPercentageSubPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/sub-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/sub-pool"))
 	}
 	if !data.BandwidthRdmPercentageGlobalPoolFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/global-pool"))
 	}
 	if !data.BandwidthRdmPercentageGlobalPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/global-pool"))
 	}
 	if !data.BandwidthRdmPercentageFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/largest-reservable-flow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/largest-reservable-flow"))
 	}
 	if !data.BandwidthRdmPercentageTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/total-reservable-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/total-reservable-bandwidth"))
 	}
 	if !data.BandwidthPercentageBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/bc0/bc1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/bc0/bc1"))
 	}
 	if !data.BandwidthPercentageBc0Flow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/bc0"))
 	}
 	if !data.BandwidthPercentageBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/bc0"))
 	}
 	if !data.BandwidthPercentageSubPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/sub-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/sub-pool"))
 	}
 	if !data.BandwidthPercentageGlobalPoolFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/global-pool"))
 	}
 	if !data.BandwidthPercentageGlobalPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/global-pool"))
 	}
 	if !data.BandwidthPercentageFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/largest-reservable-flow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/largest-reservable-flow"))
 	}
 	if !data.BandwidthPercentageTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/percentage/total-reservable-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/percentage/total-reservable-bandwidth"))
 	}
 	if !data.BandwidthBc1Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/bc0/bc1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/bc0/bc1"))
 	}
 	if !data.BandwidthBc0Flow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/bc0"))
 	}
 	if !data.BandwidthBc0Total.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/bc0"))
 	}
 	if !data.BandwidthSubPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/sub-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/sub-pool"))
 	}
 	if !data.BandwidthGlobalPoolFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/global-pool"))
 	}
 	if !data.BandwidthGlobalPoolTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/global-pool", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/global-pool"))
 	}
 	if !data.BandwidthFlow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/largest-reservable-flow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/largest-reservable-flow"))
 	}
 	if !data.BandwidthTotal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/total-reservable-bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/total-reservable-bandwidth"))
 	}
 	if !data.BandwidthDefault.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/default", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/default"))
 	}
 	return deletePaths
 }

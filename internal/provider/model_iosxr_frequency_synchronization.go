@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -395,34 +395,34 @@ func (data *FrequencySynchronizationData) fromBody(ctx context.Context, res []by
 func (data *FrequencySynchronization) getDeletedItems(ctx context.Context, state FrequencySynchronization, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ClockIdentityMacAddress.IsNull() && data.ClockIdentityMacAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock-identity/mac-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock-identity/mac-address"))
 	}
 	if !state.LogSelectionErrors.IsNull() && data.LogSelectionErrors.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/selection/errors", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log/selection/errors"))
 	}
 	if !state.LogSelectionChanges.IsNull() && data.LogSelectionChanges.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/selection/changes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log/selection/changes"))
 	}
 	if !state.SystemTimingModeClockOnly.IsNull() && data.SystemTimingModeClockOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/system/timing-mode/clock-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "system/timing-mode/clock-only"))
 	}
 	if !state.SystemTimingModeLineOnly.IsNull() && data.SystemTimingModeLineOnly.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/system/timing-mode/line-only", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "system/timing-mode/line-only"))
 	}
 	if !state.ClockInterfaceTimingModeIndependent.IsNull() && data.ClockInterfaceTimingModeIndependent.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock-interface/timing-mode/independent", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock-interface/timing-mode/independent"))
 	}
 	if !state.ClockInterfaceTimingModeSystem.IsNull() && data.ClockInterfaceTimingModeSystem.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock-interface/timing-mode/system", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock-interface/timing-mode/system"))
 	}
 	if !state.QualityItuTOptionTwoGenerationTwo.IsNull() && data.QualityItuTOptionTwoGenerationTwo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/quality/itu-t/option/two/generation/two", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "quality/itu-t/option/two/generation/two"))
 	}
 	if !state.QualityItuTOptionTwoGenerationOne.IsNull() && data.QualityItuTOptionTwoGenerationOne.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/quality/itu-t/option/two/generation/one", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "quality/itu-t/option/two/generation/one"))
 	}
 	if !state.QualityItuTOptionOne.IsNull() && data.QualityItuTOptionOne.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/quality/itu-t/option/one", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "quality/itu-t/option/one"))
 	}
 	return deletedItems
 }
@@ -434,31 +434,31 @@ func (data *FrequencySynchronization) getDeletedItems(ctx context.Context, state
 func (data *FrequencySynchronization) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LogSelectionErrors.IsNull() && !data.LogSelectionErrors.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/selection/errors", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log/selection/errors"))
 	}
 	if !data.LogSelectionChanges.IsNull() && !data.LogSelectionChanges.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/selection/changes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log/selection/changes"))
 	}
 	if !data.SystemTimingModeClockOnly.IsNull() && !data.SystemTimingModeClockOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/timing-mode/clock-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "system/timing-mode/clock-only"))
 	}
 	if !data.SystemTimingModeLineOnly.IsNull() && !data.SystemTimingModeLineOnly.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/timing-mode/line-only", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "system/timing-mode/line-only"))
 	}
 	if !data.ClockInterfaceTimingModeIndependent.IsNull() && !data.ClockInterfaceTimingModeIndependent.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock-interface/timing-mode/independent", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock-interface/timing-mode/independent"))
 	}
 	if !data.ClockInterfaceTimingModeSystem.IsNull() && !data.ClockInterfaceTimingModeSystem.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock-interface/timing-mode/system", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock-interface/timing-mode/system"))
 	}
 	if !data.QualityItuTOptionTwoGenerationTwo.IsNull() && !data.QualityItuTOptionTwoGenerationTwo.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/quality/itu-t/option/two/generation/two", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "quality/itu-t/option/two/generation/two"))
 	}
 	if !data.QualityItuTOptionTwoGenerationOne.IsNull() && !data.QualityItuTOptionTwoGenerationOne.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/quality/itu-t/option/two/generation/one", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "quality/itu-t/option/two/generation/one"))
 	}
 	if !data.QualityItuTOptionOne.IsNull() && !data.QualityItuTOptionOne.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/quality/itu-t/option/one", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "quality/itu-t/option/one"))
 	}
 	return emptyLeafsDelete
 }
@@ -469,34 +469,34 @@ func (data *FrequencySynchronization) getEmptyLeafsDelete(ctx context.Context, v
 func (data *FrequencySynchronization) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ClockIdentityMacAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock-identity/mac-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock-identity/mac-address"))
 	}
 	if !data.LogSelectionErrors.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/selection/errors", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log/selection/errors"))
 	}
 	if !data.LogSelectionChanges.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/selection/changes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log/selection/changes"))
 	}
 	if !data.SystemTimingModeClockOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/system/timing-mode/clock-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "system/timing-mode/clock-only"))
 	}
 	if !data.SystemTimingModeLineOnly.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/system/timing-mode/line-only", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "system/timing-mode/line-only"))
 	}
 	if !data.ClockInterfaceTimingModeIndependent.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock-interface/timing-mode/independent", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock-interface/timing-mode/independent"))
 	}
 	if !data.ClockInterfaceTimingModeSystem.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock-interface/timing-mode/system", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock-interface/timing-mode/system"))
 	}
 	if !data.QualityItuTOptionTwoGenerationTwo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/quality/itu-t/option/two/generation/two", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "quality/itu-t/option/two/generation/two"))
 	}
 	if !data.QualityItuTOptionTwoGenerationOne.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/quality/itu-t/option/two/generation/one", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "quality/itu-t/option/two/generation/one"))
 	}
 	if !data.QualityItuTOptionOne.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/quality/itu-t/option/one", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "quality/itu-t/option/one"))
 	}
 	return deletePaths
 }

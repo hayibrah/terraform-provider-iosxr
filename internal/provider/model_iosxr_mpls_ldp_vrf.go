@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1486,22 +1487,22 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() && data.Interfaces[j].AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv6/discovery/transport-address/ip-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv6/discovery/transport-address/ip-address"))
 				}
 				if !state.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressInterface.IsNull() && data.Interfaces[j].AddressFamilyIpv6DiscoveryTransportAddressInterface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv6/discovery/transport-address/interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv6/discovery/transport-address/interface"))
 				}
 				if !state.Interfaces[i].AddressFamilyIpv6.IsNull() && data.Interfaces[j].AddressFamilyIpv6.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv6", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv6"))
 				}
 				if !state.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() && data.Interfaces[j].AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv4/discovery/transport-address/ip-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv4/discovery/transport-address/ip-address"))
 				}
 				if !state.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressInterface.IsNull() && data.Interfaces[j].AddressFamilyIpv4DiscoveryTransportAddressInterface.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv4/discovery/transport-address/interface", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv4/discovery/transport-address/interface"))
 				}
 				if !state.Interfaces[i].AddressFamilyIpv4.IsNull() && data.Interfaces[j].AddressFamilyIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "address-family/ipv4"))
 				}
 				break
 			}
@@ -1540,7 +1541,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].For.IsNull() && data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[j].For.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/remote/accept/from/neighbor%v/for", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-family/ipv6/label/remote/accept/from/neighbor%v", state.getPath(), keyString), "for"))
 				}
 				break
 			}
@@ -1550,7 +1551,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 		}
 	}
 	if !state.AddressFamilyIpv6LabelLocalAdvertiseDisable.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/advertise/disable"))
 	}
 	for i := range state.AddressFamilyIpv6LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1612,7 +1613,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].For.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[j].For.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/to/neighbor%v/for", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/to/neighbor%v", state.getPath(), keyString), "for"))
 				}
 				break
 			}
@@ -1622,34 +1623,34 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 		}
 	}
 	if !state.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null/to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/advertise/explicit-null/to"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null/for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/advertise/explicit-null/for"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/advertise/explicit-null"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull.IsNull() && data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/advertise/explicit-null"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor.IsNull() && data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/implicit-null-override/for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/implicit-null-override/for"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalDefaultRoute.IsNull() && data.AddressFamilyIpv6LabelLocalDefaultRoute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/default-route", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/default-route"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalAllocateForHostRoutes.IsNull() && data.AddressFamilyIpv6LabelLocalAllocateForHostRoutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/allocate/for/host-routes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/allocate/for/host-routes"))
 	}
 	if !state.AddressFamilyIpv6LabelLocalAllocateForAcl.IsNull() && data.AddressFamilyIpv6LabelLocalAllocateForAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/label/local/allocate/for/ip-access-list", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/label/local/allocate/for/ip-access-list"))
 	}
 	if !state.AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() && data.AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/discovery/transport-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6/discovery/transport-address"))
 	}
 	if !state.AddressFamilyIpv6.IsNull() && data.AddressFamilyIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv6"))
 	}
 	for i := range state.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1681,7 +1682,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].For.IsNull() && data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[j].For.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/remote/accept/from/neighbor%v/for", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-family/ipv4/label/remote/accept/from/neighbor%v", state.getPath(), keyString), "for"))
 				}
 				break
 			}
@@ -1691,7 +1692,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 		}
 	}
 	if !state.AddressFamilyIpv4LabelLocalAdvertiseDisable.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/advertise/disable"))
 	}
 	for i := range state.AddressFamilyIpv4LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1753,7 +1754,7 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].For.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[j].For.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/to/neighbor%v/for", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/to/neighbor%v", state.getPath(), keyString), "for"))
 				}
 				break
 			}
@@ -1763,34 +1764,34 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 		}
 	}
 	if !state.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null/to", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/advertise/explicit-null/to"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null/for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/advertise/explicit-null/for"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/advertise/explicit-null"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull.IsNull() && data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/advertise/explicit-null"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor.IsNull() && data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/implicit-null-override/for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/implicit-null-override/for"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalDefaultRoute.IsNull() && data.AddressFamilyIpv4LabelLocalDefaultRoute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/default-route", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/default-route"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalAllocateForHostRoutes.IsNull() && data.AddressFamilyIpv4LabelLocalAllocateForHostRoutes.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/allocate/for/host-routes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/allocate/for/host-routes"))
 	}
 	if !state.AddressFamilyIpv4LabelLocalAllocateForAcl.IsNull() && data.AddressFamilyIpv4LabelLocalAllocateForAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/label/local/allocate/for/ip-access-list", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/label/local/allocate/for/ip-access-list"))
 	}
 	if !state.AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() && data.AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/discovery/transport-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4/discovery/transport-address"))
 	}
 	if !state.AddressFamilyIpv4.IsNull() && data.AddressFamilyIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "address-family/ipv4"))
 	}
 	for i := range state.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1822,10 +1823,10 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 			}
 			if found {
 				if !state.Neighbors[i].PasswordDisable.IsNull() && data.Neighbors[j].PasswordDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/password/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "password/disable"))
 				}
 				if !state.Neighbors[i].PasswordEncrypted.IsNull() && data.Neighbors[j].PasswordEncrypted.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/password/encrypted", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "password/encrypted"))
 				}
 				break
 			}
@@ -1835,16 +1836,16 @@ func (data *MPLSLDPVRF) getDeletedItems(ctx context.Context, state MPLSLDPVRF, v
 		}
 	}
 	if !state.NeighborsPasswordEncrypted.IsNull() && data.NeighborsPasswordEncrypted.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/password/encrypted", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "neighbors/password/encrypted"))
 	}
 	if !state.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() && data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/graceful-restart/helper-peer/maintain-on-local-reset/for", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "graceful-restart/helper-peer/maintain-on-local-reset/for"))
 	}
 	if !state.SessionDownstreamOnDemandWith.IsNull() && data.SessionDownstreamOnDemandWith.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/session/downstream-on-demand/with", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "session/downstream-on-demand/with"))
 	}
 	if !state.RouterId.IsNull() && data.RouterId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/router-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "router-id"))
 	}
 	return deletedItems
 }
@@ -1863,16 +1864,16 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressInterface.IsNull() && !data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv6/discovery/transport-address/interface", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "address-family/ipv6/discovery/transport-address/interface"))
 		}
 		if !data.Interfaces[i].AddressFamilyIpv6.IsNull() && !data.Interfaces[i].AddressFamilyIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv6", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "address-family/ipv6"))
 		}
 		if !data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressInterface.IsNull() && !data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv4/discovery/transport-address/interface", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "address-family/ipv4/discovery/transport-address/interface"))
 		}
 		if !data.Interfaces[i].AddressFamilyIpv4.IsNull() && !data.Interfaces[i].AddressFamilyIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/address-family/ipv4", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "address-family/ipv4"))
 		}
 	}
 	for i := range data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors {
@@ -1884,7 +1885,7 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 		}
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseDisable.IsNull() && !data.AddressFamilyIpv6LabelLocalAdvertiseDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/disable"))
 	}
 	for i := range data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1903,16 +1904,16 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 		}
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull.IsNull() && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalDefaultRoute.IsNull() && !data.AddressFamilyIpv6LabelLocalDefaultRoute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/label/local/default-route", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/label/local/default-route"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAllocateForHostRoutes.IsNull() && !data.AddressFamilyIpv6LabelLocalAllocateForHostRoutes.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6/label/local/allocate/for/host-routes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6/label/local/allocate/for/host-routes"))
 	}
 	if !data.AddressFamilyIpv6.IsNull() && !data.AddressFamilyIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv6"))
 	}
 	for i := range data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1923,7 +1924,7 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 		}
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseDisable.IsNull() && !data.AddressFamilyIpv4LabelLocalAdvertiseDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/disable"))
 	}
 	for i := range data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1942,16 +1943,16 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 		}
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull.IsNull() && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalDefaultRoute.IsNull() && !data.AddressFamilyIpv4LabelLocalDefaultRoute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/label/local/default-route", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/label/local/default-route"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAllocateForHostRoutes.IsNull() && !data.AddressFamilyIpv4LabelLocalAllocateForHostRoutes.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4/label/local/allocate/for/host-routes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4/label/local/allocate/for/host-routes"))
 	}
 	if !data.AddressFamilyIpv4.IsNull() && !data.AddressFamilyIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/address-family/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "address-family/ipv4"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -1961,7 +1962,7 @@ func (data *MPLSLDPVRF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].PasswordDisable.IsNull() && !data.Neighbors[i].PasswordDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/password/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "password/disable"))
 		}
 	}
 	return emptyLeafsDelete
@@ -2012,7 +2013,7 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/remote/accept/from/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/disable"))
 	}
 	for i := range data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -2054,34 +2055,34 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/to/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null/to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/explicit-null/to"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null/for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/explicit-null/for"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/advertise/explicit-null", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/implicit-null-override/for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/implicit-null-override/for"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalDefaultRoute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/default-route", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/default-route"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAllocateForHostRoutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/allocate/for/host-routes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/allocate/for/host-routes"))
 	}
 	if !data.AddressFamilyIpv6LabelLocalAllocateForAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/label/local/allocate/for/ip-access-list", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/label/local/allocate/for/ip-access-list"))
 	}
 	if !data.AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/discovery/transport-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6/discovery/transport-address"))
 	}
 	if !data.AddressFamilyIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv6"))
 	}
 	for i := range data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -2105,7 +2106,7 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/remote/accept/from/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/disable"))
 	}
 	for i := range data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces {
 		keys := [...]string{"interface-name"}
@@ -2147,34 +2148,34 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/to/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null/to", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/explicit-null/to"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null/for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/explicit-null/for"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/advertise/explicit-null", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/advertise/explicit-null"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/implicit-null-override/for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/implicit-null-override/for"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalDefaultRoute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/default-route", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/default-route"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAllocateForHostRoutes.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/allocate/for/host-routes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/allocate/for/host-routes"))
 	}
 	if !data.AddressFamilyIpv4LabelLocalAllocateForAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/label/local/allocate/for/ip-access-list", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/label/local/allocate/for/ip-access-list"))
 	}
 	if !data.AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/discovery/transport-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4/discovery/transport-address"))
 	}
 	if !data.AddressFamilyIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "address-family/ipv4"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address", "label-space-id"}
@@ -2198,16 +2199,16 @@ func (data *MPLSLDPVRF) getDeletePaths(ctx context.Context, version string) []st
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.NeighborsPasswordEncrypted.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/password/encrypted", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "neighbors/password/encrypted"))
 	}
 	if !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/graceful-restart/helper-peer/maintain-on-local-reset/for", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "graceful-restart/helper-peer/maintain-on-local-reset/for"))
 	}
 	if !data.SessionDownstreamOnDemandWith.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/session/downstream-on-demand/with", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/downstream-on-demand/with"))
 	}
 	if !data.RouterId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/router-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "router-id"))
 	}
 	return deletePaths
 }

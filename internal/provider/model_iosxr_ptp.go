@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1566,169 +1567,169 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string) []string {
 	deletedItems := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !state.MonitorSender.IsNull() && data.MonitorSender.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile/monitor-sender", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profiles/profile/monitor-sender"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !state.MonitorReceiver.IsNull() && data.MonitorReceiver.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile/monitor-receiver", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "profiles/profile/monitor-receiver"))
 	}
 	if !state.ClockProfileG82752ClockTypeTTsc.IsNull() && data.ClockProfileG82752ClockTypeTTsc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-tsc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-2/clock-type/t-tsc"))
 	}
 	if !state.ClockProfileG82752ClockTypeTGm.IsNull() && data.ClockProfileG82752ClockTypeTGm.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-gm", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-2/clock-type/t-gm"))
 	}
 	if !state.ClockProfileG82752ClockTypeTBc.IsNull() && data.ClockProfileG82752ClockTypeTBc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-bc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-2/clock-type/t-bc"))
 	}
 	if !state.ClockProfileG82751ClockTypeTTsc.IsNull() && data.ClockProfileG82751ClockTypeTTsc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-tsc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-1/clock-type/t-tsc"))
 	}
 	if !state.ClockProfileG82751ClockTypeTGm.IsNull() && data.ClockProfileG82751ClockTypeTGm.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-gm", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-1/clock-type/t-gm"))
 	}
 	if !state.ClockProfileG82751ClockTypeTBc.IsNull() && data.ClockProfileG82751ClockTypeTBc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-bc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8275-1/clock-type/t-bc"))
 	}
 	if !state.ClockProfileG82651ClockTypeSlave.IsNull() && data.ClockProfileG82651ClockTypeSlave.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !state.ClockProfileG82651ClockTypeMaster.IsNull() && data.ClockProfileG82651ClockTypeMaster.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !state.ClockProfileG82651.IsNull() && data.ClockProfileG82651.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/profile/g-8265-1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/profile/g-8265-1"))
 	}
 	if !state.ClockTimeSourceInternalOscillator.IsNull() && data.ClockTimeSourceInternalOscillator.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/internal-oscillator", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/internal-oscillator"))
 	}
 	if !state.ClockTimeSourceOther.IsNull() && data.ClockTimeSourceOther.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/other", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/other"))
 	}
 	if !state.ClockTimeSourceHandSet.IsNull() && data.ClockTimeSourceHandSet.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/hand-set", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/hand-set"))
 	}
 	if !state.ClockTimeSourceNtp.IsNull() && data.ClockTimeSourceNtp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/ntp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/ntp"))
 	}
 	if !state.ClockTimeSourcePtp.IsNull() && data.ClockTimeSourcePtp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/ptp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/ptp"))
 	}
 	if !state.ClockTimeSourceTerrestrialRadio.IsNull() && data.ClockTimeSourceTerrestrialRadio.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/terrestrial-radio", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/terrestrial-radio"))
 	}
 	if !state.ClockTimeSourceGps.IsNull() && data.ClockTimeSourceGps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/gps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/gps"))
 	}
 	if !state.ClockTimeSourceAtomicClock.IsNull() && data.ClockTimeSourceAtomicClock.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/time-source/atomic-clock", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/time-source/atomic-clock"))
 	}
 	if !state.ClockTimescaleArb.IsNull() && data.ClockTimescaleArb.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/timescale/arb", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/timescale/arb"))
 	}
 	if !state.ClockTimescalePtp.IsNull() && data.ClockTimescalePtp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/timescale/ptp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/timescale/ptp"))
 	}
 	if !state.ClockClockClass.IsNull() && data.ClockClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/clock-class"))
 	}
 	if !state.ClockPriority2.IsNull() && data.ClockPriority2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/priority2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/priority2"))
 	}
 	if !state.ClockPriority1.IsNull() && data.ClockPriority1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/priority1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/priority1"))
 	}
 	if !state.ClockDomain.IsNull() && data.ClockDomain.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/domain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/domain"))
 	}
 	if !state.ClockIdentityEui64.IsNull() && data.ClockIdentityEui64.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/identity/eui-64", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/identity/eui-64"))
 	}
 	if !state.ClockIdentityMacAddressRouter.IsNull() && data.ClockIdentityMacAddressRouter.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/identity/mac-address/router", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/identity/mac-address/router"))
 	}
 	if !state.ClockIdentityMacAddressCustom.IsNull() && data.ClockIdentityMacAddressCustom.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/clock/identity/mac-address/custom", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "clock/identity/mac-address/custom"))
 	}
 	if !state.VirtualPortGmThresholdBreach.IsNull() && data.VirtualPortGmThresholdBreach.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/gm-threshold-breach", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/gm-threshold-breach"))
 	}
 	if !state.VirtualPortLocalPriority.IsNull() && data.VirtualPortLocalPriority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/local-priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/local-priority"))
 	}
 	if !state.VirtualPortOffsetScaledLogVariance.IsNull() && data.VirtualPortOffsetScaledLogVariance.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/offset-scaled-log-variance", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/offset-scaled-log-variance"))
 	}
 	if !state.VirtualPortClockAccuracy.IsNull() && data.VirtualPortClockAccuracy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/clock-accuracy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/clock-accuracy"))
 	}
 	if !state.VirtualPortClockClass.IsNull() && data.VirtualPortClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/clock-class"))
 	}
 	if !state.VirtualPortPriority2.IsNull() && data.VirtualPortPriority2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/priority2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/priority2"))
 	}
 	if !state.VirtualPortPriority1.IsNull() && data.VirtualPortPriority1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port/priority1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port/priority1"))
 	}
 	if !state.VirtualPort.IsNull() && data.VirtualPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "virtual-port"))
 	}
 	if !state.LogServoEvents.IsNull() && data.LogServoEvents.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events"))
 	}
 	if !state.LogBestPrimaryClockChanges.IsNull() && data.LogBestPrimaryClockChanges.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/log/best-primary-clock/changes", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "log/best-primary-clock/changes"))
 	}
 	if !state.PerformanceMonitoring.IsNull() && data.PerformanceMonitoring.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-monitoring", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-monitoring"))
 	}
 	if !state.DetectPtsfUnusable.IsNull() && data.DetectPtsfUnusable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/detect-ptsf-unusable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "detect-ptsf-unusable"))
 	}
 	if !state.PhaseDifferenceThresholdBreach.IsNull() && data.PhaseDifferenceThresholdBreach.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/phase-difference-threshold-breach", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "phase-difference-threshold-breach"))
 	}
 	if !state.Apts.IsNull() && data.Apts.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/apts", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "apts"))
 	}
 	if !state.HoldoverSpecTraceableOverride.IsNull() && data.HoldoverSpecTraceableOverride.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holdover-spec-traceable-override", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holdover-spec-traceable-override"))
 	}
 	if !state.HoldoverSpecDuration.IsNull() && data.HoldoverSpecDuration.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holdover-spec-duration", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holdover-spec-duration"))
 	}
 	if !state.HoldoverSpecClockClass.IsNull() && data.HoldoverSpecClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/holdover-spec-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "holdover-spec-clock-class"))
 	}
 	if !state.ServoSlowTracking.IsNull() && data.ServoSlowTracking.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/servo-slow-tracking", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "servo-slow-tracking"))
 	}
 	if !state.NetworkTypeHighPdv.IsNull() && data.NetworkTypeHighPdv.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/network-type/high-pdv", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "network-type/high-pdv"))
 	}
 	if !state.PhysicalLayerFrequency.IsNull() && data.PhysicalLayerFrequency.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/physical-layer-frequency", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "physical-layer-frequency"))
 	}
 	if !state.TransparentClockDomainAll.IsNull() && data.TransparentClockDomainAll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transparent-clock/domain/all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transparent-clock/domain/all"))
 	}
 	if !state.DoubleFailureClockClass.IsNull() && data.DoubleFailureClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/double-failure-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "double-failure-clock-class"))
 	}
 	if !state.FreerunClockClass.IsNull() && data.FreerunClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/freerun-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "freerun-clock-class"))
 	}
 	if !state.StartupClockClass.IsNull() && data.StartupClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/startup-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "startup-clock-class"))
 	}
 	if !state.UncalibratedTraceableOverride.IsNull() && data.UncalibratedTraceableOverride.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/uncalibrated-traceable-override", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "uncalibrated-traceable-override"))
 	}
 	if !state.UncalibratedClockClassUnlessFromHoldover.IsNull() && data.UncalibratedClockClassUnlessFromHoldover.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/uncalibrated-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "uncalibrated-clock-class"))
 	}
 	if !state.UncalibratedClockClassClockClass.IsNull() && data.UncalibratedClockClassClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/uncalibrated-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "uncalibrated-clock-class"))
 	}
 	for i := range state.UtcOffsets {
 		keys := [...]string{"date"}
@@ -1754,7 +1755,7 @@ func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string)
 			}
 			if found {
 				if !state.UtcOffsets[i].OffsetValue.IsNull() && data.UtcOffsets[j].OffsetValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/utc-offset/offsets/offset%v/offset-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/utc-offset/offsets/offset%v", state.getPath(), keyString), "offset-value"))
 				}
 				break
 			}
@@ -1764,19 +1765,19 @@ func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string)
 		}
 	}
 	if !state.UtcOffsetBaseline.IsNull() && data.UtcOffsetBaseline.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/utc-offset/baseline", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "utc-offset/baseline"))
 	}
 	if !state.MinClockClass.IsNull() && data.MinClockClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/min-clock-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "min-clock-class"))
 	}
 	if !state.Ipv6VerifyChecksum.IsNull() && data.Ipv6VerifyChecksum.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-verify-checksum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6-verify-checksum"))
 	}
 	if !state.TimeOfDayPriority.IsNull() && data.TimeOfDayPriority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/time-of-day/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "time-of-day/priority"))
 	}
 	if !state.FrequencyPriority.IsNull() && data.FrequencyPriority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/frequency/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "frequency/priority"))
 	}
 	return deletedItems
 }
@@ -1788,106 +1789,106 @@ func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string)
 func (data *PTP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorSender.IsNull() && !data.MonitorSender.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile/monitor-sender", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profiles/profile/monitor-sender"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorReceiver.IsNull() && !data.MonitorReceiver.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/profiles/profile/monitor-receiver", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "profiles/profile/monitor-receiver"))
 	}
 	if !data.ClockProfileG82752ClockTypeTTsc.IsNull() && !data.ClockProfileG82752ClockTypeTTsc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-tsc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-tsc"))
 	}
 	if !data.ClockProfileG82752ClockTypeTGm.IsNull() && !data.ClockProfileG82752ClockTypeTGm.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-gm", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-gm"))
 	}
 	if !data.ClockProfileG82752ClockTypeTBc.IsNull() && !data.ClockProfileG82752ClockTypeTBc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-bc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-bc"))
 	}
 	if !data.ClockProfileG82751ClockTypeTTsc.IsNull() && !data.ClockProfileG82751ClockTypeTTsc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-tsc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-tsc"))
 	}
 	if !data.ClockProfileG82751ClockTypeTGm.IsNull() && !data.ClockProfileG82751ClockTypeTGm.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-gm", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-gm"))
 	}
 	if !data.ClockProfileG82751ClockTypeTBc.IsNull() && !data.ClockProfileG82751ClockTypeTBc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-bc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-bc"))
 	}
 	if !data.ClockProfileG82651ClockTypeSlave.IsNull() && !data.ClockProfileG82651ClockTypeSlave.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !data.ClockProfileG82651ClockTypeMaster.IsNull() && !data.ClockProfileG82651ClockTypeMaster.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !data.ClockProfileG82651.IsNull() && !data.ClockProfileG82651.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/profile/g-8265-1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/profile/g-8265-1"))
 	}
 	if !data.ClockTimeSourceInternalOscillator.IsNull() && !data.ClockTimeSourceInternalOscillator.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/internal-oscillator", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/internal-oscillator"))
 	}
 	if !data.ClockTimeSourceOther.IsNull() && !data.ClockTimeSourceOther.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/other", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/other"))
 	}
 	if !data.ClockTimeSourceHandSet.IsNull() && !data.ClockTimeSourceHandSet.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/hand-set", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/hand-set"))
 	}
 	if !data.ClockTimeSourceNtp.IsNull() && !data.ClockTimeSourceNtp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/ntp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/ntp"))
 	}
 	if !data.ClockTimeSourcePtp.IsNull() && !data.ClockTimeSourcePtp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/ptp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/ptp"))
 	}
 	if !data.ClockTimeSourceTerrestrialRadio.IsNull() && !data.ClockTimeSourceTerrestrialRadio.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/terrestrial-radio", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/terrestrial-radio"))
 	}
 	if !data.ClockTimeSourceGps.IsNull() && !data.ClockTimeSourceGps.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/gps", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/gps"))
 	}
 	if !data.ClockTimeSourceAtomicClock.IsNull() && !data.ClockTimeSourceAtomicClock.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/time-source/atomic-clock", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/time-source/atomic-clock"))
 	}
 	if !data.ClockTimescaleArb.IsNull() && !data.ClockTimescaleArb.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/timescale/arb", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/timescale/arb"))
 	}
 	if !data.ClockTimescalePtp.IsNull() && !data.ClockTimescalePtp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/timescale/ptp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/timescale/ptp"))
 	}
 	if !data.ClockIdentityMacAddressRouter.IsNull() && !data.ClockIdentityMacAddressRouter.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/clock/identity/mac-address/router", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "clock/identity/mac-address/router"))
 	}
 	if !data.VirtualPort.IsNull() && !data.VirtualPort.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/virtual-port", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "virtual-port"))
 	}
 	if !data.LogServoEvents.IsNull() && !data.LogServoEvents.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events"))
 	}
 	if !data.LogBestPrimaryClockChanges.IsNull() && !data.LogBestPrimaryClockChanges.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/log/best-primary-clock/changes", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "log/best-primary-clock/changes"))
 	}
 	if !data.PerformanceMonitoring.IsNull() && !data.PerformanceMonitoring.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/performance-monitoring", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "performance-monitoring"))
 	}
 	if !data.DetectPtsfUnusable.IsNull() && !data.DetectPtsfUnusable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/detect-ptsf-unusable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "detect-ptsf-unusable"))
 	}
 	if !data.Apts.IsNull() && !data.Apts.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/apts", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "apts"))
 	}
 	if !data.HoldoverSpecTraceableOverride.IsNull() && !data.HoldoverSpecTraceableOverride.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/holdover-spec-traceable-override", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "holdover-spec-traceable-override"))
 	}
 	if !data.NetworkTypeHighPdv.IsNull() && !data.NetworkTypeHighPdv.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network-type/high-pdv", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "network-type/high-pdv"))
 	}
 	if !data.PhysicalLayerFrequency.IsNull() && !data.PhysicalLayerFrequency.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/physical-layer-frequency", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "physical-layer-frequency"))
 	}
 	if !data.TransparentClockDomainAll.IsNull() && !data.TransparentClockDomainAll.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transparent-clock/domain/all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transparent-clock/domain/all"))
 	}
 	if !data.UncalibratedTraceableOverride.IsNull() && !data.UncalibratedTraceableOverride.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/uncalibrated-traceable-override", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "uncalibrated-traceable-override"))
 	}
 	if !data.UncalibratedClockClassUnlessFromHoldover.IsNull() && !data.UncalibratedClockClassUnlessFromHoldover.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/uncalibrated-clock-class", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "uncalibrated-clock-class"))
 	}
 	for i := range data.UtcOffsets {
 		keys := [...]string{"date"}
@@ -1898,7 +1899,7 @@ func (data *PTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 		}
 	}
 	if !data.Ipv6VerifyChecksum.IsNull() && !data.Ipv6VerifyChecksum.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6-verify-checksum", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6-verify-checksum"))
 	}
 	return emptyLeafsDelete
 }
@@ -1909,169 +1910,169 @@ func (data *PTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *PTP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorSender.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile/monitor-sender", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profiles/profile/monitor-sender"))
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.MonitorReceiver.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile/monitor-receiver", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "profiles/profile/monitor-receiver"))
 	}
 	if !data.ClockProfileG82752ClockTypeTTsc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-tsc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-tsc"))
 	}
 	if !data.ClockProfileG82752ClockTypeTGm.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-gm", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-gm"))
 	}
 	if !data.ClockProfileG82752ClockTypeTBc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-2/clock-type/t-bc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-2/clock-type/t-bc"))
 	}
 	if !data.ClockProfileG82751ClockTypeTTsc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-tsc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-tsc"))
 	}
 	if !data.ClockProfileG82751ClockTypeTGm.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-gm", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-gm"))
 	}
 	if !data.ClockProfileG82751ClockTypeTBc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8275-1/clock-type/t-bc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8275-1/clock-type/t-bc"))
 	}
 	if !data.ClockProfileG82651ClockTypeSlave.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !data.ClockProfileG82651ClockTypeMaster.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8265-1/clock-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8265-1/clock-type"))
 	}
 	if !data.ClockProfileG82651.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/profile/g-8265-1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/profile/g-8265-1"))
 	}
 	if !data.ClockTimeSourceInternalOscillator.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/internal-oscillator", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/internal-oscillator"))
 	}
 	if !data.ClockTimeSourceOther.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/other", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/other"))
 	}
 	if !data.ClockTimeSourceHandSet.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/hand-set", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/hand-set"))
 	}
 	if !data.ClockTimeSourceNtp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/ntp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/ntp"))
 	}
 	if !data.ClockTimeSourcePtp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/ptp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/ptp"))
 	}
 	if !data.ClockTimeSourceTerrestrialRadio.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/terrestrial-radio", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/terrestrial-radio"))
 	}
 	if !data.ClockTimeSourceGps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/gps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/gps"))
 	}
 	if !data.ClockTimeSourceAtomicClock.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/time-source/atomic-clock", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/time-source/atomic-clock"))
 	}
 	if !data.ClockTimescaleArb.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/timescale/arb", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/timescale/arb"))
 	}
 	if !data.ClockTimescalePtp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/timescale/ptp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/timescale/ptp"))
 	}
 	if !data.ClockClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/clock-class"))
 	}
 	if !data.ClockPriority2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/priority2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/priority2"))
 	}
 	if !data.ClockPriority1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/priority1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/priority1"))
 	}
 	if !data.ClockDomain.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/domain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/domain"))
 	}
 	if !data.ClockIdentityEui64.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/identity/eui-64", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/identity/eui-64"))
 	}
 	if !data.ClockIdentityMacAddressRouter.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/identity/mac-address/router", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/identity/mac-address/router"))
 	}
 	if !data.ClockIdentityMacAddressCustom.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/clock/identity/mac-address/custom", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "clock/identity/mac-address/custom"))
 	}
 	if !data.VirtualPortGmThresholdBreach.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/gm-threshold-breach", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/gm-threshold-breach"))
 	}
 	if !data.VirtualPortLocalPriority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/local-priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/local-priority"))
 	}
 	if !data.VirtualPortOffsetScaledLogVariance.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/offset-scaled-log-variance", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/offset-scaled-log-variance"))
 	}
 	if !data.VirtualPortClockAccuracy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/clock-accuracy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/clock-accuracy"))
 	}
 	if !data.VirtualPortClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/clock-class"))
 	}
 	if !data.VirtualPortPriority2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/priority2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/priority2"))
 	}
 	if !data.VirtualPortPriority1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port/priority1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port/priority1"))
 	}
 	if !data.VirtualPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "virtual-port"))
 	}
 	if !data.LogServoEvents.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log/Cisco-IOS-XR-um-ptp-log-servo-cfg:servo/events"))
 	}
 	if !data.LogBestPrimaryClockChanges.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/log/best-primary-clock/changes", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "log/best-primary-clock/changes"))
 	}
 	if !data.PerformanceMonitoring.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-monitoring", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-monitoring"))
 	}
 	if !data.DetectPtsfUnusable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/detect-ptsf-unusable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "detect-ptsf-unusable"))
 	}
 	if !data.PhaseDifferenceThresholdBreach.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/phase-difference-threshold-breach", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "phase-difference-threshold-breach"))
 	}
 	if !data.Apts.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/apts", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "apts"))
 	}
 	if !data.HoldoverSpecTraceableOverride.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holdover-spec-traceable-override", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holdover-spec-traceable-override"))
 	}
 	if !data.HoldoverSpecDuration.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holdover-spec-duration", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holdover-spec-duration"))
 	}
 	if !data.HoldoverSpecClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/holdover-spec-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "holdover-spec-clock-class"))
 	}
 	if !data.ServoSlowTracking.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/servo-slow-tracking", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "servo-slow-tracking"))
 	}
 	if !data.NetworkTypeHighPdv.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/network-type/high-pdv", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "network-type/high-pdv"))
 	}
 	if !data.PhysicalLayerFrequency.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/physical-layer-frequency", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "physical-layer-frequency"))
 	}
 	if !data.TransparentClockDomainAll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transparent-clock/domain/all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transparent-clock/domain/all"))
 	}
 	if !data.DoubleFailureClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/double-failure-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "double-failure-clock-class"))
 	}
 	if !data.FreerunClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/freerun-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "freerun-clock-class"))
 	}
 	if !data.StartupClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/startup-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "startup-clock-class"))
 	}
 	if !data.UncalibratedTraceableOverride.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/uncalibrated-traceable-override", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "uncalibrated-traceable-override"))
 	}
 	if !data.UncalibratedClockClassUnlessFromHoldover.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/uncalibrated-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "uncalibrated-clock-class"))
 	}
 	if !data.UncalibratedClockClassClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/uncalibrated-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "uncalibrated-clock-class"))
 	}
 	for i := range data.UtcOffsets {
 		keys := [...]string{"date"}
@@ -2092,19 +2093,19 @@ func (data *PTP) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/utc-offset/offsets/offset%v", data.getPath(), keyString))
 	}
 	if !data.UtcOffsetBaseline.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/utc-offset/baseline", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "utc-offset/baseline"))
 	}
 	if !data.MinClockClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/min-clock-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "min-clock-class"))
 	}
 	if !data.Ipv6VerifyChecksum.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6-verify-checksum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6-verify-checksum"))
 	}
 	if !data.TimeOfDayPriority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/time-of-day/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "time-of-day/priority"))
 	}
 	if !data.FrequencyPriority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/frequency/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "frequency/priority"))
 	}
 	return deletePaths
 }

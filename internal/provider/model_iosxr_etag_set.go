@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -165,7 +166,7 @@ func (data *EtagSetData) fromBody(ctx context.Context, res []byte, version strin
 func (data *EtagSet) getDeletedItems(ctx context.Context, state EtagSet, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Rpl.IsNull() && data.Rpl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/etag-set-as-text", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "etag-set-as-text"))
 	}
 	return deletedItems
 }
@@ -185,7 +186,7 @@ func (data *EtagSet) getEmptyLeafsDelete(ctx context.Context, version string) []
 func (data *EtagSet) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Rpl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/etag-set-as-text", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "etag-set-as-text"))
 	}
 	return deletePaths
 }

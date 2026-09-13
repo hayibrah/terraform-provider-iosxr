@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2208,58 +2209,58 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 			}
 			if found {
 				if !state.Network[i].A4Group.IsNull() && data.Network[j].A4Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-4/server-group-name"))
 				}
 				if !state.Network[i].A4Radius.IsNull() && data.Network[j].A4Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-4/radius"))
 				}
 				if !state.Network[i].A4Tacacs.IsNull() && data.Network[j].A4Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-4/tacacs"))
 				}
 				if !state.Network[i].A4None.IsNull() && data.Network[j].A4None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-4/none"))
 				}
 				if !state.Network[i].A3Group.IsNull() && data.Network[j].A3Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-3/server-group-name"))
 				}
 				if !state.Network[i].A3Radius.IsNull() && data.Network[j].A3Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-3/radius"))
 				}
 				if !state.Network[i].A3Tacacs.IsNull() && data.Network[j].A3Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-3/tacacs"))
 				}
 				if !state.Network[i].A3None.IsNull() && data.Network[j].A3None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-3/none"))
 				}
 				if !state.Network[i].A2Group.IsNull() && data.Network[j].A2Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-2/server-group-name"))
 				}
 				if !state.Network[i].A2Radius.IsNull() && data.Network[j].A2Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-2/radius"))
 				}
 				if !state.Network[i].A2Tacacs.IsNull() && data.Network[j].A2Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-2/tacacs"))
 				}
 				if !state.Network[i].A2None.IsNull() && data.Network[j].A2None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-2/none"))
 				}
 				if !state.Network[i].A1Group.IsNull() && data.Network[j].A1Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-1/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-1/server-group-name"))
 				}
 				if !state.Network[i].A1Radius.IsNull() && data.Network[j].A1Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-1/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-1/radius"))
 				}
 				if !state.Network[i].A1Tacacs.IsNull() && data.Network[j].A1Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/groups/group-1/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "groups/group-1/tacacs"))
 				}
 				if !state.Network[i].A1None.IsNull() && data.Network[j].A1None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "none"))
 				}
 				if !state.Network[i].StopOnly.IsNull() && data.Network[j].StopOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/stop-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "stop-only"))
 				}
 				if !state.Network[i].StartStop.IsNull() && data.Network[j].StartStop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/network/accounting-list%v/start-stop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/network/accounting-list%v", state.getPath(), keyString), "start-stop"))
 				}
 				break
 			}
@@ -2292,58 +2293,58 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 			}
 			if found {
 				if !state.System[i].A4Group.IsNull() && data.System[j].A4Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-4/server-group-name"))
 				}
 				if !state.System[i].A4Radius.IsNull() && data.System[j].A4Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-4/radius"))
 				}
 				if !state.System[i].A4Tacacs.IsNull() && data.System[j].A4Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-4/tacacs"))
 				}
 				if !state.System[i].A4None.IsNull() && data.System[j].A4None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-4/none"))
 				}
 				if !state.System[i].A3Group.IsNull() && data.System[j].A3Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-3/server-group-name"))
 				}
 				if !state.System[i].A3Radius.IsNull() && data.System[j].A3Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-3/radius"))
 				}
 				if !state.System[i].A3Tacacs.IsNull() && data.System[j].A3Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-3/tacacs"))
 				}
 				if !state.System[i].A3None.IsNull() && data.System[j].A3None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-3/none"))
 				}
 				if !state.System[i].A2Group.IsNull() && data.System[j].A2Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-2/server-group-name"))
 				}
 				if !state.System[i].A2Radius.IsNull() && data.System[j].A2Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-2/radius"))
 				}
 				if !state.System[i].A2Tacacs.IsNull() && data.System[j].A2Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-2/tacacs"))
 				}
 				if !state.System[i].A2None.IsNull() && data.System[j].A2None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-2/none"))
 				}
 				if !state.System[i].A1Group.IsNull() && data.System[j].A1Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-1/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-1/server-group-name"))
 				}
 				if !state.System[i].A1Radius.IsNull() && data.System[j].A1Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-1/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-1/radius"))
 				}
 				if !state.System[i].A1Tacacs.IsNull() && data.System[j].A1Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/groups/group-1/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "groups/group-1/tacacs"))
 				}
 				if !state.System[i].A1None.IsNull() && data.System[j].A1None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "none"))
 				}
 				if !state.System[i].Broadcast.IsNull() && data.System[j].Broadcast.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/broadcast", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "broadcast"))
 				}
 				if !state.System[i].StartStop.IsNull() && data.System[j].StartStop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/system/accounting-list%v/start-stop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/system/accounting-list%v", state.getPath(), keyString), "start-stop"))
 				}
 				break
 			}
@@ -2376,70 +2377,70 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 			}
 			if found {
 				if !state.Commands[i].A4Group.IsNull() && data.Commands[j].A4Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-4/server-group-name"))
 				}
 				if !state.Commands[i].A4Radius.IsNull() && data.Commands[j].A4Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-4/radius"))
 				}
 				if !state.Commands[i].A4Tacacs.IsNull() && data.Commands[j].A4Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-4/tacacs"))
 				}
 				if !state.Commands[i].A4None.IsNull() && data.Commands[j].A4None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-4/none"))
 				}
 				if !state.Commands[i].A4Local.IsNull() && data.Commands[j].A4Local.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/local", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-4/local"))
 				}
 				if !state.Commands[i].A3Group.IsNull() && data.Commands[j].A3Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-3/server-group-name"))
 				}
 				if !state.Commands[i].A3Radius.IsNull() && data.Commands[j].A3Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-3/radius"))
 				}
 				if !state.Commands[i].A3Tacacs.IsNull() && data.Commands[j].A3Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-3/tacacs"))
 				}
 				if !state.Commands[i].A3None.IsNull() && data.Commands[j].A3None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-3/none"))
 				}
 				if !state.Commands[i].A3Local.IsNull() && data.Commands[j].A3Local.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/local", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-3/local"))
 				}
 				if !state.Commands[i].A2Group.IsNull() && data.Commands[j].A2Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-2/server-group-name"))
 				}
 				if !state.Commands[i].A2Radius.IsNull() && data.Commands[j].A2Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-2/radius"))
 				}
 				if !state.Commands[i].A2Tacacs.IsNull() && data.Commands[j].A2Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-2/tacacs"))
 				}
 				if !state.Commands[i].A2None.IsNull() && data.Commands[j].A2None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-2/none"))
 				}
 				if !state.Commands[i].A2Local.IsNull() && data.Commands[j].A2Local.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/local", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-2/local"))
 				}
 				if !state.Commands[i].A1Group.IsNull() && data.Commands[j].A1Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-1/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-1/server-group-name"))
 				}
 				if !state.Commands[i].A1Radius.IsNull() && data.Commands[j].A1Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-1/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-1/radius"))
 				}
 				if !state.Commands[i].A1Tacacs.IsNull() && data.Commands[j].A1Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-1/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "groups/group-1/tacacs"))
 				}
 				if !state.Commands[i].A1Local.IsNull() && data.Commands[j].A1Local.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/local", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "local"))
 				}
 				if !state.Commands[i].A1None.IsNull() && data.Commands[j].A1None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "none"))
 				}
 				if !state.Commands[i].StopOnly.IsNull() && data.Commands[j].StopOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/stop-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "stop-only"))
 				}
 				if !state.Commands[i].StartStop.IsNull() && data.Commands[j].StartStop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/commands/accounting-list%v/start-stop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", state.getPath(), keyString), "start-stop"))
 				}
 				break
 			}
@@ -2472,58 +2473,58 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 			}
 			if found {
 				if !state.Exec[i].A4Group.IsNull() && data.Exec[j].A4Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-4/server-group-name"))
 				}
 				if !state.Exec[i].A4Radius.IsNull() && data.Exec[j].A4Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-4/radius"))
 				}
 				if !state.Exec[i].A4Tacacs.IsNull() && data.Exec[j].A4Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-4/tacacs"))
 				}
 				if !state.Exec[i].A4None.IsNull() && data.Exec[j].A4None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-4/none"))
 				}
 				if !state.Exec[i].A3Group.IsNull() && data.Exec[j].A3Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-3/server-group-name"))
 				}
 				if !state.Exec[i].A3Radius.IsNull() && data.Exec[j].A3Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-3/radius"))
 				}
 				if !state.Exec[i].A3Tacacs.IsNull() && data.Exec[j].A3Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-3/tacacs"))
 				}
 				if !state.Exec[i].A3None.IsNull() && data.Exec[j].A3None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-3/none"))
 				}
 				if !state.Exec[i].A2Group.IsNull() && data.Exec[j].A2Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-2/server-group-name"))
 				}
 				if !state.Exec[i].A2Radius.IsNull() && data.Exec[j].A2Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-2/radius"))
 				}
 				if !state.Exec[i].A2Tacacs.IsNull() && data.Exec[j].A2Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-2/tacacs"))
 				}
 				if !state.Exec[i].A2None.IsNull() && data.Exec[j].A2None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-2/none"))
 				}
 				if !state.Exec[i].A1Group.IsNull() && data.Exec[j].A1Group.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-1/server-group-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-1/server-group-name"))
 				}
 				if !state.Exec[i].A1Radius.IsNull() && data.Exec[j].A1Radius.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-1/radius", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-1/radius"))
 				}
 				if !state.Exec[i].A1Tacacs.IsNull() && data.Exec[j].A1Tacacs.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-1/tacacs", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "groups/group-1/tacacs"))
 				}
 				if !state.Exec[i].A1None.IsNull() && data.Exec[j].A1None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "none"))
 				}
 				if !state.Exec[i].StopOnly.IsNull() && data.Exec[j].StopOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/stop-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "stop-only"))
 				}
 				if !state.Exec[i].StartStop.IsNull() && data.Exec[j].StartStop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/accounting-list%v/start-stop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", state.getPath(), keyString), "start-stop"))
 				}
 				break
 			}
@@ -2533,10 +2534,10 @@ func (data *AAAAccounting) getDeletedItems(ctx context.Context, state AAAAccount
 		}
 	}
 	if !state.UpdatePeriodic.IsNull() && data.UpdatePeriodic.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/periodic", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/periodic"))
 	}
 	if !state.UpdateNewinfo.IsNull() && data.UpdateNewinfo.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/update/newinfo", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "update/newinfo"))
 	}
 	return deletedItems
 }
@@ -2555,46 +2556,46 @@ func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Network[i].A4Radius.IsNull() && !data.Network[i].A4Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-4/radius"))
 		}
 		if !data.Network[i].A4Tacacs.IsNull() && !data.Network[i].A4Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-4/tacacs"))
 		}
 		if !data.Network[i].A4None.IsNull() && !data.Network[i].A4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-4/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-4/none"))
 		}
 		if !data.Network[i].A3Radius.IsNull() && !data.Network[i].A3Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-3/radius"))
 		}
 		if !data.Network[i].A3Tacacs.IsNull() && !data.Network[i].A3Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-3/tacacs"))
 		}
 		if !data.Network[i].A3None.IsNull() && !data.Network[i].A3None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-3/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-3/none"))
 		}
 		if !data.Network[i].A2Radius.IsNull() && !data.Network[i].A2Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-2/radius"))
 		}
 		if !data.Network[i].A2Tacacs.IsNull() && !data.Network[i].A2Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-2/tacacs"))
 		}
 		if !data.Network[i].A2None.IsNull() && !data.Network[i].A2None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-2/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-2/none"))
 		}
 		if !data.Network[i].A1Radius.IsNull() && !data.Network[i].A1Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-1/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-1/radius"))
 		}
 		if !data.Network[i].A1Tacacs.IsNull() && !data.Network[i].A1Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/groups/group-1/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "groups/group-1/tacacs"))
 		}
 		if !data.Network[i].A1None.IsNull() && !data.Network[i].A1None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "none"))
 		}
 		if !data.Network[i].StopOnly.IsNull() && !data.Network[i].StopOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/stop-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "stop-only"))
 		}
 		if !data.Network[i].StartStop.IsNull() && !data.Network[i].StartStop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/network/accounting-list%v/start-stop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/network/accounting-list%v", data.getPath(), keyString), "start-stop"))
 		}
 	}
 	for i := range data.System {
@@ -2605,46 +2606,46 @@ func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.System[i].A4Radius.IsNull() && !data.System[i].A4Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-4/radius"))
 		}
 		if !data.System[i].A4Tacacs.IsNull() && !data.System[i].A4Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-4/tacacs"))
 		}
 		if !data.System[i].A4None.IsNull() && !data.System[i].A4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-4/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-4/none"))
 		}
 		if !data.System[i].A3Radius.IsNull() && !data.System[i].A3Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-3/radius"))
 		}
 		if !data.System[i].A3Tacacs.IsNull() && !data.System[i].A3Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-3/tacacs"))
 		}
 		if !data.System[i].A3None.IsNull() && !data.System[i].A3None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-3/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-3/none"))
 		}
 		if !data.System[i].A2Radius.IsNull() && !data.System[i].A2Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-2/radius"))
 		}
 		if !data.System[i].A2Tacacs.IsNull() && !data.System[i].A2Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-2/tacacs"))
 		}
 		if !data.System[i].A2None.IsNull() && !data.System[i].A2None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-2/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-2/none"))
 		}
 		if !data.System[i].A1Radius.IsNull() && !data.System[i].A1Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-1/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-1/radius"))
 		}
 		if !data.System[i].A1Tacacs.IsNull() && !data.System[i].A1Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/groups/group-1/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "groups/group-1/tacacs"))
 		}
 		if !data.System[i].A1None.IsNull() && !data.System[i].A1None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "none"))
 		}
 		if !data.System[i].Broadcast.IsNull() && !data.System[i].Broadcast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/broadcast", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "broadcast"))
 		}
 		if !data.System[i].StartStop.IsNull() && !data.System[i].StartStop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/system/accounting-list%v/start-stop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/system/accounting-list%v", data.getPath(), keyString), "start-stop"))
 		}
 	}
 	for i := range data.Commands {
@@ -2655,58 +2656,58 @@ func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Commands[i].A4Radius.IsNull() && !data.Commands[i].A4Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-4/radius"))
 		}
 		if !data.Commands[i].A4Tacacs.IsNull() && !data.Commands[i].A4Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-4/tacacs"))
 		}
 		if !data.Commands[i].A4None.IsNull() && !data.Commands[i].A4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-4/none"))
 		}
 		if !data.Commands[i].A4Local.IsNull() && !data.Commands[i].A4Local.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-4/local", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-4/local"))
 		}
 		if !data.Commands[i].A3Radius.IsNull() && !data.Commands[i].A3Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-3/radius"))
 		}
 		if !data.Commands[i].A3Tacacs.IsNull() && !data.Commands[i].A3Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-3/tacacs"))
 		}
 		if !data.Commands[i].A3None.IsNull() && !data.Commands[i].A3None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-3/none"))
 		}
 		if !data.Commands[i].A3Local.IsNull() && !data.Commands[i].A3Local.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-3/local", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-3/local"))
 		}
 		if !data.Commands[i].A2Radius.IsNull() && !data.Commands[i].A2Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-2/radius"))
 		}
 		if !data.Commands[i].A2Tacacs.IsNull() && !data.Commands[i].A2Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-2/tacacs"))
 		}
 		if !data.Commands[i].A2None.IsNull() && !data.Commands[i].A2None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-2/none"))
 		}
 		if !data.Commands[i].A2Local.IsNull() && !data.Commands[i].A2Local.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-2/local", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-2/local"))
 		}
 		if !data.Commands[i].A1Radius.IsNull() && !data.Commands[i].A1Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-1/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-1/radius"))
 		}
 		if !data.Commands[i].A1Tacacs.IsNull() && !data.Commands[i].A1Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/groups/group-1/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "groups/group-1/tacacs"))
 		}
 		if !data.Commands[i].A1Local.IsNull() && !data.Commands[i].A1Local.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/local", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "local"))
 		}
 		if !data.Commands[i].A1None.IsNull() && !data.Commands[i].A1None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "none"))
 		}
 		if !data.Commands[i].StopOnly.IsNull() && !data.Commands[i].StopOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/stop-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "stop-only"))
 		}
 		if !data.Commands[i].StartStop.IsNull() && !data.Commands[i].StartStop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/commands/accounting-list%v/start-stop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/commands/accounting-list%v", data.getPath(), keyString), "start-stop"))
 		}
 	}
 	for i := range data.Exec {
@@ -2717,50 +2718,50 @@ func (data *AAAAccounting) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Exec[i].A4Radius.IsNull() && !data.Exec[i].A4Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-4/radius"))
 		}
 		if !data.Exec[i].A4Tacacs.IsNull() && !data.Exec[i].A4Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-4/tacacs"))
 		}
 		if !data.Exec[i].A4None.IsNull() && !data.Exec[i].A4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-4/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-4/none"))
 		}
 		if !data.Exec[i].A3Radius.IsNull() && !data.Exec[i].A3Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-3/radius"))
 		}
 		if !data.Exec[i].A3Tacacs.IsNull() && !data.Exec[i].A3Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-3/tacacs"))
 		}
 		if !data.Exec[i].A3None.IsNull() && !data.Exec[i].A3None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-3/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-3/none"))
 		}
 		if !data.Exec[i].A2Radius.IsNull() && !data.Exec[i].A2Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-2/radius"))
 		}
 		if !data.Exec[i].A2Tacacs.IsNull() && !data.Exec[i].A2Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-2/tacacs"))
 		}
 		if !data.Exec[i].A2None.IsNull() && !data.Exec[i].A2None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-2/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-2/none"))
 		}
 		if !data.Exec[i].A1Radius.IsNull() && !data.Exec[i].A1Radius.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-1/radius", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-1/radius"))
 		}
 		if !data.Exec[i].A1Tacacs.IsNull() && !data.Exec[i].A1Tacacs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/groups/group-1/tacacs", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "groups/group-1/tacacs"))
 		}
 		if !data.Exec[i].A1None.IsNull() && !data.Exec[i].A1None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "none"))
 		}
 		if !data.Exec[i].StopOnly.IsNull() && !data.Exec[i].StopOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/stop-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "stop-only"))
 		}
 		if !data.Exec[i].StartStop.IsNull() && !data.Exec[i].StartStop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/exec/accounting-list%v/start-stop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString), "start-stop"))
 		}
 	}
 	if !data.UpdateNewinfo.IsNull() && !data.UpdateNewinfo.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/update/newinfo", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "update/newinfo"))
 	}
 	return emptyLeafsDelete
 }
@@ -2843,10 +2844,10 @@ func (data *AAAAccounting) getDeletePaths(ctx context.Context, version string) [
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/exec/accounting-list%v", data.getPath(), keyString))
 	}
 	if !data.UpdatePeriodic.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/periodic", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/periodic"))
 	}
 	if !data.UpdateNewinfo.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/update/newinfo", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "update/newinfo"))
 	}
 	return deletePaths
 }

@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -554,7 +555,7 @@ func (data *DomainVRFData) fromBody(ctx context.Context, res []byte, version str
 func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Multicast.IsNull() && data.Multicast.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast"))
 	}
 	for i := range state.Ipv6Hosts {
 		keys := [...]string{"host-name"}
@@ -580,7 +581,7 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 			if found {
 				if !state.Ipv6Hosts[i].Ipv6Address.IsNull() && data.Ipv6Hosts[j].Ipv6Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/host/host%v/ipv6-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/host/host%v", state.getPath(), keyString), "ipv6-address"))
 				}
 				break
 			}
@@ -649,7 +650,7 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 			if found {
 				if !state.Ipv4Hosts[i].IpAddress.IsNull() && data.Ipv4Hosts[j].IpAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/hosts/host%v/ip-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/hosts/host%v", state.getPath(), keyString), "ip-address"))
 				}
 				break
 			}
@@ -659,13 +660,13 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 		}
 	}
 	if !state.Name.IsNull() && data.Name.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "name"))
 	}
 	if !state.LookupSourceInterface.IsNull() && data.LookupSourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/lookup/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "lookup/source-interface"))
 	}
 	if !state.LookupDisable.IsNull() && data.LookupDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/lookup/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "lookup/disable"))
 	}
 	for i := range state.Domains {
 		keys := [...]string{"domain-name", "order"}
@@ -737,7 +738,7 @@ func (data *DomainVRF) getEmptyLeafsDelete(ctx context.Context, version string) 
 		}
 	}
 	if !data.LookupDisable.IsNull() && !data.LookupDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/lookup/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "lookup/disable"))
 	}
 	for i := range data.Domains {
 		keys := [...]string{"domain-name", "order"}
@@ -756,7 +757,7 @@ func (data *DomainVRF) getEmptyLeafsDelete(ctx context.Context, version string) 
 func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Multicast.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast"))
 	}
 	for i := range data.Ipv6Hosts {
 		keys := [...]string{"host-name"}
@@ -816,13 +817,13 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []str
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/hosts/host%v", data.getPath(), keyString))
 	}
 	if !data.Name.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "name"))
 	}
 	if !data.LookupSourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/lookup/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "lookup/source-interface"))
 	}
 	if !data.LookupDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/lookup/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "lookup/disable"))
 	}
 	for i := range data.Domains {
 		keys := [...]string{"domain-name", "order"}

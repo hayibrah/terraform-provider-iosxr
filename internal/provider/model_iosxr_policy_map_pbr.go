@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -630,67 +631,67 @@ func (data *PolicyMapPBR) getDeletedItems(ctx context.Context, state PolicyMapPB
 			}
 			if found {
 				if !state.Classes[i].DecapsulateGre.IsNull() && data.Classes[j].DecapsulateGre.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/decapsulate/gre", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "decapsulate/gre"))
 				}
 				if !state.Classes[i].SetForwardClass.IsNull() && data.Classes[j].SetForwardClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/set/forward-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/forward-class"))
 				}
 				if !state.Classes[i].SetDscp.IsNull() && data.Classes[j].SetDscp.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/set/dscp", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/dscp"))
 				}
 				if !state.Classes[i].RedirectNexthopRouteTargetAsFormat.IsNull() && data.Classes[j].RedirectNexthopRouteTargetAsFormat.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-nexthop/route-target/as-number", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-nexthop/route-target/as-number"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop3Vrf.IsNull() && data.Classes[j].RedirectIpv6Nexthop3Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop3/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop3/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop3Address.IsNull() && data.Classes[j].RedirectIpv6Nexthop3Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop3/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop3/address"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop2Vrf.IsNull() && data.Classes[j].RedirectIpv6Nexthop2Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop2/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop2/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop2Address.IsNull() && data.Classes[j].RedirectIpv6Nexthop2Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop2/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop2/address"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop1Vrf.IsNull() && data.Classes[j].RedirectIpv6Nexthop1Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop1/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop1/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv6Nexthop1Address.IsNull() && data.Classes[j].RedirectIpv6Nexthop1Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/nexthop1/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/nexthop1/address"))
 				}
 				if !state.Classes[i].RedirectIpv6DefaultRoute.IsNull() && data.Classes[j].RedirectIpv6DefaultRoute.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv6/default-route", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv6/default-route"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop3Vrf.IsNull() && data.Classes[j].RedirectIpv4Nexthop3Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop3/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop3/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop3Address.IsNull() && data.Classes[j].RedirectIpv4Nexthop3Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop3/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop3/address"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop2Vrf.IsNull() && data.Classes[j].RedirectIpv4Nexthop2Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop2/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop2/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop2Address.IsNull() && data.Classes[j].RedirectIpv4Nexthop2Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop2/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop2/address"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop1Vrf.IsNull() && data.Classes[j].RedirectIpv4Nexthop1Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop1/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop1/vrf"))
 				}
 				if !state.Classes[i].RedirectIpv4Nexthop1Address.IsNull() && data.Classes[j].RedirectIpv4Nexthop1Address.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/nexthop1/address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/nexthop1/address"))
 				}
 				if !state.Classes[i].RedirectIpv4DefaultRoute.IsNull() && data.Classes[j].RedirectIpv4DefaultRoute.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/redirect-ipv4/default-route", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "redirect-ipv4/default-route"))
 				}
 				if !state.Classes[i].Drop.IsNull() && data.Classes[j].Drop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/drop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "drop"))
 				}
 				if !state.Classes[i].PoliceRateUnit.IsNull() && data.Classes[j].PoliceRateUnit.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/police/rate/unit", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/rate/unit"))
 				}
 				if !state.Classes[i].PoliceRateValue.IsNull() && data.Classes[j].PoliceRateValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/police/rate/value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/rate/value"))
 				}
 				break
 			}
@@ -700,7 +701,7 @@ func (data *PolicyMapPBR) getDeletedItems(ctx context.Context, state PolicyMapPB
 		}
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	return deletedItems
 }
@@ -719,16 +720,16 @@ func (data *PolicyMapPBR) getEmptyLeafsDelete(ctx context.Context, version strin
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Classes[i].DecapsulateGre.IsNull() && !data.Classes[i].DecapsulateGre.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/class%v/decapsulate/gre", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "decapsulate/gre"))
 		}
 		if !data.Classes[i].RedirectIpv6DefaultRoute.IsNull() && !data.Classes[i].RedirectIpv6DefaultRoute.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/class%v/redirect-ipv6/default-route", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "redirect-ipv6/default-route"))
 		}
 		if !data.Classes[i].RedirectIpv4DefaultRoute.IsNull() && !data.Classes[i].RedirectIpv4DefaultRoute.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/class%v/redirect-ipv4/default-route", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "redirect-ipv4/default-route"))
 		}
 		if !data.Classes[i].Drop.IsNull() && !data.Classes[i].Drop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/class%v/drop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "drop"))
 		}
 	}
 	return emptyLeafsDelete
@@ -761,7 +762,7 @@ func (data *PolicyMapPBR) getDeletePaths(ctx context.Context, version string) []
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/class%v", data.getPath(), keyString))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	return deletePaths
 }

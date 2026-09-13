@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -182,10 +183,10 @@ func (data *FlowSamplerMapData) fromBody(ctx context.Context, res []byte, versio
 func (data *FlowSamplerMap) getDeletedItems(ctx context.Context, state FlowSamplerMap, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.OutOf.IsNull() && data.OutOf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/out-of", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "out-of"))
 	}
 	if !state.Random.IsNull() && data.Random.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/random", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "random"))
 	}
 	return deletedItems
 }
@@ -205,10 +206,10 @@ func (data *FlowSamplerMap) getEmptyLeafsDelete(ctx context.Context, version str
 func (data *FlowSamplerMap) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.OutOf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/out-of", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "out-of"))
 	}
 	if !data.Random.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/random", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "random"))
 	}
 	return deletePaths
 }

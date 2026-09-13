@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -960,52 +961,52 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.LtraceBufferMultiplierSync.IsNull() && data.LtraceBufferMultiplierSync.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierDbgErr.IsNull() && data.LtraceBufferMultiplierDbgErr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierIntf.IsNull() && data.LtraceBufferMultiplierIntf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierSigErr.IsNull() && data.LtraceBufferMultiplierSigErr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierSig.IsNull() && data.LtraceBufferMultiplierSig.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierCommon.IsNull() && data.LtraceBufferMultiplierCommon.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplierRare.IsNull() && data.LtraceBufferMultiplierRare.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LtraceBufferMultiplier.IsNull() && data.LtraceBufferMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ltrace-buffer/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !state.LoggingEventsIssu.IsNull() && data.LoggingEventsIssu.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/events/issu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/events/issu"))
 	}
 	if !state.LoggingEventsNsr.IsNull() && data.LoggingEventsNsr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/logging/events/nsr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "logging/events/nsr"))
 	}
 	if !state.LatencyThreshold.IsNull() && data.LatencyThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/latency/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "latency/threshold"))
 	}
 	if !state.BandwidthRdmPercentageMaxReservableBc1.IsNull() && data.BandwidthRdmPercentageMaxReservableBc1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/max-reservable-bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/max-reservable-bc0"))
 	}
 	if !state.BandwidthRdmPercentageMaxReservableBc0.IsNull() && data.BandwidthRdmPercentageMaxReservableBc0.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/rdm/percentage/max-reservable-bc0", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/rdm/percentage/max-reservable-bc0"))
 	}
 	if !state.BandwidthMamPercentageMaxReservableBc1.IsNull() && data.BandwidthMamPercentageMaxReservableBc1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	if !state.BandwidthMamPercentageMaxReservableBc0.IsNull() && data.BandwidthMamPercentageMaxReservableBc0.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	if !state.BandwidthMamPercentageMaxReservableBandwidth.IsNull() && data.BandwidthMamPercentageMaxReservableBandwidth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	for i := range state.Neighbors {
 		keys := [...]string{"neighbor-address"}
@@ -1031,13 +1032,13 @@ func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version strin
 			}
 			if found {
 				if !state.Neighbors[i].AuthenticationLifeTime.IsNull() && data.Neighbors[j].AuthenticationLifeTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/authentication/life-time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/life-time"))
 				}
 				if !state.Neighbors[i].AuthenticationWindowSize.IsNull() && data.Neighbors[j].AuthenticationWindowSize.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/authentication/window-size", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/window-size"))
 				}
 				if !state.Neighbors[i].AuthenticationKeyChain.IsNull() && data.Neighbors[j].AuthenticationKeyChain.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/authentication/key-source/key-chain", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/key-source/key-chain"))
 				}
 				break
 			}
@@ -1047,58 +1048,58 @@ func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version strin
 		}
 	}
 	if !state.AuthenticationRetransmit.IsNull() && data.AuthenticationRetransmit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/retransmit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/retransmit"))
 	}
 	if !state.AuthenticationLifeTime.IsNull() && data.AuthenticationLifeTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/life-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/life-time"))
 	}
 	if !state.AuthenticationWindowSize.IsNull() && data.AuthenticationWindowSize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/window-size", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/window-size"))
 	}
 	if !state.AuthenticationKeyChain.IsNull() && data.AuthenticationKeyChain.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication/key-source/key-chain", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "authentication/key-source/key-chain"))
 	}
 	if !state.SignallingOobVrf.IsNull() && data.SignallingOobVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/out-of-band/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/out-of-band/vrf"))
 	}
 	if !state.SignallingChecksumDisable.IsNull() && data.SignallingChecksumDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/checksum/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/checksum/disable"))
 	}
 	if !state.SignallingPatherrStateRemovalDisable.IsNull() && data.SignallingPatherrStateRemovalDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/patherr/state-removal/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/patherr/state-removal/disable"))
 	}
 	if !state.SignallingNodeidSubobjectDisable.IsNull() && data.SignallingNodeidSubobjectDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/nodeid-subobject/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/nodeid-subobject/disable"))
 	}
 	if !state.SignallingMessageBundleDisable.IsNull() && data.SignallingMessageBundleDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/message-bundle/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/message-bundle/disable"))
 	}
 	if !state.SignallingPrefixFilteringDefaultDenyActionDrop.IsNull() && data.SignallingPrefixFilteringDefaultDenyActionDrop.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/prefix-filtering/default-deny-action/drop", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/prefix-filtering/default-deny-action/drop"))
 	}
 	if !state.SignallingPrefixFilteringAcl.IsNull() && data.SignallingPrefixFilteringAcl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/prefix-filtering/access-list", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/prefix-filtering/access-list"))
 	}
 	if !state.SignallingEventPerPulse.IsNull() && data.SignallingEventPerPulse.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/event-per-pulse", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/event-per-pulse"))
 	}
 	if !state.SignallingHelloGracefulRestartRefreshMisses.IsNull() && data.SignallingHelloGracefulRestartRefreshMisses.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/hello/graceful-restart/refresh/misses", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/hello/graceful-restart/refresh/misses"))
 	}
 	if !state.SignallingHelloGracefulRestartRefreshInterval.IsNull() && data.SignallingHelloGracefulRestartRefreshInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/hello/graceful-restart/refresh/interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/hello/graceful-restart/refresh/interval"))
 	}
 	if !state.SignallingGracefulRestartRestartTime.IsNull() && data.SignallingGracefulRestartRestartTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/graceful-restart-restart-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/graceful-restart-restart-time"))
 	}
 	if !state.SignallingGracefulRestartRecoveryTime.IsNull() && data.SignallingGracefulRestartRecoveryTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/graceful-restart-recovery-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/graceful-restart-recovery-time"))
 	}
 	if !state.SignallingGracefulRestartLspCtype.IsNull() && data.SignallingGracefulRestartLspCtype.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/graceful-restart-lsp-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/graceful-restart-lsp-type"))
 	}
 	if !state.SignallingGracefulRestart.IsNull() && data.SignallingGracefulRestart.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/signalling/graceful-restart", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "signalling/graceful-restart"))
 	}
 	return deletedItems
 }
@@ -1110,31 +1111,31 @@ func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version strin
 func (data *RSVP) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.LtraceBufferMultiplierSync.IsNull() && !data.LtraceBufferMultiplierSync.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierDbgErr.IsNull() && !data.LtraceBufferMultiplierDbgErr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierIntf.IsNull() && !data.LtraceBufferMultiplierIntf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierSigErr.IsNull() && !data.LtraceBufferMultiplierSigErr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierSig.IsNull() && !data.LtraceBufferMultiplierSig.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierCommon.IsNull() && !data.LtraceBufferMultiplierCommon.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierRare.IsNull() && !data.LtraceBufferMultiplierRare.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LoggingEventsIssu.IsNull() && !data.LoggingEventsIssu.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/events/issu", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/events/issu"))
 	}
 	if !data.LoggingEventsNsr.IsNull() && !data.LoggingEventsNsr.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/logging/events/nsr", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "logging/events/nsr"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address"}
@@ -1145,25 +1146,25 @@ func (data *RSVP) getEmptyLeafsDelete(ctx context.Context, version string) []str
 		}
 	}
 	if !data.SignallingChecksumDisable.IsNull() && !data.SignallingChecksumDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/checksum/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/checksum/disable"))
 	}
 	if !data.SignallingPatherrStateRemovalDisable.IsNull() && !data.SignallingPatherrStateRemovalDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/patherr/state-removal/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/patherr/state-removal/disable"))
 	}
 	if !data.SignallingNodeidSubobjectDisable.IsNull() && !data.SignallingNodeidSubobjectDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/nodeid-subobject/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/nodeid-subobject/disable"))
 	}
 	if !data.SignallingMessageBundleDisable.IsNull() && !data.SignallingMessageBundleDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/message-bundle/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/message-bundle/disable"))
 	}
 	if !data.SignallingPrefixFilteringDefaultDenyActionDrop.IsNull() && !data.SignallingPrefixFilteringDefaultDenyActionDrop.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/prefix-filtering/default-deny-action/drop", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/prefix-filtering/default-deny-action/drop"))
 	}
 	if !data.SignallingGracefulRestartLspCtype.IsNull() && !data.SignallingGracefulRestartLspCtype.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/graceful-restart-lsp-type", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/graceful-restart-lsp-type"))
 	}
 	if !data.SignallingGracefulRestart.IsNull() && !data.SignallingGracefulRestart.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/signalling/graceful-restart", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "signalling/graceful-restart"))
 	}
 	return emptyLeafsDelete
 }
@@ -1174,52 +1175,52 @@ func (data *RSVP) getEmptyLeafsDelete(ctx context.Context, version string) []str
 func (data *RSVP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.LtraceBufferMultiplierSync.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierDbgErr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierIntf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierSigErr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierSig.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierCommon.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplierRare.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LtraceBufferMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ltrace-buffer/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ltrace-buffer/multiplier"))
 	}
 	if !data.LoggingEventsIssu.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/events/issu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/events/issu"))
 	}
 	if !data.LoggingEventsNsr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/logging/events/nsr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/events/nsr"))
 	}
 	if !data.LatencyThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/latency/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "latency/threshold"))
 	}
 	if !data.BandwidthRdmPercentageMaxReservableBc1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/max-reservable-bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/max-reservable-bc0"))
 	}
 	if !data.BandwidthRdmPercentageMaxReservableBc0.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/rdm/percentage/max-reservable-bc0", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/rdm/percentage/max-reservable-bc0"))
 	}
 	if !data.BandwidthMamPercentageMaxReservableBc1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	if !data.BandwidthMamPercentageMaxReservableBc0.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	if !data.BandwidthMamPercentageMaxReservableBandwidth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth/mam/percentage/max-reservable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth/mam/percentage/max-reservable"))
 	}
 	for i := range data.Neighbors {
 		keys := [...]string{"neighbor-address"}
@@ -1240,58 +1241,58 @@ func (data *RSVP) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.AuthenticationRetransmit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/retransmit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/retransmit"))
 	}
 	if !data.AuthenticationLifeTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/life-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/life-time"))
 	}
 	if !data.AuthenticationWindowSize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/window-size", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/window-size"))
 	}
 	if !data.AuthenticationKeyChain.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication/key-source/key-chain", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/key-source/key-chain"))
 	}
 	if !data.SignallingOobVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/out-of-band/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/out-of-band/vrf"))
 	}
 	if !data.SignallingChecksumDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/checksum/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/checksum/disable"))
 	}
 	if !data.SignallingPatherrStateRemovalDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/patherr/state-removal/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/patherr/state-removal/disable"))
 	}
 	if !data.SignallingNodeidSubobjectDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/nodeid-subobject/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/nodeid-subobject/disable"))
 	}
 	if !data.SignallingMessageBundleDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/message-bundle/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/message-bundle/disable"))
 	}
 	if !data.SignallingPrefixFilteringDefaultDenyActionDrop.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/prefix-filtering/default-deny-action/drop", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/prefix-filtering/default-deny-action/drop"))
 	}
 	if !data.SignallingPrefixFilteringAcl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/prefix-filtering/access-list", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/prefix-filtering/access-list"))
 	}
 	if !data.SignallingEventPerPulse.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/event-per-pulse", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/event-per-pulse"))
 	}
 	if !data.SignallingHelloGracefulRestartRefreshMisses.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/hello/graceful-restart/refresh/misses", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/hello/graceful-restart/refresh/misses"))
 	}
 	if !data.SignallingHelloGracefulRestartRefreshInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/hello/graceful-restart/refresh/interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/hello/graceful-restart/refresh/interval"))
 	}
 	if !data.SignallingGracefulRestartRestartTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/graceful-restart-restart-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/graceful-restart-restart-time"))
 	}
 	if !data.SignallingGracefulRestartRecoveryTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/graceful-restart-recovery-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/graceful-restart-recovery-time"))
 	}
 	if !data.SignallingGracefulRestartLspCtype.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/graceful-restart-lsp-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/graceful-restart-lsp-type"))
 	}
 	if !data.SignallingGracefulRestart.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/signalling/graceful-restart", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "signalling/graceful-restart"))
 	}
 	return deletePaths
 }

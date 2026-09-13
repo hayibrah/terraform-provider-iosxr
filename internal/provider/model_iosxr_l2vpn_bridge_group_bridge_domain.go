@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -3153,7 +3154,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 						}
 						if found {
 							if !state.MemberVnisVni[i].StaticMacAddresses[ci].NextHop.IsNull() && data.MemberVnisVni[j].StaticMacAddresses[cj].NextHop.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/member/vnis/vni%v/static-mac-addresses/static-mac-address%v/next-hop", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/member/vnis/vni%v/static-mac-addresses/static-mac-address%v", state.getPath(), keyString, ckeyString), "next-hop"))
 							}
 							break
 						}
@@ -3170,13 +3171,13 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 		}
 	}
 	if !state.EtreeLeaf.IsNull() && data.EtreeLeaf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/etree/leaf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "etree/leaf"))
 	}
 	if !state.Etree.IsNull() && data.Etree.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/etree", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "etree"))
 	}
 	if !state.EfpVisibility.IsNull() && data.EfpVisibility.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/efp-visibility", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "efp-visibility"))
 	}
 	for i := range state.NeighborsEvpnEvi {
 		keys := [...]string{"vpn-id", "target"}
@@ -3215,64 +3216,64 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 		}
 	}
 	if !state.MacSecureShutdownRecoveryTimeout.IsNull() && data.MacSecureShutdownRecoveryTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure/shutdown-recovery-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure/shutdown-recovery-timeout"))
 	}
 	if !state.MacSecureActionShutdown.IsNull() && data.MacSecureActionShutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure/action/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure/action/shutdown"))
 	}
 	if !state.MacSecureActionNone.IsNull() && data.MacSecureActionNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure/action/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure/action/none"))
 	}
 	if !state.MacSecureThreshold.IsNull() && data.MacSecureThreshold.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure/threshold", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure/threshold"))
 	}
 	if !state.MacSecureLogging.IsNull() && data.MacSecureLogging.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure/logging", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure/logging"))
 	}
 	if !state.MacSecure.IsNull() && data.MacSecure.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/secure", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/secure"))
 	}
 	if !state.MacPortDownFlushDisable.IsNull() && data.MacPortDownFlushDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/port-down/flush/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/port-down/flush/disable"))
 	}
 	if !state.MacLimitNotificationNone.IsNull() && data.MacLimitNotificationNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/notification/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/notification/none"))
 	}
 	if !state.MacLimitNotificationBoth.IsNull() && data.MacLimitNotificationBoth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/notification/both", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/notification/both"))
 	}
 	if !state.MacLimitNotificationTrap.IsNull() && data.MacLimitNotificationTrap.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/notification/trap", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/notification/trap"))
 	}
 	if !state.MacLimitActionShutdown.IsNull() && data.MacLimitActionShutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/action/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/action/shutdown"))
 	}
 	if !state.MacLimitActionNoFlood.IsNull() && data.MacLimitActionNoFlood.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/action/no-flood", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/action/no-flood"))
 	}
 	if !state.MacLimitActionFlood.IsNull() && data.MacLimitActionFlood.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/action/flood", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/action/flood"))
 	}
 	if !state.MacLimitMaximum.IsNull() && data.MacLimitMaximum.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/limit/maximum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/limit/maximum"))
 	}
 	if !state.MacWithdrawOptimize.IsNull() && data.MacWithdrawOptimize.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/withdraw/optimize", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/withdraw/optimize"))
 	}
 	if !state.MacWithdrawStateDown.IsNull() && data.MacWithdrawStateDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/withdraw/state-down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/withdraw/state-down"))
 	}
 	if !state.MacWithdrawRelay.IsNull() && data.MacWithdrawRelay.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/withdraw/relay", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/withdraw/relay"))
 	}
 	if !state.MacWithdrawAccessPwDisable.IsNull() && data.MacWithdrawAccessPwDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/withdraw/access-pw/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/withdraw/access-pw/disable"))
 	}
 	if !state.MacWithdrawDisable.IsNull() && data.MacWithdrawDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/withdraw/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/withdraw/disable"))
 	}
 	if !state.MacLearningDisable.IsNull() && data.MacLearningDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/learning/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/learning/disable"))
 	}
 	for i := range state.MacStaticAddresses {
 		keys := [...]string{"mac-address"}
@@ -3298,7 +3299,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 			}
 			if found {
 				if !state.MacStaticAddresses[i].Drop.IsNull() && data.MacStaticAddresses[j].Drop.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/static-addresses/static-address%v/drop", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mac/static-addresses/static-address%v", state.getPath(), keyString), "drop"))
 				}
 				break
 			}
@@ -3308,13 +3309,13 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 		}
 	}
 	if !state.MacAgingTypeAbsolute.IsNull() && data.MacAgingTypeAbsolute.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/aging/type/absolute", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/aging/type/absolute"))
 	}
 	if !state.MacAgingTime.IsNull() && data.MacAgingTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac/aging/time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac/aging/time"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	for i := range state.RoutedInterface {
 		keys := [...]string{"interface-name"}
@@ -3340,7 +3341,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 			}
 			if found {
 				if !state.RoutedInterface[i].SplitHorizonGroupCore.IsNull() && data.RoutedInterface[j].SplitHorizonGroupCore.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/routed/interface%v/split-horizon/group/core", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/routed/interface%v", state.getPath(), keyString), "split-horizon/group/core"))
 				}
 				break
 			}
@@ -3403,145 +3404,145 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 					}
 				}
 				if !state.Interfaces[i].SplitHorizonGroup.IsNull() && data.Interfaces[j].SplitHorizonGroup.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/split-horizon/group", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "split-horizon/group"))
 				}
 				if !state.Interfaces[i].StormControlUnknownUnicastKbps.IsNull() && data.Interfaces[j].StormControlUnknownUnicastKbps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/unknown-unicast/kbps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/unknown-unicast/kbps"))
 				}
 				if !state.Interfaces[i].StormControlUnknownUnicastPps.IsNull() && data.Interfaces[j].StormControlUnknownUnicastPps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/unknown-unicast/pps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/unknown-unicast/pps"))
 				}
 				if !state.Interfaces[i].StormControlMulticastKbps.IsNull() && data.Interfaces[j].StormControlMulticastKbps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/multicast/kbps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/multicast/kbps"))
 				}
 				if !state.Interfaces[i].StormControlMulticastPps.IsNull() && data.Interfaces[j].StormControlMulticastPps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/multicast/pps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/multicast/pps"))
 				}
 				if !state.Interfaces[i].StormControlBroadcastKbps.IsNull() && data.Interfaces[j].StormControlBroadcastKbps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/broadcast/kbps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/broadcast/kbps"))
 				}
 				if !state.Interfaces[i].StormControlBroadcastPps.IsNull() && data.Interfaces[j].StormControlBroadcastPps.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/storm-control/broadcast/pps", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "storm-control/broadcast/pps"))
 				}
 				if !state.Interfaces[i].MldSnoopingProfile.IsNull() && data.Interfaces[j].MldSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mld/snooping/profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mld/snooping/profile"))
 				}
 				if !state.Interfaces[i].MacSecureShutdownRecoveryTimeoutDisable.IsNull() && data.Interfaces[j].MacSecureShutdownRecoveryTimeoutDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/shutdown-recovery-timeout/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/shutdown-recovery-timeout/disable"))
 				}
 				if !state.Interfaces[i].MacSecureShutdownRecoveryTimeout.IsNull() && data.Interfaces[j].MacSecureShutdownRecoveryTimeout.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/shutdown-recovery-timeout/recovery-timer-in-second", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/shutdown-recovery-timeout/recovery-timer-in-second"))
 				}
 				if !state.Interfaces[i].MacSecureDisable.IsNull() && data.Interfaces[j].MacSecureDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/disable"))
 				}
 				if !state.Interfaces[i].MacSecureActionRestrict.IsNull() && data.Interfaces[j].MacSecureActionRestrict.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/restrict", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/action/restrict"))
 				}
 				if !state.Interfaces[i].MacSecureActionShutdown.IsNull() && data.Interfaces[j].MacSecureActionShutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/action/shutdown"))
 				}
 				if !state.Interfaces[i].MacSecureActionNone.IsNull() && data.Interfaces[j].MacSecureActionNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/action/none"))
 				}
 				if !state.Interfaces[i].MacSecureLoggingDisable.IsNull() && data.Interfaces[j].MacSecureLoggingDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/logging/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/logging/disable"))
 				}
 				if !state.Interfaces[i].MacSecureLogging.IsNull() && data.Interfaces[j].MacSecureLogging.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/logging", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure/logging"))
 				}
 				if !state.Interfaces[i].MacSecure.IsNull() && data.Interfaces[j].MacSecure.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/secure", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/secure"))
 				}
 				if !state.Interfaces[i].MacPortDownFlushDisable.IsNull() && data.Interfaces[j].MacPortDownFlushDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/port-down/flush/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/port-down/flush/disable"))
 				}
 				if !state.Interfaces[i].MacLimitNotificationSyslog.IsNull() && data.Interfaces[j].MacLimitNotificationSyslog.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/syslog", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/notification/syslog"))
 				}
 				if !state.Interfaces[i].MacLimitNotificationNone.IsNull() && data.Interfaces[j].MacLimitNotificationNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/notification/none"))
 				}
 				if !state.Interfaces[i].MacLimitNotificationBoth.IsNull() && data.Interfaces[j].MacLimitNotificationBoth.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/both", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/notification/both"))
 				}
 				if !state.Interfaces[i].MacLimitNotificationTrap.IsNull() && data.Interfaces[j].MacLimitNotificationTrap.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/trap", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/notification/trap"))
 				}
 				if !state.Interfaces[i].MacLimitActionNone.IsNull() && data.Interfaces[j].MacLimitActionNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/action/none"))
 				}
 				if !state.Interfaces[i].MacLimitActionShutdown.IsNull() && data.Interfaces[j].MacLimitActionShutdown.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/shutdown", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/action/shutdown"))
 				}
 				if !state.Interfaces[i].MacLimitActionNoFlood.IsNull() && data.Interfaces[j].MacLimitActionNoFlood.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/no-flood", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/action/no-flood"))
 				}
 				if !state.Interfaces[i].MacLimitActionFlood.IsNull() && data.Interfaces[j].MacLimitActionFlood.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/flood", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/action/flood"))
 				}
 				if !state.Interfaces[i].MacLimitMaximum.IsNull() && data.Interfaces[j].MacLimitMaximum.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/maximum", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/limit/maximum"))
 				}
 				if !state.Interfaces[i].MacLearningDisable.IsNull() && data.Interfaces[j].MacLearningDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/learning/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/learning/disable"))
 				}
 				if !state.Interfaces[i].MacLearning.IsNull() && data.Interfaces[j].MacLearning.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/learning", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/learning"))
 				}
 				if !state.Interfaces[i].MacAgingTypeInactivity.IsNull() && data.Interfaces[j].MacAgingTypeInactivity.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/aging/type/inactivity", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/aging/type/inactivity"))
 				}
 				if !state.Interfaces[i].MacAgingTypeAbsolute.IsNull() && data.Interfaces[j].MacAgingTypeAbsolute.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/aging/type/absolute", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/aging/type/absolute"))
 				}
 				if !state.Interfaces[i].MacAgingTime.IsNull() && data.Interfaces[j].MacAgingTime.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/mac/aging/time", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "mac/aging/time"))
 				}
 				if !state.Interfaces[i].IpSourceGuardLoggingDisable.IsNull() && data.Interfaces[j].IpSourceGuardLoggingDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/logging/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "ip-source-guard/logging/disable"))
 				}
 				if !state.Interfaces[i].IpSourceGuardLogging.IsNull() && data.Interfaces[j].IpSourceGuardLogging.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/logging", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "ip-source-guard/logging"))
 				}
 				if !state.Interfaces[i].IpSourceGuardDisable.IsNull() && data.Interfaces[j].IpSourceGuardDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "ip-source-guard/disable"))
 				}
 				if !state.Interfaces[i].IpSourceGuard.IsNull() && data.Interfaces[j].IpSourceGuard.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "ip-source-guard"))
 				}
 				if !state.Interfaces[i].IgmpSnoopingProfile.IsNull() && data.Interfaces[j].IgmpSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/igmp/snooping/profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "igmp/snooping/profile"))
 				}
 				if !state.Interfaces[i].FloodingDisable.IsNull() && data.Interfaces[j].FloodingDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/flooding/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "flooding/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationIpv4Disable.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationIpv4Disable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/ipv4/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/ipv4/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationIpv4.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationIpv4.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/ipv4", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/ipv4"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationDstMacDisable.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationDstMacDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/dst-mac/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/dst-mac/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationDstMac.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationDstMac.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/dst-mac", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/dst-mac"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationSrcMacDisable.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationSrcMacDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/src-mac/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/src-mac/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionAddressValidationSrcMac.IsNull() && data.Interfaces[j].DynamicArpInspectionAddressValidationSrcMac.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/src-mac", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/address-validation/src-mac"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionDisable.IsNull() && data.Interfaces[j].DynamicArpInspectionDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionLoggingDisable.IsNull() && data.Interfaces[j].DynamicArpInspectionLoggingDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/logging/disable", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/logging/disable"))
 				}
 				if !state.Interfaces[i].DynamicArpInspectionLogging.IsNull() && data.Interfaces[j].DynamicArpInspectionLogging.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/logging", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dynamic-arp-inspection/logging"))
 				}
 				break
 			}
@@ -3551,70 +3552,70 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 		}
 	}
 	if !state.MulticastSourceIpv4Ipv6.IsNull() && data.MulticastSourceIpv4Ipv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast-source/ipv4-ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast-source/ipv4-ipv6"))
 	}
 	if !state.MulticastSourceIpv6.IsNull() && data.MulticastSourceIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast-source/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast-source/ipv6"))
 	}
 	if !state.MulticastSourceIpv4.IsNull() && data.MulticastSourceIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast-source/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast-source/ipv4"))
 	}
 	if !state.StormControlUnknownUnicastKbps.IsNull() && data.StormControlUnknownUnicastKbps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/unknown-unicast/kbps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/unknown-unicast/kbps"))
 	}
 	if !state.StormControlUnknownUnicastPps.IsNull() && data.StormControlUnknownUnicastPps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/unknown-unicast/pps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/unknown-unicast/pps"))
 	}
 	if !state.StormControlMulticastKbps.IsNull() && data.StormControlMulticastKbps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/multicast/kbps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/multicast/kbps"))
 	}
 	if !state.StormControlMulticastPps.IsNull() && data.StormControlMulticastPps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/multicast/pps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/multicast/pps"))
 	}
 	if !state.StormControlBroadcastKbps.IsNull() && data.StormControlBroadcastKbps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/broadcast/kbps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/broadcast/kbps"))
 	}
 	if !state.StormControlBroadcastPps.IsNull() && data.StormControlBroadcastPps.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/storm-control/broadcast/pps", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "storm-control/broadcast/pps"))
 	}
 	if !state.MldSnoopingProfile.IsNull() && data.MldSnoopingProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mld/snooping/profile", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mld/snooping/profile"))
 	}
 	if !state.IgmpSnoopingDisable.IsNull() && data.IgmpSnoopingDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/igmp/snooping/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "igmp/snooping/disable"))
 	}
 	if !state.IgmpSnoopingProfile.IsNull() && data.IgmpSnoopingProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/igmp/snooping/profile", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "igmp/snooping/profile"))
 	}
 	if !state.IpSourceGuardLogging.IsNull() && data.IpSourceGuardLogging.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ip-source-guard/logging", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ip-source-guard/logging"))
 	}
 	if !state.IpSourceGuard.IsNull() && data.IpSourceGuard.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ip-source-guard", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ip-source-guard"))
 	}
 	if !state.DynamicArpInspectionAddressValidationIpv4.IsNull() && data.DynamicArpInspectionAddressValidationIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dynamic-arp-inspection/address-validation/ipv4"))
 	}
 	if !state.DynamicArpInspectionAddressValidationDstMac.IsNull() && data.DynamicArpInspectionAddressValidationDstMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/dst-mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dynamic-arp-inspection/address-validation/dst-mac"))
 	}
 	if !state.DynamicArpInspectionAddressValidationSrcMac.IsNull() && data.DynamicArpInspectionAddressValidationSrcMac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/src-mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dynamic-arp-inspection/address-validation/src-mac"))
 	}
 	if !state.DynamicArpInspectionLogging.IsNull() && data.DynamicArpInspectionLogging.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dynamic-arp-inspection/logging", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dynamic-arp-inspection/logging"))
 	}
 	if !state.DynamicArpInspection.IsNull() && data.DynamicArpInspection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/dynamic-arp-inspection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "dynamic-arp-inspection"))
 	}
 	if !state.FloodingDisable.IsNull() && data.FloodingDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/flooding/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "flooding/disable"))
 	}
 	if !state.TransportModeVlanPassthrough.IsNull() && data.TransportModeVlanPassthrough.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transport-mode/vlan/passthrough", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transport-mode/vlan/passthrough"))
 	}
 	if !state.CoupledMode.IsNull() && data.CoupledMode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/coupled-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "coupled-mode"))
 	}
 	for i := range state.Vnis {
 		keys := [...]string{"vni-id"}
@@ -3707,10 +3708,10 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletedItems(ctx context.Context, s
 		}
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "description"))
 	}
 	if !state.Mtu.IsNull() && data.Mtu.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mtu", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mtu"))
 	}
 	return deletedItems
 }
@@ -3738,13 +3739,13 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 		}
 	}
 	if !data.EtreeLeaf.IsNull() && !data.EtreeLeaf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/etree/leaf", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "etree/leaf"))
 	}
 	if !data.Etree.IsNull() && !data.Etree.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/etree", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "etree"))
 	}
 	if !data.EfpVisibility.IsNull() && !data.EfpVisibility.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/efp-visibility", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "efp-visibility"))
 	}
 	for i := range data.NeighborsEvpnEvi {
 		keys := [...]string{"vpn-id", "target"}
@@ -3755,58 +3756,58 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 		}
 	}
 	if !data.MacSecureActionShutdown.IsNull() && !data.MacSecureActionShutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/secure/action/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/secure/action/shutdown"))
 	}
 	if !data.MacSecureActionNone.IsNull() && !data.MacSecureActionNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/secure/action/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/secure/action/none"))
 	}
 	if !data.MacSecureThreshold.IsNull() && !data.MacSecureThreshold.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/secure/threshold", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/secure/threshold"))
 	}
 	if !data.MacSecureLogging.IsNull() && !data.MacSecureLogging.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/secure/logging", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/secure/logging"))
 	}
 	if !data.MacSecure.IsNull() && !data.MacSecure.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/secure", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/secure"))
 	}
 	if !data.MacPortDownFlushDisable.IsNull() && !data.MacPortDownFlushDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/port-down/flush/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/port-down/flush/disable"))
 	}
 	if !data.MacLimitNotificationNone.IsNull() && !data.MacLimitNotificationNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/notification/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/notification/none"))
 	}
 	if !data.MacLimitNotificationBoth.IsNull() && !data.MacLimitNotificationBoth.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/notification/both", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/notification/both"))
 	}
 	if !data.MacLimitNotificationTrap.IsNull() && !data.MacLimitNotificationTrap.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/notification/trap", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/notification/trap"))
 	}
 	if !data.MacLimitActionShutdown.IsNull() && !data.MacLimitActionShutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/action/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/action/shutdown"))
 	}
 	if !data.MacLimitActionNoFlood.IsNull() && !data.MacLimitActionNoFlood.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/action/no-flood", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/action/no-flood"))
 	}
 	if !data.MacLimitActionFlood.IsNull() && !data.MacLimitActionFlood.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/limit/action/flood", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/limit/action/flood"))
 	}
 	if !data.MacWithdrawOptimize.IsNull() && !data.MacWithdrawOptimize.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/withdraw/optimize", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/withdraw/optimize"))
 	}
 	if !data.MacWithdrawStateDown.IsNull() && !data.MacWithdrawStateDown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/withdraw/state-down", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/withdraw/state-down"))
 	}
 	if !data.MacWithdrawRelay.IsNull() && !data.MacWithdrawRelay.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/withdraw/relay", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/withdraw/relay"))
 	}
 	if !data.MacWithdrawAccessPwDisable.IsNull() && !data.MacWithdrawAccessPwDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/withdraw/access-pw/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/withdraw/access-pw/disable"))
 	}
 	if !data.MacWithdrawDisable.IsNull() && !data.MacWithdrawDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/withdraw/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/withdraw/disable"))
 	}
 	if !data.MacLearningDisable.IsNull() && !data.MacLearningDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/learning/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/learning/disable"))
 	}
 	for i := range data.MacStaticAddresses {
 		keys := [...]string{"mac-address"}
@@ -3816,14 +3817,14 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MacStaticAddresses[i].Drop.IsNull() && !data.MacStaticAddresses[i].Drop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/static-addresses/static-address%v/drop", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mac/static-addresses/static-address%v", data.getPath(), keyString), "drop"))
 		}
 	}
 	if !data.MacAgingTypeAbsolute.IsNull() && !data.MacAgingTypeAbsolute.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/mac/aging/type/absolute", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "mac/aging/type/absolute"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	for i := range data.RoutedInterface {
 		keys := [...]string{"interface-name"}
@@ -3833,7 +3834,7 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RoutedInterface[i].SplitHorizonGroupCore.IsNull() && !data.RoutedInterface[i].SplitHorizonGroupCore.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/routed/interface%v/split-horizon/group/core", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/routed/interface%v", data.getPath(), keyString), "split-horizon/group/core"))
 		}
 	}
 	for i := range data.Interfaces {
@@ -3852,155 +3853,155 @@ func (data *L2VPNBridgeGroupBridgeDomain) getEmptyLeafsDelete(ctx context.Contex
 			}
 		}
 		if !data.Interfaces[i].SplitHorizonGroup.IsNull() && !data.Interfaces[i].SplitHorizonGroup.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/split-horizon/group", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "split-horizon/group"))
 		}
 		if !data.Interfaces[i].MacSecureShutdownRecoveryTimeoutDisable.IsNull() && !data.Interfaces[i].MacSecureShutdownRecoveryTimeoutDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/shutdown-recovery-timeout/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/shutdown-recovery-timeout/disable"))
 		}
 		if !data.Interfaces[i].MacSecureDisable.IsNull() && !data.Interfaces[i].MacSecureDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/disable"))
 		}
 		if !data.Interfaces[i].MacSecureActionRestrict.IsNull() && !data.Interfaces[i].MacSecureActionRestrict.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/restrict", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/action/restrict"))
 		}
 		if !data.Interfaces[i].MacSecureActionShutdown.IsNull() && !data.Interfaces[i].MacSecureActionShutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/action/shutdown"))
 		}
 		if !data.Interfaces[i].MacSecureActionNone.IsNull() && !data.Interfaces[i].MacSecureActionNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/action/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/action/none"))
 		}
 		if !data.Interfaces[i].MacSecureLoggingDisable.IsNull() && !data.Interfaces[i].MacSecureLoggingDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/logging/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/logging/disable"))
 		}
 		if !data.Interfaces[i].MacSecureLogging.IsNull() && !data.Interfaces[i].MacSecureLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure/logging", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure/logging"))
 		}
 		if !data.Interfaces[i].MacSecure.IsNull() && !data.Interfaces[i].MacSecure.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/secure", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/secure"))
 		}
 		if !data.Interfaces[i].MacPortDownFlushDisable.IsNull() && !data.Interfaces[i].MacPortDownFlushDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/port-down/flush/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/port-down/flush/disable"))
 		}
 		if !data.Interfaces[i].MacLimitNotificationSyslog.IsNull() && !data.Interfaces[i].MacLimitNotificationSyslog.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/syslog", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/notification/syslog"))
 		}
 		if !data.Interfaces[i].MacLimitNotificationNone.IsNull() && !data.Interfaces[i].MacLimitNotificationNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/notification/none"))
 		}
 		if !data.Interfaces[i].MacLimitNotificationBoth.IsNull() && !data.Interfaces[i].MacLimitNotificationBoth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/both", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/notification/both"))
 		}
 		if !data.Interfaces[i].MacLimitNotificationTrap.IsNull() && !data.Interfaces[i].MacLimitNotificationTrap.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/notification/trap", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/notification/trap"))
 		}
 		if !data.Interfaces[i].MacLimitActionNone.IsNull() && !data.Interfaces[i].MacLimitActionNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/action/none"))
 		}
 		if !data.Interfaces[i].MacLimitActionShutdown.IsNull() && !data.Interfaces[i].MacLimitActionShutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/shutdown", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/action/shutdown"))
 		}
 		if !data.Interfaces[i].MacLimitActionNoFlood.IsNull() && !data.Interfaces[i].MacLimitActionNoFlood.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/no-flood", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/action/no-flood"))
 		}
 		if !data.Interfaces[i].MacLimitActionFlood.IsNull() && !data.Interfaces[i].MacLimitActionFlood.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/limit/action/flood", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/limit/action/flood"))
 		}
 		if !data.Interfaces[i].MacLearningDisable.IsNull() && !data.Interfaces[i].MacLearningDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/learning/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/learning/disable"))
 		}
 		if !data.Interfaces[i].MacLearning.IsNull() && !data.Interfaces[i].MacLearning.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/learning", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/learning"))
 		}
 		if !data.Interfaces[i].MacAgingTypeInactivity.IsNull() && !data.Interfaces[i].MacAgingTypeInactivity.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/aging/type/inactivity", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/aging/type/inactivity"))
 		}
 		if !data.Interfaces[i].MacAgingTypeAbsolute.IsNull() && !data.Interfaces[i].MacAgingTypeAbsolute.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/mac/aging/type/absolute", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "mac/aging/type/absolute"))
 		}
 		if !data.Interfaces[i].IpSourceGuardLoggingDisable.IsNull() && !data.Interfaces[i].IpSourceGuardLoggingDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/logging/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "ip-source-guard/logging/disable"))
 		}
 		if !data.Interfaces[i].IpSourceGuardLogging.IsNull() && !data.Interfaces[i].IpSourceGuardLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/logging", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "ip-source-guard/logging"))
 		}
 		if !data.Interfaces[i].IpSourceGuardDisable.IsNull() && !data.Interfaces[i].IpSourceGuardDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "ip-source-guard/disable"))
 		}
 		if !data.Interfaces[i].IpSourceGuard.IsNull() && !data.Interfaces[i].IpSourceGuard.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/ip-source-guard", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "ip-source-guard"))
 		}
 		if !data.Interfaces[i].FloodingDisable.IsNull() && !data.Interfaces[i].FloodingDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/flooding/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "flooding/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationIpv4Disable.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationIpv4Disable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/ipv4/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/ipv4/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationIpv4.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/ipv4", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/ipv4"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationDstMacDisable.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationDstMacDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/dst-mac/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/dst-mac/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationDstMac.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationDstMac.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/dst-mac", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/dst-mac"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationSrcMacDisable.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationSrcMacDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/src-mac/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/src-mac/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionAddressValidationSrcMac.IsNull() && !data.Interfaces[i].DynamicArpInspectionAddressValidationSrcMac.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/address-validation/src-mac", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/address-validation/src-mac"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionDisable.IsNull() && !data.Interfaces[i].DynamicArpInspectionDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionLoggingDisable.IsNull() && !data.Interfaces[i].DynamicArpInspectionLoggingDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/logging/disable", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/logging/disable"))
 		}
 		if !data.Interfaces[i].DynamicArpInspectionLogging.IsNull() && !data.Interfaces[i].DynamicArpInspectionLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/interfaces/interface%v/dynamic-arp-inspection/logging", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "dynamic-arp-inspection/logging"))
 		}
 	}
 	if !data.MulticastSourceIpv4Ipv6.IsNull() && !data.MulticastSourceIpv4Ipv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast-source/ipv4-ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast-source/ipv4-ipv6"))
 	}
 	if !data.MulticastSourceIpv6.IsNull() && !data.MulticastSourceIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast-source/ipv6", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast-source/ipv6"))
 	}
 	if !data.MulticastSourceIpv4.IsNull() && !data.MulticastSourceIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast-source/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast-source/ipv4"))
 	}
 	if !data.IgmpSnoopingDisable.IsNull() && !data.IgmpSnoopingDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/igmp/snooping/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "igmp/snooping/disable"))
 	}
 	if !data.IpSourceGuardLogging.IsNull() && !data.IpSourceGuardLogging.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ip-source-guard/logging", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ip-source-guard/logging"))
 	}
 	if !data.IpSourceGuard.IsNull() && !data.IpSourceGuard.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ip-source-guard", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ip-source-guard"))
 	}
 	if !data.DynamicArpInspectionAddressValidationIpv4.IsNull() && !data.DynamicArpInspectionAddressValidationIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/ipv4", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/ipv4"))
 	}
 	if !data.DynamicArpInspectionAddressValidationDstMac.IsNull() && !data.DynamicArpInspectionAddressValidationDstMac.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/dst-mac", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/dst-mac"))
 	}
 	if !data.DynamicArpInspectionAddressValidationSrcMac.IsNull() && !data.DynamicArpInspectionAddressValidationSrcMac.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/src-mac", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/src-mac"))
 	}
 	if !data.DynamicArpInspectionLogging.IsNull() && !data.DynamicArpInspectionLogging.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dynamic-arp-inspection/logging", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dynamic-arp-inspection/logging"))
 	}
 	if !data.DynamicArpInspection.IsNull() && !data.DynamicArpInspection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/dynamic-arp-inspection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "dynamic-arp-inspection"))
 	}
 	if !data.FloodingDisable.IsNull() && !data.FloodingDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/flooding/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "flooding/disable"))
 	}
 	if !data.TransportModeVlanPassthrough.IsNull() && !data.TransportModeVlanPassthrough.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transport-mode/vlan/passthrough", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transport-mode/vlan/passthrough"))
 	}
 	if !data.CoupledMode.IsNull() && !data.CoupledMode.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/coupled-mode", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "coupled-mode"))
 	}
 	for i := range data.Vnis {
 		keys := [...]string{"vni-id"}
@@ -4053,13 +4054,13 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, ve
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/member/vnis/vni%v", data.getPath(), keyString))
 	}
 	if !data.EtreeLeaf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/etree/leaf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "etree/leaf"))
 	}
 	if !data.Etree.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/etree", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "etree"))
 	}
 	if !data.EfpVisibility.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/efp-visibility", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "efp-visibility"))
 	}
 	for i := range data.NeighborsEvpnEvi {
 		keys := [...]string{"vpn-id", "target"}
@@ -4083,64 +4084,64 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, ve
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/evpn/evi%v", data.getPath(), keyString))
 	}
 	if !data.MacSecureShutdownRecoveryTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure/shutdown-recovery-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure/shutdown-recovery-timeout"))
 	}
 	if !data.MacSecureActionShutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure/action/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure/action/shutdown"))
 	}
 	if !data.MacSecureActionNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure/action/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure/action/none"))
 	}
 	if !data.MacSecureThreshold.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure/threshold", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure/threshold"))
 	}
 	if !data.MacSecureLogging.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure/logging", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure/logging"))
 	}
 	if !data.MacSecure.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/secure", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/secure"))
 	}
 	if !data.MacPortDownFlushDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/port-down/flush/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/port-down/flush/disable"))
 	}
 	if !data.MacLimitNotificationNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/notification/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/notification/none"))
 	}
 	if !data.MacLimitNotificationBoth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/notification/both", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/notification/both"))
 	}
 	if !data.MacLimitNotificationTrap.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/notification/trap", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/notification/trap"))
 	}
 	if !data.MacLimitActionShutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/action/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/action/shutdown"))
 	}
 	if !data.MacLimitActionNoFlood.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/action/no-flood", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/action/no-flood"))
 	}
 	if !data.MacLimitActionFlood.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/action/flood", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/action/flood"))
 	}
 	if !data.MacLimitMaximum.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/limit/maximum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/limit/maximum"))
 	}
 	if !data.MacWithdrawOptimize.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/withdraw/optimize", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/withdraw/optimize"))
 	}
 	if !data.MacWithdrawStateDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/withdraw/state-down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/withdraw/state-down"))
 	}
 	if !data.MacWithdrawRelay.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/withdraw/relay", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/withdraw/relay"))
 	}
 	if !data.MacWithdrawAccessPwDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/withdraw/access-pw/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/withdraw/access-pw/disable"))
 	}
 	if !data.MacWithdrawDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/withdraw/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/withdraw/disable"))
 	}
 	if !data.MacLearningDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/learning/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/learning/disable"))
 	}
 	for i := range data.MacStaticAddresses {
 		keys := [...]string{"mac-address"}
@@ -4161,13 +4162,13 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, ve
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/static-addresses/static-address%v", data.getPath(), keyString))
 	}
 	if !data.MacAgingTypeAbsolute.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/aging/type/absolute", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/aging/type/absolute"))
 	}
 	if !data.MacAgingTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac/aging/time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac/aging/time"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	for i := range data.RoutedInterface {
 		keys := [...]string{"interface-name"}
@@ -4206,70 +4207,70 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, ve
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.MulticastSourceIpv4Ipv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast-source/ipv4-ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast-source/ipv4-ipv6"))
 	}
 	if !data.MulticastSourceIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast-source/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast-source/ipv6"))
 	}
 	if !data.MulticastSourceIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast-source/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast-source/ipv4"))
 	}
 	if !data.StormControlUnknownUnicastKbps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/unknown-unicast/kbps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/unknown-unicast/kbps"))
 	}
 	if !data.StormControlUnknownUnicastPps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/unknown-unicast/pps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/unknown-unicast/pps"))
 	}
 	if !data.StormControlMulticastKbps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/multicast/kbps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/multicast/kbps"))
 	}
 	if !data.StormControlMulticastPps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/multicast/pps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/multicast/pps"))
 	}
 	if !data.StormControlBroadcastKbps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/broadcast/kbps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/broadcast/kbps"))
 	}
 	if !data.StormControlBroadcastPps.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/storm-control/broadcast/pps", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "storm-control/broadcast/pps"))
 	}
 	if !data.MldSnoopingProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mld/snooping/profile", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mld/snooping/profile"))
 	}
 	if !data.IgmpSnoopingDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/igmp/snooping/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "igmp/snooping/disable"))
 	}
 	if !data.IgmpSnoopingProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/igmp/snooping/profile", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "igmp/snooping/profile"))
 	}
 	if !data.IpSourceGuardLogging.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ip-source-guard/logging", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ip-source-guard/logging"))
 	}
 	if !data.IpSourceGuard.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ip-source-guard", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ip-source-guard"))
 	}
 	if !data.DynamicArpInspectionAddressValidationIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/ipv4"))
 	}
 	if !data.DynamicArpInspectionAddressValidationDstMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/dst-mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/dst-mac"))
 	}
 	if !data.DynamicArpInspectionAddressValidationSrcMac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dynamic-arp-inspection/address-validation/src-mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dynamic-arp-inspection/address-validation/src-mac"))
 	}
 	if !data.DynamicArpInspectionLogging.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dynamic-arp-inspection/logging", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dynamic-arp-inspection/logging"))
 	}
 	if !data.DynamicArpInspection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/dynamic-arp-inspection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "dynamic-arp-inspection"))
 	}
 	if !data.FloodingDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/flooding/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "flooding/disable"))
 	}
 	if !data.TransportModeVlanPassthrough.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transport-mode/vlan/passthrough", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transport-mode/vlan/passthrough"))
 	}
 	if !data.CoupledMode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/coupled-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "coupled-mode"))
 	}
 	for i := range data.Vnis {
 		keys := [...]string{"vni-id"}
@@ -4326,10 +4327,10 @@ func (data *L2VPNBridgeGroupBridgeDomain) getDeletePaths(ctx context.Context, ve
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/evis/evi%v", data.getPath(), keyString))
 	}
 	if !data.Description.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))
 	}
 	if !data.Mtu.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mtu", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mtu"))
 	}
 	return deletePaths
 }

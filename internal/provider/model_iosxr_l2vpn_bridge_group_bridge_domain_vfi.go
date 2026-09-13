@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1851,25 +1852,25 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 			if found {
 				if !state.Neighbors[i].MldSnoopingProfile.IsNull() && data.Neighbors[j].MldSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/mld/snooping/profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mld/snooping/profile"))
 				}
 				if !state.Neighbors[i].IgmpSnoopingProfile.IsNull() && data.Neighbors[j].IgmpSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/igmp/snooping/profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "igmp/snooping/profile"))
 				}
 				if !state.Neighbors[i].DhcpIpv4None.IsNull() && data.Neighbors[j].DhcpIpv4None.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dhcp/ipv4/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dhcp/ipv4/none"))
 				}
 				if !state.Neighbors[i].DhcpIpv4SnoopingProfile.IsNull() && data.Neighbors[j].DhcpIpv4SnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/dhcp/ipv4/snoop/profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dhcp/ipv4/snoop/profile"))
 				}
 				if !state.Neighbors[i].PwClass.IsNull() && data.Neighbors[j].PwClass.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/pw-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "pw-class"))
 				}
 				if !state.Neighbors[i].MplsStaticLabelRemote.IsNull() && data.Neighbors[j].MplsStaticLabelRemote.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/mpls/static/label/remote", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mpls/static/label/remote"))
 				}
 				if !state.Neighbors[i].MplsStaticLabelLocal.IsNull() && data.Neighbors[j].MplsStaticLabelLocal.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/mpls/static/label/local", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mpls/static/label/local"))
 				}
 				for ci := range state.Neighbors[i].StaticMacAddresses {
 					ckeys := [...]string{"mac-address"}
@@ -1909,73 +1910,73 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 		}
 	}
 	if !state.MulticastP2mpSignalingProtocolBgp.IsNull() && data.MulticastP2mpSignalingProtocolBgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/p2mp/signaling-protocol/bgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/p2mp/signaling-protocol/bgp"))
 	}
 	if !state.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe.IsNull() && data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/p2mp/transport/rsvp-te/attribute-set/p2mp-te", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/p2mp/transport/rsvp-te/attribute-set/p2mp-te"))
 	}
 	if !state.MulticastP2mpTransportRsvpTe.IsNull() && data.MulticastP2mpTransportRsvpTe.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/p2mp/transport/rsvp-te", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/p2mp/transport/rsvp-te"))
 	}
 	if !state.MulticastP2mp.IsNull() && data.MulticastP2mp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/multicast/p2mp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "multicast/p2mp"))
 	}
 	if !state.AutodiscoveryBgpRoutePolicyExport.IsNull() && data.AutodiscoveryBgpRoutePolicyExport.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-policy/export", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/route-policy/export"))
 	}
 	if !state.AutodiscoveryBgpTablePolicy.IsNull() && data.AutodiscoveryBgpTablePolicy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/table-policy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/table-policy"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelBoth.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelBoth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelReceive.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelReceive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelTransmit.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelTransmit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address-assigned-number"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-assigned-number"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-number"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolLdp.IsNull() && data.AutodiscoveryBgpSignalingProtocolLdp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/ldp"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelStatic.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelStatic.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpVeRange.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpVeRange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/ve-range", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/ve-range"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgpVeId.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgpVeId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/ve-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/ve-id"))
 	}
 	if !state.AutodiscoveryBgpSignalingProtocolBgp.IsNull() && data.AutodiscoveryBgpSignalingProtocolBgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/signaling-protocol/bgp"))
 	}
 	if !state.AutodiscoveryBgpControlWord.IsNull() && data.AutodiscoveryBgpControlWord.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/control-word", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/control-word"))
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -2302,34 +2303,34 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 		}
 	}
 	if !state.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() && data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/ipv4-address-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !state.AutodiscoveryBgpRdIpv4Address.IsNull() && data.AutodiscoveryBgpRdIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/ipv4-address"))
 	}
 	if !state.AutodiscoveryBgpRdFourByteAsIndex.IsNull() && data.AutodiscoveryBgpRdFourByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/four-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !state.AutodiscoveryBgpRdFourByteAsNumber.IsNull() && data.AutodiscoveryBgpRdFourByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/four-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/four-byte-as-number"))
 	}
 	if !state.AutodiscoveryBgpRdTwoByteAsIndex.IsNull() && data.AutodiscoveryBgpRdTwoByteAsIndex.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/two-byte-as-assigned-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !state.AutodiscoveryBgpRdTwoByteAsNumber.IsNull() && data.AutodiscoveryBgpRdTwoByteAsNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/two-byte-as-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/two-byte-as-number"))
 	}
 	if !state.AutodiscoveryBgpRdAuto.IsNull() && data.AutodiscoveryBgpRdAuto.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/rd/auto", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp/rd/auto"))
 	}
 	if !state.AutodiscoveryBgp.IsNull() && data.AutodiscoveryBgp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "autodiscovery/bgp"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	if !state.VpnId.IsNull() && data.VpnId.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/vpn-id", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "vpn-id"))
 	}
 	return deletedItems
 }
@@ -2348,7 +2349,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Con
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].DhcpIpv4None.IsNull() && !data.Neighbors[i].DhcpIpv4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/neighbors/neighbor%v/dhcp/ipv4/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "dhcp/ipv4/none"))
 		}
 		for ci := range data.Neighbors[i].StaticMacAddresses {
 			ckeys := [...]string{"mac-address"}
@@ -2360,46 +2361,46 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Con
 		}
 	}
 	if !data.MulticastP2mpSignalingProtocolBgp.IsNull() && !data.MulticastP2mpSignalingProtocolBgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/p2mp/signaling-protocol/bgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/p2mp/signaling-protocol/bgp"))
 	}
 	if !data.MulticastP2mpTransportRsvpTe.IsNull() && !data.MulticastP2mpTransportRsvpTe.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/p2mp/transport/rsvp-te", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/p2mp/transport/rsvp-te"))
 	}
 	if !data.MulticastP2mp.IsNull() && !data.MulticastP2mp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/multicast/p2mp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "multicast/p2mp"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic.IsNull() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelBoth.IsNull() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelBoth.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelReceive.IsNull() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelReceive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelTransmit.IsNull() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelTransmit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdp.IsNull() && !data.AutodiscoveryBgpSignalingProtocolLdp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelStatic.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelStatic.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgp.IsNull() && !data.AutodiscoveryBgpSignalingProtocolBgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp"))
 	}
 	if !data.AutodiscoveryBgpControlWord.IsNull() && !data.AutodiscoveryBgpControlWord.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/control-word", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/control-word"))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -2474,13 +2475,13 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Con
 		}
 	}
 	if !data.AutodiscoveryBgpRdAuto.IsNull() && !data.AutodiscoveryBgpRdAuto.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp/rd/auto", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp/rd/auto"))
 	}
 	if !data.AutodiscoveryBgp.IsNull() && !data.AutodiscoveryBgp.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/autodiscovery/bgp", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "autodiscovery/bgp"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	return emptyLeafsDelete
 }
@@ -2512,73 +2513,73 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
 	}
 	if !data.MulticastP2mpSignalingProtocolBgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/p2mp/signaling-protocol/bgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/p2mp/signaling-protocol/bgp"))
 	}
 	if !data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/p2mp/transport/rsvp-te/attribute-set/p2mp-te", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/p2mp/transport/rsvp-te/attribute-set/p2mp-te"))
 	}
 	if !data.MulticastP2mpTransportRsvpTe.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/p2mp/transport/rsvp-te", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/p2mp/transport/rsvp-te"))
 	}
 	if !data.MulticastP2mp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multicast/p2mp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/p2mp"))
 	}
 	if !data.AutodiscoveryBgpRoutePolicyExport.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-policy/export", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/route-policy/export"))
 	}
 	if !data.AutodiscoveryBgpTablePolicy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/table-policy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/table-policy"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/static"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelBoth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/both"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelReceive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/receive"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelTransmit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/load-balancing/flow-label/transmit"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address-assigned-number"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/ipv4-address"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-assigned-number"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp/vpls-id/two-byte-as-number"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolLdp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/ldp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/ldp"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelStatic.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/static"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpVeRange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/ve-range", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/ve-range"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgpVeId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp/ve-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp/ve-id"))
 	}
 	if !data.AutodiscoveryBgpSignalingProtocolBgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/signaling-protocol/bgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/signaling-protocol/bgp"))
 	}
 	if !data.AutodiscoveryBgpControlWord.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/control-word", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/control-word"))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -2770,34 +2771,34 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
 	}
 	if !data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/ipv4-address-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/ipv4-address-assigned-number"))
 	}
 	if !data.AutodiscoveryBgpRdIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/ipv4-address"))
 	}
 	if !data.AutodiscoveryBgpRdFourByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/four-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/four-byte-as-assigned-number"))
 	}
 	if !data.AutodiscoveryBgpRdFourByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/four-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/four-byte-as-number"))
 	}
 	if !data.AutodiscoveryBgpRdTwoByteAsIndex.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/two-byte-as-assigned-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/two-byte-as-assigned-number"))
 	}
 	if !data.AutodiscoveryBgpRdTwoByteAsNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/two-byte-as-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/two-byte-as-number"))
 	}
 	if !data.AutodiscoveryBgpRdAuto.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/rd/auto", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/auto"))
 	}
 	if !data.AutodiscoveryBgp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	if !data.VpnId.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vpn-id", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "vpn-id"))
 	}
 	return deletePaths
 }

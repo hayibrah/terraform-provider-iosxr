@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1596,7 +1597,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.TrackUpErrorDisableInterfaces[i].AutoRecover.IsNull() && data.TrackUpErrorDisableInterfaces[j].AutoRecover.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v/auto-recover", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", state.getPath(), keyString), "auto-recover"))
 				}
 				break
 			}
@@ -1629,7 +1630,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.TrackDownErrorDisableInterfaces[i].AutoRecover.IsNull() && data.TrackDownErrorDisableInterfaces[j].AutoRecover.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v/auto-recover", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", state.getPath(), keyString), "auto-recover"))
 				}
 				break
 			}
@@ -1639,61 +1640,61 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 		}
 	}
 	if !state.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() && data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborVpnv6UnicastAddress.IsNull() && data.BgpNeighborVpnv6UnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/neighbor"))
 	}
 	if !state.BgpNeighborVpnv4UnicastDisableFibCheck.IsNull() && data.BgpNeighborVpnv4UnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborVpnv4UnicastAddress.IsNull() && data.BgpNeighborVpnv4UnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/neighbor"))
 	}
 	if !state.BgpNeighborIpv6LabeledUnicastDisableFibCheck.IsNull() && data.BgpNeighborIpv6LabeledUnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborIpv6LabeledUnicastAddress.IsNull() && data.BgpNeighborIpv6LabeledUnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/neighbor"))
 	}
 	if !state.BgpNeighborIpv6UnicastDisableFibCheck.IsNull() && data.BgpNeighborIpv6UnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborIpv6UnicastVrfName.IsNull() && data.BgpNeighborIpv6UnicastVrfName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/vrf"))
 	}
 	if !state.BgpNeighborIpv6UnicastAddress.IsNull() && data.BgpNeighborIpv6UnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/neighbor"))
 	}
 	if !state.BgpNeighborIpv4LabeledUnicastDisableFibCheck.IsNull() && data.BgpNeighborIpv4LabeledUnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborIpv4LabeledUnicastVrfName.IsNull() && data.BgpNeighborIpv4LabeledUnicastVrfName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/vrf"))
 	}
 	if !state.BgpNeighborIpv4LabeledUnicastAddress.IsNull() && data.BgpNeighborIpv4LabeledUnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/neighbor"))
 	}
 	if !state.BgpNeighborIpv4UnicastDisableFibCheck.IsNull() && data.BgpNeighborIpv4UnicastDisableFibCheck.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check"))
 	}
 	if !state.BgpNeighborIpv4UnicastVrfName.IsNull() && data.BgpNeighborIpv4UnicastVrfName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/vrf"))
 	}
 	if !state.BgpNeighborIpv4UnicastAddress.IsNull() && data.BgpNeighborIpv4UnicastAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/neighbor", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/neighbor"))
 	}
 	if !state.BfdDestinationAddress.IsNull() && data.BfdDestinationAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bfdrtr/destaddress", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bfdrtr/destaddress"))
 	}
 	if !state.BfdInterface.IsNull() && data.BfdInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bfdrtr/interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bfdrtr/interface"))
 	}
 	if !state.BfdDebounce.IsNull() && data.BfdDebounce.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bfdrtr/debounce", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bfdrtr/debounce"))
 	}
 	if !state.BfdRate.IsNull() && data.BfdRate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/bfdrtr/rate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/bfdrtr/rate"))
 	}
 	for i := range state.LineProtocolBooleanOr {
 		keys := [...]string{"interface-name"}
@@ -1786,10 +1787,10 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 		}
 	}
 	if !state.LineProtocolPercentageDown.IsNull() && data.LineProtocolPercentageDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/threshold/percentage/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/line-protocol/state/threshold/percentage/threshold/percentage/down"))
 	}
 	if !state.LineProtocolPercentageUp.IsNull() && data.LineProtocolPercentageUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/threshold/percentage/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/line-protocol/state/threshold/percentage/threshold/percentage/up"))
 	}
 	for i := range state.LineProtocolWeight {
 		keys := [...]string{"interface-name"}
@@ -1815,7 +1816,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.LineProtocolWeight[i].Weight.IsNull() && data.LineProtocolWeight[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v/weight", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", state.getPath(), keyString), "weight"))
 				}
 				break
 			}
@@ -1825,16 +1826,16 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 		}
 	}
 	if !state.LineProtocolWeightDown.IsNull() && data.LineProtocolWeightDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/threshold/weight/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/line-protocol/state/threshold/weight/threshold/weight/down"))
 	}
 	if !state.LineProtocolWeightUp.IsNull() && data.LineProtocolWeightUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/threshold/weight/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/line-protocol/state/threshold/weight/threshold/weight/up"))
 	}
 	if !state.ThresholdWeightDown.IsNull() && data.ThresholdWeightDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/weight/threshold/weight/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/threshold/weight/threshold/weight/down"))
 	}
 	if !state.ThresholdWeightUp.IsNull() && data.ThresholdWeightUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/weight/threshold/weight/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/threshold/weight/threshold/weight/up"))
 	}
 	for i := range state.ThresholdWeight {
 		keys := [...]string{"object-name"}
@@ -1860,7 +1861,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.ThresholdWeight[i].Weight.IsNull() && data.ThresholdWeight[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v/weight", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", state.getPath(), keyString), "weight"))
 				}
 				break
 			}
@@ -1870,10 +1871,10 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 		}
 	}
 	if !state.ThresholdPercentageDown.IsNull() && data.ThresholdPercentageDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/percentage/threshold/percentage/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/threshold/percentage/threshold/percentage/down"))
 	}
 	if !state.ThresholdPercentageUp.IsNull() && data.ThresholdPercentageUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/percentage/threshold/percentage/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/list/threshold/percentage/threshold/percentage/up"))
 	}
 	for i := range state.ThresholdPercentage {
 		keys := [...]string{"object-name"}
@@ -1899,7 +1900,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.ThresholdPercentage[i].Weight.IsNull() && data.ThresholdPercentage[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v/weight", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v", state.getPath(), keyString), "weight"))
 				}
 				break
 			}
@@ -1932,7 +1933,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.BooleanOrList[i].Not.IsNull() && data.BooleanOrList[j].Not.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/boolean/or/objects/object%v/not", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", state.getPath(), keyString), "not"))
 				}
 				break
 			}
@@ -1965,7 +1966,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.BooleanAndList[i].Not.IsNull() && data.BooleanAndList[j].Not.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v/not", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", state.getPath(), keyString), "not"))
 				}
 				break
 			}
@@ -1975,31 +1976,31 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 		}
 	}
 	if !state.Rtr.IsNull() && data.Rtr.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/rtr", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/rtr"))
 	}
 	if !state.LineProtocolState.IsNull() && data.LineProtocolState.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/line-protocol/state/interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/line-protocol/state/interface"))
 	}
 	if !state.RouteVrf.IsNull() && data.RouteVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/route/reachability/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/route/reachability/vrf"))
 	}
 	if !state.RouteAddressPrefixLength.IsNull() && data.RouteAddressPrefixLength.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/route/reachability/route/address-prefix-length", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/route/reachability/route/address-prefix-length"))
 	}
 	if !state.RouteAddressPrefix.IsNull() && data.RouteAddressPrefix.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/route/reachability/route/address-prefix", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/route/reachability/route/address-prefix"))
 	}
 	if !state.RouteIpv4Mask.IsNull() && data.RouteIpv4Mask.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/route/reachability/route/ipv4/mask", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/route/reachability/route/ipv4/mask"))
 	}
 	if !state.RouteIpv4Address.IsNull() && data.RouteIpv4Address.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/type/route/reachability/route/ipv4/address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "type/route/reachability/route/ipv4/address"))
 	}
 	if !state.DelayDown.IsNull() && data.DelayDown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/down", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/down"))
 	}
 	if !state.DelayUp.IsNull() && data.DelayUp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/up", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/up"))
 	}
 	return deletedItems
 }
@@ -2018,7 +2019,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.TrackUpErrorDisableInterfaces[i].AutoRecover.IsNull() && !data.TrackUpErrorDisableInterfaces[i].AutoRecover.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v/auto-recover", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", data.getPath(), keyString), "auto-recover"))
 		}
 	}
 	for i := range data.TrackDownErrorDisableInterfaces {
@@ -2029,26 +2030,26 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.TrackDownErrorDisableInterfaces[i].AutoRecover.IsNull() && !data.TrackDownErrorDisableInterfaces[i].AutoRecover.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v/auto-recover", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", data.getPath(), keyString), "auto-recover"))
 		}
 	}
 	if !data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() && !data.BgpNeighborVpnv6UnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborVpnv4UnicastDisableFibCheck.IsNull() && !data.BgpNeighborVpnv4UnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv6LabeledUnicastDisableFibCheck.IsNull() && !data.BgpNeighborIpv6LabeledUnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv6UnicastDisableFibCheck.IsNull() && !data.BgpNeighborIpv6UnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv4LabeledUnicastDisableFibCheck.IsNull() && !data.BgpNeighborIpv4LabeledUnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv4UnicastDisableFibCheck.IsNull() && !data.BgpNeighborIpv4UnicastDisableFibCheck.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check"))
 	}
 	for i := range data.LineProtocolBooleanOr {
 		keys := [...]string{"interface-name"}
@@ -2106,7 +2107,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.BooleanOrList[i].Not.IsNull() && !data.BooleanOrList[i].Not.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/list/boolean/or/objects/object%v/not", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", data.getPath(), keyString), "not"))
 		}
 	}
 	for i := range data.BooleanAndList {
@@ -2117,7 +2118,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.BooleanAndList[i].Not.IsNull() && !data.BooleanAndList[i].Not.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v/not", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", data.getPath(), keyString), "not"))
 		}
 	}
 	return emptyLeafsDelete
@@ -2165,61 +2166,61 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborVpnv6UnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/neighbor"))
 	}
 	if !data.BgpNeighborVpnv4UnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborVpnv4UnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv4/unicast/neighbor"))
 	}
 	if !data.BgpNeighborIpv6LabeledUnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv6LabeledUnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/labeled-unicast/neighbor"))
 	}
 	if !data.BgpNeighborIpv6UnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv6UnicastVrfName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/vrf"))
 	}
 	if !data.BgpNeighborIpv6UnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv6/unicast/neighbor"))
 	}
 	if !data.BgpNeighborIpv4LabeledUnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv4LabeledUnicastVrfName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/vrf"))
 	}
 	if !data.BgpNeighborIpv4LabeledUnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/labeled-unicast/neighbor"))
 	}
 	if !data.BgpNeighborIpv4UnicastDisableFibCheck.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/disable/fib-check"))
 	}
 	if !data.BgpNeighborIpv4UnicastVrfName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/vrf"))
 	}
 	if !data.BgpNeighborIpv4UnicastAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/neighbor", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/ipv4/unicast/neighbor"))
 	}
 	if !data.BfdDestinationAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bfdrtr/destaddress", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bfdrtr/destaddress"))
 	}
 	if !data.BfdInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bfdrtr/interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bfdrtr/interface"))
 	}
 	if !data.BfdDebounce.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bfdrtr/debounce", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bfdrtr/debounce"))
 	}
 	if !data.BfdRate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/bfdrtr/rate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bfdrtr/rate"))
 	}
 	for i := range data.LineProtocolBooleanOr {
 		keys := [...]string{"interface-name"}
@@ -2276,10 +2277,10 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.LineProtocolPercentageDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/threshold/percentage/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/percentage/threshold/percentage/down"))
 	}
 	if !data.LineProtocolPercentageUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/threshold/percentage/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/percentage/threshold/percentage/up"))
 	}
 	for i := range data.LineProtocolWeight {
 		keys := [...]string{"interface-name"}
@@ -2300,16 +2301,16 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", data.getPath(), keyString))
 	}
 	if !data.LineProtocolWeightDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/threshold/weight/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/weight/threshold/weight/down"))
 	}
 	if !data.LineProtocolWeightUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/threshold/weight/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/weight/threshold/weight/up"))
 	}
 	if !data.ThresholdWeightDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/weight/threshold/weight/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/threshold/weight/threshold/weight/down"))
 	}
 	if !data.ThresholdWeightUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/weight/threshold/weight/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/threshold/weight/threshold/weight/up"))
 	}
 	for i := range data.ThresholdWeight {
 		keys := [...]string{"object-name"}
@@ -2330,10 +2331,10 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", data.getPath(), keyString))
 	}
 	if !data.ThresholdPercentageDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/percentage/threshold/percentage/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/threshold/percentage/threshold/percentage/down"))
 	}
 	if !data.ThresholdPercentageUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/percentage/threshold/percentage/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/threshold/percentage/threshold/percentage/up"))
 	}
 	for i := range data.ThresholdPercentage {
 		keys := [...]string{"object-name"}
@@ -2390,31 +2391,31 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", data.getPath(), keyString))
 	}
 	if !data.Rtr.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/rtr", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/rtr"))
 	}
 	if !data.LineProtocolState.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/line-protocol/state/interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/line-protocol/state/interface"))
 	}
 	if !data.RouteVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/route/reachability/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/route/reachability/vrf"))
 	}
 	if !data.RouteAddressPrefixLength.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/route/reachability/route/address-prefix-length", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/route/reachability/route/address-prefix-length"))
 	}
 	if !data.RouteAddressPrefix.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/route/reachability/route/address-prefix", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/route/reachability/route/address-prefix"))
 	}
 	if !data.RouteIpv4Mask.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/route/reachability/route/ipv4/mask", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/route/reachability/route/ipv4/mask"))
 	}
 	if !data.RouteIpv4Address.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/route/reachability/route/ipv4/address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/route/reachability/route/ipv4/address"))
 	}
 	if !data.DelayDown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/down", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/down"))
 	}
 	if !data.DelayUp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/up", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/up"))
 	}
 	return deletePaths
 }

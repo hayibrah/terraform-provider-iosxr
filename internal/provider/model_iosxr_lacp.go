@@ -22,7 +22,7 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -178,10 +178,10 @@ func (data *LACPData) fromBody(ctx context.Context, res []byte, version string) 
 func (data *LACP) getDeletedItems(ctx context.Context, state LACP, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Priority.IsNull() && data.Priority.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/priority", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "priority"))
 	}
 	if !state.Mac.IsNull() && data.Mac.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac"))
 	}
 	return deletedItems
 }
@@ -201,10 +201,10 @@ func (data *LACP) getEmptyLeafsDelete(ctx context.Context, version string) []str
 func (data *LACP) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Priority.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/priority", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "priority"))
 	}
 	if !data.Mac.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac"))
 	}
 	return deletePaths
 }

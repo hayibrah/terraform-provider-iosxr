@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1660,28 +1661,28 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.FipsMode.IsNull() && data.FipsMode.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/fips-mode", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "fips-mode"))
 	}
 	if !state.CaCrlCurlTimeout.IsNull() && data.CaCrlCurlTimeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/crl/curl-timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/crl/curl-timeout"))
 	}
 	if !state.CaFqdnCheckIpAddressAllow.IsNull() && data.CaFqdnCheckIpAddressAllow.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/fqdn-check/ip-address/allow", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/fqdn-check/ip-address/allow"))
 	}
 	if !state.CaRsa1024Disable.IsNull() && data.CaRsa1024Disable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/rsa/one-thousand-twenty-four/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/rsa/one-thousand-twenty-four/disable"))
 	}
 	if !state.CaSourceInterfaceIpv6.IsNull() && data.CaSourceInterfaceIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/source-interface/ipv6", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/source-interface/ipv6"))
 	}
 	if !state.CaSourceInterfaceIpv4.IsNull() && data.CaSourceInterfaceIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/source-interface/ipv4", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/source-interface/ipv4"))
 	}
 	if !state.CaHttpProxyPort.IsNull() && data.CaHttpProxyPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/port"))
 	}
 	if !state.CaHttpProxy.IsNull() && data.CaHttpProxy.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/http-proxy", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/http-proxy"))
 	}
 	for i := range state.CaOpensshTrustpoints {
 		keys := [...]string{"trustpoint-name"}
@@ -1707,7 +1708,7 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version s
 			}
 			if found {
 				if !state.CaOpensshTrustpoints[i].Rsakeypair.IsNull() && data.CaOpensshTrustpoints[j].Rsakeypair.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/openssh/trustpoints/trustpoint%v/rsakeypair", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/openssh/trustpoints/trustpoint%v", state.getPath(), keyString), "rsakeypair"))
 				}
 				break
 			}
@@ -1740,82 +1741,82 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version s
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].SslProfile.IsNull() && data.CaTrustpoints[j].SslProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/ssl-profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "ssl-profile"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].ReEnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].ReEnrollmentAuthenticationProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/re-enrollment/authentication-profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "re-enrollment/authentication-profile"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.CaTrustpoints[i].EnrollmentAuthenticationProfile.IsNull() && data.CaTrustpoints[j].EnrollmentAuthenticationProfile.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/authentication-profile", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "enrollment/authentication-profile"))
 				}
 				if !state.CaTrustpoints[i].MethodEstCredentialCertificate.IsNull() && data.CaTrustpoints[j].MethodEstCredentialCertificate.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/method/est/credential/certificate", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "method/est/credential/certificate"))
 				}
 				if !state.CaTrustpoints[i].MessageDigest.IsNull() && data.CaTrustpoints[j].MessageDigest.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/message-digest", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "message-digest"))
 				}
 				if !state.CaTrustpoints[i].Vrf.IsNull() && data.CaTrustpoints[j].Vrf.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/vrf", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "vrf"))
 				}
 				if !state.CaTrustpoints[i].SerialNumberNone.IsNull() && data.CaTrustpoints[j].SerialNumberNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/serial-number/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "serial-number/none"))
 				}
 				if !state.CaTrustpoints[i].SerialNumber.IsNull() && data.CaTrustpoints[j].SerialNumber.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/serial-number", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "serial-number"))
 				}
 				if !state.CaTrustpoints[i].SubjectAlternativeName.IsNull() && data.CaTrustpoints[j].SubjectAlternativeName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/subject-alternative-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "subject-alternative-name"))
 				}
 				if !state.CaTrustpoints[i].SubjectName.IsNull() && data.CaTrustpoints[j].SubjectName.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/subject-name", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "subject-name"))
 				}
 				if !state.CaTrustpoints[i].IpAddressNone.IsNull() && data.CaTrustpoints[j].IpAddressNone.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/ip-address/none", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "ip-address/none"))
 				}
 				if !state.CaTrustpoints[i].IpAddress.IsNull() && data.CaTrustpoints[j].IpAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/ip-address/ipv4-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "ip-address/ipv4-address"))
 				}
 				if !state.CaTrustpoints[i].QueryUrl.IsNull() && data.CaTrustpoints[j].QueryUrl.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/query/url", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "query/url"))
 				}
 				if !state.CaTrustpoints[i].CrlOptional.IsNull() && data.CaTrustpoints[j].CrlOptional.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/crl/optional", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "crl/optional"))
 				}
 				if !state.CaTrustpoints[i].Rsakeypair.IsNull() && data.CaTrustpoints[j].Rsakeypair.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/rsakeypair", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "rsakeypair"))
 				}
 				if !state.CaTrustpoints[i].SkipChallengePassword.IsNull() && data.CaTrustpoints[j].SkipChallengePassword.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/skip-challenge-password", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "skip-challenge-password"))
 				}
 				if !state.CaTrustpoints[i].RenewalMessageTypeRenewalreq.IsNull() && data.CaTrustpoints[j].RenewalMessageTypeRenewalreq.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/renewal-message-type/renewalreq", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "renewal-message-type/renewalreq"))
 				}
 				if !state.CaTrustpoints[i].RenewalMessageTypePkcsreq.IsNull() && data.CaTrustpoints[j].RenewalMessageTypePkcsreq.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/renewal-message-type/pkcsreq", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "renewal-message-type/pkcsreq"))
 				}
 				if !state.CaTrustpoints[i].AutoEnroll.IsNull() && data.CaTrustpoints[j].AutoEnroll.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/auto-enroll", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "auto-enroll"))
 				}
 				if !state.CaTrustpoints[i].SftpPassword.IsNull() && data.CaTrustpoints[j].SftpPassword.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/sftp-password/password", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "sftp-password/password"))
 				}
 				if !state.CaTrustpoints[i].SftpUsername.IsNull() && data.CaTrustpoints[j].SftpUsername.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/sftp-username", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "sftp-username"))
 				}
 				if !state.CaTrustpoints[i].EnrollmentTerminal.IsNull() && data.CaTrustpoints[j].EnrollmentTerminal.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/terminal", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "enrollment/terminal"))
 				}
 				if !state.CaTrustpoints[i].EnrollmentUrl.IsNull() && data.CaTrustpoints[j].EnrollmentUrl.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/url", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "enrollment/url"))
 				}
 				if !state.CaTrustpoints[i].EnrollmentRetryPeriod.IsNull() && data.CaTrustpoints[j].EnrollmentRetryPeriod.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/retry/period", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "enrollment/retry/period"))
 				}
 				if !state.CaTrustpoints[i].EnrollmentRetryCount.IsNull() && data.CaTrustpoints[j].EnrollmentRetryCount.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/retry/count", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "enrollment/retry/count"))
 				}
 				if !state.CaTrustpoints[i].Description.IsNull() && data.CaTrustpoints[j].Description.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/description", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", state.getPath(), keyString), "description"))
 				}
 				break
 			}
@@ -1825,118 +1826,118 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version s
 		}
 	}
 	if !state.CaTrustpointSystemMessageDigest.IsNull() && data.CaTrustpointSystemMessageDigest.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/message-digest", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/message-digest"))
 	}
 	if !state.CaTrustpointSystemLifetimeCertificate.IsNull() && data.CaTrustpointSystemLifetimeCertificate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/lifetime/certificate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/lifetime/certificate"))
 	}
 	if !state.CaTrustpointSystemLifetimeCaCertificate.IsNull() && data.CaTrustpointSystemLifetimeCaCertificate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/lifetime/ca-certificate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/lifetime/ca-certificate"))
 	}
 	if !state.CaTrustpointSystemVrf.IsNull() && data.CaTrustpointSystemVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/vrf"))
 	}
 	if !state.CaTrustpointSystemSerialNumberNone.IsNull() && data.CaTrustpointSystemSerialNumberNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/serial-number/none"))
 	}
 	if !state.CaTrustpointSystemSerialNumber.IsNull() && data.CaTrustpointSystemSerialNumber.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/serial-number"))
 	}
 	if !state.CaTrustpointSystemSubjectAlternativeName.IsNull() && data.CaTrustpointSystemSubjectAlternativeName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-alternative-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/subject-alternative-name"))
 	}
 	if !state.CaTrustpointSystemSubjectNameCaCertificate.IsNull() && data.CaTrustpointSystemSubjectNameCaCertificate.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-name-ca-certificate", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/subject-name-ca-certificate"))
 	}
 	if !state.CaTrustpointSystemSubjectName.IsNull() && data.CaTrustpointSystemSubjectName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/subject-name"))
 	}
 	if !state.CaTrustpointSystemIpAddressNone.IsNull() && data.CaTrustpointSystemIpAddressNone.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ip-address/none", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ip-address/none"))
 	}
 	if !state.CaTrustpointSystemIpAddress.IsNull() && data.CaTrustpointSystemIpAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ip-address/ipv4-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ip-address/ipv4-address"))
 	}
 	if !state.CaTrustpointSystemQueryUrl.IsNull() && data.CaTrustpointSystemQueryUrl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/query/url", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/query/url"))
 	}
 	if !state.CaTrustpointSystemCrlOptional.IsNull() && data.CaTrustpointSystemCrlOptional.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/crl/optional", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/crl/optional"))
 	}
 	if !state.CaTrustpointSystemKeypairEd25519.IsNull() && data.CaTrustpointSystemKeypairEd25519.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ed25519", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/ed25519"))
 	}
 	if !state.CaTrustpointSystemKeypairDsa.IsNull() && data.CaTrustpointSystemKeypairDsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/dsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/dsa"))
 	}
 	if !state.CaTrustpointSystemKeypairEcdsanistp521.IsNull() && data.CaTrustpointSystemKeypairEcdsanistp521.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp521", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp521"))
 	}
 	if !state.CaTrustpointSystemKeypairEcdsanistp384.IsNull() && data.CaTrustpointSystemKeypairEcdsanistp384.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp384", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp384"))
 	}
 	if !state.CaTrustpointSystemKeypairEcdsanistp256.IsNull() && data.CaTrustpointSystemKeypairEcdsanistp256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp256"))
 	}
 	if !state.CaTrustpointSystemKeypairRsa.IsNull() && data.CaTrustpointSystemKeypairRsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/rsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/keypair/rsa"))
 	}
 	if !state.CaTrustpointSystemCaKeypairEd25519.IsNull() && data.CaTrustpointSystemCaKeypairEd25519.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ed25519", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ed25519"))
 	}
 	if !state.CaTrustpointSystemCaKeypairDsa.IsNull() && data.CaTrustpointSystemCaKeypairDsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/dsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/dsa"))
 	}
 	if !state.CaTrustpointSystemCaKeypairEcdsanistp521.IsNull() && data.CaTrustpointSystemCaKeypairEcdsanistp521.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp521", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp521"))
 	}
 	if !state.CaTrustpointSystemCaKeypairEcdsanistp384.IsNull() && data.CaTrustpointSystemCaKeypairEcdsanistp384.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp384", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp384"))
 	}
 	if !state.CaTrustpointSystemCaKeypairEcdsanistp256.IsNull() && data.CaTrustpointSystemCaKeypairEcdsanistp256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp256"))
 	}
 	if !state.CaTrustpointSystemCaKeypairRsa.IsNull() && data.CaTrustpointSystemCaKeypairRsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/rsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/rsa"))
 	}
 	if !state.CaTrustpointSystemRsaKeypair.IsNull() && data.CaTrustpointSystemRsaKeypair.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/rsakeypair", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/rsakeypair"))
 	}
 	if !state.CaTrustpointSystemSkipChallengePassword.IsNull() && data.CaTrustpointSystemSkipChallengePassword.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/skip-challenge-password", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/skip-challenge-password"))
 	}
 	if !state.CaTrustpointSystemRenewalMessageTypeRenewalreq.IsNull() && data.CaTrustpointSystemRenewalMessageTypeRenewalreq.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq"))
 	}
 	if !state.CaTrustpointSystemRenewalMessageTypePkcsreq.IsNull() && data.CaTrustpointSystemRenewalMessageTypePkcsreq.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq"))
 	}
 	if !state.CaTrustpointSystemAutoEnroll.IsNull() && data.CaTrustpointSystemAutoEnroll.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/auto-enroll", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/auto-enroll"))
 	}
 	if !state.CaTrustpointSystemSftpPassword.IsNull() && data.CaTrustpointSystemSftpPassword.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/sftp-password/password", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/sftp-password/password"))
 	}
 	if !state.CaTrustpointSystemSftpUsername.IsNull() && data.CaTrustpointSystemSftpUsername.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/sftp-username", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/sftp-username"))
 	}
 	if !state.CaTrustpointSystemEnrollmentSelf.IsNull() && data.CaTrustpointSystemEnrollmentSelf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/self", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/enrollment/self"))
 	}
 	if !state.CaTrustpointSystemEnrollmentTerminal.IsNull() && data.CaTrustpointSystemEnrollmentTerminal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/terminal", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/enrollment/terminal"))
 	}
 	if !state.CaTrustpointSystemEnrollmentUrl.IsNull() && data.CaTrustpointSystemEnrollmentUrl.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/url", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/enrollment/url"))
 	}
 	if !state.CaTrustpointSystemEnrollmentRetryPeriod.IsNull() && data.CaTrustpointSystemEnrollmentRetryPeriod.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/retry/period", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/enrollment/retry/period"))
 	}
 	if !state.CaTrustpointSystemEnrollmentRetryCount.IsNull() && data.CaTrustpointSystemEnrollmentRetryCount.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/retry/count", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/enrollment/retry/count"))
 	}
 	if !state.CaTrustpointSystemDescription.IsNull() && data.CaTrustpointSystemDescription.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/description", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ca/trustpoint/system-trustpoint/description"))
 	}
 	return deletedItems
 }
@@ -1948,13 +1949,13 @@ func (data *Crypto) getDeletedItems(ctx context.Context, state Crypto, version s
 func (data *Crypto) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.FipsMode.IsNull() && !data.FipsMode.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/fips-mode", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "fips-mode"))
 	}
 	if !data.CaFqdnCheckIpAddressAllow.IsNull() && !data.CaFqdnCheckIpAddressAllow.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/fqdn-check/ip-address/allow", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/fqdn-check/ip-address/allow"))
 	}
 	if !data.CaRsa1024Disable.IsNull() && !data.CaRsa1024Disable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/rsa/one-thousand-twenty-four/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/rsa/one-thousand-twenty-four/disable"))
 	}
 	for i := range data.CaOpensshTrustpoints {
 		keys := [...]string{"trustpoint-name"}
@@ -1972,56 +1973,56 @@ func (data *Crypto) getEmptyLeafsDelete(ctx context.Context, version string) []s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.CaTrustpoints[i].SerialNumberNone.IsNull() && !data.CaTrustpoints[i].SerialNumberNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/serial-number/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "serial-number/none"))
 		}
 		if !data.CaTrustpoints[i].SerialNumber.IsNull() && !data.CaTrustpoints[i].SerialNumber.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/serial-number", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "serial-number"))
 		}
 		if !data.CaTrustpoints[i].IpAddressNone.IsNull() && !data.CaTrustpoints[i].IpAddressNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/ip-address/none", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "ip-address/none"))
 		}
 		if !data.CaTrustpoints[i].CrlOptional.IsNull() && !data.CaTrustpoints[i].CrlOptional.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/crl/optional", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "crl/optional"))
 		}
 		if !data.CaTrustpoints[i].SkipChallengePassword.IsNull() && !data.CaTrustpoints[i].SkipChallengePassword.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/skip-challenge-password", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "skip-challenge-password"))
 		}
 		if !data.CaTrustpoints[i].RenewalMessageTypeRenewalreq.IsNull() && !data.CaTrustpoints[i].RenewalMessageTypeRenewalreq.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/renewal-message-type/renewalreq", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "renewal-message-type/renewalreq"))
 		}
 		if !data.CaTrustpoints[i].RenewalMessageTypePkcsreq.IsNull() && !data.CaTrustpoints[i].RenewalMessageTypePkcsreq.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/renewal-message-type/pkcsreq", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "renewal-message-type/pkcsreq"))
 		}
 		if !data.CaTrustpoints[i].EnrollmentTerminal.IsNull() && !data.CaTrustpoints[i].EnrollmentTerminal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v/enrollment/terminal", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString), "enrollment/terminal"))
 		}
 	}
 	if !data.CaTrustpointSystemSerialNumberNone.IsNull() && !data.CaTrustpointSystemSerialNumberNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/serial-number/none"))
 	}
 	if !data.CaTrustpointSystemSerialNumber.IsNull() && !data.CaTrustpointSystemSerialNumber.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/serial-number"))
 	}
 	if !data.CaTrustpointSystemIpAddressNone.IsNull() && !data.CaTrustpointSystemIpAddressNone.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ip-address/none", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ip-address/none"))
 	}
 	if !data.CaTrustpointSystemCrlOptional.IsNull() && !data.CaTrustpointSystemCrlOptional.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/crl/optional", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/crl/optional"))
 	}
 	if !data.CaTrustpointSystemSkipChallengePassword.IsNull() && !data.CaTrustpointSystemSkipChallengePassword.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/skip-challenge-password", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/skip-challenge-password"))
 	}
 	if !data.CaTrustpointSystemRenewalMessageTypeRenewalreq.IsNull() && !data.CaTrustpointSystemRenewalMessageTypeRenewalreq.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq"))
 	}
 	if !data.CaTrustpointSystemRenewalMessageTypePkcsreq.IsNull() && !data.CaTrustpointSystemRenewalMessageTypePkcsreq.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq"))
 	}
 	if !data.CaTrustpointSystemEnrollmentSelf.IsNull() && !data.CaTrustpointSystemEnrollmentSelf.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/self", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/self"))
 	}
 	if !data.CaTrustpointSystemEnrollmentTerminal.IsNull() && !data.CaTrustpointSystemEnrollmentTerminal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/terminal", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/terminal"))
 	}
 	return emptyLeafsDelete
 }
@@ -2032,28 +2033,28 @@ func (data *Crypto) getEmptyLeafsDelete(ctx context.Context, version string) []s
 func (data *Crypto) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.FipsMode.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fips-mode", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "fips-mode"))
 	}
 	if !data.CaCrlCurlTimeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/crl/curl-timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/crl/curl-timeout"))
 	}
 	if !data.CaFqdnCheckIpAddressAllow.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/fqdn-check/ip-address/allow", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/fqdn-check/ip-address/allow"))
 	}
 	if !data.CaRsa1024Disable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/rsa/one-thousand-twenty-four/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/rsa/one-thousand-twenty-four/disable"))
 	}
 	if !data.CaSourceInterfaceIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/source-interface/ipv6", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/source-interface/ipv6"))
 	}
 	if !data.CaSourceInterfaceIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/source-interface/ipv4", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/source-interface/ipv4"))
 	}
 	if !data.CaHttpProxyPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/port"))
 	}
 	if !data.CaHttpProxy.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/http-proxy", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/http-proxy"))
 	}
 	for i := range data.CaOpensshTrustpoints {
 		keys := [...]string{"trustpoint-name"}
@@ -2092,118 +2093,118 @@ func (data *Crypto) getDeletePaths(ctx context.Context, version string) []string
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/trustpoints/trustpoint%v", data.getPath(), keyString))
 	}
 	if !data.CaTrustpointSystemMessageDigest.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/message-digest", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/message-digest"))
 	}
 	if !data.CaTrustpointSystemLifetimeCertificate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/lifetime/certificate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/lifetime/certificate"))
 	}
 	if !data.CaTrustpointSystemLifetimeCaCertificate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/lifetime/ca-certificate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/lifetime/ca-certificate"))
 	}
 	if !data.CaTrustpointSystemVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/vrf"))
 	}
 	if !data.CaTrustpointSystemSerialNumberNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/serial-number/none"))
 	}
 	if !data.CaTrustpointSystemSerialNumber.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/serial-number", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/serial-number"))
 	}
 	if !data.CaTrustpointSystemSubjectAlternativeName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-alternative-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/subject-alternative-name"))
 	}
 	if !data.CaTrustpointSystemSubjectNameCaCertificate.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-name-ca-certificate", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/subject-name-ca-certificate"))
 	}
 	if !data.CaTrustpointSystemSubjectName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/subject-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/subject-name"))
 	}
 	if !data.CaTrustpointSystemIpAddressNone.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ip-address/none", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ip-address/none"))
 	}
 	if !data.CaTrustpointSystemIpAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ip-address/ipv4-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ip-address/ipv4-address"))
 	}
 	if !data.CaTrustpointSystemQueryUrl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/query/url", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/query/url"))
 	}
 	if !data.CaTrustpointSystemCrlOptional.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/crl/optional", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/crl/optional"))
 	}
 	if !data.CaTrustpointSystemKeypairEd25519.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ed25519", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/ed25519"))
 	}
 	if !data.CaTrustpointSystemKeypairDsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/dsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/dsa"))
 	}
 	if !data.CaTrustpointSystemKeypairEcdsanistp521.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp521", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp521"))
 	}
 	if !data.CaTrustpointSystemKeypairEcdsanistp384.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp384", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp384"))
 	}
 	if !data.CaTrustpointSystemKeypairEcdsanistp256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/ecdsanistp256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/ecdsanistp256"))
 	}
 	if !data.CaTrustpointSystemKeypairRsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/keypair/rsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/keypair/rsa"))
 	}
 	if !data.CaTrustpointSystemCaKeypairEd25519.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ed25519", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ed25519"))
 	}
 	if !data.CaTrustpointSystemCaKeypairDsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/dsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/dsa"))
 	}
 	if !data.CaTrustpointSystemCaKeypairEcdsanistp521.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp521", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp521"))
 	}
 	if !data.CaTrustpointSystemCaKeypairEcdsanistp384.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp384", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp384"))
 	}
 	if !data.CaTrustpointSystemCaKeypairEcdsanistp256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/ecdsanistp256"))
 	}
 	if !data.CaTrustpointSystemCaKeypairRsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/ca-keypair/rsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/ca-keypair/rsa"))
 	}
 	if !data.CaTrustpointSystemRsaKeypair.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/rsakeypair", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/rsakeypair"))
 	}
 	if !data.CaTrustpointSystemSkipChallengePassword.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/skip-challenge-password", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/skip-challenge-password"))
 	}
 	if !data.CaTrustpointSystemRenewalMessageTypeRenewalreq.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/renewalreq"))
 	}
 	if !data.CaTrustpointSystemRenewalMessageTypePkcsreq.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/renewal-message-type/pkcsreq"))
 	}
 	if !data.CaTrustpointSystemAutoEnroll.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/auto-enroll", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/auto-enroll"))
 	}
 	if !data.CaTrustpointSystemSftpPassword.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/sftp-password/password", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/sftp-password/password"))
 	}
 	if !data.CaTrustpointSystemSftpUsername.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/sftp-username", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/sftp-username"))
 	}
 	if !data.CaTrustpointSystemEnrollmentSelf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/self", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/self"))
 	}
 	if !data.CaTrustpointSystemEnrollmentTerminal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/terminal", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/terminal"))
 	}
 	if !data.CaTrustpointSystemEnrollmentUrl.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/url", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/url"))
 	}
 	if !data.CaTrustpointSystemEnrollmentRetryPeriod.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/retry/period", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/retry/period"))
 	}
 	if !data.CaTrustpointSystemEnrollmentRetryCount.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/enrollment/retry/count", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/enrollment/retry/count"))
 	}
 	if !data.CaTrustpointSystemDescription.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ca/trustpoint/system-trustpoint/description", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ca/trustpoint/system-trustpoint/description"))
 	}
 	return deletePaths
 }

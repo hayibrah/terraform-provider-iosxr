@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -201,10 +202,10 @@ func (data *HWModuleShutdownData) fromBody(ctx context.Context, res []byte, vers
 func (data *HWModuleShutdown) getDeletedItems(ctx context.Context, state HWModuleShutdown, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Unshut.IsNull() && data.Unshut.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/unshut", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "unshut"))
 	}
 	if !state.Shut.IsNull() && data.Shut.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shut", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shut"))
 	}
 	return deletedItems
 }
@@ -216,10 +217,10 @@ func (data *HWModuleShutdown) getDeletedItems(ctx context.Context, state HWModul
 func (data *HWModuleShutdown) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.Unshut.IsNull() && !data.Unshut.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/unshut", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "unshut"))
 	}
 	if !data.Shut.IsNull() && !data.Shut.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shut", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shut"))
 	}
 	return emptyLeafsDelete
 }
@@ -230,10 +231,10 @@ func (data *HWModuleShutdown) getEmptyLeafsDelete(ctx context.Context, version s
 func (data *HWModuleShutdown) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Unshut.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/unshut", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "unshut"))
 	}
 	if !data.Shut.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shut", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shut"))
 	}
 	return deletePaths
 }

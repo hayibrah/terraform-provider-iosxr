@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -1465,52 +1466,52 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.ClientV1.IsNull() && data.ClientV1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/v1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/v1"))
 	}
 	if !state.ClientV2.IsNull() && data.ClientV2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/v2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/v2"))
 	}
 	if !state.ClientTcpWindowScale.IsNull() && data.ClientTcpWindowScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/tcp-window-scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/tcp-window-scale"))
 	}
 	if !state.ClientAlgorithmsCiphers.IsNull() && data.ClientAlgorithmsCiphers.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/algorithms/ciphers", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/algorithms/ciphers"))
 	}
 	if !state.ClientAlgorithmsKeyExchanges.IsNull() && data.ClientAlgorithmsKeyExchanges.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/algorithms/key-exchanges", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/algorithms/key-exchanges"))
 	}
 	if !state.ClientEnableCipher3desCbc.IsNull() && data.ClientEnableCipher3desCbc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/enable/cipher/threedes-cbc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/enable/cipher/threedes-cbc"))
 	}
 	if !state.ClientEnableCipherAesCbc.IsNull() && data.ClientEnableCipherAesCbc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/enable/cipher/aes-cbc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/enable/cipher/aes-cbc"))
 	}
 	if !state.ClientDisableHmacSha2256.IsNull() && data.ClientDisableHmacSha2256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/disable/hmac/hmac-sha2-256"))
 	}
 	if !state.ClientDisableHmacSha2512.IsNull() && data.ClientDisableHmacSha2512.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-512", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/disable/hmac/hmac-sha2-512"))
 	}
 	if !state.ClientDisableHmacSha1.IsNull() && data.ClientDisableHmacSha1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/disable/hmac/hmac-sha1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/disable/hmac/hmac-sha1"))
 	}
 	if !state.ClientRekeyVolume.IsNull() && data.ClientRekeyVolume.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/rekey-volume", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/rekey-volume"))
 	}
 	if !state.ClientRekeyTime.IsNull() && data.ClientRekeyTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/rekey-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/rekey-time"))
 	}
 	if !state.ClientDscp.IsNull() && data.ClientDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/dscp"))
 	}
 	if !state.ClientVrf.IsNull() && data.ClientVrf.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrf", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/vrf"))
 	}
 	if !state.ClientSourceInterface.IsNull() && data.ClientSourceInterface.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/source-interface", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/source-interface"))
 	}
 	if !state.ClientKnownhost.IsNull() && data.ClientKnownhost.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/client/knownhost", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "client/knownhost"))
 	}
 	for i := range state.ServerUsernames {
 		keys := [...]string{"username-name"}
@@ -1536,7 +1537,7 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerUsernames[i].Keystring.IsNull() && data.ServerUsernames[j].Keystring.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/server/usernames/username%v/keystring", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/usernames/username%v", state.getPath(), keyString), "keystring"))
 				}
 				break
 			}
@@ -1546,61 +1547,61 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 		}
 	}
 	if !state.ServerPort.IsNull() && data.ServerPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/port"))
 	}
 	if !state.ServerPortForwardingLocal.IsNull() && data.ServerPortForwardingLocal.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/port-forwarding/local", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/port-forwarding/local"))
 	}
 	if !state.ServerTcpWindowScale.IsNull() && data.ServerTcpWindowScale.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/tcp-window-scale", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/tcp-window-scale"))
 	}
 	if !state.ServerMaxAuthLimit.IsNull() && data.ServerMaxAuthLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/max-auth-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/max-auth-limit"))
 	}
 	if !state.ServerAlgorithmsCiphers.IsNull() && data.ServerAlgorithmsCiphers.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/ciphers", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/ciphers"))
 	}
 	if !state.ServerAlgorithmsHostKeySshRsa.IsNull() && data.ServerAlgorithmsHostKeySshRsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/ssh-rsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/ssh-rsa"))
 	}
 	if !state.ServerAlgorithmsHostKeyRsaSha256.IsNull() && data.ServerAlgorithmsHostKeyRsaSha256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/rsa-sha256"))
 	}
 	if !state.ServerAlgorithmsHostKeyRsaSha512.IsNull() && data.ServerAlgorithmsHostKeyRsaSha512.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha512", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/rsa-sha512"))
 	}
 	if !state.ServerAlgorithmsHostKeyEd25519.IsNull() && data.ServerAlgorithmsHostKeyEd25519.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/ed25519", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/ed25519"))
 	}
 	if !state.ServerAlgorithmsHostKeyX509v3SshRsa.IsNull() && data.ServerAlgorithmsHostKeyX509v3SshRsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/x509v3-ssh-rsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/x509v3-ssh-rsa"))
 	}
 	if !state.ServerAlgorithmsHostKeyDsa.IsNull() && data.ServerAlgorithmsHostKeyDsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/dsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/dsa"))
 	}
 	if !state.ServerAlgorithmsHostKeyRsa.IsNull() && data.ServerAlgorithmsHostKeyRsa.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/rsa", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/rsa"))
 	}
 	if !state.ServerAlgorithmsHostKeyEcdsaNistp521.IsNull() && data.ServerAlgorithmsHostKeyEcdsaNistp521.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp521", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/ecdsa-nistp521"))
 	}
 	if !state.ServerAlgorithmsHostKeyEcdsaNistp384.IsNull() && data.ServerAlgorithmsHostKeyEcdsaNistp384.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp384", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/ecdsa-nistp384"))
 	}
 	if !state.ServerAlgorithmsHostKeyEcdsaNistp256.IsNull() && data.ServerAlgorithmsHostKeyEcdsaNistp256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/host-key/ecdsa-nistp256"))
 	}
 	if !state.ServerAlgorithmsKeyExchanges.IsNull() && data.ServerAlgorithmsKeyExchanges.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/algorithms/key-exchanges", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/algorithms/key-exchanges"))
 	}
 	if !state.ServerRekeyVolume.IsNull() && data.ServerRekeyVolume.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/rekey-volume", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/rekey-volume"))
 	}
 	if !state.ServerRekeyTime.IsNull() && data.ServerRekeyTime.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/rekey-time", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/rekey-time"))
 	}
 	if !state.ServerNetconfXml.IsNull() && data.ServerNetconfXml.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/capability/netconf-xml", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/capability/netconf-xml"))
 	}
 	for i := range state.ServerNetconfVrfs {
 		keys := [...]string{"vrf-name"}
@@ -1626,10 +1627,10 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() && data.ServerNetconfVrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/server/netconf/vrfs/vrf%v/ipv6/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
 				}
 				if !state.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() && data.ServerNetconfVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/server/netconf/vrfs/vrf%v/ipv4/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
 				}
 				break
 			}
@@ -1639,40 +1640,40 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 		}
 	}
 	if !state.ServerNetconfPort.IsNull() && data.ServerNetconfPort.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/netconf/port", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/netconf/port"))
 	}
 	if !state.ServerDscp.IsNull() && data.ServerDscp.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/dscp", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/dscp"))
 	}
 	if !state.ServerLogging.IsNull() && data.ServerLogging.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/logging", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/logging"))
 	}
 	if !state.ServerSessionLimit.IsNull() && data.ServerSessionLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/session-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/session-limit"))
 	}
 	if !state.ServerEnableCipher3desCbc.IsNull() && data.ServerEnableCipher3desCbc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/enable/cipher/threedes-cbc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/enable/cipher/threedes-cbc"))
 	}
 	if !state.ServerEnableCipherAesCbc.IsNull() && data.ServerEnableCipherAesCbc.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/enable/cipher/aes-cbc", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/enable/cipher/aes-cbc"))
 	}
 	if !state.ServerDisableHmacSha2256.IsNull() && data.ServerDisableHmacSha2256.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-256", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/disable/hmac/hmac-sha2-256"))
 	}
 	if !state.ServerDisableHmacSha1.IsNull() && data.ServerDisableHmacSha1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/disable/hmac/hmac-sha1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/disable/hmac/hmac-sha1"))
 	}
 	if !state.ServerDisableHmacSha2512.IsNull() && data.ServerDisableHmacSha2512.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-512", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/disable/hmac/hmac-sha2-512"))
 	}
 	if !state.ServerRateLimit.IsNull() && data.ServerRateLimit.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/rate-limit", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/rate-limit"))
 	}
 	if !state.ServerV2.IsNull() && data.ServerV2.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/v2", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/v2"))
 	}
 	if !state.ServerV1.IsNull() && data.ServerV1.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/server/v1", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "server/v1"))
 	}
 	for i := range state.ServerVrfs {
 		keys := [...]string{"vrf-name"}
@@ -1698,10 +1699,10 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerVrfs[i].Ipv6AccessList.IsNull() && data.ServerVrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/server/vrfs/vrf%v/ipv6/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
 				}
 				if !state.ServerVrfs[i].Ipv4AccessList.IsNull() && data.ServerVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/server/vrfs/vrf%v/ipv4/access-list", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
 				}
 				break
 			}
@@ -1711,7 +1712,7 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 		}
 	}
 	if !state.Timeout.IsNull() && data.Timeout.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/timeout", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "timeout"))
 	}
 	return deletedItems
 }
@@ -1723,25 +1724,25 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 func (data *SSH) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.ClientV1.IsNull() && !data.ClientV1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/v1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/v1"))
 	}
 	if !data.ClientV2.IsNull() && !data.ClientV2.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/v2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/v2"))
 	}
 	if !data.ClientEnableCipher3desCbc.IsNull() && !data.ClientEnableCipher3desCbc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/enable/cipher/threedes-cbc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/enable/cipher/threedes-cbc"))
 	}
 	if !data.ClientEnableCipherAesCbc.IsNull() && !data.ClientEnableCipherAesCbc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/enable/cipher/aes-cbc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/enable/cipher/aes-cbc"))
 	}
 	if !data.ClientDisableHmacSha2256.IsNull() && !data.ClientDisableHmacSha2256.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-256", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/disable/hmac/hmac-sha2-256"))
 	}
 	if !data.ClientDisableHmacSha2512.IsNull() && !data.ClientDisableHmacSha2512.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-512", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/disable/hmac/hmac-sha2-512"))
 	}
 	if !data.ClientDisableHmacSha1.IsNull() && !data.ClientDisableHmacSha1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/client/disable/hmac/hmac-sha1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "client/disable/hmac/hmac-sha1"))
 	}
 	for i := range data.ServerUsernames {
 		keys := [...]string{"username-name"}
@@ -1752,40 +1753,40 @@ func (data *SSH) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 		}
 	}
 	if !data.ServerPortForwardingLocal.IsNull() && !data.ServerPortForwardingLocal.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/port-forwarding/local", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/port-forwarding/local"))
 	}
 	if !data.ServerAlgorithmsHostKeySshRsa.IsNull() && !data.ServerAlgorithmsHostKeySshRsa.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/ssh-rsa", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/ssh-rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsaSha256.IsNull() && !data.ServerAlgorithmsHostKeyRsaSha256.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha256", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/rsa-sha256"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsaSha512.IsNull() && !data.ServerAlgorithmsHostKeyRsaSha512.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha512", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/rsa-sha512"))
 	}
 	if !data.ServerAlgorithmsHostKeyEd25519.IsNull() && !data.ServerAlgorithmsHostKeyEd25519.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/ed25519", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/ed25519"))
 	}
 	if !data.ServerAlgorithmsHostKeyX509v3SshRsa.IsNull() && !data.ServerAlgorithmsHostKeyX509v3SshRsa.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/x509v3-ssh-rsa", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/x509v3-ssh-rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyDsa.IsNull() && !data.ServerAlgorithmsHostKeyDsa.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/dsa", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/dsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsa.IsNull() && !data.ServerAlgorithmsHostKeyRsa.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/rsa", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp521.IsNull() && !data.ServerAlgorithmsHostKeyEcdsaNistp521.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp521", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp521"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp384.IsNull() && !data.ServerAlgorithmsHostKeyEcdsaNistp384.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp384", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp384"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp256.IsNull() && !data.ServerAlgorithmsHostKeyEcdsaNistp256.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp256", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp256"))
 	}
 	if !data.ServerNetconfXml.IsNull() && !data.ServerNetconfXml.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/capability/netconf-xml", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/capability/netconf-xml"))
 	}
 	for i := range data.ServerNetconfVrfs {
 		keys := [...]string{"vrf-name"}
@@ -1796,28 +1797,28 @@ func (data *SSH) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 		}
 	}
 	if !data.ServerLogging.IsNull() && !data.ServerLogging.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/logging", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/logging"))
 	}
 	if !data.ServerEnableCipher3desCbc.IsNull() && !data.ServerEnableCipher3desCbc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/enable/cipher/threedes-cbc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/enable/cipher/threedes-cbc"))
 	}
 	if !data.ServerEnableCipherAesCbc.IsNull() && !data.ServerEnableCipherAesCbc.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/enable/cipher/aes-cbc", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/enable/cipher/aes-cbc"))
 	}
 	if !data.ServerDisableHmacSha2256.IsNull() && !data.ServerDisableHmacSha2256.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-256", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/disable/hmac/hmac-sha2-256"))
 	}
 	if !data.ServerDisableHmacSha1.IsNull() && !data.ServerDisableHmacSha1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/disable/hmac/hmac-sha1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/disable/hmac/hmac-sha1"))
 	}
 	if !data.ServerDisableHmacSha2512.IsNull() && !data.ServerDisableHmacSha2512.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-512", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/disable/hmac/hmac-sha2-512"))
 	}
 	if !data.ServerV2.IsNull() && !data.ServerV2.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/v2", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/v2"))
 	}
 	if !data.ServerV1.IsNull() && !data.ServerV1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/server/v1", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "server/v1"))
 	}
 	for i := range data.ServerVrfs {
 		keys := [...]string{"vrf-name"}
@@ -1836,52 +1837,52 @@ func (data *SSH) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.ClientV1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/v1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/v1"))
 	}
 	if !data.ClientV2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/v2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/v2"))
 	}
 	if !data.ClientTcpWindowScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/tcp-window-scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/tcp-window-scale"))
 	}
 	if !data.ClientAlgorithmsCiphers.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/algorithms/ciphers", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/algorithms/ciphers"))
 	}
 	if !data.ClientAlgorithmsKeyExchanges.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/algorithms/key-exchanges", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/algorithms/key-exchanges"))
 	}
 	if !data.ClientEnableCipher3desCbc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/enable/cipher/threedes-cbc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/enable/cipher/threedes-cbc"))
 	}
 	if !data.ClientEnableCipherAesCbc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/enable/cipher/aes-cbc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/enable/cipher/aes-cbc"))
 	}
 	if !data.ClientDisableHmacSha2256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/disable/hmac/hmac-sha2-256"))
 	}
 	if !data.ClientDisableHmacSha2512.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/disable/hmac/hmac-sha2-512", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/disable/hmac/hmac-sha2-512"))
 	}
 	if !data.ClientDisableHmacSha1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/disable/hmac/hmac-sha1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/disable/hmac/hmac-sha1"))
 	}
 	if !data.ClientRekeyVolume.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/rekey-volume", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/rekey-volume"))
 	}
 	if !data.ClientRekeyTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/rekey-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/rekey-time"))
 	}
 	if !data.ClientDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/dscp"))
 	}
 	if !data.ClientVrf.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/vrf", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/vrf"))
 	}
 	if !data.ClientSourceInterface.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/source-interface", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/source-interface"))
 	}
 	if !data.ClientKnownhost.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/knownhost", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "client/knownhost"))
 	}
 	for i := range data.ServerUsernames {
 		keys := [...]string{"username-name"}
@@ -1902,61 +1903,61 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/usernames/username%v", data.getPath(), keyString))
 	}
 	if !data.ServerPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/port"))
 	}
 	if !data.ServerPortForwardingLocal.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/port-forwarding/local", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/port-forwarding/local"))
 	}
 	if !data.ServerTcpWindowScale.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/tcp-window-scale", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/tcp-window-scale"))
 	}
 	if !data.ServerMaxAuthLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/max-auth-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/max-auth-limit"))
 	}
 	if !data.ServerAlgorithmsCiphers.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/ciphers", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/ciphers"))
 	}
 	if !data.ServerAlgorithmsHostKeySshRsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/ssh-rsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/ssh-rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsaSha256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/rsa-sha256"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsaSha512.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/rsa-sha512", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/rsa-sha512"))
 	}
 	if !data.ServerAlgorithmsHostKeyEd25519.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/ed25519", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/ed25519"))
 	}
 	if !data.ServerAlgorithmsHostKeyX509v3SshRsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/x509v3-ssh-rsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/x509v3-ssh-rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyDsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/dsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/dsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyRsa.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/rsa", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/rsa"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp521.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp521", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp521"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp384.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp384", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp384"))
 	}
 	if !data.ServerAlgorithmsHostKeyEcdsaNistp256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/host-key/ecdsa-nistp256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/host-key/ecdsa-nistp256"))
 	}
 	if !data.ServerAlgorithmsKeyExchanges.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/algorithms/key-exchanges", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/algorithms/key-exchanges"))
 	}
 	if !data.ServerRekeyVolume.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/rekey-volume", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/rekey-volume"))
 	}
 	if !data.ServerRekeyTime.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/rekey-time", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/rekey-time"))
 	}
 	if !data.ServerNetconfXml.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/capability/netconf-xml", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/capability/netconf-xml"))
 	}
 	for i := range data.ServerNetconfVrfs {
 		keys := [...]string{"vrf-name"}
@@ -1977,40 +1978,40 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.ServerNetconfPort.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/netconf/port", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/netconf/port"))
 	}
 	if !data.ServerDscp.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/dscp", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/dscp"))
 	}
 	if !data.ServerLogging.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/logging", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/logging"))
 	}
 	if !data.ServerSessionLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/session-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/session-limit"))
 	}
 	if !data.ServerEnableCipher3desCbc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/enable/cipher/threedes-cbc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/enable/cipher/threedes-cbc"))
 	}
 	if !data.ServerEnableCipherAesCbc.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/enable/cipher/aes-cbc", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/enable/cipher/aes-cbc"))
 	}
 	if !data.ServerDisableHmacSha2256.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-256", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/disable/hmac/hmac-sha2-256"))
 	}
 	if !data.ServerDisableHmacSha1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/disable/hmac/hmac-sha1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/disable/hmac/hmac-sha1"))
 	}
 	if !data.ServerDisableHmacSha2512.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/disable/hmac/hmac-sha2-512", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/disable/hmac/hmac-sha2-512"))
 	}
 	if !data.ServerRateLimit.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/rate-limit", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/rate-limit"))
 	}
 	if !data.ServerV2.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/v2", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/v2"))
 	}
 	if !data.ServerV1.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/v1", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/v1"))
 	}
 	for i := range data.ServerVrfs {
 		keys := [...]string{"vrf-name"}
@@ -2031,7 +2032,7 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/vrfs/vrf%v", data.getPath(), keyString))
 	}
 	if !data.Timeout.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/timeout", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeout"))
 	}
 	return deletePaths
 }

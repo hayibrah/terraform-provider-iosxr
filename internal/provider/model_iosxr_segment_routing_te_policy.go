@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -2015,70 +2016,70 @@ func (data *SegmentRoutingTEPolicyData) fromBody(ctx context.Context, res []byte
 func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state SegmentRoutingTEPolicy, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.Srv6LocatorBehavior.IsNull() && data.Srv6LocatorBehavior.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/locator/behavior", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "srv6/locator/behavior"))
 	}
 	if !state.Srv6LocatorBindingSidType.IsNull() && data.Srv6LocatorBindingSidType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/locator/binding-sid-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "srv6/locator/binding-sid-type"))
 	}
 	if !state.Srv6LocatorName.IsNull() && data.Srv6LocatorName.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/srv6/locator", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "srv6/locator"))
 	}
 	if !state.EffectiveMetricType.IsNull() && data.EffectiveMetricType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/effective-metric/metric-value-type/metric-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "effective-metric/metric-value-type/metric-type"))
 	}
 	if !state.EffectiveMetricValue.IsNull() && data.EffectiveMetricValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/effective-metric/metric-value-type/metric-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "effective-metric/metric-value-type/metric-value"))
 	}
 	if !state.SourceAddress.IsNull() && data.SourceAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address"))
 	}
 	if !state.SourceAddressType.IsNull() && data.SourceAddressType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/source-address", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "source-address"))
 	}
 	if !state.BfdLoggingSessionStateChange.IsNull() && data.BfdLoggingSessionStateChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/bfd-logging/session-state-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/bfd-logging/session-state-change"))
 	}
 	if !state.BfdReversePathBindingLabel.IsNull() && data.BfdReversePathBindingLabel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/reverse-path/binding-label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/reverse-path/binding-label"))
 	}
 	if !state.BfdInvalidationAction.IsNull() && data.BfdInvalidationAction.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/invalidation-action", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/invalidation-action"))
 	}
 	if !state.BfdMinimumInterval.IsNull() && data.BfdMinimumInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/minimum-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/minimum-interval"))
 	}
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/multiplier"))
 	}
 	if !state.BfdDisable.IsNull() && data.BfdDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/disable"))
 	}
 	if !state.BfdEnable.IsNull() && data.BfdEnable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd"))
 	}
 	if !state.PerformanceMeasurementReversePathLabel.IsNull() && data.PerformanceMeasurementReversePathLabel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-reverse-path/label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-reverse-path/label"))
 	}
 	if !state.PerformanceMeasurementReversePathSegmentList.IsNull() && data.PerformanceMeasurementReversePathSegmentList.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-reverse-path/segment-list-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-reverse-path/segment-list-name"))
 	}
 	if !state.PerformanceMeasurementLivenessInvalidationAction.IsNull() && data.PerformanceMeasurementLivenessInvalidationAction.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/pm-liveness-invalidation-action", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-liveness-detection/pm-liveness-invalidation-action"))
 	}
 	if !state.PerformanceMeasurementLivenessLoggingSessionStateChange.IsNull() && data.PerformanceMeasurementLivenessLoggingSessionStateChange.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change"))
 	}
 	if !state.PerformanceMeasurementLivenessBackupProfile.IsNull() && data.PerformanceMeasurementLivenessBackupProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/liveness-profile/backup/pm-profile-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-liveness-detection/liveness-profile/backup/pm-profile-name"))
 	}
 	if !state.PerformanceMeasurementLivenessProfile.IsNull() && data.PerformanceMeasurementLivenessProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/liveness-profile/pm-profile-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/pm-liveness-detection/liveness-profile/pm-profile-name"))
 	}
 	if !state.PerformanceMeasurementDelayLoggingDelayExceeded.IsNull() && data.PerformanceMeasurementDelayLoggingDelayExceeded.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded"))
 	}
 	if !state.PerformanceMeasurementDelayProfile.IsNull() && data.PerformanceMeasurementDelayProfile.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/performance-measurement/delay-measurement/delay-profile/pm-profile-name", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "performance-measurement/delay-measurement/delay-profile/pm-profile-name"))
 	}
 	for i := range state.CandidatePathsPreferences {
 		keys := [...]string{"path-index"}
@@ -2104,10 +2105,10 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 			}
 			if found {
 				if !state.CandidatePathsPreferences[i].EffectiveMetricType.IsNull() && data.CandidatePathsPreferences[j].EffectiveMetricType.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/effective-metric/metric-value-type/metric-type", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "effective-metric/metric-value-type/metric-type"))
 				}
 				if !state.CandidatePathsPreferences[i].EffectiveMetricValue.IsNull() && data.CandidatePathsPreferences[j].EffectiveMetricValue.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/effective-metric/metric-value-type/metric-value", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "effective-metric/metric-value-type/metric-value"))
 				}
 				for ci := range state.CandidatePathsPreferences[i].PerFlowForwardClasses {
 					ckeys := [...]string{"forward-class"}
@@ -2133,7 +2134,7 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 						}
 						if found {
 							if !state.CandidatePathsPreferences[i].PerFlowForwardClasses[ci].Color.IsNull() && data.CandidatePathsPreferences[j].PerFlowForwardClasses[cj].Color.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/per-flow/forward-class-and-colors/forward-class-and-color%v/color", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/per-flow/forward-class-and-colors/forward-class-and-color%v", state.getPath(), keyString, ckeyString), "color"))
 							}
 							break
 						}
@@ -2143,13 +2144,13 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 					}
 				}
 				if !state.CandidatePathsPreferences[i].PerFlowForwardClassDefault.IsNull() && data.CandidatePathsPreferences[j].PerFlowForwardClassDefault.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/per-flow/default-forward-class", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "per-flow/default-forward-class"))
 				}
 				if !state.CandidatePathsPreferences[i].PerFlow.IsNull() && data.CandidatePathsPreferences[j].PerFlow.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/per-flow", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "per-flow"))
 				}
 				if !state.CandidatePathsPreferences[i].BackupIneligible.IsNull() && data.CandidatePathsPreferences[j].BackupIneligible.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/backup-ineligible", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "backup-ineligible"))
 				}
 				for ci := range state.CandidatePathsPreferences[i].Paths {
 					ckeys := [...]string{"type"}
@@ -2175,40 +2176,40 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 						}
 						if found {
 							if !state.CandidatePathsPreferences[i].Paths[ci].Weight.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].Weight.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/weight", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "weight"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].ReversePathSegmentList.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].ReversePathSegmentList.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/reverse-path-segment-list-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "reverse-path-segment-list-name"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].Pcep.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].Pcep.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/pcep", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "pcep"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].Anycast.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].Anycast.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/anycast", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "anycast"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].MetricMarginAbsolute.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].MetricMarginAbsolute.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/metric/metric-margin/absolute-value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "metric/metric-margin/absolute-value"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].MetricMarginRelative.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].MetricMarginRelative.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/metric/metric-margin/relative-value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "metric/metric-margin/relative-value"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].MetricMarginType.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].MetricMarginType.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/metric/metric-margin/value-type", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "metric/metric-margin/value-type"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].MetricType.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].MetricType.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/metric/metric-type", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "metric/metric-type"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].MetricSidLimit.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].MetricSidLimit.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/metric/sid-limit", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "metric/sid-limit"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].Sticky.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].Sticky.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/disable-auto-reroute", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "disable-auto-reroute"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].SegmentListName.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].SegmentListName.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/segment-list-name", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "segment-list-name"))
 							}
 							if !state.CandidatePathsPreferences[i].Paths[ci].HopType.IsNull() && data.CandidatePathsPreferences[j].Paths[cj].HopType.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/hop-type", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", state.getPath(), keyString, ckeyString), "hop-type"))
 							}
 							break
 						}
@@ -2218,10 +2219,10 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 					}
 				}
 				if !state.CandidatePathsPreferences[i].BidirectionalCorouted.IsNull() && data.CandidatePathsPreferences[j].BidirectionalCorouted.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/bidirectional/corouted", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "bidirectional/corouted"))
 				}
 				if !state.CandidatePathsPreferences[i].BidirectionalAssociationId.IsNull() && data.CandidatePathsPreferences[j].BidirectionalAssociationId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/bidirectional/association-id", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "bidirectional/association-id"))
 				}
 				for ci := range state.CandidatePathsPreferences[i].ConstraintsBounds {
 					ckeys := [...]string{"scope-type", "metric-type"}
@@ -2253,7 +2254,7 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 						}
 						if found {
 							if !state.CandidatePathsPreferences[i].ConstraintsBounds[ci].Value.IsNull() && data.CandidatePathsPreferences[j].ConstraintsBounds[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/bounds/bounds/bound%v/bound-value", state.getPath(), keyString, ckeyString))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/bounds/bounds/bound%v", state.getPath(), keyString, ckeyString), "bound-value"))
 							}
 							break
 						}
@@ -2323,34 +2324,34 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 					}
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsSegmentRulesAdjacencySidOnly.IsNull() && data.CandidatePathsPreferences[j].ConstraintsSegmentRulesAdjacencySidOnly.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/segment-rules/adjacency-sid-only", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/segment-rules/adjacency-sid-only"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsSegmentRulesSidAlgorithm.IsNull() && data.CandidatePathsPreferences[j].ConstraintsSegmentRulesSidAlgorithm.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/segment-rules/sid-algorithm", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/segment-rules/sid-algorithm"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsSegmentRulesProtectionType.IsNull() && data.CandidatePathsPreferences[j].ConstraintsSegmentRulesProtectionType.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/segment-rules/protection-type", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/segment-rules/protection-type"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsDisjointPathFallbackDisable.IsNull() && data.CandidatePathsPreferences[j].ConstraintsDisjointPathFallbackDisable.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/disjoint-path", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/disjoint-path"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsDisjointPathShortestPath.IsNull() && data.CandidatePathsPreferences[j].ConstraintsDisjointPathShortestPath.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/disjoint-path", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/disjoint-path"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsDisjointPathSubId.IsNull() && data.CandidatePathsPreferences[j].ConstraintsDisjointPathSubId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/disjoint-path", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/disjoint-path"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsDisjointPathType.IsNull() && data.CandidatePathsPreferences[j].ConstraintsDisjointPathType.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/disjoint-path", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/disjoint-path"))
 				}
 				if !state.CandidatePathsPreferences[i].ConstraintsDisjointPathGroupId.IsNull() && data.CandidatePathsPreferences[j].ConstraintsDisjointPathGroupId.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/disjoint-path", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "constraints/disjoint-path"))
 				}
 				if !state.CandidatePathsPreferences[i].PceGroup.IsNull() && data.CandidatePathsPreferences[j].PceGroup.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/pce-group", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "pce-group"))
 				}
 				if !state.CandidatePathsPreferences[i].LockDuration.IsNull() && data.CandidatePathsPreferences[j].LockDuration.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/lock/duration", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", state.getPath(), keyString), "lock/duration"))
 				}
 				break
 			}
@@ -2402,67 +2403,67 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 		}
 	}
 	if !state.AutoRouteMetricConstantValue.IsNull() && data.AutoRouteMetricConstantValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/auto-route-metric/metric-constant-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/auto-route-metric/metric-constant-value"))
 	}
 	if !state.AutoRouteMetricRelativeValue.IsNull() && data.AutoRouteMetricRelativeValue.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/auto-route-metric/metric-relative-value", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/auto-route-metric/metric-relative-value"))
 	}
 	if !state.AutoRouteMetricType.IsNull() && data.AutoRouteMetricType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/auto-route-metric/autoroute-metric-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/auto-route-metric/autoroute-metric-type"))
 	}
 	if !state.AutoRouteForwardClass.IsNull() && data.AutoRouteForwardClass.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/forward-class", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/forward-class"))
 	}
 	if !state.AutoRouteForceSrInclude.IsNull() && data.AutoRouteForceSrInclude.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/force-sr-include", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/force-sr-include"))
 	}
 	if !state.AutoRouteIncludeAllIpv6.IsNull() && data.AutoRouteIncludeAllIpv6.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/include-ipv6-all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/include-ipv6-all"))
 	}
 	if !state.AutoRouteIncludeAllIpv4.IsNull() && data.AutoRouteIncludeAllIpv4.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/auto-route/include-ipv4-all", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "auto-route/include-ipv4-all"))
 	}
 	if !state.PathProtection.IsNull() && data.PathProtection.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/protection", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "protection"))
 	}
 	if !state.PolicyColorEndpointAddress.IsNull() && data.PolicyColorEndpointAddress.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/policy-color-endpoint", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "policy-color-endpoint"))
 	}
 	if !state.PolicyColorEndpointType.IsNull() && data.PolicyColorEndpointType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/policy-color-endpoint", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "policy-color-endpoint"))
 	}
 	if !state.PolicyColor.IsNull() && data.PolicyColor.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/policy-color-endpoint", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "policy-color-endpoint"))
 	}
 	if !state.SteeringInvalidationDrop.IsNull() && data.SteeringInvalidationDrop.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/steering/invalidation-drop", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "steering/invalidation-drop"))
 	}
 	if !state.SteeringLabeledServicesDisable.IsNull() && data.SteeringLabeledServicesDisable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/steering/labeled-services/disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "steering/labeled-services/disable"))
 	}
 	if !state.BindingSidMplsLabel.IsNull() && data.BindingSidMplsLabel.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/binding-sid/mpls-label", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "binding-sid/mpls-label"))
 	}
 	if !state.BindingSidType.IsNull() && data.BindingSidType.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/binding-sid/binding-sid-type", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "binding-sid/binding-sid-type"))
 	}
 	if !state.PceGroup.IsNull() && data.PceGroup.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/pce-group", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "pce-group"))
 	}
 	if !state.MaxInstallStandbyPaths.IsNull() && data.MaxInstallStandbyPaths.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/max-install-standby-c-paths", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "max-install-standby-c-paths"))
 	}
 	if !state.Bandwidth.IsNull() && data.Bandwidth.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bandwidth", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bandwidth"))
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/shutdown", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "shutdown"))
 	}
 	if !state.TransitEligible.IsNull() && data.TransitEligible.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/transit-eligible", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "transit-eligible"))
 	}
 	if !state.Ipv6Disable.IsNull() && data.Ipv6Disable.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-disable", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6-disable"))
 	}
 	return deletedItems
 }
@@ -2474,19 +2475,19 @@ func (data *SegmentRoutingTEPolicy) getDeletedItems(ctx context.Context, state S
 func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
 	if !data.BfdLoggingSessionStateChange.IsNull() && !data.BfdLoggingSessionStateChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/bfd-logging/session-state-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bfd/bfd-logging/session-state-change"))
 	}
 	if !data.BfdDisable.IsNull() && !data.BfdDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bfd/disable"))
 	}
 	if !data.BfdEnable.IsNull() && !data.BfdEnable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/bfd", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "bfd"))
 	}
 	if !data.PerformanceMeasurementLivenessLoggingSessionStateChange.IsNull() && !data.PerformanceMeasurementLivenessLoggingSessionStateChange.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change"))
 	}
 	if !data.PerformanceMeasurementDelayLoggingDelayExceeded.IsNull() && !data.PerformanceMeasurementDelayLoggingDelayExceeded.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded"))
 	}
 	for i := range data.CandidatePathsPreferences {
 		keys := [...]string{"path-index"}
@@ -2504,10 +2505,10 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, ver
 			}
 		}
 		if !data.CandidatePathsPreferences[i].PerFlow.IsNull() && !data.CandidatePathsPreferences[i].PerFlow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/per-flow", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", data.getPath(), keyString), "per-flow"))
 		}
 		if !data.CandidatePathsPreferences[i].BackupIneligible.IsNull() && !data.CandidatePathsPreferences[i].BackupIneligible.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/backup-ineligible", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", data.getPath(), keyString), "backup-ineligible"))
 		}
 		for ci := range data.CandidatePathsPreferences[i].Paths {
 			ckeys := [...]string{"type"}
@@ -2517,17 +2518,17 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, ver
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.CandidatePathsPreferences[i].Paths[ci].Pcep.IsNull() && !data.CandidatePathsPreferences[i].Paths[ci].Pcep.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/pcep", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", data.getPath(), keyString, ckeyString), "pcep"))
 			}
 			if !data.CandidatePathsPreferences[i].Paths[ci].Anycast.IsNull() && !data.CandidatePathsPreferences[i].Paths[ci].Anycast.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/anycast", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", data.getPath(), keyString, ckeyString), "anycast"))
 			}
 			if !data.CandidatePathsPreferences[i].Paths[ci].Sticky.IsNull() && !data.CandidatePathsPreferences[i].Paths[ci].Sticky.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v/disable-auto-reroute", data.getPath(), keyString, ckeyString))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v/path-infos/path-info%v", data.getPath(), keyString, ckeyString), "disable-auto-reroute"))
 			}
 		}
 		if !data.CandidatePathsPreferences[i].BidirectionalCorouted.IsNull() && !data.CandidatePathsPreferences[i].BidirectionalCorouted.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/bidirectional/corouted", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", data.getPath(), keyString), "bidirectional/corouted"))
 		}
 		for ci := range data.CandidatePathsPreferences[i].ConstraintsBounds {
 			ckeys := [...]string{"scope-type", "metric-type"}
@@ -2554,7 +2555,7 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, ver
 			}
 		}
 		if !data.CandidatePathsPreferences[i].ConstraintsSegmentRulesAdjacencySidOnly.IsNull() && !data.CandidatePathsPreferences[i].ConstraintsSegmentRulesAdjacencySidOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/candidate-paths/preferences/preference%v/constraints/segment-rules/adjacency-sid-only", data.getPath(), keyString))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-paths/preferences/preference%v", data.getPath(), keyString), "constraints/segment-rules/adjacency-sid-only"))
 		}
 	}
 	for i := range data.AutoRouteIncludePrefixes {
@@ -2566,31 +2567,31 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, ver
 		}
 	}
 	if !data.AutoRouteForceSrInclude.IsNull() && !data.AutoRouteForceSrInclude.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-route/force-sr-include", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-route/force-sr-include"))
 	}
 	if !data.AutoRouteIncludeAllIpv6.IsNull() && !data.AutoRouteIncludeAllIpv6.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-route/include-ipv6-all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-route/include-ipv6-all"))
 	}
 	if !data.AutoRouteIncludeAllIpv4.IsNull() && !data.AutoRouteIncludeAllIpv4.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/auto-route/include-ipv4-all", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "auto-route/include-ipv4-all"))
 	}
 	if !data.PathProtection.IsNull() && !data.PathProtection.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/protection", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "protection"))
 	}
 	if !data.SteeringInvalidationDrop.IsNull() && !data.SteeringInvalidationDrop.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/steering/invalidation-drop", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "steering/invalidation-drop"))
 	}
 	if !data.SteeringLabeledServicesDisable.IsNull() && !data.SteeringLabeledServicesDisable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/steering/labeled-services/disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "steering/labeled-services/disable"))
 	}
 	if !data.Shutdown.IsNull() && !data.Shutdown.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/shutdown", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "shutdown"))
 	}
 	if !data.TransitEligible.IsNull() && !data.TransitEligible.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/transit-eligible", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "transit-eligible"))
 	}
 	if !data.Ipv6Disable.IsNull() && !data.Ipv6Disable.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, fmt.Sprintf("%v/ipv6-disable", data.getPath()))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "ipv6-disable"))
 	}
 	return emptyLeafsDelete
 }
@@ -2601,70 +2602,70 @@ func (data *SegmentRoutingTEPolicy) getEmptyLeafsDelete(ctx context.Context, ver
 func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.Srv6LocatorBehavior.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/locator/behavior", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "srv6/locator/behavior"))
 	}
 	if !data.Srv6LocatorBindingSidType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/locator/binding-sid-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "srv6/locator/binding-sid-type"))
 	}
 	if !data.Srv6LocatorName.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/srv6/locator", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "srv6/locator"))
 	}
 	if !data.EffectiveMetricType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric/metric-value-type/metric-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "effective-metric/metric-value-type/metric-type"))
 	}
 	if !data.EffectiveMetricValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric/metric-value-type/metric-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "effective-metric/metric-value-type/metric-value"))
 	}
 	if !data.SourceAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address"))
 	}
 	if !data.SourceAddressType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-address", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "source-address"))
 	}
 	if !data.BfdLoggingSessionStateChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/bfd-logging/session-state-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/bfd-logging/session-state-change"))
 	}
 	if !data.BfdReversePathBindingLabel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/reverse-path/binding-label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/reverse-path/binding-label"))
 	}
 	if !data.BfdInvalidationAction.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/invalidation-action", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/invalidation-action"))
 	}
 	if !data.BfdMinimumInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/minimum-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/minimum-interval"))
 	}
 	if !data.BfdMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/multiplier"))
 	}
 	if !data.BfdDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/disable"))
 	}
 	if !data.BfdEnable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd"))
 	}
 	if !data.PerformanceMeasurementReversePathLabel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-reverse-path/label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-reverse-path/label"))
 	}
 	if !data.PerformanceMeasurementReversePathSegmentList.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-reverse-path/segment-list-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-reverse-path/segment-list-name"))
 	}
 	if !data.PerformanceMeasurementLivenessInvalidationAction.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/pm-liveness-invalidation-action", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-liveness-detection/pm-liveness-invalidation-action"))
 	}
 	if !data.PerformanceMeasurementLivenessLoggingSessionStateChange.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-liveness-detection/pm-liveness-detection-logging/pm-liveness-session-state-change"))
 	}
 	if !data.PerformanceMeasurementLivenessBackupProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/liveness-profile/backup/pm-profile-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-liveness-detection/liveness-profile/backup/pm-profile-name"))
 	}
 	if !data.PerformanceMeasurementLivenessProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/pm-liveness-detection/liveness-profile/pm-profile-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/pm-liveness-detection/liveness-profile/pm-profile-name"))
 	}
 	if !data.PerformanceMeasurementDelayLoggingDelayExceeded.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/delay-measurement/delay-measurement-logging/delay-exceeded"))
 	}
 	if !data.PerformanceMeasurementDelayProfile.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/performance-measurement/delay-measurement/delay-profile/pm-profile-name", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "performance-measurement/delay-measurement/delay-profile/pm-profile-name"))
 	}
 	for i := range data.CandidatePathsPreferences {
 		keys := [...]string{"path-index"}
@@ -2709,67 +2710,67 @@ func (data *SegmentRoutingTEPolicy) getDeletePaths(ctx context.Context, version 
 		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/include-prefixes/include-prefix%v", data.getPath(), keyString))
 	}
 	if !data.AutoRouteMetricConstantValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/auto-route-metric/metric-constant-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/auto-route-metric/metric-constant-value"))
 	}
 	if !data.AutoRouteMetricRelativeValue.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/auto-route-metric/metric-relative-value", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/auto-route-metric/metric-relative-value"))
 	}
 	if !data.AutoRouteMetricType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/auto-route-metric/autoroute-metric-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/auto-route-metric/autoroute-metric-type"))
 	}
 	if !data.AutoRouteForwardClass.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/forward-class", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/forward-class"))
 	}
 	if !data.AutoRouteForceSrInclude.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/force-sr-include", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/force-sr-include"))
 	}
 	if !data.AutoRouteIncludeAllIpv6.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/include-ipv6-all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/include-ipv6-all"))
 	}
 	if !data.AutoRouteIncludeAllIpv4.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/auto-route/include-ipv4-all", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "auto-route/include-ipv4-all"))
 	}
 	if !data.PathProtection.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protection", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "protection"))
 	}
 	if !data.PolicyColorEndpointAddress.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/policy-color-endpoint", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "policy-color-endpoint"))
 	}
 	if !data.PolicyColorEndpointType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/policy-color-endpoint", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "policy-color-endpoint"))
 	}
 	if !data.PolicyColor.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/policy-color-endpoint", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "policy-color-endpoint"))
 	}
 	if !data.SteeringInvalidationDrop.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/steering/invalidation-drop", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "steering/invalidation-drop"))
 	}
 	if !data.SteeringLabeledServicesDisable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/steering/labeled-services/disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "steering/labeled-services/disable"))
 	}
 	if !data.BindingSidMplsLabel.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/binding-sid/mpls-label", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "binding-sid/mpls-label"))
 	}
 	if !data.BindingSidType.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/binding-sid/binding-sid-type", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "binding-sid/binding-sid-type"))
 	}
 	if !data.PceGroup.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pce-group", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "pce-group"))
 	}
 	if !data.MaxInstallStandbyPaths.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/max-install-standby-c-paths", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "max-install-standby-c-paths"))
 	}
 	if !data.Bandwidth.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bandwidth", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bandwidth"))
 	}
 	if !data.Shutdown.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/shutdown", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))
 	}
 	if !data.TransitEligible.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/transit-eligible", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "transit-eligible"))
 	}
 	if !data.Ipv6Disable.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6-disable", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6-disable"))
 	}
 	return deletePaths
 }

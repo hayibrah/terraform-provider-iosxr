@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"strconv"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
@@ -231,19 +232,19 @@ func (data *RouterVRRPInterfaceData) fromBody(ctx context.Context, res []byte, v
 func (data *RouterVRRPInterface) getDeletedItems(ctx context.Context, state RouterVRRPInterface, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.BfdMultiplier.IsNull() && data.BfdMultiplier.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/multiplier", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/multiplier"))
 	}
 	if !state.BfdMinimumInterval.IsNull() && data.BfdMinimumInterval.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/bfd/minimum-interval", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "bfd/minimum-interval"))
 	}
 	if !state.DelayReload.IsNull() && data.DelayReload.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/reload", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/reload"))
 	}
 	if !state.DelayMinimum.IsNull() && data.DelayMinimum.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/delay/minimum", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "delay/minimum"))
 	}
 	if !state.MacRefresh.IsNull() && data.MacRefresh.IsNull() {
-		deletedItems = append(deletedItems, fmt.Sprintf("%v/mac-refresh", state.getPath()))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "mac-refresh"))
 	}
 	return deletedItems
 }
@@ -263,19 +264,19 @@ func (data *RouterVRRPInterface) getEmptyLeafsDelete(ctx context.Context, versio
 func (data *RouterVRRPInterface) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.BfdMultiplier.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/multiplier", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/multiplier"))
 	}
 	if !data.BfdMinimumInterval.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bfd/minimum-interval", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "bfd/minimum-interval"))
 	}
 	if !data.DelayReload.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/reload", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/reload"))
 	}
 	if !data.DelayMinimum.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/delay/minimum", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/minimum"))
 	}
 	if !data.MacRefresh.IsNull() {
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mac-refresh", data.getPath()))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "mac-refresh"))
 	}
 	return deletePaths
 }
