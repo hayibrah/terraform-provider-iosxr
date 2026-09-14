@@ -490,15 +490,15 @@ func (d *HWModuleProfile8000DataSource) Schema(ctx context.Context, req datasour
 							},
 						},
 						"non_pfc_tcs": schema.BoolAttribute{
-							MarkdownDescription: "configure to allow lossy TCs to evict.",
+							MarkdownDescription: "configure to allow lossy TCs to evict." + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs": schema.Int64Attribute{
-							MarkdownDescription: "number of evict voqs",
+							MarkdownDescription: "number of evict voqs" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"non_pfc_tcs_max_non_pfc_voqs_hbm_buffers_percentage": schema.Int64Attribute{
-							MarkdownDescription: "configure hbm-buffers-percentage for non-pfc-tcs",
+							MarkdownDescription: "configure hbm-buffers-percentage for non-pfc-tcs" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},

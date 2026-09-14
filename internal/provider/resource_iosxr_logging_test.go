@@ -35,107 +35,64 @@ import (
 
 func TestAccIosxrLogging(t *testing.T) {
 	var checks []resource.TestCheckFunc
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console", "alerts"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console", "disable"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "trap", "informational"))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "monitor", "alerts"))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_facility", "all"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "monitor", "disable"))
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_disk0", "true"))
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_facility", "all"))
 	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_disk0", "true"))
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_frequency_daily", "true"))
 	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_filesize", "100"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_size", "500"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_length", "4"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_severity", "informational"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_threshold", "80"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "ipv4_dscp", "cs6"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "ipv6_dscp", "ef"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "facility_level", "local7"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_filesize", "100"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_size", "500"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_length", "4"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_severity", "informational"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_threshold", "80"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "ipv4_dscp", "cs6"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "ipv6_dscp", "ef"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "facility_level", "local7"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_entries_count", "10000"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_size", "4000000"))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_level", "alerts"))
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match1", "BUFFERED1"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match2", "BUFFERED2"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match3", "BUFFERED3"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch1", "BUFFERED_NOMATCH1"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch2", "BUFFERED_NOMATCH2"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch3", "BUFFERED_NOMATCH3"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "container_all", "true"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "container_fetch_timestamp", "true"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_level", "debugging"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match1", "BUFFERED1"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match2", "BUFFERED2"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_match3", "BUFFERED3"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch1", "BUFFERED_NOMATCH1"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch2", "BUFFERED_NOMATCH2"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "buffered_discriminator_nomatch3", "BUFFERED_NOMATCH3"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "container_all", "true"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "container_fetch_timestamp", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.file_name", "logfile1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.path", "/disk0:"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.maxfilesize", "1024"))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.severity", "informational"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.severity", "info"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.local_accounting", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.local_accounting_send_to_remote", "true"))
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.local_accounting_send_to_remote_facility_level", "auth"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.local_accounting_send_to_remote_facility_level", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_match1", "MATCH1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_match2", "MATCH2"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_match3", "MATCH3"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_nomatch1", "NOMATCH1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_nomatch2", "NOMATCH2"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "file.0.discriminator_nomatch3", "NOMATCH3"))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "history", "alerts"))
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "history", "emergencies"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "history_size", "500"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "hostnameprefix", "HOSTNAME01"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "localfilesize", "1000"))
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.name", "Loopback0"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.name", "Loopback0"))
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.vrfs.0.name", "VRF1"))
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.interface_name", "GigabitEthernet0/0/0/0"))
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.vrf", "default"))
 	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "source_interfaces.0.vrf_name", "default"))
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_duplicates", "true"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_duplicates", "true"))
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "format_rfc5424", "true"))
 	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "yang", "debugging"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "yang", "debugging"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_rules.0.rule_name", "RULE1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_rules.0.alarms.0.message_category", "SECURITY"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "suppress_rules.0.alarms.0.group_name", "SSHD"))
@@ -147,22 +104,33 @@ func TestAccIosxrLogging(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "events_level", "informational"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "events_threshold", "80"))
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_match1", "MATCH1"))
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "format", "rfc5424"))
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_match2", "MATCH2"))
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "archive_frequency", "daily"))
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_match3", "MATCH3"))
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_nomatch1", "NOMATCH1"))
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_nomatch2", "NOMATCH2"))
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "console_discriminator_nomatch3", "NOMATCH3"))
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.name", "TLS-SERVER1"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.vrf", "default"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.address_ipv4", "1.1.1.1"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.tls_hostname", "syslog.example.com"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.trustpoint", "TRUSTPOINT1"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.severity", "informational"))
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging.test", "tls_servers.0.source_interface", "Loopback0"))
+		}
 	}
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
@@ -219,77 +187,43 @@ func testAccIosxrLoggingConfig_minimum() string {
 
 func testAccIosxrLoggingConfig_all() string {
 	config := `resource "iosxr_logging" "test" {` + "\n"
-	config += `	console = "alerts"` + "\n"
+	config += `	console = "disable"` + "\n"
 	config += `	trap = "informational"` + "\n"
-	config += `	monitor = "alerts"` + "\n"
-	config += `	console_facility = "all"` + "\n"
+	config += `	monitor = "disable"` + "\n"
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_disk0 = true` + "\n"
+		config += `	console_facility = "all"` + "\n"
 	}
+	config += `	archive_disk0 = true` + "\n"
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	archive_frequency_daily = true` + "\n"
 	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_filesize = 100` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_size = 500` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_length = 4` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_severity = "informational"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	archive_threshold = 80` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	ipv4_dscp = "cs6"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	ipv6_dscp = "ef"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	facility_level = "local7"` + "\n"
-	}
+	config += `	archive_filesize = 100` + "\n"
+	config += `	archive_size = 500` + "\n"
+	config += `	archive_length = 4` + "\n"
+	config += `	archive_severity = "informational"` + "\n"
+	config += `	archive_threshold = 80` + "\n"
+	config += `	ipv4_dscp = "cs6"` + "\n"
+	config += `	ipv6_dscp = "ef"` + "\n"
+	config += `	facility_level = "local7"` + "\n"
 	config += `	buffered_entries_count = 10000` + "\n"
 	config += `	buffered_size = 4000000` + "\n"
-	config += `	buffered_level = "alerts"` + "\n"
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_match1 = "BUFFERED1"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_match2 = "BUFFERED2"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_match3 = "BUFFERED3"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_nomatch1 = "BUFFERED_NOMATCH1"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_nomatch2 = "BUFFERED_NOMATCH2"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	buffered_discriminator_nomatch3 = "BUFFERED_NOMATCH3"` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	container_all = true` + "\n"
-	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	container_fetch_timestamp = true` + "\n"
-	}
+	config += `	buffered_level = "debugging"` + "\n"
+	config += `	buffered_discriminator_match1 = "BUFFERED1"` + "\n"
+	config += `	buffered_discriminator_match2 = "BUFFERED2"` + "\n"
+	config += `	buffered_discriminator_match3 = "BUFFERED3"` + "\n"
+	config += `	buffered_discriminator_nomatch1 = "BUFFERED_NOMATCH1"` + "\n"
+	config += `	buffered_discriminator_nomatch2 = "BUFFERED_NOMATCH2"` + "\n"
+	config += `	buffered_discriminator_nomatch3 = "BUFFERED_NOMATCH3"` + "\n"
+	config += `	container_all = true` + "\n"
+	config += `	container_fetch_timestamp = true` + "\n"
 	config += `	file = [{` + "\n"
 	config += `		file_name = "logfile1"` + "\n"
 	config += `		path = "/disk0:"` + "\n"
 	config += `		maxfilesize = 1024` + "\n"
-	config += `		severity = "informational"` + "\n"
+	config += `		severity = "info"` + "\n"
 	config += `		local_accounting = true` + "\n"
 	config += `		local_accounting_send_to_remote = true` + "\n"
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `		local_accounting_send_to_remote_facility_level = "auth"` + "\n"
-	}
+	config += `		local_accounting_send_to_remote_facility_level = "local0"` + "\n"
 	config += `		discriminator_match1 = "MATCH1"` + "\n"
 	config += `		discriminator_match2 = "MATCH2"` + "\n"
 	config += `		discriminator_match3 = "MATCH3"` + "\n"
@@ -297,35 +231,26 @@ func testAccIosxrLoggingConfig_all() string {
 	config += `		discriminator_nomatch2 = "NOMATCH2"` + "\n"
 	config += `		discriminator_nomatch3 = "NOMATCH3"` + "\n"
 	config += `		}]` + "\n"
-	config += `	history = "alerts"` + "\n"
+	config += `	history = "emergencies"` + "\n"
 	config += `	history_size = 500` + "\n"
 	config += `	hostnameprefix = "HOSTNAME01"` + "\n"
 	config += `	localfilesize = 1000` + "\n"
 	config += `	source_interfaces = [{` + "\n"
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `		name = "Loopback0"` + "\n"
-	}
+	config += `		name = "Loopback0"` + "\n"
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `		vrfs = [{` + "\n"
 		config += `			name = "VRF1"` + "\n"
 		config += `		}]` + "\n"
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `		interface_name = "GigabitEthernet0/0/0/0"` + "\n"
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `		vrf_name = "default"` + "\n"
+		config += `		vrf = "default"` + "\n"
 	}
 	config += `		}]` + "\n"
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	suppress_duplicates = true` + "\n"
-	}
+	config += `	suppress_duplicates = true` + "\n"
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	format_rfc5424 = true` + "\n"
 	}
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	yang = "debugging"` + "\n"
-	}
+	config += `	yang = "debugging"` + "\n"
 	config += `	suppress_rules = [{` + "\n"
 	config += `		rule_name = "RULE1"` + "\n"
 	config += `		alarms = [{` + "\n"
@@ -343,22 +268,35 @@ func testAccIosxrLoggingConfig_all() string {
 	config += `	events_level = "informational"` + "\n"
 	config += `	events_threshold = 80` + "\n"
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_match1 = "MATCH1"` + "\n"
+		config += `	format = "rfc5424"` + "\n"
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_match2 = "MATCH2"` + "\n"
+		config += `	archive_frequency = "daily"` + "\n"
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_match3 = "MATCH3"` + "\n"
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_nomatch1 = "NOMATCH1"` + "\n"
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_nomatch2 = "NOMATCH2"` + "\n"
-	}
-	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_discriminator_nomatch3 = "NOMATCH3"` + "\n"
+		config += `	tls_servers = [{` + "\n"
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		name = "TLS-SERVER1"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		vrf = "default"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		address_ipv4 = "1.1.1.1"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		tls_hostname = "syslog.example.com"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		trustpoint = "TRUSTPOINT1"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		severity = "informational"` + "\n"
+		}
+		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+			config += `		source_interface = "Loopback0"` + "\n"
+		}
+		config += `		}]` + "\n"
 	}
 	config += `}` + "\n"
 	return config

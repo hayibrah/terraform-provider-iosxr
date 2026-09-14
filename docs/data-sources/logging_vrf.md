@@ -31,8 +31,8 @@ data "iosxr_logging_vrf" "example" {
 
 ### Read-Only
 
-- `host_ipv4_addresses` (Attributes List) IPV4 address of the logging host (see [below for nested schema](#nestedatt--host_ipv4_addresses))
-- `host_ipv6_addresses` (Attributes List) IPV6 address of the logging host (see [below for nested schema](#nestedatt--host_ipv6_addresses))
+- `host_ipv4_addresses` (Attributes List) IPv4 of the logging host (see [below for nested schema](#nestedatt--host_ipv4_addresses))
+- `host_ipv6_addresses` (Attributes List) IPv6 of the logging host (see [below for nested schema](#nestedatt--host_ipv6_addresses))
 - `hostnames` (Attributes List) Name of the logging host (see [below for nested schema](#nestedatt--hostnames))
 - `id` (String) The path of the retrieved object.
 
@@ -43,7 +43,7 @@ Read-Only:
 
 - `facility` (String) Modify message logging facilities
 - `ipv4_address` (String) IPV4 address of the logging host
-- `ipv4_source_address` (String) IPV4 source address of the logging host
+- `ipv4_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
 - `severity` (String) Set severity of  messages for particular remote host/vrf
@@ -56,7 +56,7 @@ Read-Only:
 
 - `facility` (String) Modify message logging facilities
 - `ipv6_address` (String) IPV6 address of the logging host
-- `ipv6_source_address` (String) IPV6 source address of the logging host
+- `ipv6_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
 - `severity` (String) Set severity of  messages for particular remote host/vrf
@@ -68,7 +68,7 @@ Read-Only:
 Read-Only:
 
 - `facility` (String) Modify message logging facilities
-- `hostname_source_address` (String) hostname source address
+- `hostname_source_address` (String) Specify source address of the logging host
 - `name` (String) Name of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf

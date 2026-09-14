@@ -453,7 +453,7 @@ func (d *RouterBGPVRFAddressFamilyDataSource) Schema(ctx context.Context, req da
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -605,7 +605,7 @@ func (d *RouterBGPVRFAddressFamilyDataSource) Schema(ctx context.Context, req da
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -645,7 +645,7 @@ func (d *RouterBGPVRFAddressFamilyDataSource) Schema(ctx context.Context, req da
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -701,7 +701,7 @@ func (d *RouterBGPVRFAddressFamilyDataSource) Schema(ctx context.Context, req da
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},

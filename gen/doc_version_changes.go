@@ -30,6 +30,7 @@ import (
 const (
 	versionChangesDataPath = "./gen/version_changes_data.json"
 	resourceDocsPath       = "./docs/resources/"
+	dataSourceDocsPath     = "./docs/data-sources/"
 )
 
 type VersionedAttrRow struct {
@@ -69,15 +70,20 @@ func main() {
 
 	fmt.Println("rendering multi-version docs")
 
+	injectVersionCompat(data, resourceDocsPath, "resources")
+	injectVersionCompat(data, dataSourceDocsPath, "data-sources")
+}
+
+func injectVersionCompat(data VersionChangesData, docsPath string, label string) {
 	for resourceName, changes := range data {
 		if len(changes.Removed) == 0 {
 			continue
 		}
 
-		docFile := resourceDocsPath + resourceName + ".md"
+		docFile := docsPath + resourceName + ".md"
 		content, err := os.ReadFile(docFile)
 		if err != nil {
-			// Not all resources have a doc file yet; skip silently
+			// Not all resources/data-sources have a doc file yet; skip silently
 			continue
 		}
 
@@ -90,7 +96,7 @@ func main() {
 			insertBefore = "## Schema"
 		}
 		if !strings.Contains(s, insertBefore) {
-			fmt.Printf("skipping \"docs/resources/%s.md\": no insertion point found\n", resourceName)
+			fmt.Printf("skipping \"docs/%s/%s.md\": no insertion point found\n", label, resourceName)
 			continue
 		}
 
@@ -100,6 +106,6 @@ func main() {
 		if err := os.WriteFile(docFile, []byte(s), 0644); err != nil {
 			log.Fatalf("Error writing %s: %v", docFile, err)
 		}
-		fmt.Printf("rendering \"docs/resources/%s.md\"\n", resourceName)
+		fmt.Printf("rendering \"docs/%s/%s.md\"\n", label, resourceName)
 	}
 }

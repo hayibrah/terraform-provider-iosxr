@@ -112,7 +112,7 @@ func (d *PerformanceMeasurementEndpointIPv4DataSource) Schema(ctx context.Contex
 				Computed:            true,
 			},
 			"liveness_detection_collect_hbh": schema.BoolAttribute{
-				MarkdownDescription: "Collect hop by hop data for liveness sessions",
+				MarkdownDescription: "Collect hop by hop data for liveness sessions" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"segment_routing": schema.BoolAttribute{

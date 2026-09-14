@@ -461,7 +461,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -613,7 +613,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -653,7 +653,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -709,7 +709,7 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Set a default action if a route does not satify the policy definition",
+							MarkdownDescription: "Set a default action if a route does not satify the policy definition" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -1068,23 +1068,23 @@ func (d *RouterBGPAddressFamilyDataSource) Schema(ctx context.Context, req datas
 				},
 			},
 			"as_based_as_list": schema.StringAttribute{
-				MarkdownDescription: "Enable ECMP delay for neighbor AS'es included in the AS list",
+				MarkdownDescription: "Enable ECMP delay for neighbor AS'es included in the AS list" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"as_based_delay": schema.Int64Attribute{
-				MarkdownDescription: "Provide a delay interval in msecs",
+				MarkdownDescription: "Provide a delay interval in msecs" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"fixed_delay": schema.Int64Attribute{
-				MarkdownDescription: "Provide a delay interval in msecs",
+				MarkdownDescription: "Provide a delay interval in msecs" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"platform_oor_based_delay": schema.Int64Attribute{
-				MarkdownDescription: "Provide a delay interval in msecs",
+				MarkdownDescription: "Provide a delay interval in msecs" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"platform_oor_based_threshold": schema.Int64Attribute{
-				MarkdownDescription: "Delay only when platform resource usage is above specified threshold",
+				MarkdownDescription: "Delay only when platform resource usage is above specified threshold" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 		},

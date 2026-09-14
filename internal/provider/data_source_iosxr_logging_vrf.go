@@ -97,14 +97,14 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"hostname_source_address": schema.StringAttribute{
-							MarkdownDescription: "hostname source address",
+							MarkdownDescription: "Specify source address of the logging host",
 							Computed:            true,
 						},
 					},
 				},
 			},
 			"host_ipv4_addresses": schema.ListNestedAttribute{
-				MarkdownDescription: "IPV4 address of the logging host",
+				MarkdownDescription: "IPv4 of the logging host",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -129,14 +129,14 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"ipv4_source_address": schema.StringAttribute{
-							MarkdownDescription: "IPV4 source address of the logging host",
+							MarkdownDescription: "Specify source address of the logging host",
 							Computed:            true,
 						},
 					},
 				},
 			},
 			"host_ipv6_addresses": schema.ListNestedAttribute{
-				MarkdownDescription: "IPV6 address of the logging host",
+				MarkdownDescription: "IPv6 of the logging host",
 				Computed:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -161,7 +161,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"ipv6_source_address": schema.StringAttribute{
-							MarkdownDescription: "IPV6 source address of the logging host",
+							MarkdownDescription: "Specify source address of the logging host",
 							Computed:            true,
 						},
 					},

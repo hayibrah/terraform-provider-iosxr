@@ -14,9 +14,9 @@ This data source can read the Router BGP VRF Address Family configuration.
 
 ```terraform
 data "iosxr_router_bgp_vrf_address_family" "example" {
+  af_name   = "ipv4-unicast"
   as_number = "65001"
   vrf_name  = "VRF2"
-  af_name   = "ipv4-unicast"
 }
 ```
 
@@ -161,6 +161,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `instance_name` (String) EIGRP instance name
 - `match_external` (Boolean) Redistribute EIGRP external routes
 - `match_internal` (Boolean) Redistribute EIGRP internal routes
@@ -176,6 +177,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `instance_name` (String) ISIS instance name
 - `level_1` (Boolean) Redistribute ISIS level 1 routes
 - `level_1_inter_area` (Boolean) Redistribute ISIS level 1 inter-area routes
@@ -195,6 +197,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPF external routes
 - `match_external_1` (Boolean) Redistribute OSPF external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPF external type 1 and NSSA external routes
@@ -238,6 +241,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPFv3 external routes
 - `match_external_1` (Boolean) Redistribute OSPFv3 external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPFv3 external type 1 and NSSA external routes

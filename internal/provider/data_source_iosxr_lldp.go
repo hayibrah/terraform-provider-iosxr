@@ -92,31 +92,31 @@ func (d *LLDPDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 				Computed:            true,
 			},
 			"chassis_id_type_chassis_component": schema.BoolAttribute{
-				MarkdownDescription: "Value of entPhysicalAlias object defined in IETF RFC 2737",
+				MarkdownDescription: "Value of entPhysicalAlias object defined in IETF RFC 2737" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_interface_alias": schema.BoolAttribute{
-				MarkdownDescription: "Value of ifAlias object defined in IETF RFC 2863",
+				MarkdownDescription: "Value of ifAlias object defined in IETF RFC 2863" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_port_component": schema.BoolAttribute{
-				MarkdownDescription: "Value of entPhysicalAlias object defined in IETF RFC 2737",
+				MarkdownDescription: "Value of entPhysicalAlias object defined in IETF RFC 2737" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_mac_address": schema.BoolAttribute{
-				MarkdownDescription: "Value of a unicast source address",
+				MarkdownDescription: "Value of a unicast source address" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_network_address": schema.BoolAttribute{
-				MarkdownDescription: "Network address associated with a particular chassis",
+				MarkdownDescription: "Network address associated with a particular chassis" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_interface_name": schema.BoolAttribute{
-				MarkdownDescription: "Value of ifName object defined in IETF RFC 2863",
+				MarkdownDescription: "Value of ifName object defined in IETF RFC 2863" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"chassis_id_type_local": schema.BoolAttribute{
-				MarkdownDescription: "Chassis identifier based on a locally defined value",
+				MarkdownDescription: "Chassis identifier based on a locally defined value" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"subinterfaces_enable": schema.BoolAttribute{

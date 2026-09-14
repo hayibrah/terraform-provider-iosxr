@@ -87,17 +87,15 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 				},
 			},
 			"hostnames": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Name of the logging host").String + "\n  - **Not supported from version `25.4` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("Name of the logging host").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Name of the logging host").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Name of the logging host").String + "\n  - Length: `1`-`1024` (v24.4), `1`-`32` (v25.4)",
 							Required:            true,
 							Validators: []validator.String{
 								stringvalidator.LengthBetween(1, 1024),
-								stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
-								stringvalidator.RegexMatches(regexp.MustCompile(`[a-zA-Z0-9._-]+`), ""),
 							},
 						},
 						"severity": schema.StringAttribute{
@@ -129,14 +127,14 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"hostname_source_address": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("hostname source address").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Specify source address of the logging host").String,
 							Optional:            true,
 						},
 					},
 				},
 			},
 			"host_ipv4_addresses": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("IPV4 address of the logging host").String + "\n  - **Not supported from version `25.4` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("IPv4 of the logging host").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -177,7 +175,7 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"ipv4_source_address": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("IPV4 source address of the logging host").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Specify source address of the logging host").String,
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.RegexMatches(regexp.MustCompile(`(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(%[\p{N}\p{L}]+)?`), ""),
@@ -188,7 +186,7 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 				},
 			},
 			"host_ipv6_addresses": schema.ListNestedAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("IPV6 address of the logging host").String + "\n  - **Not supported from version `25.4` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("IPv6 of the logging host").String,
 				Optional:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -230,7 +228,7 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"ipv6_source_address": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("IPV6 source address of the logging host").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Specify source address of the logging host").String,
 							Optional:            true,
 							Validators: []validator.String{
 								stringvalidator.RegexMatches(regexp.MustCompile(`((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[\p{N}\p{L}]+)?`), ""),

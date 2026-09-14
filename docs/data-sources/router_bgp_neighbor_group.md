@@ -205,7 +205,9 @@ Read-Only:
 - `default_originate_inheritance_disable` (Boolean) Prevent default-originate being inherited from a parent group
 - `default_originate_route_policy` (String) Route policy to specify criteria to originate default
 - `default_policy_action_in` (String) Default action if route does not satisfy inbound route-policy
+  - Supported from version: `25.4`
 - `default_policy_action_out` (String) Default action if route does not satisfy outbound route-policy
+  - Supported from version: `25.4`
 - `encapsulation_type` (String) Specify encapsulation type
 - `import_re_originate` (Boolean) Reoriginate imported routes by attaching stitching RTs
 - `import_stitching_rt` (Boolean) Import routes using stitching RTs

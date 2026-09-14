@@ -5,10 +5,10 @@ resource "iosxr_segment_routing_mapping_server" "example" {
       prefix_addresses = [
         {
           address   = "10.1.1.0"
-          length    = "24"
-          sid_index = 500
-          range     = 10
           attached  = true
+          length    = "24"
+          range     = 10
+          sid_index = 500
         }
       ]
     }

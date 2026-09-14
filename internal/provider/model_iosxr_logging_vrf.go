@@ -23,6 +23,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"strconv"
 
@@ -200,29 +201,7 @@ func (data LoggingVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // GetEnumConstraints returns the version-specific enum constraints for string fields
 func (data LoggingVRF) GetEnumConstraints() []helpers.FieldEnumConstraint {
-	return []helpers.FieldEnumConstraint{
-		{
-			FieldPath: "hostnames.severity",
-			VersionEnums: map[string][]string{
-				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
-				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
-			},
-		},
-		{
-			FieldPath: "host_ipv4_addresses.severity",
-			VersionEnums: map[string][]string{
-				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
-				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
-			},
-		},
-		{
-			FieldPath: "host_ipv6_addresses.severity",
-			VersionEnums: map[string][]string{
-				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
-				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
-			},
-		},
-	}
+	return nil
 }
 
 // End of section. //template:end getEnumConstraints
@@ -630,19 +609,19 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.HostIpv6Addresses[i].Ipv6SourceAddress.IsNull() && data.HostIpv6Addresses[j].Ipv6SourceAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v/source-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "source-address"))
 				}
 				if !state.HostIpv6Addresses[i].Facility.IsNull() && data.HostIpv6Addresses[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v/facility", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "facility"))
 				}
 				if !state.HostIpv6Addresses[i].Operator.IsNull() && data.HostIpv6Addresses[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v/operator", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "operator"))
 				}
 				if !state.HostIpv6Addresses[i].Port.IsNull() && data.HostIpv6Addresses[j].Port.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v/port", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "port"))
 				}
 				if !state.HostIpv6Addresses[i].Severity.IsNull() && data.HostIpv6Addresses[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v/severity", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "severity"))
 				}
 				break
 			}
@@ -675,19 +654,19 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.HostIpv4Addresses[i].Ipv4SourceAddress.IsNull() && data.HostIpv4Addresses[j].Ipv4SourceAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v/source-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "source-address"))
 				}
 				if !state.HostIpv4Addresses[i].Facility.IsNull() && data.HostIpv4Addresses[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v/facility", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "facility"))
 				}
 				if !state.HostIpv4Addresses[i].Operator.IsNull() && data.HostIpv4Addresses[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v/operator", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "operator"))
 				}
 				if !state.HostIpv4Addresses[i].Port.IsNull() && data.HostIpv4Addresses[j].Port.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v/port", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "port"))
 				}
 				if !state.HostIpv4Addresses[i].Severity.IsNull() && data.HostIpv4Addresses[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v/severity", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "severity"))
 				}
 				break
 			}
@@ -720,19 +699,19 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.Hostnames[i].HostnameSourceAddress.IsNull() && data.Hostnames[j].HostnameSourceAddress.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v/source-address", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "source-address"))
 				}
 				if !state.Hostnames[i].Facility.IsNull() && data.Hostnames[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v/facility", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "facility"))
 				}
 				if !state.Hostnames[i].Operator.IsNull() && data.Hostnames[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v/operator", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "operator"))
 				}
 				if !state.Hostnames[i].Port.IsNull() && data.Hostnames[j].Port.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v/port", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "port"))
 				}
 				if !state.Hostnames[i].Severity.IsNull() && data.Hostnames[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v/severity", state.getPath(), keyString))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "severity"))
 				}
 				break
 			}

@@ -68,6 +68,7 @@ Read-Only:
 
 - `aggregate_bins` (Number) Aggregate results into a number of bins
 - `aggregate_minimum_delay` (Number) Specify the width of the first bin in milliseconds (or optionally microseconds), independent of the width of the other bins
+  - Supported from version: `25.4`
 - `aggregate_none` (Boolean) Perform no aggregation
 - `aggregate_usec` (Boolean) Interpret the width in microseconds
 - `aggregate_width` (Number) Width in percentage points, to an accuracy of one percentage point
@@ -89,3 +90,4 @@ Read-Only:
 - `thresholds_stateless_log_on_sample_count` (Number) Threshold is breached when the sample count in bins in and above a certain bin number crosses the configured sample count
 - `type` (String) Specify the type of statistics to collect
 - `usec_minimum_delay` (Boolean) Interpret the minimum-delay in microseconds
+  - Supported from version: `25.4`

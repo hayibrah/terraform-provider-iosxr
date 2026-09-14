@@ -16,130 +16,104 @@ This resource can manage the Logging configuration.
 
 | Attribute | Version |
 |-----------|:-------:|
-| `archive_disk0` | `25.4` |
-| `archive_disk1` | `25.4` |
-| `archive_filesize` | `25.4` |
 | `archive_frequency_daily` | `25.4` |
 | `archive_frequency_weekly` | `25.4` |
-| `archive_harddisk` | `25.4` |
-| `archive_length` | `25.4` |
-| `archive_severity` | `25.4` |
-| `archive_size` | `25.4` |
-| `archive_threshold` | `25.4` |
-| `buffered_discriminator_match1` | `25.4` |
-| `buffered_discriminator_match2` | `25.4` |
-| `buffered_discriminator_match3` | `25.4` |
-| `buffered_discriminator_nomatch1` | `25.4` |
-| `buffered_discriminator_nomatch2` | `25.4` |
-| `buffered_discriminator_nomatch3` | `25.4` |
-| `container_all` | `25.4` |
-| `container_fetch_timestamp` | `25.4` |
-| `facility_level` | `25.4` |
-| `file.local_accounting_send_to_remote_facility_level` | `25.4` |
+| `console_facility` | `25.4` |
 | `format_bsd` | `25.4` |
 | `format_rfc5424` | `25.4` |
-| `ipv4_dscp` | `25.4` |
-| `ipv4_precedence` | `25.4` |
-| `ipv6_dscp` | `25.4` |
-| `ipv6_precedence` | `25.4` |
-| `source_interfaces.name` | `25.4` |
 | `source_interfaces.vrfs` | `25.4` |
-| `suppress_duplicates` | `25.4` |
-| `yang` | `25.4` |
 
 ## Example Usage
 
 ```terraform
 resource "iosxr_logging" "example" {
-  console                         = "alerts"
-  trap                            = "informational"
-  monitor                         = "alerts"
-  console_facility                = "all"
   archive_disk0                   = true
-  archive_frequency_daily         = true
   archive_filesize                = 100
-  archive_size                    = 500
+  archive_frequency               = "daily"
   archive_length                  = 4
   archive_severity                = "informational"
+  archive_size                    = 500
   archive_threshold               = 80
-  ipv4_dscp                       = "cs6"
-  ipv6_dscp                       = "ef"
-  facility_level                  = "local7"
-  buffered_entries_count          = 10000
-  buffered_size                   = 4000000
-  buffered_level                  = "alerts"
   buffered_discriminator_match1   = "BUFFERED1"
   buffered_discriminator_match2   = "BUFFERED2"
   buffered_discriminator_match3   = "BUFFERED3"
   buffered_discriminator_nomatch1 = "BUFFERED_NOMATCH1"
   buffered_discriminator_nomatch2 = "BUFFERED_NOMATCH2"
   buffered_discriminator_nomatch3 = "BUFFERED_NOMATCH3"
+  buffered_entries_count          = 10000
+  buffered_level                  = "debugging"
+  buffered_size                   = 4000000
+  console                         = "disable"
   container_all                   = true
   container_fetch_timestamp       = true
+  events_buffer_size              = 10000
+  events_display_location         = true
+  events_level                    = "informational"
+  events_threshold                = 80
+  facility_level                  = "local7"
   file = [
     {
-      file_name                                      = "logfile1"
-      path                                           = "/disk0:"
-      maxfilesize                                    = 1024
-      severity                                       = "informational"
-      local_accounting                               = true
-      local_accounting_send_to_remote                = true
-      local_accounting_send_to_remote_facility_level = "auth"
       discriminator_match1                           = "MATCH1"
       discriminator_match2                           = "MATCH2"
       discriminator_match3                           = "MATCH3"
       discriminator_nomatch1                         = "NOMATCH1"
       discriminator_nomatch2                         = "NOMATCH2"
       discriminator_nomatch3                         = "NOMATCH3"
+      file_name                                      = "logfile1"
+      local_accounting                               = true
+      local_accounting_send_to_remote                = true
+      local_accounting_send_to_remote_facility_level = "local0"
+      maxfilesize                                    = 1024
+      path                                           = "/disk0:"
+      severity                                       = "info"
     }
   ]
-  history        = "alerts"
-  history_size   = 500
-  hostnameprefix = "HOSTNAME01"
-  localfilesize  = 1000
-  source_interfaces = [
-    {
-      name = "Loopback0"
-      vrfs = [
-        {
-          name = "VRF1"
-        }
-      ]
-      interface_name = "GigabitEthernet0/0/0/0"
-      vrf_name       = "default"
-    }
-  ]
-  suppress_duplicates = true
-  format_rfc5424      = true
-  yang                = "debugging"
-  suppress_rules = [
-    {
-      rule_name = "RULE1"
-      alarms = [
-        {
-          message_category = "SECURITY"
-          group_name       = "SSHD"
-          message_code     = "INFO"
-        }
-      ]
-      apply_all_of_router = true
-    }
-  ]
-  events_buffer_size = 10000
   filter_matches = [
     {
       match = "MATCH1"
     }
   ]
-  events_display_location        = true
-  events_level                   = "informational"
-  events_threshold               = 80
-  console_discriminator_match1   = "MATCH1"
-  console_discriminator_match2   = "MATCH2"
-  console_discriminator_match3   = "MATCH3"
-  console_discriminator_nomatch1 = "NOMATCH1"
-  console_discriminator_nomatch2 = "NOMATCH2"
-  console_discriminator_nomatch3 = "NOMATCH3"
+  format         = "rfc5424"
+  history        = "emergencies"
+  history_size   = 500
+  hostnameprefix = "HOSTNAME01"
+  ipv4_dscp      = "cs6"
+  ipv6_dscp      = "ef"
+  localfilesize  = 1000
+  monitor        = "disable"
+  source_interfaces = [
+    {
+      name = "Loopback0"
+      vrf  = "default"
+    }
+  ]
+  suppress_duplicates = true
+  suppress_rules = [
+    {
+      alarms = [
+        {
+          group_name       = "SSHD"
+          message_category = "SECURITY"
+          message_code     = "INFO"
+        }
+      ]
+      apply_all_of_router = true
+      rule_name           = "RULE1"
+    }
+  ]
+  tls_servers = [
+    {
+      address_ipv4     = "1.1.1.1"
+      name             = "TLS-SERVER1"
+      severity         = "informational"
+      source_interface = "Loopback0"
+      tls_hostname     = "syslog.example.com"
+      trustpoint       = "TRUSTPOINT1"
+      vrf              = "default"
+    }
+  ]
+  trap = "informational"
+  yang = "debugging"
 }
 ```
 
@@ -149,42 +123,31 @@ resource "iosxr_logging" "example" {
 ### Optional
 
 - `archive_disk0` (Boolean) Use disk0 as the archive device
-  - **Not supported from version `25.4` and above**
 - `archive_disk1` (Boolean) Use disk1 as the archive device
-  - **Not supported from version `25.4` and above**
 - `archive_filesize` (Number) The maximum file size for a single log file.
   - Range: `1`-`2047`
-  - **Not supported from version `25.4` and above**
+- `archive_frequency` (String) The collection interval for logs
+  - Choices: `daily`, `weekly`
+  - Supported from version: `25.4`
 - `archive_frequency_daily` (Boolean) Collect log in files on a daily basis
   - **Not supported from version `25.4` and above**
 - `archive_frequency_weekly` (Boolean) Collect log in files on a weekly basis
   - **Not supported from version `25.4` and above**
 - `archive_harddisk` (Boolean) Use harddisk as the archive device
-  - **Not supported from version `25.4` and above**
 - `archive_length` (Number) The maximum no of weeks of log to maintain
   - Range: `1`-`256`
-  - **Not supported from version `25.4` and above**
 - `archive_severity` (String) The minimum severity of log messages to archive
   - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings`
-  - **Not supported from version `25.4` and above**
 - `archive_size` (Number) The total size of the archive
   - Range: `1`-`2047`
-  - **Not supported from version `25.4` and above**
 - `archive_threshold` (Number) The size threshold at which a syslog is generated
   - Range: `1`-`99`
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_match1` (String) Set match discriminator 1
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_match2` (String) Set match discriminator 2
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_match3` (String) Set match discriminator 3
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_nomatch1` (String) Set no-match discriminator 1
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_nomatch2` (String) Set no-match discriminator 2
-  - **Not supported from version `25.4` and above**
 - `buffered_discriminator_nomatch3` (String) Set no-match discriminator 3
-  - **Not supported from version `25.4` and above**
 - `buffered_entries_count` (Number) Syslog in buffer
   - Range: `2545`-`151699`
 - `buffered_level` (String) buffered level
@@ -205,12 +168,11 @@ resource "iosxr_logging" "example" {
   - Supported from version: `25.4`
 - `console_discriminator_nomatch3` (String) Set no-match discriminator 3
   - Supported from version: `25.4`
-- `console_facility` (String) All supported facilities
+- `console_facility` (String) Console message logging facilities
   - Choices: `all`
+  - **Not supported from version `25.4` and above**
 - `container_all` (Boolean) Enables log collection from all containers
-  - **Not supported from version `25.4` and above**
 - `container_fetch_timestamp` (Boolean) Fetch logs with container timestamp for all containers
-  - **Not supported from version `25.4` and above**
 - `delete_mode` (String) Configure behavior when deleting/destroying the resource. Either delete the entire object (YANG container) being managed, or only delete the individual resource attributes configured explicitly and leave everything else as-is. Default value is `all`.
   - Choices: `all`, `attributes`
 - `device` (String) A device name from the provider configuration.
@@ -225,11 +187,13 @@ resource "iosxr_logging" "example" {
   - Range: `1`-`60`
 - `events_threshold` (Number) Configure threshold (%) for capacity alarm
   - Range: `10`-`100`
-- `facility_level` (String) configure this node
+- `facility_level` (String) Modify message logging facilities
   - Choices: `all`, `audit`, `auth`, `authpriv`, `console`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `mail`, `ntp`, `syslog`, `user`
-  - **Not supported from version `25.4` and above**
 - `file` (Attributes List) Set file logging (see [below for nested schema](#nestedatt--file))
 - `filter_matches` (Attributes List) Configure match string to filter (see [below for nested schema](#nestedatt--filter_matches))
+- `format` (String) Specify syslog message format send to the server
+  - Choices: `bsd`, `rfc5424`
+  - Supported from version: `25.4`
 - `format_bsd` (Boolean) Enable to send the syslog message as BSD format 
   - **Not supported from version `25.4` and above**
 - `format_rfc5424` (Boolean) Enable to send the syslog message rfc5424 format 
@@ -240,13 +204,9 @@ resource "iosxr_logging" "example" {
   - Range: `1`-`500`
 - `hostnameprefix` (String) Hostname prefix to add on msgs to servers
 - `ipv4_dscp` (String) Set IP DSCP (DiffServ CodePoint)
-  - **Not supported from version `25.4` and above**
 - `ipv4_precedence` (String) Set precedence
-  - **Not supported from version `25.4` and above**
 - `ipv6_dscp` (String) Set IP DSCP (DiffServ CodePoint)
-  - **Not supported from version `25.4` and above**
 - `ipv6_precedence` (String) Set precedence
-  - **Not supported from version `25.4` and above**
 - `localfilesize` (Number) Set size of the local log file
   - Range: `0`-`4294967295`
 - `monitor` (String) Set monitor logging
@@ -259,13 +219,13 @@ resource "iosxr_logging" "example" {
 - `monitor_discriminator_nomatch3` (String) Set no-match discriminator 3
 - `source_interfaces` (Attributes List) Specify interface for source address in logging transactions (see [below for nested schema](#nestedatt--source_interfaces))
 - `suppress_duplicates` (Boolean) Suppress consecutive duplicate messages
-  - **Not supported from version `25.4` and above**
 - `suppress_rules` (Attributes List) Configure a specified suppression rule (see [below for nested schema](#nestedatt--suppress_rules))
+- `tls_servers` (Attributes List) Secure server over tls
+  - Supported from version: `25.4` (see [below for nested schema](#nestedatt--tls_servers))
 - `trap` (String) Set trap logging
   - Choices: `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning`
 - `yang` (String) Set yang logging parameters
   - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings`
-  - **Not supported from version `25.4` and above**
 
 ### Read-Only
 
@@ -294,10 +254,8 @@ Optional:
 - `discriminator_nomatch3` (String) Set no-match discriminator 3
 - `local_accounting` (Boolean) Store only the command accounting logs
 - `local_accounting_send_to_remote` (Boolean) Send the command accounting logs to syslog server
-- `local_accounting_send_to_remote_facility_level` (String) Modify message logging facilities
+- `local_accounting_send_to_remote_facility_level` (String) configure this node
   - Choices: `auth`, `cron`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `lpr`, `mail`, `news`, `sys10`, `sys11`, `sys12`, `sys13`, `sys14`, `sys9`, `syslog`, `user`, `uucp`
-  - Choices: `auth`, `cron`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `lpr`, `mail`, `news`, `sys10`, `sys11`, `sys12`, `sys13`, `sys14`, `sys9`, `syslog`, `user`, `uucp` (v24.4), `auth`, `cron`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `lpr`, `mail`, `news`, `syslog`, `user`, `uucp` (v25.4)
-  - **Not supported from version `25.4` and above**
 
 
 <a id="nestedatt--filter_matches"></a>
@@ -311,13 +269,13 @@ Required:
 <a id="nestedatt--source_interfaces"></a>
 ### Nested Schema for `source_interfaces`
 
+Required:
+
+- `name` (String) Specify interface for source address in logging transactions
+
 Optional:
 
-- `interface_name` (String) Specify interface for source address in logging transactions
-  - Supported from version: `25.4`
-- `name` (String) Specify interface for source address in logging transactions
-  - **Not supported from version `25.4` and above**
-- `vrf_name` (String) Set VRF option
+- `vrf` (String) Set VRF option
   - Supported from version: `25.4`
 - `vrfs` (Attributes List) Set VRF option
   - **Not supported from version `25.4` and above** (see [below for nested schema](#nestedatt--source_interfaces--vrfs))
@@ -361,6 +319,39 @@ Required:
 Required:
 
 - `location_name` (String) Location name
+
+
+
+<a id="nestedatt--tls_servers"></a>
+### Nested Schema for `tls_servers`
+
+Optional:
+
+- `address_ipv4` (String) IPv4 Address
+  - Supported from version: `25.4`
+- `address_ipv6` (String) IPv6 Address
+  - Supported from version: `25.4`
+- `name` (String) Name for the tls peer configuration
+  - Supported from version: `25.4`
+- `security_template` (String) Security template to be used for TLS essentials.
+  - Supported from version: `25.4`
+- `severity` (String) severity of remote host
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warning`
+  - Supported from version: `25.4`
+- `source_interface` (String) Specify Source interface
+  - Supported from version: `25.4`
+- `tls_hostname` (String) Hostname or FQDN of Secure Log server
+  - Supported from version: `25.4`
+- `tls_max_version` (String) Max TLS version
+  - Choices: `tls1.0`, `tls1.1`, `tls1.2`, `tls1.3`
+  - Supported from version: `25.4`
+- `tls_min_version` (String) Min TLS version
+  - Choices: `tls1.0`, `tls1.1`, `tls1.2`, `tls1.3`
+  - Supported from version: `25.4`
+- `trustpoint` (String) Trustpoint
+  - Supported from version: `25.4`
+- `vrf` (String) Set VRF option
+  - Supported from version: `25.4`
 
 ## Import
 

@@ -507,27 +507,27 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 							Computed:            true,
 						},
 						"collect_hbh": schema.BoolAttribute{
-							MarkdownDescription: "Collect hop by hop data for delay sessions",
+							MarkdownDescription: "Collect hop by hop data for delay sessions" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"ntp": schema.BoolAttribute{
-							MarkdownDescription: "Network Time Protocol timestamp format",
+							MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
 				},
 			},
 			"delay_bins_explicit": schema.ListAttribute{
-				MarkdownDescription: "explicit list of 27 numbers to split 28 bins. All 27 entries must be configured",
+				MarkdownDescription: "explicit list of 27 numbers to split 28 bins. All 27 entries must be configured" + "\n  - Supported from version: `25.4`",
 				ElementType:         types.Int64Type,
 				Computed:            true,
 			},
 			"collect_hbh": schema.BoolAttribute{
-				MarkdownDescription: "Collect hop by hop data for delay sessions",
+				MarkdownDescription: "Collect hop by hop data for delay sessions" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"ntp": schema.BoolAttribute{
-				MarkdownDescription: "Network Time Protocol timestamp format",
+				MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 		},

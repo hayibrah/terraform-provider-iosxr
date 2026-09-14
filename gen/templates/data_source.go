@@ -77,7 +77,7 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Schema(ctx context.Con
 			},
 			{{- range  .Attributes}}
 			"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
-				MarkdownDescription: "{{.Description}}",
+				MarkdownDescription: "{{.Description}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 				{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
 				ElementType:         types.StringType,
 				{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
@@ -96,7 +96,7 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Schema(ctx context.Con
 					Attributes: map[string]schema.Attribute{
 						{{- range  .Attributes}}
 						"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
-							MarkdownDescription: "{{.Description}}",
+							MarkdownDescription: "{{.Description}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 							{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
 							ElementType:         types.StringType,
 							{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
@@ -111,7 +111,7 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Schema(ctx context.Con
 								Attributes: map[string]schema.Attribute{
 									{{- range  .Attributes}}
 									"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
-										MarkdownDescription: "{{.Description}}",
+										MarkdownDescription: "{{.Description}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 										{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
 										ElementType:         types.StringType,
 										{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
@@ -126,7 +126,7 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Schema(ctx context.Con
 											Attributes: map[string]schema.Attribute{
 												{{- range  .Attributes}}
 												"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
-													MarkdownDescription: "{{.Description}}",
+													MarkdownDescription: "{{.Description}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 													{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
 													ElementType:         types.StringType,
 													{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}
@@ -141,7 +141,7 @@ func (d *{{camelCase .Name}}{{$versionSuffix}}DataSource) Schema(ctx context.Con
 														Attributes: map[string]schema.Attribute{
 															{{- range  .Attributes}}
 															"{{.TfName}}": schema.{{if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
-																MarkdownDescription: "{{.Description}}",
+																MarkdownDescription: "{{.Description}}"{{- if .AddedInVersion}} + "\n  - Supported from version: `{{formatVersionDisplay .AddedInVersion}}`"{{end}}{{- if .RemovedInVersion}} + "\n  - **Not supported from version `{{formatVersionDisplay .RemovedInVersion}}` and above**"{{end}},
 																{{- if or (eq .Type "StringList") (eq .Type "StringSet")}}
 																ElementType:         types.StringType,
 																{{- else if or (eq .Type "Int64List") (eq .Type "Int64Set")}}

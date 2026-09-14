@@ -970,11 +970,11 @@ func (d *RouterBGPNeighborGroupDataSource) Schema(ctx context.Context, req datas
 							Computed:            true,
 						},
 						"default_policy_action_in": schema.StringAttribute{
-							MarkdownDescription: "Default action if route does not satisfy inbound route-policy",
+							MarkdownDescription: "Default action if route does not satisfy inbound route-policy" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"default_policy_action_out": schema.StringAttribute{
-							MarkdownDescription: "Default action if route does not satisfy outbound route-policy",
+							MarkdownDescription: "Default action if route does not satisfy outbound route-policy" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},

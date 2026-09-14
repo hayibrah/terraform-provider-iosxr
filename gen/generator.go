@@ -1046,6 +1046,28 @@ func FormatVersionDefaults(versionDefaults map[string]string) string {
 	return strings.Join(parts, ", ")
 }
 
+// hclReserved contains HCL2 keywords that cause parse errors when unquoted
+// as the first key in an object literal (e.g. "for" triggers a for-expression).
+var hclReserved = map[string]bool{"for": true, "if": true, "in": true}
+
+// SortedAttrs returns a copy of attrs sorted by TfName. Used in .tf templates only
+// so that example HCL is alphabetized without affecting Go schema or test generation.
+// HCL reserved keywords are sorted to the end to avoid parse errors when they appear
+// as the first key in an object literal (e.g. "for = ..." triggers a for-expression).
+func SortedAttrs(attrs []YamlConfigAttribute) []YamlConfigAttribute {
+	sorted := make([]YamlConfigAttribute, len(attrs))
+	copy(sorted, attrs)
+	sort.Slice(sorted, func(i, j int) bool {
+		iReserved := hclReserved[sorted[i].TfName]
+		jReserved := hclReserved[sorted[j].TfName]
+		if iReserved != jReserved {
+			return !iReserved // reserved sorts after non-reserved
+		}
+		return sorted[i].TfName < sorted[j].TfName
+	})
+	return sorted
+}
+
 // Map of templating functions
 var functions = template.FuncMap{
 	"toGoName":                       ToGoName,
@@ -1087,6 +1109,7 @@ var functions = template.FuncMap{
 	"hasVersionDefaults":                    HasVersionDefaults,
 	"hasVersionDefaultsRecursive":           HasVersionDefaultsRecursive,
 	"collectRemovedAttrs":                   CollectRemovedAttrs,
+	"sortedAttrs":                           SortedAttrs,
 }
 
 func resolvePath(e *yang.Entry, path string) *yang.Entry {

@@ -80,7 +80,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"console_facility": schema.StringAttribute{
-				MarkdownDescription: "All supported facilities",
+				MarkdownDescription: "Console message logging facilities" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"monitor_discriminator_match1": schema.StringAttribute{
@@ -120,11 +120,11 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"archive_frequency_daily": schema.BoolAttribute{
-				MarkdownDescription: "Collect log in files on a daily basis",
+				MarkdownDescription: "Collect log in files on a daily basis" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"archive_frequency_weekly": schema.BoolAttribute{
-				MarkdownDescription: "Collect log in files on a weekly basis",
+				MarkdownDescription: "Collect log in files on a weekly basis" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"archive_filesize": schema.Int64Attribute{
@@ -164,7 +164,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"facility_level": schema.StringAttribute{
-				MarkdownDescription: "configure this node",
+				MarkdownDescription: "Modify message logging facilities",
 				Computed:            true,
 			},
 			"buffered_entries_count": schema.Int64Attribute{
@@ -241,7 +241,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 							Computed:            true,
 						},
 						"local_accounting_send_to_remote_facility_level": schema.StringAttribute{
-							MarkdownDescription: "Modify message logging facilities",
+							MarkdownDescription: "configure this node",
 							Computed:            true,
 						},
 						"discriminator_match1": schema.StringAttribute{
@@ -297,7 +297,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 							Computed:            true,
 						},
 						"vrfs": schema.ListNestedAttribute{
-							MarkdownDescription: "Set VRF option",
+							MarkdownDescription: "Set VRF option" + "\n  - **Not supported from version `25.4` and above**",
 							Computed:            true,
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
@@ -308,12 +308,8 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 								},
 							},
 						},
-						"interface_name": schema.StringAttribute{
-							MarkdownDescription: "Specify interface for source address in logging transactions",
-							Computed:            true,
-						},
-						"vrf_name": schema.StringAttribute{
-							MarkdownDescription: "Set VRF option",
+						"vrf": schema.StringAttribute{
+							MarkdownDescription: "Set VRF option" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -324,11 +320,11 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"format_rfc5424": schema.BoolAttribute{
-				MarkdownDescription: "Enable to send the syslog message rfc5424 format ",
+				MarkdownDescription: "Enable to send the syslog message rfc5424 format " + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"format_bsd": schema.BoolAttribute{
-				MarkdownDescription: "Enable to send the syslog message as BSD format ",
+				MarkdownDescription: "Enable to send the syslog message as BSD format " + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"yang": schema.StringAttribute{
@@ -424,28 +420,88 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"console_discriminator_match1": schema.StringAttribute{
-				MarkdownDescription: "Set match discriminator 1",
+				MarkdownDescription: "Set match discriminator 1" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"console_discriminator_match2": schema.StringAttribute{
-				MarkdownDescription: "Set match discriminator 2",
+				MarkdownDescription: "Set match discriminator 2" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"console_discriminator_match3": schema.StringAttribute{
-				MarkdownDescription: "Set match discriminator 3",
+				MarkdownDescription: "Set match discriminator 3" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"console_discriminator_nomatch1": schema.StringAttribute{
-				MarkdownDescription: "Set no-match discriminator 1",
+				MarkdownDescription: "Set no-match discriminator 1" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"console_discriminator_nomatch2": schema.StringAttribute{
-				MarkdownDescription: "Set no-match discriminator 2",
+				MarkdownDescription: "Set no-match discriminator 2" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"console_discriminator_nomatch3": schema.StringAttribute{
-				MarkdownDescription: "Set no-match discriminator 3",
+				MarkdownDescription: "Set no-match discriminator 3" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
+			},
+			"format": schema.StringAttribute{
+				MarkdownDescription: "Specify syslog message format send to the server" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"archive_frequency": schema.StringAttribute{
+				MarkdownDescription: "The collection interval for logs" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"tls_servers": schema.ListNestedAttribute{
+				MarkdownDescription: "Secure server over tls" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"name": schema.StringAttribute{
+							MarkdownDescription: "Name for the tls peer configuration" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"vrf": schema.StringAttribute{
+							MarkdownDescription: "Set VRF option" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"address_ipv4": schema.StringAttribute{
+							MarkdownDescription: "IPv4 Address" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"address_ipv6": schema.StringAttribute{
+							MarkdownDescription: "IPv6 Address" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"tls_hostname": schema.StringAttribute{
+							MarkdownDescription: "Hostname or FQDN of Secure Log server" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"trustpoint": schema.StringAttribute{
+							MarkdownDescription: "Trustpoint" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"severity": schema.StringAttribute{
+							MarkdownDescription: "severity of remote host" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"source_interface": schema.StringAttribute{
+							MarkdownDescription: "Specify Source interface" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"tls_min_version": schema.StringAttribute{
+							MarkdownDescription: "Min TLS version" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"tls_max_version": schema.StringAttribute{
+							MarkdownDescription: "Max TLS version" + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+						"security_template": schema.StringAttribute{
+							MarkdownDescription: "Security template to be used for TLS essentials." + "\n  - Supported from version: `25.4`",
+							Computed:            true,
+						},
+					},
+				},
 			},
 		},
 	}

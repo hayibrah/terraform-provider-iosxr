@@ -28,18 +28,17 @@ This resource can manage the LLDP configuration.
 
 ```terraform
 resource "iosxr_lldp" "example" {
-  holdtime                               = 50
-  timer                                  = 6
-  reinit                                 = 3
-  system_name                            = "Router1"
-  system_description                     = "Router1-Description"
   chassis_id                             = "FOC22439P72"
-  chassis_id_type_local                  = true
-  subinterfaces_enable                   = true
-  subinterfaces_tagged                   = true
+  extended_show_width_enable             = true
+  holdtime                               = 50
   management_enable                      = true
   priorityaddr_enable                    = true
-  extended_show_width_enable             = true
+  reinit                                 = 3
+  subinterfaces_enable                   = true
+  subinterfaces_tagged                   = true
+  system_description                     = "Router1-Description"
+  system_name                            = "Router1"
+  timer                                  = 6
   tlv_select_management_address_disable  = true
   tlv_select_port_description_disable    = true
   tlv_select_system_capabilities_disable = true

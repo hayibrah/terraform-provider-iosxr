@@ -14,8 +14,8 @@ This data source can read the Router BGP Address Family configuration.
 
 ```terraform
 data "iosxr_router_bgp_address_family" "example" {
-  as_number = "65001"
   af_name   = "ipv4-unicast"
+  as_number = "65001"
 }
 ```
 
@@ -49,7 +49,9 @@ data "iosxr_router_bgp_address_family" "example" {
 - `allocate_label_route_policy` (String) Allocate label route policy
 - `allocate_label_route_policy_unlabeled_path` (Boolean) Allocate label for unlabeled paths too
 - `as_based_as_list` (String) Enable ECMP delay for neighbor AS'es included in the AS list
+  - Supported from version: `25.4`
 - `as_based_delay` (Number) Provide a delay interval in msecs
+  - Supported from version: `25.4`
 - `as_path_loopcheck_out_disable` (Boolean) Disable
 - `bgp_attribute_download` (Boolean) Configure attribute download for this address-family
 - `bgp_bestpath_origin_as_allow_invalid` (Boolean) BGP bestpath selection will allow 'invalid' origin-AS
@@ -81,6 +83,7 @@ data "iosxr_router_bgp_address_family" "example" {
 - `export_to_vrf_allow_backup` (Boolean) Allow Export of backup path
 - `export_to_vrf_allow_best_external` (Boolean) Allow Export of best-external
 - `fixed_delay` (Number) Provide a delay interval in msecs
+  - Supported from version: `25.4`
 - `global_table_multicast` (Boolean) Enable global table multicast
 - `id` (String) The path of the retrieved object.
 - `import_from_bridge_domain` (Boolean) Import IP hosts from EVPN bridge-domain
@@ -115,7 +118,9 @@ data "iosxr_router_bgp_address_family" "example" {
 - `peer_set_ids` (Attributes List) configuration for a single EPE Peer Set (see [below for nested schema](#nestedatt--peer_set_ids))
 - `permanent_network_route_policy` (String) Route policy to read the prefixes from
 - `platform_oor_based_delay` (Number) Provide a delay interval in msecs
+  - Supported from version: `25.4`
 - `platform_oor_based_threshold` (Number) Delay only when platform resource usage is above specified threshold
+  - Supported from version: `25.4`
 - `prefix_ecmp_delay` (Number) Interval(ms)
 - `prefix_ecmp_delay_oor_threshold` (Number) Delay only when platform resource usage is above threshold
 - `redistribute_connected` (Boolean) Redistribute connected routes
@@ -228,6 +233,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `instance_name` (String) EIGRP instance name
 - `match_external` (Boolean) Redistribute EIGRP external routes
 - `match_internal` (Boolean) Redistribute EIGRP internal routes
@@ -243,6 +249,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `instance_name` (String) ISIS instance name
 - `level_1` (Boolean) Redistribute ISIS level 1 routes
 - `level_1_inter_area` (Boolean) Redistribute ISIS level 1 inter-area routes
@@ -262,6 +269,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPF external routes
 - `match_external_1` (Boolean) Redistribute OSPF external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPF external type 1 and NSSA external routes
@@ -305,6 +313,7 @@ Read-Only:
 Read-Only:
 
 - `default_policy_action_in` (String) Set a default action if a route does not satify the policy definition
+  - Supported from version: `25.4`
 - `match_external` (Boolean) Redistribute OSPFv3 external routes
 - `match_external_1` (Boolean) Redistribute OSPFv3 external type 1 routes
 - `match_external_1_nssa_external` (Boolean) Redistribute OSPFv3 external type 1 and NSSA external routes

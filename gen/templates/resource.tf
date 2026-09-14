@@ -5,28 +5,28 @@ resource "iosxr_{{snakeCase .Name}}" "example" {
 {{- if ne .RemovedInVersion ""}}
   # NOTE: Only use with versions earlier than {{formatVersionDisplay .RemovedInVersion}}
 {{- end}}
-{{- range  .Attributes}}
-{{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample (ne .RemovedInVersion ""))}}
+{{- range sortedAttrs .Attributes}}
+{{- if and (not .ExcludeExample) (not .ExcludeTest) (eq .RemovedInVersion "") (or (not (len .TestTags)) .IncludeExample)}}
 {{- if eq .Type "List"}}
   {{.TfName}} = [
     {
-      {{- range  .Attributes}}
-      {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
+      {{- range sortedAttrs .Attributes}}
+      {{- if and (not .ExcludeExample) (not .ExcludeTest) (eq .RemovedInVersion "") (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
       {{- if eq .Type "List"}}
         {{.TfName}} = [
           {
-            {{- range  .Attributes}}
-            {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
+            {{- range sortedAttrs .Attributes}}
+            {{- if and (not .ExcludeExample) (not .ExcludeTest) (eq .RemovedInVersion "") (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
             {{- if eq .Type "List"}}
               {{.TfName}} = [
                 {
-                  {{- range  .Attributes}}
-                  {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
+                  {{- range sortedAttrs .Attributes}}
+                  {{- if and (not .ExcludeExample) (not .ExcludeTest) (eq .RemovedInVersion "") (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
                   {{- if eq .Type "List"}}
                     {{.TfName}} = [
                       {
-                        {{- range  .Attributes}}
-                        {{- if and (not .ExcludeExample) (not .ExcludeTest) (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
+                        {{- range sortedAttrs .Attributes}}
+                        {{- if and (not .ExcludeExample) (not .ExcludeTest) (eq .RemovedInVersion "") (or (not (len .TestTags)) .IncludeExample) (or (eq .Type "List") (len .Example))}}
                         {{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}
                         {{- end}}
                         {{- end}}

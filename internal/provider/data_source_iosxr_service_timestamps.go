@@ -68,7 +68,7 @@ func (d *ServiceTimestampsDataSource) Schema(ctx context.Context, req datasource
 				Computed:            true,
 			},
 			"debug_datetime_localtime_only": schema.BoolAttribute{
-				MarkdownDescription: "Timestamp with date and time",
+				MarkdownDescription: "Timestamp with date and time" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"debug_datetime_localtime": schema.BoolAttribute{
@@ -96,7 +96,7 @@ func (d *ServiceTimestampsDataSource) Schema(ctx context.Context, req datasource
 				Computed:            true,
 			},
 			"log_datetime_localtime_only": schema.BoolAttribute{
-				MarkdownDescription: "Timestamp with date and time",
+				MarkdownDescription: "Timestamp with date and time" + "\n  - **Not supported from version `25.4` and above**",
 				Computed:            true,
 			},
 			"log_datetime_localtime": schema.BoolAttribute{
@@ -124,11 +124,11 @@ func (d *ServiceTimestampsDataSource) Schema(ctx context.Context, req datasource
 				Computed:            true,
 			},
 			"debug_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: "Include microseconds in timestamp",
+				MarkdownDescription: "Include microseconds in timestamp" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 			"log_datetime_usec": schema.BoolAttribute{
-				MarkdownDescription: "Include microseconds in timestamp",
+				MarkdownDescription: "Include microseconds in timestamp" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
 		},

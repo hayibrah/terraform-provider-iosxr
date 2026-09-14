@@ -322,15 +322,15 @@ func (d *CryptoDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							Computed:            true,
 						},
 						"enrollment_authentication_profile": schema.StringAttribute{
-							MarkdownDescription: "Authentication profile used during certificate enrollment",
+							MarkdownDescription: "Authentication profile used during certificate enrollment" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"re_enrollment_authentication_profile": schema.StringAttribute{
-							MarkdownDescription: "Authentication profile used during certificate re-enrollment",
+							MarkdownDescription: "Authentication profile used during certificate re-enrollment" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 						"ssl_profile": schema.StringAttribute{
-							MarkdownDescription: "SSL profile parameters used during TLS/mTLS handshake",
+							MarkdownDescription: "SSL profile parameters used during TLS/mTLS handshake" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},

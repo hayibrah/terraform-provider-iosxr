@@ -154,8 +154,11 @@ Read-Only:
 - `buffer_internal_traffic_class` (Attributes List) configure traffic-class (see [below for nested schema](#nestedatt--profile_priority_flow_control_locations--buffer_internal_traffic_class))
 - `location_name` (String) Location to apply PFC configuration
 - `non_pfc_tcs` (Boolean) configure to allow lossy TCs to evict.
+  - Supported from version: `25.4`
 - `non_pfc_tcs_max_non_pfc_voqs_hbm_buffers_percentage` (Number) configure hbm-buffers-percentage for non-pfc-tcs
+  - Supported from version: `25.4`
 - `non_pfc_tcs_max_non_pfc_voqs_number_of_evict_voqs` (Number) number of evict voqs
+  - Supported from version: `25.4`
 
 <a id="nestedatt--profile_priority_flow_control_locations--buffer_extended_traffic_class"></a>
 ### Nested Schema for `profile_priority_flow_control_locations.buffer_extended_traffic_class`

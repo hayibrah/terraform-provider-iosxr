@@ -10,51 +10,41 @@ description: |-
 
 This resource can manage the Logging VRF configuration.
 
-## Version Compatibility
-
-### Removed from version
-
-| Attribute | Version |
-|-----------|:-------:|
-| `host_ipv4_addresses` | `25.4` |
-| `host_ipv6_addresses` | `25.4` |
-| `hostnames` | `25.4` |
-
 ## Example Usage
 
 ```terraform
 resource "iosxr_logging_vrf" "example" {
-  vrf_name = "default"
-  hostnames = [
-    {
-      name                    = "server.cisco.com"
-      severity                = "info"
-      port                    = 514
-      operator                = "equals"
-      facility                = "local0"
-      hostname_source_address = "1.1.1.2"
-    }
-  ]
   host_ipv4_addresses = [
     {
-      ipv4_address        = "1.1.1.1"
-      severity            = "info"
-      port                = 514
-      operator            = "equals"
       facility            = "local0"
+      ipv4_address        = "1.1.1.1"
       ipv4_source_address = "1.1.1.2"
+      operator            = "equals"
+      port                = 514
+      severity            = "info"
     }
   ]
   host_ipv6_addresses = [
     {
-      ipv6_address        = "2001:db8::1"
-      severity            = "info"
-      port                = 514
-      operator            = "equals-or-higher"
       facility            = "local0"
+      ipv6_address        = "2001:db8::1"
       ipv6_source_address = "2001:db8::2"
+      operator            = "equals-or-higher"
+      port                = 514
+      severity            = "info"
     }
   ]
+  hostnames = [
+    {
+      facility                = "local0"
+      hostname_source_address = "1.1.1.2"
+      name                    = "server.cisco.com"
+      operator                = "equals"
+      port                    = 514
+      severity                = "info"
+    }
+  ]
+  vrf_name = "default"
 }
 ```
 
@@ -70,12 +60,9 @@ resource "iosxr_logging_vrf" "example" {
 - `delete_mode` (String) Configure behavior when deleting/destroying the resource. Either delete the entire object (YANG container) being managed, or only delete the individual resource attributes configured explicitly and leave everything else as-is. Default value is `all`.
   - Choices: `all`, `attributes`
 - `device` (String) A device name from the provider configuration.
-- `host_ipv4_addresses` (Attributes List) IPV4 address of the logging host
-  - **Not supported from version `25.4` and above** (see [below for nested schema](#nestedatt--host_ipv4_addresses))
-- `host_ipv6_addresses` (Attributes List) IPV6 address of the logging host
-  - **Not supported from version `25.4` and above** (see [below for nested schema](#nestedatt--host_ipv6_addresses))
-- `hostnames` (Attributes List) Name of the logging host
-  - **Not supported from version `25.4` and above** (see [below for nested schema](#nestedatt--hostnames))
+- `host_ipv4_addresses` (Attributes List) IPv4 of the logging host (see [below for nested schema](#nestedatt--host_ipv4_addresses))
+- `host_ipv6_addresses` (Attributes List) IPv6 of the logging host (see [below for nested schema](#nestedatt--host_ipv6_addresses))
+- `hostnames` (Attributes List) Name of the logging host (see [below for nested schema](#nestedatt--hostnames))
 
 ### Read-Only
 
@@ -92,7 +79,7 @@ Optional:
 
 - `facility` (String) Modify message logging facilities
   - Choices: `all`, `audit`, `auth`, `authpriv`, `console`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `mail`, `ntp`, `syslog`, `user`
-- `ipv4_source_address` (String) IPV4 source address of the logging host
+- `ipv4_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
@@ -112,7 +99,7 @@ Optional:
 
 - `facility` (String) Modify message logging facilities
   - Choices: `all`, `audit`, `auth`, `authpriv`, `console`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `mail`, `ntp`, `syslog`, `user`
-- `ipv6_source_address` (String) IPV6 source address of the logging host
+- `ipv6_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
@@ -127,12 +114,13 @@ Optional:
 Required:
 
 - `name` (String) Name of the logging host
+  - Length: `1`-`1024` (v24.4), `1`-`32` (v25.4)
 
 Optional:
 
 - `facility` (String) Modify message logging facilities
   - Choices: `all`, `audit`, `auth`, `authpriv`, `console`, `daemon`, `kern`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`, `mail`, `ntp`, `syslog`, `user`
-- `hostname_source_address` (String) hostname source address
+- `hostname_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
