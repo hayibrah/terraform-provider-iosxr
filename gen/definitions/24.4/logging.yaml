@@ -124,7 +124,7 @@ attributes:
         type_yang_bool: presence
         example: true
       - yang_name: local-accounting/send-to-remote
-        tf_name: send_to_remote
+        tf_name: local_accounting_send_to_remote
         type: Bool
         type_yang_bool: presence
         example: true

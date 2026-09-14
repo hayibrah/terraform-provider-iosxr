@@ -3,9 +3,51 @@ name: Logging VRF
 path: Cisco-IOS-XR-um-logging-cfg:/logging/vrfs/vrf[vrf-name=%s]
 doc_category: Management
 attributes:
-  - yang_name: host-ipv4-addresses
-    legacy: true
-  - yang_name: host-ipv6-addresses
-    legacy: true
-  - yang_name: host-names
-    legacy: true
+  # ===========================================================
+  # host-names/host-ipv4-addresses/host-ipv6-addresses: list container renames
+  # 24.4: host-names/host-name, host-ipv4-addresses/*, host-ipv6-addresses/*
+  # 25.4: hostnames/hostname, hostipv4s/hostipv4, hostipv6s/hostipv6
+  # tf_names unchanged; replaces_yang_name at list level, no legacy: true entries
+  # ===========================================================
+
+  # host-names/host-name → hostnames/hostname
+  # Key rename: name → host (1-to-1, tf_name auto-inherits as "name")
+  # Non-key rename: hostname-source-address → source-address
+  # Unchanged attrs (severity, port, operator, facility): omitted — inherited from base
+  - yang_name: hostnames/hostname
+    tf_name: hostnames
+    type: List
+    replaces_yang_name: host-names/host-name
+    attributes:
+      - yang_name: host
+        id: true
+        tf_name: name
+        replaces_yang_name: name
+
+      - yang_name: source-address
+        tf_name: hostname_source_address
+        replaces_yang_name: hostname-source-address
+
+  # host-ipv4-addresses/host-ipv4-address → ipv4-hostnames/ipv4-hostname
+  # Key ipv4-address unchanged — not in delta
+  # Non-key rename: ipv4-source-address → source-address
+  - yang_name: ipv4-hostnames/ipv4-hostname
+    tf_name: host_ipv4_addresses
+    type: List
+    replaces_yang_name: host-ipv4-addresses/host-ipv4-address
+    attributes:
+      - yang_name: source-address
+        tf_name: ipv4_source_address
+        replaces_yang_name: ipv4-source-address
+
+  # host-ipv6-addresses/host-ipv6-address → ipv6-hostnames/ipv6-hostname
+  # Key ipv6-address unchanged — not in delta
+  # Non-key rename: ipv6-source-address → source-address
+  - yang_name: ipv6-hostnames/ipv6-hostname
+    tf_name: host_ipv6_addresses
+    type: List
+    replaces_yang_name: host-ipv6-addresses/host-ipv6-address
+    attributes:
+      - yang_name: source-address
+        tf_name: ipv6_source_address
+        replaces_yang_name: ipv6-source-address
