@@ -336,7 +336,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 							},
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("severity").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning", "disable", "errors", "informational").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning` (v25.4)",
+							MarkdownDescription: helpers.NewAttributeDescription("severity").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning` (v25.4)",
 							Required:            true,
 							Validators: []validator.String{
 								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning", "disable", "errors", "informational"),

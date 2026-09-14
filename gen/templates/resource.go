@@ -93,7 +93,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 			{{- range  .Attributes}}
 			"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
 				MarkdownDescription: helpers.NewAttributeDescription("{{.Description}}")
-					{{- if len .EnumValues -}}
+					{{- if and (len .EnumValues) (not .VersionEnums) -}}
 					.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 					{{- end -}}
 					{{- if len .VersionEnums -}}
@@ -185,7 +185,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 						{{- range  .Attributes}}
 						"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
 							MarkdownDescription: helpers.NewAttributeDescription("{{.Description}}")
-								{{- if len .EnumValues -}}
+								{{- if and (len .EnumValues) (not .VersionEnums) -}}
 								.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 								{{- end -}}
 								{{- if len .VersionEnums -}}
@@ -265,7 +265,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 									{{- range  .Attributes}}
 									"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
 										MarkdownDescription: helpers.NewAttributeDescription("{{.Description}}")
-											{{- if len .EnumValues -}}
+											{{- if and (len .EnumValues) (not .VersionEnums) -}}
 											.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 											{{- end -}}
 											{{- if len .VersionEnums -}}
@@ -345,7 +345,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 											{{- range  .Attributes}}
 											"{{.TfName}}": schema.{{if eq .Type "List"}}ListNested{{else if eq .Type "Set"}}SetNested{{else if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
 												MarkdownDescription: helpers.NewAttributeDescription("{{.Description}}")
-													{{- if len .EnumValues -}}
+													{{- if and (len .EnumValues) (not .VersionEnums) -}}
 													.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 													{{- end -}}
 													{{- if len .VersionEnums -}}
@@ -425,7 +425,7 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 														{{- range  .Attributes}}
 														"{{.TfName}}": schema.{{if or (eq .Type "StringList") (eq .Type "Int64List")}}List{{else if or (eq .Type "StringSet") (eq .Type "Int64Set")}}Set{{else}}{{.Type}}{{end}}Attribute{
 															MarkdownDescription: helpers.NewAttributeDescription("{{.Description}}")
-																{{- if len .EnumValues -}}
+																{{- if and (len .EnumValues) (not .VersionEnums) -}}
 																.AddStringEnumDescription({{range .EnumValues}}"{{.}}", {{end}})
 																{{- end -}}
 																{{- if len .VersionEnums -}}

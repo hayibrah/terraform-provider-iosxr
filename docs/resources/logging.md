@@ -241,7 +241,6 @@ Required:
   - Range: `1`-`2097152`
 - `path` (String) File path (e.g. /disk0: )
 - `severity` (String) severity
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning`, `disable`, `errors`, `informational`
   - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning` (v25.4)
 
 Optional:
