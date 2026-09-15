@@ -28,8 +28,12 @@ attributes:
         example: informational
       - yang_name: port
         type: Int64
+        description: Set UDP port for this remote host/vrf
+        min_int: 0
+        max_int: 65535
         no_augment_config: true
-        exclude_test: true
+        example: 510
+        # exclude_test: true
   # host-ipv4-addresses/host-ipv4-address → ipv4-hostnames/ipv4-hostname
   # Non-key rename: ipv4-source-address → source-address
   - yang_name: ipv4-hostnames/ipv4-hostname
@@ -45,8 +49,12 @@ attributes:
         example: informational
       - yang_name: port
         type: Int64
+        description: Set UDP port for this remote host/vrf
+        min_int: 0
+        max_int: 65535
         no_augment_config: true
-        exclude_test: true
+        # exclude_test: true
+        example: 510
   # host-ipv6-addresses/host-ipv6-address → ipv6-hostnames/ipv6-hostname
   # Non-key rename: ipv6-source-address → source-address
   - yang_name: ipv6-hostnames/ipv6-hostname
@@ -61,5 +69,9 @@ attributes:
         example: informational
       - yang_name: port
         type: Int64
+        description: Set UDP port for this remote host/vrf
+        min_int: 0
+        max_int: 65535
         no_augment_config: true
-        exclude_test: true
+        # exclude_test: true
+        example: 510
