@@ -1213,13 +1213,13 @@ func (data *L2VPNBridgeGroupBridgeDomainNeighbor) getDeletedItems(ctx context.Co
 			}
 			if found {
 				if !state.BackupNeighbors[i].PwClass.IsNull() && data.BackupNeighbors[j].PwClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/backup/neighbors/neighbor%v", state.getPath(), keyString), "pw-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "backup/neighbors/neighbor", keyString), "pw-class"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/backup/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "backup/neighbors/neighbor", keyString))
 		}
 	}
 	if !state.MldSnoopingProfile.IsNull() && data.MldSnoopingProfile.IsNull() {
@@ -1363,7 +1363,7 @@ func (data *L2VPNBridgeGroupBridgeDomainNeighbor) getDeletedItems(ctx context.Co
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/static-mac-addresses/static-mac-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "static-mac-addresses/static-mac-address", keyString))
 		}
 	}
 	if !state.FloodingDisable.IsNull() && data.FloodingDisable.IsNull() {
@@ -1493,7 +1493,7 @@ func (data *L2VPNBridgeGroupBridgeDomainNeighbor) getDeletePaths(ctx context.Con
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/backup/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "backup/neighbors/neighbor", keyString))
 	}
 	if !data.MldSnoopingProfile.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "mld/snooping/profile"))
@@ -1625,7 +1625,7 @@ func (data *L2VPNBridgeGroupBridgeDomainNeighbor) getDeletePaths(ctx context.Con
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/static-mac-addresses/static-mac-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "static-mac-addresses/static-mac-address", keyString))
 	}
 	if !data.FloodingDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "flooding/disable"))

@@ -9680,7 +9680,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllAllowAllIpv6Prefixes {
@@ -9716,7 +9716,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllAllowAllIpv4Hosts {
@@ -9746,7 +9746,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllAllowAllIpv4Prefixes {
@@ -9782,7 +9782,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllAllowAll.IsNull() && data.MgmtOobAllAllowAll.IsNull() {
@@ -9815,7 +9815,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllNetconfIpv6Prefixes {
@@ -9851,7 +9851,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllNetconfIpv4Hosts {
@@ -9881,7 +9881,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllNetconfIpv4Prefixes {
@@ -9917,7 +9917,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllNetconf.IsNull() && data.MgmtOobAllNetconf.IsNull() {
@@ -9950,7 +9950,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllXmlIpv6Prefixes {
@@ -9986,7 +9986,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllXmlIpv4Hosts {
@@ -10016,7 +10016,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllXmlIpv4Prefixes {
@@ -10052,7 +10052,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllXml.IsNull() && data.MgmtOobAllXml.IsNull() {
@@ -10085,7 +10085,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllHttpIpv4Prefixes {
@@ -10121,7 +10121,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllHttp.IsNull() && data.MgmtOobAllHttp.IsNull() {
@@ -10154,7 +10154,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTftpIpv6Prefixes {
@@ -10190,7 +10190,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTftpIpv4Hosts {
@@ -10220,7 +10220,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTftpIpv4Prefixes {
@@ -10256,7 +10256,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllTftp.IsNull() && data.MgmtOobAllTftp.IsNull() {
@@ -10289,7 +10289,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSnmpIpv6Prefixes {
@@ -10325,7 +10325,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSnmpIpv4Hosts {
@@ -10355,7 +10355,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSnmpIpv4Prefixes {
@@ -10391,7 +10391,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllSnmp.IsNull() && data.MgmtOobAllSnmp.IsNull() {
@@ -10424,7 +10424,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTelnetIpv6Prefixes {
@@ -10460,7 +10460,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTelnetIpv4Hosts {
@@ -10490,7 +10490,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllTelnetIpv4Prefixes {
@@ -10526,7 +10526,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllTelnet.IsNull() && data.MgmtOobAllTelnet.IsNull() {
@@ -10559,7 +10559,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSshIpv6Prefixes {
@@ -10595,7 +10595,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSshIpv4Hosts {
@@ -10625,7 +10625,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtOobAllSshIpv4Prefixes {
@@ -10661,7 +10661,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtOobAllSsh.IsNull() && data.MgmtOobAllSsh.IsNull() {
@@ -10723,7 +10723,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].AllowAllIpv6Prefixes {
@@ -10759,7 +10759,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].AllowAllIpv4Hosts {
@@ -10789,7 +10789,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].AllowAllIpv4Prefixes {
@@ -10825,11 +10825,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].AllowAll.IsNull() && data.MgmtOobInterfaces[j].AllowAll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/all"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].NetconfIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -10858,7 +10858,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].NetconfIpv6Prefixes {
@@ -10894,7 +10894,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].NetconfIpv4Hosts {
@@ -10924,7 +10924,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].NetconfIpv4Prefixes {
@@ -10960,11 +10960,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Netconf.IsNull() && data.MgmtOobInterfaces[j].Netconf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/netconf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/netconf"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].XmlIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -10993,7 +10993,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].XmlIpv6Prefixes {
@@ -11029,7 +11029,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].XmlIpv4Hosts {
@@ -11059,7 +11059,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].XmlIpv4Prefixes {
@@ -11095,11 +11095,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Xml.IsNull() && data.MgmtOobInterfaces[j].Xml.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/xr-xml"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/xr-xml"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].HttpIpv4Hosts {
 					ckeys := [...]string{"address"}
@@ -11128,7 +11128,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].HttpIpv4Prefixes {
@@ -11164,11 +11164,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Http.IsNull() && data.MgmtOobInterfaces[j].Http.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/http"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/http"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].TftpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11197,7 +11197,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TftpIpv6Prefixes {
@@ -11233,7 +11233,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TftpIpv4Hosts {
@@ -11263,7 +11263,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TftpIpv4Prefixes {
@@ -11299,11 +11299,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Tftp.IsNull() && data.MgmtOobInterfaces[j].Tftp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/tftp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/tftp"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].SnmpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11332,7 +11332,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SnmpIpv6Prefixes {
@@ -11368,7 +11368,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SnmpIpv4Hosts {
@@ -11398,7 +11398,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SnmpIpv4Prefixes {
@@ -11434,11 +11434,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Snmp.IsNull() && data.MgmtOobInterfaces[j].Snmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/snmp"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].TelnetIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11467,7 +11467,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TelnetIpv6Prefixes {
@@ -11503,7 +11503,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TelnetIpv4Hosts {
@@ -11533,7 +11533,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].TelnetIpv4Prefixes {
@@ -11569,11 +11569,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Telnet.IsNull() && data.MgmtOobInterfaces[j].Telnet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/telnet"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/telnet"))
 				}
 				for ci := range state.MgmtOobInterfaces[i].SshIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -11602,7 +11602,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SshIpv6Prefixes {
@@ -11638,7 +11638,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SshIpv4Hosts {
@@ -11668,7 +11668,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtOobInterfaces[i].SshIpv4Prefixes {
@@ -11704,17 +11704,17 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString, "allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtOobInterfaces[i].Ssh.IsNull() && data.MgmtOobInterfaces[j].Ssh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString), "allow/ssh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/ssh"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/out-of-band/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllAllowAllIpv6Hosts {
@@ -11744,7 +11744,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllAllowAllIpv6Prefixes {
@@ -11780,7 +11780,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllAllowAllIpv4Hosts {
@@ -11810,7 +11810,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllAllowAllIpv4Prefixes {
@@ -11846,7 +11846,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllAllowAll.IsNull() && data.MgmtInbandAllAllowAll.IsNull() {
@@ -11879,7 +11879,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllNetconfIpv6Prefixes {
@@ -11915,7 +11915,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllNetconfIpv4Hosts {
@@ -11945,7 +11945,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllNetconfIpv4Prefixes {
@@ -11981,7 +11981,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllNetconf.IsNull() && data.MgmtInbandAllNetconf.IsNull() {
@@ -12014,7 +12014,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllXmlIpv6Prefixes {
@@ -12050,7 +12050,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllXmlIpv4Hosts {
@@ -12080,7 +12080,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllXmlIpv4Prefixes {
@@ -12116,7 +12116,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllXml.IsNull() && data.MgmtInbandAllXml.IsNull() {
@@ -12149,7 +12149,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllHttpIpv4Prefixes {
@@ -12185,7 +12185,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllHttp.IsNull() && data.MgmtInbandAllHttp.IsNull() {
@@ -12218,7 +12218,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTftpIpv6Prefixes {
@@ -12254,7 +12254,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTftpIpv4Hosts {
@@ -12284,7 +12284,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTftpIpv4Prefixes {
@@ -12320,7 +12320,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllTftp.IsNull() && data.MgmtInbandAllTftp.IsNull() {
@@ -12353,7 +12353,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSnmpIpv6Prefixes {
@@ -12389,7 +12389,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSnmpIpv4Hosts {
@@ -12419,7 +12419,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSnmpIpv4Prefixes {
@@ -12455,7 +12455,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllSnmp.IsNull() && data.MgmtInbandAllSnmp.IsNull() {
@@ -12488,7 +12488,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTelnetIpv6Prefixes {
@@ -12524,7 +12524,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTelnetIpv4Hosts {
@@ -12554,7 +12554,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllTelnetIpv4Prefixes {
@@ -12590,7 +12590,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllTelnet.IsNull() && data.MgmtInbandAllTelnet.IsNull() {
@@ -12623,7 +12623,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSshIpv6Prefixes {
@@ -12659,7 +12659,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSshIpv4Hosts {
@@ -12689,7 +12689,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 		}
 	}
 	for i := range state.MgmtInbandAllSshIpv4Prefixes {
@@ -12725,7 +12725,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 		}
 	}
 	if !state.MgmtInbandAllSsh.IsNull() && data.MgmtInbandAllSsh.IsNull() {
@@ -12781,7 +12781,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes {
@@ -12817,7 +12817,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].AllowAllIpv4Hosts {
@@ -12847,7 +12847,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes {
@@ -12883,11 +12883,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].AllowAll.IsNull() && data.MgmtInbandInterfaces[j].AllowAll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/all"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].NetconfIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -12916,7 +12916,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].NetconfIpv6Prefixes {
@@ -12952,7 +12952,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].NetconfIpv4Hosts {
@@ -12982,7 +12982,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].NetconfIpv4Prefixes {
@@ -13018,11 +13018,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Netconf.IsNull() && data.MgmtInbandInterfaces[j].Netconf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/netconf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/netconf"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].XmlIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13051,7 +13051,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].XmlIpv6Prefixes {
@@ -13087,7 +13087,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].XmlIpv4Hosts {
@@ -13117,7 +13117,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].XmlIpv4Prefixes {
@@ -13153,11 +13153,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Xml.IsNull() && data.MgmtInbandInterfaces[j].Xml.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/xr-xml"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/xr-xml"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].HttpIpv4Hosts {
 					ckeys := [...]string{"address"}
@@ -13186,7 +13186,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].HttpIpv4Prefixes {
@@ -13222,11 +13222,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Http.IsNull() && data.MgmtInbandInterfaces[j].Http.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/http"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/http"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TftpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13255,7 +13255,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TftpIpv6Prefixes {
@@ -13291,7 +13291,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TftpIpv4Hosts {
@@ -13321,7 +13321,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TftpIpv4Prefixes {
@@ -13357,11 +13357,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Tftp.IsNull() && data.MgmtInbandInterfaces[j].Tftp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/tftp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/tftp"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SnmpIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13390,7 +13390,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SnmpIpv6Prefixes {
@@ -13426,7 +13426,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SnmpIpv4Hosts {
@@ -13456,7 +13456,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SnmpIpv4Prefixes {
@@ -13492,11 +13492,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Snmp.IsNull() && data.MgmtInbandInterfaces[j].Snmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/snmp"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TelnetIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13525,7 +13525,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TelnetIpv6Prefixes {
@@ -13561,7 +13561,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TelnetIpv4Hosts {
@@ -13591,7 +13591,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].TelnetIpv4Prefixes {
@@ -13627,11 +13627,11 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Telnet.IsNull() && data.MgmtInbandInterfaces[j].Telnet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/telnet"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/telnet"))
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SshIpv6Hosts {
 					ckeys := [...]string{"address"}
@@ -13660,7 +13660,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SshIpv6Prefixes {
@@ -13696,7 +13696,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SshIpv4Hosts {
@@ -13726,7 +13726,7 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", ckeyString))
 					}
 				}
 				for ci := range state.MgmtInbandInterfaces[i].SshIpv4Prefixes {
@@ -13762,17 +13762,17 @@ func (data *ControlPlane) getDeletedItems(ctx context.Context, state ControlPlan
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString, "allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", ckeyString))
 					}
 				}
 				if !state.MgmtInbandInterfaces[i].Ssh.IsNull() && data.MgmtInbandInterfaces[j].Ssh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString), "allow/ssh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/ssh"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "management-plane/inband/interfaces/interface", keyString))
 		}
 	}
 	return deletedItems
@@ -14091,7 +14091,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].AllowAll.IsNull() && !data.MgmtOobInterfaces[i].AllowAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/all"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].NetconfIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14126,7 +14126,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Netconf.IsNull() && !data.MgmtOobInterfaces[i].Netconf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/netconf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/netconf"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].XmlIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14161,7 +14161,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Xml.IsNull() && !data.MgmtOobInterfaces[i].Xml.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/xr-xml"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/xr-xml"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].HttpIpv4Hosts {
 			ckeys := [...]string{"address"}
@@ -14180,7 +14180,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Http.IsNull() && !data.MgmtOobInterfaces[i].Http.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/http"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/http"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].TftpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14215,7 +14215,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Tftp.IsNull() && !data.MgmtOobInterfaces[i].Tftp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/tftp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/tftp"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].SnmpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14250,7 +14250,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Snmp.IsNull() && !data.MgmtOobInterfaces[i].Snmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/snmp"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].TelnetIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14285,7 +14285,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Telnet.IsNull() && !data.MgmtOobInterfaces[i].Telnet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/telnet"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/telnet"))
 		}
 		for ci := range data.MgmtOobInterfaces[i].SshIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14320,7 +14320,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtOobInterfaces[i].Ssh.IsNull() && !data.MgmtOobInterfaces[i].Ssh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString), "allow/ssh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString), "allow/ssh"))
 		}
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv6Hosts {
@@ -14627,7 +14627,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].AllowAll.IsNull() && !data.MgmtInbandInterfaces[i].AllowAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/all"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].NetconfIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14662,7 +14662,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Netconf.IsNull() && !data.MgmtInbandInterfaces[i].Netconf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/netconf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/netconf"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].XmlIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14697,7 +14697,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Xml.IsNull() && !data.MgmtInbandInterfaces[i].Xml.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/xr-xml"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/xr-xml"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].HttpIpv4Hosts {
 			ckeys := [...]string{"address"}
@@ -14716,7 +14716,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Http.IsNull() && !data.MgmtInbandInterfaces[i].Http.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/http"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/http"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].TftpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14751,7 +14751,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Tftp.IsNull() && !data.MgmtInbandInterfaces[i].Tftp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/tftp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/tftp"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].SnmpIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14786,7 +14786,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Snmp.IsNull() && !data.MgmtInbandInterfaces[i].Snmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/snmp"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].TelnetIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14821,7 +14821,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Telnet.IsNull() && !data.MgmtInbandInterfaces[i].Telnet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/telnet"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/telnet"))
 		}
 		for ci := range data.MgmtInbandInterfaces[i].SshIpv6Hosts {
 			ckeys := [...]string{"address"}
@@ -14856,7 +14856,7 @@ func (data *ControlPlane) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.MgmtInbandInterfaces[i].Ssh.IsNull() && !data.MgmtInbandInterfaces[i].Ssh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString), "allow/ssh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString), "allow/ssh"))
 		}
 	}
 	return emptyLeafsDelete
@@ -14883,7 +14883,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllAllowAllIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -14904,7 +14904,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllAllowAllIpv4Hosts {
 		keys := [...]string{"address"}
@@ -14922,7 +14922,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllAllowAllIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -14943,7 +14943,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllAllowAll.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/all"))
@@ -14964,7 +14964,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllNetconfIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -14985,7 +14985,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllNetconfIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15003,7 +15003,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllNetconfIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15024,7 +15024,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllNetconf.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/netconf"))
@@ -15045,7 +15045,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllXmlIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15066,7 +15066,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllXmlIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15084,7 +15084,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllXmlIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15105,7 +15105,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllXml.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/xr-xml"))
@@ -15126,7 +15126,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllHttpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15147,7 +15147,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllHttp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/http"))
@@ -15168,7 +15168,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllTftpIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15189,7 +15189,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllTftpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15207,7 +15207,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllTftpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15228,7 +15228,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllTftp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/tftp"))
@@ -15249,7 +15249,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllSnmpIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15270,7 +15270,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllSnmpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15288,7 +15288,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllSnmpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15309,7 +15309,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllSnmp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/snmp"))
@@ -15330,7 +15330,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllTelnetIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15351,7 +15351,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllTelnetIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15369,7 +15369,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllTelnetIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15390,7 +15390,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllTelnet.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/telnet"))
@@ -15411,7 +15411,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtOobAllSshIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15432,7 +15432,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtOobAllSshIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15450,7 +15450,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtOobAllSshIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15471,7 +15471,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtOobAllSsh.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/out-of-band/interfaces/all/allow/ssh"))
@@ -15498,7 +15498,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/out-of-band/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/out-of-band/interfaces/interface", keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv6Hosts {
 		keys := [...]string{"address"}
@@ -15516,7 +15516,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15537,7 +15537,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15555,7 +15555,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllAllowAllIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15576,7 +15576,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/all-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllAllowAll.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/all"))
@@ -15597,7 +15597,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15618,7 +15618,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15636,7 +15636,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllNetconfIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15657,7 +15657,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/netconf-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllNetconf.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/netconf"))
@@ -15678,7 +15678,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllXmlIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15699,7 +15699,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllXmlIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15717,7 +15717,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllXmlIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15738,7 +15738,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllXml.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/xr-xml"))
@@ -15759,7 +15759,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllHttpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15780,7 +15780,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/http-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllHttp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/http"))
@@ -15801,7 +15801,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllTftpIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15822,7 +15822,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllTftpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15840,7 +15840,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllTftpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15861,7 +15861,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/tftp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllTftp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/tftp"))
@@ -15882,7 +15882,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15903,7 +15903,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv4Hosts {
 		keys := [...]string{"address"}
@@ -15921,7 +15921,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllSnmpIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15942,7 +15942,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/snmp-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllSnmp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/snmp"))
@@ -15963,7 +15963,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -15984,7 +15984,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv4Hosts {
 		keys := [...]string{"address"}
@@ -16002,7 +16002,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllTelnetIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -16023,7 +16023,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/telnet-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllTelnet.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/telnet"))
@@ -16044,7 +16044,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-addresses/ipv6-address", keyString))
 	}
 	for i := range data.MgmtInbandAllSshIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -16065,7 +16065,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv6/ipv6-address-prefixes/ipv6-address-prefix", keyString))
 	}
 	for i := range data.MgmtInbandAllSshIpv4Hosts {
 		keys := [...]string{"address"}
@@ -16083,7 +16083,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-addresses/ipv4-address", keyString))
 	}
 	for i := range data.MgmtInbandAllSshIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -16104,7 +16104,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/all/allow/ssh-peer/address/ipv4/ipv4-address-prefixes/ipv4-address-prefix", keyString))
 	}
 	if !data.MgmtInbandAllSsh.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "management-plane/inband/interfaces/all/allow/ssh"))
@@ -16125,7 +16125,7 @@ func (data *ControlPlane) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/management-plane/inband/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "management-plane/inband/interfaces/interface", keyString))
 	}
 	return deletePaths
 }

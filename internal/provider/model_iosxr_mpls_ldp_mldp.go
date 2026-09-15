@@ -718,13 +718,13 @@ func (data *MPLSLDPMLDP) getDeletedItems(ctx context.Context, state MPLSLDPMLDP,
 			}
 			if found {
 				if !state.AddressFamily[i].RibUnicastAlways.IsNull() && data.AddressFamily[j].RibUnicastAlways.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "rib/unicast-always"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "rib/unicast-always"))
 				}
 				if !state.AddressFamily[i].ForwardingRecursiveRoutePolicy.IsNull() && data.AddressFamily[j].ForwardingRecursiveRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "forwarding/recursive/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "forwarding/recursive/route-policy"))
 				}
 				if !state.AddressFamily[i].ForwardingRecursive.IsNull() && data.AddressFamily[j].ForwardingRecursive.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "forwarding/recursive"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "forwarding/recursive"))
 				}
 				for ci := range state.AddressFamily[i].Neighbors {
 					ckeys := [...]string{"neighbor-address"}
@@ -750,47 +750,47 @@ func (data *MPLSLDPMLDP) getDeletedItems(ctx context.Context, state MPLSLDPMLDP,
 						}
 						if found {
 							if !state.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyOut.IsNull() && data.AddressFamily[j].Neighbors[cj].NeighborRoutePolicyOut.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v/neighbors/neighbor%v", state.getPath(), keyString, ckeyString), "out/route-policy"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "neighbors/neighbor", ckeyString), "out/route-policy"))
 							}
 							if !state.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyIn.IsNull() && data.AddressFamily[j].Neighbors[cj].NeighborRoutePolicyIn.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v/neighbors/neighbor%v", state.getPath(), keyString, ckeyString), "in/route-policy"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "neighbors/neighbor", ckeyString), "in/route-policy"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/neighbors/neighbor%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "neighbors/neighbor", ckeyString))
 					}
 				}
 				if !state.AddressFamily[i].NeighborsRoutePolicyOut.IsNull() && data.AddressFamily[j].NeighborsRoutePolicyOut.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "neighbors/out/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "neighbors/out/route-policy"))
 				}
 				if !state.AddressFamily[i].NeighborsRoutePolicyIn.IsNull() && data.AddressFamily[j].NeighborsRoutePolicyIn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "neighbors/in/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "neighbors/in/route-policy"))
 				}
 				if !state.AddressFamily[i].RecursiveFecRoutePolicy.IsNull() && data.AddressFamily[j].RecursiveFecRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "recursive-fec/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "recursive-fec/route-policy"))
 				}
 				if !state.AddressFamily[i].RecursiveFecEnable.IsNull() && data.AddressFamily[j].RecursiveFecEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "recursive-fec/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "recursive-fec/enable"))
 				}
 				if !state.AddressFamily[i].MofrrRoutePolicy.IsNull() && data.AddressFamily[j].MofrrRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "mofrr/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "mofrr/route-policy"))
 				}
 				if !state.AddressFamily[i].MofrrEnable.IsNull() && data.AddressFamily[j].MofrrEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "mofrr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "mofrr"))
 				}
 				if !state.AddressFamily[i].CarrierSupportingCarrier.IsNull() && data.AddressFamily[j].CarrierSupportingCarrier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "carrier-supporting-carrier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "carrier-supporting-carrier"))
 				}
 				if !state.AddressFamily[i].MakeBeforeBreakRoutePolicy.IsNull() && data.AddressFamily[j].MakeBeforeBreakRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "make-before-break/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "make-before-break/route-policy"))
 				}
 				if !state.AddressFamily[i].MakeBeforeBreakDeleteDelay.IsNull() && data.AddressFamily[j].MakeBeforeBreakDeleteDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "make-before-break/delay/delete-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "make-before-break/delay/delete-delay"))
 				}
 				if !state.AddressFamily[i].MakeBeforeBreakDelay.IsNull() && data.AddressFamily[j].MakeBeforeBreakDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "make-before-break/delay/forwarding-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "make-before-break/delay/forwarding-delay"))
 				}
 				for ci := range state.AddressFamily[i].Statics {
 					ckeys := [...]string{"lsp-address"}
@@ -816,23 +816,23 @@ func (data *MPLSLDPMLDP) getDeletedItems(ctx context.Context, state MPLSLDPMLDP,
 						}
 						if found {
 							if !state.AddressFamily[i].Statics[ci].Mp2mp.IsNull() && data.AddressFamily[j].Statics[cj].Mp2mp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v/statics/static%v", state.getPath(), keyString, ckeyString), "mp2mp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "statics/static", ckeyString), "mp2mp"))
 							}
 							if !state.AddressFamily[i].Statics[ci].P2mp.IsNull() && data.AddressFamily[j].Statics[cj].P2mp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v/statics/static%v", state.getPath(), keyString, ckeyString), "p2mp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "statics/static", ckeyString), "p2mp"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v/statics/static%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "address-families/address-family", keyString, "statics/static", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString))
 		}
 	}
 	if !state.LoggingInternal.IsNull() && data.LoggingInternal.IsNull() {
@@ -858,10 +858,10 @@ func (data *MPLSLDPMLDP) getEmptyLeafsDelete(ctx context.Context, version string
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AddressFamily[i].RibUnicastAlways.IsNull() && !data.AddressFamily[i].RibUnicastAlways.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "rib/unicast-always"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "rib/unicast-always"))
 		}
 		if !data.AddressFamily[i].ForwardingRecursive.IsNull() && !data.AddressFamily[i].ForwardingRecursive.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "forwarding/recursive"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "forwarding/recursive"))
 		}
 		for ci := range data.AddressFamily[i].Neighbors {
 			ckeys := [...]string{"neighbor-address"}
@@ -872,13 +872,13 @@ func (data *MPLSLDPMLDP) getEmptyLeafsDelete(ctx context.Context, version string
 			}
 		}
 		if !data.AddressFamily[i].RecursiveFecEnable.IsNull() && !data.AddressFamily[i].RecursiveFecEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "recursive-fec/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "recursive-fec/enable"))
 		}
 		if !data.AddressFamily[i].MofrrEnable.IsNull() && !data.AddressFamily[i].MofrrEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "mofrr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "mofrr"))
 		}
 		if !data.AddressFamily[i].CarrierSupportingCarrier.IsNull() && !data.AddressFamily[i].CarrierSupportingCarrier.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "carrier-supporting-carrier"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "carrier-supporting-carrier"))
 		}
 		for ci := range data.AddressFamily[i].Statics {
 			ckeys := [...]string{"lsp-address"}
@@ -919,7 +919,7 @@ func (data *MPLSLDPMLDP) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString))
 	}
 	if !data.LoggingInternal.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/internal"))

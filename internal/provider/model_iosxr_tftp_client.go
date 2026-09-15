@@ -295,22 +295,22 @@ func (data *TFTPClient) getDeletedItems(ctx context.Context, state TFTPClient, v
 			}
 			if found {
 				if !state.ClientVrfs[i].Dscp.IsNull() && data.ClientVrfs[j].Dscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "dscp"))
 				}
 				if !state.ClientVrfs[i].Timeout.IsNull() && data.ClientVrfs[j].Timeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "timeout"))
 				}
 				if !state.ClientVrfs[i].Retries.IsNull() && data.ClientVrfs[j].Retries.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "retries"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "retries"))
 				}
 				if !state.ClientVrfs[i].SourceInterface.IsNull() && data.ClientVrfs[j].SourceInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "source-interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "source-interface"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString))
 		}
 	}
 	return deletedItems
@@ -354,7 +354,7 @@ func (data *TFTPClient) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "client/vrfs/vrf", keyString))
 	}
 	return deletePaths
 }

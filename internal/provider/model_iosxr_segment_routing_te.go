@@ -2781,19 +2781,19 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.CandidatePaths[i].SourceAddress.IsNull() && data.CandidatePaths[j].SourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", state.getPath(), keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/source-address/source-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "candidate-path-types/candidate-path-type", keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/source-address/source-address"))
 				}
 				if !state.CandidatePaths[i].SourceAddressType.IsNull() && data.CandidatePaths[j].SourceAddressType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", state.getPath(), keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/source-address/ip-address-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "candidate-path-types/candidate-path-type", keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/source-address/ip-address-type"))
 				}
 				if !state.CandidatePaths[i].SourceAddressSelection.IsNull() && data.CandidatePaths[j].SourceAddressSelection.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", state.getPath(), keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "candidate-path-types/candidate-path-type", keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "candidate-path-types/candidate-path-type", keyString))
 		}
 	}
 	for i := range state.AffinityMaps {
@@ -2820,13 +2820,13 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.AffinityMaps[i].BitPosition.IsNull() && data.AffinityMaps[j].BitPosition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/affinity-maps/affinity-map%v", state.getPath(), keyString), "bit-position"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "affinity-maps/affinity-map", keyString), "bit-position"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/affinity-maps/affinity-map%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "affinity-maps/affinity-map", keyString))
 		}
 	}
 	if !state.PathDisableAlgoChecksStrictSpfAllAreas.IsNull() && data.PathDisableAlgoChecksStrictSpfAllAreas.IsNull() {
@@ -2865,7 +2865,7 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/path/disable-algorithm-check/strict-spf/areas/area%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "path/disable-algorithm-check/strict-spf/areas/area", keyString))
 		}
 	}
 	for i := range state.Traces {
@@ -2892,13 +2892,13 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.Traces[i].TraceCount.IsNull() && data.Traces[j].TraceCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/trace-counts/trace-count%v", state.getPath(), keyString), "trace-count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "trace-counts/trace-count", keyString), "trace-count"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/trace-counts/trace-count%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "trace-counts/trace-count", keyString))
 		}
 	}
 	if !state.PccSourceAddressIpv6.IsNull() && data.PccSourceAddressIpv6.IsNull() {
@@ -2955,34 +2955,34 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.PccProfiles[i].AutoRouteMetricConstantValue.IsNull() && data.PccProfiles[j].AutoRouteMetricConstantValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/auto-route-metric/metric-constant-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/auto-route-metric/metric-constant-value"))
 				}
 				if !state.PccProfiles[i].AutoRouteMetricRelativeValue.IsNull() && data.PccProfiles[j].AutoRouteMetricRelativeValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/auto-route-metric/metric-relative-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/auto-route-metric/metric-relative-value"))
 				}
 				if !state.PccProfiles[i].AutoRouteMetricType.IsNull() && data.PccProfiles[j].AutoRouteMetricType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/auto-route-metric/autoroute-metric-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/auto-route-metric/autoroute-metric-type"))
 				}
 				if !state.PccProfiles[i].AutoRouteForwardClass.IsNull() && data.PccProfiles[j].AutoRouteForwardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/forward-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/forward-class"))
 				}
 				if !state.PccProfiles[i].AutoRouteForceSrInclude.IsNull() && data.PccProfiles[j].AutoRouteForceSrInclude.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/force-sr-include"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/force-sr-include"))
 				}
 				if !state.PccProfiles[i].AutoRouteIncludeAllIpv6.IsNull() && data.PccProfiles[j].AutoRouteIncludeAllIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/include-ipv6-all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/include-ipv6-all"))
 				}
 				if !state.PccProfiles[i].AutoRouteIncludeAllIpv4.IsNull() && data.PccProfiles[j].AutoRouteIncludeAllIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "profile-auto-route/include-all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/include-all"))
 				}
 				if !state.PccProfiles[i].SteeringInvalidationDrop.IsNull() && data.PccProfiles[j].SteeringInvalidationDrop.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString), "steering/invalidation-drop"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString), "steering/invalidation-drop"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/pcc/profiles/profile%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/profiles/profile", keyString))
 		}
 	}
 	for i := range state.PcePeersIpv6 {
@@ -3009,25 +3009,25 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.PcePeersIpv6[i].TcpAoIncludeTcpOptions.IsNull() && data.PcePeersIpv6[j].TcpAoIncludeTcpOptions.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString), "authentication-option"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString), "authentication-option"))
 				}
 				if !state.PcePeersIpv6[i].TcpAoKeychain.IsNull() && data.PcePeersIpv6[j].TcpAoKeychain.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString), "authentication-option"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString), "authentication-option"))
 				}
 				if !state.PcePeersIpv6[i].Precedence.IsNull() && data.PcePeersIpv6[j].Precedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString), "precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString), "precedence"))
 				}
 				if !state.PcePeersIpv6[i].PceGroup.IsNull() && data.PcePeersIpv6[j].PceGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString), "pce-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString), "pce-group"))
 				}
 				if !state.PcePeersIpv6[i].PasswordEncrypted.IsNull() && data.PcePeersIpv6[j].PasswordEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString), "password"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString), "password"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString))
 		}
 	}
 	for i := range state.PcePeersIpv4 {
@@ -3054,25 +3054,25 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.PcePeersIpv4[i].TcpAoIncludeTcpOptions.IsNull() && data.PcePeersIpv4[j].TcpAoIncludeTcpOptions.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString), "authentication-option"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString), "authentication-option"))
 				}
 				if !state.PcePeersIpv4[i].TcpAoKeychain.IsNull() && data.PcePeersIpv4[j].TcpAoKeychain.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString), "authentication-option"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString), "authentication-option"))
 				}
 				if !state.PcePeersIpv4[i].Precedence.IsNull() && data.PcePeersIpv4[j].Precedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString), "precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString), "precedence"))
 				}
 				if !state.PcePeersIpv4[i].PceGroup.IsNull() && data.PcePeersIpv4[j].PceGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString), "pce-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString), "pce-group"))
 				}
 				if !state.PcePeersIpv4[i].PasswordEncrypted.IsNull() && data.PcePeersIpv4[j].PasswordEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString), "password"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString), "password"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "pcc/pce-peers/pce-peer", keyString))
 		}
 	}
 	for i := range state.Interfaces {
@@ -3099,7 +3099,7 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.Interfaces[i].Metric.IsNull() && data.Interfaces[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/srte-interfaces/srte-interface%v", state.getPath(), keyString), "interface-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "srte-interfaces/srte-interface", keyString), "interface-metric"))
 				}
 				for ci := range state.Interfaces[i].Affinities {
 					ckeys := [...]string{"affinity-name"}
@@ -3128,14 +3128,14 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/srte-interfaces/srte-interface%v/interface-affinities/interface-affinity%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "srte-interfaces/srte-interface", keyString, "interface-affinities/interface-affinity", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/srte-interfaces/srte-interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "srte-interfaces/srte-interface", keyString))
 		}
 	}
 	if !state.BindingSidRulesDynamic.IsNull() && data.BindingSidRulesDynamic.IsNull() {
@@ -3203,23 +3203,23 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 						}
 						if found {
 							if !state.ResourceLists[i].Resources[ci].Address.IsNull() && data.ResourceLists[j].Resources[cj].Address.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/resources/resource%v/resources/resource%v", state.getPath(), keyString, ckeyString), "address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "resources/resource", keyString, "resources/resource", ckeyString), "address"))
 							}
 							if !state.ResourceLists[i].Resources[ci].Type.IsNull() && data.ResourceLists[j].Resources[cj].Type.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/resources/resource%v/resources/resource%v", state.getPath(), keyString, ckeyString), "resource-type"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "resources/resource", keyString, "resources/resource", ckeyString), "resource-type"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/resources/resource%v/resources/resource%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "resources/resource", keyString, "resources/resource", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/resources/resource%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "resources/resource", keyString))
 		}
 	}
 	if !state.TimersPeriodicReoptimization.IsNull() && data.TimersPeriodicReoptimization.IsNull() {
@@ -3302,41 +3302,41 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 						}
 						if found {
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].ValidateFlag.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].ValidateFlag.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "validate-flag"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "validate-flag"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].PrefixLength.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].PrefixLength.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "prefix-length"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "prefix-length"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].InterfaceIdentifier.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].InterfaceIdentifier.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "interface-identifier"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "interface-identifier"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].AddressType.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].AddressType.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "address-type"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "address-type"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].AdjacencyAddress.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].AdjacencyAddress.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "adjacency-address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "adjacency-address"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].MplsLabel.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].MplsLabel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "mpls-label"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "mpls-label"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].Address.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].Address.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "address"))
 							}
 							if !state.SegmentListsSrMplsExplicitSegments[i].SrMplsSegments[ci].Type.IsNull() && data.SegmentListsSrMplsExplicitSegments[j].SrMplsSegments[cj].Type.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString), "segment-type"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString), "segment-type"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/segments/segment%v/segments/segment%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segments/segment", keyString, "segments/segment", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/segments/segment%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "segments/segment", keyString))
 		}
 	}
 	for i := range state.SegmentListsSrv6ExplicitSegments {
@@ -3363,7 +3363,7 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.SegmentListsSrv6ExplicitSegments[i].Srv6TopologyCheck.IsNull() && data.SegmentListsSrv6ExplicitSegments[j].Srv6TopologyCheck.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v", state.getPath(), keyString), "segment-list-srv6/segment-list-srv6-topology-check"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString), "segment-list-srv6/segment-list-srv6-topology-check"))
 				}
 				for ci := range state.SegmentListsSrv6ExplicitSegments[i].Srv6Segments {
 					ckeys := [...]string{"index"}
@@ -3389,23 +3389,23 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 						}
 						if found {
 							if !state.SegmentListsSrv6ExplicitSegments[i].Srv6Segments[ci].HopType.IsNull() && data.SegmentListsSrv6ExplicitSegments[j].Srv6Segments[cj].HopType.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v/segment-list-srv6/srv6-segments/srv6-segment%v", state.getPath(), keyString, ckeyString), "hop-type"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString, "segment-list-srv6/srv6-segments/srv6-segment", ckeyString), "hop-type"))
 							}
 							if !state.SegmentListsSrv6ExplicitSegments[i].Srv6Segments[ci].Address.IsNull() && data.SegmentListsSrv6ExplicitSegments[j].Srv6Segments[cj].Address.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v/segment-list-srv6/srv6-segments/srv6-segment%v", state.getPath(), keyString, ckeyString), "address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString, "segment-list-srv6/srv6-segments/srv6-segment", ckeyString), "address"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v/segment-list-srv6/srv6-segments/srv6-segment%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString, "segment-list-srv6/srv6-segments/srv6-segment", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString))
 		}
 	}
 	if !state.SegmentListsSrv6SidFormat.IsNull() && data.SegmentListsSrv6SidFormat.IsNull() {
@@ -3453,13 +3453,13 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.EffectiveMetricAdminDistanceFlexAlgoMetricTypes[i].AdminDistance.IsNull() && data.EffectiveMetricAdminDistanceFlexAlgoMetricTypes[j].AdminDistance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type%v", state.getPath(), keyString), "admin-distance"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type", keyString), "admin-distance"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type", keyString))
 		}
 	}
 	for i := range state.EffectiveMetricAdminDistanceMetricTypes {
@@ -3486,13 +3486,13 @@ func (data *SegmentRoutingTE) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.EffectiveMetricAdminDistanceMetricTypes[i].AdminDistance.IsNull() && data.EffectiveMetricAdminDistanceMetricTypes[j].AdminDistance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type%v", state.getPath(), keyString), "admin-distance"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type", keyString), "admin-distance"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type", keyString))
 		}
 	}
 	if !state.MaximumSidDepth.IsNull() && data.MaximumSidDepth.IsNull() {
@@ -3527,7 +3527,7 @@ func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.CandidatePaths[i].SourceAddressSelection.IsNull() && !data.CandidatePaths[i].SourceAddressSelection.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", data.getPath(), keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "candidate-path-types/candidate-path-type", keyString), "candidate-path-type-all-or-candidate-path-type-local-or-candidate-path-type-bgp-odn-or-candidate-path-type-bgp-srte-or-candidate-path-type-pcep/enable"))
 		}
 	}
 	for i := range data.AffinityMaps {
@@ -3574,16 +3574,16 @@ func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PccProfiles[i].AutoRouteForceSrInclude.IsNull() && !data.PccProfiles[i].AutoRouteForceSrInclude.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString), "profile-auto-route/force-sr-include"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/force-sr-include"))
 		}
 		if !data.PccProfiles[i].AutoRouteIncludeAllIpv6.IsNull() && !data.PccProfiles[i].AutoRouteIncludeAllIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString), "profile-auto-route/include-ipv6-all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/include-ipv6-all"))
 		}
 		if !data.PccProfiles[i].AutoRouteIncludeAllIpv4.IsNull() && !data.PccProfiles[i].AutoRouteIncludeAllIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString), "profile-auto-route/include-all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/profiles/profile", keyString), "profile-auto-route/include-all"))
 		}
 		if !data.PccProfiles[i].SteeringInvalidationDrop.IsNull() && !data.PccProfiles[i].SteeringInvalidationDrop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString), "steering/invalidation-drop"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/profiles/profile", keyString), "steering/invalidation-drop"))
 		}
 	}
 	for i := range data.PcePeersIpv6 {
@@ -3670,7 +3670,7 @@ func (data *SegmentRoutingTE) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SegmentListsSrv6ExplicitSegments[i].Srv6TopologyCheck.IsNull() && !data.SegmentListsSrv6ExplicitSegments[i].Srv6TopologyCheck.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v", data.getPath(), keyString), "segment-list-srv6/segment-list-srv6-topology-check"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString), "segment-list-srv6/segment-list-srv6-topology-check"))
 		}
 		for ci := range data.SegmentListsSrv6ExplicitSegments[i].Srv6Segments {
 			ckeys := [...]string{"index"}
@@ -3757,7 +3757,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/candidate-path-types/candidate-path-type%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "candidate-path-types/candidate-path-type", keyString))
 	}
 	for i := range data.AffinityMaps {
 		keys := [...]string{"affinity-name"}
@@ -3775,7 +3775,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity-maps/affinity-map%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "affinity-maps/affinity-map", keyString))
 	}
 	if !data.PathDisableAlgoChecksStrictSpfAllAreas.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "path/disable-algorithm-check/strict-spf/all"))
@@ -3799,7 +3799,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/path/disable-algorithm-check/strict-spf/areas/area%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "path/disable-algorithm-check/strict-spf/areas/area", keyString))
 	}
 	for i := range data.Traces {
 		keys := [...]string{"buffer-name"}
@@ -3817,7 +3817,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trace-counts/trace-count%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "trace-counts/trace-count", keyString))
 	}
 	if !data.PccSourceAddressIpv6.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "pcc/ipv6-source-address"))
@@ -3865,7 +3865,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/profiles/profile%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/profiles/profile", keyString))
 	}
 	for i := range data.PcePeersIpv6 {
 		keys := [...]string{"pce-address"}
@@ -3883,7 +3883,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/pce-peer-v6s/pce-peer-v6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/pce-peer-v6s/pce-peer-v6", keyString))
 	}
 	for i := range data.PcePeersIpv4 {
 		keys := [...]string{"pce-address"}
@@ -3901,7 +3901,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pcc/pce-peers/pce-peer%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "pcc/pce-peers/pce-peer", keyString))
 	}
 	for i := range data.Interfaces {
 		keys := [...]string{"srte-interface-name"}
@@ -3919,7 +3919,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/srte-interfaces/srte-interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "srte-interfaces/srte-interface", keyString))
 	}
 	if !data.BindingSidRulesDynamic.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "binding-sid-rules/dynamic-binding-sid-rules"))
@@ -3955,7 +3955,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/resources/resource%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "resources/resource", keyString))
 	}
 	if !data.TimersPeriodicReoptimization.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "timers/periodic-reoptimization"))
@@ -4006,7 +4006,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segments/segment%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "segments/segment", keyString))
 	}
 	for i := range data.SegmentListsSrv6ExplicitSegments {
 		keys := [...]string{"path-name"}
@@ -4024,7 +4024,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-lists/explicit-segments/explicit-segment%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "segment-lists/explicit-segments/explicit-segment", keyString))
 	}
 	if !data.SegmentListsSrv6SidFormat.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-lists/segment-lists-srv6/segment-lists-srv6-format-type"))
@@ -4063,7 +4063,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "effective-metric-global/effective-metric-admin-distance/flex-algo-metric-types/flex-algo-metric-type", keyString))
 	}
 	for i := range data.EffectiveMetricAdminDistanceMetricTypes {
 		keys := [...]string{"metric-type"}
@@ -4081,7 +4081,7 @@ func (data *SegmentRoutingTE) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "effective-metric-global/effective-metric-admin-distance/effective-metric-admin-distance-metric-types/effective-metric-admin-distance-metric-type", keyString))
 	}
 	if !data.MaximumSidDepth.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum-sid-depth"))

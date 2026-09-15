@@ -1195,76 +1195,76 @@ func (data *EthernetSLA) getDeletedItems(ctx context.Context, state EthernetSLA,
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && data.StatisticsMeasure[j].UsecMinimumDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/usec-minimum-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/usec-minimum-delay"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() && data.StatisticsMeasure[j].AggregateMinimumDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/minimum-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/minimum-delay"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/in-and-above/bin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateless/log/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/sample-count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateless/log/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/mean-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateless/log/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatelessLogOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateless/log/on/max-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateless/log/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/in-and-above/bin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/efd/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/sample-count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/efd/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/mean-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/efd/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulEfdOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/efd/on/max-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/efd/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnInAndAboveBin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/in-and-above/bin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/log/on/in-and-above/bin"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnSampleCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/sample-count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/log/on/sample-count"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnMeanValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/mean-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/log/on/mean-value"))
 				}
 				if !state.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue.IsNull() && data.StatisticsMeasure[j].ThresholdsStatefulLogOnMaxValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "thresholds/type/stateful/log/on/max-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "thresholds/type/stateful/log/on/max-value"))
 				}
 				if !state.StatisticsMeasure[i].BucketsArchive.IsNull() && data.StatisticsMeasure[j].BucketsArchive.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/archive"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "buckets/archive"))
 				}
 				if !state.StatisticsMeasure[i].BucketsProbes.IsNull() && data.StatisticsMeasure[j].BucketsProbes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/probes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "buckets/probes"))
 				}
 				if !state.StatisticsMeasure[i].BucketsSize.IsNull() && data.StatisticsMeasure[j].BucketsSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "buckets/size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "buckets/size"))
 				}
 				if !state.StatisticsMeasure[i].AggregateUsec.IsNull() && data.StatisticsMeasure[j].AggregateUsec.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/usec"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/usec"))
 				}
 				if !state.StatisticsMeasure[i].AggregateWidthPercentage.IsNull() && data.StatisticsMeasure[j].AggregateWidthPercentage.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/width-tenths"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/width-tenths"))
 				}
 				if !state.StatisticsMeasure[i].AggregateWidth.IsNull() && data.StatisticsMeasure[j].AggregateWidth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/width"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/width"))
 				}
 				if !state.StatisticsMeasure[i].AggregateBins.IsNull() && data.StatisticsMeasure[j].AggregateBins.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/bins"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/bins"))
 				}
 				if !state.StatisticsMeasure[i].AggregateNone.IsNull() && data.StatisticsMeasure[j].AggregateNone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString), "aggregate/none"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString), "aggregate/none"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/statistics/measures/measure%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "statistics/measures/measure", keyString))
 		}
 	}
 	if !state.ProbeSyntheticLossCalculationPackets.IsNull() && data.ProbeSyntheticLossCalculationPackets.IsNull() {
@@ -1344,16 +1344,16 @@ func (data *EthernetSLA) getEmptyLeafsDelete(ctx context.Context, version string
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.StatisticsMeasure[i].UsecMinimumDelay.IsNull() && !data.StatisticsMeasure[i].UsecMinimumDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/usec-minimum-delay"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "statistics/measures/measure", keyString), "aggregate/usec-minimum-delay"))
 		}
 		if !data.StatisticsMeasure[i].BucketsProbes.IsNull() && !data.StatisticsMeasure[i].BucketsProbes.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "buckets/probes"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "statistics/measures/measure", keyString), "buckets/probes"))
 		}
 		if !data.StatisticsMeasure[i].AggregateUsec.IsNull() && !data.StatisticsMeasure[i].AggregateUsec.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/usec"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "statistics/measures/measure", keyString), "aggregate/usec"))
 		}
 		if !data.StatisticsMeasure[i].AggregateNone.IsNull() && !data.StatisticsMeasure[i].AggregateNone.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString), "aggregate/none"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "statistics/measures/measure", keyString), "aggregate/none"))
 		}
 	}
 	if !data.ProbeSendBurstEveryHours.IsNull() && !data.ProbeSendBurstEveryHours.ValueBool() {
@@ -1431,7 +1431,7 @@ func (data *EthernetSLA) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/statistics/measures/measure%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "statistics/measures/measure", keyString))
 	}
 	if !data.ProbeSyntheticLossCalculationPackets.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "probe/synthetic/loss/calculation/packets"))

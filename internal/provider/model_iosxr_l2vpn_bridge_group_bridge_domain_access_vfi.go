@@ -369,7 +369,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.C
 			}
 			if found {
 				if !state.Neighbors[i].PwClass.IsNull() && data.Neighbors[j].PwClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "pw-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "pw-class"))
 				}
 				for ci := range state.Neighbors[i].StaticMacAddresses {
 					ckeys := [...]string{"mac-address"}
@@ -398,14 +398,14 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletedItems(ctx context.C
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/static-mac-addresses/static-mac-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "neighbors/neighbor", keyString, "static-mac-addresses/static-mac-address", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString))
 		}
 	}
 	if !state.Shutdown.IsNull() && data.Shutdown.IsNull() {
@@ -466,7 +466,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) getDeletePaths(ctx context.Co
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString))
 	}
 	if !data.Shutdown.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "shutdown"))

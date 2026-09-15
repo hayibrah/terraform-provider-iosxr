@@ -642,28 +642,28 @@ func (data *SegmentRoutingV6) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.Locators[i].Algorithm.IsNull() && data.Locators[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "algorithm"))
 				}
 				if !state.Locators[i].Anycast.IsNull() && data.Locators[j].Anycast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "anycast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "anycast"))
 				}
 				if !state.Locators[i].PrefixLength.IsNull() && data.Locators[j].PrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "prefix/prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "prefix/prefix-length"))
 				}
 				if !state.Locators[i].Prefix.IsNull() && data.Locators[j].Prefix.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "prefix/prefix"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "prefix/prefix"))
 				}
 				if !state.Locators[i].MicroSegmentBehavior.IsNull() && data.Locators[j].MicroSegmentBehavior.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "micro-segment/behavior"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "micro-segment/behavior"))
 				}
 				if !state.Locators[i].LocatorEnable.IsNull() && data.Locators[j].LocatorEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString), "locator-enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString), "locator-enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/locators/locators/locator%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "locators/locators/locator", keyString))
 		}
 	}
 	for i := range state.Formats {
@@ -690,22 +690,22 @@ func (data *SegmentRoutingV6) getDeletedItems(ctx context.Context, state Segment
 			}
 			if found {
 				if !state.Formats[i].UsidWideLocalIdBlockExplicitRange.IsNull() && data.Formats[j].UsidWideLocalIdBlockExplicitRange.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/formats/formats/format%v", state.getPath(), keyString), "usid/wide-local-id-block-explicit-range"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "formats/formats/format", keyString), "usid/wide-local-id-block-explicit-range"))
 				}
 				if !state.Formats[i].UsidLocalIdBlockRangesExplictLibStart.IsNull() && data.Formats[j].UsidLocalIdBlockRangesExplictLibStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/formats/formats/format%v", state.getPath(), keyString), "usid/local-id-block-ranges/explict-lib-start"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "formats/formats/format", keyString), "usid/local-id-block-ranges/explict-lib-start"))
 				}
 				if !state.Formats[i].UsidLocalIdBlockRangesLibStart.IsNull() && data.Formats[j].UsidLocalIdBlockRangesLibStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/formats/formats/format%v", state.getPath(), keyString), "usid/local-id-block-ranges/lib-start"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "formats/formats/format", keyString), "usid/local-id-block-ranges/lib-start"))
 				}
 				if !state.Formats[i].FormatEnable.IsNull() && data.Formats[j].FormatEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/formats/formats/format%v", state.getPath(), keyString), "format-enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "formats/formats/format", keyString), "format-enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/formats/formats/format%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "formats/formats/format", keyString))
 		}
 	}
 	if !state.LoggingLocatorStatus.IsNull() && data.LoggingLocatorStatus.IsNull() {
@@ -734,10 +734,10 @@ func (data *SegmentRoutingV6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Locators[i].Anycast.IsNull() && !data.Locators[i].Anycast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", data.getPath(), keyString), "anycast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "locators/locators/locator", keyString), "anycast"))
 		}
 		if !data.Locators[i].LocatorEnable.IsNull() && !data.Locators[i].LocatorEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/locators/locators/locator%v", data.getPath(), keyString), "locator-enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "locators/locators/locator", keyString), "locator-enable"))
 		}
 	}
 	for i := range data.Formats {
@@ -748,7 +748,7 @@ func (data *SegmentRoutingV6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Formats[i].FormatEnable.IsNull() && !data.Formats[i].FormatEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/formats/formats/format%v", data.getPath(), keyString), "format-enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "formats/formats/format", keyString), "format-enable"))
 		}
 	}
 	if !data.LoggingLocatorStatus.IsNull() && !data.LoggingLocatorStatus.ValueBool() {
@@ -796,7 +796,7 @@ func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/locators/locators/locator%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "locators/locators/locator", keyString))
 	}
 	for i := range data.Formats {
 		keys := [...]string{"name"}
@@ -814,7 +814,7 @@ func (data *SegmentRoutingV6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/formats/formats/format%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "formats/formats/format", keyString))
 	}
 	if !data.LoggingLocatorStatus.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/locator-status"))

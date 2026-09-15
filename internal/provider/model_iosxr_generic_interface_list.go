@@ -242,7 +242,7 @@ func (data *GenericInterfaceList) getDeletedItems(ctx context.Context, state Gen
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString))
 		}
 	}
 	return deletedItems
@@ -286,7 +286,7 @@ func (data *GenericInterfaceList) getDeletePaths(ctx context.Context, version st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString))
 	}
 	return deletePaths
 }

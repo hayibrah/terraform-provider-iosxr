@@ -926,19 +926,19 @@ func (data *SNMPServerMIB) getDeletedItems(ctx context.Context, state SNMPServer
 			}
 			if found {
 				if !state.Interfaces[i].IndexPersistence.IsNull() && data.Interfaces[j].IndexPersistence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "index/persistence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "index/persistence"))
 				}
 				if !state.Interfaces[i].NotificationLinkupdownDisable.IsNull() && data.Interfaces[j].NotificationLinkupdownDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "notification/linkupdown/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "notification/linkupdown/disable"))
 				}
 				if !state.Interfaces[i].NotificationLinkupdownEnable.IsNull() && data.Interfaces[j].NotificationLinkupdownEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString), "notification/linkupdown/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "notification/linkupdown/enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString))
 		}
 	}
 	if !state.IfindexPersist.IsNull() && data.IfindexPersist.IsNull() {
@@ -1006,13 +1006,13 @@ func (data *SNMPServerMIB) getEmptyLeafsDelete(ctx context.Context, version stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].IndexPersistence.IsNull() && !data.Interfaces[i].IndexPersistence.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "index/persistence"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "index/persistence"))
 		}
 		if !data.Interfaces[i].NotificationLinkupdownDisable.IsNull() && !data.Interfaces[i].NotificationLinkupdownDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "notification/linkupdown/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "notification/linkupdown/disable"))
 		}
 		if !data.Interfaces[i].NotificationLinkupdownEnable.IsNull() && !data.Interfaces[i].NotificationLinkupdownEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString), "notification/linkupdown/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString), "notification/linkupdown/enable"))
 		}
 	}
 	if !data.IfindexPersist.IsNull() && !data.IfindexPersist.ValueBool() {
@@ -1111,7 +1111,7 @@ func (data *SNMPServerMIB) getDeletePaths(ctx context.Context, version string) [
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:interfaces/interface", keyString))
 	}
 	if !data.IfindexPersist.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mibs-ifmib-cfg:ifindex/persist"))

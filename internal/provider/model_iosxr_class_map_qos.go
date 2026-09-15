@@ -1317,7 +1317,7 @@ func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/match/source-address/ipv6/address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "match/source-address/ipv6/address-prefix", keyString))
 		}
 	}
 	for i := range state.MatchSourceAddressIpv4 {
@@ -1353,7 +1353,7 @@ func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/match/source-address/ipv4/address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "match/source-address/ipv4/address-prefix", keyString))
 		}
 	}
 	if !state.MatchQosGroup.IsNull() && data.MatchQosGroup.IsNull() {
@@ -1455,7 +1455,7 @@ func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/match/destination-address/ipv6/address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "match/destination-address/ipv6/address-prefix", keyString))
 		}
 	}
 	for i := range state.MatchDestinationAddressIpv4 {
@@ -1491,7 +1491,7 @@ func (data *ClassMapQoS) getDeletedItems(ctx context.Context, state ClassMapQoS,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/match/destination-address/ipv4/address-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "match/destination-address/ipv4/address-prefix", keyString))
 		}
 	}
 	if !state.MatchCosInner.IsNull() && data.MatchCosInner.IsNull() {
@@ -1625,7 +1625,7 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/ipv6/address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "match/source-address/ipv6/address-prefix", keyString))
 	}
 	for i := range data.MatchSourceAddressIpv4 {
 		keys := [...]string{"address", "netmask"}
@@ -1646,7 +1646,7 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/source-address/ipv4/address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "match/source-address/ipv4/address-prefix", keyString))
 	}
 	if !data.MatchQosGroup.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/qos-group/id"))
@@ -1733,7 +1733,7 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/ipv6/address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "match/destination-address/ipv6/address-prefix", keyString))
 	}
 	for i := range data.MatchDestinationAddressIpv4 {
 		keys := [...]string{"address", "netmask"}
@@ -1754,7 +1754,7 @@ func (data *ClassMapQoS) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/match/destination-address/ipv4/address-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "match/destination-address/ipv4/address-prefix", keyString))
 	}
 	if !data.MatchCosInner.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "match/cos-inner/value"))

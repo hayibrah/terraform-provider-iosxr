@@ -2164,58 +2164,58 @@ func (data *RouterPIMVRFIPv6) getDeletedItems(ctx context.Context, state RouterP
 			}
 			if found {
 				if !state.Interfaces[i].BsrBorder.IsNull() && data.Interfaces[j].BsrBorder.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bsr-border"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "bsr-border"))
 				}
 				if !state.Interfaces[i].BfdFastDetect.IsNull() && data.Interfaces[j].BfdFastDetect.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bfd/fast-detect"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "bfd/fast-detect"))
 				}
 				if !state.Interfaces[i].BfdMinimumInterval.IsNull() && data.Interfaces[j].BfdMinimumInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bfd/minimum-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "bfd/minimum-interval"))
 				}
 				if !state.Interfaces[i].BfdMultiplier.IsNull() && data.Interfaces[j].BfdMultiplier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "bfd/multiplier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "bfd/multiplier"))
 				}
 				if !state.Interfaces[i].MaximumRouteInterfacesAccessList.IsNull() && data.Interfaces[j].MaximumRouteInterfacesAccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "maximum/route-interfaces"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "maximum/route-interfaces"))
 				}
 				if !state.Interfaces[i].MaximumRouteInterfacesThreshold.IsNull() && data.Interfaces[j].MaximumRouteInterfacesThreshold.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "maximum/route-interfaces"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "maximum/route-interfaces"))
 				}
 				if !state.Interfaces[i].MaximumRouteInterfaces.IsNull() && data.Interfaces[j].MaximumRouteInterfaces.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "maximum/route-interfaces"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "maximum/route-interfaces"))
 				}
 				if !state.Interfaces[i].NeighborFilter.IsNull() && data.Interfaces[j].NeighborFilter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "neighbor-filter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "neighbor-filter"))
 				}
 				if !state.Interfaces[i].OverrideInterval.IsNull() && data.Interfaces[j].OverrideInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "override-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "override-interval"))
 				}
 				if !state.Interfaces[i].PropagationDelay.IsNull() && data.Interfaces[j].PropagationDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "propagation-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "propagation-delay"))
 				}
 				if !state.Interfaces[i].JoinPruneMtu.IsNull() && data.Interfaces[j].JoinPruneMtu.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "join-prune-mtu"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "join-prune-mtu"))
 				}
 				if !state.Interfaces[i].JoinPruneInterval.IsNull() && data.Interfaces[j].JoinPruneInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "join-prune-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "join-prune-interval"))
 				}
 				if !state.Interfaces[i].HelloInterval.IsNull() && data.Interfaces[j].HelloInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "hello-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "hello-interval"))
 				}
 				if !state.Interfaces[i].DrPriority.IsNull() && data.Interfaces[j].DrPriority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "dr-priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "dr-priority"))
 				}
 				if !state.Interfaces[i].Disable.IsNull() && data.Interfaces[j].Disable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "disable"))
 				}
 				if !state.Interfaces[i].Enable.IsNull() && data.Interfaces[j].Enable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString))
 		}
 	}
 	for i := range state.BsrRelayVrfs {
@@ -2242,13 +2242,13 @@ func (data *RouterPIMVRFIPv6) getDeletedItems(ctx context.Context, state RouterP
 			}
 			if found {
 				if !state.BsrRelayVrfs[i].Listen.IsNull() && data.BsrRelayVrfs[j].Listen.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/relay/vrfs/vrf%v", state.getPath(), keyString), "listen"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/relay/vrfs/vrf", keyString), "listen"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bsr/relay/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/relay/vrfs/vrf", keyString))
 		}
 	}
 	for i := range state.BsrCandidateRps {
@@ -2275,28 +2275,28 @@ func (data *RouterPIMVRFIPv6) getDeletedItems(ctx context.Context, state RouterP
 			}
 			if found {
 				if !state.BsrCandidateRps[i].BidirInterval.IsNull() && data.BsrCandidateRps[j].BidirInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "bidir/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "bidir/interval"))
 				}
 				if !state.BsrCandidateRps[i].BidirPriority.IsNull() && data.BsrCandidateRps[j].BidirPriority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "bidir/priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "bidir/priority"))
 				}
 				if !state.BsrCandidateRps[i].BidirGroupList.IsNull() && data.BsrCandidateRps[j].BidirGroupList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "bidir/group-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "bidir/group-list"))
 				}
 				if !state.BsrCandidateRps[i].Interval.IsNull() && data.BsrCandidateRps[j].Interval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "interval"))
 				}
 				if !state.BsrCandidateRps[i].Priority.IsNull() && data.BsrCandidateRps[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "priority"))
 				}
 				if !state.BsrCandidateRps[i].GroupList.IsNull() && data.BsrCandidateRps[j].GroupList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString), "group-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString), "group-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bsr/candidate-rps/candidate-rp", keyString))
 		}
 	}
 	if !state.BsrCandidateBsrPriority.IsNull() && data.BsrCandidateBsrPriority.IsNull() {
@@ -2506,16 +2506,16 @@ func (data *RouterPIMVRFIPv6) getDeletedItems(ctx context.Context, state RouterP
 			}
 			if found {
 				if !state.RpAddressesBidir[i].Override.IsNull() && data.RpAddressesBidir[j].Override.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", state.getPath(), keyString), "override"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/bidir/rp-address", keyString), "override"))
 				}
 				if !state.RpAddressesBidir[i].AccessList.IsNull() && data.RpAddressesBidir[j].AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", state.getPath(), keyString), "access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/bidir/rp-address", keyString), "access-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/bidir/rp-address", keyString))
 		}
 	}
 	for i := range state.RpAddresses {
@@ -2542,16 +2542,16 @@ func (data *RouterPIMVRFIPv6) getDeletedItems(ctx context.Context, state RouterP
 			}
 			if found {
 				if !state.RpAddresses[i].Override.IsNull() && data.RpAddresses[j].Override.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rp-addresses/rp-address%v", state.getPath(), keyString), "override"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/rp-address", keyString), "override"))
 				}
 				if !state.RpAddresses[i].AccessList.IsNull() && data.RpAddresses[j].AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/rp-addresses/rp-address%v", state.getPath(), keyString), "access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/rp-address", keyString), "access-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/rp-addresses/rp-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "rp-addresses/rp-address", keyString))
 		}
 	}
 	return deletedItems
@@ -2571,16 +2571,16 @@ func (data *RouterPIMVRFIPv6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].BsrBorder.IsNull() && !data.Interfaces[i].BsrBorder.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "bsr-border"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "bsr-border"))
 		}
 		if !data.Interfaces[i].BfdFastDetect.IsNull() && !data.Interfaces[i].BfdFastDetect.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "bfd/fast-detect"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "bfd/fast-detect"))
 		}
 		if !data.Interfaces[i].Disable.IsNull() && !data.Interfaces[i].Disable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "disable"))
 		}
 		if !data.Interfaces[i].Enable.IsNull() && !data.Interfaces[i].Enable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "enable"))
 		}
 	}
 	for i := range data.BsrRelayVrfs {
@@ -2591,7 +2591,7 @@ func (data *RouterPIMVRFIPv6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.BsrRelayVrfs[i].Listen.IsNull() && !data.BsrRelayVrfs[i].Listen.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/bsr/relay/vrfs/vrf%v", data.getPath(), keyString), "listen"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "bsr/relay/vrfs/vrf", keyString), "listen"))
 		}
 	}
 	for i := range data.BsrCandidateRps {
@@ -2676,7 +2676,7 @@ func (data *RouterPIMVRFIPv6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RpAddressesBidir[i].Override.IsNull() && !data.RpAddressesBidir[i].Override.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", data.getPath(), keyString), "override"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "rp-addresses/bidir/rp-address", keyString), "override"))
 		}
 	}
 	for i := range data.RpAddresses {
@@ -2687,7 +2687,7 @@ func (data *RouterPIMVRFIPv6) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RpAddresses[i].Override.IsNull() && !data.RpAddresses[i].Override.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/rp-addresses/rp-address%v", data.getPath(), keyString), "override"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "rp-addresses/rp-address", keyString), "override"))
 		}
 	}
 	return emptyLeafsDelete
@@ -2714,7 +2714,7 @@ func (data *RouterPIMVRFIPv6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString))
 	}
 	for i := range data.BsrRelayVrfs {
 		keys := [...]string{"vrf-name"}
@@ -2732,7 +2732,7 @@ func (data *RouterPIMVRFIPv6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bsr/relay/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bsr/relay/vrfs/vrf", keyString))
 	}
 	for i := range data.BsrCandidateRps {
 		keys := [...]string{"address"}
@@ -2750,7 +2750,7 @@ func (data *RouterPIMVRFIPv6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bsr/candidate-rps/candidate-rp%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bsr/candidate-rps/candidate-rp", keyString))
 	}
 	if !data.BsrCandidateBsrPriority.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "bsr/candidate-bsr"))
@@ -2951,7 +2951,7 @@ func (data *RouterPIMVRFIPv6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rp-addresses/bidir/rp-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "rp-addresses/bidir/rp-address", keyString))
 	}
 	for i := range data.RpAddresses {
 		keys := [...]string{"address"}
@@ -2969,7 +2969,7 @@ func (data *RouterPIMVRFIPv6) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/rp-addresses/rp-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "rp-addresses/rp-address", keyString))
 	}
 	return deletePaths
 }

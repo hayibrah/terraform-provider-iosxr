@@ -3379,13 +3379,13 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.SourceVrfs[i].InterfaceName.IsNull() && data.SourceVrfs[j].InterfaceName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/source/vrfs/vrf%v", state.getPath(), keyString), "interface-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "source/vrfs/vrf", keyString), "interface-name"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/source/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "source/vrfs/vrf", keyString))
 		}
 	}
 	if !state.SourceInterfaceName.IsNull() && data.SourceInterfaceName.IsNull() {
@@ -3427,7 +3427,7 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/trusted-keys/trusted-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "trusted-keys/trusted-key", keyString))
 		}
 	}
 	for i := range state.PeersServersVrfs {
@@ -3483,34 +3483,34 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 						}
 						if found {
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Source.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Source.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "source"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "source"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Iburst.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Iburst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "iburst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "iburst"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Burst.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Burst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "burst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "burst"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Prefer.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Prefer.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "prefer"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "prefer"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Maxpoll.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Maxpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "maxpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "maxpoll"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Minpoll.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Minpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "minpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "minpoll"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Key.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Key.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "key"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "key"))
 							}
 							if !state.PeersServersVrfs[i].HostnamePeersServers[ci].Version.IsNull() && data.PeersServersVrfs[j].HostnamePeersServers[cj].Version.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString), "version"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "version"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString))
 					}
 				}
 				for ci := range state.PeersServersVrfs[i].Ipv6PeersServers {
@@ -3543,37 +3543,37 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 						}
 						if found {
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Ipv6Address.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Ipv6Address.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "ipv6-address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "ipv6-address"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Source.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Source.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "source"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "source"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Iburst.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Iburst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "iburst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "iburst"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Burst.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Burst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "burst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "burst"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Prefer.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Prefer.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "prefer"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "prefer"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Maxpoll.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Maxpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "maxpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "maxpoll"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Minpoll.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Minpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "minpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "minpoll"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Key.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Key.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "key"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "key"))
 							}
 							if !state.PeersServersVrfs[i].Ipv6PeersServers[ci].Version.IsNull() && data.PeersServersVrfs[j].Ipv6PeersServers[cj].Version.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString), "version"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "version"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString))
 					}
 				}
 				for ci := range state.PeersServersVrfs[i].Ipv4PeersServers {
@@ -3606,41 +3606,41 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 						}
 						if found {
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Source.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Source.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "source"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "source"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Iburst.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Iburst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "iburst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "iburst"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Burst.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Burst.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "burst"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "burst"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Prefer.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Prefer.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "prefer"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "prefer"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Maxpoll.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Maxpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "maxpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "maxpoll"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Minpoll.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Minpoll.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "minpoll"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "minpoll"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Key.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Key.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "key"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "key"))
 							}
 							if !state.PeersServersVrfs[i].Ipv4PeersServers[ci].Version.IsNull() && data.PeersServersVrfs[j].Ipv4PeersServers[cj].Version.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString), "version"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "version"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/vrfs/vrf", keyString))
 		}
 	}
 	for i := range state.HostnamePeersServers {
@@ -3673,34 +3673,34 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.HostnamePeersServers[i].Source.IsNull() && data.HostnamePeersServers[j].Source.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "source"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "source"))
 				}
 				if !state.HostnamePeersServers[i].Iburst.IsNull() && data.HostnamePeersServers[j].Iburst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "iburst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "iburst"))
 				}
 				if !state.HostnamePeersServers[i].Burst.IsNull() && data.HostnamePeersServers[j].Burst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "burst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "burst"))
 				}
 				if !state.HostnamePeersServers[i].Prefer.IsNull() && data.HostnamePeersServers[j].Prefer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "prefer"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "prefer"))
 				}
 				if !state.HostnamePeersServers[i].Maxpoll.IsNull() && data.HostnamePeersServers[j].Maxpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "maxpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "maxpoll"))
 				}
 				if !state.HostnamePeersServers[i].Minpoll.IsNull() && data.HostnamePeersServers[j].Minpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "minpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "minpoll"))
 				}
 				if !state.HostnamePeersServers[i].Key.IsNull() && data.HostnamePeersServers[j].Key.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "key"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "key"))
 				}
 				if !state.HostnamePeersServers[i].Version.IsNull() && data.HostnamePeersServers[j].Version.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString), "version"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "version"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/hostname/hostname-peer-server", keyString))
 		}
 	}
 	for i := range state.Ipv6PeersServers {
@@ -3733,37 +3733,37 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.Ipv6PeersServers[i].Ipv6Address.IsNull() && data.Ipv6PeersServers[j].Ipv6Address.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "ipv6-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "ipv6-address"))
 				}
 				if !state.Ipv6PeersServers[i].Source.IsNull() && data.Ipv6PeersServers[j].Source.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "source"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "source"))
 				}
 				if !state.Ipv6PeersServers[i].Iburst.IsNull() && data.Ipv6PeersServers[j].Iburst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "iburst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "iburst"))
 				}
 				if !state.Ipv6PeersServers[i].Burst.IsNull() && data.Ipv6PeersServers[j].Burst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "burst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "burst"))
 				}
 				if !state.Ipv6PeersServers[i].Prefer.IsNull() && data.Ipv6PeersServers[j].Prefer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "prefer"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "prefer"))
 				}
 				if !state.Ipv6PeersServers[i].Maxpoll.IsNull() && data.Ipv6PeersServers[j].Maxpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "maxpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "maxpoll"))
 				}
 				if !state.Ipv6PeersServers[i].Minpoll.IsNull() && data.Ipv6PeersServers[j].Minpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "minpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "minpoll"))
 				}
 				if !state.Ipv6PeersServers[i].Key.IsNull() && data.Ipv6PeersServers[j].Key.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "key"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "key"))
 				}
 				if !state.Ipv6PeersServers[i].Version.IsNull() && data.Ipv6PeersServers[j].Version.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString), "version"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "version"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString))
 		}
 	}
 	for i := range state.Ipv4PeersServers {
@@ -3796,34 +3796,34 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.Ipv4PeersServers[i].Source.IsNull() && data.Ipv4PeersServers[j].Source.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "source"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "source"))
 				}
 				if !state.Ipv4PeersServers[i].Iburst.IsNull() && data.Ipv4PeersServers[j].Iburst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "iburst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "iburst"))
 				}
 				if !state.Ipv4PeersServers[i].Burst.IsNull() && data.Ipv4PeersServers[j].Burst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "burst"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "burst"))
 				}
 				if !state.Ipv4PeersServers[i].Prefer.IsNull() && data.Ipv4PeersServers[j].Prefer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "prefer"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "prefer"))
 				}
 				if !state.Ipv4PeersServers[i].Maxpoll.IsNull() && data.Ipv4PeersServers[j].Maxpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "maxpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "maxpoll"))
 				}
 				if !state.Ipv4PeersServers[i].Minpoll.IsNull() && data.Ipv4PeersServers[j].Minpoll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "minpoll"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "minpoll"))
 				}
 				if !state.Ipv4PeersServers[i].Key.IsNull() && data.Ipv4PeersServers[j].Key.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "key"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "key"))
 				}
 				if !state.Ipv4PeersServers[i].Version.IsNull() && data.Ipv4PeersServers[j].Version.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString), "version"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "version"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString))
 		}
 	}
 	if !state.MaxAssociations.IsNull() && data.MaxAssociations.IsNull() {
@@ -3882,32 +3882,32 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 						}
 						if found {
 							if !state.InterfaceVrfs[i].Interfaces[ci].Disable.IsNull() && data.InterfaceVrfs[j].Interfaces[cj].Disable.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString), "disable"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "disable"))
 							}
 							if !state.InterfaceVrfs[i].Interfaces[ci].BroadcastVersion.IsNull() && data.InterfaceVrfs[j].Interfaces[cj].BroadcastVersion.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString), "broadcast/version"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "broadcast/version"))
 							}
 							if !state.InterfaceVrfs[i].Interfaces[ci].BroadcastKey.IsNull() && data.InterfaceVrfs[j].Interfaces[cj].BroadcastKey.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString), "broadcast/key"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "broadcast/key"))
 							}
 							if !state.InterfaceVrfs[i].Interfaces[ci].BroadcastDestination.IsNull() && data.InterfaceVrfs[j].Interfaces[cj].BroadcastDestination.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString), "broadcast/destination"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "broadcast/destination"))
 							}
 							if !state.InterfaceVrfs[i].Interfaces[ci].BroadcastClient.IsNull() && data.InterfaceVrfs[j].Interfaces[cj].BroadcastClient.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString), "broadcast-client"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "broadcast-client"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/vrfs/vrf", keyString))
 		}
 	}
 	for i := range state.Interfaces {
@@ -3934,25 +3934,25 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.Interfaces[i].Disable.IsNull() && data.Interfaces[j].Disable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "disable"))
 				}
 				if !state.Interfaces[i].BroadcastVersion.IsNull() && data.Interfaces[j].BroadcastVersion.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "broadcast/version"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "broadcast/version"))
 				}
 				if !state.Interfaces[i].BroadcastKey.IsNull() && data.Interfaces[j].BroadcastKey.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "broadcast/key"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "broadcast/key"))
 				}
 				if !state.Interfaces[i].BroadcastDestination.IsNull() && data.Interfaces[j].BroadcastDestination.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "broadcast/destination"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "broadcast/destination"))
 				}
 				if !state.Interfaces[i].BroadcastClient.IsNull() && data.Interfaces[j].BroadcastClient.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "broadcast-client"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "broadcast-client"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString))
 		}
 	}
 	if !state.DriftFilename.IsNull() && data.DriftFilename.IsNull() {
@@ -4009,13 +4009,13 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.HmacSha2AuthenticationKeys[i].HmacSha2Encrypted.IsNull() && data.HmacSha2AuthenticationKeys[j].HmacSha2Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hmac-sha2-authentication-keys/hmac-sha2-authentication-key%v", state.getPath(), keyString), "hmac-sha2/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hmac-sha2-authentication-keys/hmac-sha2-authentication-key", keyString), "hmac-sha2/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/hmac-sha2-authentication-keys/hmac-sha2-authentication-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "hmac-sha2-authentication-keys/hmac-sha2-authentication-key", keyString))
 		}
 	}
 	for i := range state.HmacSha1AuthenticationKeys {
@@ -4042,13 +4042,13 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.HmacSha1AuthenticationKeys[i].HmacSha1Encrypted.IsNull() && data.HmacSha1AuthenticationKeys[j].HmacSha1Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hmac-sha1-authentication-keys/hmac-sha1-authentication-key%v", state.getPath(), keyString), "hmac-sha1/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hmac-sha1-authentication-keys/hmac-sha1-authentication-key", keyString), "hmac-sha1/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/hmac-sha1-authentication-keys/hmac-sha1-authentication-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "hmac-sha1-authentication-keys/hmac-sha1-authentication-key", keyString))
 		}
 	}
 	for i := range state.CmacAuthenticationKeys {
@@ -4075,13 +4075,13 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.CmacAuthenticationKeys[i].CmacEncrypted.IsNull() && data.CmacAuthenticationKeys[j].CmacEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/cmac-authentication-keys/cmac-authentication-key%v", state.getPath(), keyString), "cmac/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "cmac-authentication-keys/cmac-authentication-key", keyString), "cmac/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/cmac-authentication-keys/cmac-authentication-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "cmac-authentication-keys/cmac-authentication-key", keyString))
 		}
 	}
 	for i := range state.AuthenticationKeys {
@@ -4108,13 +4108,13 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.AuthenticationKeys[i].Md5Encrypted.IsNull() && data.AuthenticationKeys[j].Md5Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/authentication-keys/authentication-key%v", state.getPath(), keyString), "md5/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "authentication-keys/authentication-key", keyString), "md5/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/authentication-keys/authentication-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "authentication-keys/authentication-key", keyString))
 		}
 	}
 	if !state.Authenticate.IsNull() && data.Authenticate.IsNull() {
@@ -4144,34 +4144,34 @@ func (data *NTP) getDeletedItems(ctx context.Context, state NTP, version string)
 			}
 			if found {
 				if !state.AccessGroupVrfs[i].Ipv4ServeOnly.IsNull() && data.AccessGroupVrfs[j].Ipv4ServeOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv4/serve-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv4/serve-only"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv4Serve.IsNull() && data.AccessGroupVrfs[j].Ipv4Serve.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv4/serve"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv4/serve"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv4QueryOnly.IsNull() && data.AccessGroupVrfs[j].Ipv4QueryOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv4/query-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv4/query-only"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv4Peer.IsNull() && data.AccessGroupVrfs[j].Ipv4Peer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv4/peer"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv4/peer"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv6ServeOnly.IsNull() && data.AccessGroupVrfs[j].Ipv6ServeOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv6/serve-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv6/serve-only"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv6Serve.IsNull() && data.AccessGroupVrfs[j].Ipv6Serve.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv6/serve"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv6/serve"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv6QueryOnly.IsNull() && data.AccessGroupVrfs[j].Ipv6QueryOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv6/query-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv6/query-only"))
 				}
 				if !state.AccessGroupVrfs[i].Ipv6Peer.IsNull() && data.AccessGroupVrfs[j].Ipv6Peer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString), "ipv6/peer"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString), "ipv6/peer"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/access-group/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "access-group/vrfs/vrf", keyString))
 		}
 	}
 	if !state.AccessGroupIpv4ServeOnly.IsNull() && data.AccessGroupIpv4ServeOnly.IsNull() {
@@ -4268,13 +4268,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.PeersServersVrfs[i].HostnamePeersServers[ci].Iburst.IsNull() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Iburst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", data.getPath(), keyString, ckeyString), "iburst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "iburst"))
 			}
 			if !data.PeersServersVrfs[i].HostnamePeersServers[ci].Burst.IsNull() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Burst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", data.getPath(), keyString, ckeyString), "burst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "burst"))
 			}
 			if !data.PeersServersVrfs[i].HostnamePeersServers[ci].Prefer.IsNull() && !data.PeersServersVrfs[i].HostnamePeersServers[ci].Prefer.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/hostname/hostname-peer-server%v", data.getPath(), keyString, ckeyString), "prefer"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "hostname/hostname-peer-server", ckeyString), "prefer"))
 			}
 		}
 		for ci := range data.PeersServersVrfs[i].Ipv6PeersServers {
@@ -4285,13 +4285,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Iburst.IsNull() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Iburst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", data.getPath(), keyString, ckeyString), "iburst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "iburst"))
 			}
 			if !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Burst.IsNull() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Burst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", data.getPath(), keyString, ckeyString), "burst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "burst"))
 			}
 			if !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Prefer.IsNull() && !data.PeersServersVrfs[i].Ipv6PeersServers[ci].Prefer.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv6/ipv6-peer-server%v", data.getPath(), keyString, ckeyString), "prefer"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv6/ipv6-peer-server", ckeyString), "prefer"))
 			}
 		}
 		for ci := range data.PeersServersVrfs[i].Ipv4PeersServers {
@@ -4302,13 +4302,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Iburst.IsNull() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Iburst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", data.getPath(), keyString, ckeyString), "iburst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "iburst"))
 			}
 			if !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Burst.IsNull() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Burst.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", data.getPath(), keyString, ckeyString), "burst"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "burst"))
 			}
 			if !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Prefer.IsNull() && !data.PeersServersVrfs[i].Ipv4PeersServers[ci].Prefer.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/vrfs/vrf%v/ipv4/ipv4-peer-server%v", data.getPath(), keyString, ckeyString), "prefer"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString, "ipv4/ipv4-peer-server", ckeyString), "prefer"))
 			}
 		}
 	}
@@ -4320,13 +4320,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.HostnamePeersServers[i].Iburst.IsNull() && !data.HostnamePeersServers[i].Iburst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", data.getPath(), keyString), "iburst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "iburst"))
 		}
 		if !data.HostnamePeersServers[i].Burst.IsNull() && !data.HostnamePeersServers[i].Burst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", data.getPath(), keyString), "burst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "burst"))
 		}
 		if !data.HostnamePeersServers[i].Prefer.IsNull() && !data.HostnamePeersServers[i].Prefer.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", data.getPath(), keyString), "prefer"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/hostname/hostname-peer-server", keyString), "prefer"))
 		}
 	}
 	for i := range data.Ipv6PeersServers {
@@ -4337,13 +4337,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Ipv6PeersServers[i].Iburst.IsNull() && !data.Ipv6PeersServers[i].Iburst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", data.getPath(), keyString), "iburst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "iburst"))
 		}
 		if !data.Ipv6PeersServers[i].Burst.IsNull() && !data.Ipv6PeersServers[i].Burst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", data.getPath(), keyString), "burst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "burst"))
 		}
 		if !data.Ipv6PeersServers[i].Prefer.IsNull() && !data.Ipv6PeersServers[i].Prefer.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", data.getPath(), keyString), "prefer"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString), "prefer"))
 		}
 	}
 	for i := range data.Ipv4PeersServers {
@@ -4354,13 +4354,13 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Ipv4PeersServers[i].Iburst.IsNull() && !data.Ipv4PeersServers[i].Iburst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", data.getPath(), keyString), "iburst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "iburst"))
 		}
 		if !data.Ipv4PeersServers[i].Burst.IsNull() && !data.Ipv4PeersServers[i].Burst.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", data.getPath(), keyString), "burst"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "burst"))
 		}
 		if !data.Ipv4PeersServers[i].Prefer.IsNull() && !data.Ipv4PeersServers[i].Prefer.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", data.getPath(), keyString), "prefer"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString), "prefer"))
 		}
 	}
 	if !data.PrimaryReferenceClock.IsNull() && !data.PrimaryReferenceClock.ValueBool() {
@@ -4381,10 +4381,10 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.InterfaceVrfs[i].Interfaces[ci].Disable.IsNull() && !data.InterfaceVrfs[i].Interfaces[ci].Disable.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", data.getPath(), keyString, ckeyString), "disable"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "disable"))
 			}
 			if !data.InterfaceVrfs[i].Interfaces[ci].BroadcastClient.IsNull() && !data.InterfaceVrfs[i].Interfaces[ci].BroadcastClient.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/vrfs/vrf%v/interface%v", data.getPath(), keyString, ckeyString), "broadcast-client"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "interfaces/vrfs/vrf", keyString, "interface", ckeyString), "broadcast-client"))
 			}
 		}
 	}
@@ -4396,10 +4396,10 @@ func (data *NTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].Disable.IsNull() && !data.Interfaces[i].Disable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "disable"))
 		}
 		if !data.Interfaces[i].BroadcastClient.IsNull() && !data.Interfaces[i].BroadcastClient.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "broadcast-client"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "broadcast-client"))
 		}
 	}
 	if !data.DriftFileHarddisk.IsNull() && !data.DriftFileHarddisk.ValueBool() {
@@ -4511,7 +4511,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "source/vrfs/vrf", keyString))
 	}
 	if !data.SourceInterfaceName.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "source/interface-name"))
@@ -4541,7 +4541,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/trusted-keys/trusted-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "trusted-keys/trusted-key", keyString))
 	}
 	for i := range data.PeersServersVrfs {
 		keys := [...]string{"vrf-name"}
@@ -4559,7 +4559,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/vrfs/vrf", keyString))
 	}
 	for i := range data.HostnamePeersServers {
 		keys := [...]string{"fqdn-hostname", "type"}
@@ -4580,7 +4580,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/hostname/hostname-peer-server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/hostname/hostname-peer-server", keyString))
 	}
 	for i := range data.Ipv6PeersServers {
 		keys := [...]string{"address", "type"}
@@ -4601,7 +4601,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/ipv6/ipv6-peer-server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv6/ipv6-peer-server", keyString))
 	}
 	for i := range data.Ipv4PeersServers {
 		keys := [...]string{"address", "type"}
@@ -4622,7 +4622,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-server/ipv4/ipv4-peer-server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "peer-server/ipv4/ipv4-peer-server", keyString))
 	}
 	if !data.MaxAssociations.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "max-associations"))
@@ -4649,7 +4649,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/vrfs/vrf", keyString))
 	}
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -4667,7 +4667,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString))
 	}
 	if !data.DriftFilename.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "drift/file"))
@@ -4715,7 +4715,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hmac-sha2-authentication-keys/hmac-sha2-authentication-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "hmac-sha2-authentication-keys/hmac-sha2-authentication-key", keyString))
 	}
 	for i := range data.HmacSha1AuthenticationKeys {
 		keys := [...]string{"key-number"}
@@ -4733,7 +4733,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hmac-sha1-authentication-keys/hmac-sha1-authentication-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "hmac-sha1-authentication-keys/hmac-sha1-authentication-key", keyString))
 	}
 	for i := range data.CmacAuthenticationKeys {
 		keys := [...]string{"key-number"}
@@ -4751,7 +4751,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/cmac-authentication-keys/cmac-authentication-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "cmac-authentication-keys/cmac-authentication-key", keyString))
 	}
 	for i := range data.AuthenticationKeys {
 		keys := [...]string{"key-number"}
@@ -4769,7 +4769,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/authentication-keys/authentication-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "authentication-keys/authentication-key", keyString))
 	}
 	if !data.Authenticate.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "authenticate"))
@@ -4790,7 +4790,7 @@ func (data *NTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/access-group/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "access-group/vrfs/vrf", keyString))
 	}
 	if !data.AccessGroupIpv4ServeOnly.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-group/ipv4/serve-only"))

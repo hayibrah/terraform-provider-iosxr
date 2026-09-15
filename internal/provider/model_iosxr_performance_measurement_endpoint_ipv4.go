@@ -550,16 +550,16 @@ func (data *PerformanceMeasurementEndpointIPv4) getDeletedItems(ctx context.Cont
 			}
 			if found {
 				if !state.SegmentRoutingTeExplicitSegmentLists[i].InsertSrhSlZero.IsNull() && data.SegmentRoutingTeExplicitSegmentLists[j].InsertSrhSlZero.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-routing/traffic-eng/explicit/segment-list/names/name%v", state.getPath(), keyString), "insert-srh/sl-zero"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "segment-routing/traffic-eng/explicit/segment-list/names/name", keyString), "insert-srh/sl-zero"))
 				}
 				if !state.SegmentRoutingTeExplicitSegmentLists[i].ReversePathSegmentList.IsNull() && data.SegmentRoutingTeExplicitSegmentLists[j].ReversePathSegmentList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-routing/traffic-eng/explicit/segment-list/names/name%v", state.getPath(), keyString), "reverse-path/segment-list/name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "segment-routing/traffic-eng/explicit/segment-list/names/name", keyString), "reverse-path/segment-list/name"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/traffic-eng/explicit/segment-list/names/name%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "segment-routing/traffic-eng/explicit/segment-list/names/name", keyString))
 		}
 	}
 	if !state.SegmentRouting.IsNull() && data.SegmentRouting.IsNull() {
@@ -601,7 +601,7 @@ func (data *PerformanceMeasurementEndpointIPv4) getDeletedItems(ctx context.Cont
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-list/names/name%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "segment-list/names/name", keyString))
 		}
 	}
 	if !state.DelayMeasurementProfileName.IsNull() && data.DelayMeasurementProfileName.IsNull() {
@@ -633,7 +633,7 @@ func (data *PerformanceMeasurementEndpointIPv4) getEmptyLeafsDelete(ctx context.
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SegmentRoutingTeExplicitSegmentLists[i].InsertSrhSlZero.IsNull() && !data.SegmentRoutingTeExplicitSegmentLists[i].InsertSrhSlZero.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/segment-routing/traffic-eng/explicit/segment-list/names/name%v", data.getPath(), keyString), "insert-srh/sl-zero"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "segment-routing/traffic-eng/explicit/segment-list/names/name", keyString), "insert-srh/sl-zero"))
 		}
 	}
 	if !data.SegmentRouting.IsNull() && !data.SegmentRouting.ValueBool() {
@@ -683,7 +683,7 @@ func (data *PerformanceMeasurementEndpointIPv4) getDeletePaths(ctx context.Conte
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/traffic-eng/explicit/segment-list/names/name%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "segment-routing/traffic-eng/explicit/segment-list/names/name", keyString))
 	}
 	if !data.SegmentRouting.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing"))
@@ -713,7 +713,7 @@ func (data *PerformanceMeasurementEndpointIPv4) getDeletePaths(ctx context.Conte
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-list/names/name%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "segment-list/names/name", keyString))
 	}
 	if !data.DelayMeasurementProfileName.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay-measurement/delay-profile/name"))

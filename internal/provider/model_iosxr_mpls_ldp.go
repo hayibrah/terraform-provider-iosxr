@@ -1229,16 +1229,16 @@ func (data *MPLSLDP) getDeletedItems(ctx context.Context, state MPLSLDP, version
 			}
 			if found {
 				if !state.Neighbors[i].PasswordDisable.IsNull() && data.Neighbors[j].PasswordDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", state.getPath(), keyString), "password/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbor/neighbors/neighbor", keyString), "password/disable"))
 				}
 				if !state.Neighbors[i].PasswordEncrypted.IsNull() && data.Neighbors[j].PasswordEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", state.getPath(), keyString), "password/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbor/neighbors/neighbor", keyString), "password/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "neighbor/neighbors/neighbor", keyString))
 		}
 	}
 	if !state.NeighborDualStackTlvCompliance.IsNull() && data.NeighborDualStackTlvCompliance.IsNull() {
@@ -1390,7 +1390,7 @@ func (data *MPLSLDP) getEmptyLeafsDelete(ctx context.Context, version string) []
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].PasswordDisable.IsNull() && !data.Neighbors[i].PasswordDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", data.getPath(), keyString), "password/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "neighbor/neighbors/neighbor", keyString), "password/disable"))
 		}
 	}
 	if !data.NeighborDualStackTlvCompliance.IsNull() && !data.NeighborDualStackTlvCompliance.ValueBool() {
@@ -1492,7 +1492,7 @@ func (data *MPLSLDP) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbor/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "neighbor/neighbors/neighbor", keyString))
 	}
 	if !data.NeighborDualStackTlvCompliance.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "neighbor/dual-stack/tlv-compliance"))

@@ -1075,24 +1075,24 @@ func (data *RadiusServer) getDeletedItems(ctx context.Context, state RadiusServe
 									}
 								}
 								if !found {
-									deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute/list%v/attribute/vendor-ids/vendor-id%v/vendor-types/vendor-type%v", state.getPath(), keyString, ckeyString, cckeyString))
+									deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "attribute/list", keyString, "attribute/vendor-ids/vendor-id", ckeyString, "vendor-types/vendor-type", cckeyString))
 								}
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute/list%v/attribute/vendor-ids/vendor-id%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "attribute/list", keyString, "attribute/vendor-ids/vendor-id", ckeyString))
 					}
 				}
 				if !state.AttributeLists[i].RadiusAttributes.IsNull() && data.AttributeLists[j].RadiusAttributes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/attribute/list%v", state.getPath(), keyString), "attribute/radius-attributes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "attribute/list", keyString), "attribute/radius-attributes"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/attribute/list%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "attribute/list", keyString))
 		}
 	}
 	if !state.DisallowNullUsername.IsNull() && data.DisallowNullUsername.IsNull() {
@@ -1191,40 +1191,40 @@ func (data *RadiusServer) getDeletedItems(ctx context.Context, state RadiusServe
 			}
 			if found {
 				if !state.Hosts[i].RadsecServerTrustpoint.IsNull() && data.Hosts[j].RadsecServerTrustpoint.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "radsec-server/trustpoint"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "radsec-server/trustpoint"))
 				}
 				if !state.Hosts[i].DtlsServerTrustpoint.IsNull() && data.Hosts[j].DtlsServerTrustpoint.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "dtls-server/trustpoint"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "dtls-server/trustpoint"))
 				}
 				if !state.Hosts[i].IgnoreAcctPort.IsNull() && data.Hosts[j].IgnoreAcctPort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "ignore-acct-port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "ignore-acct-port"))
 				}
 				if !state.Hosts[i].IgnoreAuthPort.IsNull() && data.Hosts[j].IgnoreAuthPort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "ignore-auth-port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "ignore-auth-port"))
 				}
 				if !state.Hosts[i].IdleTime.IsNull() && data.Hosts[j].IdleTime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "idle-time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "idle-time"))
 				}
 				if !state.Hosts[i].TestUsername.IsNull() && data.Hosts[j].TestUsername.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "test/username"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "test/username"))
 				}
 				if !state.Hosts[i].KeyType6.IsNull() && data.Hosts[j].KeyType6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "key/six"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "key/six"))
 				}
 				if !state.Hosts[i].KeyType7.IsNull() && data.Hosts[j].KeyType7.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "key/seven"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "key/seven"))
 				}
 				if !state.Hosts[i].Retransmit.IsNull() && data.Hosts[j].Retransmit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "retransmit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "retransmit"))
 				}
 				if !state.Hosts[i].Timeout.IsNull() && data.Hosts[j].Timeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString), "timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString), "timeout"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString))
 		}
 	}
 	return deletedItems
@@ -1289,10 +1289,10 @@ func (data *RadiusServer) getEmptyLeafsDelete(ctx context.Context, version strin
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Hosts[i].IgnoreAcctPort.IsNull() && !data.Hosts[i].IgnoreAcctPort.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString), "ignore-acct-port"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "hosts/host", keyString), "ignore-acct-port"))
 		}
 		if !data.Hosts[i].IgnoreAuthPort.IsNull() && !data.Hosts[i].IgnoreAuthPort.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString), "ignore-auth-port"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "hosts/host", keyString), "ignore-auth-port"))
 		}
 	}
 	return emptyLeafsDelete
@@ -1328,7 +1328,7 @@ func (data *RadiusServer) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/attribute/list%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "attribute/list", keyString))
 	}
 	if !data.DisallowNullUsername.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "disallow/null-username"))
@@ -1409,7 +1409,7 @@ func (data *RadiusServer) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "hosts/host", keyString))
 	}
 	return deletePaths
 }

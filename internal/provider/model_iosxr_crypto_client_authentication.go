@@ -265,16 +265,16 @@ func (data *CryptoClientAuthentication) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.Profile[i].Username.IsNull() && data.Profile[j].Username.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "username"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profiles/profile", keyString), "username"))
 				}
 				if !state.Profile[i].PasswordSix.IsNull() && data.Profile[j].PasswordSix.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "password/six"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profiles/profile", keyString), "password/six"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profiles/profile", keyString))
 		}
 	}
 	return deletedItems
@@ -318,7 +318,7 @@ func (data *CryptoClientAuthentication) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profiles/profile", keyString))
 	}
 	return deletePaths
 }

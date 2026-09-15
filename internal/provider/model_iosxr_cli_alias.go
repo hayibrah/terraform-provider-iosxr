@@ -408,13 +408,13 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.ConfigAliases[i].Command.IsNull() && data.ConfigAliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/config/alias%v", state.getPath(), keyString), "aliased-config-command"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "config/alias", keyString), "aliased-config-command"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/config/alias%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "config/alias", keyString))
 		}
 	}
 	for i := range state.ExecAliases {
@@ -441,13 +441,13 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.ExecAliases[i].Command.IsNull() && data.ExecAliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exec/alias%v", state.getPath(), keyString), "aliased-exec-command"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exec/alias", keyString), "aliased-exec-command"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/exec/alias%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "exec/alias", keyString))
 		}
 	}
 	for i := range state.Aliases {
@@ -474,13 +474,13 @@ func (data *CLIAlias) getDeletedItems(ctx context.Context, state CLIAlias, versi
 			}
 			if found {
 				if !state.Aliases[i].Command.IsNull() && data.Aliases[j].Command.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aliases/alias%v", state.getPath(), keyString), "alias-body"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aliases/alias", keyString), "alias-body"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/aliases/alias%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "aliases/alias", keyString))
 		}
 	}
 	return deletedItems
@@ -540,7 +540,7 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/config/alias%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "config/alias", keyString))
 	}
 	for i := range data.ExecAliases {
 		keys := [...]string{"exec-alias-name"}
@@ -558,7 +558,7 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/exec/alias%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "exec/alias", keyString))
 	}
 	for i := range data.Aliases {
 		keys := [...]string{"alias-name"}
@@ -576,7 +576,7 @@ func (data *CLIAlias) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/aliases/alias%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "aliases/alias", keyString))
 	}
 	return deletePaths
 }

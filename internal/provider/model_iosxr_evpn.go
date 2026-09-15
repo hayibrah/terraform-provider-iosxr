@@ -1700,43 +1700,43 @@ func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN, version strin
 			}
 			if found {
 				if !state.VirtualVfis[i].EthernetSegmentBgpRt.IsNull() && data.VirtualVfis[j].EthernetSegmentBgpRt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/bgp"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && data.VirtualVfis[j].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/preference-based"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() && data.VirtualVfis[j].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/preference-based"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentServiceCarvingHrw.IsNull() && data.VirtualVfis[j].EthernetSegmentServiceCarvingHrw.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/service-carving/hrw"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/hrw"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() && data.VirtualVfis[j].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/service-carving/manual/secondary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/manual/secondary"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() && data.VirtualVfis[j].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/service-carving/manual/primary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/manual/primary"))
 				}
 				if !state.VirtualVfis[i].EthernetSegmentEsiZero.IsNull() && data.VirtualVfis[j].EthernetSegmentEsiZero.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "ethernet-segment/identifier/type/zero"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/identifier/type/zero"))
 				}
 				if !state.VirtualVfis[i].TimersAcDebounce.IsNull() && data.VirtualVfis[j].TimersAcDebounce.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "timers/ac-debounce"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "timers/ac-debounce"))
 				}
 				if !state.VirtualVfis[i].TimersCarving.IsNull() && data.VirtualVfis[j].TimersCarving.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "timers/carving"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "timers/carving"))
 				}
 				if !state.VirtualVfis[i].TimersRecovery.IsNull() && data.VirtualVfis[j].TimersRecovery.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "timers/recovery"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "timers/recovery"))
 				}
 				if !state.VirtualVfis[i].TimersPeering.IsNull() && data.VirtualVfis[j].TimersPeering.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString), "timers/peering"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString), "timers/peering"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual/vfis/vfi%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/vfis/vfi", keyString))
 		}
 	}
 	for i := range state.VirtualNeighbors {
@@ -1769,49 +1769,49 @@ func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN, version strin
 			}
 			if found {
 				if !state.VirtualNeighbors[i].EthernetSegmentBgpRt.IsNull() && data.VirtualNeighbors[j].EthernetSegmentBgpRt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/bgp"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwG.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingMulticastHrwG.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/multicast"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/multicast"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/preference-based"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingPreferenceBasedWeight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/preference-based"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingHrw.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingHrw.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/hrw"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/hrw"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualSecondary.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingManualSecondary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/manual/secondary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/manual/secondary"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentServiceCarvingManualPrimary.IsNull() && data.VirtualNeighbors[j].EthernetSegmentServiceCarvingManualPrimary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/service-carving/manual/primary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/manual/primary"))
 				}
 				if !state.VirtualNeighbors[i].EthernetSegmentEsiZero.IsNull() && data.VirtualNeighbors[j].EthernetSegmentEsiZero.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "ethernet-segment/identifier/type/zero"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/identifier/type/zero"))
 				}
 				if !state.VirtualNeighbors[i].TimersAcDebounce.IsNull() && data.VirtualNeighbors[j].TimersAcDebounce.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "timers/ac-debounce"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "timers/ac-debounce"))
 				}
 				if !state.VirtualNeighbors[i].TimersCarving.IsNull() && data.VirtualNeighbors[j].TimersCarving.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "timers/carving"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "timers/carving"))
 				}
 				if !state.VirtualNeighbors[i].TimersRecovery.IsNull() && data.VirtualNeighbors[j].TimersRecovery.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "timers/recovery"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "timers/recovery"))
 				}
 				if !state.VirtualNeighbors[i].TimersPeering.IsNull() && data.VirtualNeighbors[j].TimersPeering.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString), "timers/peering"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString), "timers/peering"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual/neighbor/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "virtual/neighbor/neighbor", keyString))
 		}
 	}
 	if !state.HostIpv6DuplicateDetectionResetFreezeCountInterval.IsNull() && data.HostIpv6DuplicateDetectionResetFreezeCountInterval.IsNull() {
@@ -1889,13 +1889,13 @@ func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN, version strin
 			}
 			if found {
 				if !state.Srv6Locators[i].UsidAllocationWideLocalIdBlock.IsNull() && data.Srv6Locators[j].UsidAllocationWideLocalIdBlock.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/segment-routing/srv6/locators/locator%v", state.getPath(), keyString), "usid/allocation/wide-local-id-block"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "segment-routing/srv6/locators/locator", keyString), "usid/allocation/wide-local-id-block"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/segment-routing/srv6/locators/locator%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "segment-routing/srv6/locators/locator", keyString))
 		}
 	}
 	if !state.Srv6.IsNull() && data.Srv6.IsNull() {
@@ -1951,14 +1951,14 @@ func (data *EVPN) getDeletedItems(ctx context.Context, state EVPN, version strin
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/core/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "groups/group", keyString, "core/interface", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString))
 		}
 	}
 	if !state.EthernetSegmentTypeOneAutoGenerationDisable.IsNull() && data.EthernetSegmentTypeOneAutoGenerationDisable.IsNull() {
@@ -2035,10 +2035,10 @@ func (data *EVPN) getEmptyLeafsDelete(ctx context.Context, version string) []str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && !data.VirtualVfis[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", data.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/preference-based"))
 		}
 		if !data.VirtualVfis[i].EthernetSegmentServiceCarvingHrw.IsNull() && !data.VirtualVfis[i].EthernetSegmentServiceCarvingHrw.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/vfis/vfi%v", data.getPath(), keyString), "ethernet-segment/service-carving/hrw"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/vfis/vfi", keyString), "ethernet-segment/service-carving/hrw"))
 		}
 	}
 	for i := range data.VirtualNeighbors {
@@ -2049,16 +2049,16 @@ func (data *EVPN) getEmptyLeafsDelete(ctx context.Context, version string) []str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwG.IsNull() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwG.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString), "ethernet-segment/service-carving/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/multicast"))
 		}
 		if !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwSG.IsNull() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingMulticastHrwSG.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString), "ethernet-segment/service-carving/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/multicast"))
 		}
 		if !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.IsNull() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingPreferenceBasedAccessDriven.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString), "ethernet-segment/service-carving/preference-based"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/preference-based"))
 		}
 		if !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingHrw.IsNull() && !data.VirtualNeighbors[i].EthernetSegmentServiceCarvingHrw.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString), "ethernet-segment/service-carving/hrw"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/neighbor/neighbor", keyString), "ethernet-segment/service-carving/hrw"))
 		}
 	}
 	if !data.HostIpv6DuplicateDetectionDisable.IsNull() && !data.HostIpv6DuplicateDetectionDisable.ValueBool() {
@@ -2090,7 +2090,7 @@ func (data *EVPN) getEmptyLeafsDelete(ctx context.Context, version string) []str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Srv6Locators[i].UsidAllocationWideLocalIdBlock.IsNull() && !data.Srv6Locators[i].UsidAllocationWideLocalIdBlock.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/segment-routing/srv6/locators/locator%v", data.getPath(), keyString), "usid/allocation/wide-local-id-block"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "segment-routing/srv6/locators/locator", keyString), "usid/allocation/wide-local-id-block"))
 		}
 	}
 	if !data.Srv6.IsNull() && !data.Srv6.ValueBool() {
@@ -2154,7 +2154,7 @@ func (data *EVPN) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual/vfis/vfi%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/vfis/vfi", keyString))
 	}
 	for i := range data.VirtualNeighbors {
 		keys := [...]string{"address", "pw-id"}
@@ -2175,7 +2175,7 @@ func (data *EVPN) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual/neighbor/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "virtual/neighbor/neighbor", keyString))
 	}
 	if !data.HostIpv6DuplicateDetectionResetFreezeCountInterval.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-evpn-host-cfg:host/ipv6-address/duplicate-detection/reset-freeze-count-interval"))
@@ -2244,7 +2244,7 @@ func (data *EVPN) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/segment-routing/srv6/locators/locator%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "segment-routing/srv6/locators/locator", keyString))
 	}
 	if !data.Srv6.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing/srv6"))
@@ -2265,7 +2265,7 @@ func (data *EVPN) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString))
 	}
 	if !data.EthernetSegmentTypeOneAutoGenerationDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ethernet-segment/type/one/auto-generation-disable"))

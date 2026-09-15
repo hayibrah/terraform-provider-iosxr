@@ -1182,7 +1182,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/export/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetExportFourByteAsFormat {
@@ -1218,7 +1218,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/export/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetExportTwoByteAsFormat {
@@ -1254,7 +1254,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetImportIpv4AddressFormat {
@@ -1290,7 +1290,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/import/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetImportFourByteAsFormat {
@@ -1326,7 +1326,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/import/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetImportTwoByteAsFormat {
@@ -1362,7 +1362,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/import/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetIpv4AddressFormat {
@@ -1398,7 +1398,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetFourByteAsFormat {
@@ -1434,7 +1434,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.BgpRouteTargetTwoByteAsFormat {
@@ -1470,7 +1470,7 @@ func (data *EVPNStitchingVNI) getDeletedItems(ctx context.Context, state EVPNSti
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	if !state.BgpRdIpv4AddressIndex.IsNull() && data.BgpRdIpv4AddressIndex.IsNull() {
@@ -1638,7 +1638,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/export/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetExportFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -1659,7 +1659,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/export/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetExportTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -1680,7 +1680,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetImportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -1701,7 +1701,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/import/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetImportFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -1722,7 +1722,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/import/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetImportTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -1743,7 +1743,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/import/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -1764,7 +1764,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -1785,7 +1785,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.BgpRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -1806,7 +1806,7 @@ func (data *EVPNStitchingVNI) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	if !data.BgpRdIpv4AddressIndex.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "bgp/rd/ipv4-address-assigned-number"))

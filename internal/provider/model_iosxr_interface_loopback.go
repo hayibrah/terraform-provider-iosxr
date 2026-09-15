@@ -1434,22 +1434,22 @@ func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv6Eui64Addresses[i].Algorithm.IsNull() && data.Ipv6Eui64Addresses[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "algorithm"))
 				}
 				if !state.Ipv6Eui64Addresses[i].RouteTag.IsNull() && data.Ipv6Eui64Addresses[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "route-tag"))
 				}
 				if !state.Ipv6Eui64Addresses[i].Zone.IsNull() && data.Ipv6Eui64Addresses[j].Zone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "zone"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "zone"))
 				}
 				if !state.Ipv6Eui64Addresses[i].PrefixLength.IsNull() && data.Ipv6Eui64Addresses[j].PrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "prefix-length"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString))
 		}
 	}
 	if !state.Ipv6LinkLocalRouteTag.IsNull() && data.Ipv6LinkLocalRouteTag.IsNull() {
@@ -1485,22 +1485,22 @@ func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv6Addresses[i].Algorithm.IsNull() && data.Ipv6Addresses[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "algorithm"))
 				}
 				if !state.Ipv6Addresses[i].RouteTag.IsNull() && data.Ipv6Addresses[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "route-tag"))
 				}
 				if !state.Ipv6Addresses[i].Zone.IsNull() && data.Ipv6Addresses[j].Zone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "zone"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "zone"))
 				}
 				if !state.Ipv6Addresses[i].PrefixLength.IsNull() && data.Ipv6Addresses[j].PrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "prefix-length"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString))
 		}
 	}
 	if !state.Ipv6TtlPropagateDisable.IsNull() && data.Ipv6TtlPropagateDisable.IsNull() {
@@ -1563,7 +1563,7 @@ func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address", keyString))
 		}
 	}
 	if !state.Ipv4MaskReply.IsNull() && data.Ipv4MaskReply.IsNull() {
@@ -1608,19 +1608,19 @@ func (data *InterfaceLoopback) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv4Secondaries[i].Algorithm.IsNull() && data.Ipv4Secondaries[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "algorithm"))
 				}
 				if !state.Ipv4Secondaries[i].RouteTag.IsNull() && data.Ipv4Secondaries[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "route-tag"))
 				}
 				if !state.Ipv4Secondaries[i].Netmask.IsNull() && data.Ipv4Secondaries[j].Netmask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "netmask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "netmask"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString))
 		}
 	}
 	if !state.Ipv4Algorithm.IsNull() && data.Ipv4Algorithm.IsNull() {
@@ -1787,7 +1787,7 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString))
 	}
 	if !data.Ipv6LinkLocalRouteTag.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/link-local-address"))
@@ -1814,7 +1814,7 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString))
 	}
 	if !data.Ipv6TtlPropagateDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable"))
@@ -1862,7 +1862,7 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address", keyString))
 	}
 	if !data.Ipv4MaskReply.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:mask-reply"))
@@ -1898,7 +1898,7 @@ func (data *InterfaceLoopback) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString))
 	}
 	if !data.Ipv4Algorithm.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))

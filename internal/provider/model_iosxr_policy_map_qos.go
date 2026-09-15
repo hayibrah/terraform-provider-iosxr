@@ -1342,43 +1342,43 @@ func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQo
 			}
 			if found {
 				if !state.Classes[i].ShapeAverageExcessBurstUnit.IsNull() && data.Classes[j].ShapeAverageExcessBurstUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "shape/average/excess-burst/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "shape/average/excess-burst/unit"))
 				}
 				if !state.Classes[i].ShapeAverageExcessBurstSize.IsNull() && data.Classes[j].ShapeAverageExcessBurstSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "shape/average/excess-burst/size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "shape/average/excess-burst/size"))
 				}
 				if !state.Classes[i].ShapeAverageRateUnit.IsNull() && data.Classes[j].ShapeAverageRateUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "shape/average/rate/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "shape/average/rate/unit"))
 				}
 				if !state.Classes[i].ShapeAverageRateValue.IsNull() && data.Classes[j].ShapeAverageRateValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "shape/average/rate/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "shape/average/rate/value"))
 				}
 				if !state.Classes[i].SetQosGroup.IsNull() && data.Classes[j].SetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/qos-group"))
 				}
 				if !state.Classes[i].SetPrecedence.IsNull() && data.Classes[j].SetPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/precedence"))
 				}
 				if !state.Classes[i].SetMplsExperimentalTopmost.IsNull() && data.Classes[j].SetMplsExperimentalTopmost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/mpls/experimental/topmost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/mpls/experimental/topmost"))
 				}
 				if !state.Classes[i].SetMplsExperimentalImposition.IsNull() && data.Classes[j].SetMplsExperimentalImposition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/mpls/experimental/imposition"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/mpls/experimental/imposition"))
 				}
 				if !state.Classes[i].SetDscp.IsNull() && data.Classes[j].SetDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/dscp"))
 				}
 				if !state.Classes[i].SetDiscardClass.IsNull() && data.Classes[j].SetDiscardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/discard-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/discard-class"))
 				}
 				if !state.Classes[i].SetCos.IsNull() && data.Classes[j].SetCos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/cos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/cos"))
 				}
 				if !state.Classes[i].SetTrafficClass.IsNull() && data.Classes[j].SetTrafficClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "set/traffic-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "set/traffic-class"))
 				}
 				if !state.Classes[i].ServicePolicyName.IsNull() && data.Classes[j].ServicePolicyName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "service-policy/name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "service-policy/name"))
 				}
 				for ci := range state.Classes[i].RandomDetect {
 					ckeys := [...]string{"minimum-threshold-value", "minimum-threshold-unit", "maximum-threshold-value", "maximum-threshold-unit"}
@@ -1425,11 +1425,11 @@ func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQo
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/random-detect%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "class", keyString, "random-detect", ckeyString))
 					}
 				}
 				if !state.Classes[i].RandomDetectDefault.IsNull() && data.Classes[j].RandomDetectDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "random-detect-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "random-detect-default"))
 				}
 				for ci := range state.Classes[i].QueueLimits {
 					ckeys := [...]string{"value", "unit"}
@@ -1464,134 +1464,134 @@ func (data *PolicyMapQoS) getDeletedItems(ctx context.Context, state PolicyMapQo
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v/queue-limits/queue-limit%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "class", keyString, "queue-limits/queue-limit", ckeyString))
 					}
 				}
 				if !state.Classes[i].PriorityLevel.IsNull() && data.Classes[j].PriorityLevel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "priority/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "priority/level"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetQosGroup.IsNull() && data.Classes[j].PoliceViolateActionSetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/qos-group"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetPrecedence.IsNull() && data.Classes[j].PoliceViolateActionSetPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/precedence"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetMplsExperimentalTopmost.IsNull() && data.Classes[j].PoliceViolateActionSetMplsExperimentalTopmost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/mpls/experimental/topmost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/mpls/experimental/topmost"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetMplsExperimentalImposition.IsNull() && data.Classes[j].PoliceViolateActionSetMplsExperimentalImposition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/mpls/experimental/imposition"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/mpls/experimental/imposition"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetDscp.IsNull() && data.Classes[j].PoliceViolateActionSetDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/dscp"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetDiscardClass.IsNull() && data.Classes[j].PoliceViolateActionSetDiscardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/discard-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/discard-class"))
 				}
 				if !state.Classes[i].PoliceViolateActionSetCos.IsNull() && data.Classes[j].PoliceViolateActionSetCos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/set/cos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/set/cos"))
 				}
 				if !state.Classes[i].PoliceViolateActionDrop.IsNull() && data.Classes[j].PoliceViolateActionDrop.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/drop"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/drop"))
 				}
 				if !state.Classes[i].PoliceViolateActionTransmit.IsNull() && data.Classes[j].PoliceViolateActionTransmit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/violate-action/transmit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/violate-action/transmit"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetQosGroup.IsNull() && data.Classes[j].PoliceExceedActionSetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/qos-group"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetPrecedence.IsNull() && data.Classes[j].PoliceExceedActionSetPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/precedence"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetMplsExperimentalTopmost.IsNull() && data.Classes[j].PoliceExceedActionSetMplsExperimentalTopmost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/mpls/experimental/topmost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/mpls/experimental/topmost"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetMplsExperimentalImposition.IsNull() && data.Classes[j].PoliceExceedActionSetMplsExperimentalImposition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/mpls/experimental/imposition"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/mpls/experimental/imposition"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetDscp.IsNull() && data.Classes[j].PoliceExceedActionSetDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/dscp"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetDiscardClass.IsNull() && data.Classes[j].PoliceExceedActionSetDiscardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/discard-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/discard-class"))
 				}
 				if !state.Classes[i].PoliceExceedActionSetCos.IsNull() && data.Classes[j].PoliceExceedActionSetCos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/set/cos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/set/cos"))
 				}
 				if !state.Classes[i].PoliceExceedActionDrop.IsNull() && data.Classes[j].PoliceExceedActionDrop.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/drop"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/drop"))
 				}
 				if !state.Classes[i].PoliceExceedActionTransmit.IsNull() && data.Classes[j].PoliceExceedActionTransmit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/exceed-action/transmit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/exceed-action/transmit"))
 				}
 				if !state.Classes[i].PoliceConformActionSetQosGroup.IsNull() && data.Classes[j].PoliceConformActionSetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/qos-group"))
 				}
 				if !state.Classes[i].PoliceConformActionSetPrecedence.IsNull() && data.Classes[j].PoliceConformActionSetPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/precedence"))
 				}
 				if !state.Classes[i].PoliceConformActionSetMplsExperimentalTopmost.IsNull() && data.Classes[j].PoliceConformActionSetMplsExperimentalTopmost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/mpls/experimental/topmost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/mpls/experimental/topmost"))
 				}
 				if !state.Classes[i].PoliceConformActionSetMplsExperimentalImposition.IsNull() && data.Classes[j].PoliceConformActionSetMplsExperimentalImposition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/mpls/experimental/imposition"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/mpls/experimental/imposition"))
 				}
 				if !state.Classes[i].PoliceConformActionSetDscp.IsNull() && data.Classes[j].PoliceConformActionSetDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/dscp"))
 				}
 				if !state.Classes[i].PoliceConformActionSetDiscardClass.IsNull() && data.Classes[j].PoliceConformActionSetDiscardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/discard-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/discard-class"))
 				}
 				if !state.Classes[i].PoliceConformActionSetCos.IsNull() && data.Classes[j].PoliceConformActionSetCos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/set/cos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/set/cos"))
 				}
 				if !state.Classes[i].PoliceConformActionDrop.IsNull() && data.Classes[j].PoliceConformActionDrop.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/drop"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/drop"))
 				}
 				if !state.Classes[i].PoliceConformActionTransmit.IsNull() && data.Classes[j].PoliceConformActionTransmit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/conform-action/transmit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/conform-action/transmit"))
 				}
 				if !state.Classes[i].PolicePeakBurstUnit.IsNull() && data.Classes[j].PolicePeakBurstUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/peak-burst/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/peak-burst/unit"))
 				}
 				if !state.Classes[i].PolicePeakBurstValue.IsNull() && data.Classes[j].PolicePeakBurstValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/peak-burst/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/peak-burst/value"))
 				}
 				if !state.Classes[i].PolicePeakRateUnit.IsNull() && data.Classes[j].PolicePeakRateUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/peak-rate/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/peak-rate/unit"))
 				}
 				if !state.Classes[i].PolicePeakRateValue.IsNull() && data.Classes[j].PolicePeakRateValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/peak-rate/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/peak-rate/value"))
 				}
 				if !state.Classes[i].PoliceBurstUnit.IsNull() && data.Classes[j].PoliceBurstUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/burst/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/burst/unit"))
 				}
 				if !state.Classes[i].PoliceBurstValue.IsNull() && data.Classes[j].PoliceBurstValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/burst/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/burst/value"))
 				}
 				if !state.Classes[i].PoliceRateUnit.IsNull() && data.Classes[j].PoliceRateUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/rate/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/rate/unit"))
 				}
 				if !state.Classes[i].PoliceRateValue.IsNull() && data.Classes[j].PoliceRateValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "police/rate/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "police/rate/value"))
 				}
 				if !state.Classes[i].BandwidthRemainingUnit.IsNull() && data.Classes[j].BandwidthRemainingUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "bandwidth-remaining/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "bandwidth-remaining/unit"))
 				}
 				if !state.Classes[i].BandwidthRemainingValue.IsNull() && data.Classes[j].BandwidthRemainingValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "bandwidth-remaining/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "bandwidth-remaining/value"))
 				}
 				if !state.Classes[i].BandwidthUnit.IsNull() && data.Classes[j].BandwidthUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "bandwidth/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "bandwidth/unit"))
 				}
 				if !state.Classes[i].BandwidthValue.IsNull() && data.Classes[j].BandwidthValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/class%v", state.getPath(), keyString), "bandwidth/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString), "bandwidth/value"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/class%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "class", keyString))
 		}
 	}
 	if !state.Description.IsNull() && data.Description.IsNull() {
@@ -1622,7 +1622,7 @@ func (data *PolicyMapQoS) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.Classes[i].RandomDetectDefault.IsNull() && !data.Classes[i].RandomDetectDefault.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "random-detect-default"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "random-detect-default"))
 		}
 		for ci := range data.Classes[i].QueueLimits {
 			ckeys := [...]string{"value", "unit"}
@@ -1633,22 +1633,22 @@ func (data *PolicyMapQoS) getEmptyLeafsDelete(ctx context.Context, version strin
 			}
 		}
 		if !data.Classes[i].PoliceViolateActionDrop.IsNull() && !data.Classes[i].PoliceViolateActionDrop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/violate-action/drop"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/violate-action/drop"))
 		}
 		if !data.Classes[i].PoliceViolateActionTransmit.IsNull() && !data.Classes[i].PoliceViolateActionTransmit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/violate-action/transmit"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/violate-action/transmit"))
 		}
 		if !data.Classes[i].PoliceExceedActionDrop.IsNull() && !data.Classes[i].PoliceExceedActionDrop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/exceed-action/drop"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/exceed-action/drop"))
 		}
 		if !data.Classes[i].PoliceExceedActionTransmit.IsNull() && !data.Classes[i].PoliceExceedActionTransmit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/exceed-action/transmit"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/exceed-action/transmit"))
 		}
 		if !data.Classes[i].PoliceConformActionDrop.IsNull() && !data.Classes[i].PoliceConformActionDrop.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/conform-action/drop"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/conform-action/drop"))
 		}
 		if !data.Classes[i].PoliceConformActionTransmit.IsNull() && !data.Classes[i].PoliceConformActionTransmit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/class%v", data.getPath(), keyString), "police/conform-action/transmit"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString), "police/conform-action/transmit"))
 		}
 	}
 	return emptyLeafsDelete
@@ -1678,7 +1678,7 @@ func (data *PolicyMapQoS) getDeletePaths(ctx context.Context, version string) []
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/class%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "class", keyString))
 	}
 	if !data.Description.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "description"))

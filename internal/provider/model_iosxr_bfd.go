@@ -934,34 +934,34 @@ func (data *BFD) getDeletedItems(ctx context.Context, state BFD, version string)
 			}
 			if found {
 				if !state.Interfaces[i].Multiplier.IsNull() && data.Interfaces[j].Multiplier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "multiplier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "multiplier"))
 				}
 				if !state.Interfaces[i].RxInterval.IsNull() && data.Interfaces[j].RxInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "rx-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "rx-interval"))
 				}
 				if !state.Interfaces[i].TxInterval.IsNull() && data.Interfaces[j].TxInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "tx-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "tx-interval"))
 				}
 				if !state.Interfaces[i].LocalAddress.IsNull() && data.Interfaces[j].LocalAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "local-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "local-address"))
 				}
 				if !state.Interfaces[i].Disable.IsNull() && data.Interfaces[j].Disable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "disable"))
 				}
 				if !state.Interfaces[i].Ipv6ChecksumDisable.IsNull() && data.Interfaces[j].Ipv6ChecksumDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "ipv6/checksum"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "ipv6/checksum"))
 				}
 				if !state.Interfaces[i].EchoIpv4Source.IsNull() && data.Interfaces[j].EchoIpv4Source.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "echo/ipv4/source/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "echo/ipv4/source/ipv4-address"))
 				}
 				if !state.Interfaces[i].EchoDisable.IsNull() && data.Interfaces[j].EchoDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "echo/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "echo/disable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString))
 		}
 	}
 	if !state.Ipv6ChecksumDisable.IsNull() && data.Ipv6ChecksumDisable.IsNull() {
@@ -1027,13 +1027,13 @@ func (data *BFD) getDeletedItems(ctx context.Context, state BFD, version string)
 			}
 			if found {
 				if !state.MultipathDestinations[i].LocationId.IsNull() && data.MultipathDestinations[j].LocationId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/multipath/destinations/destination%v", state.getPath(), keyString), "location-id"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "multipath/destinations/destination", keyString), "location-id"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/multipath/destinations/destination%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "multipath/destinations/destination", keyString))
 		}
 	}
 	for i := range state.MultipathLocations {
@@ -1063,7 +1063,7 @@ func (data *BFD) getDeletedItems(ctx context.Context, state BFD, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/multipath/include/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "multipath/include/locations/location", keyString))
 		}
 	}
 	if !state.TrapSinglehopPreMapped.IsNull() && data.TrapSinglehopPreMapped.IsNull() {
@@ -1107,10 +1107,10 @@ func (data *BFD) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Interfaces[i].Disable.IsNull() && !data.Interfaces[i].Disable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "disable"))
 		}
 		if !data.Interfaces[i].Ipv6ChecksumDisable.IsNull() && !data.Interfaces[i].Ipv6ChecksumDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "ipv6/checksum"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "ipv6/checksum"))
 		}
 	}
 	if !data.Ipv6ChecksumDisable.IsNull() && !data.Ipv6ChecksumDisable.ValueBool() {
@@ -1177,7 +1177,7 @@ func (data *BFD) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString))
 	}
 	if !data.Ipv6ChecksumDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/checksum/disable"))
@@ -1234,7 +1234,7 @@ func (data *BFD) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multipath/destinations/destination%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "multipath/destinations/destination", keyString))
 	}
 	for i := range data.MultipathLocations {
 		keys := [...]string{"location-id"}
@@ -1252,7 +1252,7 @@ func (data *BFD) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/multipath/include/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "multipath/include/locations/location", keyString))
 	}
 	if !data.TrapSinglehopPreMapped.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap/singlehop/pre-mapped"))

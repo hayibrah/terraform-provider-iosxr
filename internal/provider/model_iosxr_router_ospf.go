@@ -7716,13 +7716,13 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.SrlgNames[i].AdminWeight.IsNull() && data.SrlgNames[j].AdminWeight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/srlg/names/name%v", state.getPath(), keyString), "admin-weight"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "srlg/names/name", keyString), "admin-weight"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/srlg/names/name%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "srlg/names/name", keyString))
 		}
 	}
 	if !state.SrlgAdminWeight.IsNull() && data.SrlgAdminWeight.IsNull() {
@@ -7758,7 +7758,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ucmp/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ucmp/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.UcmpPrefixList.IsNull() && data.UcmpPrefixList.IsNull() {
@@ -7866,13 +7866,13 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.MessageDigestKeys[i].Md5Encrypted.IsNull() && data.MessageDigestKeys[j].Md5Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString), "md5/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString), "md5/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString))
 		}
 	}
 	if !state.AuthenticationKeyEncrypted.IsNull() && data.AuthenticationKeyEncrypted.IsNull() {
@@ -7928,7 +7928,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flex-algos/flex-algo%v/srlg/exclude-any/srlgs/srlg%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString, "srlg/exclude-any/srlgs/srlg", ckeyString))
 					}
 				}
 				for ci := range state.FlexAlgos[i].AffinityIncludeAll {
@@ -7958,7 +7958,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flex-algos/flex-algo%v/affinity/include-all/affinity-attributes/affinity-attribute%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString, "affinity/include-all/affinity-attributes/affinity-attribute", ckeyString))
 					}
 				}
 				for ci := range state.FlexAlgos[i].AffinityIncludeAny {
@@ -7988,7 +7988,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flex-algos/flex-algo%v/affinity/include-any/affinity-attributes/affinity-attribute%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString, "affinity/include-any/affinity-attributes/affinity-attribute", ckeyString))
 					}
 				}
 				for ci := range state.FlexAlgos[i].AffinityExcludeAny {
@@ -8018,35 +8018,35 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flex-algos/flex-algo%v/affinity/exclude-any/affinity-attributes/affinity-attribute%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString, "affinity/exclude-any/affinity-attributes/affinity-attribute", ckeyString))
 					}
 				}
 				if !state.FlexAlgos[i].FastRerouteDisable.IsNull() && data.FlexAlgos[j].FastRerouteDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "fast-reroute/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "fast-reroute/disable"))
 				}
 				if !state.FlexAlgos[i].AdvertiseDefinition.IsNull() && data.FlexAlgos[j].AdvertiseDefinition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "advertise-definition"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "advertise-definition"))
 				}
 				if !state.FlexAlgos[i].MetricTypeTeMetric.IsNull() && data.FlexAlgos[j].MetricTypeTeMetric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "metric-type/te-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "metric-type/te-metric"))
 				}
 				if !state.FlexAlgos[i].MetricTypeDelay.IsNull() && data.FlexAlgos[j].MetricTypeDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "metric-type/delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "metric-type/delay"))
 				}
 				if !state.FlexAlgos[i].PrefixMetric.IsNull() && data.FlexAlgos[j].PrefixMetric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "prefix-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "prefix-metric"))
 				}
 				if !state.FlexAlgos[i].MicroloopAvoidanceDisable.IsNull() && data.FlexAlgos[j].MicroloopAvoidanceDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "microloop/avoidance/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "microloop/avoidance/disable"))
 				}
 				if !state.FlexAlgos[i].Priority.IsNull() && data.FlexAlgos[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString), "priority"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/flex-algos/flex-algo%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "flex-algos/flex-algo", keyString))
 		}
 	}
 	for i := range state.AffinityMaps {
@@ -8073,13 +8073,13 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.AffinityMaps[i].BitPosition.IsNull() && data.AffinityMaps[j].BitPosition.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/affinity-map/affinity-attributes/affinity-attribute%v", state.getPath(), keyString), "bit-position"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "affinity-map/affinity-attributes/affinity-attribute", keyString), "bit-position"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/affinity-map/affinity-attributes/affinity-attribute%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "affinity-map/affinity-attributes/affinity-attribute", keyString))
 		}
 	}
 	if !state.SegmentRoutingForwardingDisable.IsNull() && data.SegmentRoutingForwardingDisable.IsNull() {
@@ -8178,7 +8178,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerLinkExcludeInterfaces {
@@ -8208,7 +8208,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerLinkPriorityLimitMedium.IsNull() && data.FastReroutePerLinkPriorityLimitMedium.IsNull() {
@@ -8271,7 +8271,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerPrefixExcludeInterfaces {
@@ -8301,7 +8301,7 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerPrefixSrlgProtectionWeightedGlobal.IsNull() && data.FastReroutePerPrefixSrlgProtectionWeightedGlobal.IsNull() {
@@ -8403,16 +8403,16 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.SummaryPrefixes[i].Tag.IsNull() && data.SummaryPrefixes[j].Tag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", state.getPath(), keyString), "tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "summary-prefixes/summary-prefix", keyString), "tag"))
 				}
 				if !state.SummaryPrefixes[i].NotAdvertise.IsNull() && data.SummaryPrefixes[j].NotAdvertise.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", state.getPath(), keyString), "not-advertise"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "summary-prefixes/summary-prefix", keyString), "not-advertise"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "summary-prefixes/summary-prefix", keyString))
 		}
 	}
 	if !state.QueueDispatchSpfLsaLimit.IsNull() && data.QueueDispatchSpfLsaLimit.IsNull() {
@@ -8673,16 +8673,16 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.DistanceSources[i].Acl.IsNull() && data.DistanceSources[j].Acl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/distance/administrative-distance/source-addresses/source-address%v", state.getPath(), keyString), "access-list-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "distance/administrative-distance/source-addresses/source-address", keyString), "access-list-name"))
 				}
 				if !state.DistanceSources[i].Distance.IsNull() && data.DistanceSources[j].Distance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/distance/administrative-distance/source-addresses/source-address%v", state.getPath(), keyString), "distance"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "distance/administrative-distance/source-addresses/source-address", keyString), "distance"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/distance/administrative-distance/source-addresses/source-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "distance/administrative-distance/source-addresses/source-address", keyString))
 		}
 	}
 	if !state.DefaultMetric.IsNull() && data.DefaultMetric.IsNull() {
@@ -8781,52 +8781,52 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.RedistributeOspf[i].NssaOnly.IsNull() && data.RedistributeOspf[j].NssaOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "nssa-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "nssa-only"))
 				}
 				if !state.RedistributeOspf[i].LsaTypeSummary.IsNull() && data.RedistributeOspf[j].LsaTypeSummary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "lsa-type/summary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "lsa-type/summary"))
 				}
 				if !state.RedistributeOspf[i].MetricUseRibMetric.IsNull() && data.RedistributeOspf[j].MetricUseRibMetric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "metric/use-rib-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "metric/use-rib-metric"))
 				}
 				if !state.RedistributeOspf[i].Metric.IsNull() && data.RedistributeOspf[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "metric/default-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "metric/default-metric"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternalTwo.IsNull() && data.RedistributeOspf[j].MatchNssaExternalTwo.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/nssa-external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/nssa-external/two"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternalOne.IsNull() && data.RedistributeOspf[j].MatchNssaExternalOne.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/nssa-external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/nssa-external/one"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternal.IsNull() && data.RedistributeOspf[j].MatchNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternalTwo.IsNull() && data.RedistributeOspf[j].MatchExternalTwo.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/external/two"))
 				}
 				if !state.RedistributeOspf[i].MatchExternalOne.IsNull() && data.RedistributeOspf[j].MatchExternalOne.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/external/one"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal.IsNull() && data.RedistributeOspf[j].MatchExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternal.IsNull() && data.RedistributeOspf[j].MatchInternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "match/internal"))
 				}
 				if !state.RedistributeOspf[i].RoutePolicy.IsNull() && data.RedistributeOspf[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "route-policy"))
 				}
 				if !state.RedistributeOspf[i].MetricType.IsNull() && data.RedistributeOspf[j].MetricType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "metric-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "metric-type"))
 				}
 				if !state.RedistributeOspf[i].Tag.IsNull() && data.RedistributeOspf[j].Tag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString), "tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString), "tag"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/ospf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospf", keyString))
 		}
 	}
 	for i := range state.RedistributeIsis {
@@ -8853,40 +8853,40 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.RedistributeIsis[i].NssaOnly.IsNull() && data.RedistributeIsis[j].NssaOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "nssa-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "nssa-only"))
 				}
 				if !state.RedistributeIsis[i].LsaTypeSummary.IsNull() && data.RedistributeIsis[j].LsaTypeSummary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "lsa-type/summary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "lsa-type/summary"))
 				}
 				if !state.RedistributeIsis[i].MetricUseRibMetric.IsNull() && data.RedistributeIsis[j].MetricUseRibMetric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "metric/use-rib-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "metric/use-rib-metric"))
 				}
 				if !state.RedistributeIsis[i].Metric.IsNull() && data.RedistributeIsis[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "metric/default-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "metric/default-metric"))
 				}
 				if !state.RedistributeIsis[i].RoutePolicy.IsNull() && data.RedistributeIsis[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "route-policy"))
 				}
 				if !state.RedistributeIsis[i].MetricType.IsNull() && data.RedistributeIsis[j].MetricType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "metric-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "metric-type"))
 				}
 				if !state.RedistributeIsis[i].Tag.IsNull() && data.RedistributeIsis[j].Tag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "tag"))
 				}
 				if !state.RedistributeIsis[i].Level12.IsNull() && data.RedistributeIsis[j].Level12.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "level-1-2"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "level-1-2"))
 				}
 				if !state.RedistributeIsis[i].Level2.IsNull() && data.RedistributeIsis[j].Level2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "level-2"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "level-2"))
 				}
 				if !state.RedistributeIsis[i].Level1.IsNull() && data.RedistributeIsis[j].Level1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString), "level-1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString), "level-1"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/isis%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis", keyString))
 		}
 	}
 	for i := range state.RedistributeBgp {
@@ -8913,34 +8913,34 @@ func (data *RouterOSPF) getDeletedItems(ctx context.Context, state RouterOSPF, v
 			}
 			if found {
 				if !state.RedistributeBgp[i].NssaOnly.IsNull() && data.RedistributeBgp[j].NssaOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "nssa-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "nssa-only"))
 				}
 				if !state.RedistributeBgp[i].LsaTypeSummary.IsNull() && data.RedistributeBgp[j].LsaTypeSummary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "lsa-type/summary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "lsa-type/summary"))
 				}
 				if !state.RedistributeBgp[i].MetricUseRibMetric.IsNull() && data.RedistributeBgp[j].MetricUseRibMetric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "metric/use-rib-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "metric/use-rib-metric"))
 				}
 				if !state.RedistributeBgp[i].Metric.IsNull() && data.RedistributeBgp[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "metric/default-metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "metric/default-metric"))
 				}
 				if !state.RedistributeBgp[i].PreserveMed.IsNull() && data.RedistributeBgp[j].PreserveMed.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "preserve-med"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "preserve-med"))
 				}
 				if !state.RedistributeBgp[i].RoutePolicy.IsNull() && data.RedistributeBgp[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "route-policy"))
 				}
 				if !state.RedistributeBgp[i].MetricType.IsNull() && data.RedistributeBgp[j].MetricType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "metric-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "metric-type"))
 				}
 				if !state.RedistributeBgp[i].Tag.IsNull() && data.RedistributeBgp[j].Tag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString), "tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString), "tag"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/bgp/as%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/bgp/as", keyString))
 		}
 	}
 	if !state.RedistributeStaticNssaOnly.IsNull() && data.RedistributeStaticNssaOnly.IsNull() {
@@ -9247,22 +9247,22 @@ func (data *RouterOSPF) getEmptyLeafsDelete(ctx context.Context, version string)
 			}
 		}
 		if !data.FlexAlgos[i].FastRerouteDisable.IsNull() && !data.FlexAlgos[i].FastRerouteDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "fast-reroute/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "fast-reroute/disable"))
 		}
 		if !data.FlexAlgos[i].AdvertiseDefinition.IsNull() && !data.FlexAlgos[i].AdvertiseDefinition.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "advertise-definition"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "advertise-definition"))
 		}
 		if !data.FlexAlgos[i].MetricTypeTeMetric.IsNull() && !data.FlexAlgos[i].MetricTypeTeMetric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "metric-type/te-metric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "metric-type/te-metric"))
 		}
 		if !data.FlexAlgos[i].MetricTypeDelay.IsNull() && !data.FlexAlgos[i].MetricTypeDelay.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "metric-type/delay"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "metric-type/delay"))
 		}
 		if !data.FlexAlgos[i].PrefixMetric.IsNull() && !data.FlexAlgos[i].PrefixMetric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "prefix-metric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "prefix-metric"))
 		}
 		if !data.FlexAlgos[i].MicroloopAvoidanceDisable.IsNull() && !data.FlexAlgos[i].MicroloopAvoidanceDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString), "microloop/avoidance/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString), "microloop/avoidance/disable"))
 		}
 	}
 	for i := range data.AffinityMaps {
@@ -9433,7 +9433,7 @@ func (data *RouterOSPF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SummaryPrefixes[i].NotAdvertise.IsNull() && !data.SummaryPrefixes[i].NotAdvertise.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", data.getPath(), keyString), "not-advertise"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "summary-prefixes/summary-prefix", keyString), "not-advertise"))
 		}
 	}
 	if !data.MaximumRedistributedPrefixesWarningOnly.IsNull() && !data.MaximumRedistributedPrefixesWarningOnly.ValueBool() {
@@ -9560,34 +9560,34 @@ func (data *RouterOSPF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeOspf[i].NssaOnly.IsNull() && !data.RedistributeOspf[i].NssaOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "nssa-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "nssa-only"))
 		}
 		if !data.RedistributeOspf[i].LsaTypeSummary.IsNull() && !data.RedistributeOspf[i].LsaTypeSummary.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "lsa-type/summary"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "lsa-type/summary"))
 		}
 		if !data.RedistributeOspf[i].MetricUseRibMetric.IsNull() && !data.RedistributeOspf[i].MetricUseRibMetric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "metric/use-rib-metric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "metric/use-rib-metric"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternalTwo.IsNull() && !data.RedistributeOspf[i].MatchNssaExternalTwo.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/nssa-external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/nssa-external/two"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternalOne.IsNull() && !data.RedistributeOspf[i].MatchNssaExternalOne.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/nssa-external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/nssa-external/one"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternal.IsNull() && !data.RedistributeOspf[i].MatchNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternalTwo.IsNull() && !data.RedistributeOspf[i].MatchExternalTwo.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/external/two"))
 		}
 		if !data.RedistributeOspf[i].MatchExternalOne.IsNull() && !data.RedistributeOspf[i].MatchExternalOne.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/external/one"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal.IsNull() && !data.RedistributeOspf[i].MatchExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternal.IsNull() && !data.RedistributeOspf[i].MatchInternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString), "match/internal"))
 		}
 	}
 	for i := range data.RedistributeIsis {
@@ -9598,22 +9598,22 @@ func (data *RouterOSPF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeIsis[i].NssaOnly.IsNull() && !data.RedistributeIsis[i].NssaOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "nssa-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "nssa-only"))
 		}
 		if !data.RedistributeIsis[i].LsaTypeSummary.IsNull() && !data.RedistributeIsis[i].LsaTypeSummary.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "lsa-type/summary"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "lsa-type/summary"))
 		}
 		if !data.RedistributeIsis[i].MetricUseRibMetric.IsNull() && !data.RedistributeIsis[i].MetricUseRibMetric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "metric/use-rib-metric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "metric/use-rib-metric"))
 		}
 		if !data.RedistributeIsis[i].Level12.IsNull() && !data.RedistributeIsis[i].Level12.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "level-1-2"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "level-1-2"))
 		}
 		if !data.RedistributeIsis[i].Level2.IsNull() && !data.RedistributeIsis[i].Level2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "level-2"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "level-2"))
 		}
 		if !data.RedistributeIsis[i].Level1.IsNull() && !data.RedistributeIsis[i].Level1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString), "level-1"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString), "level-1"))
 		}
 	}
 	for i := range data.RedistributeBgp {
@@ -9624,16 +9624,16 @@ func (data *RouterOSPF) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeBgp[i].NssaOnly.IsNull() && !data.RedistributeBgp[i].NssaOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString), "nssa-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/bgp/as", keyString), "nssa-only"))
 		}
 		if !data.RedistributeBgp[i].LsaTypeSummary.IsNull() && !data.RedistributeBgp[i].LsaTypeSummary.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString), "lsa-type/summary"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/bgp/as", keyString), "lsa-type/summary"))
 		}
 		if !data.RedistributeBgp[i].MetricUseRibMetric.IsNull() && !data.RedistributeBgp[i].MetricUseRibMetric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString), "metric/use-rib-metric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/bgp/as", keyString), "metric/use-rib-metric"))
 		}
 		if !data.RedistributeBgp[i].PreserveMed.IsNull() && !data.RedistributeBgp[i].PreserveMed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString), "preserve-med"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/bgp/as", keyString), "preserve-med"))
 		}
 	}
 	if !data.RedistributeStaticNssaOnly.IsNull() && !data.RedistributeStaticNssaOnly.ValueBool() {
@@ -9792,7 +9792,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/srlg/names/name%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "srlg/names/name", keyString))
 	}
 	if !data.SrlgAdminWeight.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "srlg/admin-weight"))
@@ -9816,7 +9816,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ucmp/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ucmp/exclude/interfaces/interface", keyString))
 	}
 	if !data.UcmpPrefixList.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ucmp/enable/prefix-list"))
@@ -9915,7 +9915,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "message-digest-keys/message-digest-key", keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication-key/encrypted"))
@@ -9936,7 +9936,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/flex-algos/flex-algo%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "flex-algos/flex-algo", keyString))
 	}
 	for i := range data.AffinityMaps {
 		keys := [...]string{"affinity-attribute-name"}
@@ -9954,7 +9954,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/affinity-map/affinity-attributes/affinity-attribute%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "affinity-map/affinity-attributes/affinity-attribute", keyString))
 	}
 	if !data.SegmentRoutingForwardingDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "segment-routing/forwarding/disable"))
@@ -10041,7 +10041,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -10059,7 +10059,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerLinkPriorityLimitMedium.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-link/priority-limit/medium"))
@@ -10110,7 +10110,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -10128,7 +10128,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerPrefixSrlgProtectionWeightedGlobal.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-prefix/srlg-protection/weighted-global"))
@@ -10218,7 +10218,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/summary-prefixes/summary-prefix%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "summary-prefixes/summary-prefix", keyString))
 	}
 	if !data.QueueDispatchSpfLsaLimit.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "queue/dispatch/spf-lsa-limit"))
@@ -10467,7 +10467,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/distance/administrative-distance/source-addresses/source-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "distance/administrative-distance/source-addresses/source-address", keyString))
 	}
 	if !data.DefaultMetric.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "default-metric"))
@@ -10557,7 +10557,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospf", keyString))
 	}
 	for i := range data.RedistributeIsis {
 		keys := [...]string{"instance-name"}
@@ -10575,7 +10575,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/isis%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis", keyString))
 	}
 	for i := range data.RedistributeBgp {
 		keys := [...]string{"as-number"}
@@ -10593,7 +10593,7 @@ func (data *RouterOSPF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/bgp/as%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/bgp/as", keyString))
 	}
 	if !data.RedistributeStaticNssaOnly.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "redistribute/static/nssa-only"))

@@ -2728,52 +2728,52 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PathOptions[i].LockdownSticky.IsNull() && data.PathOptions[j].LockdownSticky.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "lockdown/sticky"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "lockdown/sticky"))
 				}
 				if !state.PathOptions[i].Lockdown.IsNull() && data.PathOptions[j].Lockdown.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "lockdown"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "lockdown"))
 				}
 				if !state.PathOptions[i].ProtectedByIndexSecondary.IsNull() && data.PathOptions[j].ProtectedByIndexSecondary.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "protected-by/index-secondary"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "protected-by/index-secondary"))
 				}
 				if !state.PathOptions[i].ProtectedByIndex.IsNull() && data.PathOptions[j].ProtectedByIndex.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "protected-by"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "protected-by"))
 				}
 				if !state.PathOptions[i].AttributeSet.IsNull() && data.PathOptions[j].AttributeSet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "attribute-set/attribute-set-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "attribute-set/attribute-set-name"))
 				}
 				if !state.PathOptions[i].IsisLevel.IsNull() && data.PathOptions[j].IsisLevel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "isis/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "isis/level"))
 				}
 				if !state.PathOptions[i].IsisInstance.IsNull() && data.PathOptions[j].IsisInstance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "isis"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "isis"))
 				}
 				if !state.PathOptions[i].OspfAreaIpFormat.IsNull() && data.PathOptions[j].OspfAreaIpFormat.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf/area/ip-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "ospf/area/ip-address"))
 				}
 				if !state.PathOptions[i].OspfAreaId.IsNull() && data.PathOptions[j].OspfAreaId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf/area/decimal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "ospf/area/decimal"))
 				}
 				if !state.PathOptions[i].OspfInstance.IsNull() && data.PathOptions[j].OspfInstance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "ospf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "ospf"))
 				}
 				if !state.PathOptions[i].ExplicitPathVerbatim.IsNull() && data.PathOptions[j].ExplicitPathVerbatim.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit/verbatim"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "explicit/verbatim"))
 				}
 				if !state.PathOptions[i].ExplicitPathName.IsNull() && data.PathOptions[j].ExplicitPathName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "explicit"))
 				}
 				if !state.PathOptions[i].ExplicitPathId.IsNull() && data.PathOptions[j].ExplicitPathId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "explicit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "explicit"))
 				}
 				if !state.PathOptions[i].Dynamic.IsNull() && data.PathOptions[j].Dynamic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString), "dynamic"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "dynamic"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString))
 		}
 	}
 	if !state.SignalledName.IsNull() && data.SignalledName.IsNull() {
@@ -2884,7 +2884,7 @@ func (data *InterfaceTunnelTE) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination", keyString))
 		}
 	}
 	if !state.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() && data.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() {
@@ -3027,16 +3027,16 @@ func (data *InterfaceTunnelTE) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PathOptions[i].LockdownSticky.IsNull() && !data.PathOptions[i].LockdownSticky.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "lockdown/sticky"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "lockdown/sticky"))
 		}
 		if !data.PathOptions[i].Lockdown.IsNull() && !data.PathOptions[i].Lockdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "lockdown"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "lockdown"))
 		}
 		if !data.PathOptions[i].ExplicitPathVerbatim.IsNull() && !data.PathOptions[i].ExplicitPathVerbatim.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "explicit/verbatim"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "explicit/verbatim"))
 		}
 		if !data.PathOptions[i].Dynamic.IsNull() && !data.PathOptions[i].Dynamic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString), "dynamic"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString), "dynamic"))
 		}
 	}
 	if !data.LoggingEventsAll.IsNull() && !data.LoggingEventsAll.ValueBool() {
@@ -3299,7 +3299,7 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:path-options/path-option", keyString))
 	}
 	if !data.SignalledName.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:signalled-name"))
@@ -3398,7 +3398,7 @@ func (data *InterfaceTunnelTE) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/destinations/destination", keyString))
 	}
 	if !data.AutorouteAnnounceExcludeTrafficSegmentRouting.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-mpls-te-cfg:autoroute/announce/exclude-traffic/segment-routing"))

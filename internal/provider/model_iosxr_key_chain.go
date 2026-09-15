@@ -1109,103 +1109,103 @@ func (data *KeyChain) getDeletedItems(ctx context.Context, state KeyChain, versi
 			}
 			if found {
 				if !state.Keys[i].SendLifetimeInfinite.IsNull() && data.Keys[j].SendLifetimeInfinite.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/infinite"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/infinite"))
 				}
 				if !state.Keys[i].SendLifetimeDuration.IsNull() && data.Keys[j].SendLifetimeDuration.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/duration"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/duration"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeYear.IsNull() && data.Keys[j].SendLifetimeEndTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/year"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeDayOfMonth.IsNull() && data.Keys[j].SendLifetimeEndTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/day-of-month"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeMonth.IsNull() && data.Keys[j].SendLifetimeEndTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/month"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeSecond.IsNull() && data.Keys[j].SendLifetimeEndTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/second"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeMinute.IsNull() && data.Keys[j].SendLifetimeEndTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/minute"))
 				}
 				if !state.Keys[i].SendLifetimeEndTimeHour.IsNull() && data.Keys[j].SendLifetimeEndTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/end-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/end-time/hour"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeYear.IsNull() && data.Keys[j].SendLifetimeStartTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/year"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeDayOfMonth.IsNull() && data.Keys[j].SendLifetimeStartTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/day-of-month"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeMonth.IsNull() && data.Keys[j].SendLifetimeStartTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/month"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeSecond.IsNull() && data.Keys[j].SendLifetimeStartTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/second"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeMinute.IsNull() && data.Keys[j].SendLifetimeStartTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/minute"))
 				}
 				if !state.Keys[i].SendLifetimeStartTimeHour.IsNull() && data.Keys[j].SendLifetimeStartTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "send-lifetime/start-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "send-lifetime/start-time/hour"))
 				}
 				if !state.Keys[i].AcceptLifetimeInfinite.IsNull() && data.Keys[j].AcceptLifetimeInfinite.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/infinite"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/infinite"))
 				}
 				if !state.Keys[i].AcceptLifetimeDuration.IsNull() && data.Keys[j].AcceptLifetimeDuration.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/duration"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/duration"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeYear.IsNull() && data.Keys[j].AcceptLifetimeEndTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/year"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeDayOfMonth.IsNull() && data.Keys[j].AcceptLifetimeEndTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/day-of-month"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeMonth.IsNull() && data.Keys[j].AcceptLifetimeEndTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/month"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeSecond.IsNull() && data.Keys[j].AcceptLifetimeEndTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/second"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeMinute.IsNull() && data.Keys[j].AcceptLifetimeEndTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/minute"))
 				}
 				if !state.Keys[i].AcceptLifetimeEndTimeHour.IsNull() && data.Keys[j].AcceptLifetimeEndTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/end-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/end-time/hour"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeYear.IsNull() && data.Keys[j].AcceptLifetimeStartTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/year"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeDayOfMonth.IsNull() && data.Keys[j].AcceptLifetimeStartTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/day-of-month"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeMonth.IsNull() && data.Keys[j].AcceptLifetimeStartTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/month"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeSecond.IsNull() && data.Keys[j].AcceptLifetimeStartTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/second"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeMinute.IsNull() && data.Keys[j].AcceptLifetimeStartTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/minute"))
 				}
 				if !state.Keys[i].AcceptLifetimeStartTimeHour.IsNull() && data.Keys[j].AcceptLifetimeStartTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "accept-lifetime/start-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "accept-lifetime/start-time/hour"))
 				}
 				if !state.Keys[i].CryptographicAlgorithm.IsNull() && data.Keys[j].CryptographicAlgorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "cryptographic-algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "cryptographic-algorithm"))
 				}
 				if !state.Keys[i].KeyStringPassword6.IsNull() && data.Keys[j].KeyStringPassword6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "key-string/password6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "key-string/password6"))
 				}
 				if !state.Keys[i].KeyStringPassword.IsNull() && data.Keys[j].KeyStringPassword.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString), "key-string/password"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString), "key-string/password"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/keys/key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "keys/key", keyString))
 		}
 	}
 	for i := range state.MacsecKeys {
@@ -1232,61 +1232,61 @@ func (data *KeyChain) getDeletedItems(ctx context.Context, state KeyChain, versi
 			}
 			if found {
 				if !state.MacsecKeys[i].LifetimeInfinite.IsNull() && data.MacsecKeys[j].LifetimeInfinite.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/infinite"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/infinite"))
 				}
 				if !state.MacsecKeys[i].LifetimeDuration.IsNull() && data.MacsecKeys[j].LifetimeDuration.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/duration"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/duration"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeYear.IsNull() && data.MacsecKeys[j].LifetimeEndTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/year"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeDayOfMonth.IsNull() && data.MacsecKeys[j].LifetimeEndTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/day-of-month"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeMonth.IsNull() && data.MacsecKeys[j].LifetimeEndTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/month"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeSecond.IsNull() && data.MacsecKeys[j].LifetimeEndTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/second"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeMinute.IsNull() && data.MacsecKeys[j].LifetimeEndTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/minute"))
 				}
 				if !state.MacsecKeys[i].LifetimeEndTimeHour.IsNull() && data.MacsecKeys[j].LifetimeEndTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/end-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/end-time/hour"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeYear.IsNull() && data.MacsecKeys[j].LifetimeStartTimeYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/year"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/year"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeDayOfMonth.IsNull() && data.MacsecKeys[j].LifetimeStartTimeDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/day-of-month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/day-of-month"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeMonth.IsNull() && data.MacsecKeys[j].LifetimeStartTimeMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/month"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/month"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeSecond.IsNull() && data.MacsecKeys[j].LifetimeStartTimeSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/second"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/second"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeMinute.IsNull() && data.MacsecKeys[j].LifetimeStartTimeMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/minute"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/minute"))
 				}
 				if !state.MacsecKeys[i].LifetimeStartTimeHour.IsNull() && data.MacsecKeys[j].LifetimeStartTimeHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "lifetime/start-time/hour"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "lifetime/start-time/hour"))
 				}
 				if !state.MacsecKeys[i].KeyStringCryptographicAlgorithm.IsNull() && data.MacsecKeys[j].KeyStringCryptographicAlgorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "key-string/cryptographic-algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "key-string/cryptographic-algorithm"))
 				}
 				if !state.MacsecKeys[i].KeyStringPassword6.IsNull() && data.MacsecKeys[j].KeyStringPassword6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "key-string/password6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "key-string/password6"))
 				}
 				if !state.MacsecKeys[i].KeyStringPassword.IsNull() && data.MacsecKeys[j].KeyStringPassword.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString), "key-string/password"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString), "key-string/password"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/macsec/keys/key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "macsec/keys/key", keyString))
 		}
 	}
 	if !state.AcceptToleranceInfinite.IsNull() && data.AcceptToleranceInfinite.IsNull() {
@@ -1318,10 +1318,10 @@ func (data *KeyChain) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Keys[i].SendLifetimeInfinite.IsNull() && !data.Keys[i].SendLifetimeInfinite.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/keys/key%v", data.getPath(), keyString), "send-lifetime/infinite"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "keys/key", keyString), "send-lifetime/infinite"))
 		}
 		if !data.Keys[i].AcceptLifetimeInfinite.IsNull() && !data.Keys[i].AcceptLifetimeInfinite.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/keys/key%v", data.getPath(), keyString), "accept-lifetime/infinite"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "keys/key", keyString), "accept-lifetime/infinite"))
 		}
 	}
 	for i := range data.MacsecKeys {
@@ -1332,7 +1332,7 @@ func (data *KeyChain) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MacsecKeys[i].LifetimeInfinite.IsNull() && !data.MacsecKeys[i].LifetimeInfinite.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/macsec/keys/key%v", data.getPath(), keyString), "lifetime/infinite"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "macsec/keys/key", keyString), "lifetime/infinite"))
 		}
 	}
 	if !data.AcceptToleranceInfinite.IsNull() && !data.AcceptToleranceInfinite.ValueBool() {
@@ -1368,7 +1368,7 @@ func (data *KeyChain) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/keys/key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "keys/key", keyString))
 	}
 	for i := range data.MacsecKeys {
 		keys := [...]string{"ckn"}
@@ -1386,7 +1386,7 @@ func (data *KeyChain) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/macsec/keys/key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "macsec/keys/key", keyString))
 	}
 	if !data.AcceptToleranceInfinite.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "accept-tolerance/infinite"))

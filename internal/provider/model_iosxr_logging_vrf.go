@@ -201,7 +201,29 @@ func (data LoggingVRF) GetRangeConstraints() []helpers.FieldRangeConstraint {
 
 // GetEnumConstraints returns the version-specific enum constraints for string fields
 func (data LoggingVRF) GetEnumConstraints() []helpers.FieldEnumConstraint {
-	return nil
+	return []helpers.FieldEnumConstraint{
+		{
+			FieldPath: "hostnames.severity",
+			VersionEnums: map[string][]string{
+				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
+				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
+			},
+		},
+		{
+			FieldPath: "host_ipv4_addresses.severity",
+			VersionEnums: map[string][]string{
+				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
+				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
+			},
+		},
+		{
+			FieldPath: "host_ipv6_addresses.severity",
+			VersionEnums: map[string][]string{
+				"24.4": {"alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"},
+				"25.4": {"alerts", "all", "critical", "debugging", "emergencies", "errors", "informational", "none", "notifications", "warning"},
+			},
+		},
+	}
 }
 
 // End of section. //template:end getEnumConstraints
@@ -609,25 +631,25 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.HostIpv6Addresses[i].Ipv6SourceAddress.IsNull() && data.HostIpv6Addresses[j].Ipv6SourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "source-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6-source-address", "25.4": "source-address"}, "ipv6-source-address")))
 				}
 				if !state.HostIpv6Addresses[i].Facility.IsNull() && data.HostIpv6Addresses[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "facility"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString), "facility"))
 				}
 				if !state.HostIpv6Addresses[i].Operator.IsNull() && data.HostIpv6Addresses[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString), "operator"))
 				}
 				if !state.HostIpv6Addresses[i].Port.IsNull() && data.HostIpv6Addresses[j].Port.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString), "port"))
 				}
 				if !state.HostIpv6Addresses[i].Severity.IsNull() && data.HostIpv6Addresses[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString), "severity"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString), "severity"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString))
 		}
 	}
 	for i := range state.HostIpv4Addresses {
@@ -654,25 +676,25 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.HostIpv4Addresses[i].Ipv4SourceAddress.IsNull() && data.HostIpv4Addresses[j].Ipv4SourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "source-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4-source-address", "25.4": "source-address"}, "ipv4-source-address")))
 				}
 				if !state.HostIpv4Addresses[i].Facility.IsNull() && data.HostIpv4Addresses[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "facility"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString), "facility"))
 				}
 				if !state.HostIpv4Addresses[i].Operator.IsNull() && data.HostIpv4Addresses[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString), "operator"))
 				}
 				if !state.HostIpv4Addresses[i].Port.IsNull() && data.HostIpv4Addresses[j].Port.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString), "port"))
 				}
 				if !state.HostIpv4Addresses[i].Severity.IsNull() && data.HostIpv4Addresses[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString), "severity"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString), "severity"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString))
 		}
 	}
 	for i := range state.Hostnames {
@@ -699,25 +721,25 @@ func (data *LoggingVRF) getDeletedItems(ctx context.Context, state LoggingVRF, v
 			}
 			if found {
 				if !state.Hostnames[i].HostnameSourceAddress.IsNull() && data.Hostnames[j].HostnameSourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "source-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "hostname-source-address", "25.4": "source-address"}, "hostname-source-address")))
 				}
 				if !state.Hostnames[i].Facility.IsNull() && data.Hostnames[j].Facility.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "facility"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString), "facility"))
 				}
 				if !state.Hostnames[i].Operator.IsNull() && data.Hostnames[j].Operator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString), "operator"))
 				}
 				if !state.Hostnames[i].Port.IsNull() && data.Hostnames[j].Port.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString), "port"))
 				}
 				if !state.Hostnames[i].Severity.IsNull() && data.Hostnames[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString), "severity"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString), "severity"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/hostnames/hostname%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString))
 		}
 	}
 	return deletedItems
@@ -777,7 +799,7 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6-hostnames/ipv6-hostname%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv6-addresses/host-ipv6-address", "25.4": "ipv6-hostnames/ipv6-hostname"}, "host-ipv6-addresses/host-ipv6-address"), keyString))
 	}
 	for i := range data.HostIpv4Addresses {
 		keys := [...]string{"ipv4-address"}
@@ -795,7 +817,7 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4-hostnames/ipv4-hostname%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-ipv4-addresses/host-ipv4-address", "25.4": "ipv4-hostnames/ipv4-hostname"}, "host-ipv4-addresses/host-ipv4-address"), keyString))
 	}
 	for i := range data.Hostnames {
 		keys := [...]string{helpers.SelectYangPath(version, map[string]string{"24.4": "name", "25.4": "host"}, "name")}
@@ -813,7 +835,7 @@ func (data *LoggingVRF) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hostnames/hostname%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "host-names/host-name", "25.4": "hostnames/hostname"}, "host-names/host-name"), keyString))
 	}
 	return deletePaths
 }

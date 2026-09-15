@@ -1852,25 +1852,25 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 			if found {
 				if !state.Neighbors[i].MldSnoopingProfile.IsNull() && data.Neighbors[j].MldSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mld/snooping/profile"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "mld/snooping/profile"))
 				}
 				if !state.Neighbors[i].IgmpSnoopingProfile.IsNull() && data.Neighbors[j].IgmpSnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "igmp/snooping/profile"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "igmp/snooping/profile"))
 				}
 				if !state.Neighbors[i].DhcpIpv4None.IsNull() && data.Neighbors[j].DhcpIpv4None.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dhcp/ipv4/none"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "dhcp/ipv4/none"))
 				}
 				if !state.Neighbors[i].DhcpIpv4SnoopingProfile.IsNull() && data.Neighbors[j].DhcpIpv4SnoopingProfile.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "dhcp/ipv4/snoop/profile"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "dhcp/ipv4/snoop/profile"))
 				}
 				if !state.Neighbors[i].PwClass.IsNull() && data.Neighbors[j].PwClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "pw-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "pw-class"))
 				}
 				if !state.Neighbors[i].MplsStaticLabelRemote.IsNull() && data.Neighbors[j].MplsStaticLabelRemote.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mpls/static/label/remote"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "mpls/static/label/remote"))
 				}
 				if !state.Neighbors[i].MplsStaticLabelLocal.IsNull() && data.Neighbors[j].MplsStaticLabelLocal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "mpls/static/label/local"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "mpls/static/label/local"))
 				}
 				for ci := range state.Neighbors[i].StaticMacAddresses {
 					ckeys := [...]string{"mac-address"}
@@ -1899,14 +1899,14 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v/static-mac-addresses/static-mac-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "neighbors/neighbor", keyString, "static-mac-addresses/static-mac-address", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString))
 		}
 	}
 	if !state.MulticastP2mpSignalingProtocolBgp.IsNull() && data.MulticastP2mpSignalingProtocolBgp.IsNull() {
@@ -2011,7 +2011,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetFourByteAsFormat {
@@ -2047,7 +2047,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetTwoByteAsFormat {
@@ -2083,7 +2083,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat {
@@ -2119,7 +2119,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetExportFourByteAsFormat {
@@ -2155,7 +2155,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat {
@@ -2191,7 +2191,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat {
@@ -2227,7 +2227,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetImportFourByteAsFormat {
@@ -2263,7 +2263,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt", keyString))
 		}
 	}
 	for i := range state.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat {
@@ -2299,7 +2299,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletedItems(ctx context.Context
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt", keyString))
 		}
 	}
 	if !state.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() && data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
@@ -2349,7 +2349,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getEmptyLeafsDelete(ctx context.Con
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].DhcpIpv4None.IsNull() && !data.Neighbors[i].DhcpIpv4None.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "dhcp/ipv4/none"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString), "dhcp/ipv4/none"))
 		}
 		for ci := range data.Neighbors[i].StaticMacAddresses {
 			ckeys := [...]string{"mac-address"}
@@ -2510,7 +2510,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString))
 	}
 	if !data.MulticastP2mpSignalingProtocolBgp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "multicast/p2mp/signaling-protocol/bgp"))
@@ -2600,7 +2600,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -2621,7 +2621,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -2642,7 +2642,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -2663,7 +2663,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -2684,7 +2684,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -2705,7 +2705,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat {
 		keys := [...]string{"ipv4-address", "assigned-number"}
@@ -2726,7 +2726,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "assigned-number"}
@@ -2747,7 +2747,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt", keyString))
 	}
 	for i := range data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "assigned-number"}
@@ -2768,7 +2768,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) getDeletePaths(ctx context.Context,
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt", keyString))
 	}
 	if !data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "autodiscovery/bgp/rd/ipv4-address-assigned-number"))

@@ -81,7 +81,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: "Set severity of  messages for particular remote host/vrf",
+							MarkdownDescription: "severity",
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{
@@ -113,7 +113,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: "Set severity of  messages for particular remote host/vrf",
+							MarkdownDescription: "severity",
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{
@@ -145,7 +145,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: "Set severity of  messages for particular remote host/vrf",
+							MarkdownDescription: "severity",
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{

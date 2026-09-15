@@ -2802,7 +2802,7 @@ func (data *RouterBGPSessionGroup) getDeletedItems(ctx context.Context, state Ro
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/peer-set/peer-sets%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "peer-set/peer-sets", keyString))
 		}
 	}
 	if !state.EgressEngineeringInheritanceDisable.IsNull() && data.EgressEngineeringInheritanceDisable.IsNull() {
@@ -3060,7 +3060,7 @@ func (data *RouterBGPSessionGroup) getDeletedItems(ctx context.Context, state Ro
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/bmp-activate/servers/server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "bmp-activate/servers/server", keyString))
 		}
 	}
 	if !state.TcpIpOnlyPreferredInheritanceDisable.IsNull() && data.TcpIpOnlyPreferredInheritanceDisable.IsNull() {
@@ -3421,7 +3421,7 @@ func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context, version s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/peer-set/peer-sets%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "peer-set/peer-sets", keyString))
 	}
 	if !data.EgressEngineeringInheritanceDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "egress-engineering/inheritance-disable"))
@@ -3667,7 +3667,7 @@ func (data *RouterBGPSessionGroup) getDeletePaths(ctx context.Context, version s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/bmp-activate/servers/server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "bmp-activate/servers/server", keyString))
 	}
 	if !data.TcpIpOnlyPreferredInheritanceDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "tcp/ip-only-preferred/inheritance-disable"))

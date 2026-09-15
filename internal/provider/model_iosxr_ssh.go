@@ -1537,13 +1537,13 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerUsernames[i].Keystring.IsNull() && data.ServerUsernames[j].Keystring.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/usernames/username%v", state.getPath(), keyString), "keystring"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server/usernames/username", keyString), "keystring"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/server/usernames/username%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "server/usernames/username", keyString))
 		}
 	}
 	if !state.ServerPort.IsNull() && data.ServerPort.IsNull() {
@@ -1627,16 +1627,16 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() && data.ServerNetconfVrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server/netconf/vrfs/vrf", keyString), "ipv6/access-list"))
 				}
 				if !state.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() && data.ServerNetconfVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server/netconf/vrfs/vrf", keyString), "ipv4/access-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "server/netconf/vrfs/vrf", keyString))
 		}
 	}
 	if !state.ServerNetconfPort.IsNull() && data.ServerNetconfPort.IsNull() {
@@ -1699,16 +1699,16 @@ func (data *SSH) getDeletedItems(ctx context.Context, state SSH, version string)
 			}
 			if found {
 				if !state.ServerVrfs[i].Ipv6AccessList.IsNull() && data.ServerVrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server/vrfs/vrf", keyString), "ipv6/access-list"))
 				}
 				if !state.ServerVrfs[i].Ipv4AccessList.IsNull() && data.ServerVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server/vrfs/vrf", keyString), "ipv4/access-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/server/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "server/vrfs/vrf", keyString))
 		}
 	}
 	if !state.Timeout.IsNull() && data.Timeout.IsNull() {
@@ -1900,7 +1900,7 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/usernames/username%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "server/usernames/username", keyString))
 	}
 	if !data.ServerPort.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/port"))
@@ -1975,7 +1975,7 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/netconf/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "server/netconf/vrfs/vrf", keyString))
 	}
 	if !data.ServerNetconfPort.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "server/netconf/port"))
@@ -2029,7 +2029,7 @@ func (data *SSH) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "server/vrfs/vrf", keyString))
 	}
 	if !data.Timeout.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "timeout"))

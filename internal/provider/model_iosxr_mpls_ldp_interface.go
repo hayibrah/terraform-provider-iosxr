@@ -446,22 +446,22 @@ func (data *MPLSLDPInterface) getDeletedItems(ctx context.Context, state MPLSLDP
 			}
 			if found {
 				if !state.AddressFamily[i].MldpDisable.IsNull() && data.AddressFamily[j].MldpDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "mldp/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "mldp/disable"))
 				}
 				if !state.AddressFamily[i].IgpAutoConfigDisable.IsNull() && data.AddressFamily[j].IgpAutoConfigDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "igp/auto-config/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "igp/auto-config/disable"))
 				}
 				if !state.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() && data.AddressFamily[j].DiscoveryTransportAddressIp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "discovery/transport-address/ip-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "discovery/transport-address/ip-address"))
 				}
 				if !state.AddressFamily[i].DiscoveryTransportAddressInterface.IsNull() && data.AddressFamily[j].DiscoveryTransportAddressInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString), "discovery/transport-address/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString), "discovery/transport-address/interface"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-families/address-family%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-families/address-family", keyString))
 		}
 	}
 	if !state.IgpSyncDelayOnSessionUpDisable.IsNull() && data.IgpSyncDelayOnSessionUpDisable.IsNull() {
@@ -499,13 +499,13 @@ func (data *MPLSLDPInterface) getEmptyLeafsDelete(ctx context.Context, version s
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AddressFamily[i].MldpDisable.IsNull() && !data.AddressFamily[i].MldpDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "mldp/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "mldp/disable"))
 		}
 		if !data.AddressFamily[i].IgpAutoConfigDisable.IsNull() && !data.AddressFamily[i].IgpAutoConfigDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "igp/auto-config/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "igp/auto-config/disable"))
 		}
 		if !data.AddressFamily[i].DiscoveryTransportAddressInterface.IsNull() && !data.AddressFamily[i].DiscoveryTransportAddressInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString), "discovery/transport-address/interface"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString), "discovery/transport-address/interface"))
 		}
 	}
 	if !data.IgpSyncDelayOnSessionUpDisable.IsNull() && !data.IgpSyncDelayOnSessionUpDisable.ValueBool() {
@@ -538,7 +538,7 @@ func (data *MPLSLDPInterface) getDeletePaths(ctx context.Context, version string
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-families/address-family%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-families/address-family", keyString))
 	}
 	if !data.IgpSyncDelayOnSessionUpDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "igp/sync/delay/on-session-up/disable"))

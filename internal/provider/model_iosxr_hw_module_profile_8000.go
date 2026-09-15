@@ -2879,16 +2879,16 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 			if found {
 				if !state.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.IsNull() && data.ProfileNpuBufferExtendedLocations[j].BandwidthCongestionProtectEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", state.getPath(), keyString), "bandwidth-congestion-protect/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile/npu/buffer-extended/locations/location", keyString), "bandwidth-congestion-protect/enable"))
 				}
 				if !state.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.IsNull() && data.ProfileNpuBufferExtendedLocations[j].BandwidthCongestionDetectionEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", state.getPath(), keyString), "bandwidth-congestion-detection/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile/npu/buffer-extended/locations/location", keyString), "bandwidth-congestion-detection/enable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile/npu/buffer-extended/locations/location", keyString))
 		}
 	}
 	if !state.ProfileGueUdpDestPortMpls.IsNull() && data.ProfileGueUdpDestPortMpls.IsNull() {
@@ -2924,13 +2924,13 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/hbm-buffers-percentage"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/hbm-buffers-percentage"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/number-of-evict-voqs"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString), "buffer-extended/non-pfc-tcs/max-non-pfc-voqs/number-of-evict-voqs"))
 				}
 				if helpers.VersionAtLeast(version, "25.4") && !state.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && data.ProfilePriorityFlowControlLocations[j].NonPfcTcs.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString), "buffer-extended/non-pfc-tcs"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString), "buffer-extended/non-pfc-tcs"))
 				}
 				for ci := range state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
 					ckeys := [...]string{"traffic-class-id"}
@@ -2956,25 +2956,25 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 						}
 						if found {
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].ProbabilityPercentage.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "probability-percentage"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString), "probability-percentage"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].MaxThreshold.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "max-threshold"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString), "max-threshold"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].Ecn.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "ecn"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString), "ecn"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].Headroom.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "headroom"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString), "headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferInternalTrafficClass[cj].PauseThreshold.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString), "pause-threshold"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-internal/traffic-class%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-internal/traffic-class", ckeyString))
 					}
 				}
 				for ci := range state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass {
@@ -3001,47 +3001,47 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 						}
 						if found {
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].MbytesHeadroom.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "mbytes/headroom"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "mbytes/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Mbytes.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "mbytes"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "mbytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].KbytesHeadroom.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "kbytes/headroom"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "kbytes/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Kbytes.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "kbytes"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "kbytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].UsHeadroom.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "us/headroom"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "us/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Us.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "us"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "us"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].MsHeadroom.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "ms/headroom"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "ms/headroom"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].Ms.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "ms"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "ms"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].PauseThresholdBytes.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold-bytes"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "pause-threshold-bytes"))
 							}
 							if !state.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() && data.ProfilePriorityFlowControlLocations[j].BufferExtendedTrafficClass[cj].PauseThreshold.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString), "pause-threshold"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "pause-threshold"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile/priority-flow-control/locations/location", keyString))
 		}
 	}
 	if !state.ProfileBwThreshold.IsNull() && data.ProfileBwThreshold.IsNull() {
@@ -3089,7 +3089,7 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/encap-exact/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile/encap-exact/locations/location", keyString))
 		}
 	}
 	for i := range state.ProfileEncapExactInterfaces {
@@ -3119,7 +3119,7 @@ func (data *HWModuleProfile8000) getDeletedItems(ctx context.Context, state HWMo
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile/encap-exact/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile/encap-exact/interfaces/interface", keyString))
 		}
 	}
 	if !state.ProfileCefSourceRtbhEnable.IsNull() && data.ProfileCefSourceRtbhEnable.IsNull() {
@@ -3370,10 +3370,10 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.IsNull() && !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionProtectEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString), "bandwidth-congestion-protect/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "profile/npu/buffer-extended/locations/location", keyString), "bandwidth-congestion-protect/enable"))
 		}
 		if !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.IsNull() && !data.ProfileNpuBufferExtendedLocations[i].BandwidthCongestionDetectionEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString), "bandwidth-congestion-detection/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "profile/npu/buffer-extended/locations/location", keyString), "bandwidth-congestion-detection/enable"))
 		}
 	}
 	for i := range data.ProfilePriorityFlowControlLocations {
@@ -3384,7 +3384,7 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if helpers.VersionAtLeast(version, "25.4") && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.IsNull() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcs.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", data.getPath(), keyString), "buffer-extended/non-pfc-tcs"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString), "buffer-extended/non-pfc-tcs"))
 		}
 		for ci := range data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass {
 			ckeys := [...]string{"traffic-class-id"}
@@ -3402,16 +3402,16 @@ func (data *HWModuleProfile8000) getEmptyLeafsDelete(ctx context.Context, versio
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "mbytes"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "mbytes"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "kbytes"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "kbytes"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "us"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "us"))
 			}
 			if !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.IsNull() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v/buffer-extended/traffic-class%v", data.getPath(), keyString, ckeyString), "ms"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString, "buffer-extended/traffic-class", ckeyString), "ms"))
 			}
 		}
 	}
@@ -3605,7 +3605,7 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/npu/buffer-extended/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile/npu/buffer-extended/locations/location", keyString))
 	}
 	if !data.ProfileGueUdpDestPortMpls.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/gue/udp-dest-port"))
@@ -3632,7 +3632,7 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/priority-flow-control/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile/priority-flow-control/locations/location", keyString))
 	}
 	if !data.ProfileBwThreshold.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/bw-threshold"))
@@ -3668,7 +3668,7 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile/encap-exact/locations/location", keyString))
 	}
 	for i := range data.ProfileEncapExactInterfaces {
 		keys := [...]string{"interface-name"}
@@ -3686,7 +3686,7 @@ func (data *HWModuleProfile8000) getDeletePaths(ctx context.Context, version str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile/encap-exact/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile/encap-exact/interfaces/interface", keyString))
 	}
 	if !data.ProfileCefSourceRtbhEnable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile/cef/source-rtbh/enable"))

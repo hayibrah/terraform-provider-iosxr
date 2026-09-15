@@ -250,13 +250,13 @@ func (data *CryptoSSL) getDeletedItems(ctx context.Context, state CryptoSSL, ver
 			}
 			if found {
 				if !state.Profile[i].Certificate.IsNull() && data.Profile[j].Certificate.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString), "certificate"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profiles/profile", keyString), "certificate"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profiles/profile%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profiles/profile", keyString))
 		}
 	}
 	return deletedItems
@@ -300,7 +300,7 @@ func (data *CryptoSSL) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profiles/profile%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profiles/profile", keyString))
 	}
 	return deletePaths
 }

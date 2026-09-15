@@ -7,13 +7,10 @@ attributes:
   # host-names/host-ipv4-addresses/host-ipv6-addresses: list container renames
   # 24.4: host-names/host-name, host-ipv4-addresses/*, host-ipv6-addresses/*
   # 25.4: hostnames/hostname, hostipv4s/hostipv4, hostipv6s/hostipv6
-  # tf_names unchanged; replaces_yang_name at list level, no legacy: true entries
   # ===========================================================
-
   # host-names/host-name → hostnames/hostname
   # Key rename: name → host (1-to-1, tf_name auto-inherits as "name")
   # Non-key rename: hostname-source-address → source-address
-  # Unchanged attrs (severity, port, operator, facility): omitted — inherited from base
   - yang_name: hostnames/hostname
     tf_name: hostnames
     type: List
@@ -23,13 +20,17 @@ attributes:
         id: true
         tf_name: name
         replaces_yang_name: name
-
       - yang_name: source-address
         tf_name: hostname_source_address
         replaces_yang_name: hostname-source-address
-
+      - yang_name: severity
+        minimum_test_value: '"informational"'
+        example: informational
+      - yang_name: port
+        type: Int64
+        no_augment_config: true
+        exclude_test: true
   # host-ipv4-addresses/host-ipv4-address → ipv4-hostnames/ipv4-hostname
-  # Key ipv4-address unchanged — not in delta
   # Non-key rename: ipv4-source-address → source-address
   - yang_name: ipv4-hostnames/ipv4-hostname
     tf_name: host_ipv4_addresses
@@ -39,9 +40,14 @@ attributes:
       - yang_name: source-address
         tf_name: ipv4_source_address
         replaces_yang_name: ipv4-source-address
-
+      - yang_name: severity
+        minimum_test_value: '"informational"'
+        example: informational
+      - yang_name: port
+        type: Int64
+        no_augment_config: true
+        exclude_test: true
   # host-ipv6-addresses/host-ipv6-address → ipv6-hostnames/ipv6-hostname
-  # Key ipv6-address unchanged — not in delta
   # Non-key rename: ipv6-source-address → source-address
   - yang_name: ipv6-hostnames/ipv6-hostname
     tf_name: host_ipv6_addresses
@@ -51,3 +57,9 @@ attributes:
       - yang_name: source-address
         tf_name: ipv6_source_address
         replaces_yang_name: ipv6-source-address
+      - yang_name: severity
+        example: informational
+      - yang_name: port
+        type: Int64
+        no_augment_config: true
+        exclude_test: true

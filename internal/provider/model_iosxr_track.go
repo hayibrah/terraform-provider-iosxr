@@ -1597,13 +1597,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.TrackUpErrorDisableInterfaces[i].AutoRecover.IsNull() && data.TrackUpErrorDisableInterfaces[j].AutoRecover.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", state.getPath(), keyString), "auto-recover"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "action/track-up/error-disable/interfaces/interface", keyString), "auto-recover"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "action/track-up/error-disable/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.TrackDownErrorDisableInterfaces {
@@ -1630,13 +1630,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.TrackDownErrorDisableInterfaces[i].AutoRecover.IsNull() && data.TrackDownErrorDisableInterfaces[j].AutoRecover.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", state.getPath(), keyString), "auto-recover"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "action/track-down/error-disable/interfaces/interface", keyString), "auto-recover"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "action/track-down/error-disable/interfaces/interface", keyString))
 		}
 	}
 	if !state.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() && data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() {
@@ -1723,7 +1723,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/or/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/line-protocol/state/boolean/or/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.LineProtocolBooleanAnd {
@@ -1753,7 +1753,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/and/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/line-protocol/state/boolean/and/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.LineProtocolPercentage {
@@ -1783,7 +1783,7 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/line-protocol/state/threshold/percentage/interfaces/interface", keyString))
 		}
 	}
 	if !state.LineProtocolPercentageDown.IsNull() && data.LineProtocolPercentageDown.IsNull() {
@@ -1816,13 +1816,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.LineProtocolWeight[i].Weight.IsNull() && data.LineProtocolWeight[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", state.getPath(), keyString), "weight"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/line-protocol/state/threshold/weight/interfaces/interface", keyString), "weight"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/line-protocol/state/threshold/weight/interfaces/interface", keyString))
 		}
 	}
 	if !state.LineProtocolWeightDown.IsNull() && data.LineProtocolWeightDown.IsNull() {
@@ -1861,13 +1861,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.ThresholdWeight[i].Weight.IsNull() && data.ThresholdWeight[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", state.getPath(), keyString), "weight"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/threshold/weight/objects/object", keyString), "weight"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/threshold/weight/objects/object", keyString))
 		}
 	}
 	if !state.ThresholdPercentageDown.IsNull() && data.ThresholdPercentageDown.IsNull() {
@@ -1900,13 +1900,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.ThresholdPercentage[i].Weight.IsNull() && data.ThresholdPercentage[j].Weight.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v", state.getPath(), keyString), "weight"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/threshold/percentage/objects/object", keyString), "weight"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/threshold/percentage/objects/object", keyString))
 		}
 	}
 	for i := range state.BooleanOrList {
@@ -1933,13 +1933,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.BooleanOrList[i].Not.IsNull() && data.BooleanOrList[j].Not.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", state.getPath(), keyString), "not"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/boolean/or/objects/object", keyString), "not"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/boolean/or/objects/object", keyString))
 		}
 	}
 	for i := range state.BooleanAndList {
@@ -1966,13 +1966,13 @@ func (data *Track) getDeletedItems(ctx context.Context, state Track, version str
 			}
 			if found {
 				if !state.BooleanAndList[i].Not.IsNull() && data.BooleanAndList[j].Not.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", state.getPath(), keyString), "not"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/boolean/and/objects/object", keyString), "not"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "type/list/boolean/and/objects/object", keyString))
 		}
 	}
 	if !state.Rtr.IsNull() && data.Rtr.IsNull() {
@@ -2019,7 +2019,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.TrackUpErrorDisableInterfaces[i].AutoRecover.IsNull() && !data.TrackUpErrorDisableInterfaces[i].AutoRecover.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", data.getPath(), keyString), "auto-recover"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "action/track-up/error-disable/interfaces/interface", keyString), "auto-recover"))
 		}
 	}
 	for i := range data.TrackDownErrorDisableInterfaces {
@@ -2030,7 +2030,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.TrackDownErrorDisableInterfaces[i].AutoRecover.IsNull() && !data.TrackDownErrorDisableInterfaces[i].AutoRecover.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", data.getPath(), keyString), "auto-recover"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "action/track-down/error-disable/interfaces/interface", keyString), "auto-recover"))
 		}
 	}
 	if !data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() && !data.BgpNeighborVpnv6UnicastDisableFibCheck.ValueBool() {
@@ -2107,7 +2107,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.BooleanOrList[i].Not.IsNull() && !data.BooleanOrList[i].Not.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", data.getPath(), keyString), "not"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/boolean/or/objects/object", keyString), "not"))
 		}
 	}
 	for i := range data.BooleanAndList {
@@ -2118,7 +2118,7 @@ func (data *Track) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.BooleanAndList[i].Not.IsNull() && !data.BooleanAndList[i].Not.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", data.getPath(), keyString), "not"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/boolean/and/objects/object", keyString), "not"))
 		}
 	}
 	return emptyLeafsDelete
@@ -2145,7 +2145,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/action/track-up/error-disable/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "action/track-up/error-disable/interfaces/interface", keyString))
 	}
 	for i := range data.TrackDownErrorDisableInterfaces {
 		keys := [...]string{"interface-name"}
@@ -2163,7 +2163,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/action/track-down/error-disable/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "action/track-down/error-disable/interfaces/interface", keyString))
 	}
 	if !data.BgpNeighborVpnv6UnicastDisableFibCheck.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/bgp/neighbor/address-family/state/address-family/vpnv6/unicast/disable/fib-check"))
@@ -2238,7 +2238,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/or/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/line-protocol/state/boolean/or/interfaces/interface", keyString))
 	}
 	for i := range data.LineProtocolBooleanAnd {
 		keys := [...]string{"interface-name"}
@@ -2256,7 +2256,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/boolean/and/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/line-protocol/state/boolean/and/interfaces/interface", keyString))
 	}
 	for i := range data.LineProtocolPercentage {
 		keys := [...]string{"interface-name"}
@@ -2274,7 +2274,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/percentage/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/line-protocol/state/threshold/percentage/interfaces/interface", keyString))
 	}
 	if !data.LineProtocolPercentageDown.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/percentage/threshold/percentage/down"))
@@ -2298,7 +2298,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/line-protocol/state/threshold/weight/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/line-protocol/state/threshold/weight/interfaces/interface", keyString))
 	}
 	if !data.LineProtocolWeightDown.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/line-protocol/state/threshold/weight/threshold/weight/down"))
@@ -2328,7 +2328,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/weight/objects/object%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/threshold/weight/objects/object", keyString))
 	}
 	if !data.ThresholdPercentageDown.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/list/threshold/percentage/threshold/percentage/down"))
@@ -2352,7 +2352,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/threshold/percentage/objects/object%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/threshold/percentage/objects/object", keyString))
 	}
 	for i := range data.BooleanOrList {
 		keys := [...]string{"object-name"}
@@ -2370,7 +2370,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/boolean/or/objects/object%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/boolean/or/objects/object", keyString))
 	}
 	for i := range data.BooleanAndList {
 		keys := [...]string{"object-name"}
@@ -2388,7 +2388,7 @@ func (data *Track) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/type/list/boolean/and/objects/object%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "type/list/boolean/and/objects/object", keyString))
 	}
 	if !data.Rtr.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "type/rtr"))

@@ -3133,16 +3133,16 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.AdjacencySidAbsolutes[i].NeighborAddress.IsNull() && data.AdjacencySidAbsolutes[j].NeighborAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", state.getPath(), keyString), "neighbor-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/absolutes/absolute", keyString), "neighbor-address"))
 				}
 				if !state.AdjacencySidAbsolutes[i].Protected.IsNull() && data.AdjacencySidAbsolutes[j].Protected.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", state.getPath(), keyString), "protected"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/absolutes/absolute", keyString), "protected"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/absolutes/absolute", keyString))
 		}
 	}
 	for i := range state.AdjacencySidIndexes {
@@ -3169,16 +3169,16 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.AdjacencySidIndexes[i].NeighborAddress.IsNull() && data.AdjacencySidIndexes[j].NeighborAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/adjacency-sid/indexes/index%v", state.getPath(), keyString), "neighbor-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/indexes/index", keyString), "neighbor-address"))
 				}
 				if !state.AdjacencySidIndexes[i].Protected.IsNull() && data.AdjacencySidIndexes[j].Protected.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/adjacency-sid/indexes/index%v", state.getPath(), keyString), "protected"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/indexes/index", keyString), "protected"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/adjacency-sid/indexes/index%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "adjacency-sid/indexes/index", keyString))
 		}
 	}
 	for i := range state.PrefixSidAlgorithms {
@@ -3205,28 +3205,28 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.PrefixSidAlgorithms[i].AbsoluteNFlagClear.IsNull() && data.PrefixSidAlgorithms[j].AbsoluteNFlagClear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "absolute/n-flag-clear"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "absolute/n-flag-clear"))
 				}
 				if !state.PrefixSidAlgorithms[i].AbsoluteExplicitNull.IsNull() && data.PrefixSidAlgorithms[j].AbsoluteExplicitNull.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "absolute/explicit-null"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "absolute/explicit-null"))
 				}
 				if !state.PrefixSidAlgorithms[i].Absolute.IsNull() && data.PrefixSidAlgorithms[j].Absolute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "absolute/sid-label"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "absolute/sid-label"))
 				}
 				if !state.PrefixSidAlgorithms[i].IndexNFlagClear.IsNull() && data.PrefixSidAlgorithms[j].IndexNFlagClear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "index/n-flag-clear"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "index/n-flag-clear"))
 				}
 				if !state.PrefixSidAlgorithms[i].IndexExplicitNull.IsNull() && data.PrefixSidAlgorithms[j].IndexExplicitNull.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "index/explicit-null"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "index/explicit-null"))
 				}
 				if !state.PrefixSidAlgorithms[i].Index.IsNull() && data.PrefixSidAlgorithms[j].Index.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString), "index/sid-index"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString), "index/sid-index"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid/algorithms/algorithm", keyString))
 		}
 	}
 	if !state.PrefixSidStrictSpfAbsoluteNFlagClear.IsNull() && data.PrefixSidStrictSpfAbsoluteNFlagClear.IsNull() {
@@ -3355,7 +3355,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerPrefixExcludeInterfaces {
@@ -3385,7 +3385,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerPrefix.IsNull() && data.FastReroutePerPrefix.IsNull() {
@@ -3424,7 +3424,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerLinkExcludeInterfaces {
@@ -3454,7 +3454,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerLink.IsNull() && data.FastReroutePerLink.IsNull() {
@@ -3643,13 +3643,13 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.MessageDigestKeys[i].Md5Encrypted.IsNull() && data.MessageDigestKeys[j].Md5Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString), "md5/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString), "md5/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString))
 		}
 	}
 	if !state.AuthenticationKeyEncrypted.IsNull() && data.AuthenticationKeyEncrypted.IsNull() {
@@ -3679,22 +3679,22 @@ func (data *RouterOSPFVRFAreaInterface) getDeletedItems(ctx context.Context, sta
 			}
 			if found {
 				if !state.Neighbors[i].Cost.IsNull() && data.Neighbors[j].Cost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "cost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "cost"))
 				}
 				if !state.Neighbors[i].PollInterval.IsNull() && data.Neighbors[j].PollInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "poll-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "poll-interval"))
 				}
 				if !state.Neighbors[i].Priority.IsNull() && data.Neighbors[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "priority"))
 				}
 				if !state.Neighbors[i].DatabaseFilterAllOut.IsNull() && data.Neighbors[j].DatabaseFilterAllOut.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "database-filter/all/out"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "database-filter/all/out"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString))
 		}
 	}
 	return deletedItems
@@ -3714,7 +3714,7 @@ func (data *RouterOSPFVRFAreaInterface) getEmptyLeafsDelete(ctx context.Context,
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AdjacencySidAbsolutes[i].Protected.IsNull() && !data.AdjacencySidAbsolutes[i].Protected.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", data.getPath(), keyString), "protected"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "adjacency-sid/absolutes/absolute", keyString), "protected"))
 		}
 	}
 	for i := range data.AdjacencySidIndexes {
@@ -3725,7 +3725,7 @@ func (data *RouterOSPFVRFAreaInterface) getEmptyLeafsDelete(ctx context.Context,
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AdjacencySidIndexes[i].Protected.IsNull() && !data.AdjacencySidIndexes[i].Protected.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/adjacency-sid/indexes/index%v", data.getPath(), keyString), "protected"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "adjacency-sid/indexes/index", keyString), "protected"))
 		}
 	}
 	for i := range data.PrefixSidAlgorithms {
@@ -3736,16 +3736,16 @@ func (data *RouterOSPFVRFAreaInterface) getEmptyLeafsDelete(ctx context.Context,
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PrefixSidAlgorithms[i].AbsoluteNFlagClear.IsNull() && !data.PrefixSidAlgorithms[i].AbsoluteNFlagClear.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString), "absolute/n-flag-clear"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid/algorithms/algorithm", keyString), "absolute/n-flag-clear"))
 		}
 		if !data.PrefixSidAlgorithms[i].AbsoluteExplicitNull.IsNull() && !data.PrefixSidAlgorithms[i].AbsoluteExplicitNull.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString), "absolute/explicit-null"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid/algorithms/algorithm", keyString), "absolute/explicit-null"))
 		}
 		if !data.PrefixSidAlgorithms[i].IndexNFlagClear.IsNull() && !data.PrefixSidAlgorithms[i].IndexNFlagClear.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString), "index/n-flag-clear"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid/algorithms/algorithm", keyString), "index/n-flag-clear"))
 		}
 		if !data.PrefixSidAlgorithms[i].IndexExplicitNull.IsNull() && !data.PrefixSidAlgorithms[i].IndexExplicitNull.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString), "index/explicit-null"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid/algorithms/algorithm", keyString), "index/explicit-null"))
 		}
 	}
 	if !data.PrefixSidStrictSpfAbsoluteNFlagClear.IsNull() && !data.PrefixSidStrictSpfAbsoluteNFlagClear.ValueBool() {
@@ -3967,7 +3967,7 @@ func (data *RouterOSPFVRFAreaInterface) getEmptyLeafsDelete(ctx context.Context,
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Neighbors[i].DatabaseFilterAllOut.IsNull() && !data.Neighbors[i].DatabaseFilterAllOut.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString), "database-filter/all/out"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString), "database-filter/all/out"))
 		}
 	}
 	return emptyLeafsDelete
@@ -4006,7 +4006,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/adjacency-sid/absolutes/absolute%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "adjacency-sid/absolutes/absolute", keyString))
 	}
 	for i := range data.AdjacencySidIndexes {
 		keys := [...]string{"sid-index"}
@@ -4024,7 +4024,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/adjacency-sid/indexes/index%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "adjacency-sid/indexes/index", keyString))
 	}
 	for i := range data.PrefixSidAlgorithms {
 		keys := [...]string{"algorithm-number"}
@@ -4042,7 +4042,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/prefix-sid/algorithms/algorithm%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid/algorithms/algorithm", keyString))
 	}
 	if !data.PrefixSidStrictSpfAbsoluteNFlagClear.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "prefix-sid/strict-spf/absolute"))
@@ -4159,7 +4159,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -4177,7 +4177,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerPrefix.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-prefix/enable"))
@@ -4204,7 +4204,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -4222,7 +4222,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerLink.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-link/enable"))
@@ -4402,7 +4402,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "message-digest-keys/message-digest-key", keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication-key/encrypted"))
@@ -4423,7 +4423,7 @@ func (data *RouterOSPFVRFAreaInterface) getDeletePaths(ctx context.Context, vers
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString))
 	}
 	return deletePaths
 }

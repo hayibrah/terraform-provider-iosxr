@@ -1755,13 +1755,13 @@ func (data *PTP) getDeletedItems(ctx context.Context, state PTP, version string)
 			}
 			if found {
 				if !state.UtcOffsets[i].OffsetValue.IsNull() && data.UtcOffsets[j].OffsetValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/utc-offset/offsets/offset%v", state.getPath(), keyString), "offset-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "utc-offset/offsets/offset", keyString), "offset-value"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/utc-offset/offsets/offset%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "utc-offset/offsets/offset", keyString))
 		}
 	}
 	if !state.UtcOffsetBaseline.IsNull() && data.UtcOffsetBaseline.IsNull() {
@@ -2090,7 +2090,7 @@ func (data *PTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/utc-offset/offsets/offset%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "utc-offset/offsets/offset", keyString))
 	}
 	if !data.UtcOffsetBaseline.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "utc-offset/baseline"))

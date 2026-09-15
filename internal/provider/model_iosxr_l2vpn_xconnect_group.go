@@ -2720,19 +2720,19 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 			}
 			if found {
 				if !state.Mp2mps[i].AutodiscoveryBgpRoutePolicyExport.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRoutePolicyExport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/route-policy/export"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/route-policy/export"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() && data.Mp2mps[j].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() && data.Mp2mps[j].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() && data.Mp2mps[j].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeRange.IsNull() && data.Mp2mps[j].AutodiscoveryBgpSignalingProtocolBgpCeRange.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/ce-range"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/ce-range"))
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds {
 					ckeys := [...]string{"local-ce-id-value"}
@@ -2758,7 +2758,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].VpwsSeamlessIntegration.IsNull() && data.Mp2mps[j].AutodiscoveryBgpSignalingProtocolBgpCeIds[cj].VpwsSeamlessIntegration.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/signaling-protocol/bgp/ce-id%v", state.getPath(), keyString, ckeyString), "vpws-seamless-integration"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/signaling-protocol/bgp/ce-id", ckeyString), "vpws-seamless-integration"))
 							}
 							for cci := range state.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces {
 								cckeys := [...]string{"interface-name"}
@@ -2810,21 +2810,21 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 												}
 											}
 											if !found {
-												deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/signaling-protocol/bgp/ce-id%v/interface%v/remote-ce-id%v", state.getPath(), keyString, ckeyString, cckeyString, ccckeyString))
+												deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/signaling-protocol/bgp/ce-id", ckeyString, "interface", cckeyString, "remote-ce-id", ccckeyString))
 											}
 										}
 										break
 									}
 								}
 								if !found {
-									deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/signaling-protocol/bgp/ce-id%v/interface%v", state.getPath(), keyString, ckeyString, cckeyString))
+									deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/signaling-protocol/bgp/ce-id", ckeyString, "interface", cckeyString))
 								}
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/signaling-protocol/bgp/ce-id%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/signaling-protocol/bgp/ce-id", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetIpv4AddressFormat {
@@ -2860,7 +2860,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/ipv4-address-rts/ipv4-address-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetFourByteAsFormat {
@@ -2896,7 +2896,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/four-byte-as-rts/four-byte-as-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetTwoByteAsFormat {
@@ -2932,7 +2932,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/two-byte-as-rts/two-byte-as-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetExportIpv4AddressFormat {
@@ -2968,7 +2968,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/export/ipv4-address-rts/ipv4-address-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetExportFourByteAsFormat {
@@ -3004,7 +3004,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/export/four-byte-as-rts/four-byte-as-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetExportTwoByteAsFormat {
@@ -3040,7 +3040,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/export/two-byte-as-rts/two-byte-as-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetImportIpv4AddressFormat {
@@ -3076,7 +3076,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/import/ipv4-address-rts/ipv4-address-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetImportFourByteAsFormat {
@@ -3112,7 +3112,7 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/import/four-byte-as-rts/four-byte-as-rt", ckeyString))
 					}
 				}
 				for ci := range state.Mp2mps[i].AutodiscoveryBgpRouteTargetImportTwoByteAsFormat {
@@ -3148,56 +3148,56 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/route-target/import/two-byte-as-rts/two-byte-as-rt", ckeyString))
 					}
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdIpv4AddressIndex.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/ipv4-address-assigned-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/ipv4-address-assigned-number"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdIpv4Address.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdIpv4Address.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/ipv4-address"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdFourByteAsIndex.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdFourByteAsIndex.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/four-byte-as-assigned-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/four-byte-as-assigned-number"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdFourByteAsNumber.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdFourByteAsNumber.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/four-byte-as-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/four-byte-as-number"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdTwoByteAsIndex.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdTwoByteAsIndex.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/two-byte-as-assigned-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/two-byte-as-assigned-number"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdTwoByteAsNumber.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdTwoByteAsNumber.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/two-byte-as-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/two-byte-as-number"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgpRdAuto.IsNull() && data.Mp2mps[j].AutodiscoveryBgpRdAuto.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp/rd/auto"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/auto"))
 				}
 				if !state.Mp2mps[i].AutodiscoveryBgp.IsNull() && data.Mp2mps[j].AutodiscoveryBgp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "autodiscovery/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp"))
 				}
 				if !state.Mp2mps[i].ControlWordDisable.IsNull() && data.Mp2mps[j].ControlWordDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "control-word/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "control-word/disable"))
 				}
 				if !state.Mp2mps[i].Interworking.IsNull() && data.Mp2mps[j].Interworking.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "interworking"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "interworking"))
 				}
 				if !state.Mp2mps[i].L2Encapsulation.IsNull() && data.Mp2mps[j].L2Encapsulation.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "l2-encapsulation"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "l2-encapsulation"))
 				}
 				if !state.Mp2mps[i].Shutdown.IsNull() && data.Mp2mps[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "shutdown"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "shutdown"))
 				}
 				if !state.Mp2mps[i].Mtu.IsNull() && data.Mp2mps[j].Mtu.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "mtu"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "mtu"))
 				}
 				if !state.Mp2mps[i].VpnId.IsNull() && data.Mp2mps[j].VpnId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString), "vpn-id"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString), "vpn-id"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/mp2mps/mp2mp%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "mp2mps/mp2mp", keyString))
 		}
 	}
 	for i := range state.P2ps {
@@ -3253,13 +3253,13 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() && data.P2ps[j].EvpnServiceNeighborsSegmentRouting[cj].SegmentRoutingSrv6Locator.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/segment-routing-services/service%v", state.getPath(), keyString, ckeyString), "segment-routing/srv6/locator"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/segment-routing-services/service", ckeyString), "segment-routing/srv6/locator"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/segment-routing-services/service%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/segment-routing-services/service", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].EvpnTargetNeighborsSegmentRouting {
@@ -3298,13 +3298,13 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() && data.P2ps[j].EvpnTargetNeighborsSegmentRouting[cj].SegmentRoutingSrv6Locator.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/segment-routing-targets/target%v", state.getPath(), keyString, ckeyString), "segment-routing/srv6/locator"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/segment-routing-targets/target", ckeyString), "segment-routing/srv6/locator"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/segment-routing-targets/target%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/segment-routing-targets/target", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].EvpnServiceNeighbors {
@@ -3337,13 +3337,13 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].EvpnServiceNeighbors[ci].PwClass.IsNull() && data.P2ps[j].EvpnServiceNeighbors[cj].PwClass.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/services/service%v", state.getPath(), keyString, ckeyString), "pw-class"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/services/service", ckeyString), "pw-class"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/services/service%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/services/service", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].EvpnTargetNeighbors {
@@ -3382,13 +3382,13 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].EvpnTargetNeighbors[ci].PwClass.IsNull() && data.P2ps[j].EvpnTargetNeighbors[cj].PwClass.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/targets/target%v", state.getPath(), keyString, ckeyString), "pw-class"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/targets/target", ckeyString), "pw-class"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/evpn/evi/targets/target%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/evpn/evi/targets/target", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].Ipv6Neighbors {
@@ -3421,16 +3421,16 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].Ipv6Neighbors[ci].SourceIpv6Address.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].SourceIpv6Address.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString), "source/ipv6-address"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString), "source/ipv6-address"))
 							}
 							if !state.P2ps[i].Ipv6Neighbors[ci].TagImposeVlan.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].TagImposeVlan.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString), "tag-impose/vlan"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString), "tag-impose/vlan"))
 							}
 							if !state.P2ps[i].Ipv6Neighbors[ci].MplsStaticLabelRemote.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].MplsStaticLabelRemote.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString), "mpls/static/label/remote"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString), "mpls/static/label/remote"))
 							}
 							if !state.P2ps[i].Ipv6Neighbors[ci].MplsStaticLabelLocal.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].MplsStaticLabelLocal.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString), "mpls/static/label/local"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString), "mpls/static/label/local"))
 							}
 							for cci := range state.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors {
 								cckeys := [...]string{"address", "pw-id"}
@@ -3462,29 +3462,29 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 									}
 									if found {
 										if !state.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].MplsStaticLabelRemote.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].BackupNeighbors[ccj].MplsStaticLabelRemote.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "mpls/static/label/remote"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString, "backup/neighbors/neighbor", cckeyString), "mpls/static/label/remote"))
 										}
 										if !state.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].MplsStaticLabelLocal.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].BackupNeighbors[ccj].MplsStaticLabelLocal.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "mpls/static/label/local"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString, "backup/neighbors/neighbor", cckeyString), "mpls/static/label/local"))
 										}
 										if !state.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].BackupNeighbors[ccj].PwClass.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "pw-class"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString, "backup/neighbors/neighbor", cckeyString), "pw-class"))
 										}
 										break
 									}
 								}
 								if !found {
-									deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString))
+									deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString, "backup/neighbors/neighbor", cckeyString))
 								}
 							}
 							if !state.P2ps[i].Ipv6Neighbors[ci].PwClass.IsNull() && data.P2ps[j].Ipv6Neighbors[cj].PwClass.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString), "pw-class"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString), "pw-class"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv6s/ipv6%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv6s/ipv6", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].Ipv4Neighbors {
@@ -3517,13 +3517,13 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 						if found {
 							if !state.P2ps[i].Ipv4Neighbors[ci].TagImposeVlan.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].TagImposeVlan.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString), "tag-impose/vlan"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString), "tag-impose/vlan"))
 							}
 							if !state.P2ps[i].Ipv4Neighbors[ci].MplsStaticLabelRemote.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].MplsStaticLabelRemote.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString), "mpls/static/label/remote"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString), "mpls/static/label/remote"))
 							}
 							if !state.P2ps[i].Ipv4Neighbors[ci].MplsStaticLabelLocal.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].MplsStaticLabelLocal.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString), "mpls/static/label/local"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString), "mpls/static/label/local"))
 							}
 							for cci := range state.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors {
 								cckeys := [...]string{"address", "pw-id"}
@@ -3555,32 +3555,32 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 									}
 									if found {
 										if !state.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].MplsStaticLabelRemote.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].BackupNeighbors[ccj].MplsStaticLabelRemote.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "mpls/static/label/remote"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString, "backup/neighbors/neighbor", cckeyString), "mpls/static/label/remote"))
 										}
 										if !state.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].MplsStaticLabelLocal.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].BackupNeighbors[ccj].MplsStaticLabelLocal.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "mpls/static/label/local"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString, "backup/neighbors/neighbor", cckeyString), "mpls/static/label/local"))
 										}
 										if !state.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].BackupNeighbors[ccj].PwClass.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString), "pw-class"))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString, "backup/neighbors/neighbor", cckeyString), "pw-class"))
 										}
 										break
 									}
 								}
 								if !found {
-									deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v/backup/neighbors/neighbor%v", state.getPath(), keyString, ckeyString, cckeyString))
+									deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString, "backup/neighbors/neighbor", cckeyString))
 								}
 							}
 							if !state.P2ps[i].Ipv4Neighbors[ci].Bandwidth.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].Bandwidth.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString), "bandwidth"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString), "bandwidth"))
 							}
 							if !state.P2ps[i].Ipv4Neighbors[ci].PwClass.IsNull() && data.P2ps[j].Ipv4Neighbors[cj].PwClass.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString), "pw-class"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString), "pw-class"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/neighbor/ipv4s/ipv4%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "neighbor/ipv4s/ipv4", ckeyString))
 					}
 				}
 				for ci := range state.P2ps[i].BackupInterfaces {
@@ -3610,14 +3610,14 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/backup/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "backup/interface", ckeyString))
 					}
 				}
 				if !state.P2ps[i].InterworkingEthernet.IsNull() && data.P2ps[j].InterworkingEthernet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v", state.getPath(), keyString), "interworking/ethernet"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "p2ps/p2p", keyString), "interworking/ethernet"))
 				}
 				if !state.P2ps[i].InterworkingIpv4.IsNull() && data.P2ps[j].InterworkingIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v", state.getPath(), keyString), "interworking/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "p2ps/p2p", keyString), "interworking/ipv4"))
 				}
 				for ci := range state.P2ps[i].Interfaces {
 					ckeys := [...]string{"interface-name"}
@@ -3646,17 +3646,17 @@ func (data *L2VPNXconnectGroup) getDeletedItems(ctx context.Context, state L2VPN
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v/interfaces/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "p2ps/p2p", keyString, "interfaces/interface", ckeyString))
 					}
 				}
 				if !state.P2ps[i].Description.IsNull() && data.P2ps[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/p2ps/p2p%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "p2ps/p2p", keyString), "description"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/p2ps/p2p%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "p2ps/p2p", keyString))
 		}
 	}
 	return deletedItems
@@ -3676,13 +3676,13 @@ func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context, version
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.IsNull() && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/both"))
 		}
 		if !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.IsNull() && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelReceive.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/receive"))
 		}
 		if !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.IsNull() && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelTransmit.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/signaling-protocol/bgp/load-balancing/flow-label/transmit"))
 		}
 		for ci := range data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds {
 			ckeys := [...]string{"local-ce-id-value"}
@@ -3692,7 +3692,7 @@ func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context, version
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].VpwsSeamlessIntegration.IsNull() && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].VpwsSeamlessIntegration.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v/autodiscovery/bgp/signaling-protocol/bgp/ce-id%v", data.getPath(), keyString, ckeyString), "vpws-seamless-integration"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString, "autodiscovery/bgp/signaling-protocol/bgp/ce-id", ckeyString), "vpws-seamless-integration"))
 			}
 			for cci := range data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces {
 				cckeys := [...]string{"interface-name"}
@@ -3784,16 +3784,16 @@ func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context, version
 			}
 		}
 		if !data.Mp2mps[i].AutodiscoveryBgpRdAuto.IsNull() && !data.Mp2mps[i].AutodiscoveryBgpRdAuto.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "autodiscovery/bgp/rd/auto"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp/rd/auto"))
 		}
 		if !data.Mp2mps[i].AutodiscoveryBgp.IsNull() && !data.Mp2mps[i].AutodiscoveryBgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "autodiscovery/bgp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "autodiscovery/bgp"))
 		}
 		if !data.Mp2mps[i].ControlWordDisable.IsNull() && !data.Mp2mps[i].ControlWordDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "control-word/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "control-word/disable"))
 		}
 		if !data.Mp2mps[i].Shutdown.IsNull() && !data.Mp2mps[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString), "shutdown"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString), "shutdown"))
 		}
 	}
 	for i := range data.P2ps {
@@ -3876,10 +3876,10 @@ func (data *L2VPNXconnectGroup) getEmptyLeafsDelete(ctx context.Context, version
 			}
 		}
 		if !data.P2ps[i].InterworkingEthernet.IsNull() && !data.P2ps[i].InterworkingEthernet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/p2ps/p2p%v", data.getPath(), keyString), "interworking/ethernet"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "p2ps/p2p", keyString), "interworking/ethernet"))
 		}
 		if !data.P2ps[i].InterworkingIpv4.IsNull() && !data.P2ps[i].InterworkingIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/p2ps/p2p%v", data.getPath(), keyString), "interworking/ipv4"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "p2ps/p2p", keyString), "interworking/ipv4"))
 		}
 		for ci := range data.P2ps[i].Interfaces {
 			ckeys := [...]string{"interface-name"}
@@ -3914,7 +3914,7 @@ func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context, version stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/mp2mps/mp2mp%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "mp2mps/mp2mp", keyString))
 	}
 	for i := range data.P2ps {
 		keys := [...]string{"p2p-xconnect-name"}
@@ -3932,7 +3932,7 @@ func (data *L2VPNXconnectGroup) getDeletePaths(ctx context.Context, version stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/p2ps/p2p%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "p2ps/p2p", keyString))
 	}
 	return deletePaths
 }

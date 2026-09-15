@@ -940,23 +940,23 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.InheritLocations[i].Indexes[ci].Priority.IsNull() && data.InheritLocations[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "inherit-locations/inherit-location", keyString, "indexes/index", ckeyString), "priority"))
 							}
 							if !state.InheritLocations[i].Indexes[ci].Value.IsNull() && data.InheritLocations[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "inherit-locations/inherit-location", keyString, "indexes/index", ckeyString), "value"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/inherit-locations/inherit-location%v/indexes/index%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "inherit-locations/inherit-location", keyString, "indexes/index", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/inherit-locations/inherit-location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "inherit-locations/inherit-location", keyString))
 		}
 	}
 	for i := range state.Groups {
@@ -1006,23 +1006,23 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Groups[i].Indexes[ci].Priority.IsNull() && data.Groups[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "groups/group", keyString, "indexes/index", ckeyString), "priority"))
 							}
 							if !state.Groups[i].Indexes[ci].Value.IsNull() && data.Groups[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "groups/group", keyString, "indexes/index", ckeyString), "value"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v/indexes/index%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "groups/group", keyString, "indexes/index", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString))
 		}
 	}
 	for i := range state.Interfaces {
@@ -1072,13 +1072,13 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Interfaces[i].Groups[ci].GroupName.IsNull() && data.Interfaces[j].Groups[cj].GroupName.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/groups/group%v", state.getPath(), keyString, ckeyString), "group-name"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "groups/group", ckeyString), "group-name"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/groups/group%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "groups/group", ckeyString))
 					}
 				}
 				for ci := range state.Interfaces[i].Names {
@@ -1108,7 +1108,7 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/names/name%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "names/name", ckeyString))
 					}
 				}
 				for ci := range state.Interfaces[i].Indexes {
@@ -1135,29 +1135,29 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 						}
 						if found {
 							if !state.Interfaces[i].Indexes[ci].Priority.IsNull() && data.Interfaces[j].Indexes[cj].Priority.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v", state.getPath(), keyString, ckeyString), "priority"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "indexes/index", ckeyString), "priority"))
 							}
 							if !state.Interfaces[i].Indexes[ci].Value.IsNull() && data.Interfaces[j].Indexes[cj].Value.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v", state.getPath(), keyString, ckeyString), "value"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "indexes/index", ckeyString), "value"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v/indexes/index%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "interfaces/interface", keyString, "indexes/index", ckeyString))
 					}
 				}
 				if !state.Interfaces[i].IncludeOpticalPriority.IsNull() && data.Interfaces[j].IncludeOpticalPriority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "include-optical/priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "include-optical/priority"))
 				}
 				if !state.Interfaces[i].IncludeOptical.IsNull() && data.Interfaces[j].IncludeOptical.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString), "include-optical"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString), "include-optical"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "interfaces/interface", keyString))
 		}
 	}
 	for i := range state.Names {
@@ -1184,16 +1184,16 @@ func (data *SRLG) getDeletedItems(ctx context.Context, state SRLG, version strin
 			}
 			if found {
 				if !state.Names[i].Description.IsNull() && data.Names[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "names/name", keyString), "description"))
 				}
 				if !state.Names[i].Value.IsNull() && data.Names[j].Value.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/names/name%v", state.getPath(), keyString), "value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "names/name", keyString), "value"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/names/name%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "names/name", keyString))
 		}
 	}
 	return deletedItems
@@ -1269,7 +1269,7 @@ func (data *SRLG) getEmptyLeafsDelete(ctx context.Context, version string) []str
 			}
 		}
 		if !data.Interfaces[i].IncludeOptical.IsNull() && !data.Interfaces[i].IncludeOptical.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString), "include-optical"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString), "include-optical"))
 		}
 	}
 	for i := range data.Names {
@@ -1304,7 +1304,7 @@ func (data *SRLG) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/inherit-locations/inherit-location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "inherit-locations/inherit-location", keyString))
 	}
 	for i := range data.Groups {
 		keys := [...]string{"group-name"}
@@ -1322,7 +1322,7 @@ func (data *SRLG) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString))
 	}
 	for i := range data.Interfaces {
 		keys := [...]string{"interface-name"}
@@ -1340,7 +1340,7 @@ func (data *SRLG) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "interfaces/interface", keyString))
 	}
 	for i := range data.Names {
 		keys := [...]string{"srlg-name"}
@@ -1358,7 +1358,7 @@ func (data *SRLG) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/names/name%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "names/name", keyString))
 	}
 	return deletePaths
 }

@@ -21,6 +21,7 @@ package provider
 
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
+	"fmt"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
@@ -33,20 +34,26 @@ import (
 func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 	var checks []resource.TestCheckFunc
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.name", "server.cisco.com"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.severity", "info"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.port", "514"))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"hostnames.0.severity", selectVersionExample(map[string]string{
+			"24.4": "info", "25.4": "informational",
+		}, "informational")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.hostname_source_address", "1.1.1.2"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.ipv4_address", "1.1.1.1"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.severity", "info"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.port", "514"))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"host_ipv4_addresses.0.severity", selectVersionExample(map[string]string{
+			"24.4": "info", "25.4": "informational",
+		}, "informational")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.ipv4_source_address", "1.1.1.2"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.ipv6_address", "2001:db8::1"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.severity", "info"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.port", "514"))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"host_ipv6_addresses.0.severity", selectVersionExample(map[string]string{
+			"24.4": "info", "25.4": "informational",
+		}, "informational")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.operator", "equals-or-higher"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.ipv6_source_address", "2001:db8::2"))
@@ -94,24 +101,27 @@ func testAccDataSourceIosxrLoggingVRFConfig() string {
 	config += `	vrf_name = "default"` + "\n"
 	config += `	hostnames = [{` + "\n"
 	config += `		name = "server.cisco.com"` + "\n"
-	config += `		severity = "info"` + "\n"
-	config += `		port = 514` + "\n"
+	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		"24.4": "info", "25.4": "informational",
+	}, "informational")) + "\n"
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		hostname_source_address = "1.1.1.2"` + "\n"
 	config += `	}]` + "\n"
 	config += `	host_ipv4_addresses = [{` + "\n"
 	config += `		ipv4_address = "1.1.1.1"` + "\n"
-	config += `		severity = "info"` + "\n"
-	config += `		port = 514` + "\n"
+	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		"24.4": "info", "25.4": "informational",
+	}, "informational")) + "\n"
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv4_source_address = "1.1.1.2"` + "\n"
 	config += `	}]` + "\n"
 	config += `	host_ipv6_addresses = [{` + "\n"
 	config += `		ipv6_address = "2001:db8::1"` + "\n"
-	config += `		severity = "info"` + "\n"
-	config += `		port = 514` + "\n"
+	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		"24.4": "info", "25.4": "informational",
+	}, "informational")) + "\n"
 	config += `		operator = "equals-or-higher"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv6_source_address = "2001:db8::2"` + "\n"

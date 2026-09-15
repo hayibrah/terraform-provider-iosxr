@@ -397,26 +397,26 @@ func (data *SegmentRoutingMappingServer) getDeletedItems(ctx context.Context, st
 						}
 						if found {
 							if !state.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Attached.IsNull() && data.MappingPrefixSidAddressFamily[j].PrefixAddresses[cj].Attached.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v/prefix-address%v", state.getPath(), keyString, ckeyString), "attached"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "prefix-sid-map/address-families/address-family", keyString, "prefix-address", ckeyString), "attached"))
 							}
 							if !state.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Range.IsNull() && data.MappingPrefixSidAddressFamily[j].PrefixAddresses[cj].Range.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v/prefix-address%v", state.getPath(), keyString, ckeyString), "range"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "prefix-sid-map/address-families/address-family", keyString, "prefix-address", ckeyString), "range"))
 							}
 							if !state.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].SidIndex.IsNull() && data.MappingPrefixSidAddressFamily[j].PrefixAddresses[cj].SidIndex.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v/prefix-address%v", state.getPath(), keyString, ckeyString), "sid-index"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "prefix-sid-map/address-families/address-family", keyString, "prefix-address", ckeyString), "sid-index"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v/prefix-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "prefix-sid-map/address-families/address-family", keyString, "prefix-address", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "prefix-sid-map/address-families/address-family", keyString))
 		}
 	}
 	return deletedItems
@@ -443,7 +443,7 @@ func (data *SegmentRoutingMappingServer) getEmptyLeafsDelete(ctx context.Context
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Attached.IsNull() && !data.MappingPrefixSidAddressFamily[i].PrefixAddresses[ci].Attached.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v/prefix-address%v", data.getPath(), keyString, ckeyString), "attached"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "prefix-sid-map/address-families/address-family", keyString, "prefix-address", ckeyString), "attached"))
 			}
 		}
 	}
@@ -471,7 +471,7 @@ func (data *SegmentRoutingMappingServer) getDeletePaths(ctx context.Context, ver
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/prefix-sid-map/address-families/address-family%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "prefix-sid-map/address-families/address-family", keyString))
 	}
 	return deletePaths
 }

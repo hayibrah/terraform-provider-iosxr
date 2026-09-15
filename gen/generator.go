@@ -428,10 +428,8 @@ func GetDeletePathExpr(attr YamlConfigAttribute, versionVar string) string {
 	if len(attr.VersionYangNames) == 0 && len(attr.VersionDeleteMode) == 0 {
 		return fmt.Sprintf("%q", GetDeletePath(attr))
 	}
-	// Fast path: VersionYangNames set but delete flags not active, no VersionDeleteMode.
-	if !attr.DeleteParent && !attr.DeleteGrandparent && len(attr.VersionDeleteMode) == 0 {
-		return fmt.Sprintf("%q", GetDeletePath(attr))
-	}
+	// VersionYangNames is set: the YANG path itself differs between versions, so we
+	// must always emit a SelectYangPath call — fall through to the slow path below.
 
 	// Slow path: compute the effective delete path per version.
 	allVersions := make(map[string]string)

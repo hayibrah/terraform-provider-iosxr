@@ -46,7 +46,7 @@ Read-Only:
 - `ipv4_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
-- `severity` (String) Set severity of  messages for particular remote host/vrf
+- `severity` (String) severity
 
 
 <a id="nestedatt--host_ipv6_addresses"></a>
@@ -59,7 +59,7 @@ Read-Only:
 - `ipv6_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
-- `severity` (String) Set severity of  messages for particular remote host/vrf
+- `severity` (String) severity
 
 
 <a id="nestedatt--hostnames"></a>
@@ -72,4 +72,4 @@ Read-Only:
 - `name` (String) Name of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
-- `severity` (String) Set severity of  messages for particular remote host/vrf
+- `severity` (String) severity

@@ -1018,7 +1018,7 @@ func (data *LineConsole) getDeletedItems(ctx context.Context, state LineConsole,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:users/group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:users/group", keyString))
 		}
 	}
 	if !state.TimeoutLoginResponse.IsNull() && data.TimeoutLoginResponse.IsNull() {
@@ -1227,7 +1227,7 @@ func (data *LineConsole) getDeletePaths(ctx context.Context, version string) []s
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:users/group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:users/group", keyString))
 	}
 	if !data.TimeoutLoginResponse.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout/login/response"))

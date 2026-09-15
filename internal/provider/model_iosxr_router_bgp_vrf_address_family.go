@@ -4912,43 +4912,43 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() && data.RedistributeIsis[j].DefaultPolicyActionIn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "default-policy-action-in"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "default-policy-action-in"))
 				}
 				if !state.RedistributeIsis[i].RoutePolicy.IsNull() && data.RedistributeIsis[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "route-policy"))
 				}
 				if !state.RedistributeIsis[i].Multipath.IsNull() && data.RedistributeIsis[j].Multipath.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "multipath"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "multipath"))
 				}
 				if !state.RedistributeIsis[i].Metric.IsNull() && data.RedistributeIsis[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "metric"))
 				}
 				if !state.RedistributeIsis[i].Level1InterArea.IsNull() && data.RedistributeIsis[j].Level1InterArea.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/one-inter-area"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one-inter-area"))
 				}
 				if !state.RedistributeIsis[i].Level2Level1InterArea.IsNull() && data.RedistributeIsis[j].Level2Level1InterArea.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/two/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/two/level"))
 				}
 				if !state.RedistributeIsis[i].Level2.IsNull() && data.RedistributeIsis[j].Level2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/two"))
 				}
 				if !state.RedistributeIsis[i].Level1Level1InterArea.IsNull() && data.RedistributeIsis[j].Level1Level1InterArea.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/one/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level"))
 				}
 				if !state.RedistributeIsis[i].Level1Level2Level1InterArea.IsNull() && data.RedistributeIsis[j].Level1Level2Level1InterArea.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/one/level/two/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level/two/level"))
 				}
 				if !state.RedistributeIsis[i].Level1Level2.IsNull() && data.RedistributeIsis[j].Level1Level2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/one/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level"))
 				}
 				if !state.RedistributeIsis[i].Level1.IsNull() && data.RedistributeIsis[j].Level1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString), "level/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/isis-processes/isis-process", keyString))
 		}
 	}
 	for i := range state.RedistributeEigrp {
@@ -4975,31 +4975,31 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() && data.RedistributeEigrp[j].DefaultPolicyActionIn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "default-policy-action-in"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "default-policy-action-in"))
 				}
 				if !state.RedistributeEigrp[i].RoutePolicy.IsNull() && data.RedistributeEigrp[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "route-policy"))
 				}
 				if !state.RedistributeEigrp[i].Multipath.IsNull() && data.RedistributeEigrp[j].Multipath.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "multipath"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "multipath"))
 				}
 				if !state.RedistributeEigrp[i].Metric.IsNull() && data.RedistributeEigrp[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "metric"))
 				}
 				if !state.RedistributeEigrp[i].MatchExternal.IsNull() && data.RedistributeEigrp[j].MatchExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "match/external"))
 				}
 				if !state.RedistributeEigrp[i].MatchInternalExternal.IsNull() && data.RedistributeEigrp[j].MatchInternalExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "match/internal"))
 				}
 				if !state.RedistributeEigrp[i].MatchInternal.IsNull() && data.RedistributeEigrp[j].MatchInternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString), "match/internal"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/eigrps/eigrp", keyString))
 		}
 	}
 	for i := range state.RedistributeOspfv3 {
@@ -5026,115 +5026,115 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspfv3[j].DefaultPolicyActionIn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "default-policy-action-in"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "default-policy-action-in"))
 				}
 				if !state.RedistributeOspfv3[i].RoutePolicy.IsNull() && data.RedistributeOspfv3[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "route-policy"))
 				}
 				if !state.RedistributeOspfv3[i].Multipath.IsNull() && data.RedistributeOspfv3[j].Multipath.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "multipath"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "multipath"))
 				}
 				if !state.RedistributeOspfv3[i].Metric.IsNull() && data.RedistributeOspfv3[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "metric"))
 				}
 				if !state.RedistributeOspfv3[i].MatchNssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/nssa-external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/nssa-external/two"))
 				}
 				if !state.RedistributeOspfv3[i].MatchNssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternalNssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchExternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternalNssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchExternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternalNssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchExternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal2NssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchExternal2NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal2NssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchExternal2NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal2NssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchExternal2NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal2.IsNull() && data.RedistributeOspfv3[j].MatchExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal1NssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchExternal1NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal1NssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchExternal1NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal1NssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchExternal1NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal1.IsNull() && data.RedistributeOspfv3[j].MatchExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalNssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchInternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalNssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchInternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalNssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchInternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternalNssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternalNssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternalNssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal2NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal2NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal2NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal2.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal2.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal1NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal1.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal1NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal1NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal1.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternalExternal.IsNull() && data.RedistributeOspfv3[j].MatchInternalExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal"))
 				}
 				if !state.RedistributeOspfv3[i].MatchNssaExternal.IsNull() && data.RedistributeOspfv3[j].MatchNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 				}
 				if !state.RedistributeOspfv3[i].MatchExternal.IsNull() && data.RedistributeOspfv3[j].MatchExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 				}
 				if !state.RedistributeOspfv3[i].MatchInternal.IsNull() && data.RedistributeOspfv3[j].MatchInternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfv3s/ospfv3", keyString))
 		}
 	}
 	for i := range state.RedistributeOspf {
@@ -5161,115 +5161,115 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if helpers.VersionAtLeast(version, "25.4") && !state.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() && data.RedistributeOspf[j].DefaultPolicyActionIn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "default-policy-action-in"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "default-policy-action-in"))
 				}
 				if !state.RedistributeOspf[i].RoutePolicy.IsNull() && data.RedistributeOspf[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "route-policy"))
 				}
 				if !state.RedistributeOspf[i].Multipath.IsNull() && data.RedistributeOspf[j].Multipath.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "multipath"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "multipath"))
 				}
 				if !state.RedistributeOspf[i].Metric.IsNull() && data.RedistributeOspf[j].Metric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "metric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "metric"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternal2.IsNull() && data.RedistributeOspf[j].MatchNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/nssa-external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/nssa-external/two"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternal1.IsNull() && data.RedistributeOspf[j].MatchNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternalNssaExternal2.IsNull() && data.RedistributeOspf[j].MatchExternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternalNssaExternal1.IsNull() && data.RedistributeOspf[j].MatchExternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternalNssaExternal.IsNull() && data.RedistributeOspf[j].MatchExternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal2NssaExternal2.IsNull() && data.RedistributeOspf[j].MatchExternal2NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal2NssaExternal1.IsNull() && data.RedistributeOspf[j].MatchExternal2NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal2NssaExternal.IsNull() && data.RedistributeOspf[j].MatchExternal2NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal2.IsNull() && data.RedistributeOspf[j].MatchExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal1NssaExternal2.IsNull() && data.RedistributeOspf[j].MatchExternal1NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal1NssaExternal1.IsNull() && data.RedistributeOspf[j].MatchExternal1NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal1NssaExternal.IsNull() && data.RedistributeOspf[j].MatchExternal1NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal1.IsNull() && data.RedistributeOspf[j].MatchExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalNssaExternal2.IsNull() && data.RedistributeOspf[j].MatchInternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalNssaExternal1.IsNull() && data.RedistributeOspf[j].MatchInternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalNssaExternal.IsNull() && data.RedistributeOspf[j].MatchInternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternalNssaExternal2.IsNull() && data.RedistributeOspf[j].MatchInternalExternalNssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternalNssaExternal1.IsNull() && data.RedistributeOspf[j].MatchInternalExternalNssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternalNssaExternal.IsNull() && data.RedistributeOspf[j].MatchInternalExternalNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal2NssaExternal2.IsNull() && data.RedistributeOspf[j].MatchInternalExternal2NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal2NssaExternal1.IsNull() && data.RedistributeOspf[j].MatchInternalExternal2NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/two/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal2NssaExternal.IsNull() && data.RedistributeOspf[j].MatchInternalExternal2NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/two"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal2.IsNull() && data.RedistributeOspf[j].MatchInternalExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal1NssaExternal2.IsNull() && data.RedistributeOspf[j].MatchInternalExternal1NssaExternal2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal1NssaExternal1.IsNull() && data.RedistributeOspf[j].MatchInternalExternal1NssaExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/one/nssa-external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one/nssa-external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal1NssaExternal.IsNull() && data.RedistributeOspf[j].MatchInternalExternal1NssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external/one"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal1.IsNull() && data.RedistributeOspf[j].MatchInternalExternal1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal/external"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 				}
 				if !state.RedistributeOspf[i].MatchInternalExternal.IsNull() && data.RedistributeOspf[j].MatchInternalExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match/internal"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal"))
 				}
 				if !state.RedistributeOspf[i].MatchNssaExternal.IsNull() && data.RedistributeOspf[j].MatchNssaExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 				}
 				if !state.RedistributeOspf[i].MatchExternal.IsNull() && data.RedistributeOspf[j].MatchExternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 				}
 				if !state.RedistributeOspf[i].MatchInternal.IsNull() && data.RedistributeOspf[j].MatchInternal.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString), "match"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redistribute/ospfs/ospf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redistribute/ospfs/ospf", keyString))
 		}
 	}
 	for i := range state.AggregateAddresses {
@@ -5302,28 +5302,28 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if !state.AggregateAddresses[i].SetTag.IsNull() && data.AggregateAddresses[j].SetTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "set-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "set-tag"))
 				}
 				if !state.AggregateAddresses[i].Description.IsNull() && data.AggregateAddresses[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "description"))
 				}
 				if !state.AggregateAddresses[i].RoutePolicy.IsNull() && data.AggregateAddresses[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "route-policy"))
 				}
 				if !state.AggregateAddresses[i].SummaryOnly.IsNull() && data.AggregateAddresses[j].SummaryOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "summary-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "summary-only"))
 				}
 				if !state.AggregateAddresses[i].AsConfedSet.IsNull() && data.AggregateAddresses[j].AsConfedSet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "as-confed-set"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "as-confed-set"))
 				}
 				if !state.AggregateAddresses[i].AsSet.IsNull() && data.AggregateAddresses[j].AsSet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString), "as-set"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString), "as-set"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "aggregate-addresses/aggregate-address", keyString))
 		}
 	}
 	for i := range state.Networks {
@@ -5356,19 +5356,19 @@ func (data *RouterBGPVRFAddressFamily) getDeletedItems(ctx context.Context, stat
 			}
 			if found {
 				if !state.Networks[i].Multipath.IsNull() && data.Networks[j].Multipath.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/networks/network%v", state.getPath(), keyString), "."))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "networks/network", keyString), "."))
 				}
 				if !state.Networks[i].Backdoor.IsNull() && data.Networks[j].Backdoor.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/networks/network%v", state.getPath(), keyString), "."))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "networks/network", keyString), "."))
 				}
 				if !state.Networks[i].RoutePolicy.IsNull() && data.Networks[j].RoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/networks/network%v", state.getPath(), keyString), "."))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "networks/network", keyString), "."))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/networks/network%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "networks/network", keyString))
 		}
 	}
 	if !state.AdvertiseEpeBgpLabeledUnicast.IsNull() && data.AdvertiseEpeBgpLabeledUnicast.IsNull() {
@@ -5589,28 +5589,28 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeIsis[i].Multipath.IsNull() && !data.RedistributeIsis[i].Multipath.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "multipath"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "multipath"))
 		}
 		if !data.RedistributeIsis[i].Level1InterArea.IsNull() && !data.RedistributeIsis[i].Level1InterArea.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/one-inter-area"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one-inter-area"))
 		}
 		if !data.RedistributeIsis[i].Level2Level1InterArea.IsNull() && !data.RedistributeIsis[i].Level2Level1InterArea.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/two/level"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/two/level"))
 		}
 		if !data.RedistributeIsis[i].Level2.IsNull() && !data.RedistributeIsis[i].Level2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/two"))
 		}
 		if !data.RedistributeIsis[i].Level1Level1InterArea.IsNull() && !data.RedistributeIsis[i].Level1Level1InterArea.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/one/level"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level"))
 		}
 		if !data.RedistributeIsis[i].Level1Level2Level1InterArea.IsNull() && !data.RedistributeIsis[i].Level1Level2Level1InterArea.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/one/level/two/level"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level/two/level"))
 		}
 		if !data.RedistributeIsis[i].Level1Level2.IsNull() && !data.RedistributeIsis[i].Level1Level2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/one/level"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one/level"))
 		}
 		if !data.RedistributeIsis[i].Level1.IsNull() && !data.RedistributeIsis[i].Level1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString), "level/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString), "level/one"))
 		}
 	}
 	for i := range data.RedistributeEigrp {
@@ -5621,16 +5621,16 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeEigrp[i].Multipath.IsNull() && !data.RedistributeEigrp[i].Multipath.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString), "multipath"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/eigrps/eigrp", keyString), "multipath"))
 		}
 		if !data.RedistributeEigrp[i].MatchExternal.IsNull() && !data.RedistributeEigrp[i].MatchExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/eigrps/eigrp", keyString), "match/external"))
 		}
 		if !data.RedistributeEigrp[i].MatchInternalExternal.IsNull() && !data.RedistributeEigrp[i].MatchInternalExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/eigrps/eigrp", keyString), "match/internal"))
 		}
 		if !data.RedistributeEigrp[i].MatchInternal.IsNull() && !data.RedistributeEigrp[i].MatchInternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/eigrps/eigrp", keyString), "match/internal"))
 		}
 	}
 	for i := range data.RedistributeOspfv3 {
@@ -5641,100 +5641,100 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeOspfv3[i].Multipath.IsNull() && !data.RedistributeOspfv3[i].Multipath.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "multipath"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "multipath"))
 		}
 		if !data.RedistributeOspfv3[i].MatchNssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/nssa-external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/nssa-external/two"))
 		}
 		if !data.RedistributeOspfv3[i].MatchNssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternalNssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchExternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternalNssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchExternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternalNssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchExternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal2NssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchExternal2NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal2NssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchExternal2NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal2NssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchExternal2NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/two"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal1NssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchExternal1NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal1NssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchExternal1NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal1NssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchExternal1NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external/one"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalNssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchInternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalNssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchInternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalNssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal2NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/two"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal2.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal1NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external/one"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal1.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternalExternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternalExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match/internal"))
 		}
 		if !data.RedistributeOspfv3[i].MatchNssaExternal.IsNull() && !data.RedistributeOspfv3[i].MatchNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 		}
 		if !data.RedistributeOspfv3[i].MatchExternal.IsNull() && !data.RedistributeOspfv3[i].MatchExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 		}
 		if !data.RedistributeOspfv3[i].MatchInternal.IsNull() && !data.RedistributeOspfv3[i].MatchInternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString), "match"))
 		}
 	}
 	for i := range data.RedistributeOspf {
@@ -5745,100 +5745,100 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RedistributeOspf[i].Multipath.IsNull() && !data.RedistributeOspf[i].Multipath.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "multipath"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "multipath"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/nssa-external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/nssa-external/two"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternalNssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchExternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternalNssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchExternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternalNssaExternal.IsNull() && !data.RedistributeOspf[i].MatchExternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal2NssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchExternal2NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal2NssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchExternal2NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal2NssaExternal.IsNull() && !data.RedistributeOspf[i].MatchExternal2NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/two"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal2.IsNull() && !data.RedistributeOspf[i].MatchExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal1NssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchExternal1NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal1NssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchExternal1NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal1NssaExternal.IsNull() && !data.RedistributeOspf[i].MatchExternal1NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external/one"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal1.IsNull() && !data.RedistributeOspf[i].MatchExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalNssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchInternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalNssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchInternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalNssaExternal.IsNull() && !data.RedistributeOspf[i].MatchInternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternalNssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchInternalExternalNssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternalNssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchInternalExternalNssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternalNssaExternal.IsNull() && !data.RedistributeOspf[i].MatchInternalExternalNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/two/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal2NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/two"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/two"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal2.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal2.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal2.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal1.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/one/nssa-external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one/nssa-external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal1NssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external/one"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external/one"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal1.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal/external"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal/external"))
 		}
 		if !data.RedistributeOspf[i].MatchInternalExternal.IsNull() && !data.RedistributeOspf[i].MatchInternalExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match/internal"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match/internal"))
 		}
 		if !data.RedistributeOspf[i].MatchNssaExternal.IsNull() && !data.RedistributeOspf[i].MatchNssaExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 		}
 		if !data.RedistributeOspf[i].MatchExternal.IsNull() && !data.RedistributeOspf[i].MatchExternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 		}
 		if !data.RedistributeOspf[i].MatchInternal.IsNull() && !data.RedistributeOspf[i].MatchInternal.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString), "match"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString), "match"))
 		}
 	}
 	for i := range data.AggregateAddresses {
@@ -5849,13 +5849,13 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.AggregateAddresses[i].SummaryOnly.IsNull() && !data.AggregateAddresses[i].SummaryOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", data.getPath(), keyString), "summary-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "aggregate-addresses/aggregate-address", keyString), "summary-only"))
 		}
 		if !data.AggregateAddresses[i].AsConfedSet.IsNull() && !data.AggregateAddresses[i].AsConfedSet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", data.getPath(), keyString), "as-confed-set"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "aggregate-addresses/aggregate-address", keyString), "as-confed-set"))
 		}
 		if !data.AggregateAddresses[i].AsSet.IsNull() && !data.AggregateAddresses[i].AsSet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", data.getPath(), keyString), "as-set"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "aggregate-addresses/aggregate-address", keyString), "as-set"))
 		}
 	}
 	for i := range data.Networks {
@@ -5866,10 +5866,10 @@ func (data *RouterBGPVRFAddressFamily) getEmptyLeafsDelete(ctx context.Context, 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Networks[i].Multipath.IsNull() && !data.Networks[i].Multipath.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/networks/network%v", data.getPath(), keyString), "."))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "networks/network", keyString), "."))
 		}
 		if !data.Networks[i].Backdoor.IsNull() && !data.Networks[i].Backdoor.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/networks/network%v", data.getPath(), keyString), "."))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "networks/network", keyString), "."))
 		}
 	}
 	if !data.AdvertiseEpeBgpLabeledUnicast.IsNull() && !data.AdvertiseEpeBgpLabeledUnicast.ValueBool() {
@@ -6100,7 +6100,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/isis-processes/isis-process%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/isis-processes/isis-process", keyString))
 	}
 	for i := range data.RedistributeEigrp {
 		keys := [...]string{"eigrp-name"}
@@ -6118,7 +6118,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/eigrps/eigrp%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/eigrps/eigrp", keyString))
 	}
 	for i := range data.RedistributeOspfv3 {
 		keys := [...]string{"ospfv3-router-tag"}
@@ -6136,7 +6136,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospfv3s/ospfv3%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfv3s/ospfv3", keyString))
 	}
 	for i := range data.RedistributeOspf {
 		keys := [...]string{"ospf-router-tag"}
@@ -6154,7 +6154,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redistribute/ospfs/ospf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redistribute/ospfs/ospf", keyString))
 	}
 	for i := range data.AggregateAddresses {
 		keys := [...]string{"address", "address-prefix"}
@@ -6175,7 +6175,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/aggregate-addresses/aggregate-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "aggregate-addresses/aggregate-address", keyString))
 	}
 	for i := range data.Networks {
 		keys := [...]string{"address", "address-prefix"}
@@ -6196,7 +6196,7 @@ func (data *RouterBGPVRFAddressFamily) getDeletePaths(ctx context.Context, versi
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/networks/network%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "networks/network", keyString))
 	}
 	if !data.AdvertiseEpeBgpLabeledUnicast.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "advertise/epe-bgp/labeled-unicast"))

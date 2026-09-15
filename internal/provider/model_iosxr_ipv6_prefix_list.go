@@ -359,34 +359,34 @@ func (data *IPv6PrefixList) getDeletedItems(ctx context.Context, state IPv6Prefi
 			}
 			if found {
 				if !state.Sequences[i].MatchPrefixLengthLe.IsNull() && data.Sequences[j].MatchPrefixLengthLe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "match-prefix-length/le"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "match-prefix-length/le"))
 				}
 				if !state.Sequences[i].MatchPrefixLengthGe.IsNull() && data.Sequences[j].MatchPrefixLengthGe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "match-prefix-length/ge"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "match-prefix-length/ge"))
 				}
 				if !state.Sequences[i].MatchPrefixLengthEq.IsNull() && data.Sequences[j].MatchPrefixLengthEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "match-prefix-length/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "match-prefix-length/eq"))
 				}
 				if !state.Sequences[i].Mask.IsNull() && data.Sequences[j].Mask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "mask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "mask"))
 				}
 				if !state.Sequences[i].Zone.IsNull() && data.Sequences[j].Zone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "zone"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "zone"))
 				}
 				if !state.Sequences[i].Prefix.IsNull() && data.Sequences[j].Prefix.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "prefix"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "prefix"))
 				}
 				if !state.Sequences[i].Permission.IsNull() && data.Sequences[j].Permission.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permission"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permission"))
 				}
 				if !state.Sequences[i].Remark.IsNull() && data.Sequences[j].Remark.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "remark"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "remark"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString))
 		}
 	}
 	return deletedItems
@@ -430,7 +430,7 @@ func (data *IPv6PrefixList) getDeletePaths(ctx context.Context, version string) 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString))
 	}
 	return deletePaths
 }

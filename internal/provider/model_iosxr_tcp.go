@@ -583,23 +583,23 @@ func (data *TCP) getDeletedItems(ctx context.Context, state TCP, version string)
 						}
 						if found {
 							if !state.AoKeychains[i].Keys[ci].ReceiveId.IsNull() && data.AoKeychains[j].Keys[cj].ReceiveId.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v", state.getPath(), keyString, ckeyString), "receive-id"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "ao/keychains/keychain", keyString, "keys/key", ckeyString), "receive-id"))
 							}
 							if !state.AoKeychains[i].Keys[ci].SendId.IsNull() && data.AoKeychains[j].Keys[cj].SendId.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v", state.getPath(), keyString, ckeyString), "send-id"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "ao/keychains/keychain", keyString, "keys/key", ckeyString), "send-id"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/ao/keychains/keychain%v/keys/key%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "ao/keychains/keychain", keyString, "keys/key", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ao/keychains/keychain%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ao/keychains/keychain", keyString))
 		}
 	}
 	if !state.Ao.IsNull() && data.Ao.IsNull() {
@@ -699,7 +699,7 @@ func (data *TCP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ao/keychains/keychain%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ao/keychains/keychain", keyString))
 	}
 	if !data.Ao.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ao"))

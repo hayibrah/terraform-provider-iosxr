@@ -3388,19 +3388,19 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 			if found {
 				if !state.ShamLinks[i].AuthenticationNull.IsNull() && data.ShamLinks[j].AuthenticationNull.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication/null"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication/null"))
 				}
 				if !state.ShamLinks[i].AuthenticationKeychainName.IsNull() && data.ShamLinks[j].AuthenticationKeychainName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication/keychain-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication/keychain-name"))
 				}
 				if !state.ShamLinks[i].AuthenticationKeychain.IsNull() && data.ShamLinks[j].AuthenticationKeychain.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication/keychain"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication/keychain"))
 				}
 				if !state.ShamLinks[i].AuthenticationMessageDigest.IsNull() && data.ShamLinks[j].AuthenticationMessageDigest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication/message-digest"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication/message-digest"))
 				}
 				if !state.ShamLinks[i].Authentication.IsNull() && data.ShamLinks[j].Authentication.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication"))
 				}
 				for ci := range state.ShamLinks[i].MessageDigestKeys {
 					ckeys := [...]string{"message-digest-key-id"}
@@ -3426,38 +3426,38 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 						}
 						if found {
 							if !state.ShamLinks[i].MessageDigestKeys[ci].Md5Encrypted.IsNull() && data.ShamLinks[j].MessageDigestKeys[cj].Md5Encrypted.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString, ckeyString), "md5/encrypted"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "sham-links/sham-link", keyString, "message-digest-keys/message-digest-key", ckeyString), "md5/encrypted"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/sham-links/sham-link%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "sham-links/sham-link", keyString, "message-digest-keys/message-digest-key", ckeyString))
 					}
 				}
 				if !state.ShamLinks[i].AuthenticationKeyEncrypted.IsNull() && data.ShamLinks[j].AuthenticationKeyEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "authentication-key/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "authentication-key/encrypted"))
 				}
 				if !state.ShamLinks[i].TransmitDelay.IsNull() && data.ShamLinks[j].TransmitDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "transmit-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "transmit-delay"))
 				}
 				if !state.ShamLinks[i].RetransmitInterval.IsNull() && data.ShamLinks[j].RetransmitInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "retransmit-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "retransmit-interval"))
 				}
 				if !state.ShamLinks[i].DeadInterval.IsNull() && data.ShamLinks[j].DeadInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "dead-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "dead-interval"))
 				}
 				if !state.ShamLinks[i].HelloInterval.IsNull() && data.ShamLinks[j].HelloInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "hello-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "hello-interval"))
 				}
 				if !state.ShamLinks[i].Cost.IsNull() && data.ShamLinks[j].Cost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString), "cost"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString), "cost"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/sham-links/sham-link%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "sham-links/sham-link", keyString))
 		}
 	}
 	for i := range state.VirtualLinks {
@@ -3484,19 +3484,19 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 			if found {
 				if !state.VirtualLinks[i].AuthenticationNull.IsNull() && data.VirtualLinks[j].AuthenticationNull.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication/null"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication/null"))
 				}
 				if !state.VirtualLinks[i].AuthenticationKeychainName.IsNull() && data.VirtualLinks[j].AuthenticationKeychainName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication/keychain-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication/keychain-name"))
 				}
 				if !state.VirtualLinks[i].AuthenticationKeychain.IsNull() && data.VirtualLinks[j].AuthenticationKeychain.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication/keychain"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication/keychain"))
 				}
 				if !state.VirtualLinks[i].AuthenticationMessageDigest.IsNull() && data.VirtualLinks[j].AuthenticationMessageDigest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication/message-digest"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication/message-digest"))
 				}
 				if !state.VirtualLinks[i].Authentication.IsNull() && data.VirtualLinks[j].Authentication.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication"))
 				}
 				for ci := range state.VirtualLinks[i].MessageDigestKeys {
 					ckeys := [...]string{"message-digest-key-id"}
@@ -3522,35 +3522,35 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 						}
 						if found {
 							if !state.VirtualLinks[i].MessageDigestKeys[ci].Md5Encrypted.IsNull() && data.VirtualLinks[j].MessageDigestKeys[cj].Md5Encrypted.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString, ckeyString), "md5/encrypted"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString, "message-digest-keys/message-digest-key", ckeyString), "md5/encrypted"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-links/virtual-link%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString, "message-digest-keys/message-digest-key", ckeyString))
 					}
 				}
 				if !state.VirtualLinks[i].AuthenticationKeyEncrypted.IsNull() && data.VirtualLinks[j].AuthenticationKeyEncrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "authentication-key/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "authentication-key/encrypted"))
 				}
 				if !state.VirtualLinks[i].TransmitDelay.IsNull() && data.VirtualLinks[j].TransmitDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "transmit-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "transmit-delay"))
 				}
 				if !state.VirtualLinks[i].RetransmitInterval.IsNull() && data.VirtualLinks[j].RetransmitInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "retransmit-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "retransmit-interval"))
 				}
 				if !state.VirtualLinks[i].DeadInterval.IsNull() && data.VirtualLinks[j].DeadInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "dead-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "dead-interval"))
 				}
 				if !state.VirtualLinks[i].HelloInterval.IsNull() && data.VirtualLinks[j].HelloInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString), "hello-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString), "hello-interval"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/virtual-links/virtual-link%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "virtual-links/virtual-link", keyString))
 		}
 	}
 	if !state.DelayNormalizeOffset.IsNull() && data.DelayNormalizeOffset.IsNull() {
@@ -3652,7 +3652,7 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerPrefixExcludeInterfaces {
@@ -3682,7 +3682,7 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerPrefix.IsNull() && data.FastReroutePerPrefix.IsNull() {
@@ -3721,7 +3721,7 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 		}
 	}
 	for i := range state.FastReroutePerLinkExcludeInterfaces {
@@ -3751,7 +3751,7 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 		}
 	}
 	if !state.FastReroutePerLink.IsNull() && data.FastReroutePerLink.IsNull() {
@@ -3931,13 +3931,13 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 			if found {
 				if !state.MessageDigestKeys[i].Md5Encrypted.IsNull() && data.MessageDigestKeys[j].Md5Encrypted.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString), "md5/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString), "md5/encrypted"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "message-digest-keys/message-digest-key", keyString))
 		}
 	}
 	if !state.AuthenticationKeyEncrypted.IsNull() && data.AuthenticationKeyEncrypted.IsNull() {
@@ -4021,16 +4021,16 @@ func (data *RouterOSPFVRFArea) getDeletedItems(ctx context.Context, state Router
 			}
 			if found {
 				if !state.Ranges[i].NotAdvertise.IsNull() && data.Ranges[j].NotAdvertise.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ranges/range%v", state.getPath(), keyString), "not-advertise"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ranges/range", keyString), "not-advertise"))
 				}
 				if !state.Ranges[i].Advertise.IsNull() && data.Ranges[j].Advertise.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ranges/range%v", state.getPath(), keyString), "advertise"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ranges/range", keyString), "advertise"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ranges/range%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ranges/range", keyString))
 		}
 	}
 	return deletedItems
@@ -4050,16 +4050,16 @@ func (data *RouterOSPFVRFArea) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.ShamLinks[i].AuthenticationNull.IsNull() && !data.ShamLinks[i].AuthenticationNull.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", data.getPath(), keyString), "authentication/null"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sham-links/sham-link", keyString), "authentication/null"))
 		}
 		if !data.ShamLinks[i].AuthenticationKeychain.IsNull() && !data.ShamLinks[i].AuthenticationKeychain.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", data.getPath(), keyString), "authentication/keychain"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sham-links/sham-link", keyString), "authentication/keychain"))
 		}
 		if !data.ShamLinks[i].AuthenticationMessageDigest.IsNull() && !data.ShamLinks[i].AuthenticationMessageDigest.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", data.getPath(), keyString), "authentication/message-digest"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sham-links/sham-link", keyString), "authentication/message-digest"))
 		}
 		if !data.ShamLinks[i].Authentication.IsNull() && !data.ShamLinks[i].Authentication.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sham-links/sham-link%v", data.getPath(), keyString), "authentication"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sham-links/sham-link", keyString), "authentication"))
 		}
 		for ci := range data.ShamLinks[i].MessageDigestKeys {
 			ckeys := [...]string{"message-digest-key-id"}
@@ -4078,16 +4078,16 @@ func (data *RouterOSPFVRFArea) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.VirtualLinks[i].AuthenticationNull.IsNull() && !data.VirtualLinks[i].AuthenticationNull.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString), "authentication/null"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual-links/virtual-link", keyString), "authentication/null"))
 		}
 		if !data.VirtualLinks[i].AuthenticationKeychain.IsNull() && !data.VirtualLinks[i].AuthenticationKeychain.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString), "authentication/keychain"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual-links/virtual-link", keyString), "authentication/keychain"))
 		}
 		if !data.VirtualLinks[i].AuthenticationMessageDigest.IsNull() && !data.VirtualLinks[i].AuthenticationMessageDigest.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString), "authentication/message-digest"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual-links/virtual-link", keyString), "authentication/message-digest"))
 		}
 		if !data.VirtualLinks[i].Authentication.IsNull() && !data.VirtualLinks[i].Authentication.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString), "authentication"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "virtual-links/virtual-link", keyString), "authentication"))
 		}
 		for ci := range data.VirtualLinks[i].MessageDigestKeys {
 			ckeys := [...]string{"message-digest-key-id"}
@@ -4323,10 +4323,10 @@ func (data *RouterOSPFVRFArea) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Ranges[i].NotAdvertise.IsNull() && !data.Ranges[i].NotAdvertise.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ranges/range%v", data.getPath(), keyString), "not-advertise"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "ranges/range", keyString), "not-advertise"))
 		}
 		if !data.Ranges[i].Advertise.IsNull() && !data.Ranges[i].Advertise.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ranges/range%v", data.getPath(), keyString), "advertise"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "ranges/range", keyString), "advertise"))
 		}
 	}
 	return emptyLeafsDelete
@@ -4356,7 +4356,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sham-links/sham-link%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "sham-links/sham-link", keyString))
 	}
 	for i := range data.VirtualLinks {
 		keys := [...]string{"virtual-link-id"}
@@ -4374,7 +4374,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/virtual-links/virtual-link%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "virtual-links/virtual-link", keyString))
 	}
 	if !data.DelayNormalizeOffset.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "delay/normalize/offset"))
@@ -4464,7 +4464,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerPrefixExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -4482,7 +4482,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-prefix/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-prefix/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerPrefix.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-prefix/enable"))
@@ -4509,7 +4509,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/lfa-candidate/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/lfa-candidate/interfaces/interface", keyString))
 	}
 	for i := range data.FastReroutePerLinkExcludeInterfaces {
 		keys := [...]string{"interface-name"}
@@ -4527,7 +4527,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/fast-reroute/per-link/exclude/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "fast-reroute/per-link/exclude/interfaces/interface", keyString))
 	}
 	if !data.FastReroutePerLink.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "fast-reroute/per-link/enable"))
@@ -4698,7 +4698,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/message-digest-keys/message-digest-key%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "message-digest-keys/message-digest-key", keyString))
 	}
 	if !data.AuthenticationKeyEncrypted.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication-key/encrypted"))
@@ -4770,7 +4770,7 @@ func (data *RouterOSPFVRFArea) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ranges/range%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ranges/range", keyString))
 	}
 	return deletePaths
 }

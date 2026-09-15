@@ -964,28 +964,28 @@ func (data *LinuxNetworking) getDeletedItems(ctx context.Context, state LinuxNet
 			}
 			if found {
 				if !state.Vrfs[i].Ipv6DefaultRouteSoftwareForwarding.IsNull() && data.Vrfs[j].Ipv6DefaultRouteSoftwareForwarding.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/default-route/software-forwarding"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/default-route/software-forwarding"))
 				}
 				if !state.Vrfs[i].Ipv6SourceInterfaceManagementRoute.IsNull() && data.Vrfs[j].Ipv6SourceInterfaceManagementRoute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/source-hint/management-route/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/source-hint/management-route/interface"))
 				}
 				if !state.Vrfs[i].Ipv6SourceDefaultRouteActiveManagement.IsNull() && data.Vrfs[j].Ipv6SourceDefaultRouteActiveManagement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/source-hint/default-route/active-management"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/source-hint/default-route/active-management"))
 				}
 				if !state.Vrfs[i].Ipv6SourceInterfaceDefaultRoute.IsNull() && data.Vrfs[j].Ipv6SourceInterfaceDefaultRoute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/source-hint/default-route/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/source-hint/default-route/interface"))
 				}
 				if !state.Vrfs[i].Ipv4DefaultRouteSoftwareForwarding.IsNull() && data.Vrfs[j].Ipv4DefaultRouteSoftwareForwarding.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/default-route/software-forwarding"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/default-route/software-forwarding"))
 				}
 				if !state.Vrfs[i].Ipv4SourceInterfaceManagementRoute.IsNull() && data.Vrfs[j].Ipv4SourceInterfaceManagementRoute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/source-hint/management-route/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/source-hint/management-route/interface"))
 				}
 				if !state.Vrfs[i].Ipv4SourceDefaultRouteActiveManagement.IsNull() && data.Vrfs[j].Ipv4SourceDefaultRouteActiveManagement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/source-hint/default-route/active-management"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/source-hint/default-route/active-management"))
 				}
 				if !state.Vrfs[i].Ipv4SourceInterfaceDefaultRoute.IsNull() && data.Vrfs[j].Ipv4SourceInterfaceDefaultRoute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/source-hint/default-route/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/source-hint/default-route/interface"))
 				}
 				for ci := range state.Vrfs[i].EastWestInterfaces {
 					ckeys := [...]string{"east-west-name"}
@@ -1014,17 +1014,17 @@ func (data *LinuxNetworking) getDeletedItems(ctx context.Context, state LinuxNet
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/east-wests/east-west%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "east-wests/east-west", ckeyString))
 					}
 				}
 				if !state.Vrfs[i].Disable.IsNull() && data.Vrfs[j].Disable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "disable"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString))
 		}
 	}
 	for i := range state.ExposedInterfaces {
@@ -1051,25 +1051,25 @@ func (data *LinuxNetworking) getDeletedItems(ctx context.Context, state LinuxNet
 			}
 			if found {
 				if !state.ExposedInterfaces[i].StatisticsSynchronizationSixtySeconds.IsNull() && data.ExposedInterfaces[j].StatisticsSynchronizationSixtySeconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString), "statistics-synchronization/from-xr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 				}
 				if !state.ExposedInterfaces[i].StatisticsSynchronizationThirtySeconds.IsNull() && data.ExposedInterfaces[j].StatisticsSynchronizationThirtySeconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString), "statistics-synchronization/from-xr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 				}
 				if !state.ExposedInterfaces[i].StatisticsSynchronizationTenSeconds.IsNull() && data.ExposedInterfaces[j].StatisticsSynchronizationTenSeconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString), "statistics-synchronization/from-xr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 				}
 				if !state.ExposedInterfaces[i].StatisticsSynchronizationFiveSeconds.IsNull() && data.ExposedInterfaces[j].StatisticsSynchronizationFiveSeconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString), "statistics-synchronization/from-xr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 				}
 				if !state.ExposedInterfaces[i].LinuxManaged.IsNull() && data.ExposedInterfaces[j].LinuxManaged.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString), "linux-managed"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString), "linux-managed"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "exposed-interfaces/interfaces/interface", keyString))
 		}
 	}
 	if !state.LinuxOwnedVrf.IsNull() && data.LinuxOwnedVrf.IsNull() {
@@ -1125,16 +1125,16 @@ func (data *LinuxNetworking) getEmptyLeafsDelete(ctx context.Context, version st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Vrfs[i].Ipv6DefaultRouteSoftwareForwarding.IsNull() && !data.Vrfs[i].Ipv6DefaultRouteSoftwareForwarding.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv6/default-route/software-forwarding"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/default-route/software-forwarding"))
 		}
 		if !data.Vrfs[i].Ipv6SourceDefaultRouteActiveManagement.IsNull() && !data.Vrfs[i].Ipv6SourceDefaultRouteActiveManagement.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv6/source-hint/default-route/active-management"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/source-hint/default-route/active-management"))
 		}
 		if !data.Vrfs[i].Ipv4DefaultRouteSoftwareForwarding.IsNull() && !data.Vrfs[i].Ipv4DefaultRouteSoftwareForwarding.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv4/default-route/software-forwarding"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/default-route/software-forwarding"))
 		}
 		if !data.Vrfs[i].Ipv4SourceDefaultRouteActiveManagement.IsNull() && !data.Vrfs[i].Ipv4SourceDefaultRouteActiveManagement.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv4/source-hint/default-route/active-management"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/source-hint/default-route/active-management"))
 		}
 		for ci := range data.Vrfs[i].EastWestInterfaces {
 			ckeys := [...]string{"east-west-name"}
@@ -1145,7 +1145,7 @@ func (data *LinuxNetworking) getEmptyLeafsDelete(ctx context.Context, version st
 			}
 		}
 		if !data.Vrfs[i].Disable.IsNull() && !data.Vrfs[i].Disable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "disable"))
 		}
 	}
 	for i := range data.ExposedInterfaces {
@@ -1156,16 +1156,16 @@ func (data *LinuxNetworking) getEmptyLeafsDelete(ctx context.Context, version st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.ExposedInterfaces[i].StatisticsSynchronizationSixtySeconds.IsNull() && !data.ExposedInterfaces[i].StatisticsSynchronizationSixtySeconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", data.getPath(), keyString), "statistics-synchronization/from-xr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 		}
 		if !data.ExposedInterfaces[i].StatisticsSynchronizationThirtySeconds.IsNull() && !data.ExposedInterfaces[i].StatisticsSynchronizationThirtySeconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", data.getPath(), keyString), "statistics-synchronization/from-xr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 		}
 		if !data.ExposedInterfaces[i].StatisticsSynchronizationTenSeconds.IsNull() && !data.ExposedInterfaces[i].StatisticsSynchronizationTenSeconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", data.getPath(), keyString), "statistics-synchronization/from-xr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 		}
 		if !data.ExposedInterfaces[i].StatisticsSynchronizationFiveSeconds.IsNull() && !data.ExposedInterfaces[i].StatisticsSynchronizationFiveSeconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", data.getPath(), keyString), "statistics-synchronization/from-xr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "exposed-interfaces/interfaces/interface", keyString), "statistics-synchronization/from-xr"))
 		}
 	}
 	if !data.StatisticsSynchronizationTenMinutes.IsNull() && !data.StatisticsSynchronizationTenMinutes.ValueBool() {
@@ -1225,7 +1225,7 @@ func (data *LinuxNetworking) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString))
 	}
 	for i := range data.ExposedInterfaces {
 		keys := [...]string{"interface-name"}
@@ -1243,7 +1243,7 @@ func (data *LinuxNetworking) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/exposed-interfaces/interfaces/interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "exposed-interfaces/interfaces/interface", keyString))
 	}
 	if !data.LinuxOwnedVrf.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "linux-owned-vrf"))

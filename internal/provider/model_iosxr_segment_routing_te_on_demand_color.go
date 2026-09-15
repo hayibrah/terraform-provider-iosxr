@@ -1324,13 +1324,13 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, 
 			}
 			if found {
 				if !state.PerFlowForwardClasses[i].Color.IsNull() && data.PerFlowForwardClasses[j].Color.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/per-flow/forward-class-and-colors/forward-class-and-color%v", state.getPath(), keyString), "color"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "per-flow/forward-class-and-colors/forward-class-and-color", keyString), "color"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/per-flow/forward-class-and-colors/forward-class-and-color%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "per-flow/forward-class-and-colors/forward-class-and-color", keyString))
 		}
 	}
 	if !state.PerFlowForwardClassDefault.IsNull() && data.PerFlowForwardClassDefault.IsNull() {
@@ -1411,13 +1411,13 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, 
 			}
 			if found {
 				if !state.DynamicBounds[i].Value.IsNull() && data.DynamicBounds[j].Value.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/on-demand-color-dyn-mpls/bounds/bounds/bound%v", state.getPath(), keyString), "bound-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "on-demand-color-dyn-mpls/bounds/bounds/bound", keyString), "bound-value"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/on-demand-color-dyn-mpls/bounds/bounds/bound%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "on-demand-color-dyn-mpls/bounds/bounds/bound", keyString))
 		}
 	}
 	for i := range state.DynamicAffinityRules {
@@ -1470,14 +1470,14 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletedItems(ctx context.Context, 
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/on-demand-color-dyn-mpls/affinity-rules/affinity-rule%v/affinity-name%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "on-demand-color-dyn-mpls/affinity-rules/affinity-rule", keyString, "affinity-name", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/on-demand-color-dyn-mpls/affinity-rules/affinity-rule%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "on-demand-color-dyn-mpls/affinity-rules/affinity-rule", keyString))
 		}
 	}
 	if !state.DynamicDisjointPathFallbackDisable.IsNull() && data.DynamicDisjointPathFallbackDisable.IsNull() {
@@ -1656,7 +1656,7 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context, v
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/per-flow/forward-class-and-colors/forward-class-and-color%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "per-flow/forward-class-and-colors/forward-class-and-color", keyString))
 	}
 	if !data.PerFlowForwardClassDefault.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "per-flow/default-forward-class"))
@@ -1725,7 +1725,7 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context, v
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/on-demand-color-dyn-mpls/bounds/bounds/bound%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "on-demand-color-dyn-mpls/bounds/bounds/bound", keyString))
 	}
 	for i := range data.DynamicAffinityRules {
 		keys := [...]string{"rule"}
@@ -1743,7 +1743,7 @@ func (data *SegmentRoutingTEOnDemandColor) getDeletePaths(ctx context.Context, v
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/on-demand-color-dyn-mpls/affinity-rules/affinity-rule%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "on-demand-color-dyn-mpls/affinity-rules/affinity-rule", keyString))
 	}
 	if !data.DynamicDisjointPathFallbackDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "on-demand-color-dyn-mpls/disjoint-path"))

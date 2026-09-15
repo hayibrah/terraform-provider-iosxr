@@ -1100,26 +1100,26 @@ func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state R
 						}
 						if found {
 							if !state.JoinGroups[i].SourceAddresses[ci].Exclude.IsNull() && data.JoinGroups[j].SourceAddresses[cj].Exclude.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/join-groups/join-group%v/source-addresses%v", state.getPath(), keyString, ckeyString), "exclude"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "join-groups/join-group", keyString, "source-addresses", ckeyString), "exclude"))
 							}
 							if !state.JoinGroups[i].SourceAddresses[ci].Include.IsNull() && data.JoinGroups[j].SourceAddresses[cj].Include.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/join-groups/join-group%v/source-addresses%v", state.getPath(), keyString, ckeyString), "include"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "join-groups/join-group", keyString, "source-addresses", ckeyString), "include"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/join-groups/join-group%v/source-addresses%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "join-groups/join-group", keyString, "source-addresses", ckeyString))
 					}
 				}
 				if !state.JoinGroups[i].GroupAddressOnly.IsNull() && data.JoinGroups[j].GroupAddressOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/join-groups/join-group%v", state.getPath(), keyString), "group-address-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "join-groups/join-group", keyString), "group-address-only"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/join-groups/join-group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "join-groups/join-group", keyString))
 		}
 	}
 	for i := range state.StaticGroups {
@@ -1175,16 +1175,16 @@ func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state R
 						}
 						if found {
 							if !state.StaticGroups[i].GroupMasksSourceAddresses[ci].SuppressReports.IsNull() && data.StaticGroups[j].GroupMasksSourceAddresses[cj].SuppressReports.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask-source-address/inc-mask%v", state.getPath(), keyString, ckeyString), "suppress-reports"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask-source-address/inc-mask", ckeyString), "suppress-reports"))
 							}
 							if !state.StaticGroups[i].GroupMasksSourceAddresses[ci].GroupCount.IsNull() && data.StaticGroups[j].GroupMasksSourceAddresses[cj].GroupCount.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask-source-address/inc-mask%v", state.getPath(), keyString, ckeyString), "group-address-count"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask-source-address/inc-mask", ckeyString), "group-address-count"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask-source-address/inc-mask%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask-source-address/inc-mask", ckeyString))
 					}
 				}
 				for ci := range state.StaticGroups[i].SourceAddresses {
@@ -1211,13 +1211,13 @@ func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state R
 						}
 						if found {
 							if !state.StaticGroups[i].SourceAddresses[ci].SuppressReports.IsNull() && data.StaticGroups[j].SourceAddresses[cj].SuppressReports.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-source-address/source-address%v", state.getPath(), keyString, ckeyString), "suppress-reports"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-source-address/source-address", ckeyString), "suppress-reports"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/static-group/group-address%v/group-address-source-address/source-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-source-address/source-address", ckeyString))
 					}
 				}
 				for ci := range state.StaticGroups[i].GroupMasks {
@@ -1244,29 +1244,29 @@ func (data *RouterIGMPVRFInterface) getDeletedItems(ctx context.Context, state R
 						}
 						if found {
 							if !state.StaticGroups[i].GroupMasks[ci].SuppressReports.IsNull() && data.StaticGroups[j].GroupMasks[cj].SuppressReports.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask/inc-mask%v", state.getPath(), keyString, ckeyString), "suppress-reports"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask/inc-mask", ckeyString), "suppress-reports"))
 							}
 							if !state.StaticGroups[i].GroupMasks[ci].GroupCount.IsNull() && data.StaticGroups[j].GroupMasks[cj].GroupCount.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask/inc-mask%v", state.getPath(), keyString, ckeyString), "group-address-count"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask/inc-mask", ckeyString), "group-address-count"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask/inc-mask%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "static-group/group-address", keyString, "group-address-inc-mask/inc-mask", ckeyString))
 					}
 				}
 				if !state.StaticGroups[i].SuppressReports.IsNull() && data.StaticGroups[j].SuppressReports.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v", state.getPath(), keyString), "group-address-only/suppress-reports"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "static-group/group-address", keyString), "group-address-only/suppress-reports"))
 				}
 				if !state.StaticGroups[i].GroupAddressOnly.IsNull() && data.StaticGroups[j].GroupAddressOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/static-group/group-address%v", state.getPath(), keyString), "group-address-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "static-group/group-address", keyString), "group-address-only"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/static-group/group-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "static-group/group-address", keyString))
 		}
 	}
 	if !state.MaximumGroupsPerInterfaceAcl.IsNull() && data.MaximumGroupsPerInterfaceAcl.IsNull() {
@@ -1335,14 +1335,14 @@ func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context, ver
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.JoinGroups[i].SourceAddresses[ci].Exclude.IsNull() && !data.JoinGroups[i].SourceAddresses[ci].Exclude.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/join-groups/join-group%v/source-addresses%v", data.getPath(), keyString, ckeyString), "exclude"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "join-groups/join-group", keyString, "source-addresses", ckeyString), "exclude"))
 			}
 			if !data.JoinGroups[i].SourceAddresses[ci].Include.IsNull() && !data.JoinGroups[i].SourceAddresses[ci].Include.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/join-groups/join-group%v/source-addresses%v", data.getPath(), keyString, ckeyString), "include"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "join-groups/join-group", keyString, "source-addresses", ckeyString), "include"))
 			}
 		}
 		if !data.JoinGroups[i].GroupAddressOnly.IsNull() && !data.JoinGroups[i].GroupAddressOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/join-groups/join-group%v", data.getPath(), keyString), "group-address-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "join-groups/join-group", keyString), "group-address-only"))
 		}
 	}
 	for i := range data.StaticGroups {
@@ -1360,7 +1360,7 @@ func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context, ver
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.StaticGroups[i].GroupMasksSourceAddresses[ci].SuppressReports.IsNull() && !data.StaticGroups[i].GroupMasksSourceAddresses[ci].SuppressReports.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask-source-address/inc-mask%v", data.getPath(), keyString, ckeyString), "suppress-reports"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "static-group/group-address", keyString, "group-address-inc-mask-source-address/inc-mask", ckeyString), "suppress-reports"))
 			}
 		}
 		for ci := range data.StaticGroups[i].SourceAddresses {
@@ -1371,7 +1371,7 @@ func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context, ver
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.StaticGroups[i].SourceAddresses[ci].SuppressReports.IsNull() && !data.StaticGroups[i].SourceAddresses[ci].SuppressReports.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-source-address/source-address%v", data.getPath(), keyString, ckeyString), "suppress-reports"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "static-group/group-address", keyString, "group-address-source-address/source-address", ckeyString), "suppress-reports"))
 			}
 		}
 		for ci := range data.StaticGroups[i].GroupMasks {
@@ -1382,14 +1382,14 @@ func (data *RouterIGMPVRFInterface) getEmptyLeafsDelete(ctx context.Context, ver
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.StaticGroups[i].GroupMasks[ci].SuppressReports.IsNull() && !data.StaticGroups[i].GroupMasks[ci].SuppressReports.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/static-group/group-address%v/group-address-inc-mask/inc-mask%v", data.getPath(), keyString, ckeyString), "suppress-reports"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "static-group/group-address", keyString, "group-address-inc-mask/inc-mask", ckeyString), "suppress-reports"))
 			}
 		}
 		if !data.StaticGroups[i].SuppressReports.IsNull() && !data.StaticGroups[i].SuppressReports.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/static-group/group-address%v", data.getPath(), keyString), "group-address-only/suppress-reports"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "static-group/group-address", keyString), "group-address-only/suppress-reports"))
 		}
 		if !data.StaticGroups[i].GroupAddressOnly.IsNull() && !data.StaticGroups[i].GroupAddressOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/static-group/group-address%v", data.getPath(), keyString), "group-address-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "static-group/group-address", keyString), "group-address-only"))
 		}
 	}
 	if !data.ExplicitTrackingDisable.IsNull() && !data.ExplicitTrackingDisable.ValueBool() {
@@ -1431,7 +1431,7 @@ func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/join-groups/join-group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "join-groups/join-group", keyString))
 	}
 	for i := range data.StaticGroups {
 		keys := [...]string{"group-address"}
@@ -1449,7 +1449,7 @@ func (data *RouterIGMPVRFInterface) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/static-group/group-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "static-group/group-address", keyString))
 	}
 	if !data.MaximumGroupsPerInterfaceAcl.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "maximum/groups-per-interface"))

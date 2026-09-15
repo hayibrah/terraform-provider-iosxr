@@ -376,19 +376,19 @@ func (data *VTYPool) getDeletedItems(ctx context.Context, state VTYPool, version
 			}
 			if found {
 				if !state.Pools[i].LineTemplate.IsNull() && data.Pools[j].LineTemplate.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "line-template"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pools/pool", keyString), "line-template"))
 				}
 				if !state.Pools[i].LastVty.IsNull() && data.Pools[j].LastVty.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "last-vty-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pools/pool", keyString), "last-vty-number"))
 				}
 				if !state.Pools[i].FirstVty.IsNull() && data.Pools[j].FirstVty.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString), "first-vty-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "pools/pool", keyString), "first-vty-number"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/pools/pool%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "pools/pool", keyString))
 		}
 	}
 	if !state.EemLineTemplate.IsNull() && data.EemLineTemplate.IsNull() {
@@ -450,7 +450,7 @@ func (data *VTYPool) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/pools/pool%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "pools/pool", keyString))
 	}
 	if !data.EemLineTemplate.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "eem"))

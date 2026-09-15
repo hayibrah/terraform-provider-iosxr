@@ -1500,14 +1500,14 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/sensor-groups/sensor-group%v/sensor-paths/sensor-path%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "sensor-groups/sensor-group", keyString, "sensor-paths/sensor-path", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/sensor-groups/sensor-group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "sensor-groups/sensor-group", keyString))
 		}
 	}
 	for i := range state.Subscriptions {
@@ -1534,10 +1534,10 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 			}
 			if found {
 				if !state.Subscriptions[i].SendRetryDuration.IsNull() && data.Subscriptions[j].SendRetryDuration.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v", state.getPath(), keyString), "send/retry/duration"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "subscriptions/subscription", keyString), "send/retry/duration"))
 				}
 				if !state.Subscriptions[i].SendRetry.IsNull() && data.Subscriptions[j].SendRetry.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v", state.getPath(), keyString), "send/retry/retry-number"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "subscriptions/subscription", keyString), "send/retry/retry-number"))
 				}
 				for ci := range state.Subscriptions[i].DestinationIds {
 					ckeys := [...]string{"destination-id-string"}
@@ -1566,7 +1566,7 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/subscriptions/subscription%v/destination-ids/destination-id%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "destination-ids/destination-id", ckeyString))
 					}
 				}
 				for ci := range state.Subscriptions[i].SensorGroupIds {
@@ -1593,38 +1593,38 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 						}
 						if found {
 							if !state.Subscriptions[i].SensorGroupIds[ci].SampleInterval.IsNull() && data.Subscriptions[j].SensorGroupIds[cj].SampleInterval.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString), "sample-interval"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "sample-interval"))
 							}
 							if !state.Subscriptions[i].SensorGroupIds[ci].StrictTimer.IsNull() && data.Subscriptions[j].SensorGroupIds[cj].StrictTimer.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString), "strict-timer"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "strict-timer"))
 							}
 							if !state.Subscriptions[i].SensorGroupIds[ci].HeartbeatInterval.IsNull() && data.Subscriptions[j].SensorGroupIds[cj].HeartbeatInterval.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString), "heartbeat"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "heartbeat"))
 							}
 							if !state.Subscriptions[i].SensorGroupIds[ci].HeartbeatAlways.IsNull() && data.Subscriptions[j].SensorGroupIds[cj].HeartbeatAlways.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString), "heartbeat/always"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "heartbeat/always"))
 							}
 							if !state.Subscriptions[i].SensorGroupIds[ci].Mode.IsNull() && data.Subscriptions[j].SensorGroupIds[cj].Mode.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString), "mode"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "mode"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString))
 					}
 				}
 				if !state.Subscriptions[i].SourceInterface.IsNull() && data.Subscriptions[j].SourceInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v", state.getPath(), keyString), "source-interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "subscriptions/subscription", keyString), "source-interface"))
 				}
 				if !state.Subscriptions[i].SourceQosMarking.IsNull() && data.Subscriptions[j].SourceQosMarking.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v", state.getPath(), keyString), "source-qos-marking"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "subscriptions/subscription", keyString), "source-qos-marking"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/subscriptions/subscription%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "subscriptions/subscription", keyString))
 		}
 	}
 	for i := range state.DestinationGroups {
@@ -1680,37 +1680,37 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 						}
 						if found {
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolUdpPacketsize.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolUdpPacketsize.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/udp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/udp"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolUdp.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolUdp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/udp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/udp"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolTcp.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolTcp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/tcp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/tcp"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolGrpcGzip.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolGrpcGzip.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolGrpcTlsHostname.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolGrpcTlsHostname.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolGrpcNoTls.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolGrpcNoTls.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].ProtocolGrpc.IsNull() && data.DestinationGroups[j].Destinations[cj].ProtocolGrpc.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].Encoding.IsNull() && data.DestinationGroups[j].Destinations[cj].Encoding.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "encoding"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "encoding"))
 							}
 							if !state.DestinationGroups[i].Destinations[ci].AddressFamily.IsNull() && data.DestinationGroups[j].Destinations[cj].AddressFamily.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString), "address-family"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "address-family"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString))
 					}
 				}
 				for ci := range state.DestinationGroups[i].AddressFamily {
@@ -1749,44 +1749,44 @@ func (data *TelemetryModelDriven) getDeletedItems(ctx context.Context, state Tel
 						}
 						if found {
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolUdpPacketsize.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolUdpPacketsize.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/udp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/udp"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolUdp.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolUdp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/udp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/udp"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolTcp.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolTcp.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/tcp"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/tcp"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcGzip.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolGrpcGzip.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcTlsHostname.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolGrpcTlsHostname.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcNoTls.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolGrpcNoTls.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].ProtocolGrpc.IsNull() && data.DestinationGroups[j].AddressFamily[cj].ProtocolGrpc.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "protocol/grpc"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 							}
 							if !state.DestinationGroups[i].AddressFamily[ci].Encoding.IsNull() && data.DestinationGroups[j].AddressFamily[cj].Encoding.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString), "encoding"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "encoding"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString))
 					}
 				}
 				if !state.DestinationGroups[i].Vrf.IsNull() && data.DestinationGroups[j].Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v", state.getPath(), keyString), "vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString), "vrf"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/destination-groups/destination-group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "destination-groups/destination-group", keyString))
 		}
 	}
 	if !state.GnmiBundlingSize.IsNull() && data.GnmiBundlingSize.IsNull() {
@@ -1870,10 +1870,10 @@ func (data *TelemetryModelDriven) getEmptyLeafsDelete(ctx context.Context, versi
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Subscriptions[i].SensorGroupIds[ci].StrictTimer.IsNull() && !data.Subscriptions[i].SensorGroupIds[ci].StrictTimer.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", data.getPath(), keyString, ckeyString), "strict-timer"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "strict-timer"))
 			}
 			if !data.Subscriptions[i].SensorGroupIds[ci].HeartbeatAlways.IsNull() && !data.Subscriptions[i].SensorGroupIds[ci].HeartbeatAlways.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/subscriptions/subscription%v/sensor-group-ids/sensor-group-id%v", data.getPath(), keyString, ckeyString), "heartbeat/always"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "subscriptions/subscription", keyString, "sensor-group-ids/sensor-group-id", ckeyString), "heartbeat/always"))
 			}
 		}
 	}
@@ -1892,19 +1892,19 @@ func (data *TelemetryModelDriven) getEmptyLeafsDelete(ctx context.Context, versi
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.DestinationGroups[i].Destinations[ci].ProtocolUdp.IsNull() && !data.DestinationGroups[i].Destinations[ci].ProtocolUdp.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", data.getPath(), keyString, ckeyString), "protocol/udp"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/udp"))
 			}
 			if !data.DestinationGroups[i].Destinations[ci].ProtocolTcp.IsNull() && !data.DestinationGroups[i].Destinations[ci].ProtocolTcp.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", data.getPath(), keyString, ckeyString), "protocol/tcp"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/tcp"))
 			}
 			if !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcGzip.IsNull() && !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcGzip.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 			}
 			if !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcNoTls.IsNull() && !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcNoTls.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 			}
 			if !data.DestinationGroups[i].Destinations[ci].ProtocolGrpc.IsNull() && !data.DestinationGroups[i].Destinations[ci].ProtocolGrpc.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/destinations/destination%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "destinations/destination", ckeyString), "protocol/grpc"))
 			}
 		}
 		for ci := range data.DestinationGroups[i].AddressFamily {
@@ -1915,19 +1915,19 @@ func (data *TelemetryModelDriven) getEmptyLeafsDelete(ctx context.Context, versi
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.DestinationGroups[i].AddressFamily[ci].ProtocolUdp.IsNull() && !data.DestinationGroups[i].AddressFamily[ci].ProtocolUdp.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", data.getPath(), keyString, ckeyString), "protocol/udp"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/udp"))
 			}
 			if !data.DestinationGroups[i].AddressFamily[ci].ProtocolTcp.IsNull() && !data.DestinationGroups[i].AddressFamily[ci].ProtocolTcp.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", data.getPath(), keyString, ckeyString), "protocol/tcp"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/tcp"))
 			}
 			if !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcGzip.IsNull() && !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcGzip.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 			}
 			if !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcNoTls.IsNull() && !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcNoTls.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 			}
 			if !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpc.IsNull() && !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpc.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/destination-groups/destination-group%v/address-families/address-family%v", data.getPath(), keyString, ckeyString), "protocol/grpc"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString, "address-families/address-family", ckeyString), "protocol/grpc"))
 			}
 		}
 	}
@@ -1970,7 +1970,7 @@ func (data *TelemetryModelDriven) getDeletePaths(ctx context.Context, version st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sensor-groups/sensor-group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "sensor-groups/sensor-group", keyString))
 	}
 	for i := range data.Subscriptions {
 		keys := [...]string{"subscription-string"}
@@ -1988,7 +1988,7 @@ func (data *TelemetryModelDriven) getDeletePaths(ctx context.Context, version st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/subscriptions/subscription%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "subscriptions/subscription", keyString))
 	}
 	for i := range data.DestinationGroups {
 		keys := [...]string{"destination-group-string"}
@@ -2006,7 +2006,7 @@ func (data *TelemetryModelDriven) getDeletePaths(ctx context.Context, version st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/destination-groups/destination-group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "destination-groups/destination-group", keyString))
 	}
 	if !data.GnmiBundlingSize.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "gnmi/bundling"))

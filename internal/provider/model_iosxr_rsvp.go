@@ -1032,19 +1032,19 @@ func (data *RSVP) getDeletedItems(ctx context.Context, state RSVP, version strin
 			}
 			if found {
 				if !state.Neighbors[i].AuthenticationLifeTime.IsNull() && data.Neighbors[j].AuthenticationLifeTime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/life-time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "authentication/life-time"))
 				}
 				if !state.Neighbors[i].AuthenticationWindowSize.IsNull() && data.Neighbors[j].AuthenticationWindowSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/window-size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "authentication/window-size"))
 				}
 				if !state.Neighbors[i].AuthenticationKeyChain.IsNull() && data.Neighbors[j].AuthenticationKeyChain.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString), "authentication/key-source/key-chain"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString), "authentication/key-source/key-chain"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/neighbors/neighbor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "neighbors/neighbor", keyString))
 		}
 	}
 	if !state.AuthenticationRetransmit.IsNull() && data.AuthenticationRetransmit.IsNull() {
@@ -1238,7 +1238,7 @@ func (data *RSVP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/neighbors/neighbor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "neighbors/neighbor", keyString))
 	}
 	if !data.AuthenticationRetransmit.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "authentication/retransmit"))

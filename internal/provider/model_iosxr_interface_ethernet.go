@@ -7192,13 +7192,13 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpInteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() && data.PtpInteropIngressConversionClockClassMappings[j].ClockClassToMapTo.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString), "clock-class-to-map-to"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping", keyString), "clock-class-to-map-to"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping", keyString))
 		}
 	}
 	if !state.PtpInteropIngressConversionClockClassDefault.IsNull() && data.PtpInteropIngressConversionClockClassDefault.IsNull() {
@@ -7240,13 +7240,13 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpInteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() && data.PtpInteropEgressConversionClockClassMappings[j].ClockClassToMapTo.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString), "clock-class-to-map-to"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping", keyString), "clock-class-to-map-to"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping", keyString))
 		}
 	}
 	if !state.PtpInteropEgressConversionClockClassDefault.IsNull() && data.PtpInteropEgressConversionClockClassDefault.IsNull() {
@@ -7303,37 +7303,37 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpMasterEthernets[i].Milliseconds.IsNull() && data.PtpMasterEthernets[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "milliseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "milliseconds"))
 				}
 				if !state.PtpMasterEthernets[i].Microseconds.IsNull() && data.PtpMasterEthernets[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "microseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "microseconds"))
 				}
 				if !state.PtpMasterEthernets[i].Nanoseconds.IsNull() && data.PtpMasterEthernets[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "nanoseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "nanoseconds"))
 				}
 				if !state.PtpMasterEthernets[i].DelayAsymmetry.IsNull() && data.PtpMasterEthernets[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "delay-asymmetry"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "delay-asymmetry"))
 				}
 				if !state.PtpMasterEthernets[i].NonNegotiated.IsNull() && data.PtpMasterEthernets[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "non-negotiated"))
 				}
 				if !state.PtpMasterEthernets[i].MulticastMixed.IsNull() && data.PtpMasterEthernets[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "multicast"))
 				}
 				if !state.PtpMasterEthernets[i].Multicast.IsNull() && data.PtpMasterEthernets[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "multicast"))
 				}
 				if !state.PtpMasterEthernets[i].ClockClass.IsNull() && data.PtpMasterEthernets[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "clock-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "clock-class"))
 				}
 				if !state.PtpMasterEthernets[i].Priority.IsNull() && data.PtpMasterEthernets[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "priority"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString))
 		}
 	}
 	for i := range state.PtpMasterIpv6s {
@@ -7360,37 +7360,37 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpMasterIpv6s[i].Milliseconds.IsNull() && data.PtpMasterIpv6s[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "milliseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "milliseconds"))
 				}
 				if !state.PtpMasterIpv6s[i].Microseconds.IsNull() && data.PtpMasterIpv6s[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "microseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "microseconds"))
 				}
 				if !state.PtpMasterIpv6s[i].Nanoseconds.IsNull() && data.PtpMasterIpv6s[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "nanoseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "nanoseconds"))
 				}
 				if !state.PtpMasterIpv6s[i].DelayAsymmetry.IsNull() && data.PtpMasterIpv6s[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "delay-asymmetry"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "delay-asymmetry"))
 				}
 				if !state.PtpMasterIpv6s[i].NonNegotiated.IsNull() && data.PtpMasterIpv6s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "non-negotiated"))
 				}
 				if !state.PtpMasterIpv6s[i].MulticastMixed.IsNull() && data.PtpMasterIpv6s[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "multicast"))
 				}
 				if !state.PtpMasterIpv6s[i].Multicast.IsNull() && data.PtpMasterIpv6s[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "multicast"))
 				}
 				if !state.PtpMasterIpv6s[i].ClockClass.IsNull() && data.PtpMasterIpv6s[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "clock-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "clock-class"))
 				}
 				if !state.PtpMasterIpv6s[i].Priority.IsNull() && data.PtpMasterIpv6s[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "priority"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString))
 		}
 	}
 	for i := range state.PtpMasterIpv4s {
@@ -7417,37 +7417,37 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpMasterIpv4s[i].Milliseconds.IsNull() && data.PtpMasterIpv4s[j].Milliseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "milliseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "milliseconds"))
 				}
 				if !state.PtpMasterIpv4s[i].Microseconds.IsNull() && data.PtpMasterIpv4s[j].Microseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "microseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "microseconds"))
 				}
 				if !state.PtpMasterIpv4s[i].Nanoseconds.IsNull() && data.PtpMasterIpv4s[j].Nanoseconds.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "nanoseconds"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "nanoseconds"))
 				}
 				if !state.PtpMasterIpv4s[i].DelayAsymmetry.IsNull() && data.PtpMasterIpv4s[j].DelayAsymmetry.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "delay-asymmetry"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "delay-asymmetry"))
 				}
 				if !state.PtpMasterIpv4s[i].NonNegotiated.IsNull() && data.PtpMasterIpv4s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "non-negotiated"))
 				}
 				if !state.PtpMasterIpv4s[i].MulticastMixed.IsNull() && data.PtpMasterIpv4s[j].MulticastMixed.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "multicast"))
 				}
 				if !state.PtpMasterIpv4s[i].Multicast.IsNull() && data.PtpMasterIpv4s[j].Multicast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "multicast"))
 				}
 				if !state.PtpMasterIpv4s[i].ClockClass.IsNull() && data.PtpMasterIpv4s[j].ClockClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "clock-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "clock-class"))
 				}
 				if !state.PtpMasterIpv4s[i].Priority.IsNull() && data.PtpMasterIpv4s[j].Priority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString), "priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "priority"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString))
 		}
 	}
 	for i := range state.PtpSlaveEthernets {
@@ -7474,13 +7474,13 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpSlaveEthernets[i].NonNegotiated.IsNull() && data.PtpSlaveEthernets[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet", keyString), "non-negotiated"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet", keyString))
 		}
 	}
 	for i := range state.PtpSlaveIpv6s {
@@ -7507,13 +7507,13 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpSlaveIpv6s[i].NonNegotiated.IsNull() && data.PtpSlaveIpv6s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6", keyString), "non-negotiated"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6", keyString))
 		}
 	}
 	for i := range state.PtpSlaveIpv4s {
@@ -7540,13 +7540,13 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.PtpSlaveIpv4s[i].NonNegotiated.IsNull() && data.PtpSlaveIpv4s[j].NonNegotiated.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated%v", state.getPath(), keyString), "non-negotiated"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated", keyString), "non-negotiated"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated", keyString))
 		}
 	}
 	if !state.PtpLocalPriority.IsNull() && data.PtpLocalPriority.IsNull() {
@@ -7711,37 +7711,37 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.MonitorSessions[i].MirrorInterval.IsNull() && data.MonitorSessions[j].MirrorInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "mirror/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "mirror/interval"))
 				}
 				if !state.MonitorSessions[i].MirrorFirst.IsNull() && data.MonitorSessions[j].MirrorFirst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "mirror/first"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "mirror/first"))
 				}
 				if !state.MonitorSessions[i].AclIpv6Name.IsNull() && data.MonitorSessions[j].AclIpv6Name.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "acl-ipv6/acl-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "acl-ipv6/acl-name"))
 				}
 				if !state.MonitorSessions[i].AclIpv4Name.IsNull() && data.MonitorSessions[j].AclIpv4Name.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "acl-ipv4/acl-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "acl-ipv4/acl-name"))
 				}
 				if !state.MonitorSessions[i].Acl.IsNull() && data.MonitorSessions[j].Acl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "acl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "acl"))
 				}
 				if !state.MonitorSessions[i].PortLevel.IsNull() && data.MonitorSessions[j].PortLevel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "port-level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "port-level"))
 				}
 				if !state.MonitorSessions[i].DirectionTxOnly.IsNull() && data.MonitorSessions[j].DirectionTxOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "direction/tx-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "direction/tx-only"))
 				}
 				if !state.MonitorSessions[i].DirectionRxOnly.IsNull() && data.MonitorSessions[j].DirectionRxOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "direction/rx-only"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "direction/rx-only"))
 				}
 				if !state.MonitorSessions[i].Ethernet.IsNull() && data.MonitorSessions[j].Ethernet.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString), "ethernet"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "ethernet"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString))
 		}
 	}
 	if !state.MacsecEapPolicy.IsNull() && data.MacsecEapPolicy.IsNull() {
@@ -7939,7 +7939,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitor-samplers/egress-monitor-sampler%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitor-samplers/egress-monitor-sampler", keyString))
 		}
 	}
 	for i := range state.FlowIpv6EgressMonitors {
@@ -7969,7 +7969,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitors/egress-monitor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitors/egress-monitor", keyString))
 		}
 	}
 	for i := range state.FlowIpv6IngressMonitorSamplers {
@@ -8005,7 +8005,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitor-samplers/ingress-monitor-sampler", keyString))
 		}
 	}
 	for i := range state.FlowIpv6IngressMonitors {
@@ -8035,7 +8035,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitors/ingress-monitor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitors/ingress-monitor", keyString))
 		}
 	}
 	for i := range state.FlowIpv4EgressMonitorSamplers {
@@ -8071,7 +8071,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitor-samplers/egress-monitor-sampler%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitor-samplers/egress-monitor-sampler", keyString))
 		}
 	}
 	for i := range state.FlowIpv4EgressMonitors {
@@ -8101,7 +8101,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitors/egress-monitor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitors/egress-monitor", keyString))
 		}
 	}
 	for i := range state.FlowIpv4IngressMonitorSamplers {
@@ -8137,7 +8137,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitor-samplers/ingress-monitor-sampler", keyString))
 		}
 	}
 	for i := range state.FlowIpv4IngressMonitors {
@@ -8167,7 +8167,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitors/ingress-monitor%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitors/ingress-monitor", keyString))
 		}
 	}
 	if !state.EthernetCfmBandwidthNotificationsLogChanges.IsNull() && data.EthernetCfmBandwidthNotificationsLogChanges.IsNull() {
@@ -8244,7 +8244,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v/sla/operation/profile/target/mac-address/profile-target-mac-address%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString, "sla/operation/profile/target/mac-address/profile-target-mac-address", ckeyString))
 					}
 				}
 				for ci := range state.EthernetCfmMepDomains[i].SlaOperationProfileTargetMepIds {
@@ -8280,56 +8280,56 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v/sla/operation/profile/target/mep-id/profile-target-mep-id%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString, "sla/operation/profile/target/mep-id/profile-target-mep-id", ckeyString))
 					}
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue7.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue7.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value7"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value7"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue6.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value6"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue5.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue5.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value5"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value5"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue4.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value4"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue3.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue3.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value3"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value3"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue2.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value2"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value2"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosValue1.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosValue1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-values/cos-value1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-values/cos-value1"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeEnd.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-range/end-of-cos-range"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-range/end-of-cos-range"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersPriorityCosRangeStart.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersPriorityCosRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/priority/cos-range/start-of-cos-range"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/priority/cos-range/start-of-cos-range"))
 				}
 				if !state.EthernetCfmMepDomains[i].LossMeasurementCountersAggregate.IsNull() && data.EthernetCfmMepDomains[j].LossMeasurementCountersAggregate.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "loss-measurement/counters/aggregate"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/aggregate"))
 				}
 				if !state.EthernetCfmMepDomains[i].Cos.IsNull() && data.EthernetCfmMepDomains[j].Cos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "cos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "cos"))
 				}
 				if !state.EthernetCfmMepDomains[i].PropagateRemoteStatus.IsNull() && data.EthernetCfmMepDomains[j].PropagateRemoteStatus.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "propagate-remote-status"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "propagate-remote-status"))
 				}
 				if !state.EthernetCfmMepDomains[i].MepId.IsNull() && data.EthernetCfmMepDomains[j].MepId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "mep-id"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "mep-id"))
 				}
 				if !state.EthernetCfmMepDomains[i].Service.IsNull() && data.EthernetCfmMepDomains[j].Service.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString), "service"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "service"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString))
 		}
 	}
 	if !state.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() && data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() {
@@ -8413,22 +8413,22 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv6Eui64Addresses[i].Algorithm.IsNull() && data.Ipv6Eui64Addresses[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "algorithm"))
 				}
 				if !state.Ipv6Eui64Addresses[i].RouteTag.IsNull() && data.Ipv6Eui64Addresses[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "route-tag"))
 				}
 				if !state.Ipv6Eui64Addresses[i].Zone.IsNull() && data.Ipv6Eui64Addresses[j].Zone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "zone"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "zone"))
 				}
 				if !state.Ipv6Eui64Addresses[i].PrefixLength.IsNull() && data.Ipv6Eui64Addresses[j].PrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString), "prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString), "prefix-length"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString))
 		}
 	}
 	if !state.Ipv6LinkLocalRouteTag.IsNull() && data.Ipv6LinkLocalRouteTag.IsNull() {
@@ -8464,22 +8464,22 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv6Addresses[i].Algorithm.IsNull() && data.Ipv6Addresses[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "algorithm"))
 				}
 				if !state.Ipv6Addresses[i].RouteTag.IsNull() && data.Ipv6Addresses[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "route-tag"))
 				}
 				if !state.Ipv6Addresses[i].Zone.IsNull() && data.Ipv6Addresses[j].Zone.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "zone"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "zone"))
 				}
 				if !state.Ipv6Addresses[i].PrefixLength.IsNull() && data.Ipv6Addresses[j].PrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString), "prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString), "prefix-length"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString))
 		}
 	}
 	if !state.Ipv6TtlPropagateDisable.IsNull() && data.Ipv6TtlPropagateDisable.IsNull() {
@@ -8593,7 +8593,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address", keyString))
 		}
 	}
 	if !state.Ipv4MaskReply.IsNull() && data.Ipv4MaskReply.IsNull() {
@@ -8635,19 +8635,19 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 			if found {
 				if !state.Ipv4Secondaries[i].Algorithm.IsNull() && data.Ipv4Secondaries[j].Algorithm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "algorithm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "algorithm"))
 				}
 				if !state.Ipv4Secondaries[i].RouteTag.IsNull() && data.Ipv4Secondaries[j].RouteTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "route-tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "route-tag"))
 				}
 				if !state.Ipv4Secondaries[i].Netmask.IsNull() && data.Ipv4Secondaries[j].Netmask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString), "netmask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString), "netmask"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString))
 		}
 	}
 	if !state.Ipv4Algorithm.IsNull() && data.Ipv4Algorithm.IsNull() {
@@ -8731,7 +8731,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/output%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/output", keyString))
 		}
 	}
 	for i := range state.ServicePolicyInput {
@@ -8761,7 +8761,7 @@ func (data *InterfaceEthernet) getDeletedItems(ctx context.Context, state Interf
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/input%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/input", keyString))
 		}
 	}
 	if !state.DampeningDecayHalfLife.IsNull() && data.DampeningDecayHalfLife.IsNull() {
@@ -8821,22 +8821,22 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpMasterEthernets[i].Milliseconds.IsNull() && !data.PtpMasterEthernets[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "milliseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "milliseconds"))
 		}
 		if !data.PtpMasterEthernets[i].Microseconds.IsNull() && !data.PtpMasterEthernets[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "microseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "microseconds"))
 		}
 		if !data.PtpMasterEthernets[i].Nanoseconds.IsNull() && !data.PtpMasterEthernets[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "nanoseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "nanoseconds"))
 		}
 		if !data.PtpMasterEthernets[i].NonNegotiated.IsNull() && !data.PtpMasterEthernets[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "non-negotiated"))
 		}
 		if !data.PtpMasterEthernets[i].MulticastMixed.IsNull() && !data.PtpMasterEthernets[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "multicast"))
 		}
 		if !data.PtpMasterEthernets[i].Multicast.IsNull() && !data.PtpMasterEthernets[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString), "multicast"))
 		}
 	}
 	for i := range data.PtpMasterIpv6s {
@@ -8847,22 +8847,22 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpMasterIpv6s[i].Milliseconds.IsNull() && !data.PtpMasterIpv6s[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "milliseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "milliseconds"))
 		}
 		if !data.PtpMasterIpv6s[i].Microseconds.IsNull() && !data.PtpMasterIpv6s[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "microseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "microseconds"))
 		}
 		if !data.PtpMasterIpv6s[i].Nanoseconds.IsNull() && !data.PtpMasterIpv6s[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "nanoseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "nanoseconds"))
 		}
 		if !data.PtpMasterIpv6s[i].NonNegotiated.IsNull() && !data.PtpMasterIpv6s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "non-negotiated"))
 		}
 		if !data.PtpMasterIpv6s[i].MulticastMixed.IsNull() && !data.PtpMasterIpv6s[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "multicast"))
 		}
 		if !data.PtpMasterIpv6s[i].Multicast.IsNull() && !data.PtpMasterIpv6s[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString), "multicast"))
 		}
 	}
 	for i := range data.PtpMasterIpv4s {
@@ -8873,22 +8873,22 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpMasterIpv4s[i].Milliseconds.IsNull() && !data.PtpMasterIpv4s[i].Milliseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "milliseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "milliseconds"))
 		}
 		if !data.PtpMasterIpv4s[i].Microseconds.IsNull() && !data.PtpMasterIpv4s[i].Microseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "microseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "microseconds"))
 		}
 		if !data.PtpMasterIpv4s[i].Nanoseconds.IsNull() && !data.PtpMasterIpv4s[i].Nanoseconds.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "nanoseconds"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "nanoseconds"))
 		}
 		if !data.PtpMasterIpv4s[i].NonNegotiated.IsNull() && !data.PtpMasterIpv4s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "non-negotiated"))
 		}
 		if !data.PtpMasterIpv4s[i].MulticastMixed.IsNull() && !data.PtpMasterIpv4s[i].MulticastMixed.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "multicast"))
 		}
 		if !data.PtpMasterIpv4s[i].Multicast.IsNull() && !data.PtpMasterIpv4s[i].Multicast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString), "multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString), "multicast"))
 		}
 	}
 	for i := range data.PtpSlaveEthernets {
@@ -8899,7 +8899,7 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpSlaveEthernets[i].NonNegotiated.IsNull() && !data.PtpSlaveEthernets[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet", keyString), "non-negotiated"))
 		}
 	}
 	for i := range data.PtpSlaveIpv6s {
@@ -8910,7 +8910,7 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpSlaveIpv6s[i].NonNegotiated.IsNull() && !data.PtpSlaveIpv6s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6", keyString), "non-negotiated"))
 		}
 	}
 	for i := range data.PtpSlaveIpv4s {
@@ -8921,7 +8921,7 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.PtpSlaveIpv4s[i].NonNegotiated.IsNull() && !data.PtpSlaveIpv4s[i].NonNegotiated.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString), "non-negotiated"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated", keyString), "non-negotiated"))
 		}
 	}
 	if !data.PtpSourceIpv6AddressDisable.IsNull() && !data.PtpSourceIpv6AddressDisable.ValueBool() {
@@ -8995,19 +8995,19 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MonitorSessions[i].Acl.IsNull() && !data.MonitorSessions[i].Acl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString), "acl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "acl"))
 		}
 		if !data.MonitorSessions[i].PortLevel.IsNull() && !data.MonitorSessions[i].PortLevel.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString), "port-level"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "port-level"))
 		}
 		if !data.MonitorSessions[i].DirectionTxOnly.IsNull() && !data.MonitorSessions[i].DirectionTxOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString), "direction/tx-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "direction/tx-only"))
 		}
 		if !data.MonitorSessions[i].DirectionRxOnly.IsNull() && !data.MonitorSessions[i].DirectionRxOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString), "direction/rx-only"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "direction/rx-only"))
 		}
 		if !data.MonitorSessions[i].Ethernet.IsNull() && !data.MonitorSessions[i].Ethernet.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString), "ethernet"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString), "ethernet"))
 		}
 	}
 	if !data.LldpTagged.IsNull() && !data.LldpTagged.ValueBool() {
@@ -9146,10 +9146,10 @@ func (data *InterfaceEthernet) getEmptyLeafsDelete(ctx context.Context, version 
 			}
 		}
 		if !data.EthernetCfmMepDomains[i].LossMeasurementCountersAggregate.IsNull() && !data.EthernetCfmMepDomains[i].LossMeasurementCountersAggregate.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", data.getPath(), keyString), "loss-measurement/counters/aggregate"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "loss-measurement/counters/aggregate"))
 		}
 		if !data.EthernetCfmMepDomains[i].PropagateRemoteStatus.IsNull() && !data.EthernetCfmMepDomains[i].PropagateRemoteStatus.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", data.getPath(), keyString), "propagate-remote-status"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString), "propagate-remote-status"))
 		}
 	}
 	if !data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() && !data.Ipv6NdPrefixDefaultNoAutoconfig.ValueBool() {
@@ -9326,7 +9326,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/mappings/mapping", keyString))
 	}
 	if !data.PtpInteropIngressConversionClockClassDefault.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/ingress-conversion/clock-class/default"))
@@ -9359,7 +9359,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/mappings/mapping", keyString))
 	}
 	if !data.PtpInteropEgressConversionClockClassDefault.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/interop/egress-conversion/clock-class/default"))
@@ -9407,7 +9407,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ethernets/ethernet", keyString))
 	}
 	for i := range data.PtpMasterIpv6s {
 		keys := [...]string{"address"}
@@ -9425,7 +9425,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv6s/ipv6", keyString))
 	}
 	for i := range data.PtpMasterIpv4s {
 		keys := [...]string{"address"}
@@ -9443,7 +9443,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/primary/ipv4s/ipv4", keyString))
 	}
 	for i := range data.PtpSlaveEthernets {
 		keys := [...]string{"address"}
@@ -9461,7 +9461,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ethernets/ethernet", keyString))
 	}
 	for i := range data.PtpSlaveIpv6s {
 		keys := [...]string{"address"}
@@ -9479,7 +9479,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv6s/ipv6", keyString))
 	}
 	for i := range data.PtpSlaveIpv4s {
 		keys := [...]string{"address"}
@@ -9497,7 +9497,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/subordinate/ipv4s/ipv4-non-negotiated", keyString))
 	}
 	if !data.PtpLocalPriority.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-ptp-cfg:ptp/local-priority"))
@@ -9653,7 +9653,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-monitor-session-cfg:monitor-sessions/monitor-session", keyString))
 	}
 	if !data.MacsecEapPolicy.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-macsec-cfg:eap/policy"))
@@ -9836,7 +9836,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitor-samplers/egress-monitor-sampler%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitor-samplers/egress-monitor-sampler", keyString))
 	}
 	for i := range data.FlowIpv6EgressMonitors {
 		keys := [...]string{"monitor-map-name"}
@@ -9854,7 +9854,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitors/egress-monitor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/egress-monitors/egress-monitor", keyString))
 	}
 	for i := range data.FlowIpv6IngressMonitorSamplers {
 		keys := [...]string{"monitor-map-name", "sampler-map-name"}
@@ -9875,7 +9875,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitor-samplers/ingress-monitor-sampler", keyString))
 	}
 	for i := range data.FlowIpv6IngressMonitors {
 		keys := [...]string{"monitor-map-name"}
@@ -9893,7 +9893,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitors/ingress-monitor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv6/monitor/ingress-monitors/ingress-monitor", keyString))
 	}
 	for i := range data.FlowIpv4EgressMonitorSamplers {
 		keys := [...]string{"monitor-map-name", "sampler-map-name"}
@@ -9914,7 +9914,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitor-samplers/egress-monitor-sampler%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitor-samplers/egress-monitor-sampler", keyString))
 	}
 	for i := range data.FlowIpv4EgressMonitors {
 		keys := [...]string{"monitor-map-name"}
@@ -9932,7 +9932,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitors/egress-monitor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/egress-monitors/egress-monitor", keyString))
 	}
 	for i := range data.FlowIpv4IngressMonitorSamplers {
 		keys := [...]string{"monitor-map-name", "sampler-map-name"}
@@ -9953,7 +9953,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitor-samplers/ingress-monitor-sampler%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitor-samplers/ingress-monitor-sampler", keyString))
 	}
 	for i := range data.FlowIpv4IngressMonitors {
 		keys := [...]string{"monitor-map-name"}
@@ -9971,7 +9971,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitors/ingress-monitor%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-flow-cfg:flow/ipv4/monitor/ingress-monitors/ingress-monitor", keyString))
 	}
 	if !data.EthernetCfmBandwidthNotificationsLogChanges.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/bandwidth-notifications/log/changes"))
@@ -10007,7 +10007,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-ethernet-cfm-cfg:ethernet/cfm/mep/domain", keyString))
 	}
 	if !data.Ipv6NdPrefixDefaultNoAutoconfig.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-ipv6-nd-cfg:nd/prefix/default/no-autoconfig"))
@@ -10082,7 +10082,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/eui64-addresses/eui64-address", keyString))
 	}
 	if !data.Ipv6LinkLocalRouteTag.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/link-local-address"))
@@ -10109,7 +10109,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/ipv6-address", keyString))
 	}
 	if !data.Ipv6TtlPropagateDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/Cisco-IOS-XR-um-if-ipv6-cfg:ttl-propagate/disable"))
@@ -10208,7 +10208,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:helper-addresses/helper-address", keyString))
 	}
 	if !data.Ipv4MaskReply.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ipv4-cfg:mask-reply"))
@@ -10241,7 +10241,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/secondaries/secondary", keyString))
 	}
 	if !data.Ipv4Algorithm.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/Cisco-IOS-XR-um-if-ip-address-cfg:addresses/address"))
@@ -10313,7 +10313,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/output%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/output", keyString))
 	}
 	for i := range data.ServicePolicyInput {
 		keys := [...]string{"service-policy-name"}
@@ -10331,7 +10331,7 @@ func (data *InterfaceEthernet) getDeletePaths(ctx context.Context, version strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/input%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-if-service-policy-qos-cfg:service-policy/input", keyString))
 	}
 	if !data.DampeningDecayHalfLife.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "dampening"))

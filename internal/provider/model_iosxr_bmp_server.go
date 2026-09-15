@@ -631,58 +631,58 @@ func (data *BMPServer) getDeletedItems(ctx context.Context, state BMPServer, ver
 			}
 			if found {
 				if !state.Servers[i].TcpKeepAlive.IsNull() && data.Servers[j].TcpKeepAlive.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "tcp/keep-alive"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "tcp/keep-alive"))
 				}
 				if !state.Servers[i].TcpMss.IsNull() && data.Servers[j].TcpMss.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "tcp/mss"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "tcp/mss"))
 				}
 				if !state.Servers[i].Vrf.IsNull() && data.Servers[j].Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "vrf"))
 				}
 				if !state.Servers[i].UpdateSource.IsNull() && data.Servers[j].UpdateSource.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "update-source"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "update-source"))
 				}
 				if !state.Servers[i].PrecedenceValue.IsNull() && data.Servers[j].PrecedenceValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "precedence"))
 				}
 				if !state.Servers[i].DscpValue.IsNull() && data.Servers[j].DscpValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "dscp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "dscp"))
 				}
 				if !state.Servers[i].Description.IsNull() && data.Servers[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "description"))
 				}
 				if !state.Servers[i].StatsReportingPeriod.IsNull() && data.Servers[j].StatsReportingPeriod.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "stats-reporting-period"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "stats-reporting-period"))
 				}
 				if !state.Servers[i].InitialRefreshSkip.IsNull() && data.Servers[j].InitialRefreshSkip.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "initial-refresh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "initial-refresh"))
 				}
 				if !state.Servers[i].InitialRefreshSpread.IsNull() && data.Servers[j].InitialRefreshSpread.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "initial-refresh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "initial-refresh"))
 				}
 				if !state.Servers[i].InitialRefreshDelay.IsNull() && data.Servers[j].InitialRefreshDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "initial-refresh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "initial-refresh"))
 				}
 				if !state.Servers[i].FlappingDelay.IsNull() && data.Servers[j].FlappingDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "flapping-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "flapping-delay"))
 				}
 				if !state.Servers[i].InitialDelay.IsNull() && data.Servers[j].InitialDelay.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "initial-delay"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "initial-delay"))
 				}
 				if !state.Servers[i].Port.IsNull() && data.Servers[j].Port.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "host/port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "host/port"))
 				}
 				if !state.Servers[i].Host.IsNull() && data.Servers[j].Host.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "host/host-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "host/host-name"))
 				}
 				if !state.Servers[i].Shutdown.IsNull() && data.Servers[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/server%v", state.getPath(), keyString), "shutdown"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString), "shutdown"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "server", keyString))
 		}
 	}
 	if !state.AllMaxBufferSize.IsNull() && data.AllMaxBufferSize.IsNull() {
@@ -715,16 +715,16 @@ func (data *BMPServer) getDeletedItems(ctx context.Context, state BMPServer, ver
 			}
 			if found {
 				if !state.AllRouteMonitorings[i].ScanTime.IsNull() && data.AllRouteMonitorings[j].ScanTime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/all/route-monitorings/route-monitoring%v", state.getPath(), keyString), "scan-time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "all/route-monitorings/route-monitoring", keyString), "scan-time"))
 				}
 				if !state.AllRouteMonitorings[i].AdvertisementInterval.IsNull() && data.AllRouteMonitorings[j].AdvertisementInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/all/route-monitorings/route-monitoring%v", state.getPath(), keyString), "advertisement-interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "all/route-monitorings/route-monitoring", keyString), "advertisement-interval"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/all/route-monitorings/route-monitoring%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "all/route-monitorings/route-monitoring", keyString))
 		}
 	}
 	return deletedItems
@@ -744,10 +744,10 @@ func (data *BMPServer) getEmptyLeafsDelete(ctx context.Context, version string) 
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Servers[i].InitialRefreshSkip.IsNull() && !data.Servers[i].InitialRefreshSkip.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/server%v", data.getPath(), keyString), "initial-refresh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "server", keyString), "initial-refresh"))
 		}
 		if !data.Servers[i].Shutdown.IsNull() && !data.Servers[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/server%v", data.getPath(), keyString), "shutdown"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "server", keyString), "shutdown"))
 		}
 	}
 	if !data.AllRouteMirroringInboundPrePolicy.IsNull() && !data.AllRouteMirroringInboundPrePolicy.ValueBool() {
@@ -785,7 +785,7 @@ func (data *BMPServer) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "server", keyString))
 	}
 	if !data.AllMaxBufferSize.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "all/max-buffer-size"))
@@ -809,7 +809,7 @@ func (data *BMPServer) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/all/route-monitorings/route-monitoring%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "all/route-monitorings/route-monitoring", keyString))
 	}
 	return deletePaths
 }

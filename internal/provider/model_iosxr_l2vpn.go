@@ -1466,14 +1466,14 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flexible-xconnect-service/vlan-aware/evis/evi%v/interfaces/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flexible-xconnect-service/vlan-aware/evis/evi", keyString, "interfaces/interface", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/flexible-xconnect-service/vlan-aware/evis/evi%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "flexible-xconnect-service/vlan-aware/evis/evi", keyString))
 		}
 	}
 	for i := range state.FlexibleXconnectServiceVlanUnaware {
@@ -1532,7 +1532,7 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flexible-xconnect-service/vlan-unawares/vlan-unaware%v/neighbor/evpn/evis/evi%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flexible-xconnect-service/vlan-unawares/vlan-unaware", keyString, "neighbor/evpn/evis/evi", ckeyString))
 					}
 				}
 				for ci := range state.FlexibleXconnectServiceVlanUnaware[i].Interfaces {
@@ -1562,14 +1562,14 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/flexible-xconnect-service/vlan-unawares/vlan-unaware%v/interfaces/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "flexible-xconnect-service/vlan-unawares/vlan-unaware", keyString, "interfaces/interface", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/flexible-xconnect-service/vlan-unawares/vlan-unaware%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "flexible-xconnect-service/vlan-unawares/vlan-unaware", keyString))
 		}
 	}
 	for i := range state.RedundancyIccpGroups {
@@ -1596,7 +1596,7 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 			}
 			if found {
 				if !state.RedundancyIccpGroups[i].MultiHomingNodeId.IsNull() && data.RedundancyIccpGroups[j].MultiHomingNodeId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v", state.getPath(), keyString), "multi-homing/node-id"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString), "multi-homing/node-id"))
 				}
 				for ci := range state.RedundancyIccpGroups[i].Interfaces {
 					ckeys := [...]string{"interface-name"}
@@ -1622,29 +1622,29 @@ func (data *L2VPN) getDeletedItems(ctx context.Context, state L2VPN, version str
 						}
 						if found {
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].RecoveryDelay.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].RecoveryDelay.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "recovery/delay"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString), "recovery/delay"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].MacFlushStpTcn.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "mac-flush/stp-tcn"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString), "mac-flush/stp-tcn"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].SecondaryVlan.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "secondary/vlan"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString), "secondary/vlan"))
 							}
 							if !state.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan.IsNull() && data.RedundancyIccpGroups[j].Interfaces[cj].PrimaryVlan.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString), "primary/vlan"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString), "primary/vlan"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/redundancy/iccp/groups/group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "redundancy/iccp/groups/group", keyString))
 		}
 	}
 	if !state.RouterId.IsNull() && data.RouterId.IsNull() {
@@ -1771,7 +1771,7 @@ func (data *L2VPN) getEmptyLeafsDelete(ctx context.Context, version string) []st
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.IsNull() && !data.RedundancyIccpGroups[i].Interfaces[ci].MacFlushStpTcn.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/redundancy/iccp/groups/group%v/interface%v", data.getPath(), keyString, ckeyString), "mac-flush/stp-tcn"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "redundancy/iccp/groups/group", keyString, "interface", ckeyString), "mac-flush/stp-tcn"))
 			}
 		}
 	}
@@ -1880,7 +1880,7 @@ func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/flexible-xconnect-service/vlan-aware/evis/evi%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "flexible-xconnect-service/vlan-aware/evis/evi", keyString))
 	}
 	for i := range data.FlexibleXconnectServiceVlanUnaware {
 		keys := [...]string{"service-name"}
@@ -1898,7 +1898,7 @@ func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/flexible-xconnect-service/vlan-unawares/vlan-unaware%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "flexible-xconnect-service/vlan-unawares/vlan-unaware", keyString))
 	}
 	for i := range data.RedundancyIccpGroups {
 		keys := [...]string{"group-number"}
@@ -1916,7 +1916,7 @@ func (data *L2VPN) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/redundancy/iccp/groups/group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "redundancy/iccp/groups/group", keyString))
 	}
 	if !data.RouterId.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "router-id"))

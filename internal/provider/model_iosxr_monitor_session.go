@@ -913,91 +913,91 @@ func (data *MonitorSession) getDeletedItems(ctx context.Context, state MonitorSe
 			}
 			if found {
 				if !state.MonitorSessions[i].RateLimitTx.IsNull() && data.MonitorSessions[j].RateLimitTx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "rate-limit/tx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "rate-limit/tx"))
 				}
 				if !state.MonitorSessions[i].RateLimitRx.IsNull() && data.MonitorSessions[j].RateLimitRx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "rate-limit/rx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "rate-limit/rx"))
 				}
 				if !state.MonitorSessions[i].ProtocolCaptureFilter.IsNull() && data.MonitorSessions[j].ProtocolCaptureFilter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "protocol-capture/filter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "protocol-capture/filter"))
 				}
 				if !state.MonitorSessions[i].ProtocolCaptureTx.IsNull() && data.MonitorSessions[j].ProtocolCaptureTx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "protocol-capture/tx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "protocol-capture/tx"))
 				}
 				if !state.MonitorSessions[i].ProtocolCaptureRx.IsNull() && data.MonitorSessions[j].ProtocolCaptureRx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "protocol-capture/rx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "protocol-capture/rx"))
 				}
 				if !state.MonitorSessions[i].MirrorInterval.IsNull() && data.MonitorSessions[j].MirrorInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "mirror/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "mirror/interval"))
 				}
 				if !state.MonitorSessions[i].MirrorFirst.IsNull() && data.MonitorSessions[j].MirrorFirst.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "mirror/first"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "mirror/first"))
 				}
 				if !state.MonitorSessions[i].TrafficClass.IsNull() && data.MonitorSessions[j].TrafficClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "traffic-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "traffic-class"))
 				}
 				if !state.MonitorSessions[i].DiscardClass.IsNull() && data.MonitorSessions[j].DiscardClass.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "discard-class"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "discard-class"))
 				}
 				if !state.MonitorSessions[i].InjectInterface.IsNull() && data.MonitorSessions[j].InjectInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "inject-interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "inject-interface"))
 				}
 				if !state.MonitorSessions[i].TxPseudowire.IsNull() && data.MonitorSessions[j].TxPseudowire.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "tx/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "tx/pseudowire"))
 				}
 				if !state.MonitorSessions[i].TxInterface.IsNull() && data.MonitorSessions[j].TxInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "tx/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "tx/interface"))
 				}
 				if !state.MonitorSessions[i].RxPseudowire.IsNull() && data.MonitorSessions[j].RxPseudowire.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "rx/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "rx/pseudowire"))
 				}
 				if !state.MonitorSessions[i].RxInterface.IsNull() && data.MonitorSessions[j].RxInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "rx/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "rx/interface"))
 				}
 				if !state.MonitorSessions[i].DropsFilter.IsNull() && data.MonitorSessions[j].DropsFilter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "drops/filter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "drops/filter"))
 				}
 				if !state.MonitorSessions[i].DropsTx.IsNull() && data.MonitorSessions[j].DropsTx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "drops/tx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "drops/tx"))
 				}
 				if !state.MonitorSessions[i].DropsRx.IsNull() && data.MonitorSessions[j].DropsRx.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "drops/rx"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "drops/rx"))
 				}
 				if !state.MonitorSessions[i].DropsTrafficManagement.IsNull() && data.MonitorSessions[j].DropsTrafficManagement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "drops/traffic-management"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "drops/traffic-management"))
 				}
 				if !state.MonitorSessions[i].DropsPacketProcessing.IsNull() && data.MonitorSessions[j].DropsPacketProcessing.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "drops/packet-processing"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "drops/packet-processing"))
 				}
 				if !state.MonitorSessions[i].DestinationFileAlwaysOn.IsNull() && data.MonitorSessions[j].DestinationFileAlwaysOn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/file/always-on"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/file/always-on"))
 				}
 				if !state.MonitorSessions[i].DestinationFileFilter.IsNull() && data.MonitorSessions[j].DestinationFileFilter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/file/filter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/file/filter"))
 				}
 				if !state.MonitorSessions[i].DestinationFileFormatPcapng.IsNull() && data.MonitorSessions[j].DestinationFileFormatPcapng.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/file/format/pcapng"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/file/format/pcapng"))
 				}
 				if !state.MonitorSessions[i].DestinationFileBufferTypeLinear.IsNull() && data.MonitorSessions[j].DestinationFileBufferTypeLinear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/file/buffer-type/linear"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/file/buffer-type/linear"))
 				}
 				if !state.MonitorSessions[i].DestinationFileSize.IsNull() && data.MonitorSessions[j].DestinationFileSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/file/size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/file/size"))
 				}
 				if !state.MonitorSessions[i].DestinationPseudowire.IsNull() && data.MonitorSessions[j].DestinationPseudowire.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination/pseudowire"))
 				}
 				if !state.MonitorSessions[i].DestinationInterface.IsNull() && data.MonitorSessions[j].DestinationInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "destination"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "destination"))
 				}
 				if !state.MonitorSessions[i].TrafficType.IsNull() && data.MonitorSessions[j].TrafficType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString), "traffic-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString), "traffic-type"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/monitor-session%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "monitor-session", keyString))
 		}
 	}
 	return deletedItems
@@ -1029,40 +1029,40 @@ func (data *MonitorSession) getEmptyLeafsDelete(ctx context.Context, version str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.MonitorSessions[i].ProtocolCaptureTx.IsNull() && !data.MonitorSessions[i].ProtocolCaptureTx.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "protocol-capture/tx"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "protocol-capture/tx"))
 		}
 		if !data.MonitorSessions[i].ProtocolCaptureRx.IsNull() && !data.MonitorSessions[i].ProtocolCaptureRx.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "protocol-capture/rx"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "protocol-capture/rx"))
 		}
 		if !data.MonitorSessions[i].TxPseudowire.IsNull() && !data.MonitorSessions[i].TxPseudowire.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "tx/pseudowire"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "tx/pseudowire"))
 		}
 		if !data.MonitorSessions[i].RxPseudowire.IsNull() && !data.MonitorSessions[i].RxPseudowire.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "rx/pseudowire"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "rx/pseudowire"))
 		}
 		if !data.MonitorSessions[i].DropsTx.IsNull() && !data.MonitorSessions[i].DropsTx.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "drops/tx"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "drops/tx"))
 		}
 		if !data.MonitorSessions[i].DropsRx.IsNull() && !data.MonitorSessions[i].DropsRx.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "drops/rx"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "drops/rx"))
 		}
 		if !data.MonitorSessions[i].DropsTrafficManagement.IsNull() && !data.MonitorSessions[i].DropsTrafficManagement.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "drops/traffic-management"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "drops/traffic-management"))
 		}
 		if !data.MonitorSessions[i].DropsPacketProcessing.IsNull() && !data.MonitorSessions[i].DropsPacketProcessing.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "drops/packet-processing"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "drops/packet-processing"))
 		}
 		if !data.MonitorSessions[i].DestinationFileAlwaysOn.IsNull() && !data.MonitorSessions[i].DestinationFileAlwaysOn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "destination/file/always-on"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "destination/file/always-on"))
 		}
 		if !data.MonitorSessions[i].DestinationFileFormatPcapng.IsNull() && !data.MonitorSessions[i].DestinationFileFormatPcapng.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "destination/file/format/pcapng"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "destination/file/format/pcapng"))
 		}
 		if !data.MonitorSessions[i].DestinationFileBufferTypeLinear.IsNull() && !data.MonitorSessions[i].DestinationFileBufferTypeLinear.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "destination/file/buffer-type/linear"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "destination/file/buffer-type/linear"))
 		}
 		if !data.MonitorSessions[i].DestinationPseudowire.IsNull() && !data.MonitorSessions[i].DestinationPseudowire.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString), "destination/pseudowire"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString), "destination/pseudowire"))
 		}
 	}
 	return emptyLeafsDelete
@@ -1107,7 +1107,7 @@ func (data *MonitorSession) getDeletePaths(ctx context.Context, version string) 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/monitor-session%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "monitor-session", keyString))
 	}
 	return deletePaths
 }

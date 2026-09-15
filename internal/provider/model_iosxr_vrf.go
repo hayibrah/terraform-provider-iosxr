@@ -4115,7 +4115,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6MulticastExportRouteTargetFourByteAsFormat {
@@ -4157,7 +4157,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6MulticastExportRouteTargetTwoByteAsFormat {
@@ -4199,7 +4199,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6MulticastImportRouteTargetIpAddressFormat {
@@ -4241,7 +4241,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6MulticastImportRouteTargetFourByteAsFormat {
@@ -4283,7 +4283,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6MulticastImportRouteTargetTwoByteAsFormat {
@@ -4325,7 +4325,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastExportRouteTargetIpAddressFormat {
@@ -4367,7 +4367,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastExportRouteTargetFourByteAsFormat {
@@ -4409,7 +4409,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastExportRouteTargetTwoByteAsFormat {
@@ -4451,7 +4451,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastImportRouteTargetIpAddressFormat {
@@ -4493,7 +4493,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastImportRouteTargetFourByteAsFormat {
@@ -4535,7 +4535,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4MulticastImportRouteTargetTwoByteAsFormat {
@@ -4577,7 +4577,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastExportRouteTargetIpAddressFormat {
@@ -4619,7 +4619,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastExportRouteTargetFourByteAsFormat {
@@ -4661,7 +4661,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastExportRouteTargetTwoByteAsFormat {
@@ -4703,7 +4703,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastImportRouteTargetIpAddressFormat {
@@ -4745,7 +4745,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastImportRouteTargetFourByteAsFormat {
@@ -4787,7 +4787,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv6UnicastImportRouteTargetTwoByteAsFormat {
@@ -4829,7 +4829,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastExportRouteTargetIpAddressFormat {
@@ -4871,7 +4871,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastExportRouteTargetFourByteAsFormat {
@@ -4913,7 +4913,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastExportRouteTargetTwoByteAsFormat {
@@ -4955,7 +4955,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastImportRouteTargetIpAddressFormat {
@@ -4997,7 +4997,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastImportRouteTargetFourByteAsFormat {
@@ -5039,7 +5039,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 		}
 	}
 	for i := range state.Ipv4UnicastImportRouteTargetTwoByteAsFormat {
@@ -5081,7 +5081,7 @@ func (data *VRF) getDeletedItems(ctx context.Context, state VRF, version string)
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 		}
 	}
 	if !state.RdIpv4AddressIndex.IsNull() && data.RdIpv4AddressIndex.IsNull() {
@@ -5675,7 +5675,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv6MulticastExportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -5699,7 +5699,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6MulticastExportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -5723,7 +5723,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6MulticastImportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5747,7 +5747,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv6MulticastImportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -5771,7 +5771,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6MulticastImportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -5795,7 +5795,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5819,7 +5819,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastExportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -5843,7 +5843,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastExportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -5867,7 +5867,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastImportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5891,7 +5891,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastImportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -5915,7 +5915,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4MulticastImportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -5939,7 +5939,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/multicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -5963,7 +5963,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastExportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -5987,7 +5987,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastExportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -6011,7 +6011,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastImportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -6035,7 +6035,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastImportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -6059,7 +6059,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv6UnicastImportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -6083,7 +6083,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv6/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastExportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -6107,7 +6107,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastExportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -6131,7 +6131,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastExportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -6155,7 +6155,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:export/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastImportRouteTargetIpAddressFormat {
 		keys := [...]string{"ipv4-address", "ipv4-address-index", "stitching"}
@@ -6179,7 +6179,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/ipv4-address-route-targets/ipv4-address-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastImportRouteTargetFourByteAsFormat {
 		keys := [...]string{"four-byte-as-number", "asn4-index", "stitching"}
@@ -6203,7 +6203,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/four-byte-as-route-targets/four-byte-as-route-target", keyString))
 	}
 	for i := range data.Ipv4UnicastImportRouteTargetTwoByteAsFormat {
 		keys := [...]string{"two-byte-as-number", "asn2-index", "stitching"}
@@ -6227,7 +6227,7 @@ func (data *VRF) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address-family/ipv4/unicast/Cisco-IOS-XR-um-router-bgp-cfg:import/route-target/two-byte-as-route-targets/two-byte-as-route-target", keyString))
 	}
 	if !data.RdIpv4AddressIndex.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-router-bgp-cfg:rd/ipv4-address"))

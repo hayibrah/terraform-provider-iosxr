@@ -689,7 +689,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 			keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		}
 		{{- else}}
-		keys = append(keys, "{{.YangName}}")
+		keys = append(keys, {{keyPathExpr . "version"}})
 		keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		{{- end}}
 		{{- end}}{{end}}
@@ -792,7 +792,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 				keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 			}
 			{{- else}}
-			keys = append(keys, "{{.YangName}}")
+			keys = append(keys, {{keyPathExpr . "version"}})
 			keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 			{{- end}}
 			{{- end}}{{end}}
@@ -895,7 +895,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 					keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 				}
 				{{- else}}
-				keys = append(keys, "{{.YangName}}")
+				keys = append(keys, {{keyPathExpr . "version"}})
 				keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 				{{- end}}
 				{{- end}}{{end}}
@@ -998,7 +998,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 						keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					}
 					{{- else}}
-					keys = append(keys, "{{.YangName}}")
+					keys = append(keys, {{keyPathExpr . "version"}})
 					keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					{{- end}}
 					{{- end}}{{end}}
@@ -1895,6 +1895,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 	}
 	{{- else if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
+	{{- $xpathExpr := keyPathExpr . "version"}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
@@ -1916,7 +1917,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			stateKeyValues = append(stateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		}
 		{{- else}}
-		keys = append(keys, "{{getDeletePath .}}")
+		keys = append(keys, {{keyPathExpr . "version"}})
 		stateKeyValues = append(stateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		{{- end}}
 		{{- end}}{{end}}
@@ -1955,10 +1956,11 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{toGoName .TfName}}.IsNull() {
-				deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString), {{getDeletePathExpr . "version"}}))
+				deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString), {{getDeletePathExpr . "version"}}))
 			}
 				{{- else if or (eq .Type "List") (eq .Type "Set")}}
 				{{- $cxpath := getXPath .YangName .XPath}}
+				{{- $cxpathExpr := keyPathExpr . "version"}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
 				if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 				{{- end}}
@@ -1980,7 +1982,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 						cstateKeyValues = append(cstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					}
 					{{- else}}
-					ckeys = append(ckeys, "{{getDeletePath .}}")
+					ckeys = append(ckeys, {{keyPathExpr . "version"}})
 					cstateKeyValues = append(cstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					{{- end}}
 					{{- end}}{{end}}
@@ -2019,10 +2021,11 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 						{{- range reverseAttributes .Attributes}}
 						{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{toGoName .TfName}}.IsNull() {
-							deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString), {{getDeletePathExpr . "version"}}))
+							deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString), {{getDeletePathExpr . "version"}}))
 						}
 						{{- else if or (eq .Type "List") (eq .Type "Set")}}
 						{{- $ccxpath := getXPath .YangName .XPath}}
+						{{- $ccxpathExpr := keyPathExpr . "version"}}
 						{{- if or .AddedInVersion .RemovedInVersion}}
 						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 						{{- end}}
@@ -2044,7 +2047,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								ccstateKeyValues = append(ccstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 							}
 							{{- else}}
-							cckeys = append(cckeys, "{{getDeletePath .}}")
+							cckeys = append(cckeys, {{keyPathExpr . "version"}})
 							ccstateKeyValues = append(ccstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 							{{- end}}
 							{{- end}}{{end}}
@@ -2083,10 +2086,11 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								{{- range reverseAttributes .Attributes}}
 								{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{$cclist}}[ccj].{{toGoName .TfName}}.IsNull() {
-									deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString), {{getDeletePathExpr . "version"}}))
+									deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString), {{getDeletePathExpr . "version"}}))
 								}
 								{{- else if or (eq .Type "List") (eq .Type "Set")}}
 								{{- $cccxpath := getXPath .YangName .XPath}}
+								{{- $cccxpathExpr := keyPathExpr . "version"}}
 								{{- if or .AddedInVersion .RemovedInVersion}}
 								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 								{{- end}}
@@ -2108,7 +2112,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 										cccstateKeyValues = append(cccstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 									}
 									{{- else}}
-									ccckeys = append(ccckeys, "{{getDeletePath .}}")
+									ccckeys = append(ccckeys, {{keyPathExpr . "version"}})
 									cccstateKeyValues = append(cccstateKeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 									{{- end}}
 									{{- end}}{{end}}
@@ -2147,7 +2151,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 										{{- range reverseAttributes .Attributes}}
 										{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 										if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() && data.{{$list}}[j].{{$clist}}[cj].{{$cclist}}[ccj].{{$ccclist}}[cccj].{{toGoName .TfName}}.IsNull() {
-											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString), {{getDeletePathExpr . "version"}}))
+											deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString, {{$cccxpathExpr}}, ccckeyString), {{getDeletePathExpr . "version"}}))
 										}
 											{{- end}}
 											{{- end}}
@@ -2155,7 +2159,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 										}
 									}
 									if !found {
-										deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{getDeletePath .}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString))
+										deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString, {{$cccxpathExpr}}, ccckeyString))
 									}
 								}
 								{{- if or .AddedInVersion .RemovedInVersion}}
@@ -2167,7 +2171,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 								}
 							}
 							if !found {
-								deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{getDeletePath .}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString, cckeyString))
+								deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString))
 							}
 						}
 						{{- if or .AddedInVersion .RemovedInVersion}}
@@ -2179,7 +2183,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 					}
 				}
 				if !found {
-					deletedItems = append(deletedItems, fmt.Sprintf("%v/{{$xpath}}%v/{{getDeletePath .}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString, ckeyString))
+					deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString))
 				}
 				{{- if or .AddedInVersion .RemovedInVersion}}
 				}
@@ -2191,7 +2195,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/{{getDeletePath .}}%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{$xpathExpr}}, keyString))
 		}
 	}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -2217,6 +2221,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 	{{- end}}
 	{{- if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
+	{{- $xpathExpr := keyPathExpr . "version"}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
@@ -2238,7 +2243,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 				keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 			}
 			{{- else}}
-			keys = append(keys, "{{getDeletePath .}}")
+			keys = append(keys, {{keyPathExpr . "version"}})
 			keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 			{{- end}}
 			{{- end}}{{end}}
@@ -2253,11 +2258,12 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 		{{- range reverseAttributes .Attributes}}
 		{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 		if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{toGoName .TfName}}.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString), {{getDeletePathExpr . "version"}}))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{$xpathExpr}}, keyString), {{getDeletePathExpr . "version"}}))
 		}
 		{{- end}}
 		{{- if or (eq .Type "List") (eq .Type "Set")}}
 		{{- $cxpath := getXPath .YangName .XPath}}
+		{{- $cxpathExpr := keyPathExpr . "version"}}
 		{{- if or .AddedInVersion .RemovedInVersion}}
 		if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 		{{- end}}
@@ -2279,7 +2285,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 					ckeyValues = append(ckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 				}
 				{{- else}}
-				ckeys = append(ckeys, "{{getDeletePath .}}")
+				ckeys = append(ckeys, {{keyPathExpr . "version"}})
 				ckeyValues = append(ckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 				{{- end}}
 				{{- end}}{{end}}
@@ -2294,11 +2300,12 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString), {{getDeletePathExpr . "version"}}))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString), {{getDeletePathExpr . "version"}}))
 			}
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
 			{{- $ccxpath := getXPath .YangName .XPath}}
+			{{- $ccxpathExpr := keyPathExpr . "version"}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 			{{- end}}
@@ -2320,7 +2327,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 						cckeyValues = append(cckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					}
 					{{- else}}
-					cckeys = append(cckeys, "{{getDeletePath .}}")
+					cckeys = append(cckeys, {{keyPathExpr . "version"}})
 					cckeyValues = append(cckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 					{{- end}}
 					{{- end}}{{end}}
@@ -2335,11 +2342,12 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 			{{- range reverseAttributes .Attributes}}
 			{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString), {{getDeletePathExpr . "version"}}))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString), {{getDeletePathExpr . "version"}}))
 			}
 			{{- end}}
 			{{- if or (eq .Type "List") (eq .Type "Set")}}
 			{{- $cccxpath := getXPath .YangName .XPath}}
+			{{- $cccxpathExpr := keyPathExpr . "version"}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 			{{- end}}
@@ -2361,7 +2369,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 							ccckeyValues = append(ccckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 						}
 						{{- else}}
-						ccckeys = append(ccckeys, "{{getDeletePath .}}")
+						ccckeys = append(ccckeys, {{keyPathExpr . "version"}})
 						ccckeyValues = append(ccckeyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 						{{- end}}
 						{{- end}}{{end}}
@@ -2376,7 +2384,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getEmptyLeafsDelete(ctx conte
 				{{- range reverseAttributes .Attributes}}
 				{{- if and (eq .Type "Bool") (ne .TypeYangBool "boolean")}}
 				if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.ValueBool() {
-					emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/{{$xpath}}%v/{{$cxpath}}%v/{{$ccxpath}}%v/{{$cccxpath}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString, ckeyString, cckeyString, ccckeyString), {{getDeletePathExpr . "version"}}))
+					emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v/%v%v/%v%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{$xpathExpr}}, keyString, {{$cxpathExpr}}, ckeyString, {{$ccxpathExpr}}, cckeyString, {{$cccxpathExpr}}, ccckeyString), {{getDeletePathExpr . "version"}}))
 				}
 				{{- end}}
 				{{- end}}
@@ -2420,6 +2428,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 		deletePaths = append(deletePaths, path.Join({{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
 	}
 	{{- else if and (or (eq .Type "List") (eq .Type "Set")) (not .NoDelete)}}
+	{{- $xpathExpr := keyPathExpr . "version"}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
@@ -2441,7 +2450,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 			keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		}
 		{{- else}}
-		keys = append(keys, "{{getDeletePath .}}")
+		keys = append(keys, {{keyPathExpr . "version"}})
 		keyValues = append(keyValues, {{if eq .Type "Int64"}}strconv.FormatInt(data.{{$list}}[i].{{toGoName .TfName}}.ValueInt64(), 10){{else if eq .Type "Bool"}}strconv.FormatBool(data.{{$list}}[i].{{toGoName .TfName}}.ValueBool()){{else}}data.{{$list}}[i].{{toGoName .TfName}}.Value{{.Type}}(){{end}})
 		{{- end}}
 		{{- end}}{{end}}
@@ -2466,7 +2475,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/{{getDeletePath .}}%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{$xpathExpr}}, keyString))
 	}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}

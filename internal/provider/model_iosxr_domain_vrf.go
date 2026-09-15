@@ -581,13 +581,13 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 			if found {
 				if !state.Ipv6Hosts[i].Ipv6Address.IsNull() && data.Ipv6Hosts[j].Ipv6Address.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv6/host/host%v", state.getPath(), keyString), "ipv6-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/host/host", keyString), "ipv6-address"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv6/host/host%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv6/host/host", keyString))
 		}
 	}
 	for i := range state.NameServers {
@@ -623,7 +623,7 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/name-servers/name-server%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "name-servers/name-server", keyString))
 		}
 	}
 	for i := range state.Ipv4Hosts {
@@ -650,13 +650,13 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 			if found {
 				if !state.Ipv4Hosts[i].IpAddress.IsNull() && data.Ipv4Hosts[j].IpAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ipv4/hosts/host%v", state.getPath(), keyString), "ip-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/hosts/host", keyString), "ip-address"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ipv4/hosts/host%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ipv4/hosts/host", keyString))
 		}
 	}
 	if !state.Name.IsNull() && data.Name.IsNull() {
@@ -701,7 +701,7 @@ func (data *DomainVRF) getDeletedItems(ctx context.Context, state DomainVRF, ver
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/list/domain%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "list/domain", keyString))
 		}
 	}
 	return deletedItems
@@ -775,7 +775,7 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv6/host/host%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv6/host/host", keyString))
 	}
 	for i := range data.NameServers {
 		keys := [...]string{"address", "order"}
@@ -796,7 +796,7 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/name-servers/name-server%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "name-servers/name-server", keyString))
 	}
 	for i := range data.Ipv4Hosts {
 		keys := [...]string{"host-name"}
@@ -814,7 +814,7 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ipv4/hosts/host%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ipv4/hosts/host", keyString))
 	}
 	if !data.Name.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "name"))
@@ -844,7 +844,7 @@ func (data *DomainVRF) getDeletePaths(ctx context.Context, version string) []str
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/list/domain%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "list/domain", keyString))
 	}
 	return deletePaths
 }

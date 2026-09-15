@@ -20,8 +20,7 @@ resource "iosxr_logging_vrf" "example" {
       ipv4_address        = "1.1.1.1"
       ipv4_source_address = "1.1.1.2"
       operator            = "equals"
-      port                = 514
-      severity            = "info"
+      severity            = "informational"
     }
   ]
   host_ipv6_addresses = [
@@ -30,8 +29,7 @@ resource "iosxr_logging_vrf" "example" {
       ipv6_address        = "2001:db8::1"
       ipv6_source_address = "2001:db8::2"
       operator            = "equals-or-higher"
-      port                = 514
-      severity            = "info"
+      severity            = "informational"
     }
   ]
   hostnames = [
@@ -40,8 +38,7 @@ resource "iosxr_logging_vrf" "example" {
       hostname_source_address = "1.1.1.2"
       name                    = "server.cisco.com"
       operator                = "equals"
-      port                    = 514
-      severity                = "info"
+      severity                = "informational"
     }
   ]
   vrf_name = "default"
@@ -84,8 +81,8 @@ Optional:
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
   - Range: `0`-`65535`
-- `severity` (String) Set severity of  messages for particular remote host/vrf
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning`
+- `severity` (String) severity
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)
 
 
 <a id="nestedatt--host_ipv6_addresses"></a>
@@ -104,8 +101,8 @@ Optional:
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
   - Range: `0`-`65535`
-- `severity` (String) Set severity of  messages for particular remote host/vrf
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning`
+- `severity` (String) severity
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)
 
 
 <a id="nestedatt--hostnames"></a>
@@ -125,8 +122,8 @@ Optional:
   - Choices: `equals`, `equals-or-higher`, `not-equals`
 - `port` (Number) Set UDP port for this remote host/vrf
   - Range: `0`-`65535`
-- `severity` (String) Set severity of  messages for particular remote host/vrf
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning`
+- `severity` (String) severity
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)
 
 ## Import
 

@@ -99,10 +99,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set severity of  messages for particular remote host/vrf").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning").String,
+							MarkdownDescription: helpers.NewAttributeDescription("severity").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)",
 							Optional:            true,
 							Validators: []validator.String{
-								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"),
+								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning", "all", "errors", "informational", "none"),
 							},
 						},
 						"port": schema.Int64Attribute{
@@ -147,10 +147,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set severity of  messages for particular remote host/vrf").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning").String,
+							MarkdownDescription: helpers.NewAttributeDescription("severity").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)",
 							Optional:            true,
 							Validators: []validator.String{
-								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"),
+								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning", "all", "errors", "informational", "none"),
 							},
 						},
 						"port": schema.Int64Attribute{
@@ -200,10 +200,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"severity": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set severity of  messages for particular remote host/vrf").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning").String,
+							MarkdownDescription: helpers.NewAttributeDescription("severity").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `error`, `info`, `notifications`, `warning` (v24.4), `alerts`, `all`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `none`, `notifications`, `warning` (v25.4)",
 							Optional:            true,
 							Validators: []validator.String{
-								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning"),
+								stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "error", "info", "notifications", "warning", "all", "errors", "informational", "none"),
 							},
 						},
 						"port": schema.Int64Attribute{

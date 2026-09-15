@@ -652,13 +652,13 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 			}
 			if found {
 				if !state.TrackObjects[i].PriorityDecrement.IsNull() && data.TrackObjects[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track-objects/track-object%v", state.getPath(), keyString), "priority-decrement"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "track-objects/track-object", keyString), "priority-decrement"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/track-objects/track-object%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "track-objects/track-object", keyString))
 		}
 	}
 	for i := range state.TrackInterfaces {
@@ -685,13 +685,13 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 			}
 			if found {
 				if !state.TrackInterfaces[i].PriorityDecrement.IsNull() && data.TrackInterfaces[j].PriorityDecrement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/track-interfaces/track-interface%v", state.getPath(), keyString), "priority-decrement"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "track-interfaces/track-interface", keyString), "priority-decrement"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/track-interfaces/track-interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "track-interfaces/track-interface", keyString))
 		}
 	}
 	if !state.PreemptDelay.IsNull() && data.PreemptDelay.IsNull() {
@@ -736,7 +736,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletedItems(ctx context.Context,
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/address/globals/global%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "address/globals/global", keyString))
 		}
 	}
 	return deletedItems
@@ -826,7 +826,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/track-objects/track-object%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "track-objects/track-object", keyString))
 	}
 	for i := range data.TrackInterfaces {
 		keys := [...]string{"track-name"}
@@ -844,7 +844,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/track-interfaces/track-interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "track-interfaces/track-interface", keyString))
 	}
 	if !data.PreemptDelay.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "preempt/delay"))
@@ -877,7 +877,7 @@ func (data *RouterHSRPInterfaceIPv6GroupV2) getDeletePaths(ctx context.Context, 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/address/globals/global%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "address/globals/global", keyString))
 	}
 	return deletePaths
 }

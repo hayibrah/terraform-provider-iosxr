@@ -298,25 +298,25 @@ func (data *FTP) getDeletedItems(ctx context.Context, state FTP, version string)
 			}
 			if found {
 				if !state.ClientVrfs[i].Password.IsNull() && data.ClientVrfs[j].Password.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "password/encrypted"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "password/encrypted"))
 				}
 				if !state.ClientVrfs[i].Username.IsNull() && data.ClientVrfs[j].Username.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "username"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "username"))
 				}
 				if !state.ClientVrfs[i].AnonymousPassword.IsNull() && data.ClientVrfs[j].AnonymousPassword.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "anonymous-password"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "anonymous-password"))
 				}
 				if !state.ClientVrfs[i].SourceInterface.IsNull() && data.ClientVrfs[j].SourceInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "source-interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "source-interface"))
 				}
 				if !state.ClientVrfs[i].Passive.IsNull() && data.ClientVrfs[j].Passive.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString), "passive"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString), "passive"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/client/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "client/vrfs/vrf", keyString))
 		}
 	}
 	return deletedItems
@@ -336,7 +336,7 @@ func (data *FTP) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.ClientVrfs[i].Passive.IsNull() && !data.ClientVrfs[i].Passive.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/client/vrfs/vrf%v", data.getPath(), keyString), "passive"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "client/vrfs/vrf", keyString), "passive"))
 		}
 	}
 	return emptyLeafsDelete
@@ -363,7 +363,7 @@ func (data *FTP) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/client/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "client/vrfs/vrf", keyString))
 	}
 	return deletePaths
 }

@@ -748,16 +748,16 @@ func (data *TPA) getDeletedItems(ctx context.Context, state TPA, version string)
 						}
 						if found {
 							if !state.Vrfs[i].EastWestInterfaces[ci].ReferencedInterface.IsNull() && data.Vrfs[j].EastWestInterfaces[cj].ReferencedInterface.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v/east-wests/east-west%v", state.getPath(), keyString, ckeyString), "interface"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "east-wests/east-west", ckeyString), "interface"))
 							}
 							if !state.Vrfs[i].EastWestInterfaces[ci].ReferencedVrf.IsNull() && data.Vrfs[j].EastWestInterfaces[cj].ReferencedVrf.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v/east-wests/east-west%v", state.getPath(), keyString, ckeyString), "vrf"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "east-wests/east-west", ckeyString), "vrf"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/east-wests/east-west%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "east-wests/east-west", ckeyString))
 					}
 				}
 				for ci := range state.Vrfs[i].Ipv6UpdateSourceDestinations {
@@ -784,13 +784,13 @@ func (data *TPA) getDeletedItems(ctx context.Context, state TPA, version string)
 						}
 						if found {
 							if !state.Vrfs[i].Ipv6UpdateSourceDestinations[ci].SourceInterface.IsNull() && data.Vrfs[j].Ipv6UpdateSourceDestinations[cj].SourceInterface.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v/address-family/ipv6/update-source/destinations/destination%v", state.getPath(), keyString, ckeyString), "source"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "address-family/ipv6/update-source/destinations/destination", ckeyString), "source"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/address-family/ipv6/update-source/destinations/destination%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "address-family/ipv6/update-source/destinations/destination", ckeyString))
 					}
 				}
 				for ci := range state.Vrfs[i].Ipv4UpdateSourceDestinations {
@@ -817,38 +817,38 @@ func (data *TPA) getDeletedItems(ctx context.Context, state TPA, version string)
 						}
 						if found {
 							if !state.Vrfs[i].Ipv4UpdateSourceDestinations[ci].SourceInterface.IsNull() && data.Vrfs[j].Ipv4UpdateSourceDestinations[cj].SourceInterface.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v/address-family/ipv4/update-source/destinations/destination%v", state.getPath(), keyString, ckeyString), "source"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "address-family/ipv4/update-source/destinations/destination", ckeyString), "source"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v/address-family/ipv4/update-source/destinations/destination%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "vrfs/vrf", keyString, "address-family/ipv4/update-source/destinations/destination", ckeyString))
 					}
 				}
 				if !state.Vrfs[i].Ipv6DefaultRouteMgmt.IsNull() && data.Vrfs[j].Ipv6DefaultRouteMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/default-route/mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/default-route/mgmt"))
 				}
 				if !state.Vrfs[i].Ipv6UpdateSourceDataports.IsNull() && data.Vrfs[j].Ipv6UpdateSourceDataports.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/update-source/dataports/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/update-source/dataports/interface"))
 				}
 				if !state.Vrfs[i].Ipv6UpdateSourceDataportsActiveManagement.IsNull() && data.Vrfs[j].Ipv6UpdateSourceDataportsActiveManagement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv6/update-source/dataports/active-management"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/update-source/dataports/active-management"))
 				}
 				if !state.Vrfs[i].Ipv4DefaultRouteMgmt.IsNull() && data.Vrfs[j].Ipv4DefaultRouteMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/default-route/mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/default-route/mgmt"))
 				}
 				if !state.Vrfs[i].Ipv4UpdateSourceDataports.IsNull() && data.Vrfs[j].Ipv4UpdateSourceDataports.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/update-source/dataports/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/update-source/dataports/interface"))
 				}
 				if !state.Vrfs[i].Ipv4UpdateSourceDataportsActiveManagement.IsNull() && data.Vrfs[j].Ipv4UpdateSourceDataportsActiveManagement.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "address-family/ipv4/update-source/dataports/active-management"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/update-source/dataports/active-management"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString))
 		}
 	}
 	if !state.LoggingRotationMaxFiles.IsNull() && data.LoggingRotationMaxFiles.IsNull() {
@@ -910,16 +910,16 @@ func (data *TPA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			}
 		}
 		if !data.Vrfs[i].Ipv6DefaultRouteMgmt.IsNull() && !data.Vrfs[i].Ipv6DefaultRouteMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv6/default-route/mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/default-route/mgmt"))
 		}
 		if !data.Vrfs[i].Ipv6UpdateSourceDataportsActiveManagement.IsNull() && !data.Vrfs[i].Ipv6UpdateSourceDataportsActiveManagement.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv6/update-source/dataports/active-management"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv6/update-source/dataports/active-management"))
 		}
 		if !data.Vrfs[i].Ipv4DefaultRouteMgmt.IsNull() && !data.Vrfs[i].Ipv4DefaultRouteMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv4/default-route/mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/default-route/mgmt"))
 		}
 		if !data.Vrfs[i].Ipv4UpdateSourceDataportsActiveManagement.IsNull() && !data.Vrfs[i].Ipv4UpdateSourceDataportsActiveManagement.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "address-family/ipv4/update-source/dataports/active-management"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "address-family/ipv4/update-source/dataports/active-management"))
 		}
 	}
 	if !data.StatisticsDisable.IsNull() && !data.StatisticsDisable.ValueBool() {
@@ -949,7 +949,7 @@ func (data *TPA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString))
 	}
 	if !data.LoggingRotationMaxFiles.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "logging/kim/rotation-max"))

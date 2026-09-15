@@ -660,13 +660,13 @@ func (data *RouterIGMP) getDeletedItems(ctx context.Context, state RouterIGMP, v
 			}
 			if found {
 				if !state.SsmMapStatics[i].AccessList.IsNull() && data.SsmMapStatics[j].AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssm/map/statics/static%v", state.getPath(), keyString), "access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ssm/map/statics/static", keyString), "access-list"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ssm/map/statics/static%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ssm/map/statics/static", keyString))
 		}
 	}
 	if !state.AccessGroup.IsNull() && data.AccessGroup.IsNull() {
@@ -788,7 +788,7 @@ func (data *RouterIGMP) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssm/map/statics/static%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ssm/map/statics/static", keyString))
 	}
 	if !data.AccessGroup.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "access-group"))

@@ -1171,7 +1171,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	for i := range data.SourceInterfaces {
 		var keys []string
 		var keyValues []string
-		keys = append(keys, "interface-name")
+		keys = append(keys, helpers.SelectYangPath(version, map[string]string{"24.4": "source-interface-name", "25.4": "interface-name"}, "source-interface-name"))
 		keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
 		if helpers.VersionAtLeast(version, "25.4") {
 			keys = append(keys, "vrf-name")
@@ -2567,40 +2567,40 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 				}
 				if found {
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].SecurityTemplate.IsNull() && data.TlsServers[j].SecurityTemplate.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "security-template"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "security-template"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].TlsMaxVersion.IsNull() && data.TlsServers[j].TlsMaxVersion.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "version/max-version"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "version/max-version"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].TlsMinVersion.IsNull() && data.TlsServers[j].TlsMinVersion.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "version/min-version"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "version/min-version"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].SourceInterface.IsNull() && data.TlsServers[j].SourceInterface.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "source-interface"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "source-interface"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].Severity.IsNull() && data.TlsServers[j].Severity.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "severity"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "severity"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].Trustpoint.IsNull() && data.TlsServers[j].Trustpoint.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "trustpoint"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "trustpoint"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].TlsHostname.IsNull() && data.TlsServers[j].TlsHostname.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "tls-hostname"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "tls-hostname"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].AddressIpv6.IsNull() && data.TlsServers[j].AddressIpv6.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "address/ipv6"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "address/ipv6"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].AddressIpv4.IsNull() && data.TlsServers[j].AddressIpv4.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "address/ipv4"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "address/ipv4"))
 					}
 					if helpers.VersionAtLeast(version, "25.4") && !state.TlsServers[i].Vrf.IsNull() && data.TlsServers[j].Vrf.IsNull() {
-						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString), "vrf"))
+						deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString), "vrf"))
 					}
 					break
 				}
 			}
 			if !found {
-				deletedItems = append(deletedItems, fmt.Sprintf("%v/tls-servers/tls-server%v", state.getPath(), keyString))
+				deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "tls-servers/tls-server", keyString))
 			}
 		}
 	}
@@ -2670,7 +2670,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-events-cfg:events/filter/match%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-events-cfg:events/filter/match", keyString))
 		}
 	}
 	if !state.EventsBufferSize.IsNull() && data.EventsBufferSize.IsNull() {
@@ -2726,14 +2726,14 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v/apply/source/locations/location%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString, "apply/source/locations/location", ckeyString))
 					}
 				}
 				if !state.SuppressRules[i].ApplyAllOfRouter.IsNull() && data.SuppressRules[j].ApplyAllOfRouter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", state.getPath(), keyString), "apply/all-of-router"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString), "apply/all-of-router"))
 				}
 				if !state.SuppressRules[i].AllAlarms.IsNull() && data.SuppressRules[j].AllAlarms.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", state.getPath(), keyString), "all-alarms"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString), "all-alarms"))
 				}
 				for ci := range state.SuppressRules[i].Alarms {
 					ckeys := [...]string{"message-category", "group-name", "message-code"}
@@ -2774,14 +2774,14 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v/alarms/alarm%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString, "alarms/alarm", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString))
 		}
 	}
 	if !state.Yang.IsNull() && data.Yang.IsNull() {
@@ -2799,7 +2799,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 	for i := range state.SourceInterfaces {
 		var keys []string
 		var stateKeyValues []string
-		keys = append(keys, "interface-name")
+		keys = append(keys, helpers.SelectYangPath(version, map[string]string{"24.4": "source-interface-name", "25.4": "interface-name"}, "source-interface-name"))
 		stateKeyValues = append(stateKeyValues, state.SourceInterfaces[i].Name.ValueString())
 		if helpers.VersionAtLeast(version, "25.4") {
 			keys = append(keys, "vrf-name")
@@ -2859,7 +2859,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 							}
 						}
 						if !found {
-							deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interfaces/source-interface%v/vrfs/vrf%v", state.getPath(), keyString, ckeyString))
+							deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "source-interfaces/source-interface", keyString, "vrfs/vrf", ckeyString))
 						}
 					}
 				}
@@ -2867,7 +2867,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/source-interfaces/source-interface%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "source-interfaces/source-interface", keyString))
 		}
 	}
 	if !state.Localfilesize.IsNull() && data.Localfilesize.IsNull() {
@@ -2877,10 +2877,10 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "hostnameprefix"))
 	}
 	if !state.HistorySize.IsNull() && data.HistorySize.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "history/size"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history/size"}, "history-size")))
 	}
 	if !state.History.IsNull() && data.History.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "history/level"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "history", "25.4": "history/level"}, "history")))
 	}
 	for i := range state.File {
 		keys := [...]string{"file-name"}
@@ -2906,46 +2906,46 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 			}
 			if found {
 				if !state.File[i].DiscriminatorNomatch3.IsNull() && data.File[j].DiscriminatorNomatch3.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/nomatch3"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/nomatch3"))
 				}
 				if !state.File[i].DiscriminatorNomatch2.IsNull() && data.File[j].DiscriminatorNomatch2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/nomatch2"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/nomatch2"))
 				}
 				if !state.File[i].DiscriminatorNomatch1.IsNull() && data.File[j].DiscriminatorNomatch1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/nomatch1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/nomatch1"))
 				}
 				if !state.File[i].DiscriminatorMatch3.IsNull() && data.File[j].DiscriminatorMatch3.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/match3"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/match3"))
 				}
 				if !state.File[i].DiscriminatorMatch2.IsNull() && data.File[j].DiscriminatorMatch2.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/match2"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/match2"))
 				}
 				if !state.File[i].DiscriminatorMatch1.IsNull() && data.File[j].DiscriminatorMatch1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/match1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), "discriminator/match1"))
 				}
 				if !state.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() && data.File[j].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting/send-to-remote/facility"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting/send-to-remote/facility/level", "25.4": "path/local-accounting/send-to-remote/facility"}, "local-accounting/send-to-remote/facility/level")))
 				}
 				if !state.File[i].LocalAccountingSendToRemote.IsNull() && data.File[j].LocalAccountingSendToRemote.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting/send-to-remote"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting/send-to-remote", "25.4": "path/local-accounting/send-to-remote"}, "local-accounting/send-to-remote")))
 				}
 				if !state.File[i].LocalAccounting.IsNull() && data.File[j].LocalAccounting.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting", "25.4": "path/local-accounting"}, "local-accounting")))
 				}
 				if !state.File[i].Severity.IsNull() && data.File[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/severity"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/severity"}, ".")))
 				}
 				if !state.File[i].Maxfilesize.IsNull() && data.File[j].Maxfilesize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/maxfilesize"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/maxfilesize"}, ".")))
 				}
 				if !state.File[i].Path.IsNull() && data.File[j].Path.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/path-name"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/path-name"}, ".")))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/files/file%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString))
 		}
 	}
 	if !state.ContainerFetchTimestamp.IsNull() && data.ContainerFetchTimestamp.IsNull() {
@@ -2973,28 +2973,28 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "buffered/discriminator/match1"))
 	}
 	if !state.BufferedLevel.IsNull() && data.BufferedLevel.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "buffered/buffered-level"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/level", "25.4": "buffered/buffered-level"}, "buffered/level")))
 	}
 	if !state.BufferedSize.IsNull() && data.BufferedSize.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "buffered/log-buffer-size"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/logging-buffer-size", "25.4": "buffered/log-buffer-size"}, "buffered/logging-buffer-size")))
 	}
 	if !state.BufferedEntriesCount.IsNull() && data.BufferedEntriesCount.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "buffered/entries-count"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/buffered-entries/count", "25.4": "buffered/entries-count"}, "buffered/buffered-entries/count")))
 	}
 	if !state.FacilityLevel.IsNull() && data.FacilityLevel.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "facility"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "facility/level", "25.4": "facility"}, "facility/level")))
 	}
 	if !state.Ipv6Precedence.IsNull() && data.Ipv6Precedence.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/precedence/precedence-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6/precedence", "25.4": "ipv6/precedence/precedence-value"}, "ipv6/precedence")))
 	}
 	if !state.Ipv6Dscp.IsNull() && data.Ipv6Dscp.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/dscp/dscp-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6/dscp", "25.4": "ipv6/dscp/dscp-value"}, "ipv6/dscp")))
 	}
 	if !state.Ipv4Precedence.IsNull() && data.Ipv4Precedence.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/precedence/precedence-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4/precedence", "25.4": "ipv4/precedence/precedence-value"}, "ipv4/precedence")))
 	}
 	if !state.Ipv4Dscp.IsNull() && data.Ipv4Dscp.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/dscp/dscp-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4/dscp", "25.4": "ipv4/dscp/dscp-value"}, "ipv4/dscp")))
 	}
 	if !state.ArchiveThreshold.IsNull() && data.ArchiveThreshold.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/threshold"))
@@ -3018,43 +3018,43 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/frequency/daily"))
 	}
 	if !state.ArchiveHarddisk.IsNull() && data.ArchiveHarddisk.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/harddisk"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/harddisk", "25.4": "archive/device/harddisk"}, "archive/device/harddisk")))
 	}
 	if !state.ArchiveDisk1.IsNull() && data.ArchiveDisk1.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/disk1"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk1", "25.4": "archive/device/disk1"}, "archive/device/disk1")))
 	}
 	if !state.ArchiveDisk0.IsNull() && data.ArchiveDisk0.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/disk0"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk0", "25.4": "archive/device/disk0"}, "archive/device/disk0")))
 	}
 	if !state.MonitorDiscriminatorNomatch3.IsNull() && data.MonitorDiscriminatorNomatch3.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/nomatch3"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch3", "25.4": "monitor/discriminator/nomatch3"}, "monitor-discriminator/nomatch3")))
 	}
 	if !state.MonitorDiscriminatorNomatch2.IsNull() && data.MonitorDiscriminatorNomatch2.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/nomatch2"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch2", "25.4": "monitor/discriminator/nomatch2"}, "monitor-discriminator/nomatch2")))
 	}
 	if !state.MonitorDiscriminatorNomatch1.IsNull() && data.MonitorDiscriminatorNomatch1.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/nomatch1"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch1", "25.4": "monitor/discriminator/nomatch1"}, "monitor-discriminator/nomatch1")))
 	}
 	if !state.MonitorDiscriminatorMatch3.IsNull() && data.MonitorDiscriminatorMatch3.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/match3"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match3", "25.4": "monitor/discriminator/match3"}, "monitor-discriminator/match3")))
 	}
 	if !state.MonitorDiscriminatorMatch2.IsNull() && data.MonitorDiscriminatorMatch2.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/match2"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match2", "25.4": "monitor/discriminator/match2"}, "monitor-discriminator/match2")))
 	}
 	if !state.MonitorDiscriminatorMatch1.IsNull() && data.MonitorDiscriminatorMatch1.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/match1"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match1", "25.4": "monitor/discriminator/match1"}, "monitor-discriminator/match1")))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ConsoleFacility.IsNull() && data.ConsoleFacility.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "console-logging/console-log-facility/console-facility-level"))
 	}
 	if !state.Monitor.IsNull() && data.Monitor.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/monitor-level"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor/monitor-level"}, "monitor")))
 	}
 	if !state.Trap.IsNull() && data.Trap.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "trap"))
 	}
 	if !state.Console.IsNull() && data.Console.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "console/console-level"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "console", "25.4": "console/console-level"}, "console")))
 	}
 	return deletedItems
 }
@@ -3106,10 +3106,10 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 			}
 		}
 		if !data.SuppressRules[i].ApplyAllOfRouter.IsNull() && !data.SuppressRules[i].ApplyAllOfRouter.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", data.getPath(), keyString), "apply/all-of-router"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString), "apply/all-of-router"))
 		}
 		if !data.SuppressRules[i].AllAlarms.IsNull() && !data.SuppressRules[i].AllAlarms.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", data.getPath(), keyString), "all-alarms"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString), "all-alarms"))
 		}
 		for ci := range data.SuppressRules[i].Alarms {
 			ckeys := [...]string{"message-category", "group-name", "message-code"}
@@ -3132,7 +3132,7 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 	for i := range data.SourceInterfaces {
 		var keys []string
 		var keyValues []string
-		keys = append(keys, "interface-name")
+		keys = append(keys, helpers.SelectYangPath(version, map[string]string{"24.4": "source-interface-name", "25.4": "interface-name"}, "source-interface-name"))
 		keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
 		if helpers.VersionAtLeast(version, "25.4") {
 			keys = append(keys, "vrf-name")
@@ -3161,10 +3161,10 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.File[i].LocalAccountingSendToRemote.IsNull() && !data.File[i].LocalAccountingSendToRemote.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/files/file%v", data.getPath(), keyString), "path/local-accounting/send-to-remote"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting/send-to-remote", "25.4": "path/local-accounting/send-to-remote"}, "local-accounting/send-to-remote")))
 		}
 		if !data.File[i].LocalAccounting.IsNull() && !data.File[i].LocalAccounting.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/files/file%v", data.getPath(), keyString), "path/local-accounting"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting", "25.4": "path/local-accounting"}, "local-accounting")))
 		}
 	}
 	if !data.ContainerFetchTimestamp.IsNull() && !data.ContainerFetchTimestamp.ValueBool() {
@@ -3180,13 +3180,13 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/frequency/daily"))
 	}
 	if !data.ArchiveHarddisk.IsNull() && !data.ArchiveHarddisk.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/harddisk"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/harddisk", "25.4": "archive/device/harddisk"}, "archive/device/harddisk")))
 	}
 	if !data.ArchiveDisk1.IsNull() && !data.ArchiveDisk1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/disk1"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk1", "25.4": "archive/device/disk1"}, "archive/device/disk1")))
 	}
 	if !data.ArchiveDisk0.IsNull() && !data.ArchiveDisk0.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/disk0"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk0", "25.4": "archive/device/disk0"}, "archive/device/disk0")))
 	}
 	return emptyLeafsDelete
 }
@@ -3217,7 +3217,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 			if emptyKeys {
 				continue
 			}
-			deletePaths = append(deletePaths, fmt.Sprintf("%v/tls-servers/tls-server%v", data.getPath(), keyString))
+			deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "tls-servers/tls-server", keyString))
 		}
 	}
 	if helpers.VersionAtLeast(version, "25.4") && !data.ArchiveFrequency.IsNull() {
@@ -3275,7 +3275,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-events-cfg:events/filter/match%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-logging-events-cfg:events/filter/match", keyString))
 	}
 	if !data.EventsBufferSize.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-logging-events-cfg:events/buffer-size"))
@@ -3296,7 +3296,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-logging-correlator-cfg:suppress/rules/rule", keyString))
 	}
 	if !data.Yang.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "yang"))
@@ -3313,7 +3313,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 	for i := range data.SourceInterfaces {
 		var keys []string
 		var keyValues []string
-		keys = append(keys, "interface-name")
+		keys = append(keys, helpers.SelectYangPath(version, map[string]string{"24.4": "source-interface-name", "25.4": "interface-name"}, "source-interface-name"))
 		keyValues = append(keyValues, data.SourceInterfaces[i].Name.ValueString())
 		if helpers.VersionAtLeast(version, "25.4") {
 			keys = append(keys, "vrf-name")
@@ -3335,7 +3335,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/source-interfaces/source-interface%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "source-interfaces/source-interface", keyString))
 	}
 	if !data.Localfilesize.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "localfilesize"))
@@ -3344,10 +3344,10 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "hostnameprefix"))
 	}
 	if !data.HistorySize.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "history/size"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history/size"}, "history-size")))
 	}
 	if !data.History.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "history/level"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "history", "25.4": "history/level"}, "history")))
 	}
 	for i := range data.File {
 		keys := [...]string{"file-name"}
@@ -3365,7 +3365,7 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/files/file%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "files/file", keyString))
 	}
 	if !data.ContainerFetchTimestamp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "container/fetch-timestamp"))
@@ -3392,28 +3392,28 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "buffered/discriminator/match1"))
 	}
 	if !data.BufferedLevel.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "buffered/buffered-level"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/level", "25.4": "buffered/buffered-level"}, "buffered/level")))
 	}
 	if !data.BufferedSize.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "buffered/log-buffer-size"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/logging-buffer-size", "25.4": "buffered/log-buffer-size"}, "buffered/logging-buffer-size")))
 	}
 	if !data.BufferedEntriesCount.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "buffered/entries-count"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "buffered/buffered-entries/count", "25.4": "buffered/entries-count"}, "buffered/buffered-entries/count")))
 	}
 	if !data.FacilityLevel.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "facility"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "facility/level", "25.4": "facility"}, "facility/level")))
 	}
 	if !data.Ipv6Precedence.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/precedence/precedence-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6/precedence", "25.4": "ipv6/precedence/precedence-value"}, "ipv6/precedence")))
 	}
 	if !data.Ipv6Dscp.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/dscp/dscp-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6/dscp", "25.4": "ipv6/dscp/dscp-value"}, "ipv6/dscp")))
 	}
 	if !data.Ipv4Precedence.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/precedence/precedence-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4/precedence", "25.4": "ipv4/precedence/precedence-value"}, "ipv4/precedence")))
 	}
 	if !data.Ipv4Dscp.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/dscp/dscp-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4/dscp", "25.4": "ipv4/dscp/dscp-value"}, "ipv4/dscp")))
 	}
 	if !data.ArchiveThreshold.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/threshold"))
@@ -3437,43 +3437,43 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/frequency/daily"))
 	}
 	if !data.ArchiveHarddisk.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/harddisk"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/harddisk", "25.4": "archive/device/harddisk"}, "archive/device/harddisk")))
 	}
 	if !data.ArchiveDisk1.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/disk1"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk1", "25.4": "archive/device/disk1"}, "archive/device/disk1")))
 	}
 	if !data.ArchiveDisk0.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/disk0"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "archive/device/disk0", "25.4": "archive/device/disk0"}, "archive/device/disk0")))
 	}
 	if !data.MonitorDiscriminatorNomatch3.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/nomatch3"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch3", "25.4": "monitor/discriminator/nomatch3"}, "monitor-discriminator/nomatch3")))
 	}
 	if !data.MonitorDiscriminatorNomatch2.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/nomatch2"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch2", "25.4": "monitor/discriminator/nomatch2"}, "monitor-discriminator/nomatch2")))
 	}
 	if !data.MonitorDiscriminatorNomatch1.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/nomatch1"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/nomatch1", "25.4": "monitor/discriminator/nomatch1"}, "monitor-discriminator/nomatch1")))
 	}
 	if !data.MonitorDiscriminatorMatch3.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/match3"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match3", "25.4": "monitor/discriminator/match3"}, "monitor-discriminator/match3")))
 	}
 	if !data.MonitorDiscriminatorMatch2.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/match2"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match2", "25.4": "monitor/discriminator/match2"}, "monitor-discriminator/match2")))
 	}
 	if !data.MonitorDiscriminatorMatch1.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/match1"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match1", "25.4": "monitor/discriminator/match1"}, "monitor-discriminator/match1")))
 	}
 	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ConsoleFacility.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "console-logging/console-log-facility/console-facility-level"))
 	}
 	if !data.Monitor.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/monitor-level"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor/monitor-level"}, "monitor")))
 	}
 	if !data.Trap.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "trap"))
 	}
 	if !data.Console.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "console/console-level"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "console", "25.4": "console/console-level"}, "console")))
 	}
 	return deletePaths
 }

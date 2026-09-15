@@ -2836,55 +2836,55 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 			}
 			if found {
 				if !state.Schedules[i].Ageout.IsNull() && data.Schedules[j].Ageout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "ageout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "ageout"))
 				}
 				if !state.Schedules[i].Recurring.IsNull() && data.Schedules[j].Recurring.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "recurring"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "recurring"))
 				}
 				if !state.Schedules[i].StartNow.IsNull() && data.Schedules[j].StartNow.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/now"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/now"))
 				}
 				if !state.Schedules[i].StartAfterSecond.IsNull() && data.Schedules[j].StartAfterSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/after/time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/after/time"))
 				}
 				if !state.Schedules[i].StartAfterMinute.IsNull() && data.Schedules[j].StartAfterMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/after/time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/after/time"))
 				}
 				if !state.Schedules[i].StartAfterHour.IsNull() && data.Schedules[j].StartAfterHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/after/time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/after/time"))
 				}
 				if !state.Schedules[i].StartPending.IsNull() && data.Schedules[j].StartPending.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/pending"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/pending"))
 				}
 				if !state.Schedules[i].StartYear.IsNull() && data.Schedules[j].StartYear.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].StartDayOfMonth.IsNull() && data.Schedules[j].StartDayOfMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].StartMonth.IsNull() && data.Schedules[j].StartMonth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].StartSecond.IsNull() && data.Schedules[j].StartSecond.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].StartMinute.IsNull() && data.Schedules[j].StartMinute.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].StartHour.IsNull() && data.Schedules[j].StartHour.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "start-time/time-and-date"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "start-time/time-and-date"))
 				}
 				if !state.Schedules[i].LifeTime.IsNull() && data.Schedules[j].LifeTime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "life/length-of-time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "life/length-of-time"))
 				}
 				if !state.Schedules[i].LifeForever.IsNull() && data.Schedules[j].LifeForever.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString), "life/forever"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString), "life/forever"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/schedule/operations/operation%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "schedule/operations/operation", keyString))
 		}
 	}
 	for i := range state.Operations {
@@ -2911,43 +2911,43 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 			}
 			if found {
 				if !state.Operations[i].MplsLspTraceStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].MplsLspTraceStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].MplsLspTraceStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].MplsLspTraceStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].MplsLspTraceStatisticsHourlyBuckets.IsNull() && data.Operations[j].MplsLspTraceStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].MplsLspTraceTargetPseudowireVcId.IsNull() && data.Operations[j].MplsLspTraceTargetPseudowireVcId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/target/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/target/pseudowire"))
 				}
 				if !state.Operations[i].MplsLspTraceTargetPseudowireAddress.IsNull() && data.Operations[j].MplsLspTraceTargetPseudowireAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/target/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/target/pseudowire"))
 				}
 				if !state.Operations[i].MplsLspTraceTargetTeTunnel.IsNull() && data.Operations[j].MplsLspTraceTargetTeTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/target/traffic-eng/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/target/traffic-eng/tunnel"))
 				}
 				if !state.Operations[i].MplsLspTraceTargetIpv4Mask.IsNull() && data.Operations[j].MplsLspTraceTargetIpv4Mask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/target/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/target/ipv4"))
 				}
 				if !state.Operations[i].MplsLspTraceTargetIpv4.IsNull() && data.Operations[j].MplsLspTraceTargetIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/target/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/target/ipv4"))
 				}
 				if !state.Operations[i].MplsLspTraceSourceIpv4.IsNull() && data.Operations[j].MplsLspTraceSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].MplsLspTraceTimeout.IsNull() && data.Operations[j].MplsLspTraceTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/timeout"))
 				}
 				if !state.Operations[i].MplsLspTraceFrequency.IsNull() && data.Operations[j].MplsLspTraceFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/frequency"))
 				}
 				if !state.Operations[i].MplsLspTraceTag.IsNull() && data.Operations[j].MplsLspTraceTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace/tag"))
 				}
 				if !state.Operations[i].MplsLspTrace.IsNull() && data.Operations[j].MplsLspTrace.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/trace"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace"))
 				}
 				for ci := range state.Operations[i].MplsLspPingStatisticsIntervals {
 					ckeys := [...]string{"interval-time"}
@@ -2973,56 +2973,56 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 						}
 						if found {
 							if !state.Operations[i].MplsLspPingStatisticsIntervals[ci].Buckets.IsNull() && data.Operations[j].MplsLspPingStatisticsIntervals[cj].Buckets.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v/type/mpls/lsp/ping/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString), "buckets"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/mpls/lsp/ping/statistics/intervals/interval", ckeyString), "buckets"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/operations/operation%v/type/mpls/lsp/ping/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/mpls/lsp/ping/statistics/intervals/interval", ckeyString))
 					}
 				}
 				if !state.Operations[i].MplsLspPingStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].MplsLspPingStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].MplsLspPingStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].MplsLspPingStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].MplsLspPingStatisticsHourlyBuckets.IsNull() && data.Operations[j].MplsLspPingStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].MplsLspPingTargetPseudowireVcId.IsNull() && data.Operations[j].MplsLspPingTargetPseudowireVcId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/target/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/target/pseudowire"))
 				}
 				if !state.Operations[i].MplsLspPingTargetPseudowireAddress.IsNull() && data.Operations[j].MplsLspPingTargetPseudowireAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/target/pseudowire"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/target/pseudowire"))
 				}
 				if !state.Operations[i].MplsLspPingTargetTeTunnel.IsNull() && data.Operations[j].MplsLspPingTargetTeTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/target/traffic-eng/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/target/traffic-eng/tunnel"))
 				}
 				if !state.Operations[i].MplsLspPingTargetIpv4Mask.IsNull() && data.Operations[j].MplsLspPingTargetIpv4Mask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/target/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/target/ipv4"))
 				}
 				if !state.Operations[i].MplsLspPingTargetIpv4.IsNull() && data.Operations[j].MplsLspPingTargetIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/target/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/target/ipv4"))
 				}
 				if !state.Operations[i].MplsLspPingSourceIpv4.IsNull() && data.Operations[j].MplsLspPingSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].MplsLspPingTimeout.IsNull() && data.Operations[j].MplsLspPingTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/timeout"))
 				}
 				if !state.Operations[i].MplsLspPingDatasizeRequest.IsNull() && data.Operations[j].MplsLspPingDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].MplsLspPingFrequency.IsNull() && data.Operations[j].MplsLspPingFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/frequency"))
 				}
 				if !state.Operations[i].MplsLspPingTag.IsNull() && data.Operations[j].MplsLspPingTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping/tag"))
 				}
 				if !state.Operations[i].MplsLspPing.IsNull() && data.Operations[j].MplsLspPing.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/mpls/lsp/ping"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping"))
 				}
 				for ci := range state.Operations[i].UdpJitterStatisticsIntervals {
 					ckeys := [...]string{"interval-time"}
@@ -3048,80 +3048,80 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 						}
 						if found {
 							if !state.Operations[i].UdpJitterStatisticsIntervals[ci].Buckets.IsNull() && data.Operations[j].UdpJitterStatisticsIntervals[cj].Buckets.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v/type/udp/jitter/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString), "buckets"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/udp/jitter/statistics/intervals/interval", ckeyString), "buckets"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/operations/operation%v/type/udp/jitter/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/udp/jitter/statistics/intervals/interval", ckeyString))
 					}
 				}
 				if !state.Operations[i].UdpJitterStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].UdpJitterStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].UdpJitterStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].UdpJitterStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].UdpJitterStatisticsHourlyBuckets.IsNull() && data.Operations[j].UdpJitterStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].UdpJitterVerifyData.IsNull() && data.Operations[j].UdpJitterVerifyData.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/verify-data"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/verify-data"))
 				}
 				if !state.Operations[i].UdpJitterControlDisable.IsNull() && data.Operations[j].UdpJitterControlDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/control/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/control/disable"))
 				}
 				if !state.Operations[i].UdpJitterVrf.IsNull() && data.Operations[j].UdpJitterVrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/vrf"))
 				}
 				if !state.Operations[i].UdpJitterTos.IsNull() && data.Operations[j].UdpJitterTos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/tos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/tos"))
 				}
 				if !state.Operations[i].UdpJitterPacketInterval.IsNull() && data.Operations[j].UdpJitterPacketInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/packet/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/packet/interval"))
 				}
 				if !state.Operations[i].UdpJitterPacketCount.IsNull() && data.Operations[j].UdpJitterPacketCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/packet/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/packet/count"))
 				}
 				if !state.Operations[i].UdpJitterDestinationPort.IsNull() && data.Operations[j].UdpJitterDestinationPort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/destination/port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/destination/port"))
 				}
 				if !state.Operations[i].UdpJitterDestinationIpv4.IsNull() && data.Operations[j].UdpJitterDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/destination/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/destination/address"))
 				}
 				if !state.Operations[i].UdpJitterSourcePort.IsNull() && data.Operations[j].UdpJitterSourcePort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/source/port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/source/port"))
 				}
 				if !state.Operations[i].UdpJitterSourceIpv4.IsNull() && data.Operations[j].UdpJitterSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].UdpJitterTimeout.IsNull() && data.Operations[j].UdpJitterTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/timeout"))
 				}
 				if !state.Operations[i].UdpJitterDatasizeRequest.IsNull() && data.Operations[j].UdpJitterDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].UdpJitterFrequency.IsNull() && data.Operations[j].UdpJitterFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/frequency"))
 				}
 				if !state.Operations[i].UdpJitterTag.IsNull() && data.Operations[j].UdpJitterTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter/tag"))
 				}
 				if !state.Operations[i].UdpJitter.IsNull() && data.Operations[j].UdpJitter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/jitter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/jitter"))
 				}
 				if !state.Operations[i].UdpEchoHistoryLives.IsNull() && data.Operations[j].UdpEchoHistoryLives.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/history/lives"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/history/lives"))
 				}
 				if !state.Operations[i].UdpEchoHistoryFilterFailures.IsNull() && data.Operations[j].UdpEchoHistoryFilterFailures.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/history/filter/failures"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/history/filter/failures"))
 				}
 				if !state.Operations[i].UdpEchoHistoryFilterAll.IsNull() && data.Operations[j].UdpEchoHistoryFilterAll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/history/filter/all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/history/filter/all"))
 				}
 				if !state.Operations[i].UdpEchoHistoryBuckets.IsNull() && data.Operations[j].UdpEchoHistoryBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/history/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/history/buckets"))
 				}
 				for ci := range state.Operations[i].UdpEchoStatisticsIntervals {
 					ckeys := [...]string{"interval-time"}
@@ -3147,146 +3147,146 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 						}
 						if found {
 							if !state.Operations[i].UdpEchoStatisticsIntervals[ci].Buckets.IsNull() && data.Operations[j].UdpEchoStatisticsIntervals[cj].Buckets.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v/type/udp/echo/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString), "buckets"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/udp/echo/statistics/intervals/interval", ckeyString), "buckets"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/operations/operation%v/type/udp/echo/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/udp/echo/statistics/intervals/interval", ckeyString))
 					}
 				}
 				if !state.Operations[i].UdpEchoStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].UdpEchoStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].UdpEchoStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].UdpEchoStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].UdpEchoStatisticsHourlyBuckets.IsNull() && data.Operations[j].UdpEchoStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].UdpEchoVrf.IsNull() && data.Operations[j].UdpEchoVrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/vrf"))
 				}
 				if !state.Operations[i].UdpEchoTos.IsNull() && data.Operations[j].UdpEchoTos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/tos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/tos"))
 				}
 				if !state.Operations[i].UdpEchoVerifyData.IsNull() && data.Operations[j].UdpEchoVerifyData.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/verify-data"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/verify-data"))
 				}
 				if !state.Operations[i].UdpEchoControlDisable.IsNull() && data.Operations[j].UdpEchoControlDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/control/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/control/disable"))
 				}
 				if !state.Operations[i].UdpEchoDestinationPort.IsNull() && data.Operations[j].UdpEchoDestinationPort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/destination/port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/destination/port"))
 				}
 				if !state.Operations[i].UdpEchoDestinationIpv4.IsNull() && data.Operations[j].UdpEchoDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/destination/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/destination/address"))
 				}
 				if !state.Operations[i].UdpEchoSourcePort.IsNull() && data.Operations[j].UdpEchoSourcePort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/source/port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/source/port"))
 				}
 				if !state.Operations[i].UdpEchoSourceIpv4.IsNull() && data.Operations[j].UdpEchoSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].UdpEchoTimeout.IsNull() && data.Operations[j].UdpEchoTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/timeout"))
 				}
 				if !state.Operations[i].UdpEchoDatasizeRequest.IsNull() && data.Operations[j].UdpEchoDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].UdpEchoFrequency.IsNull() && data.Operations[j].UdpEchoFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/frequency"))
 				}
 				if !state.Operations[i].UdpEchoTag.IsNull() && data.Operations[j].UdpEchoTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo/tag"))
 				}
 				if !state.Operations[i].UdpEcho.IsNull() && data.Operations[j].UdpEcho.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/udp/echo"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/udp/echo"))
 				}
 				if !state.Operations[i].IcmpPathJitterDestinationIpv4.IsNull() && data.Operations[j].IcmpPathJitterDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/destination/address/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/destination/address/address"))
 				}
 				if !state.Operations[i].IcmpPathJitterTos.IsNull() && data.Operations[j].IcmpPathJitterTos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/tos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/tos"))
 				}
 				if !state.Operations[i].IcmpPathJitterPacketInterval.IsNull() && data.Operations[j].IcmpPathJitterPacketInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/packet/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/packet/interval"))
 				}
 				if !state.Operations[i].IcmpPathJitterPacketCount.IsNull() && data.Operations[j].IcmpPathJitterPacketCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/packet/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/packet/count"))
 				}
 				if !state.Operations[i].IcmpPathJitterSourceIpv4.IsNull() && data.Operations[j].IcmpPathJitterSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].IcmpPathJitterTimeout.IsNull() && data.Operations[j].IcmpPathJitterTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/timeout"))
 				}
 				if !state.Operations[i].IcmpPathJitterDatasizeRequest.IsNull() && data.Operations[j].IcmpPathJitterDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].IcmpPathJitterFrequency.IsNull() && data.Operations[j].IcmpPathJitterFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/frequency"))
 				}
 				if !state.Operations[i].IcmpPathJitterTag.IsNull() && data.Operations[j].IcmpPathJitterTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter/tag"))
 				}
 				if !state.Operations[i].IcmpPathJitter.IsNull() && data.Operations[j].IcmpPathJitter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-jitter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-jitter"))
 				}
 				if !state.Operations[i].IcmpPathEchoStatisticsHourlyMaximumPaths.IsNull() && data.Operations[j].IcmpPathEchoStatisticsHourlyMaximumPaths.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/statistics/hourly/maximum/paths"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/statistics/hourly/maximum/paths"))
 				}
 				if !state.Operations[i].IcmpPathEchoStatisticsHourlyMaximumHops.IsNull() && data.Operations[j].IcmpPathEchoStatisticsHourlyMaximumHops.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/statistics/hourly/maximum/hops"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/statistics/hourly/maximum/hops"))
 				}
 				if !state.Operations[i].IcmpPathEchoStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].IcmpPathEchoStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].IcmpPathEchoStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].IcmpPathEchoStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].IcmpPathEchoStatisticsHourlyBuckets.IsNull() && data.Operations[j].IcmpPathEchoStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].IcmpPathEchoHistorySamples.IsNull() && data.Operations[j].IcmpPathEchoHistorySamples.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/history/samples"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/samples"))
 				}
 				if !state.Operations[i].IcmpPathEchoHistoryLives.IsNull() && data.Operations[j].IcmpPathEchoHistoryLives.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/history/lives"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/lives"))
 				}
 				if !state.Operations[i].IcmpPathEchoHistoryFilterFailures.IsNull() && data.Operations[j].IcmpPathEchoHistoryFilterFailures.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/history/filter/failures"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/filter/failures"))
 				}
 				if !state.Operations[i].IcmpPathEchoHistoryFilterAll.IsNull() && data.Operations[j].IcmpPathEchoHistoryFilterAll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/history/filter/all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/filter/all"))
 				}
 				if !state.Operations[i].IcmpPathEchoHistoryBuckets.IsNull() && data.Operations[j].IcmpPathEchoHistoryBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/history/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/buckets"))
 				}
 				if !state.Operations[i].IcmpPathEchoDestinationIpv4.IsNull() && data.Operations[j].IcmpPathEchoDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/destination/address/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/destination/address/address"))
 				}
 				if !state.Operations[i].IcmpPathEchoTos.IsNull() && data.Operations[j].IcmpPathEchoTos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/tos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/tos"))
 				}
 				if !state.Operations[i].IcmpPathEchoSourceIpv4.IsNull() && data.Operations[j].IcmpPathEchoSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].IcmpPathEchoTimeout.IsNull() && data.Operations[j].IcmpPathEchoTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/timeout"))
 				}
 				if !state.Operations[i].IcmpPathEchoDatasizeRequest.IsNull() && data.Operations[j].IcmpPathEchoDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].IcmpPathEchoFrequency.IsNull() && data.Operations[j].IcmpPathEchoFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/frequency"))
 				}
 				if !state.Operations[i].IcmpPathEchoTag.IsNull() && data.Operations[j].IcmpPathEchoTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo/tag"))
 				}
 				if !state.Operations[i].IcmpPathEcho.IsNull() && data.Operations[j].IcmpPathEcho.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/path-echo"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/path-echo"))
 				}
 				for ci := range state.Operations[i].IcmpEchoStatisticsIntervals {
 					ckeys := [...]string{"interval-time"}
@@ -3312,74 +3312,74 @@ func (data *IPSLA) getDeletedItems(ctx context.Context, state IPSLA, version str
 						}
 						if found {
 							if !state.Operations[i].IcmpEchoStatisticsIntervals[ci].Buckets.IsNull() && data.Operations[j].IcmpEchoStatisticsIntervals[cj].Buckets.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v/type/icmp/echo/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString), "buckets"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/icmp/echo/statistics/intervals/interval", ckeyString), "buckets"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/operations/operation%v/type/icmp/echo/statistics/intervals/interval%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "operations/operation", keyString, "type/icmp/echo/statistics/intervals/interval", ckeyString))
 					}
 				}
 				if !state.Operations[i].IcmpEchoStatisticsHourlyDistributionInterval.IsNull() && data.Operations[j].IcmpEchoStatisticsHourlyDistributionInterval.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/statistics/hourly/distribution/interval"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/statistics/hourly/distribution/interval"))
 				}
 				if !state.Operations[i].IcmpEchoStatisticsHourlyDistributionCount.IsNull() && data.Operations[j].IcmpEchoStatisticsHourlyDistributionCount.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/statistics/hourly/distribution/count"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/statistics/hourly/distribution/count"))
 				}
 				if !state.Operations[i].IcmpEchoStatisticsHourlyBuckets.IsNull() && data.Operations[j].IcmpEchoStatisticsHourlyBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/statistics/hourly/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/statistics/hourly/buckets"))
 				}
 				if !state.Operations[i].IcmpEchoHistoryLives.IsNull() && data.Operations[j].IcmpEchoHistoryLives.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/history/lives"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/history/lives"))
 				}
 				if !state.Operations[i].IcmpEchoHistoryFilterFailures.IsNull() && data.Operations[j].IcmpEchoHistoryFilterFailures.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/history/filter/failures"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/history/filter/failures"))
 				}
 				if !state.Operations[i].IcmpEchoHistoryFilterAll.IsNull() && data.Operations[j].IcmpEchoHistoryFilterAll.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/history/filter/all"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/history/filter/all"))
 				}
 				if !state.Operations[i].IcmpEchoHistoryBuckets.IsNull() && data.Operations[j].IcmpEchoHistoryBuckets.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/history/buckets"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/history/buckets"))
 				}
 				if !state.Operations[i].IcmpEchoDestinationIpv6.IsNull() && data.Operations[j].IcmpEchoDestinationIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/destination/address/ipv6-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/destination/address/ipv6-address"))
 				}
 				if !state.Operations[i].IcmpEchoDestinationIpv4.IsNull() && data.Operations[j].IcmpEchoDestinationIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/destination/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/destination/address/ipv4-address"))
 				}
 				if !state.Operations[i].IcmpEchoVrf.IsNull() && data.Operations[j].IcmpEchoVrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/vrf"))
 				}
 				if !state.Operations[i].IcmpEchoTos.IsNull() && data.Operations[j].IcmpEchoTos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/tos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/tos"))
 				}
 				if !state.Operations[i].IcmpEchoSourceIpv6.IsNull() && data.Operations[j].IcmpEchoSourceIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/source/address/ipv6-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/source/address/ipv6-address"))
 				}
 				if !state.Operations[i].IcmpEchoSourceIpv4.IsNull() && data.Operations[j].IcmpEchoSourceIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/source/address/ipv4-address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/source/address/ipv4-address"))
 				}
 				if !state.Operations[i].IcmpEchoTimeout.IsNull() && data.Operations[j].IcmpEchoTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/timeout"))
 				}
 				if !state.Operations[i].IcmpEchoDatasizeRequest.IsNull() && data.Operations[j].IcmpEchoDatasizeRequest.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/datasize/request/enter-request-datasize-in-byte"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/datasize/request/enter-request-datasize-in-byte"))
 				}
 				if !state.Operations[i].IcmpEchoFrequency.IsNull() && data.Operations[j].IcmpEchoFrequency.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/frequency"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/frequency"))
 				}
 				if !state.Operations[i].IcmpEchoTag.IsNull() && data.Operations[j].IcmpEchoTag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo/tag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo/tag"))
 				}
 				if !state.Operations[i].IcmpEcho.IsNull() && data.Operations[j].IcmpEcho.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString), "type/icmp/echo"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString), "type/icmp/echo"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/operations/operation%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "operations/operation", keyString))
 		}
 	}
 	if !state.HwTimestampDisable.IsNull() && data.HwTimestampDisable.IsNull() {
@@ -3411,16 +3411,16 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Schedules[i].Recurring.IsNull() && !data.Schedules[i].Recurring.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString), "recurring"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "schedule/operations/operation", keyString), "recurring"))
 		}
 		if !data.Schedules[i].StartNow.IsNull() && !data.Schedules[i].StartNow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString), "start-time/now"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "schedule/operations/operation", keyString), "start-time/now"))
 		}
 		if !data.Schedules[i].StartPending.IsNull() && !data.Schedules[i].StartPending.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString), "start-time/pending"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "schedule/operations/operation", keyString), "start-time/pending"))
 		}
 		if !data.Schedules[i].LifeForever.IsNull() && !data.Schedules[i].LifeForever.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString), "life/forever"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "schedule/operations/operation", keyString), "life/forever"))
 		}
 	}
 	for i := range data.Operations {
@@ -3431,7 +3431,7 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Operations[i].MplsLspTrace.IsNull() && !data.Operations[i].MplsLspTrace.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/mpls/lsp/trace"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/mpls/lsp/trace"))
 		}
 		for ci := range data.Operations[i].MplsLspPingStatisticsIntervals {
 			ckeys := [...]string{"interval-time"}
@@ -3442,7 +3442,7 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			}
 		}
 		if !data.Operations[i].MplsLspPing.IsNull() && !data.Operations[i].MplsLspPing.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/mpls/lsp/ping"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/mpls/lsp/ping"))
 		}
 		for ci := range data.Operations[i].UdpJitterStatisticsIntervals {
 			ckeys := [...]string{"interval-time"}
@@ -3453,19 +3453,19 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			}
 		}
 		if !data.Operations[i].UdpJitterVerifyData.IsNull() && !data.Operations[i].UdpJitterVerifyData.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/jitter/verify-data"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/jitter/verify-data"))
 		}
 		if !data.Operations[i].UdpJitterControlDisable.IsNull() && !data.Operations[i].UdpJitterControlDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/jitter/control/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/jitter/control/disable"))
 		}
 		if !data.Operations[i].UdpJitter.IsNull() && !data.Operations[i].UdpJitter.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/jitter"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/jitter"))
 		}
 		if !data.Operations[i].UdpEchoHistoryFilterFailures.IsNull() && !data.Operations[i].UdpEchoHistoryFilterFailures.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/echo/history/filter/failures"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/echo/history/filter/failures"))
 		}
 		if !data.Operations[i].UdpEchoHistoryFilterAll.IsNull() && !data.Operations[i].UdpEchoHistoryFilterAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/echo/history/filter/all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/echo/history/filter/all"))
 		}
 		for ci := range data.Operations[i].UdpEchoStatisticsIntervals {
 			ckeys := [...]string{"interval-time"}
@@ -3476,25 +3476,25 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			}
 		}
 		if !data.Operations[i].UdpEchoVerifyData.IsNull() && !data.Operations[i].UdpEchoVerifyData.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/echo/verify-data"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/echo/verify-data"))
 		}
 		if !data.Operations[i].UdpEchoControlDisable.IsNull() && !data.Operations[i].UdpEchoControlDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/echo/control/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/echo/control/disable"))
 		}
 		if !data.Operations[i].UdpEcho.IsNull() && !data.Operations[i].UdpEcho.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/udp/echo"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/udp/echo"))
 		}
 		if !data.Operations[i].IcmpPathJitter.IsNull() && !data.Operations[i].IcmpPathJitter.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/path-jitter"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/path-jitter"))
 		}
 		if !data.Operations[i].IcmpPathEchoHistoryFilterFailures.IsNull() && !data.Operations[i].IcmpPathEchoHistoryFilterFailures.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/path-echo/history/filter/failures"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/filter/failures"))
 		}
 		if !data.Operations[i].IcmpPathEchoHistoryFilterAll.IsNull() && !data.Operations[i].IcmpPathEchoHistoryFilterAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/path-echo/history/filter/all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/path-echo/history/filter/all"))
 		}
 		if !data.Operations[i].IcmpPathEcho.IsNull() && !data.Operations[i].IcmpPathEcho.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/path-echo"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/path-echo"))
 		}
 		for ci := range data.Operations[i].IcmpEchoStatisticsIntervals {
 			ckeys := [...]string{"interval-time"}
@@ -3505,13 +3505,13 @@ func (data *IPSLA) getEmptyLeafsDelete(ctx context.Context, version string) []st
 			}
 		}
 		if !data.Operations[i].IcmpEchoHistoryFilterFailures.IsNull() && !data.Operations[i].IcmpEchoHistoryFilterFailures.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/echo/history/filter/failures"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/echo/history/filter/failures"))
 		}
 		if !data.Operations[i].IcmpEchoHistoryFilterAll.IsNull() && !data.Operations[i].IcmpEchoHistoryFilterAll.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/echo/history/filter/all"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/echo/history/filter/all"))
 		}
 		if !data.Operations[i].IcmpEcho.IsNull() && !data.Operations[i].IcmpEcho.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString), "type/icmp/echo"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString), "type/icmp/echo"))
 		}
 	}
 	if !data.HwTimestampDisable.IsNull() && !data.HwTimestampDisable.ValueBool() {
@@ -3550,7 +3550,7 @@ func (data *IPSLA) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/schedule/operations/operation%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "schedule/operations/operation", keyString))
 	}
 	for i := range data.Operations {
 		keys := [...]string{"operation-number"}
@@ -3568,7 +3568,7 @@ func (data *IPSLA) getDeletePaths(ctx context.Context, version string) []string 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/operations/operation%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "operations/operation", keyString))
 	}
 	if !data.HwTimestampDisable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "hw-timestamp/disable"))

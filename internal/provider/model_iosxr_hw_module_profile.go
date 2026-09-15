@@ -2212,7 +2212,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-netflow/sflow-enable-locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile-netflow/sflow-enable-locations/location", keyString))
 		}
 	}
 	if !state.NetflowSflowEnable.IsNull() && data.NetflowSflowEnable.IsNull() {
@@ -2251,7 +2251,7 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-netflow/ipfix315-enable-locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile-netflow/ipfix315-enable-locations/location", keyString))
 		}
 	}
 	if !state.NetflowIpfix315Enable.IsNull() && data.NetflowIpfix315Enable.IsNull() {
@@ -2284,13 +2284,13 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileQosNifHpFifoReserveLocations[i].Percent.IsNull() && data.ProfileQosNifHpFifoReserveLocations[j].Percent.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", state.getPath(), keyString), "percent"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile-qos/nif-hp-fifo-reserve-locations/location", keyString), "percent"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile-qos/nif-hp-fifo-reserve-locations/location", keyString))
 		}
 	}
 	if !state.ProfileQosNifHpFifoReservePercent.IsNull() && data.ProfileQosNifHpFifoReservePercent.IsNull() {
@@ -2365,13 +2365,13 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileQosMaxClassmapSizeLocations[i].MaxClassmapSize.IsNull() && data.ProfileQosMaxClassmapSizeLocations[j].MaxClassmapSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", state.getPath(), keyString), "max-classmap-size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile-qos/max-classmap-sizes/locations/location", keyString), "max-classmap-size"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile-qos/max-classmap-sizes/locations/location", keyString))
 		}
 	}
 	if !state.ProfileQosMaxClassmapSize.IsNull() && data.ProfileQosMaxClassmapSize.IsNull() {
@@ -2413,13 +2413,13 @@ func (data *HWModuleProfile) getDeletedItems(ctx context.Context, state HWModule
 			}
 			if found {
 				if !state.ProfileBundleHashIndexLocations[i].Index.IsNull() && data.ProfileBundleHashIndexLocations[j].Index.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", state.getPath(), keyString), "index"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "profile-bundle-hash/hash-index/locations/location", keyString), "index"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "profile-bundle-hash/hash-index/locations/location", keyString))
 		}
 	}
 	if !state.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() && data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
@@ -2780,7 +2780,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/sflow-enable-locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile-netflow/sflow-enable-locations/location", keyString))
 	}
 	if !data.NetflowSflowEnable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-netflow/sflow-enable"))
@@ -2804,7 +2804,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-netflow/ipfix315-enable-locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile-netflow/ipfix315-enable-locations/location", keyString))
 	}
 	if !data.NetflowIpfix315Enable.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-netflow/ipfix315-enable"))
@@ -2828,7 +2828,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/nif-hp-fifo-reserve-locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile-qos/nif-hp-fifo-reserve-locations/location", keyString))
 	}
 	if !data.ProfileQosNifHpFifoReservePercent.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/nif-hp-fifo-reserve/percent"))
@@ -2894,7 +2894,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-qos/max-classmap-sizes/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile-qos/max-classmap-sizes/locations/location", keyString))
 	}
 	if !data.ProfileQosMaxClassmapSize.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-qos/max-classmap-sizes/max-classmap-size"))
@@ -2924,7 +2924,7 @@ func (data *HWModuleProfile) getDeletePaths(ctx context.Context, version string)
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/profile-bundle-hash/hash-index/locations/location%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "profile-bundle-hash/hash-index/locations/location", keyString))
 	}
 	if !data.ProfileLoadBalanceAlgorithmHashPolynomialIndex.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "profile-load-balance/algorithm/hash-polynomial-index"))

@@ -5075,91 +5075,91 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Users[i].V3Systemowner.IsNull() && data.Users[j].V3Systemowner.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/systemowner"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/systemowner"))
 				}
 				if !state.Users[i].V3Ipv6.IsNull() && data.Users[j].V3Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/ipv6"))
 				}
 				if !state.Users[i].V3Ipv4.IsNull() && data.Users[j].V3Ipv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/ipv4"))
 				}
 				if !state.Users[i].V3PrivAesAes256EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes256EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-256/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-256/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes256EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes256EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-256/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-256/encryption-default"))
 				}
 				if !state.Users[i].V3PrivAesAes192EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes192EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-192/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-192/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes192EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes192EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-192/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-192/encryption-default"))
 				}
 				if !state.Users[i].V3PrivAesAes128EncryptionAes.IsNull() && data.Users[j].V3PrivAesAes128EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-128/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-128/encryption-aes"))
 				}
 				if !state.Users[i].V3PrivAesAes128EncryptionDefault.IsNull() && data.Users[j].V3PrivAesAes128EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/priv/aes/aes-128/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/priv/aes/aes-128/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha512EncryptionDefault.IsNull() && data.Users[j].V3AuthSha512EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-512/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha-512/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha512EncryptionAes.IsNull() && data.Users[j].V3AuthSha512EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-512/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha-512/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthSha256EncryptionDefault.IsNull() && data.Users[j].V3AuthSha256EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-256/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha-256/encryption-default"))
 				}
 				if !state.Users[i].V3AuthSha256EncryptionAes.IsNull() && data.Users[j].V3AuthSha256EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha-256/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha-256/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthShaEncryptionDefault.IsNull() && data.Users[j].V3AuthShaEncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha/encryption-default"))
 				}
 				if !state.Users[i].V3AuthShaEncryptionAes.IsNull() && data.Users[j].V3AuthShaEncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/sha/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/sha/encryption-aes"))
 				}
 				if !state.Users[i].V3AuthMd5EncryptionDefault.IsNull() && data.Users[j].V3AuthMd5EncryptionDefault.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/md5/encryption-default"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/md5/encryption-default"))
 				}
 				if !state.Users[i].V3AuthMd5EncryptionAes.IsNull() && data.Users[j].V3AuthMd5EncryptionAes.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3/auth/md5/encryption-aes"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3/auth/md5/encryption-aes"))
 				}
 				if !state.Users[i].V3.IsNull() && data.Users[j].V3.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v3"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v3"))
 				}
 				if !state.Users[i].V2cSystemowner.IsNull() && data.Users[j].V2cSystemowner.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/systemowner"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v2c/systemowner"))
 				}
 				if !state.Users[i].V2cIpv6.IsNull() && data.Users[j].V2cIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v2c/ipv6"))
 				}
 				if !state.Users[i].V2cIpv4.IsNull() && data.Users[j].V2cIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v2c/ipv4"))
 				}
 				if !state.Users[i].V2c.IsNull() && data.Users[j].V2c.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v2c"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v2c"))
 				}
 				if !state.Users[i].V1Systemowner.IsNull() && data.Users[j].V1Systemowner.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/systemowner"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v1/systemowner"))
 				}
 				if !state.Users[i].V1Ipv6.IsNull() && data.Users[j].V1Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v1/ipv6"))
 				}
 				if !state.Users[i].V1Ipv4.IsNull() && data.Users[j].V1Ipv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v1/ipv4"))
 				}
 				if !state.Users[i].V1.IsNull() && data.Users[j].V1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "v1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "v1"))
 				}
 				if !state.Users[i].GroupName.IsNull() && data.Users[j].GroupName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/users/user%v", state.getPath(), keyString), "group-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString), "group-name"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/users/user%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "users/user", keyString))
 		}
 	}
 	for i := range state.EngineIdRemotes {
@@ -5186,16 +5186,16 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.EngineIdRemotes[i].UdpPort.IsNull() && data.EngineIdRemotes[j].UdpPort.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/engine-id/remotes/remote%v", state.getPath(), keyString), "udp-port"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "engine-id/remotes/remote", keyString), "udp-port"))
 				}
 				if !state.EngineIdRemotes[i].EngineId.IsNull() && data.EngineIdRemotes[j].EngineId.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/engine-id/remotes/remote%v", state.getPath(), keyString), "engine-id"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "engine-id/remotes/remote", keyString), "engine-id"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/engine-id/remotes/remote%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "engine-id/remotes/remote", keyString))
 		}
 	}
 	if !state.EngineIdLocal.IsNull() && data.EngineIdLocal.IsNull() {
@@ -5225,79 +5225,79 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Groups[i].V3Ipv6.IsNull() && data.Groups[j].V3Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/ipv6"))
 				}
 				if !state.Groups[i].V3Ipv4.IsNull() && data.Groups[j].V3Ipv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/ipv4"))
 				}
 				if !state.Groups[i].V3Notify.IsNull() && data.Groups[j].V3Notify.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/notify"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/notify"))
 				}
 				if !state.Groups[i].V3Context.IsNull() && data.Groups[j].V3Context.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/context"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/context"))
 				}
 				if !state.Groups[i].V3Write.IsNull() && data.Groups[j].V3Write.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/write"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/write"))
 				}
 				if !state.Groups[i].V3Read.IsNull() && data.Groups[j].V3Read.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/read"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/read"))
 				}
 				if !state.Groups[i].V3Noauth.IsNull() && data.Groups[j].V3Noauth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/noauth"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/noauth"))
 				}
 				if !state.Groups[i].V3Auth.IsNull() && data.Groups[j].V3Auth.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/auth"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/auth"))
 				}
 				if !state.Groups[i].V3Priv.IsNull() && data.Groups[j].V3Priv.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v3/priv"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v3/priv"))
 				}
 				if !state.Groups[i].V2cIpv6.IsNull() && data.Groups[j].V2cIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/ipv6"))
 				}
 				if !state.Groups[i].V2cIpv4.IsNull() && data.Groups[j].V2cIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/ipv4"))
 				}
 				if !state.Groups[i].V2cNotify.IsNull() && data.Groups[j].V2cNotify.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/notify"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/notify"))
 				}
 				if !state.Groups[i].V2cContext.IsNull() && data.Groups[j].V2cContext.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/context"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/context"))
 				}
 				if !state.Groups[i].V2cWrite.IsNull() && data.Groups[j].V2cWrite.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/write"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/write"))
 				}
 				if !state.Groups[i].V2cRead.IsNull() && data.Groups[j].V2cRead.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c/read"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c/read"))
 				}
 				if !state.Groups[i].V2c.IsNull() && data.Groups[j].V2c.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v2c"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v2c"))
 				}
 				if !state.Groups[i].V1Ipv6.IsNull() && data.Groups[j].V1Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/ipv6"))
 				}
 				if !state.Groups[i].V1Ipv4.IsNull() && data.Groups[j].V1Ipv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/ipv4"))
 				}
 				if !state.Groups[i].V1Notify.IsNull() && data.Groups[j].V1Notify.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/notify"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/notify"))
 				}
 				if !state.Groups[i].V1Context.IsNull() && data.Groups[j].V1Context.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/context"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/context"))
 				}
 				if !state.Groups[i].V1Write.IsNull() && data.Groups[j].V1Write.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/write"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/write"))
 				}
 				if !state.Groups[i].V1Read.IsNull() && data.Groups[j].V1Read.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1/read"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1/read"))
 				}
 				if !state.Groups[i].V1.IsNull() && data.Groups[j].V1.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString), "v1"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString), "v1"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/groups/group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "groups/group", keyString))
 		}
 	}
 	if !state.DropReportAclIpv6.IsNull() && data.DropReportAclIpv6.IsNull() {
@@ -5383,23 +5383,23 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Views[i].MibViewFamilies[ci].Excluded.IsNull() && data.Views[j].MibViewFamilies[cj].Excluded.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", state.getPath(), keyString, ckeyString), "."))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "views/view", keyString, "mib-view-families/mib-view-family", ckeyString), "."))
 							}
 							if !state.Views[i].MibViewFamilies[ci].Included.IsNull() && data.Views[j].MibViewFamilies[cj].Included.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", state.getPath(), keyString, ckeyString), "."))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "views/view", keyString, "mib-view-families/mib-view-family", ckeyString), "."))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "views/view", keyString, "mib-view-families/mib-view-family", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/views/view%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "views/view", keyString))
 		}
 	}
 	for i := range state.Hosts {
@@ -5449,19 +5449,19 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsEncryptedAes[ci].VersionV2c.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() && data.Hosts[j].InformsEncryptedAes[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-aeses/encryption-aes", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-aeses/encryption-aes", ckeyString))
 					}
 				}
 				for ci := range state.Hosts[i].InformsEncryptedDefault {
@@ -5488,19 +5488,19 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() && data.Hosts[j].InformsEncryptedDefault[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-defaults/encryption-default", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-defaults/encryption-default", ckeyString))
 					}
 				}
 				for ci := range state.Hosts[i].InformsUnencryptedStrings {
@@ -5527,19 +5527,19 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/unencrypted/unencrypted-string", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/unencrypted/unencrypted-string", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() && data.Hosts[j].InformsUnencryptedStrings[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/unencrypted/unencrypted-string", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "informs/unencrypted/unencrypted-string", ckeyString))
 					}
 				}
 				for ci := range state.Hosts[i].TrapsEncryptedAes {
@@ -5566,19 +5566,19 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() && data.Hosts[j].TrapsEncryptedAes[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-aeses/encryption-aes", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-aeses/encryption-aes", ckeyString))
 					}
 				}
 				for ci := range state.Hosts[i].TrapsEncryptedDefault {
@@ -5605,19 +5605,19 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() && data.Hosts[j].TrapsEncryptedDefault[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-defaults/encryption-default", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-defaults/encryption-default", ckeyString))
 					}
 				}
 				for ci := range state.Hosts[i].TrapsUnencryptedStrings {
@@ -5644,26 +5644,26 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 						}
 						if found {
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].VersionV3SecurityLevel.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v3"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/unencrypted/unencrypted-string", ckeyString), "version/v3"))
 							}
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].VersionV2c.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "version/v2c"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/unencrypted/unencrypted-string", ckeyString), "version/v2c"))
 							}
 							if !state.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() && data.Hosts[j].TrapsUnencryptedStrings[cj].UdpPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString), "udp-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/unencrypted/unencrypted-string", ckeyString), "udp-port"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "hosts/host", keyString, "traps/unencrypted/unencrypted-string", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/hosts/host%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "hosts/host", keyString))
 		}
 	}
 	if !state.TrapsSystem.IsNull() && data.TrapsSystem.IsNull() {
@@ -5957,31 +5957,31 @@ func (data *SNMPServer) getDeletedItems(ctx context.Context, state SNMPServer, v
 			}
 			if found {
 				if !state.Communities[i].Ipv6.IsNull() && data.Communities[j].Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "ipv6"))
 				}
 				if !state.Communities[i].Ipv4.IsNull() && data.Communities[j].Ipv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "ipv4"))
 				}
 				if !state.Communities[i].Systemowner.IsNull() && data.Communities[j].Systemowner.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "systemowner"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "systemowner"))
 				}
 				if !state.Communities[i].Sdrowner.IsNull() && data.Communities[j].Sdrowner.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "sdrowner"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "sdrowner"))
 				}
 				if !state.Communities[i].Rw.IsNull() && data.Communities[j].Rw.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "rw"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "rw"))
 				}
 				if !state.Communities[i].Ro.IsNull() && data.Communities[j].Ro.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "ro"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "ro"))
 				}
 				if !state.Communities[i].View.IsNull() && data.Communities[j].View.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString), "view"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString), "view"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "community/unencrypted/unencrypted-string", keyString))
 		}
 	}
 	if !state.OverloadThrottleRate.IsNull() && data.OverloadThrottleRate.IsNull() {
@@ -6031,22 +6031,22 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Users[i].V3Systemowner.IsNull() && !data.Users[i].V3Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v3/systemowner"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v3/systemowner"))
 		}
 		if !data.Users[i].V3.IsNull() && !data.Users[i].V3.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v3"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v3"))
 		}
 		if !data.Users[i].V2cSystemowner.IsNull() && !data.Users[i].V2cSystemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v2c/systemowner"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v2c/systemowner"))
 		}
 		if !data.Users[i].V2c.IsNull() && !data.Users[i].V2c.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v2c"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v2c"))
 		}
 		if !data.Users[i].V1Systemowner.IsNull() && !data.Users[i].V1Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v1/systemowner"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v1/systemowner"))
 		}
 		if !data.Users[i].V1.IsNull() && !data.Users[i].V1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/users/user%v", data.getPath(), keyString), "v1"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString), "v1"))
 		}
 	}
 	for i := range data.EngineIdRemotes {
@@ -6065,19 +6065,19 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Groups[i].V3Noauth.IsNull() && !data.Groups[i].V3Noauth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/noauth"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString), "v3/noauth"))
 		}
 		if !data.Groups[i].V3Auth.IsNull() && !data.Groups[i].V3Auth.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/auth"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString), "v3/auth"))
 		}
 		if !data.Groups[i].V3Priv.IsNull() && !data.Groups[i].V3Priv.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v3/priv"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString), "v3/priv"))
 		}
 		if !data.Groups[i].V2c.IsNull() && !data.Groups[i].V2c.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v2c"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString), "v2c"))
 		}
 		if !data.Groups[i].V1.IsNull() && !data.Groups[i].V1.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString), "v1"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString), "v1"))
 		}
 	}
 	if !data.DropUnknownUser.IsNull() && !data.DropUnknownUser.ValueBool() {
@@ -6101,10 +6101,10 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Views[i].MibViewFamilies[ci].Excluded.IsNull() && !data.Views[i].MibViewFamilies[ci].Excluded.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", data.getPath(), keyString, ckeyString), "."))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "views/view", keyString, "mib-view-families/mib-view-family", ckeyString), "."))
 			}
 			if !data.Views[i].MibViewFamilies[ci].Included.IsNull() && !data.Views[i].MibViewFamilies[ci].Included.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/views/view%v/mib-view-families/mib-view-family%v", data.getPath(), keyString, ckeyString), "."))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "views/view", keyString, "mib-view-families/mib-view-family", ckeyString), "."))
 			}
 		}
 	}
@@ -6123,7 +6123,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsEncryptedAes[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsEncryptedAes[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-aeses/encryption-aes%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].InformsEncryptedDefault {
@@ -6134,7 +6134,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/encrypted/encryption-defaults/encryption-default%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "informs/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].InformsUnencryptedStrings {
@@ -6145,7 +6145,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.IsNull() && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/informs/unencrypted/unencrypted-string%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "informs/unencrypted/unencrypted-string", ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsEncryptedAes {
@@ -6156,7 +6156,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-aeses/encryption-aes%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-aeses/encryption-aes", ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsEncryptedDefault {
@@ -6167,7 +6167,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/encrypted/encryption-defaults/encryption-default%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "traps/encrypted/encryption-defaults/encryption-default", ckeyString), "version/v2c"))
 			}
 		}
 		for ci := range data.Hosts[i].TrapsUnencryptedStrings {
@@ -6178,7 +6178,7 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.IsNull() && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/hosts/host%v/traps/unencrypted/unencrypted-string%v", data.getPath(), keyString, ckeyString), "version/v2c"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "hosts/host", keyString, "traps/unencrypted/unencrypted-string", ckeyString), "version/v2c"))
 			}
 		}
 	}
@@ -6454,16 +6454,16 @@ func (data *SNMPServer) getEmptyLeafsDelete(ctx context.Context, version string)
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Communities[i].Systemowner.IsNull() && !data.Communities[i].Systemowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "systemowner"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "community/unencrypted/unencrypted-string", keyString), "systemowner"))
 		}
 		if !data.Communities[i].Sdrowner.IsNull() && !data.Communities[i].Sdrowner.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "sdrowner"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "community/unencrypted/unencrypted-string", keyString), "sdrowner"))
 		}
 		if !data.Communities[i].Rw.IsNull() && !data.Communities[i].Rw.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "rw"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "community/unencrypted/unencrypted-string", keyString), "rw"))
 		}
 		if !data.Communities[i].Ro.IsNull() && !data.Communities[i].Ro.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString), "ro"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "community/unencrypted/unencrypted-string", keyString), "ro"))
 		}
 	}
 	return emptyLeafsDelete
@@ -6523,7 +6523,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/users/user%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "users/user", keyString))
 	}
 	for i := range data.EngineIdRemotes {
 		keys := [...]string{"address"}
@@ -6541,7 +6541,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/engine-id/remotes/remote%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "engine-id/remotes/remote", keyString))
 	}
 	if !data.EngineIdLocal.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "engine-id/local"))
@@ -6562,7 +6562,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/groups/group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "groups/group", keyString))
 	}
 	if !data.DropReportAclIpv6.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "drop/report/acl/ipv6"))
@@ -6616,7 +6616,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/views/view%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "views/view", keyString))
 	}
 	for i := range data.Hosts {
 		keys := [...]string{"address"}
@@ -6634,7 +6634,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/hosts/host%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "hosts/host", keyString))
 	}
 	if !data.TrapsSystem.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "traps/Cisco-IOS-XR-um-traps-system-cfg:system"))
@@ -6919,7 +6919,7 @@ func (data *SNMPServer) getDeletePaths(ctx context.Context, version string) []st
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/community/unencrypted/unencrypted-string%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "community/unencrypted/unencrypted-string", keyString))
 	}
 	if !data.OverloadThrottleRate.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "overload-throttle-rate"))

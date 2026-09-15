@@ -11270,7 +11270,7 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v/inherit/usergroup%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString, "inherit/usergroup", ckeyString))
 					}
 				}
 				for ci := range state.Usergroups[i].Taskgroups {
@@ -11300,47 +11300,47 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v/taskgroup/task-groups/task-group%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString, "taskgroup/task-groups/task-group", ckeyString))
 					}
 				}
 				if !state.Usergroups[i].TaskgroupReadOnly.IsNull() && data.Usergroups[j].TaskgroupReadOnly.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/read-only-tg"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/read-only-tg"))
 				}
 				if !state.Usergroups[i].TaskgroupRetrieve.IsNull() && data.Usergroups[j].TaskgroupRetrieve.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/retrieve"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/retrieve"))
 				}
 				if !state.Usergroups[i].TaskgroupProvisioning.IsNull() && data.Usergroups[j].TaskgroupProvisioning.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/provisioning"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/provisioning"))
 				}
 				if !state.Usergroups[i].TaskgroupMaintenance.IsNull() && data.Usergroups[j].TaskgroupMaintenance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/maintenance"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/maintenance"))
 				}
 				if !state.Usergroups[i].TaskgroupCiscoSupport.IsNull() && data.Usergroups[j].TaskgroupCiscoSupport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/cisco-support"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/cisco-support"))
 				}
 				if !state.Usergroups[i].TaskgroupOperator.IsNull() && data.Usergroups[j].TaskgroupOperator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/operator"))
 				}
 				if !state.Usergroups[i].TaskgroupServiceadmin.IsNull() && data.Usergroups[j].TaskgroupServiceadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/serviceadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/serviceadmin"))
 				}
 				if !state.Usergroups[i].TaskgroupSysadmin.IsNull() && data.Usergroups[j].TaskgroupSysadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/sysadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/sysadmin"))
 				}
 				if !state.Usergroups[i].TaskgroupNetadmin.IsNull() && data.Usergroups[j].TaskgroupNetadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/netadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/netadmin"))
 				}
 				if !state.Usergroups[i].TaskgroupRootLr.IsNull() && data.Usergroups[j].TaskgroupRootLr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "taskgroup/root-lr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/root-lr"))
 				}
 				if !state.Usergroups[i].Description.IsNull() && data.Usergroups[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "description"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString))
 		}
 	}
 	for i := range state.Taskgroups {
@@ -11393,1055 +11393,1055 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v/inherit/taskgroup/task-groups/task-group%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString, "inherit/taskgroup/task-groups/task-group", ckeyString))
 					}
 				}
 				if !state.Taskgroups[i].InheritTaskgroupCiscoSupport.IsNull() && data.Taskgroups[j].InheritTaskgroupCiscoSupport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/cisco-support"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/cisco-support"))
 				}
 				if !state.Taskgroups[i].InheritTaskgroupOperator.IsNull() && data.Taskgroups[j].InheritTaskgroupOperator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/operator"))
 				}
 				if !state.Taskgroups[i].InheritTaskgroupServiceadmin.IsNull() && data.Taskgroups[j].InheritTaskgroupServiceadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/serviceadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/serviceadmin"))
 				}
 				if !state.Taskgroups[i].InheritTaskgroupSysadmin.IsNull() && data.Taskgroups[j].InheritTaskgroupSysadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/sysadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/sysadmin"))
 				}
 				if !state.Taskgroups[i].InheritTaskgroupNetadmin.IsNull() && data.Taskgroups[j].InheritTaskgroupNetadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/netadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/netadmin"))
 				}
 				if !state.Taskgroups[i].InheritTaskgroupRootLr.IsNull() && data.Taskgroups[j].InheritTaskgroupRootLr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "inherit/taskgroup/root-lr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/root-lr"))
 				}
 				if !state.Taskgroups[i].TaskDebugFc.IsNull() && data.Taskgroups[j].TaskDebugFc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/fc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fc"))
 				}
 				if !state.Taskgroups[i].TaskDebugFti.IsNull() && data.Taskgroups[j].TaskDebugFti.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/fti"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fti"))
 				}
 				if !state.Taskgroups[i].TaskDebugDossier.IsNull() && data.Taskgroups[j].TaskDebugDossier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/dossier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/dossier"))
 				}
 				if !state.Taskgroups[i].TaskDebugL2rib.IsNull() && data.Taskgroups[j].TaskDebugL2rib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/l2rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/l2rib"))
 				}
 				if !state.Taskgroups[i].TaskDebugLldp.IsNull() && data.Taskgroups[j].TaskDebugLldp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/lldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lldp"))
 				}
 				if !state.Taskgroups[i].TaskDebugCpri.IsNull() && data.Taskgroups[j].TaskDebugCpri.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/cpri"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cpri"))
 				}
 				if !state.Taskgroups[i].TaskDebugPlatMgr.IsNull() && data.Taskgroups[j].TaskDebugPlatMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/plat-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/plat-mgr"))
 				}
 				if !state.Taskgroups[i].TaskDebugNacm.IsNull() && data.Taskgroups[j].TaskDebugNacm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/nacm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/nacm"))
 				}
 				if !state.Taskgroups[i].TaskDebugOtn.IsNull() && data.Taskgroups[j].TaskDebugOtn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/otn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/otn"))
 				}
 				if !state.Taskgroups[i].TaskDebugPbr.IsNull() && data.Taskgroups[j].TaskDebugPbr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/pbr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pbr"))
 				}
 				if !state.Taskgroups[i].TaskDebugLisp.IsNull() && data.Taskgroups[j].TaskDebugLisp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/lisp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lisp"))
 				}
 				if !state.Taskgroups[i].TaskDebugNps.IsNull() && data.Taskgroups[j].TaskDebugNps.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/nps"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/nps"))
 				}
 				if !state.Taskgroups[i].TaskDebugVpdn.IsNull() && data.Taskgroups[j].TaskDebugVpdn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/vpdn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vpdn"))
 				}
 				if !state.Taskgroups[i].TaskDebugRcmd.IsNull() && data.Taskgroups[j].TaskDebugRcmd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/rcmd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rcmd"))
 				}
 				if !state.Taskgroups[i].TaskDebugCallHome.IsNull() && data.Taskgroups[j].TaskDebugCallHome.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/call-home"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/call-home"))
 				}
 				if !state.Taskgroups[i].TaskDebugCgn.IsNull() && data.Taskgroups[j].TaskDebugCgn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/cgn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cgn"))
 				}
 				if !state.Taskgroups[i].TaskDebugAncp.IsNull() && data.Taskgroups[j].TaskDebugAncp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ancp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ancp"))
 				}
 				if !state.Taskgroups[i].TaskDebugLi.IsNull() && data.Taskgroups[j].TaskDebugLi.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/li"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/li"))
 				}
 				if !state.Taskgroups[i].TaskDebugEem.IsNull() && data.Taskgroups[j].TaskDebugEem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/eem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/eem"))
 				}
 				if !state.Taskgroups[i].TaskDebugEthernetServices.IsNull() && data.Taskgroups[j].TaskDebugEthernetServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ethernet-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ethernet-services"))
 				}
 				if !state.Taskgroups[i].TaskDebugL2vpn.IsNull() && data.Taskgroups[j].TaskDebugL2vpn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/l2vpn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/l2vpn"))
 				}
 				if !state.Taskgroups[i].TaskDebugFirewall.IsNull() && data.Taskgroups[j].TaskDebugFirewall.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/firewall"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/firewall"))
 				}
 				if !state.Taskgroups[i].TaskDebugSbc.IsNull() && data.Taskgroups[j].TaskDebugSbc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/sbc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sbc"))
 				}
 				if !state.Taskgroups[i].TaskDebugEigrp.IsNull() && data.Taskgroups[j].TaskDebugEigrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/eigrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/eigrp"))
 				}
 				if !state.Taskgroups[i].TaskDebugRip.IsNull() && data.Taskgroups[j].TaskDebugRip.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/rip"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rip"))
 				}
 				if !state.Taskgroups[i].TaskDebugBfd.IsNull() && data.Taskgroups[j].TaskDebugBfd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/bfd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bfd"))
 				}
 				if !state.Taskgroups[i].TaskDebugAtm.IsNull() && data.Taskgroups[j].TaskDebugAtm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/atm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/atm"))
 				}
 				if !state.Taskgroups[i].TaskDebugAdmin.IsNull() && data.Taskgroups[j].TaskDebugAdmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/admin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/admin"))
 				}
 				if !state.Taskgroups[i].TaskDebugIpv6.IsNull() && data.Taskgroups[j].TaskDebugIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ipv6"))
 				}
 				if !state.Taskgroups[i].TaskDebugInventory.IsNull() && data.Taskgroups[j].TaskDebugInventory.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/inventory"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/inventory"))
 				}
 				if !state.Taskgroups[i].TaskDebugMonitor.IsNull() && data.Taskgroups[j].TaskDebugMonitor.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/monitor"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/monitor"))
 				}
 				if !state.Taskgroups[i].TaskDebugFr.IsNull() && data.Taskgroups[j].TaskDebugFr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/fr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fr"))
 				}
 				if !state.Taskgroups[i].TaskDebugDrivers.IsNull() && data.Taskgroups[j].TaskDebugDrivers.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/drivers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/drivers"))
 				}
 				if !state.Taskgroups[i].TaskDebugNetflow.IsNull() && data.Taskgroups[j].TaskDebugNetflow.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/netflow"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/netflow"))
 				}
 				if !state.Taskgroups[i].TaskDebugLogging.IsNull() && data.Taskgroups[j].TaskDebugLogging.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/logging"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/logging"))
 				}
 				if !state.Taskgroups[i].TaskDebugSysmgr.IsNull() && data.Taskgroups[j].TaskDebugSysmgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/sysmgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sysmgr"))
 				}
 				if !state.Taskgroups[i].TaskDebugBcdl.IsNull() && data.Taskgroups[j].TaskDebugBcdl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/bcdl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bcdl"))
 				}
 				if !state.Taskgroups[i].TaskDebugExtAccess.IsNull() && data.Taskgroups[j].TaskDebugExtAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ext-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ext-access"))
 				}
 				if !state.Taskgroups[i].TaskDebugDiag.IsNull() && data.Taskgroups[j].TaskDebugDiag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/diag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/diag"))
 				}
 				if !state.Taskgroups[i].TaskDebugCdp.IsNull() && data.Taskgroups[j].TaskDebugCdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/cdp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cdp"))
 				}
 				if !state.Taskgroups[i].TaskDebugBasicServices.IsNull() && data.Taskgroups[j].TaskDebugBasicServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/basic-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/basic-services"))
 				}
 				if !state.Taskgroups[i].TaskDebugTtyAccess.IsNull() && data.Taskgroups[j].TaskDebugTtyAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/tty-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/tty-access"))
 				}
 				if !state.Taskgroups[i].TaskDebugSystem.IsNull() && data.Taskgroups[j].TaskDebugSystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/system"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/system"))
 				}
 				if !state.Taskgroups[i].TaskDebugPkgMgmt.IsNull() && data.Taskgroups[j].TaskDebugPkgMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/pkg-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pkg-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskDebugIpServices.IsNull() && data.Taskgroups[j].TaskDebugIpServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ip-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ip-services"))
 				}
 				if !state.Taskgroups[i].TaskDebugInterface.IsNull() && data.Taskgroups[j].TaskDebugInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/interface"))
 				}
 				if !state.Taskgroups[i].TaskDebugFilesystem.IsNull() && data.Taskgroups[j].TaskDebugFilesystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/filesystem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/filesystem"))
 				}
 				if !state.Taskgroups[i].TaskDebugFaultMgr.IsNull() && data.Taskgroups[j].TaskDebugFaultMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/fault-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fault-mgr"))
 				}
 				if !state.Taskgroups[i].TaskDebugBoot.IsNull() && data.Taskgroups[j].TaskDebugBoot.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/boot"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/boot"))
 				}
 				if !state.Taskgroups[i].TaskDebugHostServices.IsNull() && data.Taskgroups[j].TaskDebugHostServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/host-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/host-services"))
 				}
 				if !state.Taskgroups[i].TaskDebugConfigServices.IsNull() && data.Taskgroups[j].TaskDebugConfigServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/config-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/config-services"))
 				}
 				if !state.Taskgroups[i].TaskDebugConfigMgmt.IsNull() && data.Taskgroups[j].TaskDebugConfigMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/config-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/config-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskDebugSnmp.IsNull() && data.Taskgroups[j].TaskDebugSnmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/snmp"))
 				}
 				if !state.Taskgroups[i].TaskDebugCrypto.IsNull() && data.Taskgroups[j].TaskDebugCrypto.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/crypto"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/crypto"))
 				}
 				if !state.Taskgroups[i].TaskDebugAaa.IsNull() && data.Taskgroups[j].TaskDebugAaa.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/aaa"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/aaa"))
 				}
 				if !state.Taskgroups[i].TaskDebugAcl.IsNull() && data.Taskgroups[j].TaskDebugAcl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/acl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/acl"))
 				}
 				if !state.Taskgroups[i].TaskDebugQos.IsNull() && data.Taskgroups[j].TaskDebugQos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/qos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/qos"))
 				}
 				if !state.Taskgroups[i].TaskDebugVlan.IsNull() && data.Taskgroups[j].TaskDebugVlan.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/vlan"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vlan"))
 				}
 				if !state.Taskgroups[i].TaskDebugTunnel.IsNull() && data.Taskgroups[j].TaskDebugTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/tunnel"))
 				}
 				if !state.Taskgroups[i].TaskDebugDwdm.IsNull() && data.Taskgroups[j].TaskDebugDwdm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/dwdm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/dwdm"))
 				}
 				if !state.Taskgroups[i].TaskDebugSonetSdh.IsNull() && data.Taskgroups[j].TaskDebugSonetSdh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/sonet-sdh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sonet-sdh"))
 				}
 				if !state.Taskgroups[i].TaskDebugPosDpt.IsNull() && data.Taskgroups[j].TaskDebugPosDpt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/pos-dpt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pos-dpt"))
 				}
 				if !state.Taskgroups[i].TaskDebugHdlc.IsNull() && data.Taskgroups[j].TaskDebugHdlc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/hdlc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/hdlc"))
 				}
 				if !state.Taskgroups[i].TaskDebugPpp.IsNull() && data.Taskgroups[j].TaskDebugPpp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ppp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ppp"))
 				}
 				if !state.Taskgroups[i].TaskDebugTransport.IsNull() && data.Taskgroups[j].TaskDebugTransport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/transport"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/transport"))
 				}
 				if !state.Taskgroups[i].TaskDebugNetwork.IsNull() && data.Taskgroups[j].TaskDebugNetwork.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/network"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/network"))
 				}
 				if !state.Taskgroups[i].TaskDebugBundle.IsNull() && data.Taskgroups[j].TaskDebugBundle.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/bundle"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bundle"))
 				}
 				if !state.Taskgroups[i].TaskDebugFabric.IsNull() && data.Taskgroups[j].TaskDebugFabric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/fabric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fabric"))
 				}
 				if !state.Taskgroups[i].TaskDebugOuni.IsNull() && data.Taskgroups[j].TaskDebugOuni.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ouni"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ouni"))
 				}
 				if !state.Taskgroups[i].TaskDebugMplsStatic.IsNull() && data.Taskgroups[j].TaskDebugMplsStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/mpls-static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-static"))
 				}
 				if !state.Taskgroups[i].TaskDebugMplsLdp.IsNull() && data.Taskgroups[j].TaskDebugMplsLdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/mpls-ldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-ldp"))
 				}
 				if !state.Taskgroups[i].TaskDebugMplsTe.IsNull() && data.Taskgroups[j].TaskDebugMplsTe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/mpls-te"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-te"))
 				}
 				if !state.Taskgroups[i].TaskDebugMulticast.IsNull() && data.Taskgroups[j].TaskDebugMulticast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/multicast"))
 				}
 				if !state.Taskgroups[i].TaskDebugRib.IsNull() && data.Taskgroups[j].TaskDebugRib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rib"))
 				}
 				if !state.Taskgroups[i].TaskDebugIpv4.IsNull() && data.Taskgroups[j].TaskDebugIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ipv4"))
 				}
 				if !state.Taskgroups[i].TaskDebugLpts.IsNull() && data.Taskgroups[j].TaskDebugLpts.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/lpts"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lpts"))
 				}
 				if !state.Taskgroups[i].TaskDebugCef.IsNull() && data.Taskgroups[j].TaskDebugCef.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/cef"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cef"))
 				}
 				if !state.Taskgroups[i].TaskDebugVrrp.IsNull() && data.Taskgroups[j].TaskDebugVrrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/vrrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vrrp"))
 				}
 				if !state.Taskgroups[i].TaskDebugStatic.IsNull() && data.Taskgroups[j].TaskDebugStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/static"))
 				}
 				if !state.Taskgroups[i].TaskDebugRoutePolicy.IsNull() && data.Taskgroups[j].TaskDebugRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/route-policy"))
 				}
 				if !state.Taskgroups[i].TaskDebugRouteMap.IsNull() && data.Taskgroups[j].TaskDebugRouteMap.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/route-map"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/route-map"))
 				}
 				if !state.Taskgroups[i].TaskDebugIsis.IsNull() && data.Taskgroups[j].TaskDebugIsis.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/isis"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/isis"))
 				}
 				if !state.Taskgroups[i].TaskDebugHsrp.IsNull() && data.Taskgroups[j].TaskDebugHsrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/hsrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/hsrp"))
 				}
 				if !state.Taskgroups[i].TaskDebugOspf.IsNull() && data.Taskgroups[j].TaskDebugOspf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/ospf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ospf"))
 				}
 				if !state.Taskgroups[i].TaskDebugBgp.IsNull() && data.Taskgroups[j].TaskDebugBgp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/debug/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bgp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFc.IsNull() && data.Taskgroups[j].TaskExecuteFc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/fc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fc"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFti.IsNull() && data.Taskgroups[j].TaskExecuteFti.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/fti"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fti"))
 				}
 				if !state.Taskgroups[i].TaskExecuteDossier.IsNull() && data.Taskgroups[j].TaskExecuteDossier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/dossier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/dossier"))
 				}
 				if !state.Taskgroups[i].TaskExecuteL2rib.IsNull() && data.Taskgroups[j].TaskExecuteL2rib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/l2rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/l2rib"))
 				}
 				if !state.Taskgroups[i].TaskExecuteLldp.IsNull() && data.Taskgroups[j].TaskExecuteLldp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/lldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lldp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCpri.IsNull() && data.Taskgroups[j].TaskExecuteCpri.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/cpri"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cpri"))
 				}
 				if !state.Taskgroups[i].TaskExecutePlatMgr.IsNull() && data.Taskgroups[j].TaskExecutePlatMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/plat-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/plat-mgr"))
 				}
 				if !state.Taskgroups[i].TaskExecuteNacm.IsNull() && data.Taskgroups[j].TaskExecuteNacm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/nacm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/nacm"))
 				}
 				if !state.Taskgroups[i].TaskExecuteOtn.IsNull() && data.Taskgroups[j].TaskExecuteOtn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/otn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/otn"))
 				}
 				if !state.Taskgroups[i].TaskExecutePbr.IsNull() && data.Taskgroups[j].TaskExecutePbr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/pbr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pbr"))
 				}
 				if !state.Taskgroups[i].TaskExecuteLisp.IsNull() && data.Taskgroups[j].TaskExecuteLisp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/lisp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lisp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteNps.IsNull() && data.Taskgroups[j].TaskExecuteNps.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/nps"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/nps"))
 				}
 				if !state.Taskgroups[i].TaskExecuteVpdn.IsNull() && data.Taskgroups[j].TaskExecuteVpdn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/vpdn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vpdn"))
 				}
 				if !state.Taskgroups[i].TaskExecuteRcmd.IsNull() && data.Taskgroups[j].TaskExecuteRcmd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/rcmd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rcmd"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCallHome.IsNull() && data.Taskgroups[j].TaskExecuteCallHome.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/call-home"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/call-home"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCgn.IsNull() && data.Taskgroups[j].TaskExecuteCgn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/cgn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cgn"))
 				}
 				if !state.Taskgroups[i].TaskExecuteAncp.IsNull() && data.Taskgroups[j].TaskExecuteAncp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ancp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ancp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteLi.IsNull() && data.Taskgroups[j].TaskExecuteLi.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/li"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/li"))
 				}
 				if !state.Taskgroups[i].TaskExecuteEem.IsNull() && data.Taskgroups[j].TaskExecuteEem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/eem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/eem"))
 				}
 				if !state.Taskgroups[i].TaskExecuteEthernetServices.IsNull() && data.Taskgroups[j].TaskExecuteEthernetServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ethernet-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ethernet-services"))
 				}
 				if !state.Taskgroups[i].TaskExecuteL2vpn.IsNull() && data.Taskgroups[j].TaskExecuteL2vpn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/l2vpn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/l2vpn"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFirewall.IsNull() && data.Taskgroups[j].TaskExecuteFirewall.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/firewall"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/firewall"))
 				}
 				if !state.Taskgroups[i].TaskExecuteSbc.IsNull() && data.Taskgroups[j].TaskExecuteSbc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/sbc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sbc"))
 				}
 				if !state.Taskgroups[i].TaskExecuteEigrp.IsNull() && data.Taskgroups[j].TaskExecuteEigrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/eigrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/eigrp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteRip.IsNull() && data.Taskgroups[j].TaskExecuteRip.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/rip"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rip"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBfd.IsNull() && data.Taskgroups[j].TaskExecuteBfd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/bfd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bfd"))
 				}
 				if !state.Taskgroups[i].TaskExecuteAtm.IsNull() && data.Taskgroups[j].TaskExecuteAtm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/atm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/atm"))
 				}
 				if !state.Taskgroups[i].TaskExecuteAdmin.IsNull() && data.Taskgroups[j].TaskExecuteAdmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/admin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/admin"))
 				}
 				if !state.Taskgroups[i].TaskExecuteIpv6.IsNull() && data.Taskgroups[j].TaskExecuteIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ipv6"))
 				}
 				if !state.Taskgroups[i].TaskExecuteInventory.IsNull() && data.Taskgroups[j].TaskExecuteInventory.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/inventory"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/inventory"))
 				}
 				if !state.Taskgroups[i].TaskExecuteMonitor.IsNull() && data.Taskgroups[j].TaskExecuteMonitor.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/monitor"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/monitor"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFr.IsNull() && data.Taskgroups[j].TaskExecuteFr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/fr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fr"))
 				}
 				if !state.Taskgroups[i].TaskExecuteDrivers.IsNull() && data.Taskgroups[j].TaskExecuteDrivers.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/drivers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/drivers"))
 				}
 				if !state.Taskgroups[i].TaskExecuteNetflow.IsNull() && data.Taskgroups[j].TaskExecuteNetflow.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/netflow"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/netflow"))
 				}
 				if !state.Taskgroups[i].TaskExecuteLogging.IsNull() && data.Taskgroups[j].TaskExecuteLogging.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/logging"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/logging"))
 				}
 				if !state.Taskgroups[i].TaskExecuteSysmgr.IsNull() && data.Taskgroups[j].TaskExecuteSysmgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/sysmgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sysmgr"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBcdl.IsNull() && data.Taskgroups[j].TaskExecuteBcdl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/bcdl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bcdl"))
 				}
 				if !state.Taskgroups[i].TaskExecuteExtAccess.IsNull() && data.Taskgroups[j].TaskExecuteExtAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ext-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ext-access"))
 				}
 				if !state.Taskgroups[i].TaskExecuteDiag.IsNull() && data.Taskgroups[j].TaskExecuteDiag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/diag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/diag"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCdp.IsNull() && data.Taskgroups[j].TaskExecuteCdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/cdp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cdp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBasicServices.IsNull() && data.Taskgroups[j].TaskExecuteBasicServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/basic-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/basic-services"))
 				}
 				if !state.Taskgroups[i].TaskExecuteTtyAccess.IsNull() && data.Taskgroups[j].TaskExecuteTtyAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/tty-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/tty-access"))
 				}
 				if !state.Taskgroups[i].TaskExecuteSystem.IsNull() && data.Taskgroups[j].TaskExecuteSystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/system"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/system"))
 				}
 				if !state.Taskgroups[i].TaskExecutePkgMgmt.IsNull() && data.Taskgroups[j].TaskExecutePkgMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/pkg-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pkg-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskExecuteIpServices.IsNull() && data.Taskgroups[j].TaskExecuteIpServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ip-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ip-services"))
 				}
 				if !state.Taskgroups[i].TaskExecuteInterface.IsNull() && data.Taskgroups[j].TaskExecuteInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/interface"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFilesystem.IsNull() && data.Taskgroups[j].TaskExecuteFilesystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/filesystem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/filesystem"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFaultMgr.IsNull() && data.Taskgroups[j].TaskExecuteFaultMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/fault-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fault-mgr"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBoot.IsNull() && data.Taskgroups[j].TaskExecuteBoot.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/boot"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/boot"))
 				}
 				if !state.Taskgroups[i].TaskExecuteHostServices.IsNull() && data.Taskgroups[j].TaskExecuteHostServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/host-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/host-services"))
 				}
 				if !state.Taskgroups[i].TaskExecuteConfigServices.IsNull() && data.Taskgroups[j].TaskExecuteConfigServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/config-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/config-services"))
 				}
 				if !state.Taskgroups[i].TaskExecuteConfigMgmt.IsNull() && data.Taskgroups[j].TaskExecuteConfigMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/config-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/config-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskExecuteSnmp.IsNull() && data.Taskgroups[j].TaskExecuteSnmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/snmp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCrypto.IsNull() && data.Taskgroups[j].TaskExecuteCrypto.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/crypto"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/crypto"))
 				}
 				if !state.Taskgroups[i].TaskExecuteAaa.IsNull() && data.Taskgroups[j].TaskExecuteAaa.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/aaa"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/aaa"))
 				}
 				if !state.Taskgroups[i].TaskExecuteAcl.IsNull() && data.Taskgroups[j].TaskExecuteAcl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/acl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/acl"))
 				}
 				if !state.Taskgroups[i].TaskExecuteQos.IsNull() && data.Taskgroups[j].TaskExecuteQos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/qos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/qos"))
 				}
 				if !state.Taskgroups[i].TaskExecuteVlan.IsNull() && data.Taskgroups[j].TaskExecuteVlan.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/vlan"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vlan"))
 				}
 				if !state.Taskgroups[i].TaskExecuteTunnel.IsNull() && data.Taskgroups[j].TaskExecuteTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/tunnel"))
 				}
 				if !state.Taskgroups[i].TaskExecuteDwdm.IsNull() && data.Taskgroups[j].TaskExecuteDwdm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/dwdm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/dwdm"))
 				}
 				if !state.Taskgroups[i].TaskExecuteSonetSdh.IsNull() && data.Taskgroups[j].TaskExecuteSonetSdh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/sonet-sdh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sonet-sdh"))
 				}
 				if !state.Taskgroups[i].TaskExecutePosDpt.IsNull() && data.Taskgroups[j].TaskExecutePosDpt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/pos-dpt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pos-dpt"))
 				}
 				if !state.Taskgroups[i].TaskExecuteHdlc.IsNull() && data.Taskgroups[j].TaskExecuteHdlc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/hdlc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/hdlc"))
 				}
 				if !state.Taskgroups[i].TaskExecutePpp.IsNull() && data.Taskgroups[j].TaskExecutePpp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ppp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ppp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteTransport.IsNull() && data.Taskgroups[j].TaskExecuteTransport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/transport"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/transport"))
 				}
 				if !state.Taskgroups[i].TaskExecuteNetwork.IsNull() && data.Taskgroups[j].TaskExecuteNetwork.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/network"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/network"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBundle.IsNull() && data.Taskgroups[j].TaskExecuteBundle.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/bundle"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bundle"))
 				}
 				if !state.Taskgroups[i].TaskExecuteFabric.IsNull() && data.Taskgroups[j].TaskExecuteFabric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/fabric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fabric"))
 				}
 				if !state.Taskgroups[i].TaskExecuteOuni.IsNull() && data.Taskgroups[j].TaskExecuteOuni.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ouni"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ouni"))
 				}
 				if !state.Taskgroups[i].TaskExecuteMplsStatic.IsNull() && data.Taskgroups[j].TaskExecuteMplsStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/mpls-static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-static"))
 				}
 				if !state.Taskgroups[i].TaskExecuteMplsLdp.IsNull() && data.Taskgroups[j].TaskExecuteMplsLdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/mpls-ldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-ldp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteMplsTe.IsNull() && data.Taskgroups[j].TaskExecuteMplsTe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/mpls-te"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-te"))
 				}
 				if !state.Taskgroups[i].TaskExecuteMulticast.IsNull() && data.Taskgroups[j].TaskExecuteMulticast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/multicast"))
 				}
 				if !state.Taskgroups[i].TaskExecuteRib.IsNull() && data.Taskgroups[j].TaskExecuteRib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rib"))
 				}
 				if !state.Taskgroups[i].TaskExecuteIpv4.IsNull() && data.Taskgroups[j].TaskExecuteIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ipv4"))
 				}
 				if !state.Taskgroups[i].TaskExecuteLpts.IsNull() && data.Taskgroups[j].TaskExecuteLpts.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/lpts"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lpts"))
 				}
 				if !state.Taskgroups[i].TaskExecuteCef.IsNull() && data.Taskgroups[j].TaskExecuteCef.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/cef"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cef"))
 				}
 				if !state.Taskgroups[i].TaskExecuteVrrp.IsNull() && data.Taskgroups[j].TaskExecuteVrrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/vrrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vrrp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteStatic.IsNull() && data.Taskgroups[j].TaskExecuteStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/static"))
 				}
 				if !state.Taskgroups[i].TaskExecuteRoutePolicy.IsNull() && data.Taskgroups[j].TaskExecuteRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/route-policy"))
 				}
 				if !state.Taskgroups[i].TaskExecuteRouteMap.IsNull() && data.Taskgroups[j].TaskExecuteRouteMap.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/route-map"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/route-map"))
 				}
 				if !state.Taskgroups[i].TaskExecuteIsis.IsNull() && data.Taskgroups[j].TaskExecuteIsis.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/isis"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/isis"))
 				}
 				if !state.Taskgroups[i].TaskExecuteHsrp.IsNull() && data.Taskgroups[j].TaskExecuteHsrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/hsrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/hsrp"))
 				}
 				if !state.Taskgroups[i].TaskExecuteOspf.IsNull() && data.Taskgroups[j].TaskExecuteOspf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/ospf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ospf"))
 				}
 				if !state.Taskgroups[i].TaskExecuteBgp.IsNull() && data.Taskgroups[j].TaskExecuteBgp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/execute/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bgp"))
 				}
 				if !state.Taskgroups[i].TaskWriteFc.IsNull() && data.Taskgroups[j].TaskWriteFc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/fc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fc"))
 				}
 				if !state.Taskgroups[i].TaskWriteFti.IsNull() && data.Taskgroups[j].TaskWriteFti.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/fti"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fti"))
 				}
 				if !state.Taskgroups[i].TaskWriteDossier.IsNull() && data.Taskgroups[j].TaskWriteDossier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/dossier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/dossier"))
 				}
 				if !state.Taskgroups[i].TaskWriteL2rib.IsNull() && data.Taskgroups[j].TaskWriteL2rib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/l2rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/l2rib"))
 				}
 				if !state.Taskgroups[i].TaskWriteLldp.IsNull() && data.Taskgroups[j].TaskWriteLldp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/lldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lldp"))
 				}
 				if !state.Taskgroups[i].TaskWriteCpri.IsNull() && data.Taskgroups[j].TaskWriteCpri.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/cpri"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cpri"))
 				}
 				if !state.Taskgroups[i].TaskWritePlatMgr.IsNull() && data.Taskgroups[j].TaskWritePlatMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/plat-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/plat-mgr"))
 				}
 				if !state.Taskgroups[i].TaskWriteNacm.IsNull() && data.Taskgroups[j].TaskWriteNacm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/nacm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/nacm"))
 				}
 				if !state.Taskgroups[i].TaskWriteOtn.IsNull() && data.Taskgroups[j].TaskWriteOtn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/otn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/otn"))
 				}
 				if !state.Taskgroups[i].TaskWritePbr.IsNull() && data.Taskgroups[j].TaskWritePbr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/pbr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pbr"))
 				}
 				if !state.Taskgroups[i].TaskWriteLisp.IsNull() && data.Taskgroups[j].TaskWriteLisp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/lisp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lisp"))
 				}
 				if !state.Taskgroups[i].TaskWriteNps.IsNull() && data.Taskgroups[j].TaskWriteNps.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/nps"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/nps"))
 				}
 				if !state.Taskgroups[i].TaskWriteVpdn.IsNull() && data.Taskgroups[j].TaskWriteVpdn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/vpdn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vpdn"))
 				}
 				if !state.Taskgroups[i].TaskWriteRcmd.IsNull() && data.Taskgroups[j].TaskWriteRcmd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/rcmd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rcmd"))
 				}
 				if !state.Taskgroups[i].TaskWriteCallHome.IsNull() && data.Taskgroups[j].TaskWriteCallHome.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/call-home"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/call-home"))
 				}
 				if !state.Taskgroups[i].TaskWriteCgn.IsNull() && data.Taskgroups[j].TaskWriteCgn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/cgn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cgn"))
 				}
 				if !state.Taskgroups[i].TaskWriteAncp.IsNull() && data.Taskgroups[j].TaskWriteAncp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ancp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ancp"))
 				}
 				if !state.Taskgroups[i].TaskWriteLi.IsNull() && data.Taskgroups[j].TaskWriteLi.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/li"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/li"))
 				}
 				if !state.Taskgroups[i].TaskWriteEem.IsNull() && data.Taskgroups[j].TaskWriteEem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/eem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/eem"))
 				}
 				if !state.Taskgroups[i].TaskWriteEthernetServices.IsNull() && data.Taskgroups[j].TaskWriteEthernetServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ethernet-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ethernet-services"))
 				}
 				if !state.Taskgroups[i].TaskWriteL2vpn.IsNull() && data.Taskgroups[j].TaskWriteL2vpn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/l2vpn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/l2vpn"))
 				}
 				if !state.Taskgroups[i].TaskWriteFirewall.IsNull() && data.Taskgroups[j].TaskWriteFirewall.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/firewall"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/firewall"))
 				}
 				if !state.Taskgroups[i].TaskWriteSbc.IsNull() && data.Taskgroups[j].TaskWriteSbc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/sbc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sbc"))
 				}
 				if !state.Taskgroups[i].TaskWriteEigrp.IsNull() && data.Taskgroups[j].TaskWriteEigrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/eigrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/eigrp"))
 				}
 				if !state.Taskgroups[i].TaskWriteRip.IsNull() && data.Taskgroups[j].TaskWriteRip.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/rip"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rip"))
 				}
 				if !state.Taskgroups[i].TaskWriteBfd.IsNull() && data.Taskgroups[j].TaskWriteBfd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/bfd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bfd"))
 				}
 				if !state.Taskgroups[i].TaskWriteAtm.IsNull() && data.Taskgroups[j].TaskWriteAtm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/atm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/atm"))
 				}
 				if !state.Taskgroups[i].TaskWriteAdmin.IsNull() && data.Taskgroups[j].TaskWriteAdmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/admin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/admin"))
 				}
 				if !state.Taskgroups[i].TaskWriteIpv6.IsNull() && data.Taskgroups[j].TaskWriteIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ipv6"))
 				}
 				if !state.Taskgroups[i].TaskWriteInventory.IsNull() && data.Taskgroups[j].TaskWriteInventory.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/inventory"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/inventory"))
 				}
 				if !state.Taskgroups[i].TaskWriteMonitor.IsNull() && data.Taskgroups[j].TaskWriteMonitor.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/monitor"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/monitor"))
 				}
 				if !state.Taskgroups[i].TaskWriteFr.IsNull() && data.Taskgroups[j].TaskWriteFr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/fr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fr"))
 				}
 				if !state.Taskgroups[i].TaskWriteDrivers.IsNull() && data.Taskgroups[j].TaskWriteDrivers.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/drivers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/drivers"))
 				}
 				if !state.Taskgroups[i].TaskWriteNetflow.IsNull() && data.Taskgroups[j].TaskWriteNetflow.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/netflow"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/netflow"))
 				}
 				if !state.Taskgroups[i].TaskWriteLogging.IsNull() && data.Taskgroups[j].TaskWriteLogging.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/logging"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/logging"))
 				}
 				if !state.Taskgroups[i].TaskWriteSysmgr.IsNull() && data.Taskgroups[j].TaskWriteSysmgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/sysmgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sysmgr"))
 				}
 				if !state.Taskgroups[i].TaskWriteBcdl.IsNull() && data.Taskgroups[j].TaskWriteBcdl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/bcdl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bcdl"))
 				}
 				if !state.Taskgroups[i].TaskWriteExtAccess.IsNull() && data.Taskgroups[j].TaskWriteExtAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ext-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ext-access"))
 				}
 				if !state.Taskgroups[i].TaskWriteDiag.IsNull() && data.Taskgroups[j].TaskWriteDiag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/diag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/diag"))
 				}
 				if !state.Taskgroups[i].TaskWriteCdp.IsNull() && data.Taskgroups[j].TaskWriteCdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/cdp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cdp"))
 				}
 				if !state.Taskgroups[i].TaskWriteBasicServices.IsNull() && data.Taskgroups[j].TaskWriteBasicServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/basic-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/basic-services"))
 				}
 				if !state.Taskgroups[i].TaskWriteTtyAccess.IsNull() && data.Taskgroups[j].TaskWriteTtyAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/tty-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/tty-access"))
 				}
 				if !state.Taskgroups[i].TaskWriteSystem.IsNull() && data.Taskgroups[j].TaskWriteSystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/system"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/system"))
 				}
 				if !state.Taskgroups[i].TaskWritePkgMgmt.IsNull() && data.Taskgroups[j].TaskWritePkgMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/pkg-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pkg-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskWriteIpServices.IsNull() && data.Taskgroups[j].TaskWriteIpServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ip-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ip-services"))
 				}
 				if !state.Taskgroups[i].TaskWriteInterface.IsNull() && data.Taskgroups[j].TaskWriteInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/interface"))
 				}
 				if !state.Taskgroups[i].TaskWriteFilesystem.IsNull() && data.Taskgroups[j].TaskWriteFilesystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/filesystem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/filesystem"))
 				}
 				if !state.Taskgroups[i].TaskWriteFaultMgr.IsNull() && data.Taskgroups[j].TaskWriteFaultMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/fault-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fault-mgr"))
 				}
 				if !state.Taskgroups[i].TaskWriteBoot.IsNull() && data.Taskgroups[j].TaskWriteBoot.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/boot"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/boot"))
 				}
 				if !state.Taskgroups[i].TaskWriteHostServices.IsNull() && data.Taskgroups[j].TaskWriteHostServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/host-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/host-services"))
 				}
 				if !state.Taskgroups[i].TaskWriteConfigServices.IsNull() && data.Taskgroups[j].TaskWriteConfigServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/config-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/config-services"))
 				}
 				if !state.Taskgroups[i].TaskWriteConfigMgmt.IsNull() && data.Taskgroups[j].TaskWriteConfigMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/config-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/config-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskWriteSnmp.IsNull() && data.Taskgroups[j].TaskWriteSnmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/snmp"))
 				}
 				if !state.Taskgroups[i].TaskWriteCrypto.IsNull() && data.Taskgroups[j].TaskWriteCrypto.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/crypto"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/crypto"))
 				}
 				if !state.Taskgroups[i].TaskWriteAaa.IsNull() && data.Taskgroups[j].TaskWriteAaa.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/aaa"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/aaa"))
 				}
 				if !state.Taskgroups[i].TaskWriteAcl.IsNull() && data.Taskgroups[j].TaskWriteAcl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/acl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/acl"))
 				}
 				if !state.Taskgroups[i].TaskWriteQos.IsNull() && data.Taskgroups[j].TaskWriteQos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/qos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/qos"))
 				}
 				if !state.Taskgroups[i].TaskWriteVlan.IsNull() && data.Taskgroups[j].TaskWriteVlan.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/vlan"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vlan"))
 				}
 				if !state.Taskgroups[i].TaskWriteTunnel.IsNull() && data.Taskgroups[j].TaskWriteTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/tunnel"))
 				}
 				if !state.Taskgroups[i].TaskWriteDwdm.IsNull() && data.Taskgroups[j].TaskWriteDwdm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/dwdm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/dwdm"))
 				}
 				if !state.Taskgroups[i].TaskWriteSonetSdh.IsNull() && data.Taskgroups[j].TaskWriteSonetSdh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/sonet-sdh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sonet-sdh"))
 				}
 				if !state.Taskgroups[i].TaskWritePosDpt.IsNull() && data.Taskgroups[j].TaskWritePosDpt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/pos-dpt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pos-dpt"))
 				}
 				if !state.Taskgroups[i].TaskWriteHdlc.IsNull() && data.Taskgroups[j].TaskWriteHdlc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/hdlc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/hdlc"))
 				}
 				if !state.Taskgroups[i].TaskWritePpp.IsNull() && data.Taskgroups[j].TaskWritePpp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ppp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ppp"))
 				}
 				if !state.Taskgroups[i].TaskWriteTransport.IsNull() && data.Taskgroups[j].TaskWriteTransport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/transport"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/transport"))
 				}
 				if !state.Taskgroups[i].TaskWriteNetwork.IsNull() && data.Taskgroups[j].TaskWriteNetwork.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/network"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/network"))
 				}
 				if !state.Taskgroups[i].TaskWriteBundle.IsNull() && data.Taskgroups[j].TaskWriteBundle.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/bundle"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bundle"))
 				}
 				if !state.Taskgroups[i].TaskWriteFabric.IsNull() && data.Taskgroups[j].TaskWriteFabric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/fabric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fabric"))
 				}
 				if !state.Taskgroups[i].TaskWriteOuni.IsNull() && data.Taskgroups[j].TaskWriteOuni.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ouni"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ouni"))
 				}
 				if !state.Taskgroups[i].TaskWriteMplsStatic.IsNull() && data.Taskgroups[j].TaskWriteMplsStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/mpls-static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-static"))
 				}
 				if !state.Taskgroups[i].TaskWriteMplsLdp.IsNull() && data.Taskgroups[j].TaskWriteMplsLdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/mpls-ldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-ldp"))
 				}
 				if !state.Taskgroups[i].TaskWriteMplsTe.IsNull() && data.Taskgroups[j].TaskWriteMplsTe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/mpls-te"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-te"))
 				}
 				if !state.Taskgroups[i].TaskWriteMulticast.IsNull() && data.Taskgroups[j].TaskWriteMulticast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/multicast"))
 				}
 				if !state.Taskgroups[i].TaskWriteRib.IsNull() && data.Taskgroups[j].TaskWriteRib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rib"))
 				}
 				if !state.Taskgroups[i].TaskWriteIpv4.IsNull() && data.Taskgroups[j].TaskWriteIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ipv4"))
 				}
 				if !state.Taskgroups[i].TaskWriteLpts.IsNull() && data.Taskgroups[j].TaskWriteLpts.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/lpts"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lpts"))
 				}
 				if !state.Taskgroups[i].TaskWriteCef.IsNull() && data.Taskgroups[j].TaskWriteCef.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/cef"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cef"))
 				}
 				if !state.Taskgroups[i].TaskWriteVrrp.IsNull() && data.Taskgroups[j].TaskWriteVrrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/vrrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vrrp"))
 				}
 				if !state.Taskgroups[i].TaskWriteStatic.IsNull() && data.Taskgroups[j].TaskWriteStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/static"))
 				}
 				if !state.Taskgroups[i].TaskWriteRoutePolicy.IsNull() && data.Taskgroups[j].TaskWriteRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/route-policy"))
 				}
 				if !state.Taskgroups[i].TaskWriteRouteMap.IsNull() && data.Taskgroups[j].TaskWriteRouteMap.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/route-map"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/route-map"))
 				}
 				if !state.Taskgroups[i].TaskWriteIsis.IsNull() && data.Taskgroups[j].TaskWriteIsis.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/isis"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/isis"))
 				}
 				if !state.Taskgroups[i].TaskWriteHsrp.IsNull() && data.Taskgroups[j].TaskWriteHsrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/hsrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/hsrp"))
 				}
 				if !state.Taskgroups[i].TaskWriteOspf.IsNull() && data.Taskgroups[j].TaskWriteOspf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/ospf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ospf"))
 				}
 				if !state.Taskgroups[i].TaskWriteBgp.IsNull() && data.Taskgroups[j].TaskWriteBgp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/write/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bgp"))
 				}
 				if !state.Taskgroups[i].TaskReadFc.IsNull() && data.Taskgroups[j].TaskReadFc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/fc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fc"))
 				}
 				if !state.Taskgroups[i].TaskReadFti.IsNull() && data.Taskgroups[j].TaskReadFti.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/fti"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fti"))
 				}
 				if !state.Taskgroups[i].TaskReadDossier.IsNull() && data.Taskgroups[j].TaskReadDossier.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/dossier"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/dossier"))
 				}
 				if !state.Taskgroups[i].TaskReadL2rib.IsNull() && data.Taskgroups[j].TaskReadL2rib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/l2rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/l2rib"))
 				}
 				if !state.Taskgroups[i].TaskReadLldp.IsNull() && data.Taskgroups[j].TaskReadLldp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/lldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lldp"))
 				}
 				if !state.Taskgroups[i].TaskReadCpri.IsNull() && data.Taskgroups[j].TaskReadCpri.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/cpri"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cpri"))
 				}
 				if !state.Taskgroups[i].TaskReadPlatMgr.IsNull() && data.Taskgroups[j].TaskReadPlatMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/plat-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/plat-mgr"))
 				}
 				if !state.Taskgroups[i].TaskReadNacm.IsNull() && data.Taskgroups[j].TaskReadNacm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/nacm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/nacm"))
 				}
 				if !state.Taskgroups[i].TaskReadOtn.IsNull() && data.Taskgroups[j].TaskReadOtn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/otn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/otn"))
 				}
 				if !state.Taskgroups[i].TaskReadPbr.IsNull() && data.Taskgroups[j].TaskReadPbr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/pbr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pbr"))
 				}
 				if !state.Taskgroups[i].TaskReadLisp.IsNull() && data.Taskgroups[j].TaskReadLisp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/lisp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lisp"))
 				}
 				if !state.Taskgroups[i].TaskReadNps.IsNull() && data.Taskgroups[j].TaskReadNps.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/nps"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/nps"))
 				}
 				if !state.Taskgroups[i].TaskReadVpdn.IsNull() && data.Taskgroups[j].TaskReadVpdn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/vpdn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vpdn"))
 				}
 				if !state.Taskgroups[i].TaskReadRcmd.IsNull() && data.Taskgroups[j].TaskReadRcmd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/rcmd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rcmd"))
 				}
 				if !state.Taskgroups[i].TaskReadCallHome.IsNull() && data.Taskgroups[j].TaskReadCallHome.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/call-home"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/call-home"))
 				}
 				if !state.Taskgroups[i].TaskReadCgn.IsNull() && data.Taskgroups[j].TaskReadCgn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/cgn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cgn"))
 				}
 				if !state.Taskgroups[i].TaskReadAncp.IsNull() && data.Taskgroups[j].TaskReadAncp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ancp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ancp"))
 				}
 				if !state.Taskgroups[i].TaskReadLi.IsNull() && data.Taskgroups[j].TaskReadLi.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/li"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/li"))
 				}
 				if !state.Taskgroups[i].TaskReadEem.IsNull() && data.Taskgroups[j].TaskReadEem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/eem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/eem"))
 				}
 				if !state.Taskgroups[i].TaskReadEthernetServices.IsNull() && data.Taskgroups[j].TaskReadEthernetServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ethernet-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ethernet-services"))
 				}
 				if !state.Taskgroups[i].TaskReadL2vpn.IsNull() && data.Taskgroups[j].TaskReadL2vpn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/l2vpn"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/l2vpn"))
 				}
 				if !state.Taskgroups[i].TaskReadFirewall.IsNull() && data.Taskgroups[j].TaskReadFirewall.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/firewall"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/firewall"))
 				}
 				if !state.Taskgroups[i].TaskReadSbc.IsNull() && data.Taskgroups[j].TaskReadSbc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/sbc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sbc"))
 				}
 				if !state.Taskgroups[i].TaskReadEigrp.IsNull() && data.Taskgroups[j].TaskReadEigrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/eigrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/eigrp"))
 				}
 				if !state.Taskgroups[i].TaskReadRip.IsNull() && data.Taskgroups[j].TaskReadRip.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/rip"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rip"))
 				}
 				if !state.Taskgroups[i].TaskReadBfd.IsNull() && data.Taskgroups[j].TaskReadBfd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/bfd"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bfd"))
 				}
 				if !state.Taskgroups[i].TaskReadAtm.IsNull() && data.Taskgroups[j].TaskReadAtm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/atm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/atm"))
 				}
 				if !state.Taskgroups[i].TaskReadAdmin.IsNull() && data.Taskgroups[j].TaskReadAdmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/admin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/admin"))
 				}
 				if !state.Taskgroups[i].TaskReadIpv6.IsNull() && data.Taskgroups[j].TaskReadIpv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ipv6"))
 				}
 				if !state.Taskgroups[i].TaskReadInventory.IsNull() && data.Taskgroups[j].TaskReadInventory.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/inventory"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/inventory"))
 				}
 				if !state.Taskgroups[i].TaskReadMonitor.IsNull() && data.Taskgroups[j].TaskReadMonitor.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/monitor"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/monitor"))
 				}
 				if !state.Taskgroups[i].TaskReadFr.IsNull() && data.Taskgroups[j].TaskReadFr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/fr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fr"))
 				}
 				if !state.Taskgroups[i].TaskReadDrivers.IsNull() && data.Taskgroups[j].TaskReadDrivers.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/drivers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/drivers"))
 				}
 				if !state.Taskgroups[i].TaskReadNetflow.IsNull() && data.Taskgroups[j].TaskReadNetflow.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/netflow"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/netflow"))
 				}
 				if !state.Taskgroups[i].TaskReadLogging.IsNull() && data.Taskgroups[j].TaskReadLogging.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/logging"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/logging"))
 				}
 				if !state.Taskgroups[i].TaskReadSysmgr.IsNull() && data.Taskgroups[j].TaskReadSysmgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/sysmgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sysmgr"))
 				}
 				if !state.Taskgroups[i].TaskReadBcdl.IsNull() && data.Taskgroups[j].TaskReadBcdl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/bcdl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bcdl"))
 				}
 				if !state.Taskgroups[i].TaskReadExtAccess.IsNull() && data.Taskgroups[j].TaskReadExtAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ext-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ext-access"))
 				}
 				if !state.Taskgroups[i].TaskReadDiag.IsNull() && data.Taskgroups[j].TaskReadDiag.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/diag"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/diag"))
 				}
 				if !state.Taskgroups[i].TaskReadCdp.IsNull() && data.Taskgroups[j].TaskReadCdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/cdp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cdp"))
 				}
 				if !state.Taskgroups[i].TaskReadBasicServices.IsNull() && data.Taskgroups[j].TaskReadBasicServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/basic-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/basic-services"))
 				}
 				if !state.Taskgroups[i].TaskReadTtyAccess.IsNull() && data.Taskgroups[j].TaskReadTtyAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/tty-access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/tty-access"))
 				}
 				if !state.Taskgroups[i].TaskReadSystem.IsNull() && data.Taskgroups[j].TaskReadSystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/system"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/system"))
 				}
 				if !state.Taskgroups[i].TaskReadPkgMgmt.IsNull() && data.Taskgroups[j].TaskReadPkgMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/pkg-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pkg-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskReadIpServices.IsNull() && data.Taskgroups[j].TaskReadIpServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ip-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ip-services"))
 				}
 				if !state.Taskgroups[i].TaskReadInterface.IsNull() && data.Taskgroups[j].TaskReadInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/interface"))
 				}
 				if !state.Taskgroups[i].TaskReadFilesystem.IsNull() && data.Taskgroups[j].TaskReadFilesystem.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/filesystem"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/filesystem"))
 				}
 				if !state.Taskgroups[i].TaskReadFaultMgr.IsNull() && data.Taskgroups[j].TaskReadFaultMgr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/fault-mgr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fault-mgr"))
 				}
 				if !state.Taskgroups[i].TaskReadBoot.IsNull() && data.Taskgroups[j].TaskReadBoot.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/boot"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/boot"))
 				}
 				if !state.Taskgroups[i].TaskReadHostServices.IsNull() && data.Taskgroups[j].TaskReadHostServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/host-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/host-services"))
 				}
 				if !state.Taskgroups[i].TaskReadConfigServices.IsNull() && data.Taskgroups[j].TaskReadConfigServices.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/config-services"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/config-services"))
 				}
 				if !state.Taskgroups[i].TaskReadConfigMgmt.IsNull() && data.Taskgroups[j].TaskReadConfigMgmt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/config-mgmt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/config-mgmt"))
 				}
 				if !state.Taskgroups[i].TaskReadSnmp.IsNull() && data.Taskgroups[j].TaskReadSnmp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/snmp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/snmp"))
 				}
 				if !state.Taskgroups[i].TaskReadCrypto.IsNull() && data.Taskgroups[j].TaskReadCrypto.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/crypto"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/crypto"))
 				}
 				if !state.Taskgroups[i].TaskReadAaa.IsNull() && data.Taskgroups[j].TaskReadAaa.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/aaa"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/aaa"))
 				}
 				if !state.Taskgroups[i].TaskReadAcl.IsNull() && data.Taskgroups[j].TaskReadAcl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/acl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/acl"))
 				}
 				if !state.Taskgroups[i].TaskReadQos.IsNull() && data.Taskgroups[j].TaskReadQos.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/qos"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/qos"))
 				}
 				if !state.Taskgroups[i].TaskReadVlan.IsNull() && data.Taskgroups[j].TaskReadVlan.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/vlan"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vlan"))
 				}
 				if !state.Taskgroups[i].TaskReadTunnel.IsNull() && data.Taskgroups[j].TaskReadTunnel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/tunnel"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/tunnel"))
 				}
 				if !state.Taskgroups[i].TaskReadDwdm.IsNull() && data.Taskgroups[j].TaskReadDwdm.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/dwdm"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/dwdm"))
 				}
 				if !state.Taskgroups[i].TaskReadSonetSdh.IsNull() && data.Taskgroups[j].TaskReadSonetSdh.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/sonet-sdh"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sonet-sdh"))
 				}
 				if !state.Taskgroups[i].TaskReadPosDpt.IsNull() && data.Taskgroups[j].TaskReadPosDpt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/pos-dpt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pos-dpt"))
 				}
 				if !state.Taskgroups[i].TaskReadHdlc.IsNull() && data.Taskgroups[j].TaskReadHdlc.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/hdlc"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/hdlc"))
 				}
 				if !state.Taskgroups[i].TaskReadPpp.IsNull() && data.Taskgroups[j].TaskReadPpp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ppp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ppp"))
 				}
 				if !state.Taskgroups[i].TaskReadTransport.IsNull() && data.Taskgroups[j].TaskReadTransport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/transport"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/transport"))
 				}
 				if !state.Taskgroups[i].TaskReadNetwork.IsNull() && data.Taskgroups[j].TaskReadNetwork.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/network"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/network"))
 				}
 				if !state.Taskgroups[i].TaskReadBundle.IsNull() && data.Taskgroups[j].TaskReadBundle.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/bundle"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bundle"))
 				}
 				if !state.Taskgroups[i].TaskReadFabric.IsNull() && data.Taskgroups[j].TaskReadFabric.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/fabric"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fabric"))
 				}
 				if !state.Taskgroups[i].TaskReadOuni.IsNull() && data.Taskgroups[j].TaskReadOuni.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ouni"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ouni"))
 				}
 				if !state.Taskgroups[i].TaskReadMplsStatic.IsNull() && data.Taskgroups[j].TaskReadMplsStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/mpls-static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-static"))
 				}
 				if !state.Taskgroups[i].TaskReadMplsLdp.IsNull() && data.Taskgroups[j].TaskReadMplsLdp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/mpls-ldp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-ldp"))
 				}
 				if !state.Taskgroups[i].TaskReadMplsTe.IsNull() && data.Taskgroups[j].TaskReadMplsTe.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/mpls-te"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-te"))
 				}
 				if !state.Taskgroups[i].TaskReadMulticast.IsNull() && data.Taskgroups[j].TaskReadMulticast.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/multicast"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/multicast"))
 				}
 				if !state.Taskgroups[i].TaskReadRib.IsNull() && data.Taskgroups[j].TaskReadRib.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/rib"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rib"))
 				}
 				if !state.Taskgroups[i].TaskReadIpv4.IsNull() && data.Taskgroups[j].TaskReadIpv4.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ipv4"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ipv4"))
 				}
 				if !state.Taskgroups[i].TaskReadLpts.IsNull() && data.Taskgroups[j].TaskReadLpts.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/lpts"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lpts"))
 				}
 				if !state.Taskgroups[i].TaskReadCef.IsNull() && data.Taskgroups[j].TaskReadCef.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/cef"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cef"))
 				}
 				if !state.Taskgroups[i].TaskReadVrrp.IsNull() && data.Taskgroups[j].TaskReadVrrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/vrrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vrrp"))
 				}
 				if !state.Taskgroups[i].TaskReadStatic.IsNull() && data.Taskgroups[j].TaskReadStatic.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/static"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/static"))
 				}
 				if !state.Taskgroups[i].TaskReadRoutePolicy.IsNull() && data.Taskgroups[j].TaskReadRoutePolicy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/route-policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/route-policy"))
 				}
 				if !state.Taskgroups[i].TaskReadRouteMap.IsNull() && data.Taskgroups[j].TaskReadRouteMap.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/route-map"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/route-map"))
 				}
 				if !state.Taskgroups[i].TaskReadIsis.IsNull() && data.Taskgroups[j].TaskReadIsis.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/isis"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/isis"))
 				}
 				if !state.Taskgroups[i].TaskReadHsrp.IsNull() && data.Taskgroups[j].TaskReadHsrp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/hsrp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/hsrp"))
 				}
 				if !state.Taskgroups[i].TaskReadOspf.IsNull() && data.Taskgroups[j].TaskReadOspf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/ospf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ospf"))
 				}
 				if !state.Taskgroups[i].TaskReadBgp.IsNull() && data.Taskgroups[j].TaskReadBgp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "task/read/bgp"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bgp"))
 				}
 				if !state.Taskgroups[i].Description.IsNull() && data.Taskgroups[j].Description.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString), "description"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "description"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString))
 		}
 	}
 	for i := range state.Usernames {
@@ -12474,10 +12474,10 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 			}
 			if found {
 				if !state.Usernames[i].Directory.IsNull() && data.Usernames[j].Directory.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "directory"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "directory"))
 				}
 				if !state.Usernames[i].ShellType.IsNull() && data.Usernames[j].ShellType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "shell-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "shell-type"))
 				}
 				for ci := range state.Usernames[i].UserGroups {
 					ckeys := [...]string{"user-group-name"}
@@ -12506,62 +12506,62 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v/group/user-groups/user-group%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString, "group/user-groups/user-group", ckeyString))
 					}
 				}
 				if !state.Usernames[i].GroupReadOnlyTg.IsNull() && data.Usernames[j].GroupReadOnlyTg.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/read-only-tg"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/read-only-tg"))
 				}
 				if !state.Usernames[i].GroupRetrieve.IsNull() && data.Usernames[j].GroupRetrieve.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/retrieve"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/retrieve"))
 				}
 				if !state.Usernames[i].GroupProvisioning.IsNull() && data.Usernames[j].GroupProvisioning.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/provisioning"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/provisioning"))
 				}
 				if !state.Usernames[i].GroupMaintenance.IsNull() && data.Usernames[j].GroupMaintenance.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/maintenance"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/maintenance"))
 				}
 				if !state.Usernames[i].GroupCiscoSupport.IsNull() && data.Usernames[j].GroupCiscoSupport.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/cisco-support"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/cisco-support"))
 				}
 				if !state.Usernames[i].GroupOperator.IsNull() && data.Usernames[j].GroupOperator.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/operator"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/operator"))
 				}
 				if !state.Usernames[i].GroupServiceadmin.IsNull() && data.Usernames[j].GroupServiceadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/serviceadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/serviceadmin"))
 				}
 				if !state.Usernames[i].GroupSysadmin.IsNull() && data.Usernames[j].GroupSysadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/sysadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/sysadmin"))
 				}
 				if !state.Usernames[i].GroupNetadmin.IsNull() && data.Usernames[j].GroupNetadmin.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/netadmin"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/netadmin"))
 				}
 				if !state.Usernames[i].GroupRootLr.IsNull() && data.Usernames[j].GroupRootLr.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "group/root-lr"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/root-lr"))
 				}
 				if !state.Usernames[i].Policy.IsNull() && data.Usernames[j].Policy.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "policy"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "policy"))
 				}
 				if !state.Usernames[i].LoginHistoryDisable.IsNull() && data.Usernames[j].LoginHistoryDisable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "login-history/disable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "login-history/disable"))
 				}
 				if !state.Usernames[i].LoginHistoryEnable.IsNull() && data.Usernames[j].LoginHistoryEnable.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "login-history/enable"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "login-history/enable"))
 				}
 				if !state.Usernames[i].SecretType10.IsNull() && data.Usernames[j].SecretType10.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "secret/ten"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "secret/ten"))
 				}
 				if !state.Usernames[i].SecretType9.IsNull() && data.Usernames[j].SecretType9.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "secret/nine"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "secret/nine"))
 				}
 				if !state.Usernames[i].SecretType8.IsNull() && data.Usernames[j].SecretType8.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString), "secret/eight"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "secret/eight"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString))
 		}
 	}
 	for i := range state.TacacsServerGroups {
@@ -12623,35 +12623,35 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 						if found {
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].HolddownTime.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "holddown-time"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "holddown-time"))
 							}
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].Timeout.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].Timeout.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "timeout"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "timeout"))
 							}
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].SingleConnectionIdleTimeout.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "single-connection-idle-timeout"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "single-connection-idle-timeout"))
 							}
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].SingleConnection.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].SingleConnection.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "single-connection"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "single-connection"))
 							}
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].KeyType6.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].KeyType6.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "key/six"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "key/six"))
 							}
 							if !state.TacacsServerGroups[i].ServerPrivates[ci].KeyType7.IsNull() && data.TacacsServerGroups[j].ServerPrivates[cj].KeyType7.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "key/seven"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "key/seven"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString))
 					}
 				}
 				if !state.TacacsServerGroups[i].HolddownTime.IsNull() && data.TacacsServerGroups[j].HolddownTime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v", state.getPath(), keyString), "holddown-time"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString), "holddown-time"))
 				}
 				if !state.TacacsServerGroups[i].Vrf.IsNull() && data.TacacsServerGroups[j].Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v", state.getPath(), keyString), "vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString), "vrf"))
 				}
 				for ci := range state.TacacsServerGroups[i].Servers {
 					ckeys := [...]string{"ordering-index", "address"}
@@ -12686,14 +12686,14 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/servers/server%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "servers/server", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString))
 		}
 	}
 	for i := range state.ServerRadiusDynamicAuthorClients {
@@ -12726,16 +12726,16 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 			}
 			if found {
 				if !state.ServerRadiusDynamicAuthorClients[i].ServerKeyType6.IsNull() && data.ServerRadiusDynamicAuthorClients[j].ServerKeyType6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client%v", state.getPath(), keyString), "server-key/six"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client", keyString), "server-key/six"))
 				}
 				if !state.ServerRadiusDynamicAuthorClients[i].ServerKeyType7.IsNull() && data.ServerRadiusDynamicAuthorClients[j].ServerKeyType7.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client%v", state.getPath(), keyString), "server-key/seven"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client", keyString), "server-key/seven"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client", keyString))
 		}
 	}
 	if !state.ServerRadiusDynamicAuthorServerKeyType6.IsNull() && data.ServerRadiusDynamicAuthorServerKeyType6.IsNull() {
@@ -12774,46 +12774,46 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 			}
 			if found {
 				if !state.RadiusServerGroups[i].AccountingReplyRadiusAttributeList.IsNull() && data.RadiusServerGroups[j].AccountingReplyRadiusAttributeList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/reply/radius-attribute-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/reply/radius-attribute-list"))
 				}
 				if !state.RadiusServerGroups[i].AccountingReplyReject.IsNull() && data.RadiusServerGroups[j].AccountingReplyReject.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/reply"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/reply"))
 				}
 				if !state.RadiusServerGroups[i].AccountingReplyAccept.IsNull() && data.RadiusServerGroups[j].AccountingReplyAccept.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/reply"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/reply"))
 				}
 				if !state.RadiusServerGroups[i].AccountingRequestRadiusAttributeList.IsNull() && data.RadiusServerGroups[j].AccountingRequestRadiusAttributeList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/request/radius-attribute-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/request/radius-attribute-list"))
 				}
 				if !state.RadiusServerGroups[i].AccountingRequestReject.IsNull() && data.RadiusServerGroups[j].AccountingRequestReject.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/request"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/request"))
 				}
 				if !state.RadiusServerGroups[i].AccountingRequestAccept.IsNull() && data.RadiusServerGroups[j].AccountingRequestAccept.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "accounting/request"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/request"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationReplyRadiusAttributeList.IsNull() && data.RadiusServerGroups[j].AuthorizationReplyRadiusAttributeList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/reply/radius-attribute-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/reply/radius-attribute-list"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationReplyReject.IsNull() && data.RadiusServerGroups[j].AuthorizationReplyReject.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/reply"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/reply"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationReplyAccept.IsNull() && data.RadiusServerGroups[j].AuthorizationReplyAccept.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/reply"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/reply"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationRequestRadiusAttributeList.IsNull() && data.RadiusServerGroups[j].AuthorizationRequestRadiusAttributeList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/request/radius-attribute-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/request/radius-attribute-list"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationRequestReject.IsNull() && data.RadiusServerGroups[j].AuthorizationRequestReject.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/request"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/request"))
 				}
 				if !state.RadiusServerGroups[i].AuthorizationRequestAccept.IsNull() && data.RadiusServerGroups[j].AuthorizationRequestAccept.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "authorization/request"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/request"))
 				}
 				if !state.RadiusServerGroups[i].SourceInterface.IsNull() && data.RadiusServerGroups[j].SourceInterface.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "source-interface"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "source-interface"))
 				}
 				if !state.RadiusServerGroups[i].Vrf.IsNull() && data.RadiusServerGroups[j].Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "vrf"))
 				}
 				for ci := range state.RadiusServerGroups[i].ServerPrivates {
 					ckeys := [...]string{"ordering-index", "address", "auth-port", "acct-port"}
@@ -12857,56 +12857,56 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 						if found {
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAcctPort.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].IgnoreAcctPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "ignore-acct-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "ignore-acct-port"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAuthPort.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].IgnoreAuthPort.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "ignore-auth-port"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "ignore-auth-port"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].IdleTime.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].IdleTime.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "idle-time"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "idle-time"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].TestUsername.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].TestUsername.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "test/username"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "test/username"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].Retransmit.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].Retransmit.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "retransmit"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "retransmit"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].Timeout.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].Timeout.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "timeout"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "timeout"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].KeyType6.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].KeyType6.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "key/six"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "key/six"))
 							}
 							if !state.RadiusServerGroups[i].ServerPrivates[ci].KeyType7.IsNull() && data.RadiusServerGroups[j].ServerPrivates[cj].KeyType7.IsNull() {
-								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString), "key/seven"))
+								deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "key/seven"))
 							}
 							break
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString))
 					}
 				}
 				if !state.RadiusServerGroups[i].ThrottleAccounting.IsNull() && data.RadiusServerGroups[j].ThrottleAccounting.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "throttle/accounting"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "throttle/accounting"))
 				}
 				if !state.RadiusServerGroups[i].ThrottleAccessTimeout.IsNull() && data.RadiusServerGroups[j].ThrottleAccessTimeout.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "throttle/access-timeout"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "throttle/access-timeout"))
 				}
 				if !state.RadiusServerGroups[i].ThrottleAccess.IsNull() && data.RadiusServerGroups[j].ThrottleAccess.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "throttle/access"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "throttle/access"))
 				}
 				if !state.RadiusServerGroups[i].Deadtime.IsNull() && data.RadiusServerGroups[j].Deadtime.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "deadtime"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "deadtime"))
 				}
 				if !state.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingIgnorePreferredServer.IsNull() && data.RadiusServerGroups[j].LoadBalanceMethodLeastOutstandingIgnorePreferredServer.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "load-balance/method/least-outstanding/ignore-preferred-server"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "load-balance/method/least-outstanding/ignore-preferred-server"))
 				}
 				if !state.RadiusServerGroups[i].LoadBalanceMethodLeastOutstanding.IsNull() && data.RadiusServerGroups[j].LoadBalanceMethodLeastOutstanding.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "load-balance/method/least-outstanding"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "load-balance/method/least-outstanding"))
 				}
 				if !state.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() && data.RadiusServerGroups[j].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString), "load-balance/method/least-outstanding/batch-size"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "load-balance/method/least-outstanding/batch-size"))
 				}
 				for ci := range state.RadiusServerGroups[i].Servers {
 					ckeys := [...]string{"ordering-index", "address", "auth-port", "acct-port"}
@@ -12953,14 +12953,14 @@ func (data *AAA) getDeletedItems(ctx context.Context, state AAA, version string)
 						}
 					}
 					if !found {
-						deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/servers/server%v", state.getPath(), keyString, ckeyString))
+						deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "servers/server", ckeyString))
 					}
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString))
 		}
 	}
 	if !state.BannerLogin.IsNull() && data.BannerLogin.IsNull() {
@@ -13002,34 +13002,34 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			}
 		}
 		if !data.Usergroups[i].TaskgroupReadOnly.IsNull() && !data.Usergroups[i].TaskgroupReadOnly.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/read-only-tg"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/read-only-tg"))
 		}
 		if !data.Usergroups[i].TaskgroupRetrieve.IsNull() && !data.Usergroups[i].TaskgroupRetrieve.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/retrieve"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/retrieve"))
 		}
 		if !data.Usergroups[i].TaskgroupProvisioning.IsNull() && !data.Usergroups[i].TaskgroupProvisioning.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/provisioning"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/provisioning"))
 		}
 		if !data.Usergroups[i].TaskgroupMaintenance.IsNull() && !data.Usergroups[i].TaskgroupMaintenance.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/maintenance"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/maintenance"))
 		}
 		if !data.Usergroups[i].TaskgroupCiscoSupport.IsNull() && !data.Usergroups[i].TaskgroupCiscoSupport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/cisco-support"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/cisco-support"))
 		}
 		if !data.Usergroups[i].TaskgroupOperator.IsNull() && !data.Usergroups[i].TaskgroupOperator.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/operator"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/operator"))
 		}
 		if !data.Usergroups[i].TaskgroupServiceadmin.IsNull() && !data.Usergroups[i].TaskgroupServiceadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/serviceadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/serviceadmin"))
 		}
 		if !data.Usergroups[i].TaskgroupSysadmin.IsNull() && !data.Usergroups[i].TaskgroupSysadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/sysadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/sysadmin"))
 		}
 		if !data.Usergroups[i].TaskgroupNetadmin.IsNull() && !data.Usergroups[i].TaskgroupNetadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/netadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/netadmin"))
 		}
 		if !data.Usergroups[i].TaskgroupRootLr.IsNull() && !data.Usergroups[i].TaskgroupRootLr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString), "taskgroup/root-lr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString), "taskgroup/root-lr"))
 		}
 	}
 	for i := range data.Taskgroups {
@@ -13048,1042 +13048,1042 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			}
 		}
 		if !data.Taskgroups[i].InheritTaskgroupCiscoSupport.IsNull() && !data.Taskgroups[i].InheritTaskgroupCiscoSupport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/cisco-support"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/cisco-support"))
 		}
 		if !data.Taskgroups[i].InheritTaskgroupOperator.IsNull() && !data.Taskgroups[i].InheritTaskgroupOperator.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/operator"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/operator"))
 		}
 		if !data.Taskgroups[i].InheritTaskgroupServiceadmin.IsNull() && !data.Taskgroups[i].InheritTaskgroupServiceadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/serviceadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/serviceadmin"))
 		}
 		if !data.Taskgroups[i].InheritTaskgroupSysadmin.IsNull() && !data.Taskgroups[i].InheritTaskgroupSysadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/sysadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/sysadmin"))
 		}
 		if !data.Taskgroups[i].InheritTaskgroupNetadmin.IsNull() && !data.Taskgroups[i].InheritTaskgroupNetadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/netadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/netadmin"))
 		}
 		if !data.Taskgroups[i].InheritTaskgroupRootLr.IsNull() && !data.Taskgroups[i].InheritTaskgroupRootLr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "inherit/taskgroup/root-lr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "inherit/taskgroup/root-lr"))
 		}
 		if !data.Taskgroups[i].TaskDebugFc.IsNull() && !data.Taskgroups[i].TaskDebugFc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/fc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fc"))
 		}
 		if !data.Taskgroups[i].TaskDebugFti.IsNull() && !data.Taskgroups[i].TaskDebugFti.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/fti"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fti"))
 		}
 		if !data.Taskgroups[i].TaskDebugDossier.IsNull() && !data.Taskgroups[i].TaskDebugDossier.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/dossier"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/dossier"))
 		}
 		if !data.Taskgroups[i].TaskDebugL2rib.IsNull() && !data.Taskgroups[i].TaskDebugL2rib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/l2rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/l2rib"))
 		}
 		if !data.Taskgroups[i].TaskDebugLldp.IsNull() && !data.Taskgroups[i].TaskDebugLldp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/lldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lldp"))
 		}
 		if !data.Taskgroups[i].TaskDebugCpri.IsNull() && !data.Taskgroups[i].TaskDebugCpri.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/cpri"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cpri"))
 		}
 		if !data.Taskgroups[i].TaskDebugPlatMgr.IsNull() && !data.Taskgroups[i].TaskDebugPlatMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/plat-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/plat-mgr"))
 		}
 		if !data.Taskgroups[i].TaskDebugNacm.IsNull() && !data.Taskgroups[i].TaskDebugNacm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/nacm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/nacm"))
 		}
 		if !data.Taskgroups[i].TaskDebugOtn.IsNull() && !data.Taskgroups[i].TaskDebugOtn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/otn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/otn"))
 		}
 		if !data.Taskgroups[i].TaskDebugPbr.IsNull() && !data.Taskgroups[i].TaskDebugPbr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/pbr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pbr"))
 		}
 		if !data.Taskgroups[i].TaskDebugLisp.IsNull() && !data.Taskgroups[i].TaskDebugLisp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/lisp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lisp"))
 		}
 		if !data.Taskgroups[i].TaskDebugNps.IsNull() && !data.Taskgroups[i].TaskDebugNps.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/nps"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/nps"))
 		}
 		if !data.Taskgroups[i].TaskDebugVpdn.IsNull() && !data.Taskgroups[i].TaskDebugVpdn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/vpdn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vpdn"))
 		}
 		if !data.Taskgroups[i].TaskDebugRcmd.IsNull() && !data.Taskgroups[i].TaskDebugRcmd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/rcmd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rcmd"))
 		}
 		if !data.Taskgroups[i].TaskDebugCallHome.IsNull() && !data.Taskgroups[i].TaskDebugCallHome.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/call-home"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/call-home"))
 		}
 		if !data.Taskgroups[i].TaskDebugCgn.IsNull() && !data.Taskgroups[i].TaskDebugCgn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/cgn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cgn"))
 		}
 		if !data.Taskgroups[i].TaskDebugAncp.IsNull() && !data.Taskgroups[i].TaskDebugAncp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ancp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ancp"))
 		}
 		if !data.Taskgroups[i].TaskDebugLi.IsNull() && !data.Taskgroups[i].TaskDebugLi.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/li"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/li"))
 		}
 		if !data.Taskgroups[i].TaskDebugEem.IsNull() && !data.Taskgroups[i].TaskDebugEem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/eem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/eem"))
 		}
 		if !data.Taskgroups[i].TaskDebugEthernetServices.IsNull() && !data.Taskgroups[i].TaskDebugEthernetServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ethernet-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ethernet-services"))
 		}
 		if !data.Taskgroups[i].TaskDebugL2vpn.IsNull() && !data.Taskgroups[i].TaskDebugL2vpn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/l2vpn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/l2vpn"))
 		}
 		if !data.Taskgroups[i].TaskDebugFirewall.IsNull() && !data.Taskgroups[i].TaskDebugFirewall.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/firewall"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/firewall"))
 		}
 		if !data.Taskgroups[i].TaskDebugSbc.IsNull() && !data.Taskgroups[i].TaskDebugSbc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/sbc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sbc"))
 		}
 		if !data.Taskgroups[i].TaskDebugEigrp.IsNull() && !data.Taskgroups[i].TaskDebugEigrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/eigrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/eigrp"))
 		}
 		if !data.Taskgroups[i].TaskDebugRip.IsNull() && !data.Taskgroups[i].TaskDebugRip.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/rip"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rip"))
 		}
 		if !data.Taskgroups[i].TaskDebugBfd.IsNull() && !data.Taskgroups[i].TaskDebugBfd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/bfd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bfd"))
 		}
 		if !data.Taskgroups[i].TaskDebugAtm.IsNull() && !data.Taskgroups[i].TaskDebugAtm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/atm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/atm"))
 		}
 		if !data.Taskgroups[i].TaskDebugAdmin.IsNull() && !data.Taskgroups[i].TaskDebugAdmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/admin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/admin"))
 		}
 		if !data.Taskgroups[i].TaskDebugIpv6.IsNull() && !data.Taskgroups[i].TaskDebugIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ipv6"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ipv6"))
 		}
 		if !data.Taskgroups[i].TaskDebugInventory.IsNull() && !data.Taskgroups[i].TaskDebugInventory.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/inventory"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/inventory"))
 		}
 		if !data.Taskgroups[i].TaskDebugMonitor.IsNull() && !data.Taskgroups[i].TaskDebugMonitor.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/monitor"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/monitor"))
 		}
 		if !data.Taskgroups[i].TaskDebugFr.IsNull() && !data.Taskgroups[i].TaskDebugFr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/fr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fr"))
 		}
 		if !data.Taskgroups[i].TaskDebugDrivers.IsNull() && !data.Taskgroups[i].TaskDebugDrivers.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/drivers"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/drivers"))
 		}
 		if !data.Taskgroups[i].TaskDebugNetflow.IsNull() && !data.Taskgroups[i].TaskDebugNetflow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/netflow"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/netflow"))
 		}
 		if !data.Taskgroups[i].TaskDebugLogging.IsNull() && !data.Taskgroups[i].TaskDebugLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/logging"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/logging"))
 		}
 		if !data.Taskgroups[i].TaskDebugSysmgr.IsNull() && !data.Taskgroups[i].TaskDebugSysmgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/sysmgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sysmgr"))
 		}
 		if !data.Taskgroups[i].TaskDebugBcdl.IsNull() && !data.Taskgroups[i].TaskDebugBcdl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/bcdl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bcdl"))
 		}
 		if !data.Taskgroups[i].TaskDebugExtAccess.IsNull() && !data.Taskgroups[i].TaskDebugExtAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ext-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ext-access"))
 		}
 		if !data.Taskgroups[i].TaskDebugDiag.IsNull() && !data.Taskgroups[i].TaskDebugDiag.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/diag"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/diag"))
 		}
 		if !data.Taskgroups[i].TaskDebugCdp.IsNull() && !data.Taskgroups[i].TaskDebugCdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/cdp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cdp"))
 		}
 		if !data.Taskgroups[i].TaskDebugBasicServices.IsNull() && !data.Taskgroups[i].TaskDebugBasicServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/basic-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/basic-services"))
 		}
 		if !data.Taskgroups[i].TaskDebugTtyAccess.IsNull() && !data.Taskgroups[i].TaskDebugTtyAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/tty-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/tty-access"))
 		}
 		if !data.Taskgroups[i].TaskDebugSystem.IsNull() && !data.Taskgroups[i].TaskDebugSystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/system"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/system"))
 		}
 		if !data.Taskgroups[i].TaskDebugPkgMgmt.IsNull() && !data.Taskgroups[i].TaskDebugPkgMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/pkg-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pkg-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskDebugIpServices.IsNull() && !data.Taskgroups[i].TaskDebugIpServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ip-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ip-services"))
 		}
 		if !data.Taskgroups[i].TaskDebugInterface.IsNull() && !data.Taskgroups[i].TaskDebugInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/interface"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/interface"))
 		}
 		if !data.Taskgroups[i].TaskDebugFilesystem.IsNull() && !data.Taskgroups[i].TaskDebugFilesystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/filesystem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/filesystem"))
 		}
 		if !data.Taskgroups[i].TaskDebugFaultMgr.IsNull() && !data.Taskgroups[i].TaskDebugFaultMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/fault-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fault-mgr"))
 		}
 		if !data.Taskgroups[i].TaskDebugBoot.IsNull() && !data.Taskgroups[i].TaskDebugBoot.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/boot"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/boot"))
 		}
 		if !data.Taskgroups[i].TaskDebugHostServices.IsNull() && !data.Taskgroups[i].TaskDebugHostServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/host-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/host-services"))
 		}
 		if !data.Taskgroups[i].TaskDebugConfigServices.IsNull() && !data.Taskgroups[i].TaskDebugConfigServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/config-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/config-services"))
 		}
 		if !data.Taskgroups[i].TaskDebugConfigMgmt.IsNull() && !data.Taskgroups[i].TaskDebugConfigMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/config-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/config-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskDebugSnmp.IsNull() && !data.Taskgroups[i].TaskDebugSnmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/snmp"))
 		}
 		if !data.Taskgroups[i].TaskDebugCrypto.IsNull() && !data.Taskgroups[i].TaskDebugCrypto.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/crypto"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/crypto"))
 		}
 		if !data.Taskgroups[i].TaskDebugAaa.IsNull() && !data.Taskgroups[i].TaskDebugAaa.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/aaa"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/aaa"))
 		}
 		if !data.Taskgroups[i].TaskDebugAcl.IsNull() && !data.Taskgroups[i].TaskDebugAcl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/acl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/acl"))
 		}
 		if !data.Taskgroups[i].TaskDebugQos.IsNull() && !data.Taskgroups[i].TaskDebugQos.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/qos"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/qos"))
 		}
 		if !data.Taskgroups[i].TaskDebugVlan.IsNull() && !data.Taskgroups[i].TaskDebugVlan.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/vlan"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vlan"))
 		}
 		if !data.Taskgroups[i].TaskDebugTunnel.IsNull() && !data.Taskgroups[i].TaskDebugTunnel.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/tunnel"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/tunnel"))
 		}
 		if !data.Taskgroups[i].TaskDebugDwdm.IsNull() && !data.Taskgroups[i].TaskDebugDwdm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/dwdm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/dwdm"))
 		}
 		if !data.Taskgroups[i].TaskDebugSonetSdh.IsNull() && !data.Taskgroups[i].TaskDebugSonetSdh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/sonet-sdh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/sonet-sdh"))
 		}
 		if !data.Taskgroups[i].TaskDebugPosDpt.IsNull() && !data.Taskgroups[i].TaskDebugPosDpt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/pos-dpt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/pos-dpt"))
 		}
 		if !data.Taskgroups[i].TaskDebugHdlc.IsNull() && !data.Taskgroups[i].TaskDebugHdlc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/hdlc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/hdlc"))
 		}
 		if !data.Taskgroups[i].TaskDebugPpp.IsNull() && !data.Taskgroups[i].TaskDebugPpp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ppp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ppp"))
 		}
 		if !data.Taskgroups[i].TaskDebugTransport.IsNull() && !data.Taskgroups[i].TaskDebugTransport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/transport"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/transport"))
 		}
 		if !data.Taskgroups[i].TaskDebugNetwork.IsNull() && !data.Taskgroups[i].TaskDebugNetwork.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/network"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/network"))
 		}
 		if !data.Taskgroups[i].TaskDebugBundle.IsNull() && !data.Taskgroups[i].TaskDebugBundle.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/bundle"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bundle"))
 		}
 		if !data.Taskgroups[i].TaskDebugFabric.IsNull() && !data.Taskgroups[i].TaskDebugFabric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/fabric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/fabric"))
 		}
 		if !data.Taskgroups[i].TaskDebugOuni.IsNull() && !data.Taskgroups[i].TaskDebugOuni.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ouni"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ouni"))
 		}
 		if !data.Taskgroups[i].TaskDebugMplsStatic.IsNull() && !data.Taskgroups[i].TaskDebugMplsStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/mpls-static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-static"))
 		}
 		if !data.Taskgroups[i].TaskDebugMplsLdp.IsNull() && !data.Taskgroups[i].TaskDebugMplsLdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/mpls-ldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-ldp"))
 		}
 		if !data.Taskgroups[i].TaskDebugMplsTe.IsNull() && !data.Taskgroups[i].TaskDebugMplsTe.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/mpls-te"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/mpls-te"))
 		}
 		if !data.Taskgroups[i].TaskDebugMulticast.IsNull() && !data.Taskgroups[i].TaskDebugMulticast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/multicast"))
 		}
 		if !data.Taskgroups[i].TaskDebugRib.IsNull() && !data.Taskgroups[i].TaskDebugRib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/rib"))
 		}
 		if !data.Taskgroups[i].TaskDebugIpv4.IsNull() && !data.Taskgroups[i].TaskDebugIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ipv4"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ipv4"))
 		}
 		if !data.Taskgroups[i].TaskDebugLpts.IsNull() && !data.Taskgroups[i].TaskDebugLpts.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/lpts"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/lpts"))
 		}
 		if !data.Taskgroups[i].TaskDebugCef.IsNull() && !data.Taskgroups[i].TaskDebugCef.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/cef"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/cef"))
 		}
 		if !data.Taskgroups[i].TaskDebugVrrp.IsNull() && !data.Taskgroups[i].TaskDebugVrrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/vrrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/vrrp"))
 		}
 		if !data.Taskgroups[i].TaskDebugStatic.IsNull() && !data.Taskgroups[i].TaskDebugStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/static"))
 		}
 		if !data.Taskgroups[i].TaskDebugRoutePolicy.IsNull() && !data.Taskgroups[i].TaskDebugRoutePolicy.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/route-policy"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/route-policy"))
 		}
 		if !data.Taskgroups[i].TaskDebugRouteMap.IsNull() && !data.Taskgroups[i].TaskDebugRouteMap.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/route-map"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/route-map"))
 		}
 		if !data.Taskgroups[i].TaskDebugIsis.IsNull() && !data.Taskgroups[i].TaskDebugIsis.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/isis"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/isis"))
 		}
 		if !data.Taskgroups[i].TaskDebugHsrp.IsNull() && !data.Taskgroups[i].TaskDebugHsrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/hsrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/hsrp"))
 		}
 		if !data.Taskgroups[i].TaskDebugOspf.IsNull() && !data.Taskgroups[i].TaskDebugOspf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/ospf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/ospf"))
 		}
 		if !data.Taskgroups[i].TaskDebugBgp.IsNull() && !data.Taskgroups[i].TaskDebugBgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/debug/bgp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/debug/bgp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFc.IsNull() && !data.Taskgroups[i].TaskExecuteFc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/fc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fc"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFti.IsNull() && !data.Taskgroups[i].TaskExecuteFti.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/fti"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fti"))
 		}
 		if !data.Taskgroups[i].TaskExecuteDossier.IsNull() && !data.Taskgroups[i].TaskExecuteDossier.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/dossier"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/dossier"))
 		}
 		if !data.Taskgroups[i].TaskExecuteL2rib.IsNull() && !data.Taskgroups[i].TaskExecuteL2rib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/l2rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/l2rib"))
 		}
 		if !data.Taskgroups[i].TaskExecuteLldp.IsNull() && !data.Taskgroups[i].TaskExecuteLldp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/lldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lldp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCpri.IsNull() && !data.Taskgroups[i].TaskExecuteCpri.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/cpri"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cpri"))
 		}
 		if !data.Taskgroups[i].TaskExecutePlatMgr.IsNull() && !data.Taskgroups[i].TaskExecutePlatMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/plat-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/plat-mgr"))
 		}
 		if !data.Taskgroups[i].TaskExecuteNacm.IsNull() && !data.Taskgroups[i].TaskExecuteNacm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/nacm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/nacm"))
 		}
 		if !data.Taskgroups[i].TaskExecuteOtn.IsNull() && !data.Taskgroups[i].TaskExecuteOtn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/otn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/otn"))
 		}
 		if !data.Taskgroups[i].TaskExecutePbr.IsNull() && !data.Taskgroups[i].TaskExecutePbr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/pbr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pbr"))
 		}
 		if !data.Taskgroups[i].TaskExecuteLisp.IsNull() && !data.Taskgroups[i].TaskExecuteLisp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/lisp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lisp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteNps.IsNull() && !data.Taskgroups[i].TaskExecuteNps.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/nps"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/nps"))
 		}
 		if !data.Taskgroups[i].TaskExecuteVpdn.IsNull() && !data.Taskgroups[i].TaskExecuteVpdn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/vpdn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vpdn"))
 		}
 		if !data.Taskgroups[i].TaskExecuteRcmd.IsNull() && !data.Taskgroups[i].TaskExecuteRcmd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/rcmd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rcmd"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCallHome.IsNull() && !data.Taskgroups[i].TaskExecuteCallHome.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/call-home"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/call-home"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCgn.IsNull() && !data.Taskgroups[i].TaskExecuteCgn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/cgn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cgn"))
 		}
 		if !data.Taskgroups[i].TaskExecuteAncp.IsNull() && !data.Taskgroups[i].TaskExecuteAncp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ancp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ancp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteLi.IsNull() && !data.Taskgroups[i].TaskExecuteLi.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/li"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/li"))
 		}
 		if !data.Taskgroups[i].TaskExecuteEem.IsNull() && !data.Taskgroups[i].TaskExecuteEem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/eem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/eem"))
 		}
 		if !data.Taskgroups[i].TaskExecuteEthernetServices.IsNull() && !data.Taskgroups[i].TaskExecuteEthernetServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ethernet-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ethernet-services"))
 		}
 		if !data.Taskgroups[i].TaskExecuteL2vpn.IsNull() && !data.Taskgroups[i].TaskExecuteL2vpn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/l2vpn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/l2vpn"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFirewall.IsNull() && !data.Taskgroups[i].TaskExecuteFirewall.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/firewall"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/firewall"))
 		}
 		if !data.Taskgroups[i].TaskExecuteSbc.IsNull() && !data.Taskgroups[i].TaskExecuteSbc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/sbc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sbc"))
 		}
 		if !data.Taskgroups[i].TaskExecuteEigrp.IsNull() && !data.Taskgroups[i].TaskExecuteEigrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/eigrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/eigrp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteRip.IsNull() && !data.Taskgroups[i].TaskExecuteRip.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/rip"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rip"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBfd.IsNull() && !data.Taskgroups[i].TaskExecuteBfd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/bfd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bfd"))
 		}
 		if !data.Taskgroups[i].TaskExecuteAtm.IsNull() && !data.Taskgroups[i].TaskExecuteAtm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/atm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/atm"))
 		}
 		if !data.Taskgroups[i].TaskExecuteAdmin.IsNull() && !data.Taskgroups[i].TaskExecuteAdmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/admin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/admin"))
 		}
 		if !data.Taskgroups[i].TaskExecuteIpv6.IsNull() && !data.Taskgroups[i].TaskExecuteIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ipv6"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ipv6"))
 		}
 		if !data.Taskgroups[i].TaskExecuteInventory.IsNull() && !data.Taskgroups[i].TaskExecuteInventory.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/inventory"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/inventory"))
 		}
 		if !data.Taskgroups[i].TaskExecuteMonitor.IsNull() && !data.Taskgroups[i].TaskExecuteMonitor.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/monitor"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/monitor"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFr.IsNull() && !data.Taskgroups[i].TaskExecuteFr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/fr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fr"))
 		}
 		if !data.Taskgroups[i].TaskExecuteDrivers.IsNull() && !data.Taskgroups[i].TaskExecuteDrivers.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/drivers"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/drivers"))
 		}
 		if !data.Taskgroups[i].TaskExecuteNetflow.IsNull() && !data.Taskgroups[i].TaskExecuteNetflow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/netflow"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/netflow"))
 		}
 		if !data.Taskgroups[i].TaskExecuteLogging.IsNull() && !data.Taskgroups[i].TaskExecuteLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/logging"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/logging"))
 		}
 		if !data.Taskgroups[i].TaskExecuteSysmgr.IsNull() && !data.Taskgroups[i].TaskExecuteSysmgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/sysmgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sysmgr"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBcdl.IsNull() && !data.Taskgroups[i].TaskExecuteBcdl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/bcdl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bcdl"))
 		}
 		if !data.Taskgroups[i].TaskExecuteExtAccess.IsNull() && !data.Taskgroups[i].TaskExecuteExtAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ext-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ext-access"))
 		}
 		if !data.Taskgroups[i].TaskExecuteDiag.IsNull() && !data.Taskgroups[i].TaskExecuteDiag.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/diag"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/diag"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCdp.IsNull() && !data.Taskgroups[i].TaskExecuteCdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/cdp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cdp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBasicServices.IsNull() && !data.Taskgroups[i].TaskExecuteBasicServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/basic-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/basic-services"))
 		}
 		if !data.Taskgroups[i].TaskExecuteTtyAccess.IsNull() && !data.Taskgroups[i].TaskExecuteTtyAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/tty-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/tty-access"))
 		}
 		if !data.Taskgroups[i].TaskExecuteSystem.IsNull() && !data.Taskgroups[i].TaskExecuteSystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/system"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/system"))
 		}
 		if !data.Taskgroups[i].TaskExecutePkgMgmt.IsNull() && !data.Taskgroups[i].TaskExecutePkgMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/pkg-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pkg-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskExecuteIpServices.IsNull() && !data.Taskgroups[i].TaskExecuteIpServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ip-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ip-services"))
 		}
 		if !data.Taskgroups[i].TaskExecuteInterface.IsNull() && !data.Taskgroups[i].TaskExecuteInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/interface"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/interface"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFilesystem.IsNull() && !data.Taskgroups[i].TaskExecuteFilesystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/filesystem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/filesystem"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFaultMgr.IsNull() && !data.Taskgroups[i].TaskExecuteFaultMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/fault-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fault-mgr"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBoot.IsNull() && !data.Taskgroups[i].TaskExecuteBoot.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/boot"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/boot"))
 		}
 		if !data.Taskgroups[i].TaskExecuteHostServices.IsNull() && !data.Taskgroups[i].TaskExecuteHostServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/host-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/host-services"))
 		}
 		if !data.Taskgroups[i].TaskExecuteConfigServices.IsNull() && !data.Taskgroups[i].TaskExecuteConfigServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/config-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/config-services"))
 		}
 		if !data.Taskgroups[i].TaskExecuteConfigMgmt.IsNull() && !data.Taskgroups[i].TaskExecuteConfigMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/config-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/config-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskExecuteSnmp.IsNull() && !data.Taskgroups[i].TaskExecuteSnmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/snmp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCrypto.IsNull() && !data.Taskgroups[i].TaskExecuteCrypto.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/crypto"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/crypto"))
 		}
 		if !data.Taskgroups[i].TaskExecuteAaa.IsNull() && !data.Taskgroups[i].TaskExecuteAaa.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/aaa"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/aaa"))
 		}
 		if !data.Taskgroups[i].TaskExecuteAcl.IsNull() && !data.Taskgroups[i].TaskExecuteAcl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/acl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/acl"))
 		}
 		if !data.Taskgroups[i].TaskExecuteQos.IsNull() && !data.Taskgroups[i].TaskExecuteQos.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/qos"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/qos"))
 		}
 		if !data.Taskgroups[i].TaskExecuteVlan.IsNull() && !data.Taskgroups[i].TaskExecuteVlan.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/vlan"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vlan"))
 		}
 		if !data.Taskgroups[i].TaskExecuteTunnel.IsNull() && !data.Taskgroups[i].TaskExecuteTunnel.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/tunnel"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/tunnel"))
 		}
 		if !data.Taskgroups[i].TaskExecuteDwdm.IsNull() && !data.Taskgroups[i].TaskExecuteDwdm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/dwdm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/dwdm"))
 		}
 		if !data.Taskgroups[i].TaskExecuteSonetSdh.IsNull() && !data.Taskgroups[i].TaskExecuteSonetSdh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/sonet-sdh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/sonet-sdh"))
 		}
 		if !data.Taskgroups[i].TaskExecutePosDpt.IsNull() && !data.Taskgroups[i].TaskExecutePosDpt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/pos-dpt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/pos-dpt"))
 		}
 		if !data.Taskgroups[i].TaskExecuteHdlc.IsNull() && !data.Taskgroups[i].TaskExecuteHdlc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/hdlc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/hdlc"))
 		}
 		if !data.Taskgroups[i].TaskExecutePpp.IsNull() && !data.Taskgroups[i].TaskExecutePpp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ppp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ppp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteTransport.IsNull() && !data.Taskgroups[i].TaskExecuteTransport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/transport"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/transport"))
 		}
 		if !data.Taskgroups[i].TaskExecuteNetwork.IsNull() && !data.Taskgroups[i].TaskExecuteNetwork.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/network"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/network"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBundle.IsNull() && !data.Taskgroups[i].TaskExecuteBundle.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/bundle"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bundle"))
 		}
 		if !data.Taskgroups[i].TaskExecuteFabric.IsNull() && !data.Taskgroups[i].TaskExecuteFabric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/fabric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/fabric"))
 		}
 		if !data.Taskgroups[i].TaskExecuteOuni.IsNull() && !data.Taskgroups[i].TaskExecuteOuni.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ouni"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ouni"))
 		}
 		if !data.Taskgroups[i].TaskExecuteMplsStatic.IsNull() && !data.Taskgroups[i].TaskExecuteMplsStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/mpls-static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-static"))
 		}
 		if !data.Taskgroups[i].TaskExecuteMplsLdp.IsNull() && !data.Taskgroups[i].TaskExecuteMplsLdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/mpls-ldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-ldp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteMplsTe.IsNull() && !data.Taskgroups[i].TaskExecuteMplsTe.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/mpls-te"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/mpls-te"))
 		}
 		if !data.Taskgroups[i].TaskExecuteMulticast.IsNull() && !data.Taskgroups[i].TaskExecuteMulticast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/multicast"))
 		}
 		if !data.Taskgroups[i].TaskExecuteRib.IsNull() && !data.Taskgroups[i].TaskExecuteRib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/rib"))
 		}
 		if !data.Taskgroups[i].TaskExecuteIpv4.IsNull() && !data.Taskgroups[i].TaskExecuteIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ipv4"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ipv4"))
 		}
 		if !data.Taskgroups[i].TaskExecuteLpts.IsNull() && !data.Taskgroups[i].TaskExecuteLpts.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/lpts"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/lpts"))
 		}
 		if !data.Taskgroups[i].TaskExecuteCef.IsNull() && !data.Taskgroups[i].TaskExecuteCef.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/cef"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/cef"))
 		}
 		if !data.Taskgroups[i].TaskExecuteVrrp.IsNull() && !data.Taskgroups[i].TaskExecuteVrrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/vrrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/vrrp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteStatic.IsNull() && !data.Taskgroups[i].TaskExecuteStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/static"))
 		}
 		if !data.Taskgroups[i].TaskExecuteRoutePolicy.IsNull() && !data.Taskgroups[i].TaskExecuteRoutePolicy.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/route-policy"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/route-policy"))
 		}
 		if !data.Taskgroups[i].TaskExecuteRouteMap.IsNull() && !data.Taskgroups[i].TaskExecuteRouteMap.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/route-map"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/route-map"))
 		}
 		if !data.Taskgroups[i].TaskExecuteIsis.IsNull() && !data.Taskgroups[i].TaskExecuteIsis.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/isis"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/isis"))
 		}
 		if !data.Taskgroups[i].TaskExecuteHsrp.IsNull() && !data.Taskgroups[i].TaskExecuteHsrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/hsrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/hsrp"))
 		}
 		if !data.Taskgroups[i].TaskExecuteOspf.IsNull() && !data.Taskgroups[i].TaskExecuteOspf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/ospf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/ospf"))
 		}
 		if !data.Taskgroups[i].TaskExecuteBgp.IsNull() && !data.Taskgroups[i].TaskExecuteBgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/execute/bgp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/execute/bgp"))
 		}
 		if !data.Taskgroups[i].TaskWriteFc.IsNull() && !data.Taskgroups[i].TaskWriteFc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/fc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fc"))
 		}
 		if !data.Taskgroups[i].TaskWriteFti.IsNull() && !data.Taskgroups[i].TaskWriteFti.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/fti"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fti"))
 		}
 		if !data.Taskgroups[i].TaskWriteDossier.IsNull() && !data.Taskgroups[i].TaskWriteDossier.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/dossier"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/dossier"))
 		}
 		if !data.Taskgroups[i].TaskWriteL2rib.IsNull() && !data.Taskgroups[i].TaskWriteL2rib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/l2rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/l2rib"))
 		}
 		if !data.Taskgroups[i].TaskWriteLldp.IsNull() && !data.Taskgroups[i].TaskWriteLldp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/lldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lldp"))
 		}
 		if !data.Taskgroups[i].TaskWriteCpri.IsNull() && !data.Taskgroups[i].TaskWriteCpri.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/cpri"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cpri"))
 		}
 		if !data.Taskgroups[i].TaskWritePlatMgr.IsNull() && !data.Taskgroups[i].TaskWritePlatMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/plat-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/plat-mgr"))
 		}
 		if !data.Taskgroups[i].TaskWriteNacm.IsNull() && !data.Taskgroups[i].TaskWriteNacm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/nacm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/nacm"))
 		}
 		if !data.Taskgroups[i].TaskWriteOtn.IsNull() && !data.Taskgroups[i].TaskWriteOtn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/otn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/otn"))
 		}
 		if !data.Taskgroups[i].TaskWritePbr.IsNull() && !data.Taskgroups[i].TaskWritePbr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/pbr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pbr"))
 		}
 		if !data.Taskgroups[i].TaskWriteLisp.IsNull() && !data.Taskgroups[i].TaskWriteLisp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/lisp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lisp"))
 		}
 		if !data.Taskgroups[i].TaskWriteNps.IsNull() && !data.Taskgroups[i].TaskWriteNps.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/nps"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/nps"))
 		}
 		if !data.Taskgroups[i].TaskWriteVpdn.IsNull() && !data.Taskgroups[i].TaskWriteVpdn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/vpdn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vpdn"))
 		}
 		if !data.Taskgroups[i].TaskWriteRcmd.IsNull() && !data.Taskgroups[i].TaskWriteRcmd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/rcmd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rcmd"))
 		}
 		if !data.Taskgroups[i].TaskWriteCallHome.IsNull() && !data.Taskgroups[i].TaskWriteCallHome.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/call-home"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/call-home"))
 		}
 		if !data.Taskgroups[i].TaskWriteCgn.IsNull() && !data.Taskgroups[i].TaskWriteCgn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/cgn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cgn"))
 		}
 		if !data.Taskgroups[i].TaskWriteAncp.IsNull() && !data.Taskgroups[i].TaskWriteAncp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ancp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ancp"))
 		}
 		if !data.Taskgroups[i].TaskWriteLi.IsNull() && !data.Taskgroups[i].TaskWriteLi.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/li"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/li"))
 		}
 		if !data.Taskgroups[i].TaskWriteEem.IsNull() && !data.Taskgroups[i].TaskWriteEem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/eem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/eem"))
 		}
 		if !data.Taskgroups[i].TaskWriteEthernetServices.IsNull() && !data.Taskgroups[i].TaskWriteEthernetServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ethernet-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ethernet-services"))
 		}
 		if !data.Taskgroups[i].TaskWriteL2vpn.IsNull() && !data.Taskgroups[i].TaskWriteL2vpn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/l2vpn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/l2vpn"))
 		}
 		if !data.Taskgroups[i].TaskWriteFirewall.IsNull() && !data.Taskgroups[i].TaskWriteFirewall.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/firewall"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/firewall"))
 		}
 		if !data.Taskgroups[i].TaskWriteSbc.IsNull() && !data.Taskgroups[i].TaskWriteSbc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/sbc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sbc"))
 		}
 		if !data.Taskgroups[i].TaskWriteEigrp.IsNull() && !data.Taskgroups[i].TaskWriteEigrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/eigrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/eigrp"))
 		}
 		if !data.Taskgroups[i].TaskWriteRip.IsNull() && !data.Taskgroups[i].TaskWriteRip.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/rip"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rip"))
 		}
 		if !data.Taskgroups[i].TaskWriteBfd.IsNull() && !data.Taskgroups[i].TaskWriteBfd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/bfd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bfd"))
 		}
 		if !data.Taskgroups[i].TaskWriteAtm.IsNull() && !data.Taskgroups[i].TaskWriteAtm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/atm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/atm"))
 		}
 		if !data.Taskgroups[i].TaskWriteAdmin.IsNull() && !data.Taskgroups[i].TaskWriteAdmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/admin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/admin"))
 		}
 		if !data.Taskgroups[i].TaskWriteIpv6.IsNull() && !data.Taskgroups[i].TaskWriteIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ipv6"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ipv6"))
 		}
 		if !data.Taskgroups[i].TaskWriteInventory.IsNull() && !data.Taskgroups[i].TaskWriteInventory.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/inventory"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/inventory"))
 		}
 		if !data.Taskgroups[i].TaskWriteMonitor.IsNull() && !data.Taskgroups[i].TaskWriteMonitor.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/monitor"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/monitor"))
 		}
 		if !data.Taskgroups[i].TaskWriteFr.IsNull() && !data.Taskgroups[i].TaskWriteFr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/fr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fr"))
 		}
 		if !data.Taskgroups[i].TaskWriteDrivers.IsNull() && !data.Taskgroups[i].TaskWriteDrivers.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/drivers"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/drivers"))
 		}
 		if !data.Taskgroups[i].TaskWriteNetflow.IsNull() && !data.Taskgroups[i].TaskWriteNetflow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/netflow"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/netflow"))
 		}
 		if !data.Taskgroups[i].TaskWriteLogging.IsNull() && !data.Taskgroups[i].TaskWriteLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/logging"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/logging"))
 		}
 		if !data.Taskgroups[i].TaskWriteSysmgr.IsNull() && !data.Taskgroups[i].TaskWriteSysmgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/sysmgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sysmgr"))
 		}
 		if !data.Taskgroups[i].TaskWriteBcdl.IsNull() && !data.Taskgroups[i].TaskWriteBcdl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/bcdl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bcdl"))
 		}
 		if !data.Taskgroups[i].TaskWriteExtAccess.IsNull() && !data.Taskgroups[i].TaskWriteExtAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ext-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ext-access"))
 		}
 		if !data.Taskgroups[i].TaskWriteDiag.IsNull() && !data.Taskgroups[i].TaskWriteDiag.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/diag"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/diag"))
 		}
 		if !data.Taskgroups[i].TaskWriteCdp.IsNull() && !data.Taskgroups[i].TaskWriteCdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/cdp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cdp"))
 		}
 		if !data.Taskgroups[i].TaskWriteBasicServices.IsNull() && !data.Taskgroups[i].TaskWriteBasicServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/basic-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/basic-services"))
 		}
 		if !data.Taskgroups[i].TaskWriteTtyAccess.IsNull() && !data.Taskgroups[i].TaskWriteTtyAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/tty-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/tty-access"))
 		}
 		if !data.Taskgroups[i].TaskWriteSystem.IsNull() && !data.Taskgroups[i].TaskWriteSystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/system"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/system"))
 		}
 		if !data.Taskgroups[i].TaskWritePkgMgmt.IsNull() && !data.Taskgroups[i].TaskWritePkgMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/pkg-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pkg-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskWriteIpServices.IsNull() && !data.Taskgroups[i].TaskWriteIpServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ip-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ip-services"))
 		}
 		if !data.Taskgroups[i].TaskWriteInterface.IsNull() && !data.Taskgroups[i].TaskWriteInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/interface"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/interface"))
 		}
 		if !data.Taskgroups[i].TaskWriteFilesystem.IsNull() && !data.Taskgroups[i].TaskWriteFilesystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/filesystem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/filesystem"))
 		}
 		if !data.Taskgroups[i].TaskWriteFaultMgr.IsNull() && !data.Taskgroups[i].TaskWriteFaultMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/fault-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fault-mgr"))
 		}
 		if !data.Taskgroups[i].TaskWriteBoot.IsNull() && !data.Taskgroups[i].TaskWriteBoot.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/boot"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/boot"))
 		}
 		if !data.Taskgroups[i].TaskWriteHostServices.IsNull() && !data.Taskgroups[i].TaskWriteHostServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/host-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/host-services"))
 		}
 		if !data.Taskgroups[i].TaskWriteConfigServices.IsNull() && !data.Taskgroups[i].TaskWriteConfigServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/config-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/config-services"))
 		}
 		if !data.Taskgroups[i].TaskWriteConfigMgmt.IsNull() && !data.Taskgroups[i].TaskWriteConfigMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/config-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/config-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskWriteSnmp.IsNull() && !data.Taskgroups[i].TaskWriteSnmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/snmp"))
 		}
 		if !data.Taskgroups[i].TaskWriteCrypto.IsNull() && !data.Taskgroups[i].TaskWriteCrypto.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/crypto"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/crypto"))
 		}
 		if !data.Taskgroups[i].TaskWriteAaa.IsNull() && !data.Taskgroups[i].TaskWriteAaa.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/aaa"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/aaa"))
 		}
 		if !data.Taskgroups[i].TaskWriteAcl.IsNull() && !data.Taskgroups[i].TaskWriteAcl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/acl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/acl"))
 		}
 		if !data.Taskgroups[i].TaskWriteQos.IsNull() && !data.Taskgroups[i].TaskWriteQos.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/qos"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/qos"))
 		}
 		if !data.Taskgroups[i].TaskWriteVlan.IsNull() && !data.Taskgroups[i].TaskWriteVlan.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/vlan"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vlan"))
 		}
 		if !data.Taskgroups[i].TaskWriteTunnel.IsNull() && !data.Taskgroups[i].TaskWriteTunnel.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/tunnel"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/tunnel"))
 		}
 		if !data.Taskgroups[i].TaskWriteDwdm.IsNull() && !data.Taskgroups[i].TaskWriteDwdm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/dwdm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/dwdm"))
 		}
 		if !data.Taskgroups[i].TaskWriteSonetSdh.IsNull() && !data.Taskgroups[i].TaskWriteSonetSdh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/sonet-sdh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/sonet-sdh"))
 		}
 		if !data.Taskgroups[i].TaskWritePosDpt.IsNull() && !data.Taskgroups[i].TaskWritePosDpt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/pos-dpt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/pos-dpt"))
 		}
 		if !data.Taskgroups[i].TaskWriteHdlc.IsNull() && !data.Taskgroups[i].TaskWriteHdlc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/hdlc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/hdlc"))
 		}
 		if !data.Taskgroups[i].TaskWritePpp.IsNull() && !data.Taskgroups[i].TaskWritePpp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ppp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ppp"))
 		}
 		if !data.Taskgroups[i].TaskWriteTransport.IsNull() && !data.Taskgroups[i].TaskWriteTransport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/transport"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/transport"))
 		}
 		if !data.Taskgroups[i].TaskWriteNetwork.IsNull() && !data.Taskgroups[i].TaskWriteNetwork.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/network"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/network"))
 		}
 		if !data.Taskgroups[i].TaskWriteBundle.IsNull() && !data.Taskgroups[i].TaskWriteBundle.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/bundle"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bundle"))
 		}
 		if !data.Taskgroups[i].TaskWriteFabric.IsNull() && !data.Taskgroups[i].TaskWriteFabric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/fabric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/fabric"))
 		}
 		if !data.Taskgroups[i].TaskWriteOuni.IsNull() && !data.Taskgroups[i].TaskWriteOuni.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ouni"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ouni"))
 		}
 		if !data.Taskgroups[i].TaskWriteMplsStatic.IsNull() && !data.Taskgroups[i].TaskWriteMplsStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/mpls-static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-static"))
 		}
 		if !data.Taskgroups[i].TaskWriteMplsLdp.IsNull() && !data.Taskgroups[i].TaskWriteMplsLdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/mpls-ldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-ldp"))
 		}
 		if !data.Taskgroups[i].TaskWriteMplsTe.IsNull() && !data.Taskgroups[i].TaskWriteMplsTe.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/mpls-te"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/mpls-te"))
 		}
 		if !data.Taskgroups[i].TaskWriteMulticast.IsNull() && !data.Taskgroups[i].TaskWriteMulticast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/multicast"))
 		}
 		if !data.Taskgroups[i].TaskWriteRib.IsNull() && !data.Taskgroups[i].TaskWriteRib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/rib"))
 		}
 		if !data.Taskgroups[i].TaskWriteIpv4.IsNull() && !data.Taskgroups[i].TaskWriteIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ipv4"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ipv4"))
 		}
 		if !data.Taskgroups[i].TaskWriteLpts.IsNull() && !data.Taskgroups[i].TaskWriteLpts.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/lpts"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/lpts"))
 		}
 		if !data.Taskgroups[i].TaskWriteCef.IsNull() && !data.Taskgroups[i].TaskWriteCef.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/cef"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/cef"))
 		}
 		if !data.Taskgroups[i].TaskWriteVrrp.IsNull() && !data.Taskgroups[i].TaskWriteVrrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/vrrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/vrrp"))
 		}
 		if !data.Taskgroups[i].TaskWriteStatic.IsNull() && !data.Taskgroups[i].TaskWriteStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/static"))
 		}
 		if !data.Taskgroups[i].TaskWriteRoutePolicy.IsNull() && !data.Taskgroups[i].TaskWriteRoutePolicy.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/route-policy"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/route-policy"))
 		}
 		if !data.Taskgroups[i].TaskWriteRouteMap.IsNull() && !data.Taskgroups[i].TaskWriteRouteMap.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/route-map"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/route-map"))
 		}
 		if !data.Taskgroups[i].TaskWriteIsis.IsNull() && !data.Taskgroups[i].TaskWriteIsis.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/isis"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/isis"))
 		}
 		if !data.Taskgroups[i].TaskWriteHsrp.IsNull() && !data.Taskgroups[i].TaskWriteHsrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/hsrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/hsrp"))
 		}
 		if !data.Taskgroups[i].TaskWriteOspf.IsNull() && !data.Taskgroups[i].TaskWriteOspf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/ospf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/ospf"))
 		}
 		if !data.Taskgroups[i].TaskWriteBgp.IsNull() && !data.Taskgroups[i].TaskWriteBgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/write/bgp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/write/bgp"))
 		}
 		if !data.Taskgroups[i].TaskReadFc.IsNull() && !data.Taskgroups[i].TaskReadFc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/fc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fc"))
 		}
 		if !data.Taskgroups[i].TaskReadFti.IsNull() && !data.Taskgroups[i].TaskReadFti.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/fti"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fti"))
 		}
 		if !data.Taskgroups[i].TaskReadDossier.IsNull() && !data.Taskgroups[i].TaskReadDossier.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/dossier"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/dossier"))
 		}
 		if !data.Taskgroups[i].TaskReadL2rib.IsNull() && !data.Taskgroups[i].TaskReadL2rib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/l2rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/l2rib"))
 		}
 		if !data.Taskgroups[i].TaskReadLldp.IsNull() && !data.Taskgroups[i].TaskReadLldp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/lldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lldp"))
 		}
 		if !data.Taskgroups[i].TaskReadCpri.IsNull() && !data.Taskgroups[i].TaskReadCpri.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/cpri"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cpri"))
 		}
 		if !data.Taskgroups[i].TaskReadPlatMgr.IsNull() && !data.Taskgroups[i].TaskReadPlatMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/plat-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/plat-mgr"))
 		}
 		if !data.Taskgroups[i].TaskReadNacm.IsNull() && !data.Taskgroups[i].TaskReadNacm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/nacm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/nacm"))
 		}
 		if !data.Taskgroups[i].TaskReadOtn.IsNull() && !data.Taskgroups[i].TaskReadOtn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/otn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/otn"))
 		}
 		if !data.Taskgroups[i].TaskReadPbr.IsNull() && !data.Taskgroups[i].TaskReadPbr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/pbr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pbr"))
 		}
 		if !data.Taskgroups[i].TaskReadLisp.IsNull() && !data.Taskgroups[i].TaskReadLisp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/lisp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lisp"))
 		}
 		if !data.Taskgroups[i].TaskReadNps.IsNull() && !data.Taskgroups[i].TaskReadNps.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/nps"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/nps"))
 		}
 		if !data.Taskgroups[i].TaskReadVpdn.IsNull() && !data.Taskgroups[i].TaskReadVpdn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/vpdn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vpdn"))
 		}
 		if !data.Taskgroups[i].TaskReadRcmd.IsNull() && !data.Taskgroups[i].TaskReadRcmd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/rcmd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rcmd"))
 		}
 		if !data.Taskgroups[i].TaskReadCallHome.IsNull() && !data.Taskgroups[i].TaskReadCallHome.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/call-home"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/call-home"))
 		}
 		if !data.Taskgroups[i].TaskReadCgn.IsNull() && !data.Taskgroups[i].TaskReadCgn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/cgn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cgn"))
 		}
 		if !data.Taskgroups[i].TaskReadAncp.IsNull() && !data.Taskgroups[i].TaskReadAncp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ancp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ancp"))
 		}
 		if !data.Taskgroups[i].TaskReadLi.IsNull() && !data.Taskgroups[i].TaskReadLi.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/li"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/li"))
 		}
 		if !data.Taskgroups[i].TaskReadEem.IsNull() && !data.Taskgroups[i].TaskReadEem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/eem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/eem"))
 		}
 		if !data.Taskgroups[i].TaskReadEthernetServices.IsNull() && !data.Taskgroups[i].TaskReadEthernetServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ethernet-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ethernet-services"))
 		}
 		if !data.Taskgroups[i].TaskReadL2vpn.IsNull() && !data.Taskgroups[i].TaskReadL2vpn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/l2vpn"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/l2vpn"))
 		}
 		if !data.Taskgroups[i].TaskReadFirewall.IsNull() && !data.Taskgroups[i].TaskReadFirewall.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/firewall"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/firewall"))
 		}
 		if !data.Taskgroups[i].TaskReadSbc.IsNull() && !data.Taskgroups[i].TaskReadSbc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/sbc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sbc"))
 		}
 		if !data.Taskgroups[i].TaskReadEigrp.IsNull() && !data.Taskgroups[i].TaskReadEigrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/eigrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/eigrp"))
 		}
 		if !data.Taskgroups[i].TaskReadRip.IsNull() && !data.Taskgroups[i].TaskReadRip.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/rip"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rip"))
 		}
 		if !data.Taskgroups[i].TaskReadBfd.IsNull() && !data.Taskgroups[i].TaskReadBfd.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/bfd"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bfd"))
 		}
 		if !data.Taskgroups[i].TaskReadAtm.IsNull() && !data.Taskgroups[i].TaskReadAtm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/atm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/atm"))
 		}
 		if !data.Taskgroups[i].TaskReadAdmin.IsNull() && !data.Taskgroups[i].TaskReadAdmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/admin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/admin"))
 		}
 		if !data.Taskgroups[i].TaskReadIpv6.IsNull() && !data.Taskgroups[i].TaskReadIpv6.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ipv6"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ipv6"))
 		}
 		if !data.Taskgroups[i].TaskReadInventory.IsNull() && !data.Taskgroups[i].TaskReadInventory.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/inventory"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/inventory"))
 		}
 		if !data.Taskgroups[i].TaskReadMonitor.IsNull() && !data.Taskgroups[i].TaskReadMonitor.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/monitor"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/monitor"))
 		}
 		if !data.Taskgroups[i].TaskReadFr.IsNull() && !data.Taskgroups[i].TaskReadFr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/fr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fr"))
 		}
 		if !data.Taskgroups[i].TaskReadDrivers.IsNull() && !data.Taskgroups[i].TaskReadDrivers.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/drivers"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/drivers"))
 		}
 		if !data.Taskgroups[i].TaskReadNetflow.IsNull() && !data.Taskgroups[i].TaskReadNetflow.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/netflow"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/netflow"))
 		}
 		if !data.Taskgroups[i].TaskReadLogging.IsNull() && !data.Taskgroups[i].TaskReadLogging.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/logging"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/logging"))
 		}
 		if !data.Taskgroups[i].TaskReadSysmgr.IsNull() && !data.Taskgroups[i].TaskReadSysmgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/sysmgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sysmgr"))
 		}
 		if !data.Taskgroups[i].TaskReadBcdl.IsNull() && !data.Taskgroups[i].TaskReadBcdl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/bcdl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bcdl"))
 		}
 		if !data.Taskgroups[i].TaskReadExtAccess.IsNull() && !data.Taskgroups[i].TaskReadExtAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ext-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ext-access"))
 		}
 		if !data.Taskgroups[i].TaskReadDiag.IsNull() && !data.Taskgroups[i].TaskReadDiag.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/diag"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/diag"))
 		}
 		if !data.Taskgroups[i].TaskReadCdp.IsNull() && !data.Taskgroups[i].TaskReadCdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/cdp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cdp"))
 		}
 		if !data.Taskgroups[i].TaskReadBasicServices.IsNull() && !data.Taskgroups[i].TaskReadBasicServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/basic-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/basic-services"))
 		}
 		if !data.Taskgroups[i].TaskReadTtyAccess.IsNull() && !data.Taskgroups[i].TaskReadTtyAccess.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/tty-access"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/tty-access"))
 		}
 		if !data.Taskgroups[i].TaskReadSystem.IsNull() && !data.Taskgroups[i].TaskReadSystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/system"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/system"))
 		}
 		if !data.Taskgroups[i].TaskReadPkgMgmt.IsNull() && !data.Taskgroups[i].TaskReadPkgMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/pkg-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pkg-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskReadIpServices.IsNull() && !data.Taskgroups[i].TaskReadIpServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ip-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ip-services"))
 		}
 		if !data.Taskgroups[i].TaskReadInterface.IsNull() && !data.Taskgroups[i].TaskReadInterface.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/interface"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/interface"))
 		}
 		if !data.Taskgroups[i].TaskReadFilesystem.IsNull() && !data.Taskgroups[i].TaskReadFilesystem.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/filesystem"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/filesystem"))
 		}
 		if !data.Taskgroups[i].TaskReadFaultMgr.IsNull() && !data.Taskgroups[i].TaskReadFaultMgr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/fault-mgr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fault-mgr"))
 		}
 		if !data.Taskgroups[i].TaskReadBoot.IsNull() && !data.Taskgroups[i].TaskReadBoot.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/boot"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/boot"))
 		}
 		if !data.Taskgroups[i].TaskReadHostServices.IsNull() && !data.Taskgroups[i].TaskReadHostServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/host-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/host-services"))
 		}
 		if !data.Taskgroups[i].TaskReadConfigServices.IsNull() && !data.Taskgroups[i].TaskReadConfigServices.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/config-services"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/config-services"))
 		}
 		if !data.Taskgroups[i].TaskReadConfigMgmt.IsNull() && !data.Taskgroups[i].TaskReadConfigMgmt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/config-mgmt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/config-mgmt"))
 		}
 		if !data.Taskgroups[i].TaskReadSnmp.IsNull() && !data.Taskgroups[i].TaskReadSnmp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/snmp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/snmp"))
 		}
 		if !data.Taskgroups[i].TaskReadCrypto.IsNull() && !data.Taskgroups[i].TaskReadCrypto.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/crypto"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/crypto"))
 		}
 		if !data.Taskgroups[i].TaskReadAaa.IsNull() && !data.Taskgroups[i].TaskReadAaa.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/aaa"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/aaa"))
 		}
 		if !data.Taskgroups[i].TaskReadAcl.IsNull() && !data.Taskgroups[i].TaskReadAcl.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/acl"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/acl"))
 		}
 		if !data.Taskgroups[i].TaskReadQos.IsNull() && !data.Taskgroups[i].TaskReadQos.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/qos"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/qos"))
 		}
 		if !data.Taskgroups[i].TaskReadVlan.IsNull() && !data.Taskgroups[i].TaskReadVlan.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/vlan"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vlan"))
 		}
 		if !data.Taskgroups[i].TaskReadTunnel.IsNull() && !data.Taskgroups[i].TaskReadTunnel.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/tunnel"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/tunnel"))
 		}
 		if !data.Taskgroups[i].TaskReadDwdm.IsNull() && !data.Taskgroups[i].TaskReadDwdm.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/dwdm"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/dwdm"))
 		}
 		if !data.Taskgroups[i].TaskReadSonetSdh.IsNull() && !data.Taskgroups[i].TaskReadSonetSdh.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/sonet-sdh"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/sonet-sdh"))
 		}
 		if !data.Taskgroups[i].TaskReadPosDpt.IsNull() && !data.Taskgroups[i].TaskReadPosDpt.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/pos-dpt"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/pos-dpt"))
 		}
 		if !data.Taskgroups[i].TaskReadHdlc.IsNull() && !data.Taskgroups[i].TaskReadHdlc.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/hdlc"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/hdlc"))
 		}
 		if !data.Taskgroups[i].TaskReadPpp.IsNull() && !data.Taskgroups[i].TaskReadPpp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ppp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ppp"))
 		}
 		if !data.Taskgroups[i].TaskReadTransport.IsNull() && !data.Taskgroups[i].TaskReadTransport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/transport"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/transport"))
 		}
 		if !data.Taskgroups[i].TaskReadNetwork.IsNull() && !data.Taskgroups[i].TaskReadNetwork.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/network"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/network"))
 		}
 		if !data.Taskgroups[i].TaskReadBundle.IsNull() && !data.Taskgroups[i].TaskReadBundle.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/bundle"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bundle"))
 		}
 		if !data.Taskgroups[i].TaskReadFabric.IsNull() && !data.Taskgroups[i].TaskReadFabric.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/fabric"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/fabric"))
 		}
 		if !data.Taskgroups[i].TaskReadOuni.IsNull() && !data.Taskgroups[i].TaskReadOuni.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ouni"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ouni"))
 		}
 		if !data.Taskgroups[i].TaskReadMplsStatic.IsNull() && !data.Taskgroups[i].TaskReadMplsStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/mpls-static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-static"))
 		}
 		if !data.Taskgroups[i].TaskReadMplsLdp.IsNull() && !data.Taskgroups[i].TaskReadMplsLdp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/mpls-ldp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-ldp"))
 		}
 		if !data.Taskgroups[i].TaskReadMplsTe.IsNull() && !data.Taskgroups[i].TaskReadMplsTe.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/mpls-te"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/mpls-te"))
 		}
 		if !data.Taskgroups[i].TaskReadMulticast.IsNull() && !data.Taskgroups[i].TaskReadMulticast.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/multicast"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/multicast"))
 		}
 		if !data.Taskgroups[i].TaskReadRib.IsNull() && !data.Taskgroups[i].TaskReadRib.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/rib"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/rib"))
 		}
 		if !data.Taskgroups[i].TaskReadIpv4.IsNull() && !data.Taskgroups[i].TaskReadIpv4.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ipv4"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ipv4"))
 		}
 		if !data.Taskgroups[i].TaskReadLpts.IsNull() && !data.Taskgroups[i].TaskReadLpts.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/lpts"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/lpts"))
 		}
 		if !data.Taskgroups[i].TaskReadCef.IsNull() && !data.Taskgroups[i].TaskReadCef.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/cef"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/cef"))
 		}
 		if !data.Taskgroups[i].TaskReadVrrp.IsNull() && !data.Taskgroups[i].TaskReadVrrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/vrrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/vrrp"))
 		}
 		if !data.Taskgroups[i].TaskReadStatic.IsNull() && !data.Taskgroups[i].TaskReadStatic.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/static"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/static"))
 		}
 		if !data.Taskgroups[i].TaskReadRoutePolicy.IsNull() && !data.Taskgroups[i].TaskReadRoutePolicy.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/route-policy"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/route-policy"))
 		}
 		if !data.Taskgroups[i].TaskReadRouteMap.IsNull() && !data.Taskgroups[i].TaskReadRouteMap.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/route-map"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/route-map"))
 		}
 		if !data.Taskgroups[i].TaskReadIsis.IsNull() && !data.Taskgroups[i].TaskReadIsis.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/isis"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/isis"))
 		}
 		if !data.Taskgroups[i].TaskReadHsrp.IsNull() && !data.Taskgroups[i].TaskReadHsrp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/hsrp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/hsrp"))
 		}
 		if !data.Taskgroups[i].TaskReadOspf.IsNull() && !data.Taskgroups[i].TaskReadOspf.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/ospf"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/ospf"))
 		}
 		if !data.Taskgroups[i].TaskReadBgp.IsNull() && !data.Taskgroups[i].TaskReadBgp.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString), "task/read/bgp"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString), "task/read/bgp"))
 		}
 	}
 	for i := range data.Usernames {
@@ -14102,40 +14102,40 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			}
 		}
 		if !data.Usernames[i].GroupReadOnlyTg.IsNull() && !data.Usernames[i].GroupReadOnlyTg.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/read-only-tg"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/read-only-tg"))
 		}
 		if !data.Usernames[i].GroupRetrieve.IsNull() && !data.Usernames[i].GroupRetrieve.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/retrieve"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/retrieve"))
 		}
 		if !data.Usernames[i].GroupProvisioning.IsNull() && !data.Usernames[i].GroupProvisioning.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/provisioning"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/provisioning"))
 		}
 		if !data.Usernames[i].GroupMaintenance.IsNull() && !data.Usernames[i].GroupMaintenance.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/maintenance"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/maintenance"))
 		}
 		if !data.Usernames[i].GroupCiscoSupport.IsNull() && !data.Usernames[i].GroupCiscoSupport.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/cisco-support"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/cisco-support"))
 		}
 		if !data.Usernames[i].GroupOperator.IsNull() && !data.Usernames[i].GroupOperator.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/operator"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/operator"))
 		}
 		if !data.Usernames[i].GroupServiceadmin.IsNull() && !data.Usernames[i].GroupServiceadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/serviceadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/serviceadmin"))
 		}
 		if !data.Usernames[i].GroupSysadmin.IsNull() && !data.Usernames[i].GroupSysadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/sysadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/sysadmin"))
 		}
 		if !data.Usernames[i].GroupNetadmin.IsNull() && !data.Usernames[i].GroupNetadmin.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/netadmin"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/netadmin"))
 		}
 		if !data.Usernames[i].GroupRootLr.IsNull() && !data.Usernames[i].GroupRootLr.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "group/root-lr"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "group/root-lr"))
 		}
 		if !data.Usernames[i].LoginHistoryDisable.IsNull() && !data.Usernames[i].LoginHistoryDisable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "login-history/disable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "login-history/disable"))
 		}
 		if !data.Usernames[i].LoginHistoryEnable.IsNull() && !data.Usernames[i].LoginHistoryEnable.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString), "login-history/enable"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString), "login-history/enable"))
 		}
 	}
 	for i := range data.TacacsServerGroups {
@@ -14153,7 +14153,7 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnection.IsNull() && !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnection.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v/server-privates/server-private%v", data.getPath(), keyString, ckeyString), "single-connection"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "single-connection"))
 			}
 		}
 		for ci := range data.TacacsServerGroups[i].Servers {
@@ -14184,28 +14184,28 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.RadiusServerGroups[i].AccountingReplyReject.IsNull() && !data.RadiusServerGroups[i].AccountingReplyReject.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "accounting/reply"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/reply"))
 		}
 		if !data.RadiusServerGroups[i].AccountingReplyAccept.IsNull() && !data.RadiusServerGroups[i].AccountingReplyAccept.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "accounting/reply"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/reply"))
 		}
 		if !data.RadiusServerGroups[i].AccountingRequestReject.IsNull() && !data.RadiusServerGroups[i].AccountingRequestReject.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "accounting/request"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/request"))
 		}
 		if !data.RadiusServerGroups[i].AccountingRequestAccept.IsNull() && !data.RadiusServerGroups[i].AccountingRequestAccept.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "accounting/request"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "accounting/request"))
 		}
 		if !data.RadiusServerGroups[i].AuthorizationReplyReject.IsNull() && !data.RadiusServerGroups[i].AuthorizationReplyReject.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "authorization/reply"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/reply"))
 		}
 		if !data.RadiusServerGroups[i].AuthorizationReplyAccept.IsNull() && !data.RadiusServerGroups[i].AuthorizationReplyAccept.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "authorization/reply"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/reply"))
 		}
 		if !data.RadiusServerGroups[i].AuthorizationRequestReject.IsNull() && !data.RadiusServerGroups[i].AuthorizationRequestReject.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "authorization/request"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/request"))
 		}
 		if !data.RadiusServerGroups[i].AuthorizationRequestAccept.IsNull() && !data.RadiusServerGroups[i].AuthorizationRequestAccept.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "authorization/request"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "authorization/request"))
 		}
 		for ci := range data.RadiusServerGroups[i].ServerPrivates {
 			ckeys := [...]string{"ordering-index", "address", "auth-port", "acct-port"}
@@ -14215,17 +14215,17 @@ func (data *AAA) getEmptyLeafsDelete(ctx context.Context, version string) []stri
 				ckeyString += "[" + ckeys[cki] + "=" + ckeyValues[cki] + "]"
 			}
 			if !data.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAcctPort.IsNull() && !data.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAcctPort.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", data.getPath(), keyString, ckeyString), "ignore-acct-port"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "ignore-acct-port"))
 			}
 			if !data.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAuthPort.IsNull() && !data.RadiusServerGroups[i].ServerPrivates[ci].IgnoreAuthPort.ValueBool() {
-				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v/server-privates/server-private%v", data.getPath(), keyString, ckeyString), "ignore-auth-port"))
+				emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString, "server-privates/server-private", ckeyString), "ignore-auth-port"))
 			}
 		}
 		if !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingIgnorePreferredServer.IsNull() && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingIgnorePreferredServer.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "load-balance/method/least-outstanding/ignore-preferred-server"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "load-balance/method/least-outstanding/ignore-preferred-server"))
 		}
 		if !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstanding.IsNull() && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstanding.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString), "load-balance/method/least-outstanding"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString), "load-balance/method/least-outstanding"))
 		}
 		for ci := range data.RadiusServerGroups[i].Servers {
 			ckeys := [...]string{"ordering-index", "address", "auth-port", "acct-port"}
@@ -14260,7 +14260,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usergroups/usergroup", keyString))
 	}
 	for i := range data.Taskgroups {
 		keys := [...]string{"taskgroup-name"}
@@ -14278,7 +14278,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:taskgroups/taskgroup", keyString))
 	}
 	for i := range data.Usernames {
 		keys := [...]string{"ordering-index", "name"}
@@ -14299,7 +14299,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-task-user-cfg:usernames/username", keyString))
 	}
 	for i := range data.TacacsServerGroups {
 		keys := [...]string{"server-group-name"}
@@ -14317,7 +14317,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-tacacs-server-cfg:group/server/tacacs/server-groups/server-group", keyString))
 	}
 	for i := range data.ServerRadiusDynamicAuthorClients {
 		keys := [...]string{"address", "vrf"}
@@ -14338,7 +14338,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/clients/client", keyString))
 	}
 	if !data.ServerRadiusDynamicAuthorServerKeyType6.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:server/radius/dynamic-author/server-key/six"))
@@ -14368,7 +14368,7 @@ func (data *AAA) getDeletePaths(ctx context.Context, version string) []string {
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "Cisco-IOS-XR-um-aaa-radius-server-cfg:group/server/radius/server-groups/server-group", keyString))
 	}
 	if !data.BannerLogin.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "banner/login"))

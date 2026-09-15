@@ -764,19 +764,19 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 			}
 			if found {
 				if !state.Vrfs[i].Ipv4AccessList.IsNull() && data.Vrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "ipv4/access-list"))
 				}
 				if !state.Vrfs[i].Ipv6AccessList.IsNull() && data.Vrfs[j].Ipv6AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "ipv6/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "ipv6/access-list"))
 				}
 				if !state.Vrfs[i].Shutdown.IsNull() && data.Vrfs[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString), "shutdown"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString), "shutdown"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "vrfs/vrf", keyString))
 		}
 	}
 	if !state.SessionTimeout.IsNull() && data.SessionTimeout.IsNull() {
@@ -824,16 +824,16 @@ func (data *XMLAgent) getDeletedItems(ctx context.Context, state XMLAgent, versi
 			}
 			if found {
 				if !state.SslVrfs[i].Ipv4AccessList.IsNull() && data.SslVrfs[j].Ipv4AccessList.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", state.getPath(), keyString), "ipv4/access-list"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ssl/vrfs/vrf", keyString), "ipv4/access-list"))
 				}
 				if !state.SslVrfs[i].Shutdown.IsNull() && data.SslVrfs[j].Shutdown.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", state.getPath(), keyString), "shutdown"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "ssl/vrfs/vrf", keyString), "shutdown"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/ssl/vrfs/vrf%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "ssl/vrfs/vrf", keyString))
 		}
 	}
 	if !state.SslSessionTimeout.IsNull() && data.SslSessionTimeout.IsNull() {
@@ -892,7 +892,7 @@ func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Vrfs[i].Shutdown.IsNull() && !data.Vrfs[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString), "shutdown"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString), "shutdown"))
 		}
 	}
 	if !data.Ipv4Disable.IsNull() && !data.Ipv4Disable.ValueBool() {
@@ -909,7 +909,7 @@ func (data *XMLAgent) getEmptyLeafsDelete(ctx context.Context, version string) [
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.SslVrfs[i].Shutdown.IsNull() && !data.SslVrfs[i].Shutdown.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/ssl/vrfs/vrf%v", data.getPath(), keyString), "shutdown"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "ssl/vrfs/vrf", keyString), "shutdown"))
 		}
 	}
 	if !data.SslEnable.IsNull() && !data.SslEnable.ValueBool() {
@@ -945,7 +945,7 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "vrfs/vrf", keyString))
 	}
 	if !data.SessionTimeout.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "session/timeout"))
@@ -984,7 +984,7 @@ func (data *XMLAgent) getDeletePaths(ctx context.Context, version string) []stri
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/ssl/vrfs/vrf%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "ssl/vrfs/vrf", keyString))
 	}
 	if !data.SslSessionTimeout.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "ssl/session/timeout"))

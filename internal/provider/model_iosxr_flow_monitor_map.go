@@ -1785,7 +1785,7 @@ func (data *FlowMonitorMap) getDeletedItems(ctx context.Context, state FlowMonit
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/exporters/exporter%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "exporters/exporter", keyString))
 		}
 	}
 	return deletedItems
@@ -2138,7 +2138,7 @@ func (data *FlowMonitorMap) getDeletePaths(ctx context.Context, version string) 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/exporters/exporter%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "exporters/exporter", keyString))
 	}
 	return deletePaths
 }

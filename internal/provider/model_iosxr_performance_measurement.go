@@ -1019,7 +1019,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-addresses/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-addresses/ipv6", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes {
@@ -1055,7 +1055,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-prefixes/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-prefixes/ipv6", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses {
@@ -1085,7 +1085,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-addresses/ipv4%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-addresses/ipv4", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes {
@@ -1121,7 +1121,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-prefixess/ipv4%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-prefixess/ipv4", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses {
@@ -1151,7 +1151,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-addresses/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-addresses/ipv6", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes {
@@ -1187,7 +1187,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-prefixes/ipv6%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-prefixes/ipv6", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses {
@@ -1217,7 +1217,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-addresses/ipv4%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-addresses/ipv4", keyString))
 		}
 	}
 	for i := range state.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes {
@@ -1253,7 +1253,7 @@ func (data *PerformanceMeasurement) getDeletedItems(ctx context.Context, state P
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4", keyString))
 		}
 	}
 	if !state.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() && data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() {
@@ -1407,7 +1407,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-addresses/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-addresses/ipv6", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -1428,7 +1428,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-prefixes/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv6-prefixes/ipv6", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses {
 		keys := [...]string{"address"}
@@ -1446,7 +1446,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-addresses/ipv4%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-addresses/ipv4", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -1467,7 +1467,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-prefixess/ipv4%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/querier/allow-responder/addresses/ipv4-prefixess/ipv4", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses {
 		keys := [...]string{"address"}
@@ -1485,7 +1485,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-addresses/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-addresses/ipv6", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes {
 		keys := [...]string{"address", "length"}
@@ -1506,7 +1506,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-prefixes/ipv6%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv6-prefixes/ipv6", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses {
 		keys := [...]string{"address"}
@@ -1524,7 +1524,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-addresses/ipv4%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-addresses/ipv4", keyString))
 	}
 	for i := range data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes {
 		keys := [...]string{"address", "length"}
@@ -1545,7 +1545,7 @@ func (data *PerformanceMeasurement) getDeletePaths(ctx context.Context, version 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "protocol/twamp-light/measurement/delay/responder/allow-querier/addresses/ipv4-prefixes/ipv4", keyString))
 	}
 	if !data.ProtocolTwampLightMeasurementDelayUnauthenticatedIpv6Timestamp2Label.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "protocol/twamp-light/measurement/delay/unauthenticated/ipv6/timestamp2/label"))

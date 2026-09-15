@@ -2549,448 +2549,448 @@ func (data *IPv6AccessList) getDeletedItems(ctx context.Context, state IPv6Acces
 			}
 			if found {
 				if !state.Sequences[i].DenyIcmpOn.IsNull() && data.Sequences[j].DenyIcmpOn.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/icmp-on"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/icmp-on"))
 				}
 				if !state.Sequences[i].DenyIcmpOff.IsNull() && data.Sequences[j].DenyIcmpOff.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/icmp-off"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/icmp-off"))
 				}
 				if !state.Sequences[i].DenySetTtl.IsNull() && data.Sequences[j].DenySetTtl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/set/ttl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/set/ttl"))
 				}
 				if !state.Sequences[i].DenySetQosGroup.IsNull() && data.Sequences[j].DenySetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/set/qos-group"))
 				}
 				if !state.Sequences[i].DenyLogInput.IsNull() && data.Sequences[j].DenyLogInput.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/log-input"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/log-input"))
 				}
 				if !state.Sequences[i].DenyLog.IsNull() && data.Sequences[j].DenyLog.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/log"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/log"))
 				}
 				if !state.Sequences[i].DenyCapture.IsNull() && data.Sequences[j].DenyCapture.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/capture"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/capture"))
 				}
 				if !state.Sequences[i].DenyPolicePriority.IsNull() && data.Sequences[j].DenyPolicePriority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/police/priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/police/priority"))
 				}
 				if !state.Sequences[i].DenyPolicePeakUnit.IsNull() && data.Sequences[j].DenyPolicePeakUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/police/peak-unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/police/peak-unit"))
 				}
 				if !state.Sequences[i].DenyPolicePeakRate.IsNull() && data.Sequences[j].DenyPolicePeakRate.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/police/peak-rate"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/police/peak-rate"))
 				}
 				if !state.Sequences[i].DenyPoliceUnit.IsNull() && data.Sequences[j].DenyPoliceUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/police/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/police/unit"))
 				}
 				if !state.Sequences[i].DenyPoliceValue.IsNull() && data.Sequences[j].DenyPoliceValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/police/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/police/value"))
 				}
 				if !state.Sequences[i].DenyTtlRangeEnd.IsNull() && data.Sequences[j].DenyTtlRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/range/end-value"))
 				}
 				if !state.Sequences[i].DenyTtlRangeStart.IsNull() && data.Sequences[j].DenyTtlRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/range/start-value"))
 				}
 				if !state.Sequences[i].DenyTtlNeq.IsNull() && data.Sequences[j].DenyTtlNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/neq"))
 				}
 				if !state.Sequences[i].DenyTtlLt.IsNull() && data.Sequences[j].DenyTtlLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/lt"))
 				}
 				if !state.Sequences[i].DenyTtlGt.IsNull() && data.Sequences[j].DenyTtlGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/gt"))
 				}
 				if !state.Sequences[i].DenyTtlEq.IsNull() && data.Sequences[j].DenyTtlEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/ttl/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/ttl/eq"))
 				}
 				if !state.Sequences[i].DenyPacketLengthRangeEnd.IsNull() && data.Sequences[j].DenyPacketLengthRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/range/end-value"))
 				}
 				if !state.Sequences[i].DenyPacketLengthRangeStart.IsNull() && data.Sequences[j].DenyPacketLengthRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/range/start-value"))
 				}
 				if !state.Sequences[i].DenyPacketLengthNeq.IsNull() && data.Sequences[j].DenyPacketLengthNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/neq"))
 				}
 				if !state.Sequences[i].DenyPacketLengthLt.IsNull() && data.Sequences[j].DenyPacketLengthLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/lt"))
 				}
 				if !state.Sequences[i].DenyPacketLengthGt.IsNull() && data.Sequences[j].DenyPacketLengthGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/gt"))
 				}
 				if !state.Sequences[i].DenyPacketLengthEq.IsNull() && data.Sequences[j].DenyPacketLengthEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/packet-length/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/packet-length/eq"))
 				}
 				if !state.Sequences[i].DenyDscpRangeEnd.IsNull() && data.Sequences[j].DenyDscpRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/range/end-value"))
 				}
 				if !state.Sequences[i].DenyDscpRangeStart.IsNull() && data.Sequences[j].DenyDscpRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/range/start-value"))
 				}
 				if !state.Sequences[i].DenyDscpNeq.IsNull() && data.Sequences[j].DenyDscpNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/neq"))
 				}
 				if !state.Sequences[i].DenyDscpLt.IsNull() && data.Sequences[j].DenyDscpLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/lt"))
 				}
 				if !state.Sequences[i].DenyDscpGt.IsNull() && data.Sequences[j].DenyDscpGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/gt"))
 				}
 				if !state.Sequences[i].DenyDscpEq.IsNull() && data.Sequences[j].DenyDscpEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/eq"))
 				}
 				if !state.Sequences[i].DenyDscp.IsNull() && data.Sequences[j].DenyDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/dscp/dscp-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/dscp/dscp-value"))
 				}
 				if !state.Sequences[i].DenyHeaders.IsNull() && data.Sequences[j].DenyHeaders.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/headers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/headers"))
 				}
 				if !state.Sequences[i].DenyTcpFlagsBits.IsNull() && data.Sequences[j].DenyTcpFlagsBits.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/tcp-flags/tcp-bits"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/tcp-flags/tcp-bits"))
 				}
 				if !state.Sequences[i].DenyIcmpMessageCode.IsNull() && data.Sequences[j].DenyIcmpMessageCode.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/icmp/message-code"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/icmp/message-code"))
 				}
 				if !state.Sequences[i].DenyIcmpMessageType.IsNull() && data.Sequences[j].DenyIcmpMessageType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/icmp/message-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/icmp/message-type"))
 				}
 				if !state.Sequences[i].DenyIcmpMessageTypeName.IsNull() && data.Sequences[j].DenyIcmpMessageTypeName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/icmp/message-type-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/icmp/message-type-name"))
 				}
 				if !state.Sequences[i].DenyDestinationPortRangeEnd.IsNull() && data.Sequences[j].DenyDestinationPortRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/range/end-value"))
 				}
 				if !state.Sequences[i].DenyDestinationPortRangeStart.IsNull() && data.Sequences[j].DenyDestinationPortRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/range/start-value"))
 				}
 				if !state.Sequences[i].DenyDestinationPortNeq.IsNull() && data.Sequences[j].DenyDestinationPortNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/neq"))
 				}
 				if !state.Sequences[i].DenyDestinationPortLt.IsNull() && data.Sequences[j].DenyDestinationPortLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/lt"))
 				}
 				if !state.Sequences[i].DenyDestinationPortGt.IsNull() && data.Sequences[j].DenyDestinationPortGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/gt"))
 				}
 				if !state.Sequences[i].DenyDestinationPortEq.IsNull() && data.Sequences[j].DenyDestinationPortEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port/eq"))
 				}
 				if !state.Sequences[i].DenyDestinationPortGroup.IsNull() && data.Sequences[j].DenyDestinationPortGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/port-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/port-group"))
 				}
 				if !state.Sequences[i].DenyDestinationNetGroup.IsNull() && data.Sequences[j].DenyDestinationNetGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/net-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/net-group"))
 				}
 				if !state.Sequences[i].DenyDestinationHost.IsNull() && data.Sequences[j].DenyDestinationHost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/host"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/host"))
 				}
 				if !state.Sequences[i].DenyDestinationAny.IsNull() && data.Sequences[j].DenyDestinationAny.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/any"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/any"))
 				}
 				if !state.Sequences[i].DenyDestinationPrefixLength.IsNull() && data.Sequences[j].DenyDestinationPrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/prefix-length"))
 				}
 				if !state.Sequences[i].DenyDestinationWildcardMask.IsNull() && data.Sequences[j].DenyDestinationWildcardMask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/wildcard-mask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/wildcard-mask"))
 				}
 				if !state.Sequences[i].DenyDestinationAddress.IsNull() && data.Sequences[j].DenyDestinationAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/destination/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/destination/address"))
 				}
 				if !state.Sequences[i].DenySourcePortRangeEnd.IsNull() && data.Sequences[j].DenySourcePortRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/range/end-value"))
 				}
 				if !state.Sequences[i].DenySourcePortRangeStart.IsNull() && data.Sequences[j].DenySourcePortRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/range/start-value"))
 				}
 				if !state.Sequences[i].DenySourcePortNeq.IsNull() && data.Sequences[j].DenySourcePortNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/neq"))
 				}
 				if !state.Sequences[i].DenySourcePortLt.IsNull() && data.Sequences[j].DenySourcePortLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/lt"))
 				}
 				if !state.Sequences[i].DenySourcePortGt.IsNull() && data.Sequences[j].DenySourcePortGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/gt"))
 				}
 				if !state.Sequences[i].DenySourcePortEq.IsNull() && data.Sequences[j].DenySourcePortEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port/eq"))
 				}
 				if !state.Sequences[i].DenySourcePortGroup.IsNull() && data.Sequences[j].DenySourcePortGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/port-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/port-group"))
 				}
 				if !state.Sequences[i].DenySourceNetGroup.IsNull() && data.Sequences[j].DenySourceNetGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/net-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/net-group"))
 				}
 				if !state.Sequences[i].DenySourceHost.IsNull() && data.Sequences[j].DenySourceHost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/host"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/host"))
 				}
 				if !state.Sequences[i].DenySourceAny.IsNull() && data.Sequences[j].DenySourceAny.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/any"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/any"))
 				}
 				if !state.Sequences[i].DenySourcePrefixLength.IsNull() && data.Sequences[j].DenySourcePrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/prefix-length"))
 				}
 				if !state.Sequences[i].DenySourceWildcardMask.IsNull() && data.Sequences[j].DenySourceWildcardMask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/wildcard-mask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/wildcard-mask"))
 				}
 				if !state.Sequences[i].DenySourceAddress.IsNull() && data.Sequences[j].DenySourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/source/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/source/address"))
 				}
 				if !state.Sequences[i].DenyRangeEndProtocol.IsNull() && data.Sequences[j].DenyRangeEndProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/range/end-protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/range/end-protocol"))
 				}
 				if !state.Sequences[i].DenyRangeStartProtocol.IsNull() && data.Sequences[j].DenyRangeStartProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/range/start-protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/range/start-protocol"))
 				}
 				if !state.Sequences[i].DenyCounter.IsNull() && data.Sequences[j].DenyCounter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/counter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/counter"))
 				}
 				if !state.Sequences[i].DenyFragmentType.IsNull() && data.Sequences[j].DenyFragmentType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/fragment-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/fragment-type"))
 				}
 				if !state.Sequences[i].DenyPrecedence.IsNull() && data.Sequences[j].DenyPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/precedence"))
 				}
 				if !state.Sequences[i].DenyEq.IsNull() && data.Sequences[j].DenyEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/eq"))
 				}
 				if !state.Sequences[i].DenyProtocol.IsNull() && data.Sequences[j].DenyProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "deny/protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "deny/protocol"))
 				}
 				if !state.Sequences[i].PermitSetTtl.IsNull() && data.Sequences[j].PermitSetTtl.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/set/ttl"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/set/ttl"))
 				}
 				if !state.Sequences[i].PermitSetQosGroup.IsNull() && data.Sequences[j].PermitSetQosGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/set/qos-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/set/qos-group"))
 				}
 				if !state.Sequences[i].PermitLogInput.IsNull() && data.Sequences[j].PermitLogInput.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/log-input"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/log-input"))
 				}
 				if !state.Sequences[i].PermitLog.IsNull() && data.Sequences[j].PermitLog.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/log"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/log"))
 				}
 				if !state.Sequences[i].PermitCapture.IsNull() && data.Sequences[j].PermitCapture.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/capture"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/capture"))
 				}
 				if !state.Sequences[i].PermitNexthop3Vrf.IsNull() && data.Sequences[j].PermitNexthop3Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop3/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop3/vrf"))
 				}
 				if !state.Sequences[i].PermitNexthop3Track.IsNull() && data.Sequences[j].PermitNexthop3Track.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop3/track"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop3/track"))
 				}
 				if !state.Sequences[i].PermitNexthop3Ipv6.IsNull() && data.Sequences[j].PermitNexthop3Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop3/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop3/ipv6"))
 				}
 				if !state.Sequences[i].PermitNexthop2Vrf.IsNull() && data.Sequences[j].PermitNexthop2Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop2/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop2/vrf"))
 				}
 				if !state.Sequences[i].PermitNexthop2Track.IsNull() && data.Sequences[j].PermitNexthop2Track.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop2/track"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop2/track"))
 				}
 				if !state.Sequences[i].PermitNexthop2Ipv6.IsNull() && data.Sequences[j].PermitNexthop2Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop2/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop2/ipv6"))
 				}
 				if !state.Sequences[i].PermitNexthop1Vrf.IsNull() && data.Sequences[j].PermitNexthop1Vrf.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop1/vrf"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop1/vrf"))
 				}
 				if !state.Sequences[i].PermitNexthop1Track.IsNull() && data.Sequences[j].PermitNexthop1Track.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop1/track"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop1/track"))
 				}
 				if !state.Sequences[i].PermitNexthop1Ipv6.IsNull() && data.Sequences[j].PermitNexthop1Ipv6.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/nexthop1/ipv6"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/nexthop1/ipv6"))
 				}
 				if !state.Sequences[i].PermitPolicePriority.IsNull() && data.Sequences[j].PermitPolicePriority.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/police/priority"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/police/priority"))
 				}
 				if !state.Sequences[i].PermitPolicePeakUnit.IsNull() && data.Sequences[j].PermitPolicePeakUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/police/peak-unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/police/peak-unit"))
 				}
 				if !state.Sequences[i].PermitPolicePeakRate.IsNull() && data.Sequences[j].PermitPolicePeakRate.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/police/peak-rate"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/police/peak-rate"))
 				}
 				if !state.Sequences[i].PermitPoliceUnit.IsNull() && data.Sequences[j].PermitPoliceUnit.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/police/unit"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/police/unit"))
 				}
 				if !state.Sequences[i].PermitPoliceValue.IsNull() && data.Sequences[j].PermitPoliceValue.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/police/value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/police/value"))
 				}
 				if !state.Sequences[i].PermitTtlRangeEnd.IsNull() && data.Sequences[j].PermitTtlRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/range/end-value"))
 				}
 				if !state.Sequences[i].PermitTtlRangeStart.IsNull() && data.Sequences[j].PermitTtlRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/range/start-value"))
 				}
 				if !state.Sequences[i].PermitTtlNeq.IsNull() && data.Sequences[j].PermitTtlNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/neq"))
 				}
 				if !state.Sequences[i].PermitTtlLt.IsNull() && data.Sequences[j].PermitTtlLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/lt"))
 				}
 				if !state.Sequences[i].PermitTtlGt.IsNull() && data.Sequences[j].PermitTtlGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/gt"))
 				}
 				if !state.Sequences[i].PermitTtlEq.IsNull() && data.Sequences[j].PermitTtlEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/ttl/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/ttl/eq"))
 				}
 				if !state.Sequences[i].PermitPacketLengthRangeEnd.IsNull() && data.Sequences[j].PermitPacketLengthRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/range/end-value"))
 				}
 				if !state.Sequences[i].PermitPacketLengthRangeStart.IsNull() && data.Sequences[j].PermitPacketLengthRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/range/start-value"))
 				}
 				if !state.Sequences[i].PermitPacketLengthNeq.IsNull() && data.Sequences[j].PermitPacketLengthNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/neq"))
 				}
 				if !state.Sequences[i].PermitPacketLengthLt.IsNull() && data.Sequences[j].PermitPacketLengthLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/lt"))
 				}
 				if !state.Sequences[i].PermitPacketLengthGt.IsNull() && data.Sequences[j].PermitPacketLengthGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/gt"))
 				}
 				if !state.Sequences[i].PermitPacketLengthEq.IsNull() && data.Sequences[j].PermitPacketLengthEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/packet-length/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/packet-length/eq"))
 				}
 				if !state.Sequences[i].PermitDscpRangeEnd.IsNull() && data.Sequences[j].PermitDscpRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/range/end-value"))
 				}
 				if !state.Sequences[i].PermitDscpRangeStart.IsNull() && data.Sequences[j].PermitDscpRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/range/start-value"))
 				}
 				if !state.Sequences[i].PermitDscpNeq.IsNull() && data.Sequences[j].PermitDscpNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/neq"))
 				}
 				if !state.Sequences[i].PermitDscpLt.IsNull() && data.Sequences[j].PermitDscpLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/lt"))
 				}
 				if !state.Sequences[i].PermitDscpGt.IsNull() && data.Sequences[j].PermitDscpGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/gt"))
 				}
 				if !state.Sequences[i].PermitDscpEq.IsNull() && data.Sequences[j].PermitDscpEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/eq"))
 				}
 				if !state.Sequences[i].PermitDscp.IsNull() && data.Sequences[j].PermitDscp.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/dscp/dscp-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/dscp/dscp-value"))
 				}
 				if !state.Sequences[i].PermitHeaders.IsNull() && data.Sequences[j].PermitHeaders.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/headers"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/headers"))
 				}
 				if !state.Sequences[i].PermitTcpFlagsBits.IsNull() && data.Sequences[j].PermitTcpFlagsBits.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/tcp-flags/tcp-bits"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/tcp-flags/tcp-bits"))
 				}
 				if !state.Sequences[i].PermitIcmpMessageCode.IsNull() && data.Sequences[j].PermitIcmpMessageCode.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/icmp/message-code"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/icmp/message-code"))
 				}
 				if !state.Sequences[i].PermitIcmpMessageType.IsNull() && data.Sequences[j].PermitIcmpMessageType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/icmp/message-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/icmp/message-type"))
 				}
 				if !state.Sequences[i].PermitIcmpMessageTypeName.IsNull() && data.Sequences[j].PermitIcmpMessageTypeName.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/icmp/message-type-name"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/icmp/message-type-name"))
 				}
 				if !state.Sequences[i].PermitDestinationPortRangeEnd.IsNull() && data.Sequences[j].PermitDestinationPortRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/range/end-value"))
 				}
 				if !state.Sequences[i].PermitDestinationPortRangeStart.IsNull() && data.Sequences[j].PermitDestinationPortRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/range/start-value"))
 				}
 				if !state.Sequences[i].PermitDestinationPortNeq.IsNull() && data.Sequences[j].PermitDestinationPortNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/neq"))
 				}
 				if !state.Sequences[i].PermitDestinationPortLt.IsNull() && data.Sequences[j].PermitDestinationPortLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/lt"))
 				}
 				if !state.Sequences[i].PermitDestinationPortGt.IsNull() && data.Sequences[j].PermitDestinationPortGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/gt"))
 				}
 				if !state.Sequences[i].PermitDestinationPortEq.IsNull() && data.Sequences[j].PermitDestinationPortEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port/eq"))
 				}
 				if !state.Sequences[i].PermitDestinationPortGroup.IsNull() && data.Sequences[j].PermitDestinationPortGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/port-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/port-group"))
 				}
 				if !state.Sequences[i].PermitDestinationNetGroup.IsNull() && data.Sequences[j].PermitDestinationNetGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/net-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/net-group"))
 				}
 				if !state.Sequences[i].PermitDestinationHost.IsNull() && data.Sequences[j].PermitDestinationHost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/host"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/host"))
 				}
 				if !state.Sequences[i].PermitDestinationAny.IsNull() && data.Sequences[j].PermitDestinationAny.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/any"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/any"))
 				}
 				if !state.Sequences[i].PermitDestinationPrefixLength.IsNull() && data.Sequences[j].PermitDestinationPrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/prefix-length"))
 				}
 				if !state.Sequences[i].PermitDestinationWildcardMask.IsNull() && data.Sequences[j].PermitDestinationWildcardMask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/wildcard-mask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/wildcard-mask"))
 				}
 				if !state.Sequences[i].PermitDestinationAddress.IsNull() && data.Sequences[j].PermitDestinationAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/destination/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/destination/address"))
 				}
 				if !state.Sequences[i].PermitSourcePortRangeEnd.IsNull() && data.Sequences[j].PermitSourcePortRangeEnd.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/range/end-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/range/end-value"))
 				}
 				if !state.Sequences[i].PermitSourcePortRangeStart.IsNull() && data.Sequences[j].PermitSourcePortRangeStart.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/range/start-value"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/range/start-value"))
 				}
 				if !state.Sequences[i].PermitSourcePortNeq.IsNull() && data.Sequences[j].PermitSourcePortNeq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/neq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/neq"))
 				}
 				if !state.Sequences[i].PermitSourcePortLt.IsNull() && data.Sequences[j].PermitSourcePortLt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/lt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/lt"))
 				}
 				if !state.Sequences[i].PermitSourcePortGt.IsNull() && data.Sequences[j].PermitSourcePortGt.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/gt"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/gt"))
 				}
 				if !state.Sequences[i].PermitSourcePortEq.IsNull() && data.Sequences[j].PermitSourcePortEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port/eq"))
 				}
 				if !state.Sequences[i].PermitSourcePortGroup.IsNull() && data.Sequences[j].PermitSourcePortGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/port-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/port-group"))
 				}
 				if !state.Sequences[i].PermitSourceNetGroup.IsNull() && data.Sequences[j].PermitSourceNetGroup.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/net-group"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/net-group"))
 				}
 				if !state.Sequences[i].PermitSourceHost.IsNull() && data.Sequences[j].PermitSourceHost.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/host"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/host"))
 				}
 				if !state.Sequences[i].PermitSourceAny.IsNull() && data.Sequences[j].PermitSourceAny.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/any"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/any"))
 				}
 				if !state.Sequences[i].PermitSourcePrefixLength.IsNull() && data.Sequences[j].PermitSourcePrefixLength.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/prefix-length"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/prefix-length"))
 				}
 				if !state.Sequences[i].PermitSourceWildcardMask.IsNull() && data.Sequences[j].PermitSourceWildcardMask.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/wildcard-mask"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/wildcard-mask"))
 				}
 				if !state.Sequences[i].PermitSourceAddress.IsNull() && data.Sequences[j].PermitSourceAddress.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/source/address"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/source/address"))
 				}
 				if !state.Sequences[i].PermitRangeEndProtocol.IsNull() && data.Sequences[j].PermitRangeEndProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/range/end-protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/range/end-protocol"))
 				}
 				if !state.Sequences[i].PermitRangeStartProtocol.IsNull() && data.Sequences[j].PermitRangeStartProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/range/start-protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/range/start-protocol"))
 				}
 				if !state.Sequences[i].PermitCounter.IsNull() && data.Sequences[j].PermitCounter.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/counter"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/counter"))
 				}
 				if !state.Sequences[i].PermitFragmentType.IsNull() && data.Sequences[j].PermitFragmentType.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/fragment-type"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/fragment-type"))
 				}
 				if !state.Sequences[i].PermitPrecedence.IsNull() && data.Sequences[j].PermitPrecedence.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/precedence"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/precedence"))
 				}
 				if !state.Sequences[i].PermitEq.IsNull() && data.Sequences[j].PermitEq.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/eq"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/eq"))
 				}
 				if !state.Sequences[i].PermitProtocol.IsNull() && data.Sequences[j].PermitProtocol.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "permit/protocol"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "permit/protocol"))
 				}
 				if !state.Sequences[i].Remark.IsNull() && data.Sequences[j].Remark.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString), "remark"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString), "remark"))
 				}
 				break
 			}
 		}
 		if !found {
-			deletedItems = append(deletedItems, fmt.Sprintf("%v/sequences/sequence%v", state.getPath(), keyString))
+			deletedItems = append(deletedItems, fmt.Sprintf("%v/%v%v", state.getPath(), "sequences/sequence", keyString))
 		}
 	}
 	return deletedItems
@@ -3010,40 +3010,40 @@ func (data *IPv6AccessList) getEmptyLeafsDelete(ctx context.Context, version str
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
 		if !data.Sequences[i].DenyIcmpOn.IsNull() && !data.Sequences[i].DenyIcmpOn.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/icmp-on"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/icmp-on"))
 		}
 		if !data.Sequences[i].DenyIcmpOff.IsNull() && !data.Sequences[i].DenyIcmpOff.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/icmp-off"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/icmp-off"))
 		}
 		if !data.Sequences[i].DenyLogInput.IsNull() && !data.Sequences[i].DenyLogInput.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/log-input"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/log-input"))
 		}
 		if !data.Sequences[i].DenyLog.IsNull() && !data.Sequences[i].DenyLog.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/log"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/log"))
 		}
 		if !data.Sequences[i].DenyCapture.IsNull() && !data.Sequences[i].DenyCapture.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/capture"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/capture"))
 		}
 		if !data.Sequences[i].DenyDestinationAny.IsNull() && !data.Sequences[i].DenyDestinationAny.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/destination/any"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/destination/any"))
 		}
 		if !data.Sequences[i].DenySourceAny.IsNull() && !data.Sequences[i].DenySourceAny.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "deny/source/any"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "deny/source/any"))
 		}
 		if !data.Sequences[i].PermitLogInput.IsNull() && !data.Sequences[i].PermitLogInput.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "permit/log-input"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "permit/log-input"))
 		}
 		if !data.Sequences[i].PermitLog.IsNull() && !data.Sequences[i].PermitLog.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "permit/log"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "permit/log"))
 		}
 		if !data.Sequences[i].PermitCapture.IsNull() && !data.Sequences[i].PermitCapture.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "permit/capture"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "permit/capture"))
 		}
 		if !data.Sequences[i].PermitDestinationAny.IsNull() && !data.Sequences[i].PermitDestinationAny.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "permit/destination/any"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "permit/destination/any"))
 		}
 		if !data.Sequences[i].PermitSourceAny.IsNull() && !data.Sequences[i].PermitSourceAny.ValueBool() {
-			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString), "permit/source/any"))
+			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString), "permit/source/any"))
 		}
 	}
 	return emptyLeafsDelete
@@ -3070,7 +3070,7 @@ func (data *IPv6AccessList) getDeletePaths(ctx context.Context, version string) 
 		if emptyKeys {
 			continue
 		}
-		deletePaths = append(deletePaths, fmt.Sprintf("%v/sequences/sequence%v", data.getPath(), keyString))
+		deletePaths = append(deletePaths, fmt.Sprintf("%v/%v%v", data.getPath(), "sequences/sequence", keyString))
 	}
 	return deletePaths
 }
