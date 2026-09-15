@@ -31,17 +31,17 @@ attributes:
     replaces_yang_name: monitor-discriminator/nomatch3
   # ===========================================================
   # console: leaf → container restructure
-  # 24.4: console (leaf)
-  # 25.4: console/console-level (leaf), console/discriminator/* (new)
-  # The old console-logging/console-log-facility/console-facility-level path
-  # is removed in 25.4 (console facility is now a separate container/leaf all).
+  # 24.4: console (leaf), console-logging/console-log-facility/console-facility-level
+  # 25.4: console/console-level (leaf), console/facility/all (leaf),
+  #        console/discriminator/* (new)
   # ===========================================================
   - yang_name: console/console-level
     tf_name: console
     replaces_yang_name: console
-  # 24.4 console facility path removed; no equivalent leaf in 25.4
-  - yang_name: console-logging/console-log-facility/console-facility-level
-    legacy: true
+  - yang_name: console/facility/all
+    tf_name: console_facility
+    replaces_yang_name: console-logging/console-log-facility/console-facility-level
+    example: all
   # New console discriminator (not present in 24.4)
   - yang_name: console/discriminator/match1
     tf_name: console_discriminator_match1

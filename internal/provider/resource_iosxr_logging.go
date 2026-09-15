@@ -101,7 +101,7 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"console_facility": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Console message logging facilities").AddStringEnumDescription("all").String + "\n  - **Not supported from version `25.4` and above**",
+				MarkdownDescription: helpers.NewAttributeDescription("All supported facilities").AddStringEnumDescription("all").String,
 				Optional:            true,
 				Validators: []validator.String{
 					stringvalidator.OneOf("all"),

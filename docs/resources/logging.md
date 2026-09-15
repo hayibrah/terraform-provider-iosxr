@@ -18,7 +18,6 @@ This resource can manage the Logging configuration.
 |-----------|:-------:|
 | `archive_frequency_daily` | `25.4` |
 | `archive_frequency_weekly` | `25.4` |
-| `console_facility` | `25.4` |
 | `format_bsd` | `25.4` |
 | `format_rfc5424` | `25.4` |
 | `source_interfaces.vrfs` | `25.4` |
@@ -50,6 +49,7 @@ resource "iosxr_logging" "example" {
   console_discriminator_nomatch1  = "CONSOLE_NOMATCH1"
   console_discriminator_nomatch2  = "CONSOLE_NOMATCH2"
   console_discriminator_nomatch3  = "CONSOLE_NOMATCH3"
+  console_facility                = "all"
   container_fetch_timestamp       = true
   events_buffer_size              = 10000
   events_display_location         = true
@@ -172,9 +172,8 @@ resource "iosxr_logging" "example" {
   - Supported from version: `25.4`
 - `console_discriminator_nomatch3` (String) Set no-match discriminator 3
   - Supported from version: `25.4`
-- `console_facility` (String) Console message logging facilities
+- `console_facility` (String) All supported facilities
   - Choices: `all`
-  - **Not supported from version `25.4` and above**
 - `container_all` (Boolean) Enables log collection from all containers
 - `container_fetch_timestamp` (Boolean) Fetch logs with container timestamp for all containers
 - `delete_mode` (String) Configure behavior when deleting/destroying the resource. Either delete the entire object (YANG container) being managed, or only delete the individual resource attributes configured explicitly and leave everything else as-is. Default value is `all`.

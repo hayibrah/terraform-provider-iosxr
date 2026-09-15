@@ -80,7 +80,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"console_facility": schema.StringAttribute{
-				MarkdownDescription: "Console message logging facilities" + "\n  - **Not supported from version `25.4` and above**",
+				MarkdownDescription: "All supported facilities",
 				Computed:            true,
 			},
 			"monitor_discriminator_match1": schema.StringAttribute{

@@ -18,7 +18,6 @@ This data source can read the Logging configuration.
 |-----------|:-------:|
 | `archive_frequency_daily` | `25.4` |
 | `archive_frequency_weekly` | `25.4` |
-| `console_facility` | `25.4` |
 | `format_bsd` | `25.4` |
 | `format_rfc5424` | `25.4` |
 | `source_interfaces.vrfs` | `25.4` |
@@ -75,8 +74,7 @@ data "iosxr_logging" "example" {
   - Supported from version: `25.4`
 - `console_discriminator_nomatch3` (String) Set no-match discriminator 3
   - Supported from version: `25.4`
-- `console_facility` (String) Console message logging facilities
-  - **Not supported from version `25.4` and above**
+- `console_facility` (String) All supported facilities
 - `container_all` (Boolean) Enables log collection from all containers
 - `container_fetch_timestamp` (Boolean) Fetch logs with container timestamp for all containers
 - `events_buffer_size` (Number) Set size of the local event buffer

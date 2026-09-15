@@ -37,9 +37,7 @@ func TestAccDataSourceIosxrLogging(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console", "disable"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "trap", "informational"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "monitor", "disable"))
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_facility", "all"))
-	}
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_facility", "all"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "archive_disk0", "true"))
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "archive_frequency_daily", "true"))
@@ -174,9 +172,7 @@ func testAccDataSourceIosxrLoggingConfig() string {
 	config += `	console = "disable"` + "\n"
 	config += `	trap = "informational"` + "\n"
 	config += `	monitor = "disable"` + "\n"
-	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-		config += `	console_facility = "all"` + "\n"
-	}
+	config += `	console_facility = "all"` + "\n"
 	config += `	archive_disk0 = true` + "\n"
 	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	archive_frequency_daily = true` + "\n"

@@ -38,6 +38,10 @@ func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 		"hostnames.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"hostnames.0.port", selectVersionExample(map[string]string{
+			"24.4": "514", "25.4": "510",
+		}, "510")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "hostnames.0.hostname_source_address", "1.1.1.2"))
@@ -46,6 +50,10 @@ func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 		"host_ipv4_addresses.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"host_ipv4_addresses.0.port", selectVersionExample(map[string]string{
+			"24.4": "514", "25.4": "510",
+		}, "510")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv4_addresses.0.ipv4_source_address", "1.1.1.2"))
@@ -54,6 +62,10 @@ func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 		"host_ipv6_addresses.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test",
+		"host_ipv6_addresses.0.port", selectVersionExample(map[string]string{
+			"24.4": "514", "25.4": "510",
+		}, "510")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.operator", "equals-or-higher"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging_vrf.test", "host_ipv6_addresses.0.ipv6_source_address", "2001:db8::2"))
@@ -104,6 +116,9 @@ func testAccDataSourceIosxrLoggingVRFConfig() string {
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
+	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		"24.4": "514", "25.4": "510",
+	}, "510")) + "\n"
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		hostname_source_address = "1.1.1.2"` + "\n"
@@ -113,6 +128,9 @@ func testAccDataSourceIosxrLoggingVRFConfig() string {
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
+	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		"24.4": "514", "25.4": "510",
+	}, "510")) + "\n"
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv4_source_address = "1.1.1.2"` + "\n"
@@ -122,6 +140,9 @@ func testAccDataSourceIosxrLoggingVRFConfig() string {
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
+	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		"24.4": "514", "25.4": "510",
+	}, "510")) + "\n"
 	config += `		operator = "equals-or-higher"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv6_source_address = "2001:db8::2"` + "\n"

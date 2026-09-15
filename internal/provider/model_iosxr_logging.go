@@ -254,10 +254,8 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	if !data.Monitor.IsNull() && !data.Monitor.IsUnknown() {
 		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "monitor", "25.4": "monitor.monitor-level"}, "monitor"), data.Monitor.ValueString())
 	}
-	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
-		if !data.ConsoleFacility.IsNull() && !data.ConsoleFacility.IsUnknown() {
-			body, _ = sjson.Set(body, "console-logging.console-log-facility.console-facility-level", data.ConsoleFacility.ValueString())
-		}
+	if !data.ConsoleFacility.IsNull() && !data.ConsoleFacility.IsUnknown() {
+		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "console-logging.console-log-facility.console-facility-level", "25.4": "console.facility.all"}, "console-logging.console-log-facility.console-facility-level"), data.ConsoleFacility.ValueString())
 	}
 	if !data.MonitorDiscriminatorMatch1.IsNull() && !data.MonitorDiscriminatorMatch1.IsUnknown() {
 		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "monitor-discriminator.match1", "25.4": "monitor.discriminator.match1"}, "monitor-discriminator.match1"), data.MonitorDiscriminatorMatch1.ValueString())
@@ -657,11 +655,6 @@ func (data Logging) GetVersionConstraints() []helpers.FieldVersionConstraint {
 
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
-			FieldPath: "console_facility",
-
-			RemovedInVersion: "25.4",
-		},
-		{
 			FieldPath: "archive_frequency_daily",
 
 			RemovedInVersion: "25.4",
@@ -858,7 +851,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.Monitor = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.String && !data.ConsoleFacility.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "console-logging.console-log-facility.console-facility-level", "25.4": "console.facility.all"}, "console-logging.console-log-facility.console-facility-level")); value.Exists() && value.Type == gjson.String && !data.ConsoleFacility.IsNull() {
 		data.ConsoleFacility = types.StringValue(value.String())
 	} else {
 		data.ConsoleFacility = types.StringNull()
@@ -1586,12 +1579,8 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor.monitor-level"}, "monitor")); value.Exists() && value.Type == gjson.String {
 		data.Monitor = types.StringValue(value.String())
 	}
-	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() && value.Type == gjson.String {
-			data.ConsoleFacility = types.StringValue(value.String())
-		}
-	} else {
-		data.ConsoleFacility = types.StringNull()
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "console-logging.console-log-facility.console-facility-level", "25.4": "console.facility.all"}, "console-logging.console-log-facility.console-facility-level")); value.Exists() && value.Type == gjson.String {
+		data.ConsoleFacility = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator.match1", "25.4": "monitor.discriminator.match1"}, "monitor-discriminator.match1")); value.Exists() && value.Type == gjson.String {
 		data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
@@ -2066,12 +2055,8 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor.monitor-level"}, "monitor")); value.Exists() && value.Type == gjson.String {
 		data.Monitor = types.StringValue(value.String())
 	}
-	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "console-logging.console-log-facility.console-facility-level"); value.Exists() && value.Type == gjson.String {
-			data.ConsoleFacility = types.StringValue(value.String())
-		}
-	} else {
-		data.ConsoleFacility = types.StringNull()
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "console-logging.console-log-facility.console-facility-level", "25.4": "console.facility.all"}, "console-logging.console-log-facility.console-facility-level")); value.Exists() && value.Type == gjson.String {
+		data.ConsoleFacility = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator.match1", "25.4": "monitor.discriminator.match1"}, "monitor-discriminator.match1")); value.Exists() && value.Type == gjson.String {
 		data.MonitorDiscriminatorMatch1 = types.StringValue(value.String())
@@ -3044,8 +3029,8 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 	if !state.MonitorDiscriminatorMatch1.IsNull() && data.MonitorDiscriminatorMatch1.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match1", "25.4": "monitor/discriminator/match1"}, "monitor-discriminator/match1")))
 	}
-	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !state.ConsoleFacility.IsNull() && data.ConsoleFacility.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "console-logging/console-log-facility/console-facility-level"))
+	if !state.ConsoleFacility.IsNull() && data.ConsoleFacility.IsNull() {
+		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "console-logging/console-log-facility/console-facility-level", "25.4": "console/facility/all"}, "console-logging/console-log-facility/console-facility-level")))
 	}
 	if !state.Monitor.IsNull() && data.Monitor.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor/monitor-level"}, "monitor")))
@@ -3463,8 +3448,8 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 	if !data.MonitorDiscriminatorMatch1.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator/match1", "25.4": "monitor/discriminator/match1"}, "monitor-discriminator/match1")))
 	}
-	if (version == "" || !helpers.VersionAtLeast(version, "25.4")) && !data.ConsoleFacility.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "console-logging/console-log-facility/console-facility-level"))
+	if !data.ConsoleFacility.IsNull() {
+		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "console-logging/console-log-facility/console-facility-level", "25.4": "console/facility/all"}, "console-logging/console-log-facility/console-facility-level")))
 	}
 	if !data.Monitor.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), helpers.SelectYangPath(version, map[string]string{"24.4": "monitor", "25.4": "monitor/monitor-level"}, "monitor")))

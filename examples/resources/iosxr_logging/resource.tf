@@ -22,6 +22,7 @@ resource "iosxr_logging" "example" {
   console_discriminator_nomatch1  = "CONSOLE_NOMATCH1"
   console_discriminator_nomatch2  = "CONSOLE_NOMATCH2"
   console_discriminator_nomatch3  = "CONSOLE_NOMATCH3"
+  console_facility                = "all"
   container_fetch_timestamp       = true
   events_buffer_size              = 10000
   events_display_location         = true
