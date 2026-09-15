@@ -212,13 +212,6 @@ attributes:
     replaces_yang_name: facility/level
 
   # ===========================================================
-  # REMOVALS — paths present in 24.4 base, absent from 25.4
-  # ===========================================================
-  # console-logging container removed; functionality absorbed into console/
-  - yang_name: console-logging
-    legacy: true
-
-  # ===========================================================
   # ADDITIONS — new in 25.4
   # ===========================================================
   # ===========================================================
