@@ -132,7 +132,7 @@ Read-Only:
 - `file_name` (String) Set file logging
 - `local_accounting` (Boolean) Store only the command accounting logs
 - `local_accounting_send_to_remote` (Boolean) Send the command accounting logs to syslog server
-- `local_accounting_send_to_remote_facility_level` (String) configure this node
+- `local_accounting_send_to_remote_facility_level` (String) Modify message logging facilities
 - `maxfilesize` (Number) Set max file size
 - `path` (String) File path (e.g. /disk0: )
 - `severity` (String) severity

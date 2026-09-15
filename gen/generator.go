@@ -121,6 +121,7 @@ type YamlConfig struct {
 	NoDeleteAttributes      bool                  `yaml:"no_delete_attributes"`
 	DefaultDeleteAttributes bool                  `yaml:"default_delete_attributes"`
 	TestTags                []string              `yaml:"test_tags"`
+	VersionTestTags         map[string][]string   // computed during merge: version → tag set (nil if same across all versions)
 	SkipMinimumTest         bool                  `yaml:"skip_minimum_test"`
 	NoAugmentConfig         bool                  `yaml:"no_augment_config"`
 	DsDescription           string                `yaml:"ds_description"`
@@ -152,7 +153,8 @@ type YamlConfigAttribute struct {
 	ExcludeExample    bool                       `yaml:"exclude_example"`
 	IncludeExample    bool                       `yaml:"include_example"`
 	Description       string                     `yaml:"description"`
-	Example           string                     `yaml:"example"`
+	Example                  string                     `yaml:"example"`
+	VersionExamples          map[string]string          // computed during merge: version → example value (nil if same across all versions)
 	EnumValues        []string                   `yaml:"enum_values"`
 	MinInt            int64                      `yaml:"min_int"`
 	MaxInt            int64                      `yaml:"max_int"`
@@ -166,7 +168,9 @@ type YamlConfigAttribute struct {
 	DeleteGrandparent bool                       `yaml:"delete_grandparent"`
 	NoDelete          bool                       `yaml:"no_delete"`
 	TestTags          []string                   `yaml:"test_tags"`
-	MinimumTestValue  string                     `yaml:"minimum_test_value"`
+	VersionTestTags   map[string][]string                              // computed during merge: version → tag set (nil if same across all versions)
+	MinimumTestValue         string                     `yaml:"minimum_test_value"`
+	VersionMinimumTestValues map[string]string          // computed during merge: version → minimum test value (nil if same across all versions)
 	AddedInVersion    string                     // Which version introduced this attribute (e.g., "25.4", "26.2") — dot-separated major.minor, matches gen/definitions/ subdirectory names
 	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
 	Legacy            bool                       `yaml:"legacy"` // If true, this attribute is removed/dropped in this version
@@ -291,6 +295,8 @@ func JsonPathExpr(attr YamlConfigAttribute, versionVar string) string {
 		var xpath string
 		if yangName == attr.ReplacesYangName {
 			xpath = attr.ReplacesXPath
+		} else if yangName == attr.YangName {
+			xpath = attr.XPath
 		}
 		entries = append(entries, fmt.Sprintf("%q: %q", v, ToJsonPath(yangName, xpath)))
 	}
@@ -313,6 +319,8 @@ func KeyPathExpr(attr YamlConfigAttribute, versionVar string) string {
 		var xpath string
 		if yangName == attr.ReplacesYangName {
 			xpath = attr.ReplacesXPath
+		} else if yangName == attr.YangName {
+			xpath = attr.XPath
 		}
 		entries = append(entries, fmt.Sprintf("%q: %q", v, GetXPath(yangName, xpath)))
 	}
@@ -834,6 +842,79 @@ func HasVersionEnums(attributes []YamlConfigAttribute) bool {
 	return false
 }
 
+// FormatVersionExamples returns sorted "ver": "ex", entries for inline map literals in generated test code.
+// The trailing comma is required when the closing "}" is on the next line (Go syntax rule).
+// Registered under both "formatVersionExamples" and "formatVersionMinimumTestValues" — identical signature.
+func FormatVersionExamples(m map[string]string) string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	parts := make([]string, 0, len(keys))
+	for _, k := range keys {
+		parts = append(parts, fmt.Sprintf("%q: %q", k, m[k]))
+	}
+	return strings.Join(parts, ", ") + ","
+}
+
+// HasVersionExamples returns true if any attribute (recursively) has version-specific examples.
+func HasVersionExamples(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionExamples) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionExamples(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// HasVersionMinimumTestValues returns true if any attribute (recursively) has version-specific minimum test values.
+func HasVersionMinimumTestValues(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionMinimumTestValues) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionMinimumTestValues(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
+// FormatVersionTestTags returns sorted "ver": []string{...}, entries for inline map literals in generated test code.
+func FormatVersionTestTags(m map[string][]string) string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	parts := make([]string, 0, len(keys))
+	for _, k := range keys {
+		quotedTags := make([]string, len(m[k]))
+		for i, t := range m[k] {
+			quotedTags[i] = fmt.Sprintf("%q", t)
+		}
+		parts = append(parts, fmt.Sprintf("%q: []string{%s}", k, strings.Join(quotedTags, ", ")))
+	}
+	return strings.Join(parts, ", ") + ","
+}
+
+// HasVersionTestTags returns true if any attribute (recursively) has version-specific test tags.
+func HasVersionTestTags(attributes []YamlConfigAttribute) bool {
+	for _, attr := range attributes {
+		if len(attr.VersionTestTags) > 0 {
+			return true
+		}
+		if len(attr.Attributes) > 0 && HasVersionTestTags(attr.Attributes) {
+			return true
+		}
+	}
+	return false
+}
+
 // EnumConstraintInfo represents a field with version-specific enum constraints.
 type EnumConstraintInfo struct {
 	FieldPath    string
@@ -1099,6 +1180,12 @@ var functions = template.FuncMap{
 	"getWidestRange":                 GetWidestRange,
 	"formatVersionEnums":                    FormatVersionEnums,
 	"hasVersionEnums":                       HasVersionEnums,
+	"formatVersionExamples":                 FormatVersionExamples,
+	"formatVersionMinimumTestValues":        FormatVersionExamples,
+	"hasVersionExamples":                    HasVersionExamples,
+	"hasVersionMinimumTestValues":           HasVersionMinimumTestValues,
+	"formatVersionTestTags":                 FormatVersionTestTags,
+	"hasVersionTestTags":                    HasVersionTestTags,
 	"collectVersionEnumConstraints":         CollectVersionEnumConstraints,
 	"formatVersionStringLengths":            FormatVersionStringLengths,
 	"hasVersionStringLengths":               HasVersionStringLengths,
@@ -1248,10 +1335,12 @@ func parseAttribute(e *yang.Entry, attr *YamlConfigAttribute) {
 				}
 			}
 		} else if contains([]string{"boolean", "empty"}, leaf.Type.Kind.String()) {
-			if leaf.Type.Kind.String() == "boolean" {
-				attr.TypeYangBool = "boolean"
-			} else if leaf.Type.Kind.String() == "empty" {
-				attr.TypeYangBool = "empty"
+			if attr.TypeYangBool == "" {
+				if leaf.Type.Kind.String() == "boolean" {
+					attr.TypeYangBool = "boolean"
+				} else if leaf.Type.Kind.String() == "empty" {
+					attr.TypeYangBool = "empty"
+				}
 			}
 			attr.Type = "Bool"
 		} else if contains([]string{"enumeration"}, leaf.Type.Kind.String()) {
@@ -1262,7 +1351,9 @@ func parseAttribute(e *yang.Entry, attr *YamlConfigAttribute) {
 		}
 	}
 	if _, ok := leaf.Extra["presence"]; ok {
-		attr.TypeYangBool = "presence"
+		if attr.TypeYangBool == "" {
+			attr.TypeYangBool = "presence"
+		}
 		attr.Type = "Bool"
 	}
 	if attr.XPath == "" {
@@ -1587,6 +1678,13 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					result[i].Description = newAttr.Description
 				}
 				if newAttr.Example != "" {
+					if result[i].Example != "" && result[i].Example != newAttr.Example {
+						if result[i].VersionExamples == nil {
+							result[i].VersionExamples = make(map[string]string)
+							result[i].VersionExamples["_base"] = result[i].Example
+						}
+						result[i].VersionExamples[overrideVersion] = newAttr.Example
+					}
 					result[i].Example = newAttr.Example
 				}
 				if len(newAttr.EnumValues) > 0 && !stringSlicesEqual(result[i].EnumValues, newAttr.EnumValues) {
@@ -1740,9 +1838,23 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					result[i].NoDelete = newAttr.NoDelete
 				}
 				if len(newAttr.TestTags) > 0 {
+					if !stringSlicesEqual(result[i].TestTags, newAttr.TestTags) {
+						if result[i].VersionTestTags == nil {
+							result[i].VersionTestTags = make(map[string][]string)
+							result[i].VersionTestTags["_base"] = result[i].TestTags
+						}
+						result[i].VersionTestTags[overrideVersion] = newAttr.TestTags
+					}
 					result[i].TestTags = newAttr.TestTags
 				}
 				if newAttr.MinimumTestValue != "" {
+					if result[i].MinimumTestValue != "" && result[i].MinimumTestValue != newAttr.MinimumTestValue {
+						if result[i].VersionMinimumTestValues == nil {
+							result[i].VersionMinimumTestValues = make(map[string]string)
+							result[i].VersionMinimumTestValues["_base"] = result[i].MinimumTestValue
+						}
+						result[i].VersionMinimumTestValues[overrideVersion] = newAttr.MinimumTestValue
+					}
 					result[i].MinimumTestValue = newAttr.MinimumTestValue
 				}
 
@@ -1761,7 +1873,7 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					}
 					result[i].VersionYangNames[overrideVersion] = newAttr.YangName
 					result[i].YangName = newAttr.YangName
-					result[i].XPath = ""
+					// XPath is already updated by the override block above (lines that handle newAttr.XPath != "")
 				}
 
 				found = true
@@ -1854,6 +1966,24 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 			}
 		}
 	}
+	if attr.VersionExamples != nil {
+		if baseEx, exists := attr.VersionExamples["_base"]; exists {
+			delete(attr.VersionExamples, "_base")
+			attr.VersionExamples[baseVersion] = baseEx
+		}
+	}
+	if attr.VersionMinimumTestValues != nil {
+		if baseVal, exists := attr.VersionMinimumTestValues["_base"]; exists {
+			delete(attr.VersionMinimumTestValues, "_base")
+			attr.VersionMinimumTestValues[baseVersion] = baseVal
+		}
+	}
+	if attr.VersionTestTags != nil {
+		if baseTags, exists := attr.VersionTestTags["_base"]; exists {
+			delete(attr.VersionTestTags, "_base")
+			attr.VersionTestTags[baseVersion] = baseTags
+		}
+	}
 	for i := range attr.Attributes {
 		fixAttributeBaseVersion(&attr.Attributes[i], baseVersion)
 	}
@@ -1895,6 +2025,13 @@ func mergeConfigs(base, override YamlConfig) YamlConfig {
 		merged.DefaultDeleteAttributes = override.DefaultDeleteAttributes
 	}
 	if len(override.TestTags) > 0 {
+		if !stringSlicesEqual(merged.TestTags, override.TestTags) {
+			if merged.VersionTestTags == nil {
+				merged.VersionTestTags = make(map[string][]string)
+				merged.VersionTestTags[base.Version] = merged.TestTags
+			}
+			merged.VersionTestTags[override.Version] = override.TestTags
+		}
 		merged.TestTags = override.TestTags
 	}
 	if override.SkipMinimumTest {

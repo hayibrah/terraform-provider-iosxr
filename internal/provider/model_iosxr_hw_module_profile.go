@@ -443,7 +443,7 @@ func (data HWModuleProfile) toBody(ctx context.Context, providerVersion string) 
 	}
 	if !data.Srv6ModeMicroSegmentFormatF3216PathMtu.IsNull() && !data.Srv6ModeMicroSegmentFormatF3216PathMtu.IsUnknown() {
 		if data.Srv6ModeMicroSegmentFormatF3216PathMtu.ValueBool() {
-			body, _ = sjson.Set(body, "profile-segment-routing.srv6.mode.micro-segment.format.path-mtu", map[string]string{})
+			body, _ = sjson.Set(body, "profile-segment-routing.srv6.mode.micro-segment.format.path-mtu", []interface{}{nil})
 		}
 	}
 	if !data.Srv6EncapsulationL2TrafficClassPropagate.IsNull() && !data.Srv6EncapsulationL2TrafficClassPropagate.IsUnknown() {

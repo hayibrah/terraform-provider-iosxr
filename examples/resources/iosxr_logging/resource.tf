@@ -16,7 +16,12 @@ resource "iosxr_logging" "example" {
   buffered_level                  = "debugging"
   buffered_size                   = 4000000
   console                         = "disable"
-  container_all                   = true
+  console_discriminator_match1    = "CONSOLE1"
+  console_discriminator_match2    = "CONSOLE2"
+  console_discriminator_match3    = "CONSOLE3"
+  console_discriminator_nomatch1  = "CONSOLE_NOMATCH1"
+  console_discriminator_nomatch2  = "CONSOLE_NOMATCH2"
+  console_discriminator_nomatch3  = "CONSOLE_NOMATCH3"
   container_fetch_timestamp       = true
   events_buffer_size              = 10000
   events_display_location         = true
@@ -37,7 +42,7 @@ resource "iosxr_logging" "example" {
       local_accounting_send_to_remote_facility_level = "local0"
       maxfilesize                                    = 1024
       path                                           = "/disk0:"
-      severity                                       = "info"
+      severity                                       = "informational"
     }
   ]
   filter_matches = [
@@ -79,9 +84,8 @@ resource "iosxr_logging" "example" {
       name             = "TLS-SERVER1"
       severity         = "informational"
       source_interface = "Loopback0"
-      tls_hostname     = "syslog.example.com"
       trustpoint       = "TRUSTPOINT1"
-      vrf              = "default"
+      vrf              = "VRF1"
     }
   ]
   trap = "informational"

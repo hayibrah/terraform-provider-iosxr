@@ -21,6 +21,7 @@ package provider
 
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -60,12 +61,14 @@ func TestAccDataSourceIosxrLogging(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "buffered_discriminator_nomatch1", "BUFFERED_NOMATCH1"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "buffered_discriminator_nomatch2", "BUFFERED_NOMATCH2"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "buffered_discriminator_nomatch3", "BUFFERED_NOMATCH3"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "container_all", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "container_fetch_timestamp", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.file_name", "logfile1"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.path", "/disk0:"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.maxfilesize", "1024"))
-	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.severity", "info"))
+	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test",
+		"file.0.severity", selectVersionExample(map[string]string{
+			"24.4": "info", "25.4": "informational",
+		}, "informational")))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.local_accounting", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.local_accounting_send_to_remote", "true"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "file.0.local_accounting_send_to_remote_facility_level", "local0"))
@@ -102,6 +105,24 @@ func TestAccDataSourceIosxrLogging(t *testing.T) {
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "events_level", "informational"))
 	checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "events_threshold", "80"))
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_match1", "CONSOLE1"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_match2", "CONSOLE2"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_match3", "CONSOLE3"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_nomatch1", "CONSOLE_NOMATCH1"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_nomatch2", "CONSOLE_NOMATCH2"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "console_discriminator_nomatch3", "CONSOLE_NOMATCH3"))
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "format", "rfc5424"))
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
@@ -112,13 +133,10 @@ func TestAccDataSourceIosxrLogging(t *testing.T) {
 			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.name", "TLS-SERVER1"))
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.vrf", "default"))
+			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.vrf", "VRF1"))
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.address_ipv4", "1.1.1.1"))
-		}
-		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.tls_hostname", "syslog.example.com"))
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 			checks = append(checks, resource.TestCheckResourceAttr("data.iosxr_logging.test", "tls_servers.0.trustpoint", "TRUSTPOINT1"))
@@ -180,13 +198,14 @@ func testAccDataSourceIosxrLoggingConfig() string {
 	config += `	buffered_discriminator_nomatch1 = "BUFFERED_NOMATCH1"` + "\n"
 	config += `	buffered_discriminator_nomatch2 = "BUFFERED_NOMATCH2"` + "\n"
 	config += `	buffered_discriminator_nomatch3 = "BUFFERED_NOMATCH3"` + "\n"
-	config += `	container_all = true` + "\n"
 	config += `	container_fetch_timestamp = true` + "\n"
 	config += `	file = [{` + "\n"
 	config += `		file_name = "logfile1"` + "\n"
 	config += `		path = "/disk0:"` + "\n"
 	config += `		maxfilesize = 1024` + "\n"
-	config += `		severity = "info"` + "\n"
+	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		"24.4": "info", "25.4": "informational",
+	}, "informational")) + "\n"
 	config += `		local_accounting = true` + "\n"
 	config += `		local_accounting_send_to_remote = true` + "\n"
 	config += `		local_accounting_send_to_remote_facility_level = "local0"` + "\n"
@@ -234,6 +253,24 @@ func testAccDataSourceIosxrLoggingConfig() string {
 	config += `	events_level = "informational"` + "\n"
 	config += `	events_threshold = 80` + "\n"
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_match1 = "CONSOLE1"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_match2 = "CONSOLE2"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_match3 = "CONSOLE3"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_nomatch1 = "CONSOLE_NOMATCH1"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_nomatch2 = "CONSOLE_NOMATCH2"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `	console_discriminator_nomatch3 = "CONSOLE_NOMATCH3"` + "\n"
+	}
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	format = "rfc5424"` + "\n"
 	}
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
@@ -245,13 +282,10 @@ func testAccDataSourceIosxrLoggingConfig() string {
 			config += `		name = "TLS-SERVER1"` + "\n"
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-			config += `		vrf = "default"` + "\n"
+			config += `		vrf = "VRF1"` + "\n"
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 			config += `		address_ipv4 = "1.1.1.1"` + "\n"
-		}
-		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
-			config += `		tls_hostname = "syslog.example.com"` + "\n"
 		}
 		if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 			config += `		trustpoint = "TRUSTPOINT1"` + "\n"

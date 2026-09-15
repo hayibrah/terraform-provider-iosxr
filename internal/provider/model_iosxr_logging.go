@@ -279,17 +279,17 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	}
 	if !data.ArchiveDisk0.IsNull() && !data.ArchiveDisk0.IsUnknown() {
 		if data.ArchiveDisk0.ValueBool() {
-			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.DEVICE.DISK0.disk0"}, "archive.device.disk0"), []interface{}{nil})
+			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.disk0"}, "archive.device.disk0"), []interface{}{nil})
 		}
 	}
 	if !data.ArchiveDisk1.IsNull() && !data.ArchiveDisk1.IsUnknown() {
 		if data.ArchiveDisk1.ValueBool() {
-			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.DEVICE.DISK1.disk1"}, "archive.device.disk1"), []interface{}{nil})
+			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.disk1"}, "archive.device.disk1"), []interface{}{nil})
 		}
 	}
 	if !data.ArchiveHarddisk.IsNull() && !data.ArchiveHarddisk.IsUnknown() {
 		if data.ArchiveHarddisk.ValueBool() {
-			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.DEVICE.HARDDISK.harddisk"}, "archive.device.harddisk"), []interface{}{nil})
+			body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.harddisk"}, "archive.device.harddisk"), []interface{}{nil})
 		}
 	}
 	if providerVersion == "" || !helpers.VersionAtLeast(providerVersion, "25.4") {
@@ -322,16 +322,16 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 		body, _ = sjson.Set(body, "archive.threshold", strconv.FormatInt(data.ArchiveThreshold.ValueInt64(), 10))
 	}
 	if !data.Ipv4Dscp.IsNull() && !data.Ipv4Dscp.IsUnknown() {
-		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.IPV4.DSCP.dscp.dscp-value"}, "ipv4.dscp"), data.Ipv4Dscp.ValueString())
+		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp"), data.Ipv4Dscp.ValueString())
 	}
 	if !data.Ipv4Precedence.IsNull() && !data.Ipv4Precedence.IsUnknown() {
-		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.IPV4.PRECEDENCE.precedence.precedence-value"}, "ipv4.precedence"), data.Ipv4Precedence.ValueString())
+		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.precedence.precedence-value"}, "ipv4.precedence"), data.Ipv4Precedence.ValueString())
 	}
 	if !data.Ipv6Dscp.IsNull() && !data.Ipv6Dscp.IsUnknown() {
-		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.IPV6.DSCP.dscp.dscp-value"}, "ipv6.dscp"), data.Ipv6Dscp.ValueString())
+		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.dscp.dscp-value"}, "ipv6.dscp"), data.Ipv6Dscp.ValueString())
 	}
 	if !data.Ipv6Precedence.IsNull() && !data.Ipv6Precedence.IsUnknown() {
-		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.IPV6.PRECEDENCE.precedence.precedence-value"}, "ipv6.precedence"), data.Ipv6Precedence.ValueString())
+		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.precedence.precedence-value"}, "ipv6.precedence"), data.Ipv6Precedence.ValueString())
 	}
 	if !data.FacilityLevel.IsNull() && !data.FacilityLevel.IsUnknown() {
 		body, _ = sjson.Set(body, helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "facility.level", "25.4": "facility"}, "facility.level"), data.FacilityLevel.ValueString())
@@ -365,7 +365,7 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 	}
 	if !data.ContainerAll.IsNull() && !data.ContainerAll.IsUnknown() {
 		if data.ContainerAll.ValueBool() {
-			body, _ = sjson.Set(body, "container.all", map[string]string{})
+			body, _ = sjson.Set(body, "container.all", []interface{}{nil})
 		}
 	}
 	if !data.ContainerFetchTimestamp.IsNull() && !data.ContainerFetchTimestamp.IsUnknown() {
@@ -493,7 +493,7 @@ func (data Logging) toBody(ctx context.Context, providerVersion string) string {
 				}
 			}
 			if !item.LocalAccountingSendToRemoteFacilityLevel.IsNull() && !item.LocalAccountingSendToRemoteFacilityLevel.IsUnknown() {
-				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility.level"}, "local-accounting.send-to-remote.facility.level"), item.LocalAccountingSendToRemoteFacilityLevel.ValueString())
+				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+helpers.SelectYangPath(providerVersion, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility"}, "local-accounting.send-to-remote.facility.level"), item.LocalAccountingSendToRemoteFacilityLevel.ValueString())
 			}
 			if !item.DiscriminatorMatch1.IsNull() && !item.DiscriminatorMatch1.IsUnknown() {
 				body, _ = sjson.Set(body, "files.file"+"."+strconv.Itoa(index)+"."+"discriminator.match1", item.DiscriminatorMatch1.ValueString())
@@ -808,6 +808,13 @@ func (data Logging) GetEnumConstraints() []helpers.FieldEnumConstraint {
 				"25.4": {"alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warning"},
 			},
 		},
+		{
+			FieldPath: "file.local_accounting_send_to_remote_facility_level",
+			VersionEnums: map[string][]string{
+				"24.4": {"auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "sys10", "sys11", "sys12", "sys13", "sys14", "sys9", "syslog", "user", "uucp"},
+				"25.4": {"auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp"},
+			},
+		},
 	}
 }
 
@@ -886,7 +893,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.MonitorDiscriminatorNomatch3 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.DEVICE.DISK0.disk0"}, "archive.device.disk0")); !data.ArchiveDisk0.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.disk0"}, "archive.device.disk0")); !data.ArchiveDisk0.IsNull() {
 		if value.Exists() {
 			data.ArchiveDisk0 = types.BoolValue(true)
 		} else {
@@ -895,7 +902,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveDisk0 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.DEVICE.DISK1.disk1"}, "archive.device.disk1")); !data.ArchiveDisk1.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.disk1"}, "archive.device.disk1")); !data.ArchiveDisk1.IsNull() {
 		if value.Exists() {
 			data.ArchiveDisk1 = types.BoolValue(true)
 		} else {
@@ -904,7 +911,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveDisk1 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.DEVICE.HARDDISK.harddisk"}, "archive.device.harddisk")); !data.ArchiveHarddisk.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.harddisk"}, "archive.device.harddisk")); !data.ArchiveHarddisk.IsNull() {
 		if value.Exists() {
 			data.ArchiveHarddisk = types.BoolValue(true)
 		} else {
@@ -956,22 +963,22 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.IPV4.DSCP.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.IPV4.PRECEDENCE.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String && !data.Ipv4Precedence.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String && !data.Ipv4Precedence.IsNull() {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv4Precedence = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.IPV6.DSCP.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.IPV6.PRECEDENCE.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String && !data.Ipv6Precedence.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String && !data.Ipv6Precedence.IsNull() {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	} else {
 		data.Ipv6Precedence = types.StringNull()
@@ -1105,7 +1112,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 		} else {
 			data.File[i].LocalAccountingSendToRemote = types.BoolNull()
 		}
-		if value := r.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility.level"}, "local-accounting.send-to-remote.facility.level")); value.Exists() && value.Type == gjson.String && !data.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
+		if value := r.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility"}, "local-accounting.send-to-remote.facility.level")); value.Exists() && value.Type == gjson.String && !data.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
 			data.File[i].LocalAccountingSendToRemoteFacilityLevel = types.StringValue(value.String())
 		} else {
 			data.File[i].LocalAccountingSendToRemoteFacilityLevel = types.StringNull()
@@ -1604,17 +1611,17 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator.nomatch3", "25.4": "monitor.discriminator.nomatch3"}, "monitor-discriminator.nomatch3")); value.Exists() && value.Type == gjson.String {
 		data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.DEVICE.DISK0.disk0"}, "archive.device.disk0")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.disk0"}, "archive.device.disk0")); value.Exists() {
 		data.ArchiveDisk0 = types.BoolValue(true)
 	} else {
 		data.ArchiveDisk0 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.DEVICE.DISK1.disk1"}, "archive.device.disk1")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.disk1"}, "archive.device.disk1")); value.Exists() {
 		data.ArchiveDisk1 = types.BoolValue(true)
 	} else {
 		data.ArchiveDisk1 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.DEVICE.HARDDISK.harddisk"}, "archive.device.harddisk")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.harddisk"}, "archive.device.harddisk")); value.Exists() {
 		data.ArchiveHarddisk = types.BoolValue(true)
 	} else {
 		data.ArchiveHarddisk = types.BoolValue(false)
@@ -1652,16 +1659,16 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.IPV4.DSCP.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.IPV4.PRECEDENCE.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.IPV6.DSCP.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.IPV6.PRECEDENCE.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "facility.level", "25.4": "facility"}, "facility.level")); value.Exists() && value.Type == gjson.String {
@@ -1730,7 +1737,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LocalAccountingSendToRemote = types.BoolValue(false)
 			}
-			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility.level"}, "local-accounting.send-to-remote.facility.level")); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility"}, "local-accounting.send-to-remote.facility.level")); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocalAccountingSendToRemoteFacilityLevel = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discriminator.match1"); cValue.Exists() && cValue.Type == gjson.String {
@@ -2084,17 +2091,17 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "monitor-discriminator.nomatch3", "25.4": "monitor.discriminator.nomatch3"}, "monitor-discriminator.nomatch3")); value.Exists() && value.Type == gjson.String {
 		data.MonitorDiscriminatorNomatch3 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.DEVICE.DISK0.disk0"}, "archive.device.disk0")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk0", "25.4": "archive.device.disk0"}, "archive.device.disk0")); value.Exists() {
 		data.ArchiveDisk0 = types.BoolValue(true)
 	} else {
 		data.ArchiveDisk0 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.DEVICE.DISK1.disk1"}, "archive.device.disk1")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.disk1", "25.4": "archive.device.disk1"}, "archive.device.disk1")); value.Exists() {
 		data.ArchiveDisk1 = types.BoolValue(true)
 	} else {
 		data.ArchiveDisk1 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.DEVICE.HARDDISK.harddisk"}, "archive.device.harddisk")); value.Exists() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "archive.device.harddisk", "25.4": "archive.device.harddisk"}, "archive.device.harddisk")); value.Exists() {
 		data.ArchiveHarddisk = types.BoolValue(true)
 	} else {
 		data.ArchiveHarddisk = types.BoolValue(false)
@@ -2132,16 +2139,16 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.IPV4.DSCP.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.IPV4.PRECEDENCE.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.precedence", "25.4": "ipv4.precedence.precedence-value"}, "ipv4.precedence")); value.Exists() && value.Type == gjson.String {
 		data.Ipv4Precedence = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.IPV6.DSCP.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.dscp", "25.4": "ipv6.dscp.dscp-value"}, "ipv6.dscp")); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.IPV6.PRECEDENCE.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv6.precedence", "25.4": "ipv6.precedence.precedence-value"}, "ipv6.precedence")); value.Exists() && value.Type == gjson.String {
 		data.Ipv6Precedence = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "facility.level", "25.4": "facility"}, "facility.level")); value.Exists() && value.Type == gjson.String {
@@ -2210,7 +2217,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.LocalAccountingSendToRemote = types.BoolValue(false)
 			}
-			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility.level"}, "local-accounting.send-to-remote.facility.level")); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting.send-to-remote.facility.level", "25.4": "path.local-accounting.send-to-remote.facility"}, "local-accounting.send-to-remote.facility.level")); cValue.Exists() && cValue.Type == gjson.String {
 				item.LocalAccountingSendToRemoteFacilityLevel = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discriminator.match1"); cValue.Exists() && cValue.Type == gjson.String {
@@ -2917,7 +2924,7 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "discriminator/match1"))
 				}
 				if !state.File[i].LocalAccountingSendToRemoteFacilityLevel.IsNull() && data.File[j].LocalAccountingSendToRemoteFacilityLevel.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting/send-to-remote/facility/level"))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting/send-to-remote/facility"))
 				}
 				if !state.File[i].LocalAccountingSendToRemote.IsNull() && data.File[j].LocalAccountingSendToRemote.IsNull() {
 					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/files/file%v", state.getPath(), keyString), "path/local-accounting/send-to-remote"))
@@ -2978,16 +2985,16 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "facility"))
 	}
 	if !state.Ipv6Precedence.IsNull() && data.Ipv6Precedence.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/IPV6/PRECEDENCE/precedence/precedence-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/precedence/precedence-value"))
 	}
 	if !state.Ipv6Dscp.IsNull() && data.Ipv6Dscp.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/IPV6/DSCP/dscp/dscp-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv6/dscp/dscp-value"))
 	}
 	if !state.Ipv4Precedence.IsNull() && data.Ipv4Precedence.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/IPV4/PRECEDENCE/precedence/precedence-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/precedence/precedence-value"))
 	}
 	if !state.Ipv4Dscp.IsNull() && data.Ipv4Dscp.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/IPV4/DSCP/dscp/dscp-value"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "ipv4/dscp/dscp-value"))
 	}
 	if !state.ArchiveThreshold.IsNull() && data.ArchiveThreshold.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/threshold"))
@@ -3011,13 +3018,13 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/frequency/daily"))
 	}
 	if !state.ArchiveHarddisk.IsNull() && data.ArchiveHarddisk.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/DEVICE/HARDDISK/harddisk"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/harddisk"))
 	}
 	if !state.ArchiveDisk1.IsNull() && data.ArchiveDisk1.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/DEVICE/DISK1/disk1"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/disk1"))
 	}
 	if !state.ArchiveDisk0.IsNull() && data.ArchiveDisk0.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/DEVICE/DISK0/disk0"))
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "archive/device/disk0"))
 	}
 	if !state.MonitorDiscriminatorNomatch3.IsNull() && data.MonitorDiscriminatorNomatch3.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "monitor/discriminator/nomatch3"))
@@ -3173,13 +3180,13 @@ func (data *Logging) getEmptyLeafsDelete(ctx context.Context, version string) []
 		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/frequency/daily"))
 	}
 	if !data.ArchiveHarddisk.IsNull() && !data.ArchiveHarddisk.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/DEVICE/HARDDISK/harddisk"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/harddisk"))
 	}
 	if !data.ArchiveDisk1.IsNull() && !data.ArchiveDisk1.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/DEVICE/DISK1/disk1"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/disk1"))
 	}
 	if !data.ArchiveDisk0.IsNull() && !data.ArchiveDisk0.ValueBool() {
-		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/DEVICE/DISK0/disk0"))
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "archive/device/disk0"))
 	}
 	return emptyLeafsDelete
 }
@@ -3397,16 +3404,16 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "facility"))
 	}
 	if !data.Ipv6Precedence.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/IPV6/PRECEDENCE/precedence/precedence-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/precedence/precedence-value"))
 	}
 	if !data.Ipv6Dscp.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/IPV6/DSCP/dscp/dscp-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv6/dscp/dscp-value"))
 	}
 	if !data.Ipv4Precedence.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/IPV4/PRECEDENCE/precedence/precedence-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/precedence/precedence-value"))
 	}
 	if !data.Ipv4Dscp.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/IPV4/DSCP/dscp/dscp-value"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "ipv4/dscp/dscp-value"))
 	}
 	if !data.ArchiveThreshold.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/threshold"))
@@ -3430,13 +3437,13 @@ func (data *Logging) getDeletePaths(ctx context.Context, version string) []strin
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/frequency/daily"))
 	}
 	if !data.ArchiveHarddisk.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/DEVICE/HARDDISK/harddisk"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/harddisk"))
 	}
 	if !data.ArchiveDisk1.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/DEVICE/DISK1/disk1"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/disk1"))
 	}
 	if !data.ArchiveDisk0.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/DEVICE/DISK0/disk0"))
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "archive/device/disk0"))
 	}
 	if !data.MonitorDiscriminatorNomatch3.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "monitor/discriminator/nomatch3"))

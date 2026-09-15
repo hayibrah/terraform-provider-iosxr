@@ -42,6 +42,47 @@ func iosxrVersionAtLeast(currentVersion, minVersion string) bool {
 	return helpers.VersionAtLeast(currentVersion, minVersion)
 }
 
+// selectVersionExample returns the example value appropriate for the IOSXR_VERSION in the
+// environment. Keys in byVersion are version thresholds (e.g. "25.4"); the highest threshold
+// satisfied by IOSXR_VERSION wins. Falls back to baseExample when no threshold matches or
+// IOSXR_VERSION is unset.
+func selectVersionExample(byVersion map[string]string, baseExample string) string {
+	ver := os.Getenv("IOSXR_VERSION")
+	if ver == "" || len(byVersion) == 0 {
+		return baseExample
+	}
+	bestVer := ""
+	for v := range byVersion {
+		if iosxrVersionAtLeast(ver, v) && (bestVer == "" || iosxrVersionAtLeast(v, bestVer)) {
+			bestVer = v
+		}
+	}
+	if bestVer == "" {
+		return baseExample
+	}
+	return byVersion[bestVer]
+}
+
+// selectVersionTestTags returns the test tag set appropriate for the IOSXR_VERSION in the
+// environment. Keys in byVersion are version thresholds; the highest threshold satisfied by
+// IOSXR_VERSION wins. Falls back to baseTags when no threshold matches or IOSXR_VERSION is unset.
+func selectVersionTestTags(byVersion map[string][]string, baseTags []string) []string {
+	ver := os.Getenv("IOSXR_VERSION")
+	if ver == "" || len(byVersion) == 0 {
+		return baseTags
+	}
+	bestVer := ""
+	for v := range byVersion {
+		if iosxrVersionAtLeast(ver, v) && (bestVer == "" || iosxrVersionAtLeast(v, bestVer)) {
+			bestVer = v
+		}
+	}
+	if bestVer == "" {
+		return baseTags
+	}
+	return byVersion[bestVer]
+}
+
 func testAccPreCheck(t *testing.T) {
 	// You can add code here to run prior to any test case execution, for example assertions
 	// about the appropriate environment variables being set are common to see in a pre-check

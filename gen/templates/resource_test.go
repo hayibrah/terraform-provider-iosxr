@@ -36,7 +36,23 @@ import (
 // Section below is generated&owned by "gen/generator.go". //template:begin testAcc
 
 func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		allMissing := len(_tags) > 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				allMissing = false
+				break
+			}
+		}
+		if allMissing {
+			t.Skipf("skipping test, set environment variable %v", _tags)
+		}
+	}
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} && {{end}}os.Getenv("{{$e}}") == ""{{end}} {
         t.Skip("skipping test, set environment variable {{range $i, $e := .TestTags}}{{if $i}} or {{end}}{{$e}}{{end}}")
     }
@@ -52,7 +68,15 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if and (not .Reference) (not .WriteOnly) (not .ExcludeTest)}}
 	{{- if eq .Type "List"}}
 	{{- $list := .TfName }}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -62,7 +86,15 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if and (not .WriteOnly) (not .ExcludeTest)}}
 	{{- if eq .Type "List"}}
 	{{- $clist := .TfName }}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -72,7 +104,15 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if and (not .WriteOnly) (not .ExcludeTest)}}
 	{{- if eq .Type "List"}}
 	{{- $cclist := .TfName }}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -82,7 +122,15 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if and (not .WriteOnly) (not .ExcludeTest)}}
 	{{- if eq .Type "List"}}
 	{{- $ccclist := .TfName }}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -93,6 +141,45 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionExamples}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+				"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+			{{- else}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+			{{- end}}
+		}
+	}
+	{{- else}}
+	{{- if .VersionExamples}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+			"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	}
+	{{- else}}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+		"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	{{- end}}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
@@ -100,21 +187,65 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- else}}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{$ccclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
 	{{- end}}
-	{{- if or .AddedInVersion .RemovedInVersion}}
-	}
-	{{- end}}
 	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- end}}
+	{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
+	{{- if or .VersionTestTags (len .TestTags)}}
+	}
+	{{- end}}
+	{{- if .VersionTestTags}}
 	}
 	{{- end}}
 	{{- else}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionExamples}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+				"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+			{{- else}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+			{{- end}}
+		}
+	}
+	{{- else}}
+	{{- if .VersionExamples}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+			"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	}
+	{{- else}}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+		"{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	{{- end}}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
@@ -122,22 +253,66 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- else}}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{$cclist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
 	{{- end}}
-	{{- if or .AddedInVersion .RemovedInVersion}}
-	}
-	{{- end}}
-	{{- end}}
 	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- end}}
+	{{- end}}
+	{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
+	{{- if or .VersionTestTags (len .TestTags)}}
+	}
+	{{- end}}
+	{{- if .VersionTestTags}}
 	}
 	{{- end}}
 	{{- else}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionExamples}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+				"{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+			{{- else}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+			{{- end}}
+		}
+	}
+	{{- else}}
+	{{- if .VersionExamples}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+			"{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	}
+	{{- else}}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+		"{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	{{- end}}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
@@ -145,22 +320,66 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- else}}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{$clist}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
 	{{- end}}
-	{{- if or .AddedInVersion .RemovedInVersion}}
-	}
-	{{- end}}
-	{{- end}}
 	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- end}}
+	{{- end}}
+	{{- end}}
+	{{- if or .AddedInVersion .RemovedInVersion}}
+	}
+	{{- end}}
+	{{- if or .VersionTestTags (len .TestTags)}}
+	}
+	{{- end}}
+	{{- if .VersionTestTags}}
 	}
 	{{- end}}
 	{{- else}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionExamples}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+				"{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+			{{- else}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+			{{- end}}
+		}
+	}
+	{{- else}}
+	{{- if .VersionExamples}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+			"{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	}
+	{{- else}}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+		"{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	{{- end}}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
@@ -168,13 +387,18 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- else}}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{$list}}.0.{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
 	{{- end}}
+	{{- end}}
+	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 	{{- end}}
 	{{- end}}
 	{{- end}}
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- if or .VersionTestTags (len .TestTags)}}
+	}
+	{{- end}}
+	{{- if .VersionTestTags}}
 	}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -184,12 +408,53 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionExamples}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+				"{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+			{{- else}}
+			checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+			{{- end}}
+		}
+	}
+	{{- else}}
+	{{- if .VersionExamples}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+			"{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	}
+	{{- else}}
+	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test",
+		"{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")))
+	{{- end}}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
 	}
 	{{- else}}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_{{snakeCase $name}}.test", "{{.TfName}}{{if or (eq .Type "StringList") (eq .Type "Int64List")}}.0{{end}}", "{{.Example}}"))
+	{{- end}}
+	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -301,7 +566,15 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	config += `	{{.TfName}} = [{` + "\n"
@@ -311,7 +584,15 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 		{{- end}}
-		{{- if len .TestTags}}
+		{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+		{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		{{- end}}
 	config += `		{{.TfName}} = [{` + "\n"
@@ -321,7 +602,15 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 			{{- end}}
-			{{- if len .TestTags}}
+			{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+			{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 			{{- end}}
 	config += `			{{.TfName}} = [{` + "\n"
@@ -331,23 +620,106 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 				{{- end}}
-				{{- if len .TestTags}}
+				{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+				{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 				{{- end}}
 	config += `				{{.TfName}} = [{` + "\n"
 					{{- range  .Attributes}}
 					{{- if or .Id .Mandatory .MinimumTestValue}}
-					{{- if len .TestTags}}
-	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
-		config += `					{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+					{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+					{{- if .VersionMinimumTestValues}}
+	config += `					{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+					{{- else if .MinimumTestValue}}
+	config += `					{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+					{{- else if .VersionExamples}}
+	config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+					{{- else}}
+	config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+					{{- end}}
+		}
 	}
 					{{- else}}
-	config += `					{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+					{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+					{{- if .VersionMinimumTestValues}}
+		config += `					{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+					{{- else if .MinimumTestValue}}
+		config += `					{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+					{{- else if .VersionExamples}}
+		config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+					{{- else}}
+		config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+					{{- end}}
+	}
+					{{- else}}
+					{{- if .VersionMinimumTestValues}}
+	config += `					{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+					{{- else if .MinimumTestValue}}
+	config += `					{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+					{{- else if .VersionExamples}}
+	config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+					{{- else}}
+	config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+					{{- end}}
+					{{- end}}
 					{{- end}}
 					{{- end}}
 					{{- end}}
 	config += `				}]` + "\n"
-				{{- if len .TestTags}}
+				{{- if or .VersionTestTags (len .TestTags)}}
+	}
+				{{- end}}
+				{{- if .VersionTestTags}}
 	}
 				{{- end}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
@@ -357,12 +729,84 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 				{{- end}}
-				{{- if len .TestTags}}
-	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
-		config += `				{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+				{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+				{{- if .VersionMinimumTestValues}}
+	config += `				{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+				{{- else if .MinimumTestValue}}
+	config += `				{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+				{{- else if .VersionExamples}}
+	config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+				{{- else}}
+	config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+				{{- end}}
+		}
 	}
 				{{- else}}
-	config += `				{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+				{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+				{{- if .VersionMinimumTestValues}}
+		config += `				{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+				{{- else if .MinimumTestValue}}
+		config += `				{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+				{{- else if .VersionExamples}}
+		config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+				{{- else}}
+		config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+				{{- end}}
+	}
+				{{- else}}
+				{{- if .VersionMinimumTestValues}}
+	config += `				{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+				{{- else if .MinimumTestValue}}
+	config += `				{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+				{{- else if .VersionExamples}}
+	config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+				{{- else}}
+	config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+				{{- end}}
+				{{- end}}
 				{{- end}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -371,7 +815,10 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 				{{- end}}
 				{{- end}}
 	config += `			}]` + "\n"
-			{{- if len .TestTags}}
+			{{- if or .VersionTestTags (len .TestTags)}}
+	}
+			{{- end}}
+			{{- if .VersionTestTags}}
 	}
 			{{- end}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
@@ -381,12 +828,84 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 			{{- end}}
-			{{- if len .TestTags}}
-	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
-		config += `			{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+			{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+			{{- if .VersionMinimumTestValues}}
+	config += `			{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+			{{- else if .MinimumTestValue}}
+	config += `			{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+			{{- else if .VersionExamples}}
+	config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+			{{- else}}
+	config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+			{{- end}}
+		}
 	}
 			{{- else}}
-	config += `			{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+			{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+			{{- if .VersionMinimumTestValues}}
+		config += `			{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+			{{- else if .MinimumTestValue}}
+		config += `			{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+			{{- else if .VersionExamples}}
+		config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+			{{- else}}
+		config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+			{{- end}}
+	}
+			{{- else}}
+			{{- if .VersionMinimumTestValues}}
+	config += `			{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+			{{- else if .MinimumTestValue}}
+	config += `			{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+			{{- else if .VersionExamples}}
+	config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+			{{- else}}
+	config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+			{{- end}}
+			{{- end}}
 			{{- end}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -395,7 +914,10 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 			{{- end}}
 			{{- end}}
 	config += `		}]` + "\n"
-		{{- if len .TestTags}}
+		{{- if or .VersionTestTags (len .TestTags)}}
+	}
+		{{- end}}
+		{{- if .VersionTestTags}}
 	}
 		{{- end}}
 		{{- if or .AddedInVersion .RemovedInVersion}}
@@ -405,12 +927,84 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 		{{- end}}
-		{{- if len .TestTags}}
-	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
-		config += `		{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+		{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+		{{- if .VersionMinimumTestValues}}
+	config += `		{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+		{{- else if .MinimumTestValue}}
+	config += `		{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+		{{- else if .VersionExamples}}
+	config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+		{{- else}}
+	config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		{{- end}}
+		}
 	}
 		{{- else}}
-	config += `		{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+		{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		{{- if .VersionMinimumTestValues}}
+		config += `		{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+		{{- else if .MinimumTestValue}}
+		config += `		{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+		{{- else if .VersionExamples}}
+		config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+		{{- else}}
+		config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		{{- end}}
+	}
+		{{- else}}
+		{{- if .VersionMinimumTestValues}}
+	config += `		{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+		{{- else if .MinimumTestValue}}
+	config += `		{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+		{{- else if .VersionExamples}}
+	config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+		{{- else}}
+	config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		{{- end}}
+		{{- end}}
 		{{- end}}
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -419,7 +1013,10 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 		{{- end}}
 		{{- end}}
 	config += `		}]` + "\n"
-	{{- if len .TestTags}}
+	{{- if or .VersionTestTags (len .TestTags)}}
+	}
+	{{- end}}
+	{{- if .VersionTestTags}}
 	}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -429,12 +1026,84 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
-	{{- if len .TestTags}}
-	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
-		config += `	{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	{{- if .VersionMinimumTestValues}}
+	config += `	{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+	{{- else if .MinimumTestValue}}
+	config += `	{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+	{{- else if .VersionExamples}}
+	config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+	{{- else}}
+	config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+	{{- end}}
+		}
 	}
 	{{- else}}
-	config += `	{{.TfName}} = {{if .MinimumTestValue}}{{.MinimumTestValue}}{{else}}{{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}{{end}}` + "\n"
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+	{{- if .VersionMinimumTestValues}}
+		config += `	{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+	{{- else if .MinimumTestValue}}
+		config += `	{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+	{{- else if .VersionExamples}}
+		config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+	{{- else}}
+		config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+	{{- end}}
+	}
+	{{- else}}
+	{{- if .VersionMinimumTestValues}}
+	config += `	{{.TfName}} = ` + selectVersionExample(map[string]string{
+		{{formatVersionMinimumTestValues .VersionMinimumTestValues}}
+	}, {{printf "%q" .MinimumTestValue}}) + "\n"
+	{{- else if .MinimumTestValue}}
+	config += `	{{.TfName}} = {{.MinimumTestValue}}` + "\n"
+	{{- else if .VersionExamples}}
+	config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+		{{formatVersionExamples .VersionExamples}}
+	}, "{{.Example}}")){{end}} + "\n"
+	{{- else}}
+	config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+	{{- end}}
+	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -464,7 +1133,15 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
-	{{- if len .TestTags}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+	{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 	{{- end}}
 	config += `	{{.TfName}} = [{` + "\n"
@@ -474,7 +1151,15 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 		{{- end}}
-		{{- if len .TestTags}}
+		{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+		{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		{{- end}}
 	config += `		{{.TfName}} = [{` + "\n"
@@ -484,7 +1169,15 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 			{{- end}}
-			{{- if len .TestTags}}
+			{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+			{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 			{{- end}}
 	config += `			{{.TfName}} = [{` + "\n"
@@ -494,7 +1187,15 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 				{{- end}}
-				{{- if len .TestTags}}
+				{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags { if os.Getenv(_t) != "" { anySet = true; break } }
+		if anySet {
+				{{- else if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 				{{- end}}
 	config += `				{{.TfName}} = [{` + "\n"
@@ -503,6 +1204,74 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 					{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 					{{- end}}
+					{{- if .VersionExamples}}
+					{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		}
+	}
+					{{- else}}
+					{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	}
+					{{- else}}
+	config += `					{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+					{{- end}}
+					{{- end}}
+					{{- else}}
+					{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		}
+	}
+					{{- else}}
 					{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
@@ -510,13 +1279,18 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 					{{- else}}
 	config += `					{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
 					{{- end}}
+					{{- end}}
+					{{- end}}
 					{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 					{{- end}}
 					{{- end}}
 					{{- end}}
 	config += `				}]` + "\n"
-				{{- if len .TestTags}}
+				{{- if or .VersionTestTags (len .TestTags)}}
+	}
+				{{- end}}
+				{{- if .VersionTestTags}}
 	}
 				{{- end}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
@@ -526,12 +1300,82 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 				{{- end}}
+				{{- if .VersionExamples}}
+				{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		}
+	}
+				{{- else}}
+				{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	}
+				{{- else}}
+	config += `				{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+				{{- end}}
+				{{- end}}
+				{{- else}}
+				{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		}
+	}
+				{{- else}}
 				{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
 	}
 				{{- else}}
 	config += `				{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+				{{- end}}
+				{{- end}}
 				{{- end}}
 				{{- if or .AddedInVersion .RemovedInVersion}}
 	}
@@ -540,7 +1384,10 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 				{{- end}}
 				{{- end}}
 	config += `			}]` + "\n"
-			{{- if len .TestTags}}
+			{{- if or .VersionTestTags (len .TestTags)}}
+	}
+			{{- end}}
+			{{- if .VersionTestTags}}
 	}
 			{{- end}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
@@ -550,6 +1397,74 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 			{{- end}}
+			{{- if .VersionExamples}}
+			{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		}
+	}
+			{{- else}}
+			{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	}
+			{{- else}}
+	config += `			{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+			{{- end}}
+			{{- end}}
+			{{- else}}
+			{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		}
+	}
+			{{- else}}
 			{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
@@ -557,6 +1472,8 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- else}}
 	config += `			{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
 			{{- end}}
+			{{- end}}
+			{{- end}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 			{{- end}}
@@ -564,7 +1481,10 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 			{{- end}}
 			{{- end}}
 	config += `		}]` + "\n"
-			{{- if len .TestTags}}
+			{{- if or .VersionTestTags (len .TestTags)}}
+	}
+			{{- end}}
+			{{- if .VersionTestTags}}
 	}
 			{{- end}}
 			{{- if or .AddedInVersion .RemovedInVersion}}
@@ -574,6 +1494,74 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 		{{- end}}
+		{{- if .VersionExamples}}
+		{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		}
+	}
+		{{- else}}
+		{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	}
+		{{- else}}
+	config += `		{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		{{- end}}
+		{{- end}}
+		{{- else}}
+		{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		}
+	}
+		{{- else}}
 		{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
@@ -581,6 +1569,8 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- else}}
 	config += `		{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
 		{{- end}}
+		{{- end}}
+		{{- end}}
 		{{- if or .AddedInVersion .RemovedInVersion}}
 	}
 		{{- end}}
@@ -588,7 +1578,10 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 		{{- end}}
 		{{- end}}
 	config += `		}]` + "\n"
-		{{- if len .TestTags}}
+		{{- if or .VersionTestTags (len .TestTags)}}
+	}
+		{{- end}}
+		{{- if .VersionTestTags}}
 	}
 		{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -598,12 +1591,82 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	if {{if .AddedInVersion}}iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.AddedInVersion}}"){{end}}{{if and .AddedInVersion .RemovedInVersion}} && {{end}}{{if .RemovedInVersion}}!iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "{{.RemovedInVersion}}"){{end}} {
 	{{- end}}
+	{{- if .VersionExamples}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+		}
+	}
+	{{- else}}
+	{{- if len .TestTags}}
+	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
+		config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	}
+	{{- else}}
+	config += `	{{.TfName}} = ` + {{if eq .Type "String"}}fmt.Sprintf("%q", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "StringList"}}fmt.Sprintf("[%q]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else if eq .Type "Int64List"}}fmt.Sprintf("[%s]", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{else}}fmt.Sprintf("%s", selectVersionExample(map[string]string{
+	{{formatVersionExamples .VersionExamples}}
+}, "{{.Example}}")){{end}} + "\n"
+	{{- end}}
+	{{- end}}
+	{{- else}}
+	{{- if .VersionTestTags}}
+	{
+		_tags := selectVersionTestTags(map[string][]string{
+			{{formatVersionTestTags .VersionTestTags}}
+		}, []string{ {{range $i,$e := .TestTags}}{{if $i}}, {{end}}"{{$e}}"{{end}} })
+		anySet := len(_tags) == 0
+		for _, _t := range _tags {
+			if os.Getenv(_t) != "" {
+				anySet = true
+				break
+			}
+		}
+		if anySet {
+	config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+		}
+	}
+	{{- else}}
 	{{- if len .TestTags}}
 	if {{range $i, $e := .TestTags}}{{if $i}} || {{end}}os.Getenv("{{$e}}") != ""{{end}} {
 		config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
 	}
 	{{- else}}
 	config += `	{{.TfName}} = {{if eq .Type "String"}}"{{.Example}}"{{else if eq .Type "StringList"}}["{{.Example}}"]{{else if eq .Type "Int64List"}}[{{.Example}}]{{else}}{{.Example}}{{end}}` + "\n"
+	{{- end}}
+	{{- end}}
 	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	}

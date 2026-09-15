@@ -241,7 +241,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 							Computed:            true,
 						},
 						"local_accounting_send_to_remote_facility_level": schema.StringAttribute{
-							MarkdownDescription: "configure this node",
+							MarkdownDescription: "Modify message logging facilities",
 							Computed:            true,
 						},
 						"discriminator_match1": schema.StringAttribute{
