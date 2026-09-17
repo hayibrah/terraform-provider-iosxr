@@ -281,6 +281,25 @@ func sortedVersionKeys(m map[string]string) []string {
 	return keys
 }
 
+// getVersionValue is the generator's build-time counterpart to helpers.GetPathVersion
+// (internal/provider/helpers/version_path.go): given a sparse map of version thresholds,
+// it returns the value for the highest threshold ≤ target, or defaultValue if none
+// qualify. Needed wherever a build-time loop must resolve a value for a version key that
+// isn't necessarily an explicit key in that map itself.
+func getVersionValue(target string, byVersion map[string]string, defaultValue string) string {
+	best := ""
+	result := defaultValue
+	for threshold, val := range byVersion {
+		if versionCompare(target, threshold) >= 0 {
+			if best == "" || versionCompare(threshold, best) > 0 {
+				best = threshold
+				result = val
+			}
+		}
+	}
+	return result
+}
+
 // JsonPathExpr returns a Go expression string for the gNMI JSON path of an attribute.
 // For static attributes it returns a quoted string literal (e.g. "files.file").
 // For attributes with a renamed YANG path it returns a helpers.SelectYangPath(...) call
@@ -489,10 +508,7 @@ func GetDeletePathExpr(attr YamlConfigAttribute, versionVar string) string {
 				xp = ""
 			}
 		}
-		mode := baseMode
-		if m, ok := attr.VersionDeleteMode[v]; ok {
-			mode = m
-		}
+		mode := getVersionValue(v, attr.VersionDeleteMode, baseMode)
 		entries = append(entries, fmt.Sprintf("%q: %q", v, applyDeleteMode(GetXPath(yn, xp), mode)))
 	}
 	return fmt.Sprintf("helpers.SelectYangPath(%s, map[string]string{%s}, %q)",

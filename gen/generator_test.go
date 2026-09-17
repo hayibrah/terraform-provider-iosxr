@@ -599,15 +599,140 @@ func TestVersionDeleteMode_Scenario5b_ReplacementKeepsDeleteGrandparent(t *testi
 }
 
 // ---------------------------------------------------------------------------
-// TODO (F4a): Add GetPathVersion tests in internal/provider/helpers/version_path_test.go
-// when helpers.GetPathVersion is implemented. Test cases to cover:
-//
-//  - empty version string → returns defaultPath (base fallback)
-//  - version below all thresholds → returns defaultPath
-//  - exact match on lowest threshold → returns that path
-//  - version between two thresholds → returns the lower threshold's path
-//  - exact match on upper threshold → returns upper path
-//  - version above all thresholds → returns highest threshold's path
-//  - patch version component ignored ("24.4.2" == "24.4")
-//  - empty pathByVersion map → returns defaultPath
+// getVersionValue tests
 // ---------------------------------------------------------------------------
+
+func TestGetVersionValue(t *testing.T) {
+	const (
+		defVal   = "default"
+		newVal   = "new"
+		newerVal = "newer"
+	)
+
+	byVersion := map[string]string{
+		"25.4": newVal,
+	}
+
+	twoThresholds := map[string]string{
+		"25.2": newVal,
+		"25.4": newerVal,
+	}
+
+	tests := []struct {
+		name      string
+		target    string
+		byVersion map[string]string
+		defVal    string
+		want      string
+	}{
+		{
+			name:      "empty map returns defaultValue",
+			target:    "25.4",
+			byVersion: map[string]string{},
+			defVal:    defVal,
+			want:      defVal,
+		},
+		{
+			name:      "target below all thresholds returns defaultValue",
+			target:    "24.4",
+			byVersion: byVersion,
+			defVal:    defVal,
+			want:      defVal,
+		},
+		{
+			name:      "exact match on threshold",
+			target:    "25.4",
+			byVersion: byVersion,
+			defVal:    defVal,
+			want:      newVal,
+		},
+		{
+			name:      "target above threshold",
+			target:    "25.6",
+			byVersion: byVersion,
+			defVal:    defVal,
+			want:      newVal,
+		},
+		{
+			name:      "target between two thresholds returns lower threshold value",
+			target:    "25.3",
+			byVersion: twoThresholds,
+			defVal:    defVal,
+			want:      newVal,
+		},
+		{
+			name:      "exact match on upper threshold",
+			target:    "25.4",
+			byVersion: twoThresholds,
+			defVal:    defVal,
+			want:      newerVal,
+		},
+		{
+			name:      "target above all thresholds returns highest threshold value",
+			target:    "26.1",
+			byVersion: twoThresholds,
+			defVal:    defVal,
+			want:      newerVal,
+		},
+		{
+			name:      "patch component ignored: 24.4.2 treated as 24.4",
+			target:    "24.4.2",
+			byVersion: byVersion,
+			defVal:    defVal,
+			want:      defVal,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := getVersionValue(tc.target, tc.byVersion, tc.defVal)
+			if got != tc.want {
+				t.Errorf("getVersionValue(%q, %v, %q) = %q, want %q",
+					tc.target, tc.byVersion, tc.defVal, got, tc.want)
+			}
+		})
+	}
+}
+
+// TestGetDeletePathExpr_ThreeVersionChain_RenameWithoutModeChange reproduces the read-side
+// stale-fallback bug fixed by getVersionValue: a mode change recorded at 25.4, followed by a
+// 26.2 rename that restates the same mode (correctly producing no new VersionDeleteMode
+// entry), used to bake the wrong, stale oldest mode into 26.2's generated path.
+func TestGetDeletePathExpr_ThreeVersionChain_RenameWithoutModeChange(t *testing.T) {
+	base := []YamlConfigAttribute{{
+		YangName:     "o1/m1/a",
+		TfName:       "x",
+		DeleteParent: true,
+	}}
+	delta25 := []YamlConfigAttribute{{
+		YangName:          "o2/m2/b",
+		TfName:            "x",
+		ReplacesYangName:  "o1/m1/a",
+		DeleteGrandparent: true,
+	}}
+	delta26 := []YamlConfigAttribute{{
+		YangName:          "o3/m3/c",
+		TfName:            "x",
+		ReplacesYangName:  "o2/m2/b",
+		DeleteGrandparent: true, // restated, same mode as 25.4
+	}}
+
+	merged := mergeAttributes(base, delta25, "25.4")
+	merged = mergeAttributes(merged, delta26, "26.2")
+	attr := merged[0]
+
+	if attr.VersionDeleteMode == nil {
+		t.Fatal("VersionDeleteMode should be set after the 25.4 delta")
+	}
+	if _, has26 := attr.VersionDeleteMode["26.2"]; has26 {
+		t.Errorf("VersionDeleteMode should have no 26.2 entry (mode unchanged from 25.4), got %v", attr.VersionDeleteMode)
+	}
+
+	fixAttributeBaseVersion(&attr, "24.4")
+
+	got := GetDeletePathExpr(attr, "version")
+	want := `helpers.SelectYangPath(version, map[string]string{"24.4": "o1/m1", "25.4": "o2", "26.2": "o3"}, "o1/m1")`
+	if got != want {
+		t.Errorf("GetDeletePathExpr =\n  %s\nwant\n  %s", got, want)
+	}
+}
