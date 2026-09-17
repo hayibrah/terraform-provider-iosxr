@@ -125,6 +125,31 @@ func TestMergeConfigs(t *testing.T) {
 				}
 			},
 		},
+		{
+			// Matches real usage (gen/definitions/25.4/service_timestamps.yaml): a single
+			// delta authors both the old and new version's module path directly, rather
+			// than the generator inferring divergence across merge steps.
+			name: "path_version: single delta declares both keys",
+			base: YamlConfig{Name: "Service Timestamps", Path: "old-module:/service/timestamps"},
+			override: YamlConfig{
+				Version: "25.4",
+				PathVersion: map[string]string{
+					"24.4": "old-module:/service/timestamps",
+					"25.4": "new-module:/service/timestamps",
+				},
+			},
+			check: func(t *testing.T, got YamlConfig) {
+				if len(got.PathVersion) != 2 {
+					t.Fatalf("PathVersion: got %d entries, want 2 (full map: %v)", len(got.PathVersion), got.PathVersion)
+				}
+				if got.PathVersion["24.4"] != "old-module:/service/timestamps" {
+					t.Errorf("PathVersion[24.4]: got %q, want %q", got.PathVersion["24.4"], "old-module:/service/timestamps")
+				}
+				if got.PathVersion["25.4"] != "new-module:/service/timestamps" {
+					t.Errorf("PathVersion[25.4]: got %q, want %q", got.PathVersion["25.4"], "new-module:/service/timestamps")
+				}
+			},
+		},
 	}
 
 	for _, tc := range tests {
@@ -133,6 +158,67 @@ func TestMergeConfigs(t *testing.T) {
 			tc.check(t, got)
 		})
 	}
+}
+
+// TestMergeConfigs_PathVersionThreeVersionChain covers the case a single mergeConfigs call
+// can't exercise: path_version keys contributed by separate deltas across 3+ versions must
+// all survive the cumulative fold, not just the keys from the single delta that happens to
+// run last. Unlike VersionRanges/VersionEnums, path_version has no "did this change since
+// the last merge" comparison to get wrong — mergeConfigs's union (gen/generator.go:2112-2120)
+// just adds whatever keys each delta contributes — so this is a lower-risk field, but the
+// accumulation itself was previously untested at the generator level for any version count.
+func TestMergeConfigs_PathVersionThreeVersionChain(t *testing.T) {
+	t.Run("keys contributed by separate deltas", func(t *testing.T) {
+		base := YamlConfig{Name: "Feature", Path: "module-a:/feature"}
+		after25 := mergeConfigs(base, YamlConfig{
+			Version:     "25.4",
+			PathVersion: map[string]string{"25.4": "module-b:/feature"},
+		})
+		after26 := mergeConfigs(after25, YamlConfig{
+			Version:     "26.2",
+			PathVersion: map[string]string{"26.2": "module-c:/feature"},
+		})
+
+		if len(after26.PathVersion) != 2 {
+			t.Fatalf("PathVersion: got %d entries, want 2 (full map: %v)", len(after26.PathVersion), after26.PathVersion)
+		}
+		if after26.PathVersion["25.4"] != "module-b:/feature" {
+			t.Errorf("PathVersion[25.4]: got %q, want %q (25.4's contribution must survive the 26.2 merge)",
+				after26.PathVersion["25.4"], "module-b:/feature")
+		}
+		if after26.PathVersion["26.2"] != "module-c:/feature" {
+			t.Errorf("PathVersion[26.2]: got %q, want %q", after26.PathVersion["26.2"], "module-c:/feature")
+		}
+	})
+
+	t.Run("mixed: multi-key delta then single-key delta", func(t *testing.T) {
+		base := YamlConfig{Name: "Feature", Path: "module-a:/feature"}
+		after25 := mergeConfigs(base, YamlConfig{
+			Version: "25.4",
+			PathVersion: map[string]string{
+				"24.4": "module-a:/feature",
+				"25.4": "module-b:/feature",
+			},
+		})
+		after26 := mergeConfigs(after25, YamlConfig{
+			Version:     "26.2",
+			PathVersion: map[string]string{"26.2": "module-c:/feature"},
+		})
+
+		want := map[string]string{
+			"24.4": "module-a:/feature",
+			"25.4": "module-b:/feature",
+			"26.2": "module-c:/feature",
+		}
+		if len(after26.PathVersion) != len(want) {
+			t.Fatalf("PathVersion: got %d entries, want %d (full map: %v)", len(after26.PathVersion), len(want), after26.PathVersion)
+		}
+		for k, v := range want {
+			if got := after26.PathVersion[k]; got != v {
+				t.Errorf("PathVersion[%q]: got %q, want %q", k, got, v)
+			}
+		}
+	})
 }
 
 // ---------------------------------------------------------------------------
