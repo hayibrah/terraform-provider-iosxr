@@ -99,12 +99,15 @@ attributes:
       - yang_name: path/path-name
         tf_name: path
         replaces_yang_name: path
+        delete_parent: true
       - yang_name: path/maxfilesize
         tf_name: maxfilesize
         replaces_yang_name: maxfilesize
+        delete_parent: true
       - yang_name: path/severity
         tf_name: severity
         replaces_yang_name: severity
+        delete_parent: true
         example: informational
       - yang_name: path/local-accounting
         tf_name: local_accounting

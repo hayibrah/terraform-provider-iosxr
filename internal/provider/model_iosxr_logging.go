@@ -2972,13 +2972,13 @@ func (data *Logging) getDeletedItems(ctx context.Context, state Logging, version
 					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": "local-accounting", "25.4": "path/local-accounting"}, "local-accounting")))
 				}
 				if !state.File[i].Severity.IsNull() && data.File[j].Severity.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/severity"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path"}, ".")))
 				}
 				if !state.File[i].Maxfilesize.IsNull() && data.File[j].Maxfilesize.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/maxfilesize"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path"}, ".")))
 				}
 				if !state.File[i].Path.IsNull() && data.File[j].Path.IsNull() {
-					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path/path-name"}, ".")))
+					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "files/file", keyString), helpers.SelectYangPath(version, map[string]string{"24.4": ".", "25.4": "path"}, ".")))
 				}
 				break
 			}
