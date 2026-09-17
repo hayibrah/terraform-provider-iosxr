@@ -210,15 +210,34 @@ attributes:
   - yang_name: facility
     tf_name: facility_level
     replaces_yang_name: facility/level
+  # ===========================================================
+  # Bool wire encoding change (presence → empty)
+  # 24.4: presence container → 25.4: leaf empty
+  # No split, same tf_name, same Bool TF type. Transparent to users.
+  # Minimal entry: augmentation derives type_yang_bool from 25.4 YANG.
+  # ===========================================================
+  - yang_name: suppress/duplicates
+  # ===========================================================
+  # Bool wire encoding change (presence → empty)
+  # 24.4: presence container → 25.4: leaf empty
+  # No split, same tf_name, same Bool TF type. Transparent to users.
+  # Minimal entry: augmentation derives type_yang_bool from 25.4 YANG.
+  # ===========================================================
+  - yang_name: container/fetch-timestamp
+  # ===========================================================
+  # Bool wire encoding change (presence → empty)
+  # 24.4: presence container → 25.4: leaf empty
+  # No split, same tf_name, same Bool TF type. Transparent to users.
+  # Minimal entry: augmentation derives type_yang_bool from 25.4 YANG.
+  # Excluded from 25.4 tests: mutually exclusive with tls_servers
+  # on 25.4 devices; 24.4 base definition continues to test it.
+  # ===========================================================
+  - yang_name: container/all
+    exclude_test: true
 
   # ===========================================================
   # ADDITIONS — new in 25.4
   # ===========================================================
-  # ===========================================================
-  # container/all excluded from 25.4 tests: mutually exclusive with tls_servers
-  # on 25.4 devices; 24.4 base definition continues to test it.
-  - yang_name: container/all
-    exclude_test: true
   # TLS syslog server support
   - yang_name: tls-servers/tls-server
     tf_name: tls_servers
