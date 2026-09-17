@@ -85,7 +85,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: "Set UDP port for this remote host/vrf",
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - **Not supported from version `25.4` and above**",
 							Computed:            true,
 						},
 						"operator": schema.StringAttribute{
@@ -98,6 +98,10 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 						},
 						"hostname_source_address": schema.StringAttribute{
 							MarkdownDescription: "Specify source address of the logging host",
+							Computed:            true,
+						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -117,7 +121,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: "Set UDP port for this remote host/vrf",
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - **Not supported from version `25.4` and above**",
 							Computed:            true,
 						},
 						"operator": schema.StringAttribute{
@@ -130,6 +134,10 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 						},
 						"ipv4_source_address": schema.StringAttribute{
 							MarkdownDescription: "Specify source address of the logging host",
+							Computed:            true,
+						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
@@ -149,7 +157,7 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 							Computed:            true,
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: "Set UDP port for this remote host/vrf",
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - **Not supported from version `25.4` and above**",
 							Computed:            true,
 						},
 						"operator": schema.StringAttribute{
@@ -162,6 +170,10 @@ func (d *LoggingVRFDataSource) Schema(ctx context.Context, req datasource.Schema
 						},
 						"ipv6_source_address": schema.StringAttribute{
 							MarkdownDescription: "Specify source address of the logging host",
+							Computed:            true,
+						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: "Set UDP port for this remote host/vrf" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},

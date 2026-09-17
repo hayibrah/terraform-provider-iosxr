@@ -41,37 +41,43 @@ func TestAccIosxrLoggingVRF(t *testing.T) {
 		"hostnames.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test",
-		"hostnames.0.port", selectVersionExample(map[string]string{
-			"24.4": "514", "25.4": "510",
-		}, "510")))
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "hostnames.0.port", "514"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "hostnames.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "hostnames.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "hostnames.0.hostname_source_address", "1.1.1.2"))
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "hostnames.0.udp_port", "510"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.ipv4_address", "1.1.1.1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test",
 		"host_ipv4_addresses.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test",
-		"host_ipv4_addresses.0.port", selectVersionExample(map[string]string{
-			"24.4": "514", "25.4": "510",
-		}, "510")))
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.port", "514"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.operator", "equals"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.ipv4_source_address", "1.1.1.2"))
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv4_addresses.0.udp_port", "510"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.ipv6_address", "2001:db8::1"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test",
 		"host_ipv6_addresses.0.severity", selectVersionExample(map[string]string{
 			"24.4": "info", "25.4": "informational",
 		}, "informational")))
-	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test",
-		"host_ipv6_addresses.0.port", selectVersionExample(map[string]string{
-			"24.4": "514", "25.4": "510",
-		}, "510")))
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.port", "514"))
+	}
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.operator", "equals-or-higher"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.facility", "local0"))
 	checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.ipv6_source_address", "2001:db8::2"))
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		checks = append(checks, resource.TestCheckResourceAttr("iosxr_logging_vrf.test", "host_ipv6_addresses.0.udp_port", "510"))
+	}
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
@@ -158,36 +164,45 @@ func testAccIosxrLoggingVRFConfig_all() string {
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
-	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
-		"24.4": "514", "25.4": "510",
-	}, "510")) + "\n"
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		port = 514` + "\n"
+	}
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		hostname_source_address = "1.1.1.2"` + "\n"
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		udp_port = "510"` + "\n"
+	}
 	config += `		}]` + "\n"
 	config += `	host_ipv4_addresses = [{` + "\n"
 	config += `		ipv4_address = "1.1.1.1"` + "\n"
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
-	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
-		"24.4": "514", "25.4": "510",
-	}, "510")) + "\n"
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		port = 514` + "\n"
+	}
 	config += `		operator = "equals"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv4_source_address = "1.1.1.2"` + "\n"
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		udp_port = "510"` + "\n"
+	}
 	config += `		}]` + "\n"
 	config += `	host_ipv6_addresses = [{` + "\n"
 	config += `		ipv6_address = "2001:db8::1"` + "\n"
 	config += `		severity = ` + fmt.Sprintf("%q", selectVersionExample(map[string]string{
 		"24.4": "info", "25.4": "informational",
 	}, "informational")) + "\n"
-	config += `		port = ` + fmt.Sprintf("%s", selectVersionExample(map[string]string{
-		"24.4": "514", "25.4": "510",
-	}, "510")) + "\n"
+	if !iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		port = 514` + "\n"
+	}
 	config += `		operator = "equals-or-higher"` + "\n"
 	config += `		facility = "local0"` + "\n"
 	config += `		ipv6_source_address = "2001:db8::2"` + "\n"
+	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
+		config += `		udp_port = "510"` + "\n"
+	}
 	config += `		}]` + "\n"
 	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
 	config += `}` + "\n"

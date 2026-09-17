@@ -106,8 +106,9 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String,
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
+							// Field removed in version 25.4 - keep base range validation + runtime check
 							Validators: []validator.Int64{
 								int64validator.Between(0, 65535),
 							},
@@ -128,6 +129,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 						},
 						"hostname_source_address": schema.StringAttribute{
 							MarkdownDescription: helpers.NewAttributeDescription("Specify source address of the logging host").String,
+							Optional:            true,
+						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").String + "\n  - Supported from version: `25.4`",
 							Optional:            true,
 						},
 					},
@@ -154,8 +159,9 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String,
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
+							// Field removed in version 25.4 - keep base range validation + runtime check
 							Validators: []validator.Int64{
 								int64validator.Between(0, 65535),
 							},
@@ -182,6 +188,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 								stringvalidator.RegexMatches(regexp.MustCompile(`[0-9\.]*`), ""),
 							},
 						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
+						},
 					},
 				},
 			},
@@ -207,8 +217,9 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 							},
 						},
 						"port": schema.Int64Attribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String,
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").AddIntegerRangeDescription(0, 65535).String + "\n  - **Not supported from version `25.4` and above**",
 							Optional:            true,
+							// Field removed in version 25.4 - keep base range validation + runtime check
 							Validators: []validator.Int64{
 								int64validator.Between(0, 65535),
 							},
@@ -235,6 +246,10 @@ func (r *LoggingVRFResource) Schema(ctx context.Context, req resource.SchemaRequ
 								stringvalidator.RegexMatches(regexp.MustCompile(`(([^:]+:){6}(([^:]+:[^:]+)|(.*\..*)))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)(%.+)?`), ""),
 								stringvalidator.RegexMatches(regexp.MustCompile(`[0-9a-fA-F:\.]*`), ""),
 							},
+						},
+						"udp_port": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("Set UDP port for this remote host/vrf").String + "\n  - Supported from version: `25.4`",
+							Optional:            true,
 						},
 					},
 				},

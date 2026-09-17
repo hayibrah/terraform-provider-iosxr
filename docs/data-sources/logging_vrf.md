@@ -10,6 +10,16 @@ description: |-
 
 This data source can read the Logging VRF configuration.
 
+## Version Compatibility
+
+### Removed from version
+
+| Attribute | Version |
+|-----------|:-------:|
+| `host_ipv4_addresses.port` | `25.4` |
+| `host_ipv6_addresses.port` | `25.4` |
+| `hostnames.port` | `25.4` |
+
 ## Example Usage
 
 ```terraform
@@ -46,7 +56,10 @@ Read-Only:
 - `ipv4_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
+  - **Not supported from version `25.4` and above**
 - `severity` (String) severity
+- `udp_port` (String) Set UDP port for this remote host/vrf
+  - Supported from version: `25.4`
 
 
 <a id="nestedatt--host_ipv6_addresses"></a>
@@ -59,7 +72,10 @@ Read-Only:
 - `ipv6_source_address` (String) Specify source address of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
+  - **Not supported from version `25.4` and above**
 - `severity` (String) severity
+- `udp_port` (String) Set UDP port for this remote host/vrf
+  - Supported from version: `25.4`
 
 
 <a id="nestedatt--hostnames"></a>
@@ -72,4 +88,7 @@ Read-Only:
 - `name` (String) Name of the logging host
 - `operator` (String) Set severity operator of  messages for particular remote host/vrf
 - `port` (Number) Set UDP port for this remote host/vrf
+  - **Not supported from version `25.4` and above**
 - `severity` (String) severity
+- `udp_port` (String) Set UDP port for this remote host/vrf
+  - Supported from version: `25.4`

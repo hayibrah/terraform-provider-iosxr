@@ -5,8 +5,8 @@ resource "iosxr_logging_vrf" "example" {
       ipv4_address        = "1.1.1.1"
       ipv4_source_address = "1.1.1.2"
       operator            = "equals"
-      port                = 510
       severity            = "informational"
+      udp_port            = "510"
     }
   ]
   host_ipv6_addresses = [
@@ -15,8 +15,8 @@ resource "iosxr_logging_vrf" "example" {
       ipv6_address        = "2001:db8::1"
       ipv6_source_address = "2001:db8::2"
       operator            = "equals-or-higher"
-      port                = 510
       severity            = "informational"
+      udp_port            = "510"
     }
   ]
   hostnames = [
@@ -25,8 +25,8 @@ resource "iosxr_logging_vrf" "example" {
       hostname_source_address = "1.1.1.2"
       name                    = "server.cisco.com"
       operator                = "equals"
-      port                    = 510
       severity                = "informational"
+      udp_port                = "510"
     }
   ]
   vrf_name = "default"
