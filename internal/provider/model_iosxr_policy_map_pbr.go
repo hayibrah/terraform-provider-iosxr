@@ -243,7 +243,7 @@ func (data PolicyMapPBR) GetPatternConstraints() []helpers.FieldPatternConstrain
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -271,12 +271,12 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("name"); value.Exists() && value.Type == gjson.String && !data.Classes[i].Name.IsNull() {
+		if value := r.Get("name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].Name.IsNull() {
 			data.Classes[i].Name = types.StringValue(value.String())
 		} else {
 			data.Classes[i].Name = types.StringNull()
 		}
-		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.Classes[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].Type.IsNull() {
 			data.Classes[i].Type = types.StringValue(value.String())
 		} else {
 			data.Classes[i].Type = types.StringNull()
@@ -286,7 +286,7 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceRateValue = types.Int64Null()
 		}
-		if value := r.Get("police.rate.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceRateUnit.IsNull() {
+		if value := r.Get("police.rate.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceRateUnit.IsNull() {
 			data.Classes[i].PoliceRateUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceRateUnit = types.StringNull()
@@ -309,32 +309,32 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].RedirectIpv4DefaultRoute = types.BoolNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop1.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop1Address.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop1.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop1Address.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop1Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop1Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop1.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop1Vrf.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop1.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop1Vrf.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop1Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop1Vrf = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop2.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop2Address.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop2.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop2Address.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop2Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop2Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop2.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop2Vrf.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop2.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop2Vrf.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop2Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop2Vrf = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop3.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop3Address.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop3.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop3Address.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop3Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop3Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv4.nexthop3.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv4Nexthop3Vrf.IsNull() {
+		if value := r.Get("redirect-ipv4.nexthop3.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv4Nexthop3Vrf.IsNull() {
 			data.Classes[i].RedirectIpv4Nexthop3Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv4Nexthop3Vrf = types.StringNull()
@@ -348,42 +348,42 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].RedirectIpv6DefaultRoute = types.BoolNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop1.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop1Address.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop1.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop1Address.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop1Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop1Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop1.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop1Vrf.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop1.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop1Vrf.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop1Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop1Vrf = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop2.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop2Address.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop2.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop2Address.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop2Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop2Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop2.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop2Vrf.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop2.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop2Vrf.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop2Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop2Vrf = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop3.address"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop3Address.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop3.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop3Address.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop3Address = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop3Address = types.StringNull()
 		}
-		if value := r.Get("redirect-ipv6.nexthop3.vrf"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectIpv6Nexthop3Vrf.IsNull() {
+		if value := r.Get("redirect-ipv6.nexthop3.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectIpv6Nexthop3Vrf.IsNull() {
 			data.Classes[i].RedirectIpv6Nexthop3Vrf = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectIpv6Nexthop3Vrf = types.StringNull()
 		}
-		if value := r.Get("redirect-nexthop.route-target.as-number"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RedirectNexthopRouteTargetAsFormat.IsNull() {
+		if value := r.Get("redirect-nexthop.route-target.as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RedirectNexthopRouteTargetAsFormat.IsNull() {
 			data.Classes[i].RedirectNexthopRouteTargetAsFormat = types.StringValue(value.String())
 		} else {
 			data.Classes[i].RedirectNexthopRouteTargetAsFormat = types.StringNull()
 		}
-		if value := r.Get("set.dscp"); value.Exists() && value.Type == gjson.String && !data.Classes[i].SetDscp.IsNull() {
+		if value := r.Get("set.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].SetDscp.IsNull() {
 			data.Classes[i].SetDscp = types.StringValue(value.String())
 		} else {
 			data.Classes[i].SetDscp = types.StringNull()
@@ -410,23 +410,23 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "class"); value.Exists() {
 		data.Classes = make([]PolicyMapPBRClasses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PolicyMapPBRClasses{}
-			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceRateValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("drop"); cValue.Exists() {
@@ -439,22 +439,22 @@ func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.RedirectIpv4DefaultRoute = types.BoolValue(false)
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop1.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop1.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop1Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop1.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop1.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop1Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop2.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop2.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop2Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop2.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop2.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop2Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop3.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop3.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop3Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop3.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop3.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop3Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("redirect-ipv6.default-route"); cValue.Exists() {
@@ -462,28 +462,28 @@ func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.RedirectIpv6DefaultRoute = types.BoolValue(false)
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop1.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop1.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop1Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop1.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop1.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop1Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop2.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop2.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop2Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop2.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop2.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop2Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop3.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop3.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop3Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop3.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop3.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop3Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-nexthop.route-target.as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-nexthop.route-target.as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectNexthopRouteTargetAsFormat = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.forward-class"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -505,23 +505,23 @@ func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version stri
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PolicyMapPBRData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "class"); value.Exists() {
 		data.Classes = make([]PolicyMapPBRClasses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PolicyMapPBRClasses{}
-			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceRateValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("drop"); cValue.Exists() {
@@ -534,22 +534,22 @@ func (data *PolicyMapPBRData) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.RedirectIpv4DefaultRoute = types.BoolValue(false)
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop1.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop1.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop1Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop1.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop1.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop1Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop2.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop2.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop2Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop2.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop2.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop2Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop3.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop3.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop3Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv4.nexthop3.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv4.nexthop3.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv4Nexthop3Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("redirect-ipv6.default-route"); cValue.Exists() {
@@ -557,28 +557,28 @@ func (data *PolicyMapPBRData) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.RedirectIpv6DefaultRoute = types.BoolValue(false)
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop1.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop1.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop1Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop1.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop1.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop1Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop2.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop2.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop2Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop2.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop2.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop2Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop3.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop3.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop3Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-ipv6.nexthop3.vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-ipv6.nexthop3.vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectIpv6Nexthop3Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redirect-nexthop.route-target.as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redirect-nexthop.route-target.as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RedirectNexthopRouteTargetAsFormat = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.forward-class"); cValue.Exists() && cValue.Type == gjson.Number {

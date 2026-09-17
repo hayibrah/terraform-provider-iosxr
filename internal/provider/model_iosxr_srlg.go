@@ -306,7 +306,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("srlg-name"); value.Exists() && value.Type == gjson.String && !data.Names[i].SrlgName.IsNull() {
+		if value := r.Get("srlg-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Names[i].SrlgName.IsNull() {
 			data.Names[i].SrlgName = types.StringValue(value.String())
 		} else {
 			data.Names[i].SrlgName = types.StringNull()
@@ -316,7 +316,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.Names[i].Value = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.Names[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Names[i].Description.IsNull() {
 			data.Names[i].Description = types.StringValue(value.String())
 		} else {
 			data.Names[i].Description = types.StringNull()
@@ -345,7 +345,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -359,7 +359,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.Interfaces[i].IncludeOptical = types.BoolNull()
 		}
-		if value := r.Get("include-optical.priority"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].IncludeOpticalPriority.IsNull() {
+		if value := r.Get("include-optical.priority"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].IncludeOpticalPriority.IsNull() {
 			data.Interfaces[i].IncludeOpticalPriority = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].IncludeOpticalPriority = types.StringNull()
@@ -397,7 +397,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 			} else {
 				data.Interfaces[i].Indexes[ci].Value = types.Int64Null()
 			}
-			if value := cr.Get("priority"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].Indexes[ci].Priority.IsNull() {
+			if value := cr.Get("priority"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].Indexes[ci].Priority.IsNull() {
 				data.Interfaces[i].Indexes[ci].Priority = types.StringValue(value.String())
 			} else {
 				data.Interfaces[i].Indexes[ci].Priority = types.StringNull()
@@ -426,7 +426,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 					return true
 				},
 			)
-			if value := cr.Get("srlg-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].Names[ci].SrlgName.IsNull() {
+			if value := cr.Get("srlg-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].Names[ci].SrlgName.IsNull() {
 				data.Interfaces[i].Names[ci].SrlgName = types.StringValue(value.String())
 			} else {
 				data.Interfaces[i].Names[ci].SrlgName = types.StringNull()
@@ -460,7 +460,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 			} else {
 				data.Interfaces[i].Groups[ci].IndexNumber = types.Int64Null()
 			}
-			if value := cr.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].Groups[ci].GroupName.IsNull() {
+			if value := cr.Get("group-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].Groups[ci].GroupName.IsNull() {
 				data.Interfaces[i].Groups[ci].GroupName = types.StringValue(value.String())
 			} else {
 				data.Interfaces[i].Groups[ci].GroupName = types.StringNull()
@@ -490,7 +490,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.Groups[i].GroupName.IsNull() {
+		if value := r.Get("group-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].GroupName.IsNull() {
 			data.Groups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.Groups[i].GroupName = types.StringNull()
@@ -528,7 +528,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 			} else {
 				data.Groups[i].Indexes[ci].Value = types.Int64Null()
 			}
-			if value := cr.Get("priority"); value.Exists() && value.Type == gjson.String && !data.Groups[i].Indexes[ci].Priority.IsNull() {
+			if value := cr.Get("priority"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].Indexes[ci].Priority.IsNull() {
 				data.Groups[i].Indexes[ci].Priority = types.StringValue(value.String())
 			} else {
 				data.Groups[i].Indexes[ci].Priority = types.StringNull()
@@ -558,7 +558,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("location-name"); value.Exists() && value.Type == gjson.String && !data.InheritLocations[i].LocationName.IsNull() {
+		if value := r.Get("location-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.InheritLocations[i].LocationName.IsNull() {
 			data.InheritLocations[i].LocationName = types.StringValue(value.String())
 		} else {
 			data.InheritLocations[i].LocationName = types.StringNull()
@@ -596,7 +596,7 @@ func (data *SRLG) updateFromBody(ctx context.Context, res []byte, version string
 			} else {
 				data.InheritLocations[i].Indexes[ci].Value = types.Int64Null()
 			}
-			if value := cr.Get("priority"); value.Exists() && value.Type == gjson.String && !data.InheritLocations[i].Indexes[ci].Priority.IsNull() {
+			if value := cr.Get("priority"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.InheritLocations[i].Indexes[ci].Priority.IsNull() {
 				data.InheritLocations[i].Indexes[ci].Priority = types.StringValue(value.String())
 			} else {
 				data.InheritLocations[i].Indexes[ci].Priority = types.StringNull()
@@ -614,13 +614,13 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 		data.Names = make([]SRLGNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGNames{}
-			if cValue := v.Get("srlg-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("srlg-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Value = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			data.Names = append(data.Names, item)
@@ -631,7 +631,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 		data.Interfaces = make([]SRLGInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("include-optical"); cValue.Exists() {
@@ -639,7 +639,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.IncludeOptical = types.BoolValue(false)
 			}
-			if cValue := v.Get("include-optical.priority"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("include-optical.priority"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IncludeOpticalPriority = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -652,7 +652,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -663,7 +663,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 				item.Names = make([]SRLGInterfacesNames, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SRLGInterfacesNames{}
-					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrlgName = types.StringValue(ccValue.String())
 					}
 					item.Names = append(item.Names, cItem)
@@ -677,7 +677,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("index-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IndexNumber = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("group-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.Groups = append(item.Groups, cItem)
@@ -692,7 +692,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 		data.Groups = make([]SRLGGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -705,7 +705,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -720,7 +720,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 		data.InheritLocations = make([]SRLGInheritLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGInheritLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -733,7 +733,7 @@ func (data *SRLG) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -755,13 +755,13 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Names = make([]SRLGNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGNames{}
-			if cValue := v.Get("srlg-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("srlg-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Value = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			data.Names = append(data.Names, item)
@@ -772,7 +772,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Interfaces = make([]SRLGInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("include-optical"); cValue.Exists() {
@@ -780,7 +780,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.IncludeOptical = types.BoolValue(false)
 			}
-			if cValue := v.Get("include-optical.priority"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("include-optical.priority"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IncludeOpticalPriority = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -793,7 +793,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -804,7 +804,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 				item.Names = make([]SRLGInterfacesNames, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SRLGInterfacesNames{}
-					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrlgName = types.StringValue(ccValue.String())
 					}
 					item.Names = append(item.Names, cItem)
@@ -818,7 +818,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 					if ccValue := cv.Get("index-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.IndexNumber = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("group-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("group-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.GroupName = types.StringValue(ccValue.String())
 					}
 					item.Groups = append(item.Groups, cItem)
@@ -833,7 +833,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Groups = make([]SRLGGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -846,7 +846,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -861,7 +861,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 		data.InheritLocations = make([]SRLGInheritLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SRLGInheritLocations{}
-			if cValue := v.Get("location-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -874,7 +874,7 @@ func (data *SRLGData) fromBody(ctx context.Context, res []byte, version string) 
 					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Value = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("priority"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("priority"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Priority = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)

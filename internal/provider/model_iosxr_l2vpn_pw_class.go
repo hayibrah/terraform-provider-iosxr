@@ -467,7 +467,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && value.Type == gjson.String && !data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName.IsNull() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringValue(value.String())
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringNull()
@@ -482,7 +482,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && value.Type == gjson.String && !data.EncapsulationMplsPreferredPathSrTePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EncapsulationMplsPreferredPathSrTePolicy.IsNull() {
 		data.EncapsulationMplsPreferredPathSrTePolicy = types.StringValue(value.String())
 	} else {
 		data.EncapsulationMplsPreferredPathSrTePolicy = types.StringNull()
@@ -605,7 +605,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsLoadBalancingFlowLabelCode17Disable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && value.Type == gjson.String && !data.EncapsulationMplsIpv4Source.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EncapsulationMplsIpv4Source.IsNull() {
 		data.EncapsulationMplsIpv4Source = types.StringValue(value.String())
 	} else {
 		data.EncapsulationMplsIpv4Source = types.StringNull()
@@ -702,7 +702,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && value.Type == gjson.Number {
@@ -711,7 +711,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathSrTePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.fallback.disable"); value.Exists() {
@@ -780,7 +780,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsLoadBalancingFlowLabelCode17Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsIpv4Source = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && value.Type == gjson.Number {
@@ -865,7 +865,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && value.Type == gjson.Number {
@@ -874,7 +874,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && value.Type == gjson.Number {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathSrTePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.fallback.disable"); value.Exists() {
@@ -943,7 +943,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsLoadBalancingFlowLabelCode17Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsIpv4Source = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && value.Type == gjson.Number {

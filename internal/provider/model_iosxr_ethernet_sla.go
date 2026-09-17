@@ -407,7 +407,7 @@ func (data EthernetSLA) GetPatternConstraints() []helpers.FieldPatternConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "type"); value.Exists() && value.Type == gjson.String && !data.Type.IsNull() {
+	if value := gjson.GetBytes(res, "type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Type.IsNull() {
 		data.Type = types.StringValue(value.String())
 	} else {
 		data.Type = types.StringNull()
@@ -561,7 +561,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.StatisticsMeasure[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.StatisticsMeasure[i].Type.IsNull() {
 			data.StatisticsMeasure[i].Type = types.StringValue(value.String())
 		} else {
 			data.StatisticsMeasure[i].Type = types.StringNull()
@@ -693,7 +693,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 			data.StatisticsMeasure[i].UsecMinimumDelay = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && value.Type == gjson.String && !data.ScheduleEveryWeekOn.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ScheduleEveryWeekOn.IsNull() {
 		data.ScheduleEveryWeekOn = types.StringValue(value.String())
 	} else {
 		data.ScheduleEveryWeekOn = types.StringNull()
@@ -732,7 +732,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ScheduleEveryForTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && value.Type == gjson.String && !data.ScheduleEveryForUnit.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ScheduleEveryForUnit.IsNull() {
 		data.ScheduleEveryForUnit = types.StringValue(value.String())
 	} else {
 		data.ScheduleEveryForUnit = types.StringNull()
@@ -744,7 +744,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Type = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "probe.send.packet.once"); value.Exists() {
@@ -823,7 +823,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 		data.StatisticsMeasure = make([]EthernetSLAStatisticsMeasure, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EthernetSLAStatisticsMeasure{}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("aggregate.none"); cValue.Exists() {
@@ -912,7 +912,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ScheduleEveryWeekOn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "schedule.every.day"); value.Exists() {
@@ -935,7 +935,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && value.Type == gjson.Number {
 		data.ScheduleEveryForTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ScheduleEveryForUnit = types.StringValue(value.String())
 	}
 }
@@ -945,7 +945,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Type = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "probe.send.packet.once"); value.Exists() {
@@ -1024,7 +1024,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 		data.StatisticsMeasure = make([]EthernetSLAStatisticsMeasure, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EthernetSLAStatisticsMeasure{}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("aggregate.none"); cValue.Exists() {
@@ -1113,7 +1113,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "schedule.every.week.on"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ScheduleEveryWeekOn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "schedule.every.day"); value.Exists() {
@@ -1136,7 +1136,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && value.Type == gjson.Number {
 		data.ScheduleEveryForTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ScheduleEveryForUnit = types.StringValue(value.String())
 	}
 }

@@ -169,17 +169,17 @@ func (data *CryptoClientAuthentication) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profile[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profile[i].ProfileName.IsNull() {
 			data.Profile[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profile[i].ProfileName = types.StringNull()
 		}
-		if value := r.Get("password.six"); value.Exists() && value.Type == gjson.String && !data.Profile[i].PasswordSix.IsNull() {
+		if value := r.Get("password.six"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profile[i].PasswordSix.IsNull() {
 			data.Profile[i].PasswordSix = types.StringValue(value.String())
 		} else {
 			data.Profile[i].PasswordSix = types.StringNull()
 		}
-		if value := r.Get("username"); value.Exists() && value.Type == gjson.String && !data.Profile[i].Username.IsNull() {
+		if value := r.Get("username"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profile[i].Username.IsNull() {
 			data.Profile[i].Username = types.StringValue(value.String())
 		} else {
 			data.Profile[i].Username = types.StringNull()
@@ -196,13 +196,13 @@ func (data *CryptoClientAuthentication) fromBody(ctx context.Context, res []byte
 		data.Profile = make([]CryptoClientAuthenticationProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CryptoClientAuthenticationProfile{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("password.six"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("password.six"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PasswordSix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("username"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("username"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.Profile = append(data.Profile, item)
@@ -220,13 +220,13 @@ func (data *CryptoClientAuthenticationData) fromBody(ctx context.Context, res []
 		data.Profile = make([]CryptoClientAuthenticationProfile, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CryptoClientAuthenticationProfile{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("password.six"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("password.six"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PasswordSix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("username"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("username"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.Profile = append(data.Profile, item)

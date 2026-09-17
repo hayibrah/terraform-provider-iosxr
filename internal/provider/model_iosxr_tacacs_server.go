@@ -230,7 +230,7 @@ func (data *TACACSServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].OrderingIndex = types.Int64Null()
 		}
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].Address.IsNull() {
 			data.Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].Address = types.StringNull()
@@ -275,12 +275,12 @@ func (data *TACACSServer) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.HolddownTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
@@ -299,7 +299,7 @@ func (data *TACACSServer) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OrderingIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -329,10 +329,10 @@ func (data *TACACSServer) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && value.Type == gjson.Number {
 		data.HolddownTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 }
@@ -349,7 +349,7 @@ func (data *TACACSServerData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OrderingIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -379,10 +379,10 @@ func (data *TACACSServerData) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && value.Type == gjson.Number {
 		data.HolddownTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 }

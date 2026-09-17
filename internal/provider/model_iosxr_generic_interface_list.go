@@ -165,7 +165,7 @@ func (data *GenericInterfaceList) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -182,7 +182,7 @@ func (data *GenericInterfaceList) fromBody(ctx context.Context, res []byte, vers
 		data.Interfaces = make([]GenericInterfaceListInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := GenericInterfaceListInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.Interfaces = append(data.Interfaces, item)
@@ -200,7 +200,7 @@ func (data *GenericInterfaceListData) fromBody(ctx context.Context, res []byte, 
 		data.Interfaces = make([]GenericInterfaceListInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := GenericInterfaceListInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.Interfaces = append(data.Interfaces, item)

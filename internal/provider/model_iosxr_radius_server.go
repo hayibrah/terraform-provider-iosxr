@@ -382,7 +382,7 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].Order = types.Int64Null()
 		}
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].Address.IsNull() {
 			data.Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].Address = types.StringNull()
@@ -407,7 +407,7 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].Retransmit = types.Int64Null()
 		}
-		if value := r.Get("test.username"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TestUsername.IsNull() {
+		if value := r.Get("test.username"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].TestUsername.IsNull() {
 			data.Hosts[i].TestUsername = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].TestUsername = types.StringNull()
@@ -435,12 +435,12 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].IgnoreAcctPort = types.BoolNull()
 		}
-		if value := r.Get("dtls-server.trustpoint"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].DtlsServerTrustpoint.IsNull() {
+		if value := r.Get("dtls-server.trustpoint"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].DtlsServerTrustpoint.IsNull() {
 			data.Hosts[i].DtlsServerTrustpoint = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].DtlsServerTrustpoint = types.StringNull()
 		}
-		if value := r.Get("radsec-server.trustpoint"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].RadsecServerTrustpoint.IsNull() {
+		if value := r.Get("radsec-server.trustpoint"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].RadsecServerTrustpoint.IsNull() {
 			data.Hosts[i].RadsecServerTrustpoint = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].RadsecServerTrustpoint = types.StringNull()
@@ -518,12 +518,12 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.SourcePortExtended = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
@@ -569,12 +569,12 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("list-name"); value.Exists() && value.Type == gjson.String && !data.AttributeLists[i].Name.IsNull() {
+		if value := r.Get("list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AttributeLists[i].Name.IsNull() {
 			data.AttributeLists[i].Name = types.StringValue(value.String())
 		} else {
 			data.AttributeLists[i].Name = types.StringNull()
 		}
-		if value := r.Get("attribute.radius-attributes"); value.Exists() && value.Type == gjson.String && !data.AttributeLists[i].RadiusAttributes.IsNull() {
+		if value := r.Get("attribute.radius-attributes"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AttributeLists[i].RadiusAttributes.IsNull() {
 			data.AttributeLists[i].RadiusAttributes = types.StringValue(value.String())
 		} else {
 			data.AttributeLists[i].RadiusAttributes = types.StringNull()
@@ -656,7 +656,7 @@ func (data *RadiusServer) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.AttributeAcctMultiSessionIdIncludeParentSessionId = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && value.Type == gjson.String && !data.AttributeFilterId11DefaultDirection.IsNull() {
+	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AttributeFilterId11DefaultDirection.IsNull() {
 		data.AttributeFilterId11DefaultDirection = types.StringValue(value.String())
 	} else {
 		data.AttributeFilterId11DefaultDirection = types.StringNull()
@@ -675,7 +675,7 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auth-port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -690,7 +690,7 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("retransmit"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Retransmit = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("test.username"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("test.username"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TestUsername = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("idle-time"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -706,10 +706,10 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.IgnoreAcctPort = types.BoolValue(false)
 			}
-			if cValue := v.Get("dtls-server.trustpoint"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dtls-server.trustpoint"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DtlsServerTrustpoint = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("radsec-server.trustpoint"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("radsec-server.trustpoint"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RadsecServerTrustpoint = types.StringValue(cValue.String())
 			}
 			data.Hosts = append(data.Hosts, item)
@@ -758,10 +758,10 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.SourcePortExtended = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "vsa.attribute.ignore.unknown"); value.Exists() {
@@ -778,10 +778,10 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 		data.AttributeLists = make([]RadiusServerAttributeLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RadiusServerAttributeLists{}
-			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("attribute.radius-attributes"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("attribute.radius-attributes"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RadiusAttributes = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("attribute.vendor-ids.vendor-id"); cValue.Exists() {
@@ -820,7 +820,7 @@ func (data *RadiusServer) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.AttributeAcctMultiSessionIdIncludeParentSessionId = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AttributeFilterId11DefaultDirection = types.StringValue(value.String())
 	}
 }
@@ -837,7 +837,7 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Order = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("auth-port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -852,7 +852,7 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("retransmit"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Retransmit = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("test.username"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("test.username"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TestUsername = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("idle-time"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -868,10 +868,10 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.IgnoreAcctPort = types.BoolValue(false)
 			}
-			if cValue := v.Get("dtls-server.trustpoint"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dtls-server.trustpoint"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DtlsServerTrustpoint = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("radsec-server.trustpoint"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("radsec-server.trustpoint"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RadsecServerTrustpoint = types.StringValue(cValue.String())
 			}
 			data.Hosts = append(data.Hosts, item)
@@ -920,10 +920,10 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.SourcePortExtended = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "vsa.attribute.ignore.unknown"); value.Exists() {
@@ -940,10 +940,10 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 		data.AttributeLists = make([]RadiusServerAttributeLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RadiusServerAttributeLists{}
-			if cValue := v.Get("list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("attribute.radius-attributes"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("attribute.radius-attributes"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RadiusAttributes = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("attribute.vendor-ids.vendor-id"); cValue.Exists() {
@@ -982,7 +982,7 @@ func (data *RadiusServerData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AttributeAcctMultiSessionIdIncludeParentSessionId = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "attribute.filter-id-11.default.direction"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AttributeFilterId11DefaultDirection = types.StringValue(value.String())
 	}
 }

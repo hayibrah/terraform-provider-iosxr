@@ -133,7 +133,7 @@ func (data LACP) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LACP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String && !data.Mac.IsNull() {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mac.IsNull() {
 		data.Mac = types.StringValue(value.String())
 	} else {
 		data.Mac = types.StringNull()
@@ -150,7 +150,7 @@ func (data *LACP) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LACP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Mac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
@@ -163,7 +163,7 @@ func (data *LACP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LACPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mac"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mac"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Mac = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {

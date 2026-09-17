@@ -1105,12 +1105,12 @@ func (data VRF) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && value.Type == gjson.String && !data.FallbackVrf.IsNull() {
+	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FallbackVrf.IsNull() {
 		data.FallbackVrf = types.StringValue(value.String())
 	} else {
 		data.FallbackVrf = types.StringNull()
@@ -1129,12 +1129,12 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4Unicast = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportRoutePolicy.IsNull() {
 		data.Ipv4UnicastImportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4UnicastImportRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportRoutePolicy.IsNull() {
 		data.Ipv4UnicastExportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4UnicastExportRoutePolicy = types.StringNull()
@@ -1184,7 +1184,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv4UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4UnicastImportFromDefaultVrfRoutePolicy = types.StringNull()
@@ -1216,7 +1216,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4UnicastExportToVrfAllowBestExternal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportToDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportToDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv4UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4UnicastExportToDefaultVrfRoutePolicy = types.StringNull()
@@ -1249,12 +1249,12 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4Multicast = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportRoutePolicy.IsNull() {
 		data.Ipv4MulticastImportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4MulticastImportRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportRoutePolicy.IsNull() {
 		data.Ipv4MulticastExportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4MulticastExportRoutePolicy = types.StringNull()
@@ -1304,7 +1304,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv4MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4MulticastImportFromDefaultVrfRoutePolicy = types.StringNull()
@@ -1336,7 +1336,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv4MulticastExportToVrfAllowBestExternal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportToDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportToDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv4MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv4MulticastExportToDefaultVrfRoutePolicy = types.StringNull()
@@ -1378,12 +1378,12 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6Unicast = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportRoutePolicy.IsNull() {
 		data.Ipv6UnicastImportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6UnicastImportRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportRoutePolicy.IsNull() {
 		data.Ipv6UnicastExportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6UnicastExportRoutePolicy = types.StringNull()
@@ -1433,7 +1433,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportFromDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv6UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6UnicastImportFromDefaultVrfRoutePolicy = types.StringNull()
@@ -1465,7 +1465,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6UnicastExportToVrfAllowBestExternal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportToDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportToDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv6UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6UnicastExportToDefaultVrfRoutePolicy = types.StringNull()
@@ -1498,12 +1498,12 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6Multicast = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportRoutePolicy.IsNull() {
 		data.Ipv6MulticastImportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6MulticastImportRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportRoutePolicy.IsNull() {
 		data.Ipv6MulticastExportRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6MulticastExportRoutePolicy = types.StringNull()
@@ -1553,7 +1553,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportFromDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv6MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6MulticastImportFromDefaultVrfRoutePolicy = types.StringNull()
@@ -1585,7 +1585,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6MulticastExportToVrfAllowBestExternal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportToDefaultVrfRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportToDefaultVrfRoutePolicy.IsNull() {
 		data.Ipv6MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.Ipv6MulticastExportToDefaultVrfRoutePolicy = types.StringNull()
@@ -1618,7 +1618,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6Flowspec = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && value.Type == gjson.String && !data.RdTwoByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RdTwoByteAsNumber.IsNull() {
 		data.RdTwoByteAsNumber = types.StringValue(value.String())
 	} else {
 		data.RdTwoByteAsNumber = types.StringNull()
@@ -1628,7 +1628,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.RdTwoByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && value.Type == gjson.String && !data.RdFourByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RdFourByteAsNumber.IsNull() {
 		data.RdFourByteAsNumber = types.StringValue(value.String())
 	} else {
 		data.RdFourByteAsNumber = types.StringNull()
@@ -1638,7 +1638,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.RdFourByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && value.Type == gjson.String && !data.RdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RdIpv4Address.IsNull() {
 		data.RdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.RdIpv4Address = types.StringNull()
@@ -1681,7 +1681,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastImportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -1720,7 +1720,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastImportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -1749,7 +1749,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -1759,7 +1759,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -1798,7 +1798,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastExportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -1837,7 +1837,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastExportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -1866,7 +1866,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -1876,7 +1876,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -1915,7 +1915,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastImportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -1954,7 +1954,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastImportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -1983,7 +1983,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -1993,7 +1993,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -2032,7 +2032,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastExportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -2071,7 +2071,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastExportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -2100,7 +2100,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -2110,7 +2110,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -2149,7 +2149,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastImportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -2188,7 +2188,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastImportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -2217,7 +2217,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -2227,7 +2227,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -2266,7 +2266,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastExportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -2305,7 +2305,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastExportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -2334,7 +2334,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -2344,7 +2344,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -2383,7 +2383,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastImportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastImportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -2422,7 +2422,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastImportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastImportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -2451,7 +2451,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -2461,7 +2461,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
@@ -2500,7 +2500,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastExportRouteTargetTwoByteAsFormat[i].Asn2Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportRouteTargetTwoByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastExportRouteTargetTwoByteAsFormat[i].Stitching = types.StringNull()
@@ -2539,7 +2539,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastExportRouteTargetFourByteAsFormat[i].Asn4Index = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportRouteTargetFourByteAsFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastExportRouteTargetFourByteAsFormat[i].Stitching = types.StringNull()
@@ -2568,7 +2568,7 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address.IsNull() {
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Ipv4Address = types.StringNull()
@@ -2578,13 +2578,13 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Ipv4AddressIndex = types.Int64Null()
 		}
-		if value := r.Get("stitching"); value.Exists() && value.Type == gjson.String && !data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
+		if value := r.Get("stitching"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Stitching.IsNull() {
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Stitching = types.StringValue(value.String())
 		} else {
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat[i].Stitching = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && value.Type == gjson.String && !data.VpnId.IsNull() {
+	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.VpnId.IsNull() {
 		data.VpnId = types.StringValue(value.String())
 	} else {
 		data.VpnId = types.StringNull()
@@ -2605,10 +2605,10 @@ func (data *VRF) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FallbackVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync"); value.Exists() && value.Type == gjson.Number {
@@ -2619,10 +2619,10 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4Unicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -2650,7 +2650,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -2668,7 +2668,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4UnicastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -2687,10 +2687,10 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4Multicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -2718,7 +2718,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -2736,7 +2736,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4MulticastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -2760,10 +2760,10 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Unicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -2791,7 +2791,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -2809,7 +2809,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6UnicastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -2828,10 +2828,10 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Multicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -2859,7 +2859,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -2877,7 +2877,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6MulticastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -2896,19 +2896,19 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Flowspec = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdTwoByteAsNumber = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.asn2-index"); value.Exists() && value.Type == gjson.Number {
 		data.RdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdFourByteAsNumber = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.asn4-index"); value.Exists() && value.Type == gjson.Number {
 		data.RdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.ipv4address-index"); value.Exists() && value.Type == gjson.Number {
@@ -2924,7 +2924,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetTwoByteAsFormat = append(data.Ipv4UnicastImportRouteTargetTwoByteAsFormat, item)
@@ -2941,7 +2941,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetFourByteAsFormat = append(data.Ipv4UnicastImportRouteTargetFourByteAsFormat, item)
@@ -2952,13 +2952,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4UnicastImportRouteTargetIpAddressFormat = make([]VRFIpv4UnicastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4UnicastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat = append(data.Ipv4UnicastImportRouteTargetIpAddressFormat, item)
@@ -2975,7 +2975,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetTwoByteAsFormat = append(data.Ipv4UnicastExportRouteTargetTwoByteAsFormat, item)
@@ -2992,7 +2992,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetFourByteAsFormat = append(data.Ipv4UnicastExportRouteTargetFourByteAsFormat, item)
@@ -3003,13 +3003,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4UnicastExportRouteTargetIpAddressFormat = make([]VRFIpv4UnicastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4UnicastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat = append(data.Ipv4UnicastExportRouteTargetIpAddressFormat, item)
@@ -3026,7 +3026,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetTwoByteAsFormat = append(data.Ipv6UnicastImportRouteTargetTwoByteAsFormat, item)
@@ -3043,7 +3043,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetFourByteAsFormat = append(data.Ipv6UnicastImportRouteTargetFourByteAsFormat, item)
@@ -3054,13 +3054,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6UnicastImportRouteTargetIpAddressFormat = make([]VRFIpv6UnicastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6UnicastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat = append(data.Ipv6UnicastImportRouteTargetIpAddressFormat, item)
@@ -3077,7 +3077,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetTwoByteAsFormat = append(data.Ipv6UnicastExportRouteTargetTwoByteAsFormat, item)
@@ -3094,7 +3094,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetFourByteAsFormat = append(data.Ipv6UnicastExportRouteTargetFourByteAsFormat, item)
@@ -3105,13 +3105,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6UnicastExportRouteTargetIpAddressFormat = make([]VRFIpv6UnicastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6UnicastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat = append(data.Ipv6UnicastExportRouteTargetIpAddressFormat, item)
@@ -3128,7 +3128,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetTwoByteAsFormat = append(data.Ipv4MulticastImportRouteTargetTwoByteAsFormat, item)
@@ -3145,7 +3145,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetFourByteAsFormat = append(data.Ipv4MulticastImportRouteTargetFourByteAsFormat, item)
@@ -3156,13 +3156,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4MulticastImportRouteTargetIpAddressFormat = make([]VRFIpv4MulticastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4MulticastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat = append(data.Ipv4MulticastImportRouteTargetIpAddressFormat, item)
@@ -3179,7 +3179,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetTwoByteAsFormat = append(data.Ipv4MulticastExportRouteTargetTwoByteAsFormat, item)
@@ -3196,7 +3196,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetFourByteAsFormat = append(data.Ipv4MulticastExportRouteTargetFourByteAsFormat, item)
@@ -3207,13 +3207,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4MulticastExportRouteTargetIpAddressFormat = make([]VRFIpv4MulticastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4MulticastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat = append(data.Ipv4MulticastExportRouteTargetIpAddressFormat, item)
@@ -3230,7 +3230,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetTwoByteAsFormat = append(data.Ipv6MulticastImportRouteTargetTwoByteAsFormat, item)
@@ -3247,7 +3247,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetFourByteAsFormat = append(data.Ipv6MulticastImportRouteTargetFourByteAsFormat, item)
@@ -3258,13 +3258,13 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6MulticastImportRouteTargetIpAddressFormat = make([]VRFIpv6MulticastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6MulticastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat = append(data.Ipv6MulticastImportRouteTargetIpAddressFormat, item)
@@ -3281,7 +3281,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetTwoByteAsFormat = append(data.Ipv6MulticastExportRouteTargetTwoByteAsFormat, item)
@@ -3298,7 +3298,7 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetFourByteAsFormat = append(data.Ipv6MulticastExportRouteTargetFourByteAsFormat, item)
@@ -3309,20 +3309,20 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6MulticastExportRouteTargetIpAddressFormat = make([]VRFIpv6MulticastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6MulticastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat = append(data.Ipv6MulticastExportRouteTargetIpAddressFormat, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.VpnId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "remote-route-filtering.disable"); value.Exists() {
@@ -3337,10 +3337,10 @@ func (data *VRF) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fallback-vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FallbackVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-l2vpn-cfg:evpn-route-sync"); value.Exists() && value.Type == gjson.Number {
@@ -3351,10 +3351,10 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4Unicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -3382,7 +3382,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -3400,7 +3400,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4UnicastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -3419,10 +3419,10 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4Multicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -3450,7 +3450,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -3468,7 +3468,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv4MulticastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -3492,10 +3492,10 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Unicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -3523,7 +3523,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6UnicastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -3541,7 +3541,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6UnicastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6UnicastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.unicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -3560,10 +3560,10 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Multicast = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastImportRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastExportRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.bridge-domain.advertise-as-vpn"); value.Exists() {
@@ -3591,7 +3591,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6MulticastImportFromDefaultVrfAdvertiseAsVpn = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:import.from.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastImportFromDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.vrf.allow-imported-vpn"); value.Exists() {
@@ -3609,7 +3609,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6MulticastExportToVrfAllowBestExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6MulticastExportToDefaultVrfRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.multicast.Cisco-IOS-XR-um-router-bgp-cfg:export.to.default-vrf.allow-imported-vpn"); value.Exists() {
@@ -3628,19 +3628,19 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6Flowspec = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdTwoByteAsNumber = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.two-byte-as.asn2-index"); value.Exists() && value.Type == gjson.Number {
 		data.RdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdFourByteAsNumber = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.four-byte-as.asn4-index"); value.Exists() && value.Type == gjson.Number {
 		data.RdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-router-bgp-cfg:rd.ipv4-address.ipv4address-index"); value.Exists() && value.Type == gjson.Number {
@@ -3656,7 +3656,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetTwoByteAsFormat = append(data.Ipv4UnicastImportRouteTargetTwoByteAsFormat, item)
@@ -3673,7 +3673,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetFourByteAsFormat = append(data.Ipv4UnicastImportRouteTargetFourByteAsFormat, item)
@@ -3684,13 +3684,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4UnicastImportRouteTargetIpAddressFormat = make([]VRFIpv4UnicastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4UnicastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastImportRouteTargetIpAddressFormat = append(data.Ipv4UnicastImportRouteTargetIpAddressFormat, item)
@@ -3707,7 +3707,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetTwoByteAsFormat = append(data.Ipv4UnicastExportRouteTargetTwoByteAsFormat, item)
@@ -3724,7 +3724,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetFourByteAsFormat = append(data.Ipv4UnicastExportRouteTargetFourByteAsFormat, item)
@@ -3735,13 +3735,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4UnicastExportRouteTargetIpAddressFormat = make([]VRFIpv4UnicastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4UnicastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4UnicastExportRouteTargetIpAddressFormat = append(data.Ipv4UnicastExportRouteTargetIpAddressFormat, item)
@@ -3758,7 +3758,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetTwoByteAsFormat = append(data.Ipv6UnicastImportRouteTargetTwoByteAsFormat, item)
@@ -3775,7 +3775,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetFourByteAsFormat = append(data.Ipv6UnicastImportRouteTargetFourByteAsFormat, item)
@@ -3786,13 +3786,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6UnicastImportRouteTargetIpAddressFormat = make([]VRFIpv6UnicastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6UnicastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastImportRouteTargetIpAddressFormat = append(data.Ipv6UnicastImportRouteTargetIpAddressFormat, item)
@@ -3809,7 +3809,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetTwoByteAsFormat = append(data.Ipv6UnicastExportRouteTargetTwoByteAsFormat, item)
@@ -3826,7 +3826,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetFourByteAsFormat = append(data.Ipv6UnicastExportRouteTargetFourByteAsFormat, item)
@@ -3837,13 +3837,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6UnicastExportRouteTargetIpAddressFormat = make([]VRFIpv6UnicastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6UnicastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6UnicastExportRouteTargetIpAddressFormat = append(data.Ipv6UnicastExportRouteTargetIpAddressFormat, item)
@@ -3860,7 +3860,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetTwoByteAsFormat = append(data.Ipv4MulticastImportRouteTargetTwoByteAsFormat, item)
@@ -3877,7 +3877,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetFourByteAsFormat = append(data.Ipv4MulticastImportRouteTargetFourByteAsFormat, item)
@@ -3888,13 +3888,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4MulticastImportRouteTargetIpAddressFormat = make([]VRFIpv4MulticastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4MulticastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastImportRouteTargetIpAddressFormat = append(data.Ipv4MulticastImportRouteTargetIpAddressFormat, item)
@@ -3911,7 +3911,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetTwoByteAsFormat = append(data.Ipv4MulticastExportRouteTargetTwoByteAsFormat, item)
@@ -3928,7 +3928,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetFourByteAsFormat = append(data.Ipv4MulticastExportRouteTargetFourByteAsFormat, item)
@@ -3939,13 +3939,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv4MulticastExportRouteTargetIpAddressFormat = make([]VRFIpv4MulticastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv4MulticastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv4MulticastExportRouteTargetIpAddressFormat = append(data.Ipv4MulticastExportRouteTargetIpAddressFormat, item)
@@ -3962,7 +3962,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetTwoByteAsFormat = append(data.Ipv6MulticastImportRouteTargetTwoByteAsFormat, item)
@@ -3979,7 +3979,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetFourByteAsFormat = append(data.Ipv6MulticastImportRouteTargetFourByteAsFormat, item)
@@ -3990,13 +3990,13 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6MulticastImportRouteTargetIpAddressFormat = make([]VRFIpv6MulticastImportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6MulticastImportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastImportRouteTargetIpAddressFormat = append(data.Ipv6MulticastImportRouteTargetIpAddressFormat, item)
@@ -4013,7 +4013,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn2Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetTwoByteAsFormat = append(data.Ipv6MulticastExportRouteTargetTwoByteAsFormat, item)
@@ -4030,7 +4030,7 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Asn4Index = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetFourByteAsFormat = append(data.Ipv6MulticastExportRouteTargetFourByteAsFormat, item)
@@ -4041,20 +4041,20 @@ func (data *VRFData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Ipv6MulticastExportRouteTargetIpAddressFormat = make([]VRFIpv6MulticastExportRouteTargetIpAddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := VRFIpv6MulticastExportRouteTargetIpAddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4-address-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Ipv4AddressIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("stitching"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("stitching"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Stitching = types.StringValue(cValue.String())
 			}
 			data.Ipv6MulticastExportRouteTargetIpAddressFormat = append(data.Ipv6MulticastExportRouteTargetIpAddressFormat, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "vpn.id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.VpnId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "remote-route-filtering.disable"); value.Exists() {

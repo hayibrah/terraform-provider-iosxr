@@ -749,12 +749,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.RpAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpAddresses[i].Address.IsNull() {
 			data.RpAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.RpAddresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("access-list"); value.Exists() && value.Type == gjson.String && !data.RpAddresses[i].AccessList.IsNull() {
+		if value := r.Get("access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpAddresses[i].AccessList.IsNull() {
 			data.RpAddresses[i].AccessList = types.StringValue(value.String())
 		} else {
 			data.RpAddresses[i].AccessList = types.StringNull()
@@ -792,12 +792,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.RpAddressesBidir[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpAddressesBidir[i].Address.IsNull() {
 			data.RpAddressesBidir[i].Address = types.StringValue(value.String())
 		} else {
 			data.RpAddressesBidir[i].Address = types.StringNull()
 		}
-		if value := r.Get("access-list"); value.Exists() && value.Type == gjson.String && !data.RpAddressesBidir[i].AccessList.IsNull() {
+		if value := r.Get("access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpAddressesBidir[i].AccessList.IsNull() {
 			data.RpAddressesBidir[i].AccessList = types.StringValue(value.String())
 		} else {
 			data.RpAddressesBidir[i].AccessList = types.StringNull()
@@ -812,12 +812,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 			data.RpAddressesBidir[i].Override = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && value.Type == gjson.String && !data.RpStaticDeny.IsNull() {
+	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpStaticDeny.IsNull() {
 		data.RpStaticDeny = types.StringValue(value.String())
 	} else {
 		data.RpStaticDeny = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && value.Type == gjson.String && !data.AcceptRegister.IsNull() {
+	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AcceptRegister.IsNull() {
 		data.AcceptRegister = types.StringValue(value.String())
 	} else {
 		data.AcceptRegister = types.StringNull()
@@ -831,7 +831,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.SuppressDataRegisters = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "register-source"); value.Exists() && value.Type == gjson.String && !data.RegisterSource.IsNull() {
+	if value := gjson.GetBytes(res, "register-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RegisterSource.IsNull() {
 		data.RegisterSource = types.StringValue(value.String())
 	} else {
 		data.RegisterSource = types.StringNull()
@@ -845,7 +845,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.SuppressRpfChangePrunes = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && value.Type == gjson.String && !data.NeighborFilter.IsNull() {
+	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NeighborFilter.IsNull() {
 		data.NeighborFilter = types.StringValue(value.String())
 	} else {
 		data.NeighborFilter = types.StringNull()
@@ -869,7 +869,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.SptThresholdInfinity = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && value.Type == gjson.String && !data.SptThresholdInfinityGroupList.IsNull() {
+	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SptThresholdInfinityGroupList.IsNull() {
 		data.SptThresholdInfinityGroupList = types.StringValue(value.String())
 	} else {
 		data.SptThresholdInfinityGroupList = types.StringNull()
@@ -1082,12 +1082,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.RpfVectorStandardEncoding = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && value.Type == gjson.String && !data.RpfTopologyRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RpfTopologyRoutePolicy.IsNull() {
 		data.RpfTopologyRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RpfTopologyRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && value.Type == gjson.String && !data.MdtNeighborFilter.IsNull() {
+	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MdtNeighborFilter.IsNull() {
 		data.MdtNeighborFilter = types.StringValue(value.String())
 	} else {
 		data.MdtNeighborFilter = types.StringNull()
@@ -1102,7 +1102,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MdtDataAnnounceInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && value.Type == gjson.String && !data.MdtCMulticastType.IsNull() {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MdtCMulticastType.IsNull() {
 		data.MdtCMulticastType = types.StringValue(value.String())
 	} else {
 		data.MdtCMulticastType = types.StringNull()
@@ -1162,7 +1162,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MdtCMulticastSourceTreePruneDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && value.Type == gjson.String && !data.MdtCMulticastMigrationRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MdtCMulticastMigrationRoutePolicy.IsNull() {
 		data.MdtCMulticastMigrationRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MdtCMulticastMigrationRoutePolicy = types.StringNull()
@@ -1176,12 +1176,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.AllowRp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && value.Type == gjson.String && !data.AllowRpList.IsNull() {
+	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AllowRpList.IsNull() {
 		data.AllowRpList = types.StringValue(value.String())
 	} else {
 		data.AllowRpList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && value.Type == gjson.String && !data.AllowRpGroupList.IsNull() {
+	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AllowRpGroupList.IsNull() {
 		data.AllowRpGroupList = types.StringValue(value.String())
 	} else {
 		data.AllowRpGroupList = types.StringNull()
@@ -1191,12 +1191,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.SgExpiryTimer = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && value.Type == gjson.String && !data.SgList.IsNull() {
+	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SgList.IsNull() {
 		data.SgList = types.StringValue(value.String())
 	} else {
 		data.SgList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && value.Type == gjson.String && !data.SsmRange.IsNull() {
+	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SsmRange.IsNull() {
 		data.SsmRange = types.StringValue(value.String())
 	} else {
 		data.SsmRange = types.StringNull()
@@ -1255,7 +1255,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MultipathHashSourceGroup = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && value.Type == gjson.String && !data.BsrCandidateBsrAddress.IsNull() {
+	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BsrCandidateBsrAddress.IsNull() {
 		data.BsrCandidateBsrAddress = types.StringValue(value.String())
 	} else {
 		data.BsrCandidateBsrAddress = types.StringNull()
@@ -1293,12 +1293,12 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.BsrCandidateRps[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BsrCandidateRps[i].Address.IsNull() {
 			data.BsrCandidateRps[i].Address = types.StringValue(value.String())
 		} else {
 			data.BsrCandidateRps[i].Address = types.StringNull()
 		}
-		if value := r.Get("group-list"); value.Exists() && value.Type == gjson.String && !data.BsrCandidateRps[i].GroupList.IsNull() {
+		if value := r.Get("group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BsrCandidateRps[i].GroupList.IsNull() {
 			data.BsrCandidateRps[i].GroupList = types.StringValue(value.String())
 		} else {
 			data.BsrCandidateRps[i].GroupList = types.StringNull()
@@ -1313,7 +1313,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 		} else {
 			data.BsrCandidateRps[i].Interval = types.Int64Null()
 		}
-		if value := r.Get("bidir.group-list"); value.Exists() && value.Type == gjson.String && !data.BsrCandidateRps[i].BidirGroupList.IsNull() {
+		if value := r.Get("bidir.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BsrCandidateRps[i].BidirGroupList.IsNull() {
 			data.BsrCandidateRps[i].BidirGroupList = types.StringValue(value.String())
 		} else {
 			data.BsrCandidateRps[i].BidirGroupList = types.StringNull()
@@ -1352,7 +1352,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.BsrRelayVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BsrRelayVrfs[i].VrfName.IsNull() {
 			data.BsrRelayVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.BsrRelayVrfs[i].VrfName = types.StringNull()
@@ -1390,7 +1390,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -1443,7 +1443,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 		} else {
 			data.Interfaces[i].OverrideInterval = types.Int64Null()
 		}
-		if value := r.Get("neighbor-filter"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].NeighborFilter.IsNull() {
+		if value := r.Get("neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].NeighborFilter.IsNull() {
 			data.Interfaces[i].NeighborFilter = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].NeighborFilter = types.StringNull()
@@ -1458,7 +1458,7 @@ func (data *RouterPIMIPv6) updateFromBody(ctx context.Context, res []byte, versi
 		} else {
 			data.Interfaces[i].MaximumRouteInterfacesThreshold = types.Int64Null()
 		}
-		if value := r.Get("maximum.route-interfaces.access-list"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].MaximumRouteInterfacesAccessList.IsNull() {
+		if value := r.Get("maximum.route-interfaces.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].MaximumRouteInterfacesAccessList.IsNull() {
 			data.Interfaces[i].MaximumRouteInterfacesAccessList = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].MaximumRouteInterfacesAccessList = types.StringNull()
@@ -1503,10 +1503,10 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 		data.RpAddresses = make([]RouterPIMIPv6RpAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6RpAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("override"); cValue.Exists() {
@@ -1522,10 +1522,10 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 		data.RpAddressesBidir = make([]RouterPIMIPv6RpAddressesBidir, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6RpAddressesBidir{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("override"); cValue.Exists() {
@@ -1537,10 +1537,10 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RpStaticDeny = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AcceptRegister = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "suppress-data-registers"); value.Exists() {
@@ -1548,7 +1548,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SuppressDataRegisters = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "register-source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "register-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RegisterSource = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "suppress-rpf-change-prunes"); value.Exists() {
@@ -1556,7 +1556,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SuppressRpfChangePrunes = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NeighborFilter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "convergence.rpf-conflict-join-delay"); value.Exists() && value.Type == gjson.Number {
@@ -1570,7 +1570,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SptThresholdInfinity = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SptThresholdInfinityGroupList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "old-register-checksum"); value.Exists() {
@@ -1695,10 +1695,10 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.RpfVectorStandardEncoding = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RpfTopologyRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtNeighborFilter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mdt.data.switchover-interval"); value.Exists() && value.Type == gjson.Number {
@@ -1707,7 +1707,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	if value := gjson.GetBytes(res, "mdt.data.announce-interval"); value.Exists() && value.Type == gjson.Number {
 		data.MdtDataAnnounceInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtCMulticastType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.announce-pim-join-tlv"); value.Exists() {
@@ -1741,7 +1741,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.source-tree-prune-delay"); value.Exists() && value.Type == gjson.Number {
 		data.MdtCMulticastSourceTreePruneDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtCMulticastMigrationRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allow-rp"); value.Exists() {
@@ -1749,19 +1749,19 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.AllowRp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllowRpList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllowRpGroupList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-expiry-timer-value"); value.Exists() && value.Type == gjson.Number {
 		data.SgExpiryTimer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SgList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SsmRange = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ssm.disable"); value.Exists() {
@@ -1794,7 +1794,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.MultipathHashSourceGroup = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BsrCandidateBsrAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bsr.candidate-bsr.hash-mask-len"); value.Exists() && value.Type == gjson.Number {
@@ -1807,10 +1807,10 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 		data.BsrCandidateRps = make([]RouterPIMIPv6BsrCandidateRps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6BsrCandidateRps{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("group-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1819,7 +1819,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 			if cValue := v.Get("interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Interval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bidir.group-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bidir.group-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BidirGroupList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bidir.priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1836,7 +1836,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 		data.BsrRelayVrfs = make([]RouterPIMIPv6BsrRelayVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6BsrRelayVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("listen"); cValue.Exists() {
@@ -1852,7 +1852,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 		data.Interfaces = make([]RouterPIMIPv6Interfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6Interfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("enable"); cValue.Exists() {
@@ -1883,7 +1883,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 			if cValue := v.Get("override-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OverrideInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("neighbor-filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("maximum.route-interfaces.maximum-route-interfaces"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1892,7 +1892,7 @@ func (data *RouterPIMIPv6) fromBody(ctx context.Context, res []byte, version str
 			if cValue := v.Get("maximum.route-interfaces.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MaximumRouteInterfacesThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maximum.route-interfaces.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("maximum.route-interfaces.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MaximumRouteInterfacesAccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1926,10 +1926,10 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 		data.RpAddresses = make([]RouterPIMIPv6RpAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6RpAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("override"); cValue.Exists() {
@@ -1945,10 +1945,10 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 		data.RpAddressesBidir = make([]RouterPIMIPv6RpAddressesBidir, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6RpAddressesBidir{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("override"); cValue.Exists() {
@@ -1960,10 +1960,10 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rp-static-deny"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RpStaticDeny = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "accept-register"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AcceptRegister = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "suppress-data-registers"); value.Exists() {
@@ -1971,7 +1971,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.SuppressDataRegisters = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "register-source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "register-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RegisterSource = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "suppress-rpf-change-prunes"); value.Exists() {
@@ -1979,7 +1979,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.SuppressRpfChangePrunes = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NeighborFilter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "convergence.rpf-conflict-join-delay"); value.Exists() && value.Type == gjson.Number {
@@ -1993,7 +1993,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.SptThresholdInfinity = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spt-threshold.infinity.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SptThresholdInfinityGroupList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "old-register-checksum"); value.Exists() {
@@ -2118,10 +2118,10 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.RpfVectorStandardEncoding = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpf.topology.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RpfTopologyRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.neighbor-filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtNeighborFilter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mdt.data.switchover-interval"); value.Exists() && value.Type == gjson.Number {
@@ -2130,7 +2130,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	if value := gjson.GetBytes(res, "mdt.data.announce-interval"); value.Exists() && value.Type == gjson.Number {
 		data.MdtDataAnnounceInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtCMulticastType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.announce-pim-join-tlv"); value.Exists() {
@@ -2164,7 +2164,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.source-tree-prune-delay"); value.Exists() && value.Type == gjson.Number {
 		data.MdtCMulticastSourceTreePruneDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mdt.c-multicast-routing.migration.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MdtCMulticastMigrationRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allow-rp"); value.Exists() {
@@ -2172,19 +2172,19 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.AllowRp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allow-rp.rp-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllowRpList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allow-rp.group-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllowRpGroupList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-expiry-timer-value"); value.Exists() && value.Type == gjson.Number {
 		data.SgExpiryTimer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sg-expiry-timer.sg-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SgList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ssm.range"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SsmRange = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ssm.disable"); value.Exists() {
@@ -2217,7 +2217,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.MultipathHashSourceGroup = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bsr.candidate-bsr.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BsrCandidateBsrAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bsr.candidate-bsr.hash-mask-len"); value.Exists() && value.Type == gjson.Number {
@@ -2230,10 +2230,10 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 		data.BsrCandidateRps = make([]RouterPIMIPv6BsrCandidateRps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6BsrCandidateRps{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("group-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2242,7 +2242,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 			if cValue := v.Get("interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Interval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bidir.group-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bidir.group-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BidirGroupList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bidir.priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2259,7 +2259,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 		data.BsrRelayVrfs = make([]RouterPIMIPv6BsrRelayVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6BsrRelayVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("listen"); cValue.Exists() {
@@ -2275,7 +2275,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 		data.Interfaces = make([]RouterPIMIPv6Interfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterPIMIPv6Interfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("enable"); cValue.Exists() {
@@ -2306,7 +2306,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 			if cValue := v.Get("override-interval"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.OverrideInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("neighbor-filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("maximum.route-interfaces.maximum-route-interfaces"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2315,7 +2315,7 @@ func (data *RouterPIMIPv6Data) fromBody(ctx context.Context, res []byte, version
 			if cValue := v.Get("maximum.route-interfaces.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MaximumRouteInterfacesThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("maximum.route-interfaces.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("maximum.route-interfaces.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MaximumRouteInterfacesAccessList = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {

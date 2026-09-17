@@ -306,7 +306,7 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("domain-name"); value.Exists() && value.Type == gjson.String && !data.Domains[i].DomainName.IsNull() {
+		if value := r.Get("domain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Domains[i].DomainName.IsNull() {
 			data.Domains[i].DomainName = types.StringValue(value.String())
 		} else {
 			data.Domains[i].DomainName = types.StringNull()
@@ -375,7 +375,7 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -444,7 +444,7 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 		data.Domains = make([]LPTSPuntPoliceDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LPTSPuntPoliceDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -479,7 +479,7 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 		data.Interfaces = make([]LPTSPuntPoliceInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LPTSPuntPoliceInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -537,7 +537,7 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, versio
 		data.Domains = make([]LPTSPuntPoliceDomains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LPTSPuntPoliceDomains{}
-			if cValue := v.Get("domain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -572,7 +572,7 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, versio
 		data.Interfaces = make([]LPTSPuntPoliceInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LPTSPuntPoliceInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {

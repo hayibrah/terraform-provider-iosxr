@@ -245,7 +245,7 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.PathMtuDiscovery = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && value.Type == gjson.String && !data.PathMtuDiscoveryAgeTimer.IsNull() {
+	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PathMtuDiscoveryAgeTimer.IsNull() {
 		data.PathMtuDiscoveryAgeTimer = types.StringValue(value.String())
 	} else {
 		data.PathMtuDiscoveryAgeTimer = types.StringNull()
@@ -325,7 +325,7 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("keychain-name"); value.Exists() && value.Type == gjson.String && !data.AoKeychains[i].KeychainName.IsNull() {
+		if value := r.Get("keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AoKeychains[i].KeychainName.IsNull() {
 			data.AoKeychains[i].KeychainName = types.StringValue(value.String())
 		} else {
 			data.AoKeychains[i].KeychainName = types.StringNull()
@@ -353,7 +353,7 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("key-name"); value.Exists() && value.Type == gjson.String && !data.AoKeychains[i].Keys[ci].KeyName.IsNull() {
+			if value := cr.Get("key-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AoKeychains[i].Keys[ci].KeyName.IsNull() {
 				data.AoKeychains[i].Keys[ci].KeyName = types.StringValue(value.String())
 			} else {
 				data.AoKeychains[i].Keys[ci].KeyName = types.StringNull()
@@ -388,7 +388,7 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.PathMtuDiscovery = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PathMtuDiscoveryAgeTimer = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && value.Type == gjson.Number {
@@ -425,14 +425,14 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 		data.AoKeychains = make([]TCPAoKeychains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TCPAoKeychains{}
-			if cValue := v.Get("keychain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("keychain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("keys.key"); cValue.Exists() {
 				item.Keys = make([]TCPAoKeychainsKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TCPAoKeychainsKeys{}
-					if ccValue := cv.Get("key-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("key-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.KeyName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("send-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -467,7 +467,7 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.PathMtuDiscovery = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PathMtuDiscoveryAgeTimer = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && value.Type == gjson.Number {
@@ -504,14 +504,14 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.AoKeychains = make([]TCPAoKeychains, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TCPAoKeychains{}
-			if cValue := v.Get("keychain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("keychain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("keys.key"); cValue.Exists() {
 				item.Keys = make([]TCPAoKeychainsKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TCPAoKeychainsKeys{}
-					if ccValue := cv.Get("key-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("key-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.KeyName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("send-id"); ccValue.Exists() && ccValue.Type == gjson.Number {

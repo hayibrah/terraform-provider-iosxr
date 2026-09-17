@@ -939,7 +939,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].Address.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].Address.IsNull() {
 			data.Neighbors[i].Address = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
@@ -1016,7 +1016,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 	} else {
 		data.AuthenticationMessageDigest = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String && !data.AuthenticationKeychainName.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthenticationKeychainName.IsNull() {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	} else {
 		data.AuthenticationKeychainName = types.StringNull()
@@ -1271,12 +1271,12 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 	} else {
 		data.PassiveDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListInAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListInAcl.IsNull() {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListInAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String && !data.DistributeListInRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListInRoutePolicy.IsNull() {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.DistributeListInRoutePolicy = types.StringNull()
@@ -1423,7 +1423,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -1452,7 +1452,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -1508,7 +1508,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -1537,7 +1537,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -1904,7 +1904,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 		} else {
 			data.AdjacencySidIndexes[i].Protected = types.BoolNull()
 		}
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AdjacencySidIndexes[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdjacencySidIndexes[i].NeighborAddress.IsNull() {
 			data.AdjacencySidIndexes[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AdjacencySidIndexes[i].NeighborAddress = types.StringNull()
@@ -1947,7 +1947,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 		} else {
 			data.AdjacencySidAbsolutes[i].Protected = types.BoolNull()
 		}
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AdjacencySidAbsolutes[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdjacencySidAbsolutes[i].NeighborAddress.IsNull() {
 			data.AdjacencySidAbsolutes[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AdjacencySidAbsolutes[i].NeighborAddress = types.StringNull()
@@ -1958,7 +1958,7 @@ func (data *RouterOSPFVRFAreaInterface) updateFromBody(ctx context.Context, res 
 	} else {
 		data.Weight = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && value.Type == gjson.String && !data.AdvertisePrefixRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdvertisePrefixRoutePolicy.IsNull() {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.AdvertisePrefixRoutePolicy = types.StringNull()
@@ -1984,7 +1984,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 		data.Neighbors = make([]RouterOSPFVRFAreaInterfaceNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("database-filter.all.out"); cValue.Exists() {
@@ -2026,7 +2026,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 	} else {
 		data.AuthenticationMessageDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.keychain"); value.Exists() {
@@ -2171,10 +2171,10 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 	} else {
 		data.PassiveDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packet-size"); value.Exists() && value.Type == gjson.Number {
@@ -2248,7 +2248,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkExcludeInterfaces = append(data.FastReroutePerLinkExcludeInterfaces, item)
@@ -2259,7 +2259,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkLfaCandidateInterfaces = append(data.FastReroutePerLinkLfaCandidateInterfaces, item)
@@ -2285,7 +2285,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixExcludeInterfaces = append(data.FastReroutePerPrefixExcludeInterfaces, item)
@@ -2296,7 +2296,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixLfaCandidateInterfaces = append(data.FastReroutePerPrefixLfaCandidateInterfaces, item)
@@ -2493,7 +2493,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Protected = types.BoolValue(false)
 			}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			data.AdjacencySidIndexes = append(data.AdjacencySidIndexes, item)
@@ -2512,7 +2512,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Protected = types.BoolValue(false)
 			}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			data.AdjacencySidAbsolutes = append(data.AdjacencySidAbsolutes, item)
@@ -2522,7 +2522,7 @@ func (data *RouterOSPFVRFAreaInterface) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
 		data.Weight = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && value.Type == gjson.Number {
@@ -2542,7 +2542,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 		data.Neighbors = make([]RouterOSPFVRFAreaInterfaceNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("database-filter.all.out"); cValue.Exists() {
@@ -2584,7 +2584,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 	} else {
 		data.AuthenticationMessageDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.keychain"); value.Exists() {
@@ -2729,10 +2729,10 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 	} else {
 		data.PassiveDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packet-size"); value.Exists() && value.Type == gjson.Number {
@@ -2806,7 +2806,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkExcludeInterfaces = append(data.FastReroutePerLinkExcludeInterfaces, item)
@@ -2817,7 +2817,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkLfaCandidateInterfaces = append(data.FastReroutePerLinkLfaCandidateInterfaces, item)
@@ -2843,7 +2843,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixExcludeInterfaces = append(data.FastReroutePerPrefixExcludeInterfaces, item)
@@ -2854,7 +2854,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterOSPFVRFAreaInterfaceFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFVRFAreaInterfaceFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixLfaCandidateInterfaces = append(data.FastReroutePerPrefixLfaCandidateInterfaces, item)
@@ -3051,7 +3051,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 			} else {
 				item.Protected = types.BoolValue(false)
 			}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			data.AdjacencySidIndexes = append(data.AdjacencySidIndexes, item)
@@ -3070,7 +3070,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 			} else {
 				item.Protected = types.BoolValue(false)
 			}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			data.AdjacencySidAbsolutes = append(data.AdjacencySidAbsolutes, item)
@@ -3080,7 +3080,7 @@ func (data *RouterOSPFVRFAreaInterfaceData) fromBody(ctx context.Context, res []
 	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
 		data.Weight = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && value.Type == gjson.Number {

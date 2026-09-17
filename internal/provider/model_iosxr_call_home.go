@@ -398,7 +398,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("mail-server-name"); value.Exists() && value.Type == gjson.String && !data.MailServers[i].MailServerName.IsNull() {
+		if value := r.Get("mail-server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MailServers[i].MailServerName.IsNull() {
 			data.MailServers[i].MailServerName = types.StringValue(value.String())
 		} else {
 			data.MailServers[i].MailServerName = types.StringNull()
@@ -409,17 +409,17 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 			data.MailServers[i].Priority = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && value.Type == gjson.String && !data.SenderFrom.IsNull() {
+	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SenderFrom.IsNull() {
 		data.SenderFrom = types.StringValue(value.String())
 	} else {
 		data.SenderFrom = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && value.Type == gjson.String && !data.SenderReplyTo.IsNull() {
+	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SenderReplyTo.IsNull() {
 		data.SenderReplyTo = types.StringValue(value.String())
 	} else {
 		data.SenderReplyTo = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && value.Type == gjson.String && !data.ContactEmail.IsNull() {
+	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ContactEmail.IsNull() {
 		data.ContactEmail = types.StringValue(value.String())
 	} else {
 		data.ContactEmail = types.StringNull()
@@ -433,27 +433,27 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.ContactSmartLicensing = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && value.Type == gjson.String && !data.PhoneNumber.IsNull() {
+	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PhoneNumber.IsNull() {
 		data.PhoneNumber = types.StringValue(value.String())
 	} else {
 		data.PhoneNumber = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "street-address"); value.Exists() && value.Type == gjson.String && !data.StreetAddress.IsNull() {
+	if value := gjson.GetBytes(res, "street-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.StreetAddress.IsNull() {
 		data.StreetAddress = types.StringValue(value.String())
 	} else {
 		data.StreetAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && value.Type == gjson.String && !data.CustomerId.IsNull() {
+	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.CustomerId.IsNull() {
 		data.CustomerId = types.StringValue(value.String())
 	} else {
 		data.CustomerId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && value.Type == gjson.String && !data.ContractId.IsNull() {
+	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ContractId.IsNull() {
 		data.ContractId = types.StringValue(value.String())
 	} else {
 		data.ContractId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "site-id"); value.Exists() && value.Type == gjson.String && !data.SiteId.IsNull() {
+	if value := gjson.GetBytes(res, "site-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SiteId.IsNull() {
 		data.SiteId = types.StringValue(value.String())
 	} else {
 		data.SiteId = types.StringNull()
@@ -490,7 +490,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.DataPrivacyLevelHigh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && value.Type == gjson.String && !data.HttpProxyName.IsNull() {
+	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.HttpProxyName.IsNull() {
 		data.HttpProxyName = types.StringValue(value.String())
 	} else {
 		data.HttpProxyName = types.StringNull()
@@ -500,7 +500,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.HttpProxyPort = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String && !data.SourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
 		data.SourceInterface = types.StringNull()
@@ -514,7 +514,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SyslogThrottling = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "vrf"); value.Exists() && value.Type == gjson.String && !data.Vrf.IsNull() {
+	if value := gjson.GetBytes(res, "vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrf.IsNull() {
 		data.Vrf = types.StringValue(value.String())
 	} else {
 		data.Vrf = types.StringNull()
@@ -528,7 +528,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AaaAuthorization = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && value.Type == gjson.String && !data.AaaAuthorizationUsername.IsNull() {
+	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AaaAuthorizationUsername.IsNull() {
 		data.AaaAuthorizationUsername = types.StringValue(value.String())
 	} else {
 		data.AaaAuthorizationUsername = types.StringNull()
@@ -556,7 +556,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profiles[i].ProfileName.IsNull() {
 			data.Profiles[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProfileName = types.StringNull()
@@ -593,12 +593,12 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 					return true
 				},
 			)
-			if value := cr.Get("address-type"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].DestinationAddresses[ci].AddressType.IsNull() {
+			if value := cr.Get("address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profiles[i].DestinationAddresses[ci].AddressType.IsNull() {
 				data.Profiles[i].DestinationAddresses[ci].AddressType = types.StringValue(value.String())
 			} else {
 				data.Profiles[i].DestinationAddresses[ci].AddressType = types.StringNull()
 			}
-			if value := cr.Get("destination-address"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].DestinationAddresses[ci].DestinationAddress.IsNull() {
+			if value := cr.Get("destination-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profiles[i].DestinationAddresses[ci].DestinationAddress.IsNull() {
 				data.Profiles[i].DestinationAddresses[ci].DestinationAddress = types.StringValue(value.String())
 			} else {
 				data.Profiles[i].DestinationAddresses[ci].DestinationAddress = types.StringNull()
@@ -725,7 +725,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 		data.MailServers = make([]CallHomeMailServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CallHomeMailServers{}
-			if cValue := v.Get("mail-server-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mail-server-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MailServerName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -735,13 +735,13 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SenderFrom = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SenderReplyTo = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ContactEmail = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "contact.smart-licensing"); value.Exists() {
@@ -749,19 +749,19 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.ContactSmartLicensing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PhoneNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "street-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "street-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.StreetAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CustomerId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ContractId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "site-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
@@ -782,13 +782,13 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.DataPrivacyLevelHigh = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HttpProxyName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && value.Type == gjson.Number {
 		data.HttpProxyPort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "syslog-throttling"); value.Exists() {
@@ -796,7 +796,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.SyslogThrottling = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Vrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "aaa-authorization.active"); value.Exists() {
@@ -804,14 +804,14 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.AaaAuthorization = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AaaAuthorizationUsername = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profiles = make([]CallHomeProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CallHomeProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("active"); cValue.Exists() {
@@ -823,10 +823,10 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 				item.DestinationAddresses = make([]CallHomeProfilesDestinationAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := CallHomeProfilesDestinationAddresses{}
-					if ccValue := cv.Get("address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("destination-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationAddress = types.StringValue(ccValue.String())
 					}
 					item.DestinationAddresses = append(item.DestinationAddresses, cItem)
@@ -911,7 +911,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 		data.MailServers = make([]CallHomeMailServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CallHomeMailServers{}
-			if cValue := v.Get("mail-server-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mail-server-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MailServerName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -921,13 +921,13 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sender.from"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SenderFrom = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sender.reply-to"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SenderReplyTo = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contact-email-addr"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ContactEmail = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "contact.smart-licensing"); value.Exists() {
@@ -935,19 +935,19 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.ContactSmartLicensing = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "phone-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PhoneNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "street-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "street-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.StreetAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "customer-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CustomerId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contract-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ContractId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "site-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
@@ -968,13 +968,13 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.DataPrivacyLevelHigh = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HttpProxyName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && value.Type == gjson.Number {
 		data.HttpProxyPort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "syslog-throttling"); value.Exists() {
@@ -982,7 +982,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.SyslogThrottling = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Vrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "aaa-authorization.active"); value.Exists() {
@@ -990,14 +990,14 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.AaaAuthorization = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "aaa-authorization.username"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AaaAuthorizationUsername = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "profiles.profile"); value.Exists() {
 		data.Profiles = make([]CallHomeProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := CallHomeProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("active"); cValue.Exists() {
@@ -1009,10 +1009,10 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 				item.DestinationAddresses = make([]CallHomeProfilesDestinationAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := CallHomeProfilesDestinationAddresses{}
-					if ccValue := cv.Get("address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("destination-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationAddress = types.StringValue(ccValue.String())
 					}
 					item.DestinationAddresses = append(item.DestinationAddresses, cItem)

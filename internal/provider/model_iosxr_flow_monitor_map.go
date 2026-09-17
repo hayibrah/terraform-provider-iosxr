@@ -542,7 +542,7 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("exporter-name"); value.Exists() && value.Type == gjson.String && !data.Exporters[i].Name.IsNull() {
+		if value := r.Get("exporter-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Exporters[i].Name.IsNull() {
 			data.Exporters[i].Name = types.StringValue(value.String())
 		} else {
 			data.Exporters[i].Name = types.StringNull()
@@ -1007,12 +1007,12 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.SflowOptionsSampleHeaderSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && value.Type == gjson.String && !data.SflowOptionsInputIfindex.IsNull() {
+	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SflowOptionsInputIfindex.IsNull() {
 		data.SflowOptionsInputIfindex = types.StringValue(value.String())
 	} else {
 		data.SflowOptionsInputIfindex = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && value.Type == gjson.String && !data.SflowOptionsOutputIfindex.IsNull() {
+	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SflowOptionsOutputIfindex.IsNull() {
 		data.SflowOptionsOutputIfindex = types.StringValue(value.String())
 	} else {
 		data.SflowOptionsOutputIfindex = types.StringNull()
@@ -1028,7 +1028,7 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 		data.Exporters = make([]FlowMonitorMapExporters, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := FlowMonitorMapExporters{}
-			if cValue := v.Get("exporter-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exporter-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.Exporters = append(data.Exporters, item)
@@ -1292,10 +1292,10 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && value.Type == gjson.Number {
 		data.SflowOptionsSampleHeaderSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SflowOptionsInputIfindex = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SflowOptionsOutputIfindex = types.StringValue(value.String())
 	}
 }
@@ -1309,7 +1309,7 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 		data.Exporters = make([]FlowMonitorMapExporters, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := FlowMonitorMapExporters{}
-			if cValue := v.Get("exporter-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exporter-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			data.Exporters = append(data.Exporters, item)
@@ -1573,10 +1573,10 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && value.Type == gjson.Number {
 		data.SflowOptionsSampleHeaderSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SflowOptionsInputIfindex = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sflow.options.output.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SflowOptionsOutputIfindex = types.StringValue(value.String())
 	}
 }

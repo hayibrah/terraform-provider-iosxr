@@ -2134,7 +2134,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].InterfaceName.IsNull() {
 			data.MgmtInbandInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandInterfaces[i].InterfaceName = types.StringNull()
@@ -2171,7 +2171,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringNull()
@@ -2205,7 +2205,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SshIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SshIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv4Hosts[ci].Address = types.StringNull()
@@ -2234,7 +2234,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringNull()
@@ -2268,7 +2268,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SshIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SshIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv6Hosts[ci].Address = types.StringNull()
@@ -2306,7 +2306,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringNull()
@@ -2340,7 +2340,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TelnetIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TelnetIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Hosts[ci].Address = types.StringNull()
@@ -2369,7 +2369,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringNull()
@@ -2403,7 +2403,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TelnetIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TelnetIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Hosts[ci].Address = types.StringNull()
@@ -2441,7 +2441,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringNull()
@@ -2475,7 +2475,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SnmpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SnmpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Hosts[ci].Address = types.StringNull()
@@ -2504,7 +2504,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringNull()
@@ -2538,7 +2538,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].SnmpIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].SnmpIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Hosts[ci].Address = types.StringNull()
@@ -2576,7 +2576,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringNull()
@@ -2610,7 +2610,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TftpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TftpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv4Hosts[ci].Address = types.StringNull()
@@ -2639,7 +2639,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringNull()
@@ -2673,7 +2673,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].TftpIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].TftpIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv6Hosts[ci].Address = types.StringNull()
@@ -2711,7 +2711,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringNull()
@@ -2745,7 +2745,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].HttpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].HttpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].HttpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].HttpIpv4Hosts[ci].Address = types.StringNull()
@@ -2783,7 +2783,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringNull()
@@ -2817,7 +2817,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].XmlIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].XmlIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv4Hosts[ci].Address = types.StringNull()
@@ -2846,7 +2846,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringNull()
@@ -2880,7 +2880,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].XmlIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].XmlIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv6Hosts[ci].Address = types.StringNull()
@@ -2918,7 +2918,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringNull()
@@ -2952,7 +2952,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].NetconfIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].NetconfIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Hosts[ci].Address = types.StringNull()
@@ -2981,7 +2981,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringNull()
@@ -3015,7 +3015,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].NetconfIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].NetconfIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Hosts[ci].Address = types.StringNull()
@@ -3053,7 +3053,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringNull()
@@ -3087,7 +3087,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].AllowAllIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].AllowAllIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Hosts[ci].Address = types.StringNull()
@@ -3116,7 +3116,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringNull()
@@ -3150,7 +3150,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandInterfaces[i].AllowAllIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandInterfaces[i].AllowAllIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Hosts[ci].Address = types.StringNull()
@@ -3189,7 +3189,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSshIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSshIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllSshIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSshIpv4Prefixes[i].Address = types.StringNull()
@@ -3223,7 +3223,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSshIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSshIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllSshIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSshIpv4Hosts[i].Address = types.StringNull()
@@ -3252,7 +3252,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSshIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSshIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllSshIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSshIpv6Prefixes[i].Address = types.StringNull()
@@ -3286,7 +3286,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSshIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSshIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllSshIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSshIpv6Hosts[i].Address = types.StringNull()
@@ -3324,7 +3324,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTelnetIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTelnetIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllTelnetIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTelnetIpv4Prefixes[i].Address = types.StringNull()
@@ -3358,7 +3358,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTelnetIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTelnetIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllTelnetIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTelnetIpv4Hosts[i].Address = types.StringNull()
@@ -3387,7 +3387,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTelnetIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTelnetIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllTelnetIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTelnetIpv6Prefixes[i].Address = types.StringNull()
@@ -3421,7 +3421,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTelnetIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTelnetIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllTelnetIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTelnetIpv6Hosts[i].Address = types.StringNull()
@@ -3459,7 +3459,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSnmpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSnmpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllSnmpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSnmpIpv4Prefixes[i].Address = types.StringNull()
@@ -3493,7 +3493,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSnmpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSnmpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllSnmpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSnmpIpv4Hosts[i].Address = types.StringNull()
@@ -3522,7 +3522,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSnmpIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSnmpIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllSnmpIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSnmpIpv6Prefixes[i].Address = types.StringNull()
@@ -3556,7 +3556,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllSnmpIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllSnmpIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllSnmpIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllSnmpIpv6Hosts[i].Address = types.StringNull()
@@ -3594,7 +3594,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTftpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTftpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllTftpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTftpIpv4Prefixes[i].Address = types.StringNull()
@@ -3628,7 +3628,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTftpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTftpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllTftpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTftpIpv4Hosts[i].Address = types.StringNull()
@@ -3657,7 +3657,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTftpIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTftpIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllTftpIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTftpIpv6Prefixes[i].Address = types.StringNull()
@@ -3691,7 +3691,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllTftpIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllTftpIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllTftpIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllTftpIpv6Hosts[i].Address = types.StringNull()
@@ -3729,7 +3729,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllHttpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllHttpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllHttpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllHttpIpv4Prefixes[i].Address = types.StringNull()
@@ -3763,7 +3763,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllHttpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllHttpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllHttpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllHttpIpv4Hosts[i].Address = types.StringNull()
@@ -3801,7 +3801,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllXmlIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllXmlIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllXmlIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllXmlIpv4Prefixes[i].Address = types.StringNull()
@@ -3835,7 +3835,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllXmlIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllXmlIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllXmlIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllXmlIpv4Hosts[i].Address = types.StringNull()
@@ -3864,7 +3864,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllXmlIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllXmlIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllXmlIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllXmlIpv6Prefixes[i].Address = types.StringNull()
@@ -3898,7 +3898,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllXmlIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllXmlIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllXmlIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllXmlIpv6Hosts[i].Address = types.StringNull()
@@ -3936,7 +3936,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllNetconfIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllNetconfIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllNetconfIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllNetconfIpv4Prefixes[i].Address = types.StringNull()
@@ -3970,7 +3970,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllNetconfIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllNetconfIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllNetconfIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllNetconfIpv4Hosts[i].Address = types.StringNull()
@@ -3999,7 +3999,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllNetconfIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllNetconfIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllNetconfIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllNetconfIpv6Prefixes[i].Address = types.StringNull()
@@ -4033,7 +4033,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllNetconfIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllNetconfIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllNetconfIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllNetconfIpv6Hosts[i].Address = types.StringNull()
@@ -4071,7 +4071,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address = types.StringNull()
@@ -4105,7 +4105,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllAllowAllIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllAllowAllIpv4Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllAllowAllIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllAllowAllIpv4Hosts[i].Address = types.StringNull()
@@ -4134,7 +4134,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address = types.StringNull()
@@ -4168,7 +4168,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtInbandAllAllowAllIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtInbandAllAllowAllIpv6Hosts[i].Address.IsNull() {
 			data.MgmtInbandAllAllowAllIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtInbandAllAllowAllIpv6Hosts[i].Address = types.StringNull()
@@ -4197,7 +4197,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].InterfaceName.IsNull() {
 			data.MgmtOobInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.MgmtOobInterfaces[i].InterfaceName = types.StringNull()
@@ -4234,7 +4234,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringNull()
@@ -4268,7 +4268,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SshIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SshIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv4Hosts[ci].Address = types.StringNull()
@@ -4297,7 +4297,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringNull()
@@ -4331,7 +4331,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SshIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SshIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv6Hosts[ci].Address = types.StringNull()
@@ -4369,7 +4369,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringNull()
@@ -4403,7 +4403,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TelnetIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TelnetIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv4Hosts[ci].Address = types.StringNull()
@@ -4432,7 +4432,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringNull()
@@ -4466,7 +4466,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TelnetIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TelnetIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv6Hosts[ci].Address = types.StringNull()
@@ -4504,7 +4504,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringNull()
@@ -4538,7 +4538,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SnmpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SnmpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv4Hosts[ci].Address = types.StringNull()
@@ -4567,7 +4567,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringNull()
@@ -4601,7 +4601,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].SnmpIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].SnmpIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv6Hosts[ci].Address = types.StringNull()
@@ -4639,7 +4639,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringNull()
@@ -4673,7 +4673,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TftpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TftpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv4Hosts[ci].Address = types.StringNull()
@@ -4702,7 +4702,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringNull()
@@ -4736,7 +4736,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].TftpIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].TftpIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv6Hosts[ci].Address = types.StringNull()
@@ -4774,7 +4774,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringNull()
@@ -4808,7 +4808,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].HttpIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].HttpIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].HttpIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].HttpIpv4Hosts[ci].Address = types.StringNull()
@@ -4846,7 +4846,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringNull()
@@ -4880,7 +4880,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].XmlIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].XmlIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv4Hosts[ci].Address = types.StringNull()
@@ -4909,7 +4909,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringNull()
@@ -4943,7 +4943,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].XmlIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].XmlIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv6Hosts[ci].Address = types.StringNull()
@@ -4981,7 +4981,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringNull()
@@ -5015,7 +5015,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].NetconfIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].NetconfIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv4Hosts[ci].Address = types.StringNull()
@@ -5044,7 +5044,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringNull()
@@ -5078,7 +5078,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].NetconfIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].NetconfIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv6Hosts[ci].Address = types.StringNull()
@@ -5116,7 +5116,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringNull()
@@ -5150,7 +5150,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].AllowAllIpv4Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].AllowAllIpv4Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Hosts[ci].Address = types.StringNull()
@@ -5179,7 +5179,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringNull()
@@ -5213,14 +5213,14 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobInterfaces[i].AllowAllIpv6Hosts[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobInterfaces[i].AllowAllIpv6Hosts[ci].Address.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Hosts[ci].Address = types.StringValue(value.String())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Hosts[ci].Address = types.StringNull()
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && value.Type == gjson.String && !data.MgmtOobVrf.IsNull() {
+	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobVrf.IsNull() {
 		data.MgmtOobVrf = types.StringValue(value.String())
 	} else {
 		data.MgmtOobVrf = types.StringNull()
@@ -5266,7 +5266,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSshIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSshIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllSshIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSshIpv4Prefixes[i].Address = types.StringNull()
@@ -5300,7 +5300,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSshIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSshIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllSshIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSshIpv4Hosts[i].Address = types.StringNull()
@@ -5329,7 +5329,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSshIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSshIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllSshIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSshIpv6Prefixes[i].Address = types.StringNull()
@@ -5363,7 +5363,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSshIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSshIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllSshIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSshIpv6Hosts[i].Address = types.StringNull()
@@ -5401,7 +5401,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTelnetIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTelnetIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllTelnetIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTelnetIpv4Prefixes[i].Address = types.StringNull()
@@ -5435,7 +5435,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTelnetIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTelnetIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllTelnetIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTelnetIpv4Hosts[i].Address = types.StringNull()
@@ -5464,7 +5464,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTelnetIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTelnetIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllTelnetIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTelnetIpv6Prefixes[i].Address = types.StringNull()
@@ -5498,7 +5498,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTelnetIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTelnetIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllTelnetIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTelnetIpv6Hosts[i].Address = types.StringNull()
@@ -5536,7 +5536,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSnmpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSnmpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllSnmpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSnmpIpv4Prefixes[i].Address = types.StringNull()
@@ -5570,7 +5570,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSnmpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSnmpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllSnmpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSnmpIpv4Hosts[i].Address = types.StringNull()
@@ -5599,7 +5599,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSnmpIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSnmpIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllSnmpIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSnmpIpv6Prefixes[i].Address = types.StringNull()
@@ -5633,7 +5633,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllSnmpIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllSnmpIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllSnmpIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllSnmpIpv6Hosts[i].Address = types.StringNull()
@@ -5671,7 +5671,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTftpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTftpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllTftpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTftpIpv4Prefixes[i].Address = types.StringNull()
@@ -5705,7 +5705,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTftpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTftpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllTftpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTftpIpv4Hosts[i].Address = types.StringNull()
@@ -5734,7 +5734,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTftpIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTftpIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllTftpIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTftpIpv6Prefixes[i].Address = types.StringNull()
@@ -5768,7 +5768,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllTftpIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllTftpIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllTftpIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllTftpIpv6Hosts[i].Address = types.StringNull()
@@ -5806,7 +5806,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllHttpIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllHttpIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllHttpIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllHttpIpv4Prefixes[i].Address = types.StringNull()
@@ -5840,7 +5840,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllHttpIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllHttpIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllHttpIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllHttpIpv4Hosts[i].Address = types.StringNull()
@@ -5878,7 +5878,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllXmlIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllXmlIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllXmlIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllXmlIpv4Prefixes[i].Address = types.StringNull()
@@ -5912,7 +5912,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllXmlIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllXmlIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllXmlIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllXmlIpv4Hosts[i].Address = types.StringNull()
@@ -5941,7 +5941,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllXmlIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllXmlIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllXmlIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllXmlIpv6Prefixes[i].Address = types.StringNull()
@@ -5975,7 +5975,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllXmlIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllXmlIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllXmlIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllXmlIpv6Hosts[i].Address = types.StringNull()
@@ -6013,7 +6013,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllNetconfIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllNetconfIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllNetconfIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllNetconfIpv4Prefixes[i].Address = types.StringNull()
@@ -6047,7 +6047,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllNetconfIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllNetconfIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllNetconfIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllNetconfIpv4Hosts[i].Address = types.StringNull()
@@ -6076,7 +6076,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllNetconfIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllNetconfIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllNetconfIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllNetconfIpv6Prefixes[i].Address = types.StringNull()
@@ -6110,7 +6110,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllNetconfIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllNetconfIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllNetconfIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllNetconfIpv6Hosts[i].Address = types.StringNull()
@@ -6148,7 +6148,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllAllowAllIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllAllowAllIpv4Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllAllowAllIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllAllowAllIpv4Prefixes[i].Address = types.StringNull()
@@ -6182,7 +6182,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllAllowAllIpv4Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllAllowAllIpv4Hosts[i].Address.IsNull() {
 			data.MgmtOobAllAllowAllIpv4Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllAllowAllIpv4Hosts[i].Address = types.StringNull()
@@ -6211,7 +6211,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllAllowAllIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllAllowAllIpv6Prefixes[i].Address.IsNull() {
 			data.MgmtOobAllAllowAllIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllAllowAllIpv6Prefixes[i].Address = types.StringNull()
@@ -6245,7 +6245,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MgmtOobAllAllowAllIpv6Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MgmtOobAllAllowAllIpv6Hosts[i].Address.IsNull() {
 			data.MgmtOobAllAllowAllIpv6Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.MgmtOobAllAllowAllIpv6Hosts[i].Address = types.StringNull()
@@ -6262,7 +6262,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandInterfaces = make([]ControlPlaneMgmtInbandInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("allow.ssh"); cValue.Exists() {
@@ -6274,7 +6274,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesSshIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6288,7 +6288,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesSshIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv4Hosts = append(item.SshIpv4Hosts, cItem)
@@ -6299,7 +6299,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesSshIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6313,7 +6313,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesSshIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv6Hosts = append(item.SshIpv6Hosts, cItem)
@@ -6329,7 +6329,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6343,7 +6343,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv4Hosts = append(item.TelnetIpv4Hosts, cItem)
@@ -6354,7 +6354,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6368,7 +6368,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv6Hosts = append(item.TelnetIpv6Hosts, cItem)
@@ -6384,7 +6384,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6398,7 +6398,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv4Hosts = append(item.SnmpIpv4Hosts, cItem)
@@ -6409,7 +6409,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6423,7 +6423,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv6Hosts = append(item.SnmpIpv6Hosts, cItem)
@@ -6439,7 +6439,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesTftpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6453,7 +6453,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesTftpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv4Hosts = append(item.TftpIpv4Hosts, cItem)
@@ -6464,7 +6464,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesTftpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6478,7 +6478,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesTftpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv6Hosts = append(item.TftpIpv6Hosts, cItem)
@@ -6494,7 +6494,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.HttpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesHttpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesHttpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6508,7 +6508,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.HttpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesHttpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesHttpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.HttpIpv4Hosts = append(item.HttpIpv4Hosts, cItem)
@@ -6524,7 +6524,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesXmlIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6538,7 +6538,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesXmlIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv4Hosts = append(item.XmlIpv4Hosts, cItem)
@@ -6549,7 +6549,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesXmlIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6563,7 +6563,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesXmlIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv6Hosts = append(item.XmlIpv6Hosts, cItem)
@@ -6579,7 +6579,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6593,7 +6593,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv4Hosts = append(item.NetconfIpv4Hosts, cItem)
@@ -6604,7 +6604,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6618,7 +6618,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv6Hosts = append(item.NetconfIpv6Hosts, cItem)
@@ -6634,7 +6634,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6648,7 +6648,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv4Hosts = append(item.AllowAllIpv4Hosts, cItem)
@@ -6659,7 +6659,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -6673,7 +6673,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv6Hosts = append(item.AllowAllIpv6Hosts, cItem)
@@ -6693,7 +6693,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSshIpv4Prefixes = make([]ControlPlaneMgmtInbandAllSshIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6707,7 +6707,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSshIpv4Hosts = make([]ControlPlaneMgmtInbandAllSshIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSshIpv4Hosts = append(data.MgmtInbandAllSshIpv4Hosts, item)
@@ -6718,7 +6718,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSshIpv6Prefixes = make([]ControlPlaneMgmtInbandAllSshIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6732,7 +6732,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSshIpv6Hosts = make([]ControlPlaneMgmtInbandAllSshIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSshIpv6Hosts = append(data.MgmtInbandAllSshIpv6Hosts, item)
@@ -6748,7 +6748,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTelnetIpv4Prefixes = make([]ControlPlaneMgmtInbandAllTelnetIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6762,7 +6762,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTelnetIpv4Hosts = make([]ControlPlaneMgmtInbandAllTelnetIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTelnetIpv4Hosts = append(data.MgmtInbandAllTelnetIpv4Hosts, item)
@@ -6773,7 +6773,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTelnetIpv6Prefixes = make([]ControlPlaneMgmtInbandAllTelnetIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6787,7 +6787,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTelnetIpv6Hosts = make([]ControlPlaneMgmtInbandAllTelnetIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTelnetIpv6Hosts = append(data.MgmtInbandAllTelnetIpv6Hosts, item)
@@ -6803,7 +6803,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSnmpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllSnmpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6817,7 +6817,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSnmpIpv4Hosts = make([]ControlPlaneMgmtInbandAllSnmpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSnmpIpv4Hosts = append(data.MgmtInbandAllSnmpIpv4Hosts, item)
@@ -6828,7 +6828,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSnmpIpv6Prefixes = make([]ControlPlaneMgmtInbandAllSnmpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6842,7 +6842,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllSnmpIpv6Hosts = make([]ControlPlaneMgmtInbandAllSnmpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSnmpIpv6Hosts = append(data.MgmtInbandAllSnmpIpv6Hosts, item)
@@ -6858,7 +6858,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTftpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllTftpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6872,7 +6872,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTftpIpv4Hosts = make([]ControlPlaneMgmtInbandAllTftpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTftpIpv4Hosts = append(data.MgmtInbandAllTftpIpv4Hosts, item)
@@ -6883,7 +6883,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTftpIpv6Prefixes = make([]ControlPlaneMgmtInbandAllTftpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6897,7 +6897,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllTftpIpv6Hosts = make([]ControlPlaneMgmtInbandAllTftpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTftpIpv6Hosts = append(data.MgmtInbandAllTftpIpv6Hosts, item)
@@ -6913,7 +6913,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllHttpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllHttpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllHttpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6927,7 +6927,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllHttpIpv4Hosts = make([]ControlPlaneMgmtInbandAllHttpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllHttpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllHttpIpv4Hosts = append(data.MgmtInbandAllHttpIpv4Hosts, item)
@@ -6943,7 +6943,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllXmlIpv4Prefixes = make([]ControlPlaneMgmtInbandAllXmlIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6957,7 +6957,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllXmlIpv4Hosts = make([]ControlPlaneMgmtInbandAllXmlIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllXmlIpv4Hosts = append(data.MgmtInbandAllXmlIpv4Hosts, item)
@@ -6968,7 +6968,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllXmlIpv6Prefixes = make([]ControlPlaneMgmtInbandAllXmlIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6982,7 +6982,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllXmlIpv6Hosts = make([]ControlPlaneMgmtInbandAllXmlIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllXmlIpv6Hosts = append(data.MgmtInbandAllXmlIpv6Hosts, item)
@@ -6998,7 +6998,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllNetconfIpv4Prefixes = make([]ControlPlaneMgmtInbandAllNetconfIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7012,7 +7012,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllNetconfIpv4Hosts = make([]ControlPlaneMgmtInbandAllNetconfIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllNetconfIpv4Hosts = append(data.MgmtInbandAllNetconfIpv4Hosts, item)
@@ -7023,7 +7023,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllNetconfIpv6Prefixes = make([]ControlPlaneMgmtInbandAllNetconfIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7037,7 +7037,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllNetconfIpv6Hosts = make([]ControlPlaneMgmtInbandAllNetconfIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllNetconfIpv6Hosts = append(data.MgmtInbandAllNetconfIpv6Hosts, item)
@@ -7053,7 +7053,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllAllowAllIpv4Prefixes = make([]ControlPlaneMgmtInbandAllAllowAllIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7067,7 +7067,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllAllowAllIpv4Hosts = make([]ControlPlaneMgmtInbandAllAllowAllIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllAllowAllIpv4Hosts = append(data.MgmtInbandAllAllowAllIpv4Hosts, item)
@@ -7078,7 +7078,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllAllowAllIpv6Prefixes = make([]ControlPlaneMgmtInbandAllAllowAllIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7092,7 +7092,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtInbandAllAllowAllIpv6Hosts = make([]ControlPlaneMgmtInbandAllAllowAllIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllAllowAllIpv6Hosts = append(data.MgmtInbandAllAllowAllIpv6Hosts, item)
@@ -7103,7 +7103,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobInterfaces = make([]ControlPlaneMgmtOobInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("allow.ssh"); cValue.Exists() {
@@ -7115,7 +7115,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesSshIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7129,7 +7129,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesSshIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv4Hosts = append(item.SshIpv4Hosts, cItem)
@@ -7140,7 +7140,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesSshIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7154,7 +7154,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SshIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesSshIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv6Hosts = append(item.SshIpv6Hosts, cItem)
@@ -7170,7 +7170,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesTelnetIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7184,7 +7184,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesTelnetIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv4Hosts = append(item.TelnetIpv4Hosts, cItem)
@@ -7195,7 +7195,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesTelnetIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7209,7 +7209,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TelnetIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesTelnetIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv6Hosts = append(item.TelnetIpv6Hosts, cItem)
@@ -7225,7 +7225,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesSnmpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7239,7 +7239,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesSnmpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv4Hosts = append(item.SnmpIpv4Hosts, cItem)
@@ -7250,7 +7250,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesSnmpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7264,7 +7264,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.SnmpIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesSnmpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv6Hosts = append(item.SnmpIpv6Hosts, cItem)
@@ -7280,7 +7280,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesTftpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7294,7 +7294,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesTftpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv4Hosts = append(item.TftpIpv4Hosts, cItem)
@@ -7305,7 +7305,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesTftpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7319,7 +7319,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.TftpIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesTftpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv6Hosts = append(item.TftpIpv6Hosts, cItem)
@@ -7335,7 +7335,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.HttpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesHttpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesHttpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7349,7 +7349,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.HttpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesHttpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesHttpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.HttpIpv4Hosts = append(item.HttpIpv4Hosts, cItem)
@@ -7365,7 +7365,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesXmlIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7379,7 +7379,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesXmlIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv4Hosts = append(item.XmlIpv4Hosts, cItem)
@@ -7390,7 +7390,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesXmlIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7404,7 +7404,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.XmlIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesXmlIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv6Hosts = append(item.XmlIpv6Hosts, cItem)
@@ -7420,7 +7420,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesNetconfIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7434,7 +7434,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesNetconfIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv4Hosts = append(item.NetconfIpv4Hosts, cItem)
@@ -7445,7 +7445,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesNetconfIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7459,7 +7459,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.NetconfIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesNetconfIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv6Hosts = append(item.NetconfIpv6Hosts, cItem)
@@ -7475,7 +7475,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7489,7 +7489,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv4Hosts = append(item.AllowAllIpv4Hosts, cItem)
@@ -7500,7 +7500,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7514,7 +7514,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 				item.AllowAllIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv6Hosts = append(item.AllowAllIpv6Hosts, cItem)
@@ -7525,7 +7525,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MgmtOobVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "management-plane.out-of-band.enable-inband-behavior"); value.Exists() {
@@ -7542,7 +7542,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSshIpv4Prefixes = make([]ControlPlaneMgmtOobAllSshIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7556,7 +7556,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSshIpv4Hosts = make([]ControlPlaneMgmtOobAllSshIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSshIpv4Hosts = append(data.MgmtOobAllSshIpv4Hosts, item)
@@ -7567,7 +7567,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSshIpv6Prefixes = make([]ControlPlaneMgmtOobAllSshIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7581,7 +7581,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSshIpv6Hosts = make([]ControlPlaneMgmtOobAllSshIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSshIpv6Hosts = append(data.MgmtOobAllSshIpv6Hosts, item)
@@ -7597,7 +7597,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTelnetIpv4Prefixes = make([]ControlPlaneMgmtOobAllTelnetIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7611,7 +7611,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTelnetIpv4Hosts = make([]ControlPlaneMgmtOobAllTelnetIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTelnetIpv4Hosts = append(data.MgmtOobAllTelnetIpv4Hosts, item)
@@ -7622,7 +7622,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTelnetIpv6Prefixes = make([]ControlPlaneMgmtOobAllTelnetIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7636,7 +7636,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTelnetIpv6Hosts = make([]ControlPlaneMgmtOobAllTelnetIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTelnetIpv6Hosts = append(data.MgmtOobAllTelnetIpv6Hosts, item)
@@ -7652,7 +7652,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSnmpIpv4Prefixes = make([]ControlPlaneMgmtOobAllSnmpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7666,7 +7666,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSnmpIpv4Hosts = make([]ControlPlaneMgmtOobAllSnmpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSnmpIpv4Hosts = append(data.MgmtOobAllSnmpIpv4Hosts, item)
@@ -7677,7 +7677,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSnmpIpv6Prefixes = make([]ControlPlaneMgmtOobAllSnmpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7691,7 +7691,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllSnmpIpv6Hosts = make([]ControlPlaneMgmtOobAllSnmpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSnmpIpv6Hosts = append(data.MgmtOobAllSnmpIpv6Hosts, item)
@@ -7707,7 +7707,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTftpIpv4Prefixes = make([]ControlPlaneMgmtOobAllTftpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7721,7 +7721,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTftpIpv4Hosts = make([]ControlPlaneMgmtOobAllTftpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTftpIpv4Hosts = append(data.MgmtOobAllTftpIpv4Hosts, item)
@@ -7732,7 +7732,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTftpIpv6Prefixes = make([]ControlPlaneMgmtOobAllTftpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7746,7 +7746,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllTftpIpv6Hosts = make([]ControlPlaneMgmtOobAllTftpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTftpIpv6Hosts = append(data.MgmtOobAllTftpIpv6Hosts, item)
@@ -7762,7 +7762,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllHttpIpv4Prefixes = make([]ControlPlaneMgmtOobAllHttpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllHttpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7776,7 +7776,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllHttpIpv4Hosts = make([]ControlPlaneMgmtOobAllHttpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllHttpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllHttpIpv4Hosts = append(data.MgmtOobAllHttpIpv4Hosts, item)
@@ -7792,7 +7792,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllXmlIpv4Prefixes = make([]ControlPlaneMgmtOobAllXmlIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7806,7 +7806,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllXmlIpv4Hosts = make([]ControlPlaneMgmtOobAllXmlIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllXmlIpv4Hosts = append(data.MgmtOobAllXmlIpv4Hosts, item)
@@ -7817,7 +7817,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllXmlIpv6Prefixes = make([]ControlPlaneMgmtOobAllXmlIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7831,7 +7831,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllXmlIpv6Hosts = make([]ControlPlaneMgmtOobAllXmlIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllXmlIpv6Hosts = append(data.MgmtOobAllXmlIpv6Hosts, item)
@@ -7847,7 +7847,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllNetconfIpv4Prefixes = make([]ControlPlaneMgmtOobAllNetconfIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7861,7 +7861,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllNetconfIpv4Hosts = make([]ControlPlaneMgmtOobAllNetconfIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllNetconfIpv4Hosts = append(data.MgmtOobAllNetconfIpv4Hosts, item)
@@ -7872,7 +7872,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllNetconfIpv6Prefixes = make([]ControlPlaneMgmtOobAllNetconfIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7886,7 +7886,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllNetconfIpv6Hosts = make([]ControlPlaneMgmtOobAllNetconfIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllNetconfIpv6Hosts = append(data.MgmtOobAllNetconfIpv6Hosts, item)
@@ -7902,7 +7902,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllAllowAllIpv4Prefixes = make([]ControlPlaneMgmtOobAllAllowAllIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7916,7 +7916,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllAllowAllIpv4Hosts = make([]ControlPlaneMgmtOobAllAllowAllIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllAllowAllIpv4Hosts = append(data.MgmtOobAllAllowAllIpv4Hosts, item)
@@ -7927,7 +7927,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllAllowAllIpv6Prefixes = make([]ControlPlaneMgmtOobAllAllowAllIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7941,7 +7941,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 		data.MgmtOobAllAllowAllIpv6Hosts = make([]ControlPlaneMgmtOobAllAllowAllIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllAllowAllIpv6Hosts = append(data.MgmtOobAllAllowAllIpv6Hosts, item)
@@ -7959,7 +7959,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandInterfaces = make([]ControlPlaneMgmtInbandInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("allow.ssh"); cValue.Exists() {
@@ -7971,7 +7971,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesSshIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -7985,7 +7985,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesSshIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv4Hosts = append(item.SshIpv4Hosts, cItem)
@@ -7996,7 +7996,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesSshIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8010,7 +8010,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesSshIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSshIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv6Hosts = append(item.SshIpv6Hosts, cItem)
@@ -8026,7 +8026,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8040,7 +8040,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv4Hosts = append(item.TelnetIpv4Hosts, cItem)
@@ -8051,7 +8051,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8065,7 +8065,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesTelnetIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTelnetIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv6Hosts = append(item.TelnetIpv6Hosts, cItem)
@@ -8081,7 +8081,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8095,7 +8095,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv4Hosts = append(item.SnmpIpv4Hosts, cItem)
@@ -8106,7 +8106,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8120,7 +8120,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesSnmpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesSnmpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv6Hosts = append(item.SnmpIpv6Hosts, cItem)
@@ -8136,7 +8136,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesTftpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8150,7 +8150,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesTftpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv4Hosts = append(item.TftpIpv4Hosts, cItem)
@@ -8161,7 +8161,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesTftpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8175,7 +8175,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesTftpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesTftpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv6Hosts = append(item.TftpIpv6Hosts, cItem)
@@ -8191,7 +8191,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.HttpIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesHttpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesHttpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8205,7 +8205,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.HttpIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesHttpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesHttpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.HttpIpv4Hosts = append(item.HttpIpv4Hosts, cItem)
@@ -8221,7 +8221,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesXmlIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8235,7 +8235,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesXmlIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv4Hosts = append(item.XmlIpv4Hosts, cItem)
@@ -8246,7 +8246,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesXmlIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8260,7 +8260,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesXmlIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesXmlIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv6Hosts = append(item.XmlIpv6Hosts, cItem)
@@ -8276,7 +8276,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8290,7 +8290,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv4Hosts = append(item.NetconfIpv4Hosts, cItem)
@@ -8301,7 +8301,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8315,7 +8315,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesNetconfIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesNetconfIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv6Hosts = append(item.NetconfIpv6Hosts, cItem)
@@ -8331,7 +8331,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv4Prefixes = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8345,7 +8345,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv4Hosts = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv4Hosts = append(item.AllowAllIpv4Hosts, cItem)
@@ -8356,7 +8356,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv6Prefixes = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8370,7 +8370,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv6Hosts = make([]ControlPlaneMgmtInbandInterfacesAllowAllIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtInbandInterfacesAllowAllIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv6Hosts = append(item.AllowAllIpv6Hosts, cItem)
@@ -8390,7 +8390,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSshIpv4Prefixes = make([]ControlPlaneMgmtInbandAllSshIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8404,7 +8404,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSshIpv4Hosts = make([]ControlPlaneMgmtInbandAllSshIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSshIpv4Hosts = append(data.MgmtInbandAllSshIpv4Hosts, item)
@@ -8415,7 +8415,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSshIpv6Prefixes = make([]ControlPlaneMgmtInbandAllSshIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8429,7 +8429,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSshIpv6Hosts = make([]ControlPlaneMgmtInbandAllSshIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSshIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSshIpv6Hosts = append(data.MgmtInbandAllSshIpv6Hosts, item)
@@ -8445,7 +8445,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTelnetIpv4Prefixes = make([]ControlPlaneMgmtInbandAllTelnetIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8459,7 +8459,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTelnetIpv4Hosts = make([]ControlPlaneMgmtInbandAllTelnetIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTelnetIpv4Hosts = append(data.MgmtInbandAllTelnetIpv4Hosts, item)
@@ -8470,7 +8470,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTelnetIpv6Prefixes = make([]ControlPlaneMgmtInbandAllTelnetIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8484,7 +8484,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTelnetIpv6Hosts = make([]ControlPlaneMgmtInbandAllTelnetIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTelnetIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTelnetIpv6Hosts = append(data.MgmtInbandAllTelnetIpv6Hosts, item)
@@ -8500,7 +8500,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSnmpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllSnmpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8514,7 +8514,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSnmpIpv4Hosts = make([]ControlPlaneMgmtInbandAllSnmpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSnmpIpv4Hosts = append(data.MgmtInbandAllSnmpIpv4Hosts, item)
@@ -8525,7 +8525,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSnmpIpv6Prefixes = make([]ControlPlaneMgmtInbandAllSnmpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8539,7 +8539,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllSnmpIpv6Hosts = make([]ControlPlaneMgmtInbandAllSnmpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllSnmpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllSnmpIpv6Hosts = append(data.MgmtInbandAllSnmpIpv6Hosts, item)
@@ -8555,7 +8555,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTftpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllTftpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8569,7 +8569,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTftpIpv4Hosts = make([]ControlPlaneMgmtInbandAllTftpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTftpIpv4Hosts = append(data.MgmtInbandAllTftpIpv4Hosts, item)
@@ -8580,7 +8580,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTftpIpv6Prefixes = make([]ControlPlaneMgmtInbandAllTftpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8594,7 +8594,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllTftpIpv6Hosts = make([]ControlPlaneMgmtInbandAllTftpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllTftpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllTftpIpv6Hosts = append(data.MgmtInbandAllTftpIpv6Hosts, item)
@@ -8610,7 +8610,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllHttpIpv4Prefixes = make([]ControlPlaneMgmtInbandAllHttpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllHttpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8624,7 +8624,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllHttpIpv4Hosts = make([]ControlPlaneMgmtInbandAllHttpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllHttpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllHttpIpv4Hosts = append(data.MgmtInbandAllHttpIpv4Hosts, item)
@@ -8640,7 +8640,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllXmlIpv4Prefixes = make([]ControlPlaneMgmtInbandAllXmlIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8654,7 +8654,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllXmlIpv4Hosts = make([]ControlPlaneMgmtInbandAllXmlIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllXmlIpv4Hosts = append(data.MgmtInbandAllXmlIpv4Hosts, item)
@@ -8665,7 +8665,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllXmlIpv6Prefixes = make([]ControlPlaneMgmtInbandAllXmlIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8679,7 +8679,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllXmlIpv6Hosts = make([]ControlPlaneMgmtInbandAllXmlIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllXmlIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllXmlIpv6Hosts = append(data.MgmtInbandAllXmlIpv6Hosts, item)
@@ -8695,7 +8695,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllNetconfIpv4Prefixes = make([]ControlPlaneMgmtInbandAllNetconfIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8709,7 +8709,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllNetconfIpv4Hosts = make([]ControlPlaneMgmtInbandAllNetconfIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllNetconfIpv4Hosts = append(data.MgmtInbandAllNetconfIpv4Hosts, item)
@@ -8720,7 +8720,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllNetconfIpv6Prefixes = make([]ControlPlaneMgmtInbandAllNetconfIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8734,7 +8734,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllNetconfIpv6Hosts = make([]ControlPlaneMgmtInbandAllNetconfIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllNetconfIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllNetconfIpv6Hosts = append(data.MgmtInbandAllNetconfIpv6Hosts, item)
@@ -8750,7 +8750,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllAllowAllIpv4Prefixes = make([]ControlPlaneMgmtInbandAllAllowAllIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8764,7 +8764,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllAllowAllIpv4Hosts = make([]ControlPlaneMgmtInbandAllAllowAllIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllAllowAllIpv4Hosts = append(data.MgmtInbandAllAllowAllIpv4Hosts, item)
@@ -8775,7 +8775,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllAllowAllIpv6Prefixes = make([]ControlPlaneMgmtInbandAllAllowAllIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -8789,7 +8789,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtInbandAllAllowAllIpv6Hosts = make([]ControlPlaneMgmtInbandAllAllowAllIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtInbandAllAllowAllIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtInbandAllAllowAllIpv6Hosts = append(data.MgmtInbandAllAllowAllIpv6Hosts, item)
@@ -8800,7 +8800,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobInterfaces = make([]ControlPlaneMgmtOobInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("allow.ssh"); cValue.Exists() {
@@ -8812,7 +8812,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesSshIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8826,7 +8826,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesSshIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv4Hosts = append(item.SshIpv4Hosts, cItem)
@@ -8837,7 +8837,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesSshIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8851,7 +8851,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SshIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesSshIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSshIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SshIpv6Hosts = append(item.SshIpv6Hosts, cItem)
@@ -8867,7 +8867,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesTelnetIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8881,7 +8881,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesTelnetIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv4Hosts = append(item.TelnetIpv4Hosts, cItem)
@@ -8892,7 +8892,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesTelnetIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8906,7 +8906,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TelnetIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesTelnetIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTelnetIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TelnetIpv6Hosts = append(item.TelnetIpv6Hosts, cItem)
@@ -8922,7 +8922,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesSnmpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8936,7 +8936,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesSnmpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv4Hosts = append(item.SnmpIpv4Hosts, cItem)
@@ -8947,7 +8947,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesSnmpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8961,7 +8961,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.SnmpIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesSnmpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesSnmpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.SnmpIpv6Hosts = append(item.SnmpIpv6Hosts, cItem)
@@ -8977,7 +8977,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesTftpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -8991,7 +8991,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesTftpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv4Hosts = append(item.TftpIpv4Hosts, cItem)
@@ -9002,7 +9002,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesTftpIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9016,7 +9016,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.TftpIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesTftpIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesTftpIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.TftpIpv6Hosts = append(item.TftpIpv6Hosts, cItem)
@@ -9032,7 +9032,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.HttpIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesHttpIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesHttpIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9046,7 +9046,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.HttpIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesHttpIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesHttpIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.HttpIpv4Hosts = append(item.HttpIpv4Hosts, cItem)
@@ -9062,7 +9062,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesXmlIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9076,7 +9076,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesXmlIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv4Hosts = append(item.XmlIpv4Hosts, cItem)
@@ -9087,7 +9087,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesXmlIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9101,7 +9101,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.XmlIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesXmlIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesXmlIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.XmlIpv6Hosts = append(item.XmlIpv6Hosts, cItem)
@@ -9117,7 +9117,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesNetconfIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9131,7 +9131,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesNetconfIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv4Hosts = append(item.NetconfIpv4Hosts, cItem)
@@ -9142,7 +9142,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesNetconfIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9156,7 +9156,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.NetconfIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesNetconfIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesNetconfIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.NetconfIpv6Hosts = append(item.NetconfIpv6Hosts, cItem)
@@ -9172,7 +9172,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv4Prefixes = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv4Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv4Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9186,7 +9186,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv4Hosts = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv4Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv4Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv4Hosts = append(item.AllowAllIpv4Hosts, cItem)
@@ -9197,7 +9197,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv6Prefixes = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv6Prefixes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv6Prefixes{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -9211,7 +9211,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 				item.AllowAllIpv6Hosts = make([]ControlPlaneMgmtOobInterfacesAllowAllIpv6Hosts, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := ControlPlaneMgmtOobInterfacesAllowAllIpv6Hosts{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.AllowAllIpv6Hosts = append(item.AllowAllIpv6Hosts, cItem)
@@ -9222,7 +9222,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "management-plane.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MgmtOobVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "management-plane.out-of-band.enable-inband-behavior"); value.Exists() {
@@ -9239,7 +9239,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSshIpv4Prefixes = make([]ControlPlaneMgmtOobAllSshIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9253,7 +9253,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSshIpv4Hosts = make([]ControlPlaneMgmtOobAllSshIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSshIpv4Hosts = append(data.MgmtOobAllSshIpv4Hosts, item)
@@ -9264,7 +9264,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSshIpv6Prefixes = make([]ControlPlaneMgmtOobAllSshIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9278,7 +9278,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSshIpv6Hosts = make([]ControlPlaneMgmtOobAllSshIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSshIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSshIpv6Hosts = append(data.MgmtOobAllSshIpv6Hosts, item)
@@ -9294,7 +9294,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTelnetIpv4Prefixes = make([]ControlPlaneMgmtOobAllTelnetIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9308,7 +9308,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTelnetIpv4Hosts = make([]ControlPlaneMgmtOobAllTelnetIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTelnetIpv4Hosts = append(data.MgmtOobAllTelnetIpv4Hosts, item)
@@ -9319,7 +9319,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTelnetIpv6Prefixes = make([]ControlPlaneMgmtOobAllTelnetIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9333,7 +9333,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTelnetIpv6Hosts = make([]ControlPlaneMgmtOobAllTelnetIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTelnetIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTelnetIpv6Hosts = append(data.MgmtOobAllTelnetIpv6Hosts, item)
@@ -9349,7 +9349,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSnmpIpv4Prefixes = make([]ControlPlaneMgmtOobAllSnmpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9363,7 +9363,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSnmpIpv4Hosts = make([]ControlPlaneMgmtOobAllSnmpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSnmpIpv4Hosts = append(data.MgmtOobAllSnmpIpv4Hosts, item)
@@ -9374,7 +9374,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSnmpIpv6Prefixes = make([]ControlPlaneMgmtOobAllSnmpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9388,7 +9388,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllSnmpIpv6Hosts = make([]ControlPlaneMgmtOobAllSnmpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllSnmpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllSnmpIpv6Hosts = append(data.MgmtOobAllSnmpIpv6Hosts, item)
@@ -9404,7 +9404,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTftpIpv4Prefixes = make([]ControlPlaneMgmtOobAllTftpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9418,7 +9418,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTftpIpv4Hosts = make([]ControlPlaneMgmtOobAllTftpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTftpIpv4Hosts = append(data.MgmtOobAllTftpIpv4Hosts, item)
@@ -9429,7 +9429,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTftpIpv6Prefixes = make([]ControlPlaneMgmtOobAllTftpIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9443,7 +9443,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllTftpIpv6Hosts = make([]ControlPlaneMgmtOobAllTftpIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllTftpIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllTftpIpv6Hosts = append(data.MgmtOobAllTftpIpv6Hosts, item)
@@ -9459,7 +9459,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllHttpIpv4Prefixes = make([]ControlPlaneMgmtOobAllHttpIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllHttpIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9473,7 +9473,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllHttpIpv4Hosts = make([]ControlPlaneMgmtOobAllHttpIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllHttpIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllHttpIpv4Hosts = append(data.MgmtOobAllHttpIpv4Hosts, item)
@@ -9489,7 +9489,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllXmlIpv4Prefixes = make([]ControlPlaneMgmtOobAllXmlIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9503,7 +9503,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllXmlIpv4Hosts = make([]ControlPlaneMgmtOobAllXmlIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllXmlIpv4Hosts = append(data.MgmtOobAllXmlIpv4Hosts, item)
@@ -9514,7 +9514,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllXmlIpv6Prefixes = make([]ControlPlaneMgmtOobAllXmlIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9528,7 +9528,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllXmlIpv6Hosts = make([]ControlPlaneMgmtOobAllXmlIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllXmlIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllXmlIpv6Hosts = append(data.MgmtOobAllXmlIpv6Hosts, item)
@@ -9544,7 +9544,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllNetconfIpv4Prefixes = make([]ControlPlaneMgmtOobAllNetconfIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9558,7 +9558,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllNetconfIpv4Hosts = make([]ControlPlaneMgmtOobAllNetconfIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllNetconfIpv4Hosts = append(data.MgmtOobAllNetconfIpv4Hosts, item)
@@ -9569,7 +9569,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllNetconfIpv6Prefixes = make([]ControlPlaneMgmtOobAllNetconfIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9583,7 +9583,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllNetconfIpv6Hosts = make([]ControlPlaneMgmtOobAllNetconfIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllNetconfIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllNetconfIpv6Hosts = append(data.MgmtOobAllNetconfIpv6Hosts, item)
@@ -9599,7 +9599,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllAllowAllIpv4Prefixes = make([]ControlPlaneMgmtOobAllAllowAllIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9613,7 +9613,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllAllowAllIpv4Hosts = make([]ControlPlaneMgmtOobAllAllowAllIpv4Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv4Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllAllowAllIpv4Hosts = append(data.MgmtOobAllAllowAllIpv4Hosts, item)
@@ -9624,7 +9624,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllAllowAllIpv6Prefixes = make([]ControlPlaneMgmtOobAllAllowAllIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -9638,7 +9638,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 		data.MgmtOobAllAllowAllIpv6Hosts = make([]ControlPlaneMgmtOobAllAllowAllIpv6Hosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := ControlPlaneMgmtOobAllAllowAllIpv6Hosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.MgmtOobAllAllowAllIpv6Hosts = append(data.MgmtOobAllAllowAllIpv6Hosts, item)

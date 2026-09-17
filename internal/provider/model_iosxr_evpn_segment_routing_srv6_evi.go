@@ -471,7 +471,7 @@ func (data EVPNSegmentRoutingSRv6EVI) GetPatternConstraints() []helpers.FieldPat
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -496,7 +496,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 	} else {
 		data.BgpRdFourByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.BgpRdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRdIpv4Address.IsNull() {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.BgpRdIpv4Address = types.StringNull()
@@ -597,7 +597,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -699,7 +699,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -801,7 +801,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -812,7 +812,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 			data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && value.Type == gjson.String && !data.BgpTablePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpTablePolicy.IsNull() {
 		data.BgpTablePolicy = types.StringValue(value.String())
 	} else {
 		data.BgpTablePolicy = types.StringNull()
@@ -826,12 +826,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 	} else {
 		data.BgpImplicitImportDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && value.Type == gjson.String && !data.BgpRoutePolicyImport.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRoutePolicyImport.IsNull() {
 		data.BgpRoutePolicyImport = types.StringValue(value.String())
 	} else {
 		data.BgpRoutePolicyImport = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && value.Type == gjson.String && !data.BgpRoutePolicyExport.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpRoutePolicyExport.IsNull() {
 		data.BgpRoutePolicyExport = types.StringValue(value.String())
 	} else {
 		data.BgpRoutePolicyExport = types.StringNull()
@@ -1003,7 +1003,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("locator-name"); value.Exists() && value.Type == gjson.String && !data.Locators[i].LocatorName.IsNull() {
+		if value := r.Get("locator-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Locators[i].LocatorName.IsNull() {
 			data.Locators[i].LocatorName = types.StringValue(value.String())
 		} else {
 			data.Locators[i].LocatorName = types.StringNull()
@@ -1025,7 +1025,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
@@ -1040,7 +1040,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1078,7 +1078,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1120,7 +1120,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetImportIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1162,7 +1162,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetExportIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1172,7 +1172,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpTablePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.implicit-import-disable"); value.Exists() {
@@ -1180,10 +1180,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.BgpImplicitImportDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRoutePolicyImport = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRoutePolicyExport = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "preferred-nexthop.lowest-ip"); value.Exists() {
@@ -1270,7 +1270,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.Locators = make([]EVPNSegmentRoutingSRv6EVILocators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVILocators{}
-			if cValue := v.Get("locator-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("locator-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("usid.allocation.wide-local-id-block"); cValue.Exists() {
@@ -1289,7 +1289,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
@@ -1304,7 +1304,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1342,7 +1342,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1384,7 +1384,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetImportIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1426,7 +1426,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetExportIpv4AddressFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1436,7 +1436,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpTablePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bgp.implicit-import-disable"); value.Exists() {
@@ -1444,10 +1444,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 	} else {
 		data.BgpImplicitImportDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.route-policy.import"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRoutePolicyImport = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRoutePolicyExport = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "preferred-nexthop.lowest-ip"); value.Exists() {
@@ -1534,7 +1534,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.Locators = make([]EVPNSegmentRoutingSRv6EVILocators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVILocators{}
-			if cValue := v.Get("locator-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("locator-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("usid.allocation.wide-local-id-block"); cValue.Exists() {

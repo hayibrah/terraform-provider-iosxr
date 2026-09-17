@@ -578,7 +578,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("date"); value.Exists() && value.Type == gjson.String && !data.UtcOffsets[i].Date.IsNull() {
+		if value := r.Get("date"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UtcOffsets[i].Date.IsNull() {
 			data.UtcOffsets[i].Date = types.StringValue(value.String())
 		} else {
 			data.UtcOffsets[i].Date = types.StringNull()
@@ -772,7 +772,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.VirtualPortGmThresholdBreach = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && value.Type == gjson.String && !data.ClockIdentityMacAddressCustom.IsNull() {
+	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClockIdentityMacAddressCustom.IsNull() {
 		data.ClockIdentityMacAddressCustom = types.StringValue(value.String())
 	} else {
 		data.ClockIdentityMacAddressCustom = types.StringNull()
@@ -786,7 +786,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ClockIdentityMacAddressRouter = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && value.Type == gjson.String && !data.ClockIdentityEui64.IsNull() {
+	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClockIdentityEui64.IsNull() {
 		data.ClockIdentityEui64 = types.StringValue(value.String())
 	} else {
 		data.ClockIdentityEui64 = types.StringNull()
@@ -1028,7 +1028,7 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 		data.UtcOffsets = make([]PTPUtcOffsets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPUtcOffsets{}
-			if cValue := v.Get("date"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("date"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Date = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("offset-value"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1143,7 +1143,7 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && value.Type == gjson.Number {
 		data.VirtualPortGmThresholdBreach = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityMacAddressCustom = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "clock.identity.mac-address.router"); value.Exists() {
@@ -1151,7 +1151,7 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ClockIdentityMacAddressRouter = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityEui64 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && value.Type == gjson.Number {
@@ -1307,7 +1307,7 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 		data.UtcOffsets = make([]PTPUtcOffsets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPUtcOffsets{}
-			if cValue := v.Get("date"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("date"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Date = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("offset-value"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1422,7 +1422,7 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && value.Type == gjson.Number {
 		data.VirtualPortGmThresholdBreach = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityMacAddressCustom = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "clock.identity.mac-address.router"); value.Exists() {
@@ -1430,7 +1430,7 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ClockIdentityMacAddressRouter = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityEui64 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && value.Type == gjson.Number {

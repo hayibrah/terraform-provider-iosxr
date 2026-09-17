@@ -531,12 +531,12 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("destination-group-string"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Name.IsNull() {
+		if value := r.Get("destination-group-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Name.IsNull() {
 			data.DestinationGroups[i].Name = types.StringValue(value.String())
 		} else {
 			data.DestinationGroups[i].Name = types.StringNull()
 		}
-		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Vrf.IsNull() {
 			data.DestinationGroups[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.DestinationGroups[i].Vrf = types.StringNull()
@@ -564,12 +564,12 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 					return true
 				},
 			)
-			if value := cr.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].AddressFamily[ci].AfName.IsNull() {
+			if value := cr.Get("af-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].AddressFamily[ci].AfName.IsNull() {
 				data.DestinationGroups[i].AddressFamily[ci].AfName = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].AfName = types.StringNull()
 			}
-			if value := cr.Get("destination-address"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].AddressFamily[ci].Address.IsNull() {
+			if value := cr.Get("destination-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].AddressFamily[ci].Address.IsNull() {
 				data.DestinationGroups[i].AddressFamily[ci].Address = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].Address = types.StringNull()
@@ -579,7 +579,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].Port = types.Int64Null()
 			}
-			if value := cr.Get("encoding"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].AddressFamily[ci].Encoding.IsNull() {
+			if value := cr.Get("encoding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].AddressFamily[ci].Encoding.IsNull() {
 				data.DestinationGroups[i].AddressFamily[ci].Encoding = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].Encoding = types.StringNull()
@@ -602,7 +602,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcNoTls = types.BoolNull()
 			}
-			if value := cr.Get("protocol.grpc.tls-hostname"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcTlsHostname.IsNull() {
+			if value := cr.Get("protocol.grpc.tls-hostname"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcTlsHostname.IsNull() {
 				data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcTlsHostname = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].AddressFamily[ci].ProtocolGrpcTlsHostname = types.StringNull()
@@ -663,7 +663,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 					return true
 				},
 			)
-			if value := cr.Get("destination-string"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Destinations[ci].Address.IsNull() {
+			if value := cr.Get("destination-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Destinations[ci].Address.IsNull() {
 				data.DestinationGroups[i].Destinations[ci].Address = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].Destinations[ci].Address = types.StringNull()
@@ -673,12 +673,12 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 			} else {
 				data.DestinationGroups[i].Destinations[ci].Port = types.Int64Null()
 			}
-			if value := cr.Get("address-family"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Destinations[ci].AddressFamily.IsNull() {
+			if value := cr.Get("address-family"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Destinations[ci].AddressFamily.IsNull() {
 				data.DestinationGroups[i].Destinations[ci].AddressFamily = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].Destinations[ci].AddressFamily = types.StringNull()
 			}
-			if value := cr.Get("encoding"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Destinations[ci].Encoding.IsNull() {
+			if value := cr.Get("encoding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Destinations[ci].Encoding.IsNull() {
 				data.DestinationGroups[i].Destinations[ci].Encoding = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].Destinations[ci].Encoding = types.StringNull()
@@ -701,7 +701,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 			} else {
 				data.DestinationGroups[i].Destinations[ci].ProtocolGrpcNoTls = types.BoolNull()
 			}
-			if value := cr.Get("protocol.grpc.tls-hostname"); value.Exists() && value.Type == gjson.String && !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcTlsHostname.IsNull() {
+			if value := cr.Get("protocol.grpc.tls-hostname"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DestinationGroups[i].Destinations[ci].ProtocolGrpcTlsHostname.IsNull() {
 				data.DestinationGroups[i].Destinations[ci].ProtocolGrpcTlsHostname = types.StringValue(value.String())
 			} else {
 				data.DestinationGroups[i].Destinations[ci].ProtocolGrpcTlsHostname = types.StringNull()
@@ -763,17 +763,17 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("subscription-string"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].Name.IsNull() {
+		if value := r.Get("subscription-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].Name.IsNull() {
 			data.Subscriptions[i].Name = types.StringValue(value.String())
 		} else {
 			data.Subscriptions[i].Name = types.StringNull()
 		}
-		if value := r.Get("source-qos-marking"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].SourceQosMarking.IsNull() {
+		if value := r.Get("source-qos-marking"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].SourceQosMarking.IsNull() {
 			data.Subscriptions[i].SourceQosMarking = types.StringValue(value.String())
 		} else {
 			data.Subscriptions[i].SourceQosMarking = types.StringNull()
 		}
-		if value := r.Get("source-interface"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].SourceInterface.IsNull() {
+		if value := r.Get("source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].SourceInterface.IsNull() {
 			data.Subscriptions[i].SourceInterface = types.StringValue(value.String())
 		} else {
 			data.Subscriptions[i].SourceInterface = types.StringNull()
@@ -801,12 +801,12 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 					return true
 				},
 			)
-			if value := cr.Get("sensor-group-id-string"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].SensorGroupIds[ci].Name.IsNull() {
+			if value := cr.Get("sensor-group-id-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].SensorGroupIds[ci].Name.IsNull() {
 				data.Subscriptions[i].SensorGroupIds[ci].Name = types.StringValue(value.String())
 			} else {
 				data.Subscriptions[i].SensorGroupIds[ci].Name = types.StringNull()
 			}
-			if value := cr.Get("mode"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].SensorGroupIds[ci].Mode.IsNull() {
+			if value := cr.Get("mode"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].SensorGroupIds[ci].Mode.IsNull() {
 				data.Subscriptions[i].SensorGroupIds[ci].Mode = types.StringValue(value.String())
 			} else {
 				data.Subscriptions[i].SensorGroupIds[ci].Mode = types.StringNull()
@@ -863,7 +863,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 					return true
 				},
 			)
-			if value := cr.Get("destination-id-string"); value.Exists() && value.Type == gjson.String && !data.Subscriptions[i].DestinationIds[ci].Name.IsNull() {
+			if value := cr.Get("destination-id-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Subscriptions[i].DestinationIds[ci].Name.IsNull() {
 				data.Subscriptions[i].DestinationIds[ci].Name = types.StringValue(value.String())
 			} else {
 				data.Subscriptions[i].DestinationIds[ci].Name = types.StringNull()
@@ -903,7 +903,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("sensor-group-string"); value.Exists() && value.Type == gjson.String && !data.SensorGroups[i].Name.IsNull() {
+		if value := r.Get("sensor-group-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SensorGroups[i].Name.IsNull() {
 			data.SensorGroups[i].Name = types.StringValue(value.String())
 		} else {
 			data.SensorGroups[i].Name = types.StringNull()
@@ -931,7 +931,7 @@ func (data *TelemetryModelDriven) updateFromBody(ctx context.Context, res []byte
 					return true
 				},
 			)
-			if value := cr.Get("sensor-path-string"); value.Exists() && value.Type == gjson.String && !data.SensorGroups[i].SensorPaths[ci].Name.IsNull() {
+			if value := cr.Get("sensor-path-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SensorGroups[i].SensorPaths[ci].Name.IsNull() {
 				data.SensorGroups[i].SensorPaths[ci].Name = types.StringValue(value.String())
 			} else {
 				data.SensorGroups[i].SensorPaths[ci].Name = types.StringNull()
@@ -992,26 +992,26 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 		data.DestinationGroups = make([]TelemetryModelDrivenDestinationGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenDestinationGroups{}
-			if cValue := v.Get("destination-group-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination-group-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-families.address-family"); cValue.Exists() {
 				item.AddressFamily = make([]TelemetryModelDrivenDestinationGroupsAddressFamily, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenDestinationGroupsAddressFamily{}
-					if ccValue := cv.Get("af-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("af-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AfName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("destination-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("encoding"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("encoding"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Encoding = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc"); ccValue.Exists() {
@@ -1024,7 +1024,7 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 					} else {
 						cItem.ProtocolGrpcNoTls = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ProtocolGrpcTlsHostname = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc.gzip"); ccValue.Exists() {
@@ -1053,16 +1053,16 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 				item.Destinations = make([]TelemetryModelDrivenDestinationGroupsDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenDestinationGroupsDestinations{}
-					if ccValue := cv.Get("destination-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address-family"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address-family"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AddressFamily = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("encoding"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("encoding"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Encoding = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc"); ccValue.Exists() {
@@ -1075,7 +1075,7 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 					} else {
 						cItem.ProtocolGrpcNoTls = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ProtocolGrpcTlsHostname = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc.gzip"); ccValue.Exists() {
@@ -1108,23 +1108,23 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 		data.Subscriptions = make([]TelemetryModelDrivenSubscriptions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenSubscriptions{}
-			if cValue := v.Get("subscription-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("subscription-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-qos-marking"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-qos-marking"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceQosMarking = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("sensor-group-ids.sensor-group-id"); cValue.Exists() {
 				item.SensorGroupIds = make([]TelemetryModelDrivenSubscriptionsSensorGroupIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSubscriptionsSensorGroupIds{}
-					if ccValue := cv.Get("sensor-group-id-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sensor-group-id-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mode"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mode"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Mode = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("heartbeat.always"); ccValue.Exists() {
@@ -1151,7 +1151,7 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 				item.DestinationIds = make([]TelemetryModelDrivenSubscriptionsDestinationIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSubscriptionsDestinationIds{}
-					if ccValue := cv.Get("destination-id-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-id-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.DestinationIds = append(item.DestinationIds, cItem)
@@ -1172,14 +1172,14 @@ func (data *TelemetryModelDriven) fromBody(ctx context.Context, res []byte, vers
 		data.SensorGroups = make([]TelemetryModelDrivenSensorGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenSensorGroups{}
-			if cValue := v.Get("sensor-group-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("sensor-group-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("sensor-paths.sensor-path"); cValue.Exists() {
 				item.SensorPaths = make([]TelemetryModelDrivenSensorGroupsSensorPaths, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSensorGroupsSensorPaths{}
-					if ccValue := cv.Get("sensor-path-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sensor-path-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.SensorPaths = append(item.SensorPaths, cItem)
@@ -1244,26 +1244,26 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 		data.DestinationGroups = make([]TelemetryModelDrivenDestinationGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenDestinationGroups{}
-			if cValue := v.Get("destination-group-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination-group-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-families.address-family"); cValue.Exists() {
 				item.AddressFamily = make([]TelemetryModelDrivenDestinationGroupsAddressFamily, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenDestinationGroupsAddressFamily{}
-					if ccValue := cv.Get("af-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("af-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AfName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("destination-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("encoding"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("encoding"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Encoding = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc"); ccValue.Exists() {
@@ -1276,7 +1276,7 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 					} else {
 						cItem.ProtocolGrpcNoTls = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ProtocolGrpcTlsHostname = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc.gzip"); ccValue.Exists() {
@@ -1305,16 +1305,16 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 				item.Destinations = make([]TelemetryModelDrivenDestinationGroupsDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenDestinationGroupsDestinations{}
-					if ccValue := cv.Get("destination-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("address-family"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address-family"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AddressFamily = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("encoding"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("encoding"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Encoding = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc"); ccValue.Exists() {
@@ -1327,7 +1327,7 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 					} else {
 						cItem.ProtocolGrpcNoTls = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("protocol.grpc.tls-hostname"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ProtocolGrpcTlsHostname = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("protocol.grpc.gzip"); ccValue.Exists() {
@@ -1360,23 +1360,23 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 		data.Subscriptions = make([]TelemetryModelDrivenSubscriptions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenSubscriptions{}
-			if cValue := v.Get("subscription-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("subscription-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-qos-marking"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-qos-marking"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceQosMarking = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("sensor-group-ids.sensor-group-id"); cValue.Exists() {
 				item.SensorGroupIds = make([]TelemetryModelDrivenSubscriptionsSensorGroupIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSubscriptionsSensorGroupIds{}
-					if ccValue := cv.Get("sensor-group-id-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sensor-group-id-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("mode"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mode"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Mode = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("heartbeat.always"); ccValue.Exists() {
@@ -1403,7 +1403,7 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 				item.DestinationIds = make([]TelemetryModelDrivenSubscriptionsDestinationIds, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSubscriptionsDestinationIds{}
-					if ccValue := cv.Get("destination-id-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-id-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.DestinationIds = append(item.DestinationIds, cItem)
@@ -1424,14 +1424,14 @@ func (data *TelemetryModelDrivenData) fromBody(ctx context.Context, res []byte, 
 		data.SensorGroups = make([]TelemetryModelDrivenSensorGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TelemetryModelDrivenSensorGroups{}
-			if cValue := v.Get("sensor-group-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("sensor-group-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("sensor-paths.sensor-path"); cValue.Exists() {
 				item.SensorPaths = make([]TelemetryModelDrivenSensorGroupsSensorPaths, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TelemetryModelDrivenSensorGroupsSensorPaths{}
-					if ccValue := cv.Get("sensor-path-string"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sensor-path-string"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					item.SensorPaths = append(item.SensorPaths, cItem)

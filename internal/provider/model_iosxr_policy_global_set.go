@@ -126,7 +126,7 @@ func (data PolicyGlobalSet) GetPatternConstraints() []helpers.FieldPatternConstr
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PolicyGlobalSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -138,7 +138,7 @@ func (data *PolicyGlobalSet) updateFromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PolicyGlobalSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -148,7 +148,7 @@ func (data *PolicyGlobalSet) fromBody(ctx context.Context, res []byte, version s
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PolicyGlobalSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "policy-global-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

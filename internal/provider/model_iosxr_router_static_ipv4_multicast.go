@@ -519,12 +519,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaces[i].InterfaceName.IsNull() {
 			data.NexthopInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaces[i].Description.IsNull() {
 			data.NexthopInterfaces[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].Description = types.StringNull()
@@ -548,7 +548,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.NexthopInterfaces[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaces[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaces[i].Track.IsNull() {
 			data.NexthopInterfaces[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaces[i].Track = types.StringNull()
@@ -582,12 +582,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaceAddresses[i].InterfaceName.IsNull() {
 			data.NexthopInterfaceAddresses[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaceAddresses[i].Address.IsNull() {
 			data.NexthopInterfaceAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Address = types.StringNull()
@@ -602,7 +602,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.NexthopInterfaceAddresses[i].BfdFastDetectMultiplier = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaceAddresses[i].Description.IsNull() {
 			data.NexthopInterfaceAddresses[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Description = types.StringNull()
@@ -626,7 +626,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.NexthopInterfaceAddresses[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopInterfaceAddresses[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopInterfaceAddresses[i].Track.IsNull() {
 			data.NexthopInterfaceAddresses[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopInterfaceAddresses[i].Track = types.StringNull()
@@ -660,7 +660,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopAddresses[i].Address.IsNull() {
 			data.NexthopAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Address = types.StringNull()
@@ -675,7 +675,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.NexthopAddresses[i].BfdFastDetectMultiplier = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopAddresses[i].Description.IsNull() {
 			data.NexthopAddresses[i].Description = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Description = types.StringNull()
@@ -699,7 +699,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.NexthopAddresses[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.NexthopAddresses[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopAddresses[i].Track.IsNull() {
 			data.NexthopAddresses[i].Track = types.StringValue(value.String())
 		} else {
 			data.NexthopAddresses[i].Track = types.StringNull()
@@ -733,12 +733,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("sr-policy-name"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].SrPolicyName.IsNull() {
+		if value := r.Get("sr-policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrPolicies[i].SrPolicyName.IsNull() {
 			data.SrPolicies[i].SrPolicyName = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].SrPolicyName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrPolicies[i].Description.IsNull() {
 			data.SrPolicies[i].Description = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].Description = types.StringNull()
@@ -762,7 +762,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 		} else {
 			data.SrPolicies[i].Permanent = types.BoolNull()
 		}
-		if value := r.Get("track"); value.Exists() && value.Type == gjson.String && !data.SrPolicies[i].Track.IsNull() {
+		if value := r.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrPolicies[i].Track.IsNull() {
 			data.SrPolicies[i].Track = types.StringValue(value.String())
 		} else {
 			data.SrPolicies[i].Track = types.StringNull()
@@ -796,7 +796,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
@@ -824,12 +824,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaces[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaces[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Description = types.StringNull()
@@ -853,7 +853,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaces[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaces[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopInterfaces[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaces[ci].Track = types.StringNull()
@@ -887,12 +887,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Address.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Address = types.StringNull()
@@ -907,7 +907,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].BfdFastDetectMultiplier = types.Int64Null()
 			}
-			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Description = types.StringNull()
@@ -931,7 +931,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopInterfaceAddresses[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopInterfaceAddresses[ci].Track = types.StringNull()
@@ -965,7 +965,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopAddresses[ci].Address.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Address = types.StringNull()
@@ -980,7 +980,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].BfdFastDetectMultiplier = types.Int64Null()
 			}
-			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopAddresses[ci].Description.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Description = types.StringNull()
@@ -1004,7 +1004,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].NexthopAddresses[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].NexthopAddresses[ci].Track.IsNull() {
 				data.Vrfs[i].NexthopAddresses[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].NexthopAddresses[ci].Track = types.StringNull()
@@ -1038,12 +1038,12 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 					return true
 				},
 			)
-			if value := cr.Get("sr-policy-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].SrPolicyName.IsNull() {
+			if value := cr.Get("sr-policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].SrPolicies[ci].SrPolicyName.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].SrPolicyName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].SrPolicyName = types.StringNull()
 			}
-			if value := cr.Get("description"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].Description.IsNull() {
+			if value := cr.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].SrPolicies[ci].Description.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Description = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Description = types.StringNull()
@@ -1067,7 +1067,7 @@ func (data *RouterStaticIPv4Multicast) updateFromBody(ctx context.Context, res [
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Permanent = types.BoolNull()
 			}
-			if value := cr.Get("track"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].SrPolicies[ci].Track.IsNull() {
+			if value := cr.Get("track"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].SrPolicies[ci].Track.IsNull() {
 				data.Vrfs[i].SrPolicies[ci].Track = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].SrPolicies[ci].Track = types.StringNull()
@@ -1090,10 +1090,10 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 		data.NexthopInterfaces = make([]RouterStaticIPv4MulticastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1107,7 +1107,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1121,10 +1121,10 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 		data.NexthopInterfaceAddresses = make([]RouterStaticIPv4MulticastNexthopInterfaceAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopInterfaceAddresses{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1133,7 +1133,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1147,7 +1147,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1161,7 +1161,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 		data.NexthopAddresses = make([]RouterStaticIPv4MulticastNexthopAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1170,7 +1170,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1184,7 +1184,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1198,10 +1198,10 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 		data.SrPolicies = make([]RouterStaticIPv4MulticastSrPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastSrPolicies{}
-			if cValue := v.Get("sr-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("sr-policy-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrPolicyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1215,7 +1215,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1229,17 +1229,17 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 		data.Vrfs = make([]RouterStaticIPv4MulticastVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("nexthop-interfaces.nexthop-interface"); cValue.Exists() {
 				item.NexthopInterfaces = make([]RouterStaticIPv4MulticastVrfsNexthopInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1253,7 +1253,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1267,10 +1267,10 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 				item.NexthopInterfaceAddresses = make([]RouterStaticIPv4MulticastVrfsNexthopInterfaceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopInterfaceAddresses{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1279,7 +1279,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1293,7 +1293,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1307,7 +1307,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 				item.NexthopAddresses = make([]RouterStaticIPv4MulticastVrfsNexthopAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1316,7 +1316,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1330,7 +1330,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1344,10 +1344,10 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 				item.SrPolicies = make([]RouterStaticIPv4MulticastVrfsSrPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsSrPolicies{}
-					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrPolicyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1361,7 +1361,7 @@ func (data *RouterStaticIPv4Multicast) fromBody(ctx context.Context, res []byte,
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1386,10 +1386,10 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 		data.NexthopInterfaces = make([]RouterStaticIPv4MulticastNexthopInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1403,7 +1403,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1417,10 +1417,10 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 		data.NexthopInterfaceAddresses = make([]RouterStaticIPv4MulticastNexthopInterfaceAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopInterfaceAddresses{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1429,7 +1429,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1443,7 +1443,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1457,7 +1457,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 		data.NexthopAddresses = make([]RouterStaticIPv4MulticastNexthopAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastNexthopAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bfd.fast-detect.minimum-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1466,7 +1466,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			if cValue := v.Get("bfd.fast-detect.multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.BfdFastDetectMultiplier = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1480,7 +1480,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1494,10 +1494,10 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 		data.SrPolicies = make([]RouterStaticIPv4MulticastSrPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastSrPolicies{}
-			if cValue := v.Get("sr-policy-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("sr-policy-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrPolicyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1511,7 +1511,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Permanent = types.BoolValue(false)
 			}
-			if cValue := v.Get("track"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("track"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Track = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1525,17 +1525,17 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 		data.Vrfs = make([]RouterStaticIPv4MulticastVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterStaticIPv4MulticastVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("nexthop-interfaces.nexthop-interface"); cValue.Exists() {
 				item.NexthopInterfaces = make([]RouterStaticIPv4MulticastVrfsNexthopInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1549,7 +1549,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1563,10 +1563,10 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 				item.NexthopInterfaceAddresses = make([]RouterStaticIPv4MulticastVrfsNexthopInterfaceAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopInterfaceAddresses{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1575,7 +1575,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1589,7 +1589,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1603,7 +1603,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 				item.NexthopAddresses = make([]RouterStaticIPv4MulticastVrfsNexthopAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsNexthopAddresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bfd.fast-detect.minimum-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1612,7 +1612,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					if ccValue := cv.Get("bfd.fast-detect.multiplier"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.BfdFastDetectMultiplier = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1626,7 +1626,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1640,10 +1640,10 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 				item.SrPolicies = make([]RouterStaticIPv4MulticastVrfsSrPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterStaticIPv4MulticastVrfsSrPolicies{}
-					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("sr-policy-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrPolicyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("description"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("description"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Description = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("tag"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1657,7 +1657,7 @@ func (data *RouterStaticIPv4MulticastData) fromBody(ctx context.Context, res []b
 					} else {
 						cItem.Permanent = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("track"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("track"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Track = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("metric"); ccValue.Exists() && ccValue.Type == gjson.Number {

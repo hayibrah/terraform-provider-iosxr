@@ -1316,12 +1316,12 @@ func (data PCE) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && value.Type == gjson.String && !data.AddressIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressIpv4.IsNull() {
 		data.AddressIpv4 = types.StringValue(value.String())
 	} else {
 		data.AddressIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && value.Type == gjson.String && !data.AddressIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressIpv6.IsNull() {
 		data.AddressIpv6 = types.StringValue(value.String())
 	} else {
 		data.AddressIpv6 = types.StringNull()
@@ -1349,7 +1349,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.StateSyncIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.StateSyncIpv4s[i].Address.IsNull() {
 			data.StateSyncIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.StateSyncIpv4s[i].Address = types.StringNull()
@@ -1378,7 +1378,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.StateSyncIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.StateSyncIpv6s[i].Address.IsNull() {
 			data.StateSyncIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.StateSyncIpv6s[i].Address = types.StringNull()
@@ -1389,7 +1389,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.TcpBufferSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && value.Type == gjson.String && !data.TcpAoKeychainName.IsNull() {
+	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TcpAoKeychainName.IsNull() {
 		data.TcpAoKeychainName = types.StringValue(value.String())
 	} else {
 		data.TcpAoKeychainName = types.StringNull()
@@ -1463,17 +1463,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointStrict = types.BoolNull()
 		}
-		if value := r.Get("type.link.lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccAddressType.IsNull() {
+		if value := r.Get("type.link.lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.link.lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccIpAddress.IsNull() {
+		if value := r.Get("type.link.lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.link.lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccLspName.IsNull() {
+		if value := r.Get("type.link.lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspOnePccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccLspName = types.StringNull()
@@ -1492,17 +1492,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspOnePccExcludeSrlg = types.Int64Null()
 		}
-		if value := r.Get("type.link.lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccAddressType.IsNull() {
+		if value := r.Get("type.link.lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.link.lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccIpAddress.IsNull() {
+		if value := r.Get("type.link.lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.link.lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccLspName.IsNull() {
+		if value := r.Get("type.link.lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].LinkDisjointLspTwoPccLspName = types.StringNull()
@@ -1549,17 +1549,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].Strict = types.BoolNull()
 			}
-			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
+			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
+			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccLspName.IsNull() {
+			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccLspName = types.StringNull()
@@ -1578,17 +1578,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspOnePccExcludeSrlg = types.Int64Null()
 			}
-			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
+			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
+			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
+			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].LinkDisjointSubIds[ci].LspTwoPccLspName = types.StringNull()
@@ -1617,17 +1617,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointStrict = types.BoolNull()
 		}
-		if value := r.Get("type.node.lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccAddressType.IsNull() {
+		if value := r.Get("type.node.lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.node.lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccIpAddress.IsNull() {
+		if value := r.Get("type.node.lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.node.lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccLspName.IsNull() {
+		if value := r.Get("type.node.lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspOnePccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccLspName = types.StringNull()
@@ -1646,17 +1646,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspOnePccExcludeSrlg = types.Int64Null()
 		}
-		if value := r.Get("type.node.lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccAddressType.IsNull() {
+		if value := r.Get("type.node.lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.node.lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccIpAddress.IsNull() {
+		if value := r.Get("type.node.lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.node.lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccLspName.IsNull() {
+		if value := r.Get("type.node.lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].NodeDisjointLspTwoPccLspName = types.StringNull()
@@ -1703,17 +1703,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].Strict = types.BoolNull()
 			}
-			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
+			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
+			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccLspName.IsNull() {
+			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccLspName = types.StringNull()
@@ -1732,17 +1732,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspOnePccExcludeSrlg = types.Int64Null()
 			}
-			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
+			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
+			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
+			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].NodeDisjointSubIds[ci].LspTwoPccLspName = types.StringNull()
@@ -1771,17 +1771,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointStrict = types.BoolNull()
 		}
-		if value := r.Get("type.srlg.lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccAddressType.IsNull() {
+		if value := r.Get("type.srlg.lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.srlg.lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccIpAddress.IsNull() {
+		if value := r.Get("type.srlg.lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.srlg.lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccLspName.IsNull() {
+		if value := r.Get("type.srlg.lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccLspName = types.StringNull()
@@ -1800,17 +1800,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspOnePccExcludeSrlg = types.Int64Null()
 		}
-		if value := r.Get("type.srlg.lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccAddressType.IsNull() {
+		if value := r.Get("type.srlg.lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.srlg.lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccIpAddress.IsNull() {
+		if value := r.Get("type.srlg.lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.srlg.lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccLspName.IsNull() {
+		if value := r.Get("type.srlg.lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgDisjointLspTwoPccLspName = types.StringNull()
@@ -1857,17 +1857,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].Strict = types.BoolNull()
 			}
-			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
+			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
+			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccLspName.IsNull() {
+			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccLspName = types.StringNull()
@@ -1886,17 +1886,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspOnePccExcludeSrlg = types.Int64Null()
 			}
-			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
+			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
+			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
+			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgDisjointSubIds[ci].LspTwoPccLspName = types.StringNull()
@@ -1925,17 +1925,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointStrict = types.BoolNull()
 		}
-		if value := r.Get("type.srlg-node.lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccAddressType.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.srlg-node.lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccIpAddress.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.srlg-node.lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccLspName.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccLspName = types.StringNull()
@@ -1954,17 +1954,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspOnePccExcludeSrlg = types.Int64Null()
 		}
-		if value := r.Get("type.srlg-node.lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccAddressType.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccAddressType.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccAddressType = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccAddressType = types.StringNull()
 		}
-		if value := r.Get("type.srlg-node.lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccIpAddress.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccIpAddress.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccIpAddress = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccIpAddress = types.StringNull()
 		}
-		if value := r.Get("type.srlg-node.lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccLspName.IsNull() {
+		if value := r.Get("type.srlg-node.lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccLspName.IsNull() {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccLspName = types.StringValue(value.String())
 		} else {
 			data.DisjointPathGroupIds[i].SrlgNodeDisjointLspTwoPccLspName = types.StringNull()
@@ -2011,17 +2011,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].Strict = types.BoolNull()
 			}
-			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
+			if value := cr.Get("lsp.one.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
+			if value := cr.Get("lsp.one.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccLspName.IsNull() {
+			if value := cr.Get("lsp.one.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccLspName = types.StringNull()
@@ -2040,17 +2040,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspOnePccExcludeSrlg = types.Int64Null()
 			}
-			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
+			if value := cr.Get("lsp.two.pcc.address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccAddressType.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccAddressType = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccAddressType = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
+			if value := cr.Get("lsp.two.pcc.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccIpAddress.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccIpAddress = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccIpAddress = types.StringNull()
 			}
-			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && value.Type == gjson.String && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
+			if value := cr.Get("lsp.two.pcc.lsp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccLspName.IsNull() {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccLspName = types.StringValue(value.String())
 			} else {
 				data.DisjointPathGroupIds[i].SrlgNodeDisjointSubIds[ci].LspTwoPccLspName = types.StringNull()
@@ -2085,12 +2085,12 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PeerIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PeerIpv4s[i].Address.IsNull() {
 			data.PeerIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PeerIpv4s[i].Address = types.StringNull()
 		}
-		if value := r.Get("tcp-ao.key-chain-name"); value.Exists() && value.Type == gjson.String && !data.PeerIpv4s[i].TcpAoKeychainName.IsNull() {
+		if value := r.Get("tcp-ao.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PeerIpv4s[i].TcpAoKeychainName.IsNull() {
 			data.PeerIpv4s[i].TcpAoKeychainName = types.StringValue(value.String())
 		} else {
 			data.PeerIpv4s[i].TcpAoKeychainName = types.StringNull()
@@ -2137,12 +2137,12 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PeerIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PeerIpv6s[i].Address.IsNull() {
 			data.PeerIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.PeerIpv6s[i].Address = types.StringNull()
 		}
-		if value := r.Get("tcp-ao.key-chain-name"); value.Exists() && value.Type == gjson.String && !data.PeerIpv6s[i].TcpAoKeychainName.IsNull() {
+		if value := r.Get("tcp-ao.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PeerIpv6s[i].TcpAoKeychainName.IsNull() {
 			data.PeerIpv6s[i].TcpAoKeychainName = types.StringValue(value.String())
 		} else {
 			data.PeerIpv6s[i].TcpAoKeychainName = types.StringNull()
@@ -2166,7 +2166,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			data.PeerIpv6s[i].TcpAoAcceptAoMismatchConnection = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && value.Type == gjson.String && !data.NetconfSshUser.IsNull() {
+	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NetconfSshUser.IsNull() {
 		data.NetconfSshUser = types.StringValue(value.String())
 	} else {
 		data.NetconfSshUser = types.StringNull()
@@ -2180,12 +2180,12 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ApiAuthenticationDigest = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && value.Type == gjson.String && !data.ApiSiblingIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ApiSiblingIpv4.IsNull() {
 		data.ApiSiblingIpv4 = types.StringValue(value.String())
 	} else {
 		data.ApiSiblingIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && value.Type == gjson.String && !data.ApiVrf.IsNull() {
+	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ApiVrf.IsNull() {
 		data.ApiVrf = types.StringValue(value.String())
 	} else {
 		data.ApiVrf = types.StringNull()
@@ -2213,18 +2213,18 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("user-name"); value.Exists() && value.Type == gjson.String && !data.ApiUsers[i].UserName.IsNull() {
+		if value := r.Get("user-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ApiUsers[i].UserName.IsNull() {
 			data.ApiUsers[i].UserName = types.StringValue(value.String())
 		} else {
 			data.ApiUsers[i].UserName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && value.Type == gjson.String && !data.ApiIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ApiIpv4Address.IsNull() {
 		data.ApiIpv4Address = types.StringValue(value.String())
 	} else {
 		data.ApiIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && value.Type == gjson.String && !data.ApiIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ApiIpv6Address.IsNull() {
 		data.ApiIpv6Address = types.StringValue(value.String())
 	} else {
 		data.ApiIpv6Address = types.StringNull()
@@ -2356,7 +2356,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteAffinityBitmaps[i].AffinityColorName.IsNull() {
+		if value := r.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteAffinityBitmaps[i].AffinityColorName.IsNull() {
 			data.SrteAffinityBitmaps[i].AffinityColorName = types.StringValue(value.String())
 		} else {
 			data.SrteAffinityBitmaps[i].AffinityColorName = types.StringNull()
@@ -2390,7 +2390,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("segment-list-name"); value.Exists() && value.Type == gjson.String && !data.SrteSegmentLists[i].SegmentListName.IsNull() {
+		if value := r.Get("segment-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteSegmentLists[i].SegmentListName.IsNull() {
 			data.SrteSegmentLists[i].SegmentListName = types.StringValue(value.String())
 		} else {
 			data.SrteSegmentLists[i].SegmentListName = types.StringNull()
@@ -2428,7 +2428,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.SrteSegmentLists[i].Indexes[ci].MplsLabel = types.Int64Null()
 			}
-			if value := cr.Get("mpls.adjacency"); value.Exists() && value.Type == gjson.String && !data.SrteSegmentLists[i].Indexes[ci].MplsAdjacency.IsNull() {
+			if value := cr.Get("mpls.adjacency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteSegmentLists[i].Indexes[ci].MplsAdjacency.IsNull() {
 				data.SrteSegmentLists[i].Indexes[ci].MplsAdjacency = types.StringValue(value.String())
 			} else {
 				data.SrteSegmentLists[i].Indexes[ci].MplsAdjacency = types.StringNull()
@@ -2458,7 +2458,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Address.IsNull() {
 			data.SrteIpv4Peers[i].Address = types.StringValue(value.String())
 		} else {
 			data.SrteIpv4Peers[i].Address = types.StringNull()
@@ -2486,7 +2486,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("policy-name"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].PolicyName.IsNull() {
+			if value := cr.Get("policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].PolicyName.IsNull() {
 				data.SrteIpv4Peers[i].Policies[ci].PolicyName = types.StringValue(value.String())
 			} else {
 				data.SrteIpv4Peers[i].Policies[ci].PolicyName = types.StringNull()
@@ -2597,7 +2597,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 							return true
 						},
 					)
-					if value := cccr.Get("segment-list-name"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsPreferences[cci].ExplicitSegmentListNames[ccci].SegmentListName.IsNull() {
+					if value := cccr.Get("segment-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsPreferences[cci].ExplicitSegmentListNames[ccci].SegmentListName.IsNull() {
 						data.SrteIpv4Peers[i].Policies[ci].CandidatePathsPreferences[cci].ExplicitSegmentListNames[ccci].SegmentListName = types.StringValue(value.String())
 					} else {
 						data.SrteIpv4Peers[i].Policies[ci].CandidatePathsPreferences[cci].ExplicitSegmentListNames[ccci].SegmentListName = types.StringNull()
@@ -2668,7 +2668,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 						return true
 					},
 				)
-				if value := ccr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAnyColors[cci].AffinityColorName.IsNull() {
+				if value := ccr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAnyColors[cci].AffinityColorName.IsNull() {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAnyColors[cci].AffinityColorName = types.StringValue(value.String())
 				} else {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAnyColors[cci].AffinityColorName = types.StringNull()
@@ -2697,7 +2697,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 						return true
 					},
 				)
-				if value := ccr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAllColors[cci].AffinityColorName.IsNull() {
+				if value := ccr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAllColors[cci].AffinityColorName.IsNull() {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAllColors[cci].AffinityColorName = types.StringValue(value.String())
 				} else {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityIncludeAllColors[cci].AffinityColorName = types.StringNull()
@@ -2726,7 +2726,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 						return true
 					},
 				)
-				if value := ccr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityExcludeColors[cci].AffinityColorName.IsNull() {
+				if value := ccr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityExcludeColors[cci].AffinityColorName.IsNull() {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityExcludeColors[cci].AffinityColorName = types.StringValue(value.String())
 				} else {
 					data.SrteIpv4Peers[i].Policies[ci].CandidatePathsAffinityExcludeColors[cci].AffinityColorName = types.StringNull()
@@ -2737,7 +2737,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.SrteIpv4Peers[i].Policies[ci].Color = types.Int64Null()
 			}
-			if value := cr.Get("end-point.ipv4"); value.Exists() && value.Type == gjson.String && !data.SrteIpv4Peers[i].Policies[ci].EndPointIpv4.IsNull() {
+			if value := cr.Get("end-point.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteIpv4Peers[i].Policies[ci].EndPointIpv4.IsNull() {
 				data.SrteIpv4Peers[i].Policies[ci].EndPointIpv4 = types.StringValue(value.String())
 			} else {
 				data.SrteIpv4Peers[i].Policies[ci].EndPointIpv4 = types.StringNull()
@@ -2831,7 +2831,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("endpoint-set-name"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpEndpointSets[i].EndpointSetName.IsNull() {
+		if value := r.Get("endpoint-set-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpEndpointSets[i].EndpointSetName.IsNull() {
 			data.SrteP2mpEndpointSets[i].EndpointSetName = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpEndpointSets[i].EndpointSetName = types.StringNull()
@@ -2859,7 +2859,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpEndpointSets[i].Ipv4s[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpEndpointSets[i].Ipv4s[ci].Address.IsNull() {
 				data.SrteP2mpEndpointSets[i].Ipv4s[ci].Address = types.StringValue(value.String())
 			} else {
 				data.SrteP2mpEndpointSets[i].Ipv4s[ci].Address = types.StringNull()
@@ -2889,7 +2889,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("policy-name"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].PolicyName.IsNull() {
+		if value := r.Get("policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].PolicyName.IsNull() {
 			data.SrteP2mpPolicies[i].PolicyName = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpPolicies[i].PolicyName = types.StringNull()
@@ -2899,12 +2899,12 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.SrteP2mpPolicies[i].Color = types.Int64Null()
 		}
-		if value := r.Get("endpoint-set"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].EndpointSet.IsNull() {
+		if value := r.Get("endpoint-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].EndpointSet.IsNull() {
 			data.SrteP2mpPolicies[i].EndpointSet = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpPolicies[i].EndpointSet = types.StringNull()
 		}
-		if value := r.Get("source.ipv4"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].SourceIpv4.IsNull() {
+		if value := r.Get("source.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].SourceIpv4.IsNull() {
 			data.SrteP2mpPolicies[i].SourceIpv4 = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpPolicies[i].SourceIpv4 = types.StringNull()
@@ -2955,7 +2955,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAnyColors[ci].AffinityColorName.IsNull() {
+			if value := cr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAnyColors[ci].AffinityColorName.IsNull() {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAnyColors[ci].AffinityColorName = types.StringValue(value.String())
 			} else {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAnyColors[ci].AffinityColorName = types.StringNull()
@@ -2984,7 +2984,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAllColors[ci].AffinityColorName.IsNull() {
+			if value := cr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAllColors[ci].AffinityColorName.IsNull() {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAllColors[ci].AffinityColorName = types.StringValue(value.String())
 			} else {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityIncludeAllColors[ci].AffinityColorName = types.StringNull()
@@ -3013,7 +3013,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("affinity-color-name"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityExcludeColors[ci].AffinityColorName.IsNull() {
+			if value := cr.Get("affinity-color-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityExcludeColors[ci].AffinityColorName.IsNull() {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityExcludeColors[ci].AffinityColorName = types.StringValue(value.String())
 			} else {
 				data.SrteP2mpPolicies[i].CandidatePathsConstraintsAffinityExcludeColors[ci].AffinityColorName = types.StringNull()
@@ -3155,7 +3155,7 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpFrrNodeSetFromIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpFrrNodeSetFromIpv4s[i].Address.IsNull() {
 			data.SrteP2mpFrrNodeSetFromIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpFrrNodeSetFromIpv4s[i].Address = types.StringNull()
@@ -3184,13 +3184,13 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SrteP2mpFrrNodeSetToIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrteP2mpFrrNodeSetToIpv4s[i].Address.IsNull() {
 			data.SrteP2mpFrrNodeSetToIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.SrteP2mpFrrNodeSetToIpv4s[i].Address = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.PeerFilterIpv4AccessList.IsNull() {
+	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PeerFilterIpv4AccessList.IsNull() {
 		data.PeerFilterIpv4AccessList = types.StringValue(value.String())
 	} else {
 		data.PeerFilterIpv4AccessList = types.StringNull()
@@ -3211,17 +3211,17 @@ func (data *PCE) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "state-sync.ipv4s.ipv4"); value.Exists() {
 		data.StateSyncIpv4s = make([]PCEStateSyncIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEStateSyncIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.StateSyncIpv4s = append(data.StateSyncIpv4s, item)
@@ -3232,7 +3232,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.StateSyncIpv6s = make([]PCEStateSyncIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEStateSyncIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.StateSyncIpv6s = append(data.StateSyncIpv6s, item)
@@ -3242,7 +3242,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "tcp-buffer.size"); value.Exists() && value.Type == gjson.Number {
 		data.TcpBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TcpAoKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "tcp-ao.include-tcp-options"); value.Exists() {
@@ -3275,13 +3275,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LinkDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.link.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -3292,13 +3292,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.link.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LinkDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.link.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3316,13 +3316,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -3333,13 +3333,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3359,13 +3359,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.NodeDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.node.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -3376,13 +3376,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.node.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.NodeDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.node.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3400,13 +3400,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -3417,13 +3417,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3443,13 +3443,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.SrlgDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -3460,13 +3460,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.srlg.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SrlgDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3484,13 +3484,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -3501,13 +3501,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3527,13 +3527,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.SrlgNodeDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg-node.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -3544,13 +3544,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.srlg-node.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SrlgNodeDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg-node.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3568,13 +3568,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -3585,13 +3585,13 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3609,10 +3609,10 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeerIpv4s = make([]PCEPeerIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEPeerIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TcpAoKeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp-ao.include-tcp-options"); cValue.Exists() {
@@ -3633,10 +3633,10 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeerIpv6s = make([]PCEPeerIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEPeerIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TcpAoKeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp-ao.include-tcp-options"); cValue.Exists() {
@@ -3653,7 +3653,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NetconfSshUser = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "api.authentication.digest"); value.Exists() {
@@ -3661,27 +3661,27 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ApiAuthenticationDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiSiblingIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "api.users.user"); value.Exists() {
 		data.ApiUsers = make([]PCEApiUsers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEApiUsers{}
-			if cValue := v.Get("user-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("user-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UserName = types.StringValue(cValue.String())
 			}
 			data.ApiUsers = append(data.ApiUsers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "timers.reoptimization"); value.Exists() && value.Type == gjson.Number {
@@ -3748,7 +3748,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteAffinityBitmaps = make([]PCESrteAffinityBitmaps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteAffinityBitmaps{}
-			if cValue := v.Get("affinity-color-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("affinity-color-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityColorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("affinity-attribute-bit"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3762,7 +3762,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteSegmentLists = make([]PCESrteSegmentLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteSegmentLists{}
-			if cValue := v.Get("segment-list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("segment-list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SegmentListName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -3775,7 +3775,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("mpls.label"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MplsLabel = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("mpls.adjacency"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mpls.adjacency"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MplsAdjacency = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -3790,14 +3790,14 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteIpv4Peers = make([]PCESrteIpv4Peers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteIpv4Peers{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("policies.policy"); cValue.Exists() {
 				item.Policies = make([]PCESrteIpv4PeersPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteIpv4PeersPolicies{}
-					if ccValue := cv.Get("policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("policy-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PolicyName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("candidate-paths.append-sid.mpls"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3842,7 +3842,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 								ccItem.ExplicitSegmentListNames = make([]PCESrteIpv4PeersPoliciesCandidatePathsPreferencesExplicitSegmentListNames, 0)
 								cccValue.ForEach(func(ccck, cccv gjson.Result) bool {
 									cccItem := PCESrteIpv4PeersPoliciesCandidatePathsPreferencesExplicitSegmentListNames{}
-									if ccccValue := cccv.Get("segment-list-name"); ccccValue.Exists() && ccccValue.Type == gjson.String {
+									if ccccValue := cccv.Get("segment-list-name"); ccccValue.Exists() && (ccccValue.Type == gjson.String || ccccValue.Type == gjson.Number) {
 										cccItem.SegmentListName = types.StringValue(ccccValue.String())
 									}
 									ccItem.ExplicitSegmentListNames = append(ccItem.ExplicitSegmentListNames, cccItem)
@@ -3880,7 +3880,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityIncludeAnyColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAnyColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAnyColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityIncludeAnyColors = append(cItem.CandidatePathsAffinityIncludeAnyColors, ccItem)
@@ -3891,7 +3891,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityIncludeAllColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAllColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAllColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityIncludeAllColors = append(cItem.CandidatePathsAffinityIncludeAllColors, ccItem)
@@ -3902,7 +3902,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityExcludeColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityExcludeColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityExcludeColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityExcludeColors = append(cItem.CandidatePathsAffinityExcludeColors, ccItem)
@@ -3912,7 +3912,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("color"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Color = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("end-point.ipv4"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("end-point.ipv4"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.EndPointIpv4 = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("binding-sid.mpls"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -3963,14 +3963,14 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpEndpointSets = make([]PCESrteP2mpEndpointSets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpEndpointSets{}
-			if cValue := v.Get("endpoint-set-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("endpoint-set-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EndpointSetName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4s.ipv4"); cValue.Exists() {
 				item.Ipv4s = make([]PCESrteP2mpEndpointSetsIpv4s, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpEndpointSetsIpv4s{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv4s = append(item.Ipv4s, cItem)
@@ -3985,16 +3985,16 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpPolicies = make([]PCESrteP2mpPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpPolicies{}
-			if cValue := v.Get("policy-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("policy-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicyName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("color"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Color = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("endpoint-set"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("endpoint-set"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EndpointSet = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -4014,7 +4014,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityIncludeAnyColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAnyColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAnyColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityIncludeAnyColors = append(item.CandidatePathsConstraintsAffinityIncludeAnyColors, cItem)
@@ -4025,7 +4025,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityIncludeAllColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAllColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAllColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityIncludeAllColors = append(item.CandidatePathsConstraintsAffinityIncludeAllColors, cItem)
@@ -4036,7 +4036,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityExcludeColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityExcludeColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityExcludeColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityExcludeColors = append(item.CandidatePathsConstraintsAffinityExcludeColors, cItem)
@@ -4109,7 +4109,7 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpFrrNodeSetFromIpv4s = make([]PCESrteP2mpFrrNodeSetFromIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpFrrNodeSetFromIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SrteP2mpFrrNodeSetFromIpv4s = append(data.SrteP2mpFrrNodeSetFromIpv4s, item)
@@ -4120,14 +4120,14 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpFrrNodeSetToIpv4s = make([]PCESrteP2mpFrrNodeSetToIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpFrrNodeSetToIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SrteP2mpFrrNodeSetToIpv4s = append(data.SrteP2mpFrrNodeSetToIpv4s, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PeerFilterIpv4AccessList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hierarchical.underlay.enable-all"); value.Exists() {
@@ -4142,17 +4142,17 @@ func (data *PCE) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "state-sync.ipv4s.ipv4"); value.Exists() {
 		data.StateSyncIpv4s = make([]PCEStateSyncIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEStateSyncIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.StateSyncIpv4s = append(data.StateSyncIpv4s, item)
@@ -4163,7 +4163,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.StateSyncIpv6s = make([]PCEStateSyncIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEStateSyncIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.StateSyncIpv6s = append(data.StateSyncIpv6s, item)
@@ -4173,7 +4173,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "tcp-buffer.size"); value.Exists() && value.Type == gjson.Number {
 		data.TcpBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "tcp-ao.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TcpAoKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "tcp-ao.include-tcp-options"); value.Exists() {
@@ -4206,13 +4206,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LinkDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.link.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -4223,13 +4223,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.link.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LinkDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.link.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.link.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LinkDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.link.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4247,13 +4247,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -4264,13 +4264,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4290,13 +4290,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.NodeDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.node.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -4307,13 +4307,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.node.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.NodeDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.node.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.node.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NodeDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.node.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4331,13 +4331,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -4348,13 +4348,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4374,13 +4374,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.SrlgDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -4391,13 +4391,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.srlg.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SrlgDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4415,13 +4415,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -4432,13 +4432,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4458,13 +4458,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.SrlgNodeDisjointStrict = types.BoolValue(false)
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.one.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.one.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspOnePccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg-node.lsp.one.pcc.shortest-path"); cValue.Exists() {
@@ -4475,13 +4475,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("type.srlg-node.lsp.one.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SrlgNodeDisjointLspOnePccExcludeSrlg = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.address-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.address-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccAddressType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccIpAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type.srlg-node.lsp.two.pcc.lsp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type.srlg-node.lsp.two.pcc.lsp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgNodeDisjointLspTwoPccLspName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("type.srlg-node.lsp.two.pcc.exclude-srlg"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4499,13 +4499,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.Strict = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.one.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspOnePccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.one.pcc.shortest-path"); ccValue.Exists() {
@@ -4516,13 +4516,13 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("lsp.one.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.LspOnePccExcludeSrlg = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.address-type"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccAddressType = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.ip-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccIpAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp.two.pcc.lsp-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspTwoPccLspName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("lsp.two.pcc.exclude-srlg"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4540,10 +4540,10 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeerIpv4s = make([]PCEPeerIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEPeerIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TcpAoKeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp-ao.include-tcp-options"); cValue.Exists() {
@@ -4564,10 +4564,10 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.PeerIpv6s = make([]PCEPeerIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEPeerIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tcp-ao.key-chain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TcpAoKeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp-ao.include-tcp-options"); cValue.Exists() {
@@ -4584,7 +4584,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "netconf.ssh.user"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NetconfSshUser = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "api.authentication.digest"); value.Exists() {
@@ -4592,27 +4592,27 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ApiAuthenticationDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.sibling.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiSiblingIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "api.users.user"); value.Exists() {
 		data.ApiUsers = make([]PCEApiUsers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCEApiUsers{}
-			if cValue := v.Get("user-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("user-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UserName = types.StringValue(cValue.String())
 			}
 			data.ApiUsers = append(data.ApiUsers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "api.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ApiIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "timers.reoptimization"); value.Exists() && value.Type == gjson.Number {
@@ -4679,7 +4679,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteAffinityBitmaps = make([]PCESrteAffinityBitmaps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteAffinityBitmaps{}
-			if cValue := v.Get("affinity-color-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("affinity-color-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityColorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("affinity-attribute-bit"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4693,7 +4693,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteSegmentLists = make([]PCESrteSegmentLists, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteSegmentLists{}
-			if cValue := v.Get("segment-list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("segment-list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SegmentListName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("indexes.index"); cValue.Exists() {
@@ -4706,7 +4706,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("mpls.label"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MplsLabel = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("mpls.adjacency"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mpls.adjacency"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MplsAdjacency = types.StringValue(ccValue.String())
 					}
 					item.Indexes = append(item.Indexes, cItem)
@@ -4721,14 +4721,14 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteIpv4Peers = make([]PCESrteIpv4Peers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteIpv4Peers{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("policies.policy"); cValue.Exists() {
 				item.Policies = make([]PCESrteIpv4PeersPolicies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteIpv4PeersPolicies{}
-					if ccValue := cv.Get("policy-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("policy-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PolicyName = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("candidate-paths.append-sid.mpls"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4773,7 +4773,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 								ccItem.ExplicitSegmentListNames = make([]PCESrteIpv4PeersPoliciesCandidatePathsPreferencesExplicitSegmentListNames, 0)
 								cccValue.ForEach(func(ccck, cccv gjson.Result) bool {
 									cccItem := PCESrteIpv4PeersPoliciesCandidatePathsPreferencesExplicitSegmentListNames{}
-									if ccccValue := cccv.Get("segment-list-name"); ccccValue.Exists() && ccccValue.Type == gjson.String {
+									if ccccValue := cccv.Get("segment-list-name"); ccccValue.Exists() && (ccccValue.Type == gjson.String || ccccValue.Type == gjson.Number) {
 										cccItem.SegmentListName = types.StringValue(ccccValue.String())
 									}
 									ccItem.ExplicitSegmentListNames = append(ccItem.ExplicitSegmentListNames, cccItem)
@@ -4811,7 +4811,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityIncludeAnyColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAnyColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAnyColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityIncludeAnyColors = append(cItem.CandidatePathsAffinityIncludeAnyColors, ccItem)
@@ -4822,7 +4822,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityIncludeAllColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAllColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityIncludeAllColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityIncludeAllColors = append(cItem.CandidatePathsAffinityIncludeAllColors, ccItem)
@@ -4833,7 +4833,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 						cItem.CandidatePathsAffinityExcludeColors = make([]PCESrteIpv4PeersPoliciesCandidatePathsAffinityExcludeColors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := PCESrteIpv4PeersPoliciesCandidatePathsAffinityExcludeColors{}
-							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("affinity-color-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.AffinityColorName = types.StringValue(cccValue.String())
 							}
 							cItem.CandidatePathsAffinityExcludeColors = append(cItem.CandidatePathsAffinityExcludeColors, ccItem)
@@ -4843,7 +4843,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("color"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Color = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("end-point.ipv4"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("end-point.ipv4"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.EndPointIpv4 = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("binding-sid.mpls"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -4894,14 +4894,14 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpEndpointSets = make([]PCESrteP2mpEndpointSets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpEndpointSets{}
-			if cValue := v.Get("endpoint-set-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("endpoint-set-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EndpointSetName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4s.ipv4"); cValue.Exists() {
 				item.Ipv4s = make([]PCESrteP2mpEndpointSetsIpv4s, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpEndpointSetsIpv4s{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv4s = append(item.Ipv4s, cItem)
@@ -4916,16 +4916,16 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpPolicies = make([]PCESrteP2mpPolicies, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpPolicies{}
-			if cValue := v.Get("policy-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("policy-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicyName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("color"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Color = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("endpoint-set"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("endpoint-set"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EndpointSet = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -4945,7 +4945,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityIncludeAnyColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAnyColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAnyColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityIncludeAnyColors = append(item.CandidatePathsConstraintsAffinityIncludeAnyColors, cItem)
@@ -4956,7 +4956,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityIncludeAllColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAllColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityIncludeAllColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityIncludeAllColors = append(item.CandidatePathsConstraintsAffinityIncludeAllColors, cItem)
@@ -4967,7 +4967,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 				item.CandidatePathsConstraintsAffinityExcludeColors = make([]PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityExcludeColors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PCESrteP2mpPoliciesCandidatePathsConstraintsAffinityExcludeColors{}
-					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-color-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityColorName = types.StringValue(ccValue.String())
 					}
 					item.CandidatePathsConstraintsAffinityExcludeColors = append(item.CandidatePathsConstraintsAffinityExcludeColors, cItem)
@@ -5040,7 +5040,7 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpFrrNodeSetFromIpv4s = make([]PCESrteP2mpFrrNodeSetFromIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpFrrNodeSetFromIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SrteP2mpFrrNodeSetFromIpv4s = append(data.SrteP2mpFrrNodeSetFromIpv4s, item)
@@ -5051,14 +5051,14 @@ func (data *PCEData) fromBody(ctx context.Context, res []byte, version string) {
 		data.SrteP2mpFrrNodeSetToIpv4s = make([]PCESrteP2mpFrrNodeSetToIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PCESrteP2mpFrrNodeSetToIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SrteP2mpFrrNodeSetToIpv4s = append(data.SrteP2mpFrrNodeSetToIpv4s, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "peer-filter.ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PeerFilterIpv4AccessList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hierarchical.underlay.enable-all"); value.Exists() {

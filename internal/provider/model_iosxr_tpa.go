@@ -316,7 +316,7 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
@@ -330,7 +330,7 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Vrfs[i].Ipv4UpdateSourceDataportsActiveManagement = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv4.update-source.dataports.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4UpdateSourceDataports.IsNull() {
+		if value := r.Get("address-family.ipv4.update-source.dataports.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv4UpdateSourceDataports.IsNull() {
 			data.Vrfs[i].Ipv4UpdateSourceDataports = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4UpdateSourceDataports = types.StringNull()
@@ -353,7 +353,7 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Vrfs[i].Ipv6UpdateSourceDataportsActiveManagement = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv6.update-source.dataports.interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6UpdateSourceDataports.IsNull() {
+		if value := r.Get("address-family.ipv6.update-source.dataports.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv6UpdateSourceDataports.IsNull() {
 			data.Vrfs[i].Ipv6UpdateSourceDataports = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6UpdateSourceDataports = types.StringNull()
@@ -390,12 +390,12 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("destination-interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].DestinationInterface.IsNull() {
+			if value := cr.Get("destination-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].DestinationInterface.IsNull() {
 				data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].DestinationInterface = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].DestinationInterface = types.StringNull()
 			}
-			if value := cr.Get("source"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].SourceInterface.IsNull() {
+			if value := cr.Get("source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].SourceInterface.IsNull() {
 				data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].SourceInterface = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].Ipv4UpdateSourceDestinations[ci].SourceInterface = types.StringNull()
@@ -424,12 +424,12 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("destination-interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].DestinationInterface.IsNull() {
+			if value := cr.Get("destination-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].DestinationInterface.IsNull() {
 				data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].DestinationInterface = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].DestinationInterface = types.StringNull()
 			}
-			if value := cr.Get("source"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].SourceInterface.IsNull() {
+			if value := cr.Get("source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].SourceInterface.IsNull() {
 				data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].SourceInterface = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].Ipv6UpdateSourceDestinations[ci].SourceInterface = types.StringNull()
@@ -458,17 +458,17 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("east-west-interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].EastWestInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("east-west-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].EastWestInterfaces[ci].InterfaceName.IsNull() {
 				data.Vrfs[i].EastWestInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].EastWestInterfaces[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].EastWestInterfaces[ci].ReferencedVrf.IsNull() {
+			if value := cr.Get("vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].EastWestInterfaces[ci].ReferencedVrf.IsNull() {
 				data.Vrfs[i].EastWestInterfaces[ci].ReferencedVrf = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].EastWestInterfaces[ci].ReferencedVrf = types.StringNull()
 			}
-			if value := cr.Get("interface"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].EastWestInterfaces[ci].ReferencedInterface.IsNull() {
+			if value := cr.Get("interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].EastWestInterfaces[ci].ReferencedInterface.IsNull() {
 				data.Vrfs[i].EastWestInterfaces[ci].ReferencedInterface = types.StringValue(value.String())
 			} else {
 				data.Vrfs[i].EastWestInterfaces[ci].ReferencedInterface = types.StringNull()
@@ -506,7 +506,7 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Vrfs = make([]TPAVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TPAVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.update-source.dataports.active-management"); cValue.Exists() {
@@ -514,7 +514,7 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Ipv4UpdateSourceDataportsActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.update-source.dataports.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv4.update-source.dataports.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4UpdateSourceDataports = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.default-route.mgmt"); cValue.Exists() {
@@ -527,7 +527,7 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Ipv6UpdateSourceDataportsActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.update-source.dataports.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv6.update-source.dataports.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6UpdateSourceDataports = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.default-route.mgmt"); cValue.Exists() {
@@ -539,10 +539,10 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv4UpdateSourceDestinations = make([]TPAVrfsIpv4UpdateSourceDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsIpv4UpdateSourceDestinations{}
-					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationInterface = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceInterface = types.StringValue(ccValue.String())
 					}
 					item.Ipv4UpdateSourceDestinations = append(item.Ipv4UpdateSourceDestinations, cItem)
@@ -553,10 +553,10 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv6UpdateSourceDestinations = make([]TPAVrfsIpv6UpdateSourceDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsIpv6UpdateSourceDestinations{}
-					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationInterface = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceInterface = types.StringValue(ccValue.String())
 					}
 					item.Ipv6UpdateSourceDestinations = append(item.Ipv6UpdateSourceDestinations, cItem)
@@ -567,13 +567,13 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 				item.EastWestInterfaces = make([]TPAVrfsEastWestInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsEastWestInterfaces{}
-					if ccValue := cv.Get("east-west-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("east-west-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("vrf"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("vrf"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ReferencedVrf = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ReferencedInterface = types.StringValue(ccValue.String())
 					}
 					item.EastWestInterfaces = append(item.EastWestInterfaces, cItem)
@@ -615,7 +615,7 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Vrfs = make([]TPAVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TPAVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.update-source.dataports.active-management"); cValue.Exists() {
@@ -623,7 +623,7 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Ipv4UpdateSourceDataportsActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.update-source.dataports.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv4.update-source.dataports.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4UpdateSourceDataports = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4.default-route.mgmt"); cValue.Exists() {
@@ -636,7 +636,7 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Ipv6UpdateSourceDataportsActiveManagement = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.update-source.dataports.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv6.update-source.dataports.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6UpdateSourceDataports = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6.default-route.mgmt"); cValue.Exists() {
@@ -648,10 +648,10 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv4UpdateSourceDestinations = make([]TPAVrfsIpv4UpdateSourceDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsIpv4UpdateSourceDestinations{}
-					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationInterface = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceInterface = types.StringValue(ccValue.String())
 					}
 					item.Ipv4UpdateSourceDestinations = append(item.Ipv4UpdateSourceDestinations, cItem)
@@ -662,10 +662,10 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Ipv6UpdateSourceDestinations = make([]TPAVrfsIpv6UpdateSourceDestinations, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsIpv6UpdateSourceDestinations{}
-					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("destination-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.DestinationInterface = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceInterface = types.StringValue(ccValue.String())
 					}
 					item.Ipv6UpdateSourceDestinations = append(item.Ipv6UpdateSourceDestinations, cItem)
@@ -676,13 +676,13 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.EastWestInterfaces = make([]TPAVrfsEastWestInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := TPAVrfsEastWestInterfaces{}
-					if ccValue := cv.Get("east-west-interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("east-west-interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("vrf"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("vrf"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ReferencedVrf = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("interface"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.ReferencedInterface = types.StringValue(ccValue.String())
 					}
 					item.EastWestInterfaces = append(item.EastWestInterfaces, cItem)

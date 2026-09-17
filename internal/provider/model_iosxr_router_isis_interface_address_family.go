@@ -1768,7 +1768,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("exclude-interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("exclude-interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -1802,7 +1802,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("lfa-interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("lfa-interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -1836,7 +1836,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("exclude-interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("exclude-interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -1870,7 +1870,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 				return true
 			},
 		)
-		if value := r.Get("lfa-interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("lfa-interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -1881,7 +1881,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].Level = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && value.Type == gjson.String && !data.LinkGroupName.IsNull() {
+	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LinkGroupName.IsNull() {
 		data.LinkGroupName = types.StringValue(value.String())
 	} else {
 		data.LinkGroupName = types.StringNull()
@@ -1969,7 +1969,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 			data.AutoMetricProactiveProtectMetricLevels[i].ProactiveProtect = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && value.Type == gjson.String && !data.AdvertisePrefixRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdvertisePrefixRoutePolicy.IsNull() {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.AdvertisePrefixRoutePolicy = types.StringNull()
@@ -2002,7 +2002,7 @@ func (data *RouterISISInterfaceAddressFamily) updateFromBody(ctx context.Context
 		} else {
 			data.AdvertisePrefixRoutePolicyLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.AdvertisePrefixRoutePolicyLevels[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdvertisePrefixRoutePolicyLevels[i].RoutePolicy.IsNull() {
 			data.AdvertisePrefixRoutePolicyLevels[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AdvertisePrefixRoutePolicyLevels[i].RoutePolicy = types.StringNull()
@@ -2442,7 +2442,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2456,7 +2456,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2470,7 +2470,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2484,7 +2484,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2494,7 +2494,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LinkGroupName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "link-group.level"); value.Exists() && value.Type == gjson.Number {
@@ -2534,7 +2534,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy-levels.route-policy-level"); value.Exists() {
@@ -2544,7 +2544,7 @@ func (data *RouterISISInterfaceAddressFamily) fromBody(ctx context.Context, res 
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			data.AdvertisePrefixRoutePolicyLevels = append(data.AdvertisePrefixRoutePolicyLevels, item)
@@ -2985,7 +2985,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2999,7 +2999,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3013,7 +3013,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("exclude-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3027,7 +3027,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterISISInterfaceAddressFamilyFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceAddressFamilyFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lfa-interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3037,7 +3037,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "link-group.link-group-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LinkGroupName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "link-group.level"); value.Exists() && value.Type == gjson.Number {
@@ -3077,7 +3077,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertisePrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.prefix-advertisement.route-policy-levels.route-policy-level"); value.Exists() {
@@ -3087,7 +3087,7 @@ func (data *RouterISISInterfaceAddressFamilyData) fromBody(ctx context.Context, 
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			data.AdvertisePrefixRoutePolicyLevels = append(data.AdvertisePrefixRoutePolicyLevels, item)

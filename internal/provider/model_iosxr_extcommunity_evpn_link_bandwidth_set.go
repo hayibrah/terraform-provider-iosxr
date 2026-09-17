@@ -132,7 +132,7 @@ func (data ExtcommunityEVPNLinkBandwidthSet) GetPatternConstraints() []helpers.F
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ExtcommunityEVPNLinkBandwidthSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -144,7 +144,7 @@ func (data *ExtcommunityEVPNLinkBandwidthSet) updateFromBody(ctx context.Context
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ExtcommunityEVPNLinkBandwidthSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -154,7 +154,7 @@ func (data *ExtcommunityEVPNLinkBandwidthSet) fromBody(ctx context.Context, res 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ExtcommunityEVPNLinkBandwidthSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpl-extended-community-evpn-bandwidth-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

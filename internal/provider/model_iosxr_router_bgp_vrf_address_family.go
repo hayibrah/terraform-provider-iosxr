@@ -1321,7 +1321,7 @@ func (data RouterBGPVRFAddressFamily) GetPatternConstraints() []helpers.FieldPat
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingSrv6Locator.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingSrv6Locator.IsNull() {
 		data.SegmentRoutingSrv6Locator = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingSrv6Locator = types.StringNull()
@@ -1362,7 +1362,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.SegmentRoutingSrv6AllocModePerVrf46 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingSrv6AllocModeRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingSrv6AllocModeRoutePolicy.IsNull() {
 		data.SegmentRoutingSrv6AllocModeRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingSrv6AllocModeRoutePolicy = types.StringNull()
@@ -1372,7 +1372,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.DomainDistinguisherAs = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && value.Type == gjson.String && !data.DomainDistinguisherRouterId.IsNull() {
+	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DomainDistinguisherRouterId.IsNull() {
 		data.DomainDistinguisherRouterId = types.StringValue(value.String())
 	} else {
 		data.DomainDistinguisherRouterId = types.StringNull()
@@ -1424,7 +1424,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.MaximumPathsEbgpSelective = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && value.Type == gjson.String && !data.MaximumPathsEbgpRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MaximumPathsEbgpRoutePolicy.IsNull() {
 		data.MaximumPathsEbgpRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MaximumPathsEbgpRoutePolicy = types.StringNull()
@@ -1461,7 +1461,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.MaximumPathsIbgpSelective = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && value.Type == gjson.String && !data.MaximumPathsIbgpRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MaximumPathsIbgpRoutePolicy.IsNull() {
 		data.MaximumPathsIbgpRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MaximumPathsIbgpRoutePolicy = types.StringNull()
@@ -1489,7 +1489,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.MaximumPathsEibgpSelective = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && value.Type == gjson.String && !data.MaximumPathsEibgpRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MaximumPathsEibgpRoutePolicy.IsNull() {
 		data.MaximumPathsEibgpRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MaximumPathsEibgpRoutePolicy = types.StringNull()
@@ -1553,7 +1553,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && value.Type == gjson.String && !data.AdditionalPathsSelectionRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdditionalPathsSelectionRoutePolicy.IsNull() {
 		data.AdditionalPathsSelectionRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.AdditionalPathsSelectionRoutePolicy = types.StringNull()
@@ -1567,7 +1567,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.AdditionalPathsSelectionDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && value.Type == gjson.String && !data.PermanentNetworkRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PermanentNetworkRoutePolicy.IsNull() {
 		data.PermanentNetworkRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.PermanentNetworkRoutePolicy = types.StringNull()
@@ -1599,7 +1599,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.AdvertiseBestExternalDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && value.Type == gjson.String && !data.AdvertiseLocalLabeledRouteSafiUnicast.IsNull() {
+	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AdvertiseLocalLabeledRouteSafiUnicast.IsNull() {
 		data.AdvertiseLocalLabeledRouteSafiUnicast = types.StringValue(value.String())
 	} else {
 		data.AdvertiseLocalLabeledRouteSafiUnicast = types.StringNull()
@@ -1636,7 +1636,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Networks[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Networks[i].Address.IsNull() {
 			data.Networks[i].Address = types.StringValue(value.String())
 		} else {
 			data.Networks[i].Address = types.StringNull()
@@ -1646,7 +1646,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.Networks[i].Prefix = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.Networks[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Networks[i].RoutePolicy.IsNull() {
 			data.Networks[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.Networks[i].RoutePolicy = types.StringNull()
@@ -1693,7 +1693,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.AggregateAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AggregateAddresses[i].Address.IsNull() {
 			data.AggregateAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.AggregateAddresses[i].Address = types.StringNull()
@@ -1730,12 +1730,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.AggregateAddresses[i].SummaryOnly = types.BoolNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.AggregateAddresses[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AggregateAddresses[i].RoutePolicy.IsNull() {
 			data.AggregateAddresses[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AggregateAddresses[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.AggregateAddresses[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AggregateAddresses[i].Description.IsNull() {
 			data.AggregateAddresses[i].Description = types.StringValue(value.String())
 		} else {
 			data.AggregateAddresses[i].Description = types.StringNull()
@@ -1769,7 +1769,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("ospf-router-tag"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].RouterTag.IsNull() {
+		if value := r.Get("ospf-router-tag"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].RouterTag.IsNull() {
 			data.RedistributeOspf[i].RouterTag = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].RouterTag = types.StringNull()
@@ -2067,12 +2067,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.RedistributeOspf[i].Multipath = types.BoolNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
 			data.RedistributeOspf[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeOspf[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].DefaultPolicyActionIn = types.StringNull()
@@ -2101,7 +2101,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("ospfv3-router-tag"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].RouterTag.IsNull() {
+		if value := r.Get("ospfv3-router-tag"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].RouterTag.IsNull() {
 			data.RedistributeOspfv3[i].RouterTag = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].RouterTag = types.StringNull()
@@ -2399,12 +2399,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.RedistributeOspfv3[i].Multipath = types.BoolNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].RoutePolicy.IsNull() {
 			data.RedistributeOspfv3[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeOspfv3[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].DefaultPolicyActionIn = types.StringNull()
@@ -2433,7 +2433,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("eigrp-name"); value.Exists() && value.Type == gjson.String && !data.RedistributeEigrp[i].InstanceName.IsNull() {
+		if value := r.Get("eigrp-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeEigrp[i].InstanceName.IsNull() {
 			data.RedistributeEigrp[i].InstanceName = types.StringValue(value.String())
 		} else {
 			data.RedistributeEigrp[i].InstanceName = types.StringNull()
@@ -2479,12 +2479,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.RedistributeEigrp[i].Multipath = types.BoolNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeEigrp[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeEigrp[i].RoutePolicy.IsNull() {
 			data.RedistributeEigrp[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeEigrp[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeEigrp[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeEigrp[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeEigrp[i].DefaultPolicyActionIn = types.StringNull()
@@ -2513,7 +2513,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("isis-name"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].InstanceName.IsNull() {
+		if value := r.Get("isis-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].InstanceName.IsNull() {
 			data.RedistributeIsis[i].InstanceName = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].InstanceName = types.StringNull()
@@ -2595,12 +2595,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 		} else {
 			data.RedistributeIsis[i].Multipath = types.BoolNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
 			data.RedistributeIsis[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].DefaultPolicyActionIn.IsNull() {
 			data.RedistributeIsis[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].DefaultPolicyActionIn = types.StringNull()
@@ -2629,7 +2629,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.RedistributeConnectedMultipath = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedRoutePolicy.IsNull() {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedRoutePolicy = types.StringNull()
@@ -2657,7 +2657,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.RedistributeStaticMultipath = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticRoutePolicy.IsNull() {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticRoutePolicy = types.StringNull()
@@ -2685,12 +2685,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.RedistributeRipMultipath = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeRipRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeRipRoutePolicy.IsNull() {
 		data.RedistributeRipRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeRipRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && value.Type == gjson.String && !data.TablePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TablePolicy.IsNull() {
 		data.TablePolicy = types.StringValue(value.String())
 	} else {
 		data.TablePolicy = types.StringNull()
@@ -2713,7 +2713,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.AllocateLabelAllUnlabeledPath = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && value.Type == gjson.String && !data.AllocateLabelRoutePolicyName.IsNull() {
+	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AllocateLabelRoutePolicyName.IsNull() {
 		data.AllocateLabelRoutePolicyName = types.StringValue(value.String())
 	} else {
 		data.AllocateLabelRoutePolicyName = types.StringNull()
@@ -2763,7 +2763,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.LabelModePerVrf46 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && value.Type == gjson.String && !data.LabelModeRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LabelModeRoutePolicy.IsNull() {
 		data.LabelModeRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.LabelModeRoutePolicy = types.StringNull()
@@ -2842,7 +2842,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.BgpDampeningMaxSuppressTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && value.Type == gjson.String && !data.BgpDampeningRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BgpDampeningRoutePolicy.IsNull() {
 		data.BgpDampeningRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.BgpDampeningRoutePolicy = types.StringNull()
@@ -2861,7 +2861,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.WeightResetOnImport = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && value.Type == gjson.String && !data.NexthopRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.NexthopRoutePolicy.IsNull() {
 		data.NexthopRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.NexthopRoutePolicy = types.StringNull()
@@ -2911,12 +2911,12 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 	} else {
 		data.LabelSecurityAsbrRpf = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && value.Type == gjson.String && !data.MvpnSingleForwarderSelection.IsNull() {
+	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MvpnSingleForwarderSelection.IsNull() {
 		data.MvpnSingleForwarderSelection = types.StringValue(value.String())
 	} else {
 		data.MvpnSingleForwarderSelection = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && value.Type == gjson.String && !data.OriginatorPeId.IsNull() {
+	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.OriginatorPeId.IsNull() {
 		data.OriginatorPeId = types.StringValue(value.String())
 	} else {
 		data.OriginatorPeId = types.StringNull()
@@ -2946,7 +2946,7 @@ func (data *RouterBGPVRFAddressFamily) updateFromBody(ctx context.Context, res [
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrv6Locator = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.srv6.usid.allocation.wide-local-id-block"); value.Exists() {
@@ -2969,13 +2969,13 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.SegmentRoutingSrv6AllocModePerVrf46 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrv6AllocModeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && value.Type == gjson.Number {
 		data.DomainDistinguisherAs = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DomainDistinguisherRouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && value.Type == gjson.Number {
@@ -3005,7 +3005,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.MaximumPathsEbgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEbgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && value.Type == gjson.Number {
@@ -3026,7 +3026,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.MaximumPathsIbgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsIbgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && value.Type == gjson.Number {
@@ -3042,7 +3042,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.MaximumPathsEibgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEibgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.unique-nexthop-check-disable"); value.Exists() {
@@ -3078,7 +3078,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && value.Type == gjson.Number {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdditionalPathsSelectionRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "additional-paths.selection.disable"); value.Exists() {
@@ -3086,7 +3086,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.AdditionalPathsSelectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PermanentNetworkRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.best-external"); value.Exists() {
@@ -3104,7 +3104,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.AdvertiseBestExternalDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertiseLocalLabeledRouteSafiUnicast = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.epe-bgp.labeled-unicast"); value.Exists() {
@@ -3116,13 +3116,13 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.Networks = make([]RouterBGPVRFAddressFamilyNetworks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyNetworks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("backdoor"); cValue.Exists() {
@@ -3143,7 +3143,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.AggregateAddresses = make([]RouterBGPVRFAddressFamilyAggregateAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyAggregateAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3164,10 +3164,10 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.SummaryOnly = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set-tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3181,7 +3181,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.RedistributeOspf = make([]RouterBGPVRFAddressFamilyRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeOspf{}
-			if cValue := v.Get("ospf-router-tag"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospf-router-tag"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouterTag = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -3347,11 +3347,11 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -3365,7 +3365,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.RedistributeOspfv3 = make([]RouterBGPVRFAddressFamilyRedistributeOspfv3, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeOspfv3{}
-			if cValue := v.Get("ospfv3-router-tag"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospfv3-router-tag"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouterTag = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -3531,11 +3531,11 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -3549,7 +3549,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.RedistributeEigrp = make([]RouterBGPVRFAddressFamilyRedistributeEigrp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeEigrp{}
-			if cValue := v.Get("eigrp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("eigrp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -3575,11 +3575,11 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -3593,7 +3593,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 		data.RedistributeIsis = make([]RouterBGPVRFAddressFamilyRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeIsis{}
-			if cValue := v.Get("isis-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("isis-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level.one"); cValue.Exists() {
@@ -3639,11 +3639,11 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -3666,7 +3666,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.RedistributeConnectedMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static"); value.Exists() {
@@ -3682,7 +3682,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.RedistributeStaticMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.rip"); value.Exists() {
@@ -3698,10 +3698,10 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.RedistributeRipMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeRipRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TablePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allocate-label.all"); value.Exists() {
@@ -3714,7 +3714,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.AllocateLabelAllUnlabeledPath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllocateLabelRoutePolicyName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allocate-label.route-policy.unlabeled-path"); value.Exists() {
@@ -3742,7 +3742,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.LabelModePerVrf46 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LabelModeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "label.mode.per-nexthop-received-label"); value.Exists() {
@@ -3787,7 +3787,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpDampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpDampeningRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && value.Type == gjson.Number {
@@ -3798,7 +3798,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.WeightResetOnImport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NexthopRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "as-path-loopcheck.out.disable"); value.Exists() {
@@ -3826,10 +3826,10 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.LabelSecurityAsbrRpf = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MvpnSingleForwarderSelection = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OriginatorPeId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "option-b-asbr-only"); value.Exists() {
@@ -3849,7 +3849,7 @@ func (data *RouterBGPVRFAddressFamily) fromBody(ctx context.Context, res []byte,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.locator"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrv6Locator = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.srv6.usid.allocation.wide-local-id-block"); value.Exists() {
@@ -3872,13 +3872,13 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.SegmentRoutingSrv6AllocModePerVrf46 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.srv6.alloc.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrv6AllocModeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && value.Type == gjson.Number {
 		data.DomainDistinguisherAs = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DomainDistinguisherRouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && value.Type == gjson.Number {
@@ -3908,7 +3908,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.MaximumPathsEbgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEbgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && value.Type == gjson.Number {
@@ -3929,7 +3929,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.MaximumPathsIbgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsIbgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && value.Type == gjson.Number {
@@ -3945,7 +3945,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.MaximumPathsEibgpSelective = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEibgpRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.unique-nexthop-check-disable"); value.Exists() {
@@ -3981,7 +3981,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && value.Type == gjson.Number {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdditionalPathsSelectionRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "additional-paths.selection.disable"); value.Exists() {
@@ -3989,7 +3989,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.AdditionalPathsSelectionDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "permanent-network.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PermanentNetworkRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.best-external"); value.Exists() {
@@ -4007,7 +4007,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.AdvertiseBestExternalDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "advertise.local-labeled-route.safi-unicast"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AdvertiseLocalLabeledRouteSafiUnicast = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.epe-bgp.labeled-unicast"); value.Exists() {
@@ -4019,13 +4019,13 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.Networks = make([]RouterBGPVRFAddressFamilyNetworks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyNetworks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("backdoor"); cValue.Exists() {
@@ -4046,7 +4046,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.AggregateAddresses = make([]RouterBGPVRFAddressFamilyAggregateAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyAggregateAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4067,10 +4067,10 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 			} else {
 				item.SummaryOnly = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set-tag"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4084,7 +4084,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.RedistributeOspf = make([]RouterBGPVRFAddressFamilyRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeOspf{}
-			if cValue := v.Get("ospf-router-tag"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospf-router-tag"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouterTag = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -4250,11 +4250,11 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -4268,7 +4268,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.RedistributeOspfv3 = make([]RouterBGPVRFAddressFamilyRedistributeOspfv3, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeOspfv3{}
-			if cValue := v.Get("ospfv3-router-tag"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospfv3-router-tag"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouterTag = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -4434,11 +4434,11 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -4452,7 +4452,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.RedistributeEigrp = make([]RouterBGPVRFAddressFamilyRedistributeEigrp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeEigrp{}
-			if cValue := v.Get("eigrp-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("eigrp-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -4478,11 +4478,11 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -4496,7 +4496,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 		data.RedistributeIsis = make([]RouterBGPVRFAddressFamilyRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPVRFAddressFamilyRedistributeIsis{}
-			if cValue := v.Get("isis-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("isis-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level.one"); cValue.Exists() {
@@ -4542,11 +4542,11 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action-in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
@@ -4569,7 +4569,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeConnectedMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static"); value.Exists() {
@@ -4585,7 +4585,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeStaticMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.rip"); value.Exists() {
@@ -4601,10 +4601,10 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeRipMultipath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.rip.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeRipRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TablePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allocate-label.all"); value.Exists() {
@@ -4617,7 +4617,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.AllocateLabelAllUnlabeledPath = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "allocate-label.route-policy.route-policy-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AllocateLabelRoutePolicyName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "allocate-label.route-policy.unlabeled-path"); value.Exists() {
@@ -4645,7 +4645,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.LabelModePerVrf46 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "label.mode.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LabelModeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "label.mode.per-nexthop-received-label"); value.Exists() {
@@ -4690,7 +4690,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && value.Type == gjson.Number {
 		data.BgpDampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpDampeningRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && value.Type == gjson.Number {
@@ -4701,7 +4701,7 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.WeightResetOnImport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NexthopRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "as-path-loopcheck.out.disable"); value.Exists() {
@@ -4729,10 +4729,10 @@ func (data *RouterBGPVRFAddressFamilyData) fromBody(ctx context.Context, res []b
 	} else {
 		data.LabelSecurityAsbrRpf = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mvpn.single-forwarder-selection"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MvpnSingleForwarderSelection = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "originator-pe-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OriginatorPeId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "option-b-asbr-only"); value.Exists() {

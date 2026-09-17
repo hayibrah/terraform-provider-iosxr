@@ -514,17 +514,17 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerVrfs[i].VrfName.IsNull() {
 			data.ServerVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerVrfs[i].Ipv4AccessList.IsNull() {
 			data.ServerVrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].Ipv4AccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerVrfs[i].Ipv6AccessList.IsNull() {
+		if value := r.Get("ipv6.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerVrfs[i].Ipv6AccessList.IsNull() {
 			data.ServerVrfs[i].Ipv6AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerVrfs[i].Ipv6AccessList = types.StringNull()
@@ -645,17 +645,17 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerNetconfVrfs[i].VrfName.IsNull() {
 			data.ServerNetconfVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerNetconfVrfs[i].Ipv4AccessList.IsNull() {
 			data.ServerNetconfVrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].Ipv4AccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.access-list"); value.Exists() && value.Type == gjson.String && !data.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() {
+		if value := r.Get("ipv6.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerNetconfVrfs[i].Ipv6AccessList.IsNull() {
 			data.ServerNetconfVrfs[i].Ipv6AccessList = types.StringValue(value.String())
 		} else {
 			data.ServerNetconfVrfs[i].Ipv6AccessList = types.StringNull()
@@ -827,23 +827,23 @@ func (data *SSH) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("username-name"); value.Exists() && value.Type == gjson.String && !data.ServerUsernames[i].Username.IsNull() {
+		if value := r.Get("username-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerUsernames[i].Username.IsNull() {
 			data.ServerUsernames[i].Username = types.StringValue(value.String())
 		} else {
 			data.ServerUsernames[i].Username = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String && !data.ClientKnownhost.IsNull() {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientKnownhost.IsNull() {
 		data.ClientKnownhost = types.StringValue(value.String())
 	} else {
 		data.ClientKnownhost = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String && !data.ClientSourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientSourceInterface.IsNull() {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	} else {
 		data.ClientSourceInterface = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String && !data.ClientVrf.IsNull() {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientVrf.IsNull() {
 		data.ClientVrf = types.StringValue(value.String())
 	} else {
 		data.ClientVrf = types.StringNull()
@@ -955,13 +955,13 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerVrfs = make([]SSHServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerVrfs = append(data.ServerVrfs, item)
@@ -1024,13 +1024,13 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerNetconfVrfs = make([]SSHServerNetconfVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerNetconfVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerNetconfVrfs = append(data.ServerNetconfVrfs, item)
@@ -1126,20 +1126,20 @@ func (data *SSH) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerUsernames = make([]SSHServerUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerUsernames{}
-			if cValue := v.Get("username-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("username-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ServerUsernames = append(data.ServerUsernames, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientKnownhost = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && value.Type == gjson.Number {
@@ -1213,13 +1213,13 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerVrfs = make([]SSHServerVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerVrfs = append(data.ServerVrfs, item)
@@ -1282,13 +1282,13 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerNetconfVrfs = make([]SSHServerNetconfVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerNetconfVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
 			data.ServerNetconfVrfs = append(data.ServerNetconfVrfs, item)
@@ -1384,20 +1384,20 @@ func (data *SSHData) fromBody(ctx context.Context, res []byte, version string) {
 		data.ServerUsernames = make([]SSHServerUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SSHServerUsernames{}
-			if cValue := v.Get("username-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("username-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Username = types.StringValue(cValue.String())
 			}
 			data.ServerUsernames = append(data.ServerUsernames, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.knownhost"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientKnownhost = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientSourceInterface = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "client.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClientVrf = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "client.dscp"); value.Exists() && value.Type == gjson.Number {

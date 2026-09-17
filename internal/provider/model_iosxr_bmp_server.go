@@ -262,7 +262,7 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 				return true
 			},
 		)
-		if value := r.Get("route-mon"); value.Exists() && value.Type == gjson.String && !data.AllRouteMonitorings[i].RouteMon.IsNull() {
+		if value := r.Get("route-mon"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AllRouteMonitorings[i].RouteMon.IsNull() {
 			data.AllRouteMonitorings[i].RouteMon = types.StringValue(value.String())
 		} else {
 			data.AllRouteMonitorings[i].RouteMon = types.StringNull()
@@ -329,7 +329,7 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 		} else {
 			data.Servers[i].Shutdown = types.BoolNull()
 		}
-		if value := r.Get("host.host-name"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Host.IsNull() {
+		if value := r.Get("host.host-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].Host.IsNull() {
 			data.Servers[i].Host = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Host = types.StringNull()
@@ -373,27 +373,27 @@ func (data *BMPServer) updateFromBody(ctx context.Context, res []byte, version s
 		} else {
 			data.Servers[i].StatsReportingPeriod = types.Int64Null()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].Description.IsNull() {
 			data.Servers[i].Description = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Description = types.StringNull()
 		}
-		if value := r.Get("dscp.dscp-value"); value.Exists() && value.Type == gjson.String && !data.Servers[i].DscpValue.IsNull() {
+		if value := r.Get("dscp.dscp-value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].DscpValue.IsNull() {
 			data.Servers[i].DscpValue = types.StringValue(value.String())
 		} else {
 			data.Servers[i].DscpValue = types.StringNull()
 		}
-		if value := r.Get("precedence.precedence-value"); value.Exists() && value.Type == gjson.String && !data.Servers[i].PrecedenceValue.IsNull() {
+		if value := r.Get("precedence.precedence-value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].PrecedenceValue.IsNull() {
 			data.Servers[i].PrecedenceValue = types.StringValue(value.String())
 		} else {
 			data.Servers[i].PrecedenceValue = types.StringNull()
 		}
-		if value := r.Get("update-source"); value.Exists() && value.Type == gjson.String && !data.Servers[i].UpdateSource.IsNull() {
+		if value := r.Get("update-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].UpdateSource.IsNull() {
 			data.Servers[i].UpdateSource = types.StringValue(value.String())
 		} else {
 			data.Servers[i].UpdateSource = types.StringNull()
 		}
-		if value := r.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.Servers[i].Vrf.IsNull() {
+		if value := r.Get("vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Servers[i].Vrf.IsNull() {
 			data.Servers[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.Servers[i].Vrf = types.StringNull()
@@ -420,7 +420,7 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerAllRouteMonitorings{}
-			if cValue := v.Get("route-mon"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-mon"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouteMon = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("advertisement-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -453,7 +453,7 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("host.host-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("host.host-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Host = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("host.port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -479,19 +479,19 @@ func (data *BMPServer) fromBody(ctx context.Context, res []byte, version string)
 			if cValue := v.Get("stats-reporting-period"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StatsReportingPeriod = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DscpValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrecedenceValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("update-source"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("update-source"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UpdateSource = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp.mss"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -515,7 +515,7 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 		data.AllRouteMonitorings = make([]BMPServerAllRouteMonitorings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BMPServerAllRouteMonitorings{}
-			if cValue := v.Get("route-mon"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-mon"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouteMon = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("advertisement-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -548,7 +548,7 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("host.host-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("host.host-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Host = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("host.port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -574,19 +574,19 @@ func (data *BMPServerData) fromBody(ctx context.Context, res []byte, version str
 			if cValue := v.Get("stats-reporting-period"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.StatsReportingPeriod = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dscp.dscp-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DscpValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("precedence.precedence-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrecedenceValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("update-source"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("update-source"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UpdateSource = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("vrf"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tcp.mss"); cValue.Exists() && cValue.Type == gjson.Number {

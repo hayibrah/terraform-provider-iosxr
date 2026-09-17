@@ -320,12 +320,12 @@ func (data PerformanceMeasurement) GetPatternConstraints() []helpers.FieldPatter
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String && !data.SourceAddressIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceAddressIpv4.IsNull() {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	} else {
 		data.SourceAddressIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && value.Type == gjson.String && !data.SourceAddressIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceAddressIpv6.IsNull() {
 		data.SourceAddressIpv6 = types.StringValue(value.String())
 	} else {
 		data.SourceAddressIpv6 = types.StringNull()
@@ -383,7 +383,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes[i].Address = types.StringNull()
@@ -417,7 +417,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses[i].Address = types.StringNull()
@@ -446,7 +446,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes[i].Address = types.StringNull()
@@ -480,7 +480,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses[i].Address = types.StringNull()
@@ -509,7 +509,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes[i].Address = types.StringNull()
@@ -543,7 +543,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses[i].Address = types.StringNull()
@@ -572,7 +572,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes[i].Address = types.StringNull()
@@ -606,7 +606,7 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses[i].Address.IsNull() {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses[i].Address = types.StringNull()
@@ -664,10 +664,10 @@ func (data *PerformanceMeasurement) updateFromBody(ctx context.Context, res []by
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "protocol.twamp-light.measurement.delay.unauthenticated.querier-dst-port"); value.Exists() && value.Type == gjson.Number {
@@ -692,7 +692,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -706,7 +706,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses = append(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses, item)
@@ -717,7 +717,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -731,7 +731,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses = append(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses, item)
@@ -742,7 +742,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -756,7 +756,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses = append(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses, item)
@@ -767,7 +767,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -781,7 +781,7 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses = append(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses, item)
@@ -820,10 +820,10 @@ func (data *PerformanceMeasurement) fromBody(ctx context.Context, res []byte, ve
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "protocol.twamp-light.measurement.delay.unauthenticated.querier-dst-port"); value.Exists() && value.Type == gjson.Number {
@@ -848,7 +848,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -862,7 +862,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses = append(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv4Addresses, item)
@@ -873,7 +873,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -887,7 +887,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses = append(data.ProtocolTwampLightMeasurementDelayResponderAllowQuerierIpv6Addresses, item)
@@ -898,7 +898,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -912,7 +912,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses = append(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv4Addresses, item)
@@ -923,7 +923,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Prefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -937,7 +937,7 @@ func (data *PerformanceMeasurementData) fromBody(ctx context.Context, res []byte
 		data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses = make([]PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses = append(data.ProtocolTwampLightMeasurementDelayQuerierAllowResponderIpv6Addresses, item)

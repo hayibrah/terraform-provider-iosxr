@@ -395,7 +395,7 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.SignallingEventPerPulse = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && value.Type == gjson.String && !data.SignallingPrefixFilteringAcl.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SignallingPrefixFilteringAcl.IsNull() {
 		data.SignallingPrefixFilteringAcl = types.StringValue(value.String())
 	} else {
 		data.SignallingPrefixFilteringAcl = types.StringNull()
@@ -445,12 +445,12 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.SignallingChecksumDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && value.Type == gjson.String && !data.SignallingOobVrf.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SignallingOobVrf.IsNull() {
 		data.SignallingOobVrf = types.StringValue(value.String())
 	} else {
 		data.SignallingOobVrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String && !data.AuthenticationKeyChain.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthenticationKeyChain.IsNull() {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	} else {
 		data.AuthenticationKeyChain = types.StringNull()
@@ -493,12 +493,12 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].Address.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].Address.IsNull() {
 			data.Neighbors[i].Address = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
 		}
-		if value := r.Get("authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].AuthenticationKeyChain.IsNull() {
+		if value := r.Get("authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].AuthenticationKeyChain.IsNull() {
 			data.Neighbors[i].AuthenticationKeyChain = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].AuthenticationKeyChain = types.StringNull()
@@ -662,7 +662,7 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && value.Type == gjson.Number {
 		data.SignallingEventPerPulse = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SignallingPrefixFilteringAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "signalling.prefix-filtering.default-deny-action.drop"); value.Exists() {
@@ -690,10 +690,10 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SignallingChecksumDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SignallingOobVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {
@@ -709,10 +709,10 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 		data.Neighbors = make([]RSVPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RSVPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AuthenticationKeyChain = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authentication.window-size"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -823,7 +823,7 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && value.Type == gjson.Number {
 		data.SignallingEventPerPulse = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SignallingPrefixFilteringAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "signalling.prefix-filtering.default-deny-action.drop"); value.Exists() {
@@ -851,10 +851,10 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.SignallingChecksumDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "signalling.out-of-band.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SignallingOobVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {
@@ -870,10 +870,10 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 		data.Neighbors = make([]RSVPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RSVPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AuthenticationKeyChain = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("authentication.window-size"); cValue.Exists() && cValue.Type == gjson.Number {

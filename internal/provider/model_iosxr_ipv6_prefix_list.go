@@ -202,22 +202,22 @@ func (data *IPv6PrefixList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].SequenceNumber = types.Int64Null()
 		}
-		if value := r.Get("remark"); value.Exists() && value.Type == gjson.String && !data.Sequences[i].Remark.IsNull() {
+		if value := r.Get("remark"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Sequences[i].Remark.IsNull() {
 			data.Sequences[i].Remark = types.StringValue(value.String())
 		} else {
 			data.Sequences[i].Remark = types.StringNull()
 		}
-		if value := r.Get("permission"); value.Exists() && value.Type == gjson.String && !data.Sequences[i].Permission.IsNull() {
+		if value := r.Get("permission"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Sequences[i].Permission.IsNull() {
 			data.Sequences[i].Permission = types.StringValue(value.String())
 		} else {
 			data.Sequences[i].Permission = types.StringNull()
 		}
-		if value := r.Get("prefix"); value.Exists() && value.Type == gjson.String && !data.Sequences[i].Prefix.IsNull() {
+		if value := r.Get("prefix"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Sequences[i].Prefix.IsNull() {
 			data.Sequences[i].Prefix = types.StringValue(value.String())
 		} else {
 			data.Sequences[i].Prefix = types.StringNull()
 		}
-		if value := r.Get("zone"); value.Exists() && value.Type == gjson.String && !data.Sequences[i].Zone.IsNull() {
+		if value := r.Get("zone"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Sequences[i].Zone.IsNull() {
 			data.Sequences[i].Zone = types.StringValue(value.String())
 		} else {
 			data.Sequences[i].Zone = types.StringNull()
@@ -257,16 +257,16 @@ func (data *IPv6PrefixList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("remark"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Remark = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permission"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("permission"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Permission = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Prefix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("zone"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Zone = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -299,16 +299,16 @@ func (data *IPv6PrefixListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("remark"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Remark = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permission"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("permission"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Permission = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Prefix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("zone"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("zone"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Zone = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.Number {

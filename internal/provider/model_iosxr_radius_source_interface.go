@@ -132,7 +132,7 @@ func (data RadiusSourceInterface) GetPatternConstraints() []helpers.FieldPattern
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RadiusSourceInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String && !data.SourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
 		data.SourceInterface = types.StringNull()
@@ -144,7 +144,7 @@ func (data *RadiusSourceInterface) updateFromBody(ctx context.Context, res []byt
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RadiusSourceInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 }
@@ -154,7 +154,7 @@ func (data *RadiusSourceInterface) fromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RadiusSourceInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 }

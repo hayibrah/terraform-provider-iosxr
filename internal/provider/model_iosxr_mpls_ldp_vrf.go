@@ -462,17 +462,17 @@ func (data MPLSLDPVRF) GetPatternConstraints() []helpers.FieldPatternConstraint 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
 		data.RouterId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String && !data.SessionDownstreamOnDemandWith.IsNull() {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SessionDownstreamOnDemandWith.IsNull() {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	} else {
 		data.SessionDownstreamOnDemandWith = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	} else {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringNull()
@@ -500,7 +500,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].NeighborAddress.IsNull() {
 			data.Neighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].NeighborAddress = types.StringNull()
@@ -529,12 +529,12 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv4 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
 		data.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAllocateForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAllocateForAcl.IsNull() {
 		data.AddressFamilyIpv4LabelLocalAllocateForAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4LabelLocalAllocateForAcl = types.StringNull()
@@ -557,7 +557,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv4LabelLocalDefaultRoute = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor.IsNull() {
 		data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor = types.StringNull()
@@ -571,17 +571,17 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl = types.StringNull()
@@ -609,7 +609,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress.IsNull() {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringNull()
@@ -619,7 +619,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Null()
 		}
-		if value := r.Get("for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].For.IsNull() {
+		if value := r.Get("for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].For.IsNull() {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].For = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].For = types.StringNull()
@@ -648,7 +648,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces[i].InterfaceName.IsNull() {
 			data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces[i].InterfaceName = types.StringNull()
@@ -686,7 +686,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress.IsNull() {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringNull()
@@ -696,7 +696,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Null()
 		}
-		if value := r.Get("for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].For.IsNull() {
+		if value := r.Get("for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].For.IsNull() {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].For = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].For = types.StringNull()
@@ -711,12 +711,12 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv6 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
 		data.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAllocateForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAllocateForAcl.IsNull() {
 		data.AddressFamilyIpv6LabelLocalAllocateForAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6LabelLocalAllocateForAcl = types.StringNull()
@@ -739,7 +739,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv6LabelLocalDefaultRoute = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor.IsNull() {
 		data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor = types.StringNull()
@@ -753,17 +753,17 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl.IsNull() {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl.IsNull() {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl.IsNull() {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl = types.StringNull()
@@ -791,7 +791,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress.IsNull() {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringNull()
@@ -801,7 +801,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Null()
 		}
-		if value := r.Get("for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].For.IsNull() {
+		if value := r.Get("for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].For.IsNull() {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].For = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].For = types.StringNull()
@@ -830,7 +830,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces[i].InterfaceName.IsNull() {
 			data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces[i].InterfaceName = types.StringNull()
@@ -868,7 +868,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress.IsNull() {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringNull()
@@ -878,7 +878,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Null()
 		}
-		if value := r.Get("for"); value.Exists() && value.Type == gjson.String && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].For.IsNull() {
+		if value := r.Get("for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].For.IsNull() {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].For = types.StringValue(value.String())
 		} else {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].For = types.StringNull()
@@ -907,7 +907,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -930,7 +930,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressInterface = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
+		if value := r.Get("address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressIp.IsNull() {
 			data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringNull()
@@ -953,7 +953,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressInterface = types.BoolNull()
 		}
-		if value := r.Get("address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
+		if value := r.Get("address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressIp.IsNull() {
 			data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringNull()
@@ -966,20 +966,20 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "neighbors.neighbor"); value.Exists() {
 		data.Neighbors = make([]MPLSLDPVRFNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -999,10 +999,10 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv4 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAllocateForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.host-routes"); value.Exists() {
@@ -1015,7 +1015,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv4LabelLocalDefaultRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null"); value.Exists() {
@@ -1023,26 +1023,26 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.to.neighbor"); value.Exists() {
 		data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors = make([]MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseToNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseToNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors = append(data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors, item)
@@ -1053,7 +1053,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 		data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces = make([]MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces = append(data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces, item)
@@ -1069,13 +1069,13 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 		data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors = make([]MPLSLDPVRFAddressFamilyIpv4LabelRemoteAcceptFromNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelRemoteAcceptFromNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors = append(data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors, item)
@@ -1087,10 +1087,10 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAllocateForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.host-routes"); value.Exists() {
@@ -1103,7 +1103,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv6LabelLocalDefaultRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null"); value.Exists() {
@@ -1111,26 +1111,26 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.to.neighbor"); value.Exists() {
 		data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors = make([]MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseToNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseToNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors = append(data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors, item)
@@ -1141,7 +1141,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 		data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces = make([]MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces = append(data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces, item)
@@ -1157,13 +1157,13 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 		data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors = make([]MPLSLDPVRFAddressFamilyIpv6LabelRemoteAcceptFromNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelRemoteAcceptFromNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors = append(data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors, item)
@@ -1174,7 +1174,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 		data.Interfaces = make([]MPLSLDPVRFInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4"); cValue.Exists() {
@@ -1187,7 +1187,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.AddressFamilyIpv4DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv4.discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6"); cValue.Exists() {
@@ -1200,7 +1200,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.AddressFamilyIpv6DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv6.discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			data.Interfaces = append(data.Interfaces, item)
@@ -1214,20 +1214,20 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "graceful-restart.helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "neighbors.neighbor"); value.Exists() {
 		data.Neighbors = make([]MPLSLDPVRFNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1247,10 +1247,10 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv4 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAllocateForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.allocate.for.host-routes"); value.Exists() {
@@ -1263,7 +1263,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv4LabelLocalDefaultRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null"); value.Exists() {
@@ -1271,26 +1271,26 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNull = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv4LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv4.label.local.advertise.to.neighbor"); value.Exists() {
 		data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors = make([]MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseToNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseToNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors = append(data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors, item)
@@ -1301,7 +1301,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces = make([]MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelLocalAdvertiseInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces = append(data.AddressFamilyIpv4LabelLocalAdvertiseInterfaces, item)
@@ -1317,13 +1317,13 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors = make([]MPLSLDPVRFAddressFamilyIpv4LabelRemoteAcceptFromNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv4LabelRemoteAcceptFromNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors = append(data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors, item)
@@ -1335,10 +1335,10 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.ip-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAllocateForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.allocate.for.host-routes"); value.Exists() {
@@ -1351,7 +1351,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv6LabelLocalDefaultRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.implicit-null-override.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalImplicitNullOverrideFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null"); value.Exists() {
@@ -1359,26 +1359,26 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNull = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.for.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullForAclToAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.explicit-null.to.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AddressFamilyIpv6LabelLocalAdvertiseExplicitNullToAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "address-family.ipv6.label.local.advertise.to.neighbor"); value.Exists() {
 		data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors = make([]MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseToNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseToNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors = append(data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors, item)
@@ -1389,7 +1389,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces = make([]MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelLocalAdvertiseInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces = append(data.AddressFamilyIpv6LabelLocalAdvertiseInterfaces, item)
@@ -1405,13 +1405,13 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors = make([]MPLSLDPVRFAddressFamilyIpv6LabelRemoteAcceptFromNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFAddressFamilyIpv6LabelRemoteAcceptFromNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("for"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.For = types.StringValue(cValue.String())
 			}
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors = append(data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors, item)
@@ -1422,7 +1422,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 		data.Interfaces = make([]MPLSLDPVRFInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPVRFInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv4"); cValue.Exists() {
@@ -1435,7 +1435,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.AddressFamilyIpv4DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv4.discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv4.discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AddressFamilyIpv4DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-family.ipv6"); cValue.Exists() {
@@ -1448,7 +1448,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.AddressFamilyIpv6DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("address-family.ipv6.discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address-family.ipv6.discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AddressFamilyIpv6DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			data.Interfaces = append(data.Interfaces, item)

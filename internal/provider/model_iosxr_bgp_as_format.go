@@ -127,7 +127,7 @@ func (data BGPASFormat) GetPatternConstraints() []helpers.FieldPatternConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && value.Type == gjson.String && !data.AsFormat.IsNull() {
+	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AsFormat.IsNull() {
 		data.AsFormat = types.StringValue(value.String())
 	} else {
 		data.AsFormat = types.StringNull()
@@ -139,7 +139,7 @@ func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *BGPASFormat) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsFormat = types.StringValue(value.String())
 	}
 }
@@ -149,7 +149,7 @@ func (data *BGPASFormat) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsFormat = types.StringValue(value.String())
 	}
 }

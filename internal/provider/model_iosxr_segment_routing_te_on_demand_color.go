@@ -437,12 +437,12 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.DynamicAnycastSidInclusion = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && value.Type == gjson.String && !data.DynamicMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicMetricType.IsNull() {
 		data.DynamicMetricType = types.StringValue(value.String())
 	} else {
 		data.DynamicMetricType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && value.Type == gjson.String && !data.DynamicMetricMarginType.IsNull() {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicMetricMarginType.IsNull() {
 		data.DynamicMetricMarginType = types.StringValue(value.String())
 	} else {
 		data.DynamicMetricMarginType = types.StringNull()
@@ -471,7 +471,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.DynamicDisjointPathGroupId = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && value.Type == gjson.String && !data.DynamicDisjointPathType.IsNull() {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicDisjointPathType.IsNull() {
 		data.DynamicDisjointPathType = types.StringValue(value.String())
 	} else {
 		data.DynamicDisjointPathType = types.StringNull()
@@ -518,7 +518,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 				return true
 			},
 		)
-		if value := r.Get("rule"); value.Exists() && value.Type == gjson.String && !data.DynamicAffinityRules[i].AffinityType.IsNull() {
+		if value := r.Get("rule"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicAffinityRules[i].AffinityType.IsNull() {
 			data.DynamicAffinityRules[i].AffinityType = types.StringValue(value.String())
 		} else {
 			data.DynamicAffinityRules[i].AffinityType = types.StringNull()
@@ -546,7 +546,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 					return true
 				},
 			)
-			if value := cr.Get("affinity-name"); value.Exists() && value.Type == gjson.String && !data.DynamicAffinityRules[i].Affinities[ci].AffinityName.IsNull() {
+			if value := cr.Get("affinity-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicAffinityRules[i].Affinities[ci].AffinityName.IsNull() {
 				data.DynamicAffinityRules[i].Affinities[ci].AffinityName = types.StringValue(value.String())
 			} else {
 				data.DynamicAffinityRules[i].Affinities[ci].AffinityName = types.StringNull()
@@ -576,12 +576,12 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 				return true
 			},
 		)
-		if value := r.Get("scope-type"); value.Exists() && value.Type == gjson.String && !data.DynamicBounds[i].Type.IsNull() {
+		if value := r.Get("scope-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicBounds[i].Type.IsNull() {
 			data.DynamicBounds[i].Type = types.StringValue(value.String())
 		} else {
 			data.DynamicBounds[i].Type = types.StringNull()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.DynamicBounds[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DynamicBounds[i].MetricType.IsNull() {
 			data.DynamicBounds[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.DynamicBounds[i].MetricType = types.StringNull()
@@ -592,7 +592,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 			data.DynamicBounds[i].Value = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && value.Type == gjson.String && !data.ConstraintSegmentsProtectionType.IsNull() {
+	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ConstraintSegmentsProtectionType.IsNull() {
 		data.ConstraintSegmentsProtectionType = types.StringValue(value.String())
 	} else {
 		data.ConstraintSegmentsProtectionType = types.StringNull()
@@ -630,7 +630,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.MaxInstallStandbyPaths = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String && !data.PerformanceMeasurementDelayProfile.IsNull() {
+	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PerformanceMeasurementDelayProfile.IsNull() {
 		data.PerformanceMeasurementDelayProfile = types.StringValue(value.String())
 	} else {
 		data.PerformanceMeasurementDelayProfile = types.StringNull()
@@ -644,12 +644,12 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.PerformanceMeasurementDelayLoggingDelayExceeded = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String && !data.PerformanceMeasurementLivenessProfile.IsNull() {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PerformanceMeasurementLivenessProfile.IsNull() {
 		data.PerformanceMeasurementLivenessProfile = types.StringValue(value.String())
 	} else {
 		data.PerformanceMeasurementLivenessProfile = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && value.Type == gjson.String && !data.PerformanceMeasurementLivenessBackupProfile.IsNull() {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PerformanceMeasurementLivenessBackupProfile.IsNull() {
 		data.PerformanceMeasurementLivenessBackupProfile = types.StringValue(value.String())
 	} else {
 		data.PerformanceMeasurementLivenessBackupProfile = types.StringNull()
@@ -663,12 +663,12 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.PerformanceMeasurementLivenessLoggingSessionStateChange = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && value.Type == gjson.String && !data.PerformanceMeasurementLivenessInvalidationAction.IsNull() {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PerformanceMeasurementLivenessInvalidationAction.IsNull() {
 		data.PerformanceMeasurementLivenessInvalidationAction = types.StringValue(value.String())
 	} else {
 		data.PerformanceMeasurementLivenessInvalidationAction = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && value.Type == gjson.String && !data.PerformanceMeasurementReversePathSegmentList.IsNull() {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PerformanceMeasurementReversePathSegmentList.IsNull() {
 		data.PerformanceMeasurementReversePathSegmentList = types.StringValue(value.String())
 	} else {
 		data.PerformanceMeasurementReversePathSegmentList = types.StringNull()
@@ -759,7 +759,7 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && value.Type == gjson.String && !data.BfdInvalidationAction.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BfdInvalidationAction.IsNull() {
 		data.BfdInvalidationAction = types.StringValue(value.String())
 	} else {
 		data.BfdInvalidationAction = types.StringNull()
@@ -778,17 +778,17 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.BfdLoggingSessionStateChange = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && value.Type == gjson.String && !data.PceGroup.IsNull() {
+	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PceGroup.IsNull() {
 		data.PceGroup = types.StringValue(value.String())
 	} else {
 		data.PceGroup = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && value.Type == gjson.String && !data.SourceAddressType.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceAddressType.IsNull() {
 		data.SourceAddressType = types.StringValue(value.String())
 	} else {
 		data.SourceAddressType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && value.Type == gjson.String && !data.SourceAddress.IsNull() {
+	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceAddress.IsNull() {
 		data.SourceAddress = types.StringValue(value.String())
 	} else {
 		data.SourceAddress = types.StringNull()
@@ -798,22 +798,22 @@ func (data *SegmentRoutingTEOnDemandColor) updateFromBody(ctx context.Context, r
 	} else {
 		data.EffectiveMetricValue = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && value.Type == gjson.String && !data.EffectiveMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EffectiveMetricType.IsNull() {
 		data.EffectiveMetricType = types.StringValue(value.String())
 	} else {
 		data.EffectiveMetricType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && value.Type == gjson.String && !data.Srv6LocatorName.IsNull() {
+	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Srv6LocatorName.IsNull() {
 		data.Srv6LocatorName = types.StringValue(value.String())
 	} else {
 		data.Srv6LocatorName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && value.Type == gjson.String && !data.Srv6LocatorBindingSidType.IsNull() {
+	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Srv6LocatorBindingSidType.IsNull() {
 		data.Srv6LocatorBindingSidType = types.StringValue(value.String())
 	} else {
 		data.Srv6LocatorBindingSidType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && value.Type == gjson.String && !data.Srv6LocatorBehavior.IsNull() {
+	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Srv6LocatorBehavior.IsNull() {
 		data.Srv6LocatorBehavior = types.StringValue(value.String())
 	} else {
 		data.Srv6LocatorBehavior = types.StringNull()
@@ -830,10 +830,10 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	} else {
 		data.DynamicAnycastSidInclusion = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicMetricMarginType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.absolute-value"); value.Exists() && value.Type == gjson.Number {
@@ -850,7 +850,7 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.group-id"); value.Exists() && value.Type == gjson.Number {
 		data.DynamicDisjointPathGroupId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicDisjointPathType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.sub-id"); value.Exists() && value.Type == gjson.Number {
@@ -870,14 +870,14 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 		data.DynamicAffinityRules = make([]SegmentRoutingTEOnDemandColorDynamicAffinityRules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingTEOnDemandColorDynamicAffinityRules{}
-			if cValue := v.Get("rule"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("rule"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("affinity-name"); cValue.Exists() {
 				item.Affinities = make([]SegmentRoutingTEOnDemandColorDynamicAffinityRulesAffinities, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SegmentRoutingTEOnDemandColorDynamicAffinityRulesAffinities{}
-					if ccValue := cv.Get("affinity-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.Affinities = append(item.Affinities, cItem)
@@ -892,10 +892,10 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 		data.DynamicBounds = make([]SegmentRoutingTEOnDemandColorDynamicBounds, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingTEOnDemandColorDynamicBounds{}
-			if cValue := v.Get("scope-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("scope-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bound-value"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -905,7 +905,7 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ConstraintSegmentsProtectionType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "constraint.segments.sid-algorithm"); value.Exists() && value.Type == gjson.Number {
@@ -927,7 +927,7 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "max-install-standby-c-paths"); value.Exists() && value.Type == gjson.Number {
 		data.MaxInstallStandbyPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementDelayProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-measurement-logging.delay-exceeded"); value.Exists() {
@@ -935,10 +935,10 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	} else {
 		data.PerformanceMeasurementDelayLoggingDelayExceeded = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessProfile = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessBackupProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-detection-logging.pm-liveness-session-state-change"); value.Exists() {
@@ -946,10 +946,10 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	} else {
 		data.PerformanceMeasurementLivenessLoggingSessionStateChange = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessInvalidationAction = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementReversePathSegmentList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.label"); value.Exists() && value.Type == gjson.Number {
@@ -996,7 +996,7 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BfdInvalidationAction = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bfd.reverse-path.binding-label"); value.Exists() && value.Type == gjson.Number {
@@ -1007,28 +1007,28 @@ func (data *SegmentRoutingTEOnDemandColor) fromBody(ctx context.Context, res []b
 	} else {
 		data.BfdLoggingSessionStateChange = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PceGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-value"); value.Exists() && value.Type == gjson.Number {
 		data.EffectiveMetricValue = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EffectiveMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorBindingSidType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorBehavior = types.StringValue(value.String())
 	}
 }
@@ -1043,10 +1043,10 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	} else {
 		data.DynamicAnycastSidInclusion = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.value-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicMetricMarginType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.on-demand-color-dyn-mpls-metric.metric-margin.absolute-value"); value.Exists() && value.Type == gjson.Number {
@@ -1063,7 +1063,7 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.group-id"); value.Exists() && value.Type == gjson.Number {
 		data.DynamicDisjointPathGroupId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.disjointness-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DynamicDisjointPathType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "on-demand-color-dyn-mpls.disjoint-path.sub-id"); value.Exists() && value.Type == gjson.Number {
@@ -1083,14 +1083,14 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 		data.DynamicAffinityRules = make([]SegmentRoutingTEOnDemandColorDynamicAffinityRules, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingTEOnDemandColorDynamicAffinityRules{}
-			if cValue := v.Get("rule"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("rule"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("affinity-name"); cValue.Exists() {
 				item.Affinities = make([]SegmentRoutingTEOnDemandColorDynamicAffinityRulesAffinities, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SegmentRoutingTEOnDemandColorDynamicAffinityRulesAffinities{}
-					if ccValue := cv.Get("affinity-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.Affinities = append(item.Affinities, cItem)
@@ -1105,10 +1105,10 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 		data.DynamicBounds = make([]SegmentRoutingTEOnDemandColorDynamicBounds, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SegmentRoutingTEOnDemandColorDynamicBounds{}
-			if cValue := v.Get("scope-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("scope-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bound-value"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1118,7 +1118,7 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "constraint.segments.protection-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ConstraintSegmentsProtectionType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "constraint.segments.sid-algorithm"); value.Exists() && value.Type == gjson.Number {
@@ -1140,7 +1140,7 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	if value := gjson.GetBytes(res, "max-install-standby-c-paths"); value.Exists() && value.Type == gjson.Number {
 		data.MaxInstallStandbyPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementDelayProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.delay-measurement.delay-measurement-logging.delay-exceeded"); value.Exists() {
@@ -1148,10 +1148,10 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	} else {
 		data.PerformanceMeasurementDelayLoggingDelayExceeded = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessProfile = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.liveness-profile.backup.pm-profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessBackupProfile = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-detection-logging.pm-liveness-session-state-change"); value.Exists() {
@@ -1159,10 +1159,10 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	} else {
 		data.PerformanceMeasurementLivenessLoggingSessionStateChange = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-liveness-detection.pm-liveness-invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementLivenessInvalidationAction = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.segment-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PerformanceMeasurementReversePathSegmentList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "performance-measurement.pm-reverse-path.label"); value.Exists() && value.Type == gjson.Number {
@@ -1209,7 +1209,7 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bfd.invalidation-action"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BfdInvalidationAction = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "bfd.reverse-path.binding-label"); value.Exists() && value.Type == gjson.Number {
@@ -1220,28 +1220,28 @@ func (data *SegmentRoutingTEOnDemandColorData) fromBody(ctx context.Context, res
 	} else {
 		data.BfdLoggingSessionStateChange = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "pce-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PceGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.ip-address-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddressType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-address.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-value"); value.Exists() && value.Type == gjson.Number {
 		data.EffectiveMetricValue = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "effective-metric.metric-value-type.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EffectiveMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.locator-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.binding-sid-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorBindingSidType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "srv6.locator.behavior"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Srv6LocatorBehavior = types.StringValue(value.String())
 	}
 }

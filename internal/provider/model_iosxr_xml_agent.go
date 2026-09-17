@@ -308,7 +308,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.TtyStreamingSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && value.Type == gjson.String && !data.TtyIterationSize.IsNull() {
+	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TtyIterationSize.IsNull() {
 		data.TtyIterationSize = types.StringValue(value.String())
 	} else {
 		data.TtyIterationSize = types.StringNull()
@@ -342,7 +342,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SslStreamingSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && value.Type == gjson.String && !data.SslIterationSize.IsNull() {
+	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SslIterationSize.IsNull() {
 		data.SslIterationSize = types.StringValue(value.String())
 	} else {
 		data.SslIterationSize = types.StringNull()
@@ -385,7 +385,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.SslVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SslVrfs[i].VrfName.IsNull() {
 			data.SslVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.SslVrfs[i].VrfName = types.StringNull()
@@ -399,7 +399,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.SslVrfs[i].Shutdown = types.BoolNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.SslVrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SslVrfs[i].Ipv4AccessList.IsNull() {
 			data.SslVrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.SslVrfs[i].Ipv4AccessList = types.StringNull()
@@ -428,7 +428,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.StreamingSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && value.Type == gjson.String && !data.IterationSize.IsNull() {
+	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.IterationSize.IsNull() {
 		data.IterationSize = types.StringValue(value.String())
 	} else {
 		data.IterationSize = types.StringNull()
@@ -471,7 +471,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].VrfName.IsNull() {
 			data.Vrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
@@ -485,12 +485,12 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.Vrfs[i].Shutdown = types.BoolNull()
 		}
-		if value := r.Get("ipv6.access-list"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv6AccessList.IsNull() {
+		if value := r.Get("ipv6.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv6AccessList.IsNull() {
 			data.Vrfs[i].Ipv6AccessList = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv6AccessList = types.StringNull()
 		}
-		if value := r.Get("ipv4.access-list"); value.Exists() && value.Type == gjson.String && !data.Vrfs[i].Ipv4AccessList.IsNull() {
+		if value := r.Get("ipv4.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Vrfs[i].Ipv4AccessList.IsNull() {
 			data.Vrfs[i].Ipv4AccessList = types.StringValue(value.String())
 		} else {
 			data.Vrfs[i].Ipv4AccessList = types.StringNull()
@@ -516,7 +516,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.TtyStreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TtyIterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -536,7 +536,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.SslStreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SslIterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -552,7 +552,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 		data.SslVrfs = make([]XMLAgentSslVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := XMLAgentSslVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -560,7 +560,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
 			data.SslVrfs = append(data.SslVrfs, item)
@@ -580,7 +580,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.StreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.IterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -596,7 +596,7 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 		data.Vrfs = make([]XMLAgentVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := XMLAgentVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -604,10 +604,10 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
 			data.Vrfs = append(data.Vrfs, item)
@@ -634,7 +634,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.TtyStreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TtyIterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -654,7 +654,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.SslStreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SslIterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -670,7 +670,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 		data.SslVrfs = make([]XMLAgentSslVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := XMLAgentSslVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -678,7 +678,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
 			data.SslVrfs = append(data.SslVrfs, item)
@@ -698,7 +698,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && value.Type == gjson.Number {
 		data.StreamingSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.IterationSize = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
@@ -714,7 +714,7 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 		data.Vrfs = make([]XMLAgentVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := XMLAgentVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shutdown"); cValue.Exists() {
@@ -722,10 +722,10 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6AccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4AccessList = types.StringValue(cValue.String())
 			}
 			data.Vrfs = append(data.Vrfs, item)

@@ -1441,17 +1441,17 @@ func (data SNMPServer) GetPatternConstraints() []helpers.FieldPatternConstraint 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "location"); value.Exists() && value.Type == gjson.String && !data.Location.IsNull() {
+	if value := gjson.GetBytes(res, "location"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Location.IsNull() {
 		data.Location = types.StringValue(value.String())
 	} else {
 		data.Location = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "contact"); value.Exists() && value.Type == gjson.String && !data.Contact.IsNull() {
+	if value := gjson.GetBytes(res, "contact"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Contact.IsNull() {
 		data.Contact = types.StringValue(value.String())
 	} else {
 		data.Contact = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String && !data.ChassisId.IsNull() {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ChassisId.IsNull() {
 		data.ChassisId = types.StringValue(value.String())
 	} else {
 		data.ChassisId = types.StringNull()
@@ -1509,7 +1509,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("view"); value.Exists() && value.Type == gjson.String && !data.Communities[i].View.IsNull() {
+		if value := r.Get("view"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Communities[i].View.IsNull() {
 			data.Communities[i].View = types.StringValue(value.String())
 		} else {
 			data.Communities[i].View = types.StringNull()
@@ -1550,12 +1550,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Communities[i].Systemowner = types.BoolNull()
 		}
-		if value := r.Get("ipv4"); value.Exists() && value.Type == gjson.String && !data.Communities[i].Ipv4.IsNull() {
+		if value := r.Get("ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Communities[i].Ipv4.IsNull() {
 			data.Communities[i].Ipv4 = types.StringValue(value.String())
 		} else {
 			data.Communities[i].Ipv4 = types.StringNull()
 		}
-		if value := r.Get("ipv6"); value.Exists() && value.Type == gjson.String && !data.Communities[i].Ipv6.IsNull() {
+		if value := r.Get("ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Communities[i].Ipv6.IsNull() {
 			data.Communities[i].Ipv6 = types.StringValue(value.String())
 		} else {
 			data.Communities[i].Ipv6 = types.StringNull()
@@ -2381,7 +2381,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].Address.IsNull() {
 			data.Hosts[i].Address = types.StringValue(value.String())
 		} else {
 			data.Hosts[i].Address = types.StringNull()
@@ -2423,7 +2423,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2466,7 +2466,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2509,7 +2509,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2552,7 +2552,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2595,7 +2595,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2638,7 +2638,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV2c = types.BoolNull()
 			}
-			if value := cr.Get("version.v3.security-level"); value.Exists() && value.Type == gjson.String && !data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
+			if value := cr.Get("version.v3.security-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel.IsNull() {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel = types.StringValue(value.String())
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].VersionV3SecurityLevel = types.StringNull()
@@ -2668,7 +2668,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("view-name"); value.Exists() && value.Type == gjson.String && !data.Views[i].ViewName.IsNull() {
+		if value := r.Get("view-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Views[i].ViewName.IsNull() {
 			data.Views[i].ViewName = types.StringValue(value.String())
 		} else {
 			data.Views[i].ViewName = types.StringNull()
@@ -2696,7 +2696,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("mib-view-family-name"); value.Exists() && value.Type == gjson.String && !data.Views[i].MibViewFamilies[ci].Name.IsNull() {
+			if value := cr.Get("mib-view-family-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Views[i].MibViewFamilies[ci].Name.IsNull() {
 				data.Views[i].MibViewFamilies[ci].Name = types.StringValue(value.String())
 			} else {
 				data.Views[i].MibViewFamilies[ci].Name = types.StringNull()
@@ -2721,17 +2721,17 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && value.Type == gjson.String && !data.TrapSource.IsNull() {
+	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TrapSource.IsNull() {
 		data.TrapSource = types.StringValue(value.String())
 	} else {
 		data.TrapSource = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && value.Type == gjson.String && !data.TrapSourceIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TrapSourceIpv4.IsNull() {
 		data.TrapSourceIpv4 = types.StringValue(value.String())
 	} else {
 		data.TrapSourceIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && value.Type == gjson.String && !data.TrapSourceIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TrapSourceIpv6.IsNull() {
 		data.TrapSourceIpv6 = types.StringValue(value.String())
 	} else {
 		data.TrapSourceIpv6 = types.StringNull()
@@ -2760,12 +2760,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.TrapDelayTimer = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv4Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv4Dscp.IsNull() {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv4Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String && !data.Ipv6Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Ipv6Dscp.IsNull() {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	} else {
 		data.Ipv6Dscp = types.StringNull()
@@ -2779,12 +2779,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DropUnknownUser = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && value.Type == gjson.String && !data.DropReportAclIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DropReportAclIpv4.IsNull() {
 		data.DropReportAclIpv4 = types.StringValue(value.String())
 	} else {
 		data.DropReportAclIpv4 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && value.Type == gjson.String && !data.DropReportAclIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DropReportAclIpv6.IsNull() {
 		data.DropReportAclIpv6 = types.StringValue(value.String())
 	} else {
 		data.DropReportAclIpv6 = types.StringNull()
@@ -2812,7 +2812,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.Groups[i].GroupName.IsNull() {
+		if value := r.Get("group-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].GroupName.IsNull() {
 			data.Groups[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.Groups[i].GroupName = types.StringNull()
@@ -2826,32 +2826,32 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Groups[i].V1 = types.BoolNull()
 		}
-		if value := r.Get("v1.read"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Read.IsNull() {
+		if value := r.Get("v1.read"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Read.IsNull() {
 			data.Groups[i].V1Read = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Read = types.StringNull()
 		}
-		if value := r.Get("v1.write"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Write.IsNull() {
+		if value := r.Get("v1.write"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Write.IsNull() {
 			data.Groups[i].V1Write = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Write = types.StringNull()
 		}
-		if value := r.Get("v1.context"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Context.IsNull() {
+		if value := r.Get("v1.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Context.IsNull() {
 			data.Groups[i].V1Context = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Context = types.StringNull()
 		}
-		if value := r.Get("v1.notify"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Notify.IsNull() {
+		if value := r.Get("v1.notify"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Notify.IsNull() {
 			data.Groups[i].V1Notify = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Notify = types.StringNull()
 		}
-		if value := r.Get("v1.ipv4"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Ipv4.IsNull() {
+		if value := r.Get("v1.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Ipv4.IsNull() {
 			data.Groups[i].V1Ipv4 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Ipv4 = types.StringNull()
 		}
-		if value := r.Get("v1.ipv6"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V1Ipv6.IsNull() {
+		if value := r.Get("v1.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V1Ipv6.IsNull() {
 			data.Groups[i].V1Ipv6 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V1Ipv6 = types.StringNull()
@@ -2865,32 +2865,32 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Groups[i].V2c = types.BoolNull()
 		}
-		if value := r.Get("v2c.read"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cRead.IsNull() {
+		if value := r.Get("v2c.read"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cRead.IsNull() {
 			data.Groups[i].V2cRead = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cRead = types.StringNull()
 		}
-		if value := r.Get("v2c.write"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cWrite.IsNull() {
+		if value := r.Get("v2c.write"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cWrite.IsNull() {
 			data.Groups[i].V2cWrite = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cWrite = types.StringNull()
 		}
-		if value := r.Get("v2c.context"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cContext.IsNull() {
+		if value := r.Get("v2c.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cContext.IsNull() {
 			data.Groups[i].V2cContext = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cContext = types.StringNull()
 		}
-		if value := r.Get("v2c.notify"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cNotify.IsNull() {
+		if value := r.Get("v2c.notify"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cNotify.IsNull() {
 			data.Groups[i].V2cNotify = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cNotify = types.StringNull()
 		}
-		if value := r.Get("v2c.ipv4"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cIpv4.IsNull() {
+		if value := r.Get("v2c.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cIpv4.IsNull() {
 			data.Groups[i].V2cIpv4 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cIpv4 = types.StringNull()
 		}
-		if value := r.Get("v2c.ipv6"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V2cIpv6.IsNull() {
+		if value := r.Get("v2c.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V2cIpv6.IsNull() {
 			data.Groups[i].V2cIpv6 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V2cIpv6 = types.StringNull()
@@ -2922,38 +2922,38 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Groups[i].V3Noauth = types.BoolNull()
 		}
-		if value := r.Get("v3.read"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Read.IsNull() {
+		if value := r.Get("v3.read"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Read.IsNull() {
 			data.Groups[i].V3Read = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Read = types.StringNull()
 		}
-		if value := r.Get("v3.write"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Write.IsNull() {
+		if value := r.Get("v3.write"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Write.IsNull() {
 			data.Groups[i].V3Write = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Write = types.StringNull()
 		}
-		if value := r.Get("v3.context"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Context.IsNull() {
+		if value := r.Get("v3.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Context.IsNull() {
 			data.Groups[i].V3Context = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Context = types.StringNull()
 		}
-		if value := r.Get("v3.notify"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Notify.IsNull() {
+		if value := r.Get("v3.notify"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Notify.IsNull() {
 			data.Groups[i].V3Notify = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Notify = types.StringNull()
 		}
-		if value := r.Get("v3.ipv4"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Ipv4.IsNull() {
+		if value := r.Get("v3.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Ipv4.IsNull() {
 			data.Groups[i].V3Ipv4 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Ipv4 = types.StringNull()
 		}
-		if value := r.Get("v3.ipv6"); value.Exists() && value.Type == gjson.String && !data.Groups[i].V3Ipv6.IsNull() {
+		if value := r.Get("v3.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Groups[i].V3Ipv6.IsNull() {
 			data.Groups[i].V3Ipv6 = types.StringValue(value.String())
 		} else {
 			data.Groups[i].V3Ipv6 = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && value.Type == gjson.String && !data.EngineIdLocal.IsNull() {
+	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EngineIdLocal.IsNull() {
 		data.EngineIdLocal = types.StringValue(value.String())
 	} else {
 		data.EngineIdLocal = types.StringNull()
@@ -2981,12 +2981,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.EngineIdRemotes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EngineIdRemotes[i].Address.IsNull() {
 			data.EngineIdRemotes[i].Address = types.StringValue(value.String())
 		} else {
 			data.EngineIdRemotes[i].Address = types.StringNull()
 		}
-		if value := r.Get("engine-id"); value.Exists() && value.Type == gjson.String && !data.EngineIdRemotes[i].EngineId.IsNull() {
+		if value := r.Get("engine-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EngineIdRemotes[i].EngineId.IsNull() {
 			data.EngineIdRemotes[i].EngineId = types.StringValue(value.String())
 		} else {
 			data.EngineIdRemotes[i].EngineId = types.StringNull()
@@ -3020,12 +3020,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("user-name"); value.Exists() && value.Type == gjson.String && !data.Users[i].UserName.IsNull() {
+		if value := r.Get("user-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].UserName.IsNull() {
 			data.Users[i].UserName = types.StringValue(value.String())
 		} else {
 			data.Users[i].UserName = types.StringNull()
 		}
-		if value := r.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.Users[i].GroupName.IsNull() {
+		if value := r.Get("group-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].GroupName.IsNull() {
 			data.Users[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.Users[i].GroupName = types.StringNull()
@@ -3039,12 +3039,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Users[i].V1 = types.BoolNull()
 		}
-		if value := r.Get("v1.ipv4"); value.Exists() && value.Type == gjson.String && !data.Users[i].V1Ipv4.IsNull() {
+		if value := r.Get("v1.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V1Ipv4.IsNull() {
 			data.Users[i].V1Ipv4 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V1Ipv4 = types.StringNull()
 		}
-		if value := r.Get("v1.ipv6"); value.Exists() && value.Type == gjson.String && !data.Users[i].V1Ipv6.IsNull() {
+		if value := r.Get("v1.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V1Ipv6.IsNull() {
 			data.Users[i].V1Ipv6 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V1Ipv6 = types.StringNull()
@@ -3067,12 +3067,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Users[i].V2c = types.BoolNull()
 		}
-		if value := r.Get("v2c.ipv4"); value.Exists() && value.Type == gjson.String && !data.Users[i].V2cIpv4.IsNull() {
+		if value := r.Get("v2c.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V2cIpv4.IsNull() {
 			data.Users[i].V2cIpv4 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V2cIpv4 = types.StringNull()
 		}
-		if value := r.Get("v2c.ipv6"); value.Exists() && value.Type == gjson.String && !data.Users[i].V2cIpv6.IsNull() {
+		if value := r.Get("v2c.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V2cIpv6.IsNull() {
 			data.Users[i].V2cIpv6 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V2cIpv6 = types.StringNull()
@@ -3095,12 +3095,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Users[i].V3 = types.BoolNull()
 		}
-		if value := r.Get("v3.ipv4"); value.Exists() && value.Type == gjson.String && !data.Users[i].V3Ipv4.IsNull() {
+		if value := r.Get("v3.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V3Ipv4.IsNull() {
 			data.Users[i].V3Ipv4 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V3Ipv4 = types.StringNull()
 		}
-		if value := r.Get("v3.ipv6"); value.Exists() && value.Type == gjson.String && !data.Users[i].V3Ipv6.IsNull() {
+		if value := r.Get("v3.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Users[i].V3Ipv6.IsNull() {
 			data.Users[i].V3Ipv6 = types.StringValue(value.String())
 		} else {
 			data.Users[i].V3Ipv6 = types.StringNull()
@@ -3181,13 +3181,13 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "location"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "location"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Location = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contact"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contact"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Contact = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && value.Type == gjson.Number {
@@ -3212,7 +3212,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 		data.Communities = make([]SNMPServerCommunities, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerCommunities{}
-			if cValue := v.Get("view"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("view"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.View = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ro"); cValue.Exists() {
@@ -3235,10 +3235,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.Systemowner = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6 = types.StringValue(cValue.String())
 			}
 			data.Communities = append(data.Communities, item)
@@ -3692,7 +3692,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 		data.Hosts = make([]SNMPServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerHosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("traps.unencrypted.unencrypted-string"); cValue.Exists() {
@@ -3707,7 +3707,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsUnencryptedStrings = append(item.TrapsUnencryptedStrings, cItem)
@@ -3726,7 +3726,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedDefault = append(item.TrapsEncryptedDefault, cItem)
@@ -3745,7 +3745,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedAes = append(item.TrapsEncryptedAes, cItem)
@@ -3764,7 +3764,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsUnencryptedStrings = append(item.InformsUnencryptedStrings, cItem)
@@ -3783,7 +3783,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedDefault = append(item.InformsEncryptedDefault, cItem)
@@ -3802,7 +3802,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedAes = append(item.InformsEncryptedAes, cItem)
@@ -3817,14 +3817,14 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 		data.Views = make([]SNMPServerViews, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerViews{}
-			if cValue := v.Get("view-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("view-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ViewName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mib-view-families.mib-view-family"); cValue.Exists() {
 				item.MibViewFamilies = make([]SNMPServerViewsMibViewFamilies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerViewsMibViewFamilies{}
-					if ccValue := cv.Get("mib-view-family-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mib-view-family-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("included"); ccValue.Exists() {
@@ -3845,13 +3845,13 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSource = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && value.Type == gjson.Number {
@@ -3868,10 +3868,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && value.Type == gjson.Number {
 		data.TrapDelayTimer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "drop.unknown-user"); value.Exists() {
@@ -3879,17 +3879,17 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.DropUnknownUser = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DropReportAclIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DropReportAclIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "groups.group"); value.Exists() {
 		data.Groups = make([]SNMPServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1"); cValue.Exists() {
@@ -3897,22 +3897,22 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V1 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v1.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Read = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Write = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Context = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Notify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v2c"); cValue.Exists() {
@@ -3920,22 +3920,22 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V2c = types.BoolValue(false)
 			}
-			if cValue := v.Get("v2c.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cRead = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cWrite = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cContext = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cNotify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v3.priv"); cValue.Exists() {
@@ -3953,39 +3953,39 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V3Noauth = types.BoolValue(false)
 			}
-			if cValue := v.Get("v3.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Read = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Write = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Context = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Notify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv6 = types.StringValue(cValue.String())
 			}
 			data.Groups = append(data.Groups, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EngineIdLocal = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "engine-id.remotes.remote"); value.Exists() {
 		data.EngineIdRemotes = make([]SNMPServerEngineIdRemotes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerEngineIdRemotes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("engine-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("engine-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EngineId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("udp-port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3999,10 +3999,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 		data.Users = make([]SNMPServerUsers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerUsers{}
-			if cValue := v.Get("user-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("user-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UserName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1"); cValue.Exists() {
@@ -4010,10 +4010,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V1 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v1.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1.systemowner"); cValue.Exists() {
@@ -4026,10 +4026,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V2c = types.BoolValue(false)
 			}
-			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v2c.systemowner"); cValue.Exists() {
@@ -4042,10 +4042,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.V3 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v3.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v3.systemowner"); cValue.Exists() {
@@ -4099,13 +4099,13 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "location"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "location"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Location = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "contact"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "contact"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Contact = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && value.Type == gjson.Number {
@@ -4130,7 +4130,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 		data.Communities = make([]SNMPServerCommunities, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerCommunities{}
-			if cValue := v.Get("view"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("view"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.View = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ro"); cValue.Exists() {
@@ -4153,10 +4153,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.Systemowner = types.BoolValue(false)
 			}
-			if cValue := v.Get("ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv6 = types.StringValue(cValue.String())
 			}
 			data.Communities = append(data.Communities, item)
@@ -4610,7 +4610,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 		data.Hosts = make([]SNMPServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerHosts{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("traps.unencrypted.unencrypted-string"); cValue.Exists() {
@@ -4625,7 +4625,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsUnencryptedStrings = append(item.TrapsUnencryptedStrings, cItem)
@@ -4644,7 +4644,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedDefault = append(item.TrapsEncryptedDefault, cItem)
@@ -4663,7 +4663,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.TrapsEncryptedAes = append(item.TrapsEncryptedAes, cItem)
@@ -4682,7 +4682,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsUnencryptedStrings = append(item.InformsUnencryptedStrings, cItem)
@@ -4701,7 +4701,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedDefault = append(item.InformsEncryptedDefault, cItem)
@@ -4720,7 +4720,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.VersionV2c = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("version.v3.security-level"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.VersionV3SecurityLevel = types.StringValue(ccValue.String())
 					}
 					item.InformsEncryptedAes = append(item.InformsEncryptedAes, cItem)
@@ -4735,14 +4735,14 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 		data.Views = make([]SNMPServerViews, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerViews{}
-			if cValue := v.Get("view-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("view-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ViewName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("mib-view-families.mib-view-family"); cValue.Exists() {
 				item.MibViewFamilies = make([]SNMPServerViewsMibViewFamilies, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerViewsMibViewFamilies{}
-					if ccValue := cv.Get("mib-view-family-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mib-view-family-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Name = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("included"); ccValue.Exists() {
@@ -4763,13 +4763,13 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.both"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSource = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && value.Type == gjson.Number {
@@ -4786,10 +4786,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && value.Type == gjson.Number {
 		data.TrapDelayTimer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv4Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ipv6.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Ipv6Dscp = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "drop.unknown-user"); value.Exists() {
@@ -4797,17 +4797,17 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.DropUnknownUser = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DropReportAclIpv4 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "drop.report.acl.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DropReportAclIpv6 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "groups.group"); value.Exists() {
 		data.Groups = make([]SNMPServerGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerGroups{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1"); cValue.Exists() {
@@ -4815,22 +4815,22 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V1 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v1.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Read = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Write = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Context = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Notify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v2c"); cValue.Exists() {
@@ -4838,22 +4838,22 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V2c = types.BoolValue(false)
 			}
-			if cValue := v.Get("v2c.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cRead = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cWrite = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cContext = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cNotify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v3.priv"); cValue.Exists() {
@@ -4871,39 +4871,39 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V3Noauth = types.BoolValue(false)
 			}
-			if cValue := v.Get("v3.read"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.read"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Read = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.write"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.write"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Write = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.context"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.context"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Context = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.notify"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.notify"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Notify = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv6 = types.StringValue(cValue.String())
 			}
 			data.Groups = append(data.Groups, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "engine-id.local"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EngineIdLocal = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "engine-id.remotes.remote"); value.Exists() {
 		data.EngineIdRemotes = make([]SNMPServerEngineIdRemotes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerEngineIdRemotes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("engine-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("engine-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EngineId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("udp-port"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4917,10 +4917,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 		data.Users = make([]SNMPServerUsers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerUsers{}
-			if cValue := v.Get("user-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("user-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UserName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1"); cValue.Exists() {
@@ -4928,10 +4928,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V1 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v1.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v1.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v1.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V1Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v1.systemowner"); cValue.Exists() {
@@ -4944,10 +4944,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V2c = types.BoolValue(false)
 			}
-			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v2c.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V2cIpv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v2c.systemowner"); cValue.Exists() {
@@ -4960,10 +4960,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.V3 = types.BoolValue(false)
 			}
-			if cValue := v.Get("v3.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv4 = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("v3.ipv6"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("v3.ipv6"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.V3Ipv6 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("v3.systemowner"); cValue.Exists() {

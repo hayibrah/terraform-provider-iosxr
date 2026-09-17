@@ -1452,12 +1452,12 @@ func (data RouterBGPNeighborGroup) GetPatternConstraints() []helpers.FieldPatter
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && value.Type == gjson.String && !data.RemoteAs.IsNull() {
+	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RemoteAs.IsNull() {
 		data.RemoteAs = types.StringValue(value.String())
 	} else {
 		data.RemoteAs = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && value.Type == gjson.String && !data.RemoteAsList.IsNull() {
+	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RemoteAsList.IsNull() {
 		data.RemoteAsList = types.StringValue(value.String())
 	} else {
 		data.RemoteAsList = types.StringNull()
@@ -1467,17 +1467,17 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.MaximumPeers = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && value.Type == gjson.String && !data.AsPathLoopcheckOut.IsNull() {
+	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AsPathLoopcheckOut.IsNull() {
 		data.AsPathLoopcheckOut = types.StringValue(value.String())
 	} else {
 		data.AsPathLoopcheckOut = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && value.Type == gjson.String && !data.UseNeighborGroup.IsNull() {
+	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UseNeighborGroup.IsNull() {
 		data.UseNeighborGroup = types.StringValue(value.String())
 	} else {
 		data.UseNeighborGroup = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && value.Type == gjson.String && !data.UseSessionGroup.IsNull() {
+	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UseSessionGroup.IsNull() {
 		data.UseSessionGroup = types.StringValue(value.String())
 	} else {
 		data.UseSessionGroup = types.StringNull()
@@ -1492,7 +1492,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.AdvertisementIntervalMilliseconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -1690,7 +1690,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.BfdFastDetectStrictModeNegotiateOverride = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && value.Type == gjson.String && !data.KeychainName.IsNull() {
+	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.KeychainName.IsNull() {
 		data.KeychainName = types.StringValue(value.String())
 	} else {
 		data.KeychainName = types.StringNull()
@@ -1713,7 +1713,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.LocalAsInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && value.Type == gjson.String && !data.LocalAs.IsNull() {
+	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LocalAs.IsNull() {
 		data.LocalAs = types.StringValue(value.String())
 	} else {
 		data.LocalAs = types.StringNull()
@@ -1774,12 +1774,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.SendBufferSizeWrite = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening"); value.Exists() && value.Type == gjson.String && !data.Dampening.IsNull() {
+	if value := gjson.GetBytes(res, "dampening"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Dampening.IsNull() {
 		data.Dampening = types.StringValue(value.String())
 	} else {
 		data.Dampening = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "as-override"); value.Exists() && value.Type == gjson.String && !data.AsOverride.IsNull() {
+	if value := gjson.GetBytes(res, "as-override"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AsOverride.IsNull() {
 		data.AsOverride = types.StringValue(value.String())
 	} else {
 		data.AsOverride = types.StringNull()
@@ -1831,7 +1831,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && value.Type == gjson.String && !data.LocalAddress.IsNull() {
+	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LocalAddress.IsNull() {
 		data.LocalAddress = types.StringValue(value.String())
 	} else {
 		data.LocalAddress = types.StringNull()
@@ -1918,12 +1918,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.LogMessageOutInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "update-source"); value.Exists() && value.Type == gjson.String && !data.UpdateSource.IsNull() {
+	if value := gjson.GetBytes(res, "update-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UpdateSource.IsNull() {
 		data.UpdateSource = types.StringValue(value.String())
 	} else {
 		data.UpdateSource = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && value.Type == gjson.String && !data.LocalAddressSubnetPrefix.IsNull() {
+	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LocalAddressSubnetPrefix.IsNull() {
 		data.LocalAddressSubnetPrefix = types.StringValue(value.String())
 	} else {
 		data.LocalAddressSubnetPrefix = types.StringNull()
@@ -2014,17 +2014,17 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.TtlSecurityInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && value.Type == gjson.String && !data.SessionOpenMode.IsNull() {
+	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SessionOpenMode.IsNull() {
 		data.SessionOpenMode = types.StringValue(value.String())
 	} else {
 		data.SessionOpenMode = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.String && !data.Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Dscp.IsNull() {
 		data.Dscp = types.StringValue(value.String())
 	} else {
 		data.Dscp = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "precedence"); value.Exists() && value.Type == gjson.String && !data.Precedence.IsNull() {
+	if value := gjson.GetBytes(res, "precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Precedence.IsNull() {
 		data.Precedence = types.StringValue(value.String())
 	} else {
 		data.Precedence = types.StringNull()
@@ -2165,7 +2165,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.GracefulRestartStalepathTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && value.Type == gjson.String && !data.EnforceFirstAs.IsNull() {
+	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EnforceFirstAs.IsNull() {
 		data.EnforceFirstAs = types.StringValue(value.String())
 	} else {
 		data.EnforceFirstAs = types.StringNull()
@@ -2175,7 +2175,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.ClusterId32bitFormat = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && value.Type == gjson.String && !data.ClusterIdIpFormat.IsNull() {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClusterIdIpFormat.IsNull() {
 		data.ClusterIdIpFormat = types.StringValue(value.String())
 	} else {
 		data.ClusterIdIpFormat = types.StringNull()
@@ -2237,12 +2237,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 			data.PeerSets[i].Peer = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && value.Type == gjson.String && !data.AoKeyChainName.IsNull() {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AoKeyChainName.IsNull() {
 		data.AoKeyChainName = types.StringValue(value.String())
 	} else {
 		data.AoKeyChainName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && value.Type == gjson.String && !data.AoKeyChainIncludeTcpOptions.IsNull() {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AoKeyChainIncludeTcpOptions.IsNull() {
 		data.AoKeyChainIncludeTcpOptions = types.StringValue(value.String())
 	} else {
 		data.AoKeyChainIncludeTcpOptions = types.StringNull()
@@ -2265,12 +2265,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.AoInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && value.Type == gjson.String && !data.DefaultPolicyActionIn.IsNull() {
+	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DefaultPolicyActionIn.IsNull() {
 		data.DefaultPolicyActionIn = types.StringValue(value.String())
 	} else {
 		data.DefaultPolicyActionIn = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && value.Type == gjson.String && !data.DefaultPolicyActionOut.IsNull() {
+	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DefaultPolicyActionOut.IsNull() {
 		data.DefaultPolicyActionOut = types.StringValue(value.String())
 	} else {
 		data.DefaultPolicyActionOut = types.StringNull()
@@ -2280,7 +2280,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.UpdateInFilteringMessageBuffers = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && value.Type == gjson.String && !data.UpdateInFilteringMessageBuffersType.IsNull() {
+	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UpdateInFilteringMessageBuffersType.IsNull() {
 		data.UpdateInFilteringMessageBuffersType = types.StringValue(value.String())
 	} else {
 		data.UpdateInFilteringMessageBuffersType = types.StringNull()
@@ -2294,7 +2294,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.UpdateInFilteringLoggingDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && value.Type == gjson.String && !data.UpdateInFilteringAttributeFilterGroup.IsNull() {
+	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UpdateInFilteringAttributeFilterGroup.IsNull() {
 		data.UpdateInFilteringAttributeFilterGroup = types.StringValue(value.String())
 	} else {
 		data.UpdateInFilteringAttributeFilterGroup = types.StringNull()
@@ -2317,12 +2317,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.UpdateInLabeledUnicastEquivalentInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && value.Type == gjson.String && !data.UpdateInErrorHandlingAvoidReset.IsNull() {
+	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UpdateInErrorHandlingAvoidReset.IsNull() {
 		data.UpdateInErrorHandlingAvoidReset = types.StringValue(value.String())
 	} else {
 		data.UpdateInErrorHandlingAvoidReset = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && value.Type == gjson.String && !data.UpdateInErrorHandlingTreatAsWithdraw.IsNull() {
+	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UpdateInErrorHandlingTreatAsWithdraw.IsNull() {
 		data.UpdateInErrorHandlingTreatAsWithdraw = types.StringValue(value.String())
 	} else {
 		data.UpdateInErrorHandlingTreatAsWithdraw = types.StringNull()
@@ -2425,12 +2425,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].AfName.IsNull() {
+		if value := r.Get("af-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].AfName.IsNull() {
 			data.AddressFamily[i].AfName = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].AfName = types.StringNull()
 		}
-		if value := r.Get("encapsulation-type"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].EncapsulationType.IsNull() {
+		if value := r.Get("encapsulation-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].EncapsulationType.IsNull() {
 			data.AddressFamily[i].EncapsulationType = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].EncapsulationType = types.StringNull()
@@ -2449,12 +2449,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].Multipath = types.BoolNull()
 		}
-		if value := r.Get("use.af-group"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].UseAfGroup.IsNull() {
+		if value := r.Get("use.af-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].UseAfGroup.IsNull() {
 			data.AddressFamily[i].UseAfGroup = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].UseAfGroup = types.StringNull()
 		}
-		if value := r.Get("capability.orf.prefix.capability-receive-orf-neighbor"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].CapabilityOrfPrefix.IsNull() {
+		if value := r.Get("capability.orf.prefix.capability-receive-orf-neighbor"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].CapabilityOrfPrefix.IsNull() {
 			data.AddressFamily[i].CapabilityOrfPrefix = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].CapabilityOrfPrefix = types.StringNull()
@@ -2504,7 +2504,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].DefaultOriginate = types.BoolNull()
 		}
-		if value := r.Get("default-originate.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].DefaultOriginateRoutePolicy.IsNull() {
+		if value := r.Get("default-originate.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].DefaultOriginateRoutePolicy.IsNull() {
 			data.AddressFamily[i].DefaultOriginateRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DefaultOriginateRoutePolicy = types.StringNull()
@@ -2596,17 +2596,17 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].NextHopUnchangedInheritanceDisable = types.BoolNull()
 		}
-		if value := r.Get("route-policy.in"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].RoutePolicyIn.IsNull() {
+		if value := r.Get("route-policy.in"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].RoutePolicyIn.IsNull() {
 			data.AddressFamily[i].RoutePolicyIn = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].RoutePolicyIn = types.StringNull()
 		}
-		if value := r.Get("route-policy.out"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].RoutePolicyOut.IsNull() {
+		if value := r.Get("route-policy.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].RoutePolicyOut.IsNull() {
 			data.AddressFamily[i].RoutePolicyOut = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].RoutePolicyOut = types.StringNull()
 		}
-		if value := r.Get("orf.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].OrfRoutePolicy.IsNull() {
+		if value := r.Get("orf.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].OrfRoutePolicy.IsNull() {
 			data.AddressFamily[i].OrfRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].OrfRoutePolicy = types.StringNull()
@@ -2936,7 +2936,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].AllowconfedasIn = types.Int64Null()
 		}
-		if value := r.Get("site-of-origin.two-byte-as.two-byte-as-number"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].SiteOfOriginTwoByteAsNumber.IsNull() {
+		if value := r.Get("site-of-origin.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].SiteOfOriginTwoByteAsNumber.IsNull() {
 			data.AddressFamily[i].SiteOfOriginTwoByteAsNumber = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].SiteOfOriginTwoByteAsNumber = types.StringNull()
@@ -2946,7 +2946,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].SiteOfOriginTwoByteAsIndex = types.Int64Null()
 		}
-		if value := r.Get("site-of-origin.four-byte-as.four-byte-as-number"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].SiteOfOriginFourByteAsNumber.IsNull() {
+		if value := r.Get("site-of-origin.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].SiteOfOriginFourByteAsNumber.IsNull() {
 			data.AddressFamily[i].SiteOfOriginFourByteAsNumber = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].SiteOfOriginFourByteAsNumber = types.StringNull()
@@ -2956,7 +2956,7 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].SiteOfOriginFourByteAsIndex = types.Int64Null()
 		}
-		if value := r.Get("site-of-origin.ipv4-address.address"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].SiteOfOriginIpv4Address.IsNull() {
+		if value := r.Get("site-of-origin.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].SiteOfOriginIpv4Address.IsNull() {
 			data.AddressFamily[i].SiteOfOriginIpv4Address = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].SiteOfOriginIpv4Address = types.StringNull()
@@ -3156,12 +3156,12 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AddressFamily[i].BestpathOriginAsAllowInvalid = types.BoolNull()
 		}
-		if value := r.Get("default-policy-action.in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].DefaultPolicyActionIn.IsNull() {
+		if value := r.Get("default-policy-action.in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].DefaultPolicyActionIn.IsNull() {
 			data.AddressFamily[i].DefaultPolicyActionIn = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DefaultPolicyActionIn = types.StringNull()
 		}
-		if value := r.Get("default-policy-action.out"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].DefaultPolicyActionOut.IsNull() {
+		if value := r.Get("default-policy-action.out"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].DefaultPolicyActionOut.IsNull() {
 			data.AddressFamily[i].DefaultPolicyActionOut = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DefaultPolicyActionOut = types.StringNull()
@@ -3174,22 +3174,22 @@ func (data *RouterBGPNeighborGroup) updateFromBody(ctx context.Context, res []by
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAsList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumPeers = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsPathLoopcheckOut = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseNeighborGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseSessionGroup = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
@@ -3198,7 +3198,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
 		data.AdvertisementIntervalMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ignore-connected-check"); value.Exists() {
@@ -3304,7 +3304,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.BfdFastDetectStrictModeNegotiateOverride = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.KeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "keychain.inheritance-disable"); value.Exists() {
@@ -3317,7 +3317,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.LocalAsInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAs = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local-as.as.no-prepend"); value.Exists() {
@@ -3352,10 +3352,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
 		data.SendBufferSizeWrite = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "dampening"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Dampening = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "as-override"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-override"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsOverride = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -3385,7 +3385,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local.address.inheritance-disable"); value.Exists() {
@@ -3434,10 +3434,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.LogMessageOutInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update-source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateSource = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddressSubnetPrefix = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && value.Type == gjson.Number {
@@ -3488,13 +3488,13 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.TtlSecurityInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionOpenMode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "precedence"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Precedence = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "capability.additional-paths.send"); value.Exists() {
@@ -3573,13 +3573,13 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartStalepathTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EnforceFirstAs = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && value.Type == gjson.Number {
 		data.ClusterId32bitFormat = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClusterIdIpFormat = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && value.Type == gjson.Number {
@@ -3609,10 +3609,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AoKeyChainName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AoKeyChainIncludeTcpOptions = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ao.key-chain-name.accept-ao-mismatch-connection"); value.Exists() {
@@ -3625,16 +3625,16 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.AoInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultPolicyActionIn = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultPolicyActionOut = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffers-number"); value.Exists() && value.Type == gjson.Number {
 		data.UpdateInFilteringMessageBuffers = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInFilteringMessageBuffersType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.filtering.logging.disable"); value.Exists() {
@@ -3642,7 +3642,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.UpdateInFilteringLoggingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInFilteringAttributeFilterGroup = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.labeled-unicast.equivalent"); value.Exists() {
@@ -3655,10 +3655,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.UpdateInLabeledUnicastEquivalentInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInErrorHandlingAvoidReset = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInErrorHandlingTreatAsWithdraw = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-maintenance.activate"); value.Exists() {
@@ -3708,10 +3708,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 		data.AddressFamily = make([]RouterBGPNeighborGroupAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPNeighborGroupAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("encapsulation-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("encapsulation-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EncapsulationType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3722,10 +3722,10 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("use.af-group"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("use.af-group"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UseAfGroup = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("capability.orf.prefix.capability-receive-orf-neighbor"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("capability.orf.prefix.capability-receive-orf-neighbor"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.CapabilityOrfPrefix = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("additional-paths.send"); cValue.Exists() {
@@ -3753,7 +3753,7 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.DefaultOriginate = types.BoolValue(false)
 			}
-			if cValue := v.Get("default-originate.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("default-originate.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DefaultOriginateRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("default-originate.inheritance-disable"); cValue.Exists() {
@@ -3805,13 +3805,13 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.NextHopUnchangedInheritanceDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy.in"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy.in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicyIn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy.out"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy.out"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicyOut = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("orf.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("orf.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.OrfRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("cluster-id.allow-equal"); cValue.Exists() {
@@ -3995,19 +3995,19 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 			if cValue := v.Get("allowconfedas-in.number-of-occurrences-of-confederation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AllowconfedasIn = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.two-byte-as.two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.two-byte-as.two-byte-as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginTwoByteAsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.two-byte-as.asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SiteOfOriginTwoByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.four-byte-as.four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.four-byte-as.four-byte-as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginFourByteAsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.four-byte-as.asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SiteOfOriginFourByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.ipv4-address.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.ipv4-address.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginIpv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.ipv4-address.ipv4address-index"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4120,14 +4120,14 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 				item.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action.in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action.in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
 				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action.out"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action.out"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionOut = types.StringValue(cValue.String())
 				}
 			} else {
@@ -4144,22 +4144,22 @@ func (data *RouterBGPNeighborGroup) fromBody(ctx context.Context, res []byte, ve
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "remote-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAsList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumPeers = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-path-loopcheck.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsPathLoopcheckOut = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "use.neighbor-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseNeighborGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseSessionGroup = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
@@ -4168,7 +4168,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
 		data.AdvertisementIntervalMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ignore-connected-check"); value.Exists() {
@@ -4274,7 +4274,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.BfdFastDetectStrictModeNegotiateOverride = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.KeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "keychain.inheritance-disable"); value.Exists() {
@@ -4287,7 +4287,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.LocalAsInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local-as.as.as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAs = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local-as.as.no-prepend"); value.Exists() {
@@ -4322,10 +4322,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
 		data.SendBufferSizeWrite = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "dampening"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Dampening = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "as-override"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "as-override"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsOverride = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -4355,7 +4355,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local.address.inheritance-disable"); value.Exists() {
@@ -4404,10 +4404,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.LogMessageOutInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update-source"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update-source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateSource = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddressSubnetPrefix = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && value.Type == gjson.Number {
@@ -4458,13 +4458,13 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.TtlSecurityInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session-open-mode"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionOpenMode = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Dscp = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "precedence"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Precedence = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "capability.additional-paths.send"); value.Exists() {
@@ -4543,13 +4543,13 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartStalepathTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EnforceFirstAs = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && value.Type == gjson.Number {
 		data.ClusterId32bitFormat = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClusterIdIpFormat = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && value.Type == gjson.Number {
@@ -4579,10 +4579,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.key-chain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AoKeyChainName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ao.key-chain-name.include-tcp-options"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AoKeyChainIncludeTcpOptions = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ao.key-chain-name.accept-ao-mismatch-connection"); value.Exists() {
@@ -4595,16 +4595,16 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.AoInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-policy-action.in"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultPolicyActionIn = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-policy-action.out"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultPolicyActionOut = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffers-number"); value.Exists() && value.Type == gjson.Number {
 		data.UpdateInFilteringMessageBuffers = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.filtering.message.buffers.buffer-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInFilteringMessageBuffersType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.filtering.logging.disable"); value.Exists() {
@@ -4612,7 +4612,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.UpdateInFilteringLoggingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.filtering.attribute-filter.group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInFilteringAttributeFilterGroup = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "update.in.labeled-unicast.equivalent"); value.Exists() {
@@ -4625,10 +4625,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.UpdateInLabeledUnicastEquivalentInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.error-handling.avoid-reset"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInErrorHandlingAvoidReset = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "update.in.error-handling.treat-as-withdraw"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UpdateInErrorHandlingTreatAsWithdraw = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-maintenance.activate"); value.Exists() {
@@ -4678,10 +4678,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 		data.AddressFamily = make([]RouterBGPNeighborGroupAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPNeighborGroupAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("encapsulation-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("encapsulation-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EncapsulationType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4692,10 +4692,10 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Multipath = types.BoolValue(false)
 			}
-			if cValue := v.Get("use.af-group"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("use.af-group"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.UseAfGroup = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("capability.orf.prefix.capability-receive-orf-neighbor"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("capability.orf.prefix.capability-receive-orf-neighbor"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.CapabilityOrfPrefix = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("additional-paths.send"); cValue.Exists() {
@@ -4723,7 +4723,7 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.DefaultOriginate = types.BoolValue(false)
 			}
-			if cValue := v.Get("default-originate.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("default-originate.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DefaultOriginateRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("default-originate.inheritance-disable"); cValue.Exists() {
@@ -4775,13 +4775,13 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.NextHopUnchangedInheritanceDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("route-policy.in"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy.in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicyIn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy.out"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy.out"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicyOut = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("orf.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("orf.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.OrfRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("cluster-id.allow-equal"); cValue.Exists() {
@@ -4965,19 +4965,19 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("allowconfedas-in.number-of-occurrences-of-confederation-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AllowconfedasIn = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.two-byte-as.two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.two-byte-as.two-byte-as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginTwoByteAsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.two-byte-as.asn2-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SiteOfOriginTwoByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.four-byte-as.four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.four-byte-as.four-byte-as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginFourByteAsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.four-byte-as.asn4-index"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SiteOfOriginFourByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("site-of-origin.ipv4-address.address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("site-of-origin.ipv4-address.address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SiteOfOriginIpv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("site-of-origin.ipv4-address.ipv4address-index"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5090,14 +5090,14 @@ func (data *RouterBGPNeighborGroupData) fromBody(ctx context.Context, res []byte
 				item.BestpathOriginAsAllowInvalid = types.BoolValue(false)
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action.in"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action.in"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionIn = types.StringValue(cValue.String())
 				}
 			} else {
 				item.DefaultPolicyActionIn = types.StringNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("default-policy-action.out"); cValue.Exists() && cValue.Type == gjson.String {
+				if cValue := v.Get("default-policy-action.out"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 					item.DefaultPolicyActionOut = types.StringValue(cValue.String())
 				}
 			} else {

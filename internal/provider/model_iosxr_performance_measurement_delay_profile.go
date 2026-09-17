@@ -947,7 +947,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrPolicyDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringNull()
@@ -1159,7 +1159,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 	} else {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EndpointDefaultProbeSweepDestinationIpv4.IsNull() {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	} else {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringNull()
@@ -1318,7 +1318,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 				return true
 			},
 		)
-		if value := r.Get("profile-name"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProfileName.IsNull() {
+		if value := r.Get("profile-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profiles[i].ProfileName.IsNull() {
 			data.Profiles[i].ProfileName = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProfileName = types.StringNull()
@@ -1338,7 +1338,7 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].ProbeStaticDelay = types.Int64Null()
 		}
-		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
+		if value := r.Get("probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Profiles[i].ProbeSweepDestinationIpv4.IsNull() {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringValue(value.String())
 		} else {
 			data.Profiles[i].ProbeSweepDestinationIpv4 = types.StringNull()
@@ -1667,7 +1667,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
@@ -1791,7 +1791,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
@@ -1873,7 +1873,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 		data.Profiles = make([]PerformanceMeasurementDelayProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementDelayProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("probe.computation-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1885,7 +1885,7 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			if cValue := v.Get("probe.static-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeStaticDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2141,7 +2141,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.static-delay"); value.Exists() && value.Type == gjson.Number {
 		data.SrPolicyDefaultProbeStaticDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SrPolicyDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sr-policy.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
@@ -2265,7 +2265,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	if value := gjson.GetBytes(res, "endpoint.default.probe.flow-label.increment"); value.Exists() && value.Type == gjson.Number {
 		data.EndpointDefaultProbeFlowLabelIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EndpointDefaultProbeSweepDestinationIpv4 = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "endpoint.default.probe.sweep.destination.range"); value.Exists() && value.Type == gjson.Number {
@@ -2347,7 +2347,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 		data.Profiles = make([]PerformanceMeasurementDelayProfileProfiles, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PerformanceMeasurementDelayProfileProfiles{}
-			if cValue := v.Get("profile-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("profile-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProfileName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("probe.computation-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2359,7 +2359,7 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			if cValue := v.Get("probe.static-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ProbeStaticDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("probe.sweep.destination.ipv4"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProbeSweepDestinationIpv4 = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("probe.sweep.destination.range"); cValue.Exists() && cValue.Type == gjson.Number {

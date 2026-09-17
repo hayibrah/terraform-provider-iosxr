@@ -250,7 +250,7 @@ func (data RouterVRRPInterfaceIPv4) GetPatternConstraints() []helpers.FieldPatte
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address"); value.Exists() && value.Type == gjson.String && !data.Address.IsNull() {
+	if value := gjson.GetBytes(res, "address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Address.IsNull() {
 		data.Address = types.StringValue(value.String())
 	} else {
 		data.Address = types.StringNull()
@@ -260,12 +260,12 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.Priority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String && !data.Name.IsNull() {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Name.IsNull() {
 		data.Name = types.StringValue(value.String())
 	} else {
 		data.Name = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String && !data.UnicastPeer.IsNull() {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UnicastPeer.IsNull() {
 		data.UnicastPeer = types.StringValue(value.String())
 	} else {
 		data.UnicastPeer = types.StringNull()
@@ -293,7 +293,7 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SecondaryAddresses[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SecondaryAddresses[i].Address.IsNull() {
 			data.SecondaryAddresses[i].Address = types.StringValue(value.String())
 		} else {
 			data.SecondaryAddresses[i].Address = types.StringNull()
@@ -364,7 +364,7 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.TrackInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TrackInterfaces[i].InterfaceName.IsNull() {
 			data.TrackInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.TrackInterfaces[i].InterfaceName = types.StringNull()
@@ -398,7 +398,7 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("object-name"); value.Exists() && value.Type == gjson.String && !data.TrackObjects[i].ObjectName.IsNull() {
+		if value := r.Get("object-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TrackObjects[i].ObjectName.IsNull() {
 			data.TrackObjects[i].ObjectName = types.StringValue(value.String())
 		} else {
 			data.TrackObjects[i].ObjectName = types.StringNull()
@@ -409,7 +409,7 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 			data.TrackObjects[i].PriorityDecrement = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && value.Type == gjson.String && !data.BfdFastDetectPeerIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BfdFastDetectPeerIpv4.IsNull() {
 		data.BfdFastDetectPeerIpv4 = types.StringValue(value.String())
 	} else {
 		data.BfdFastDetectPeerIpv4 = types.StringNull()
@@ -421,23 +421,23 @@ func (data *RouterVRRPInterfaceIPv4) updateFromBody(ctx context.Context, res []b
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Name = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UnicastPeer = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "secondary-addresses.secondary-address"); value.Exists() {
 		data.SecondaryAddresses = make([]RouterVRRPInterfaceIPv4SecondaryAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4SecondaryAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SecondaryAddresses = append(data.SecondaryAddresses, item)
@@ -472,7 +472,7 @@ func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, v
 		data.TrackInterfaces = make([]RouterVRRPInterfaceIPv4TrackInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4TrackInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -486,7 +486,7 @@ func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, v
 		data.TrackObjects = make([]RouterVRRPInterfaceIPv4TrackObjects, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4TrackObjects{}
-			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -496,7 +496,7 @@ func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BfdFastDetectPeerIpv4 = types.StringValue(value.String())
 	}
 }
@@ -506,23 +506,23 @@ func (data *RouterVRRPInterfaceIPv4) fromBody(ctx context.Context, res []byte, v
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Name = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "unicast-peer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UnicastPeer = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "secondary-addresses.secondary-address"); value.Exists() {
 		data.SecondaryAddresses = make([]RouterVRRPInterfaceIPv4SecondaryAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4SecondaryAddresses{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			data.SecondaryAddresses = append(data.SecondaryAddresses, item)
@@ -557,7 +557,7 @@ func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byt
 		data.TrackInterfaces = make([]RouterVRRPInterfaceIPv4TrackInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4TrackInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -571,7 +571,7 @@ func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byt
 		data.TrackObjects = make([]RouterVRRPInterfaceIPv4TrackObjects, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterVRRPInterfaceIPv4TrackObjects{}
-			if cValue := v.Get("object-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority-decrement"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -581,7 +581,7 @@ func (data *RouterVRRPInterfaceIPv4Data) fromBody(ctx context.Context, res []byt
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bfd.fast-detect.peer.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BfdFastDetectPeerIpv4 = types.StringValue(value.String())
 	}
 }

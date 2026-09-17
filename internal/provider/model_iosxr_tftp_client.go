@@ -177,12 +177,12 @@ func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].VrfName.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientVrfs[i].VrfName.IsNull() {
 			data.ClientVrfs[i].VrfName = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("source-interface"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].SourceInterface.IsNull() {
+		if value := r.Get("source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientVrfs[i].SourceInterface.IsNull() {
 			data.ClientVrfs[i].SourceInterface = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].SourceInterface = types.StringNull()
@@ -197,7 +197,7 @@ func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.ClientVrfs[i].Timeout = types.Int64Null()
 		}
-		if value := r.Get("dscp"); value.Exists() && value.Type == gjson.String && !data.ClientVrfs[i].Dscp.IsNull() {
+		if value := r.Get("dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ClientVrfs[i].Dscp.IsNull() {
 			data.ClientVrfs[i].Dscp = types.StringValue(value.String())
 		} else {
 			data.ClientVrfs[i].Dscp = types.StringNull()
@@ -214,10 +214,10 @@ func (data *TFTPClient) fromBody(ctx context.Context, res []byte, version string
 		data.ClientVrfs = make([]TFTPClientClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TFTPClientClientVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("retries"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -226,7 +226,7 @@ func (data *TFTPClient) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Dscp = types.StringValue(cValue.String())
 			}
 			data.ClientVrfs = append(data.ClientVrfs, item)
@@ -244,10 +244,10 @@ func (data *TFTPClientData) fromBody(ctx context.Context, res []byte, version st
 		data.ClientVrfs = make([]TFTPClientClientVrfs, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TFTPClientClientVrfs{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("retries"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -256,7 +256,7 @@ func (data *TFTPClientData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Dscp = types.StringValue(cValue.String())
 			}
 			data.ClientVrfs = append(data.ClientVrfs, item)

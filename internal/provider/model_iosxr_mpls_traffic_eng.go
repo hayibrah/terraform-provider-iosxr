@@ -190,7 +190,7 @@ func (data *MPLSTrafficEng) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.ReoptimizeReoptimizationPeriodIn = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.String && !data.ServerIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ServerIpv4.IsNull() {
 		data.ServerIpv4 = types.StringValue(value.String())
 	} else {
 		data.ServerIpv4 = types.StringNull()
@@ -224,7 +224,7 @@ func (data *MPLSTrafficEng) fromBody(ctx context.Context, res []byte, version st
 		data.ReoptimizeReoptimizationPeriodIn = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 			data.ServerIpv4 = types.StringValue(value.String())
 		}
 	} else {
@@ -259,7 +259,7 @@ func (data *MPLSTrafficEngData) fromBody(ctx context.Context, res []byte, versio
 		data.ReoptimizeReoptimizationPeriodIn = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); value.Exists() && value.Type == gjson.String {
+		if value := gjson.GetBytes(res, "traffic-eng.pce.server.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 			data.ServerIpv4 = types.StringValue(value.String())
 		}
 	} else {

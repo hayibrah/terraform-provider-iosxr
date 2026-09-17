@@ -420,7 +420,7 @@ func (data MPLSLDP) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
 		data.RouterId = types.StringNull()
@@ -444,7 +444,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.GracefulRestartHelperPeerMaintainOnLocalResetFor.IsNull() {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	} else {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringNull()
@@ -478,7 +478,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SessionHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String && !data.SessionDownstreamOnDemandWith.IsNull() {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SessionDownstreamOnDemandWith.IsNull() {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	} else {
 		data.SessionDownstreamOnDemandWith = types.StringNull()
@@ -492,7 +492,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SessionProtection = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String && !data.SessionProtectionForAcl.IsNull() {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SessionProtectionForAcl.IsNull() {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	} else {
 		data.SessionProtectionForAcl = types.StringNull()
@@ -759,7 +759,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 				return true
 			},
 		)
-		if value := r.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].NeighborAddress.IsNull() {
+		if value := r.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].NeighborAddress.IsNull() {
 			data.Neighbors[i].NeighborAddress = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].NeighborAddress = types.StringNull()
@@ -786,7 +786,7 @@ func (data *MPLSLDP) updateFromBody(ctx context.Context, res []byte, version str
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-restart"); value.Exists() {
@@ -800,7 +800,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && value.Type == gjson.Number {
@@ -820,7 +820,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.SessionHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection"); value.Exists() {
@@ -828,7 +828,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
@@ -970,7 +970,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 		data.Neighbors = make([]MPLSLDPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -992,7 +992,7 @@ func (data *MPLSLDP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "graceful-restart"); value.Exists() {
@@ -1006,7 +1006,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "graceful-restart-forwarding-state-holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.GracefulRestartForwardingStateHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "graceful-restart-helper-peer.maintain-on-local-reset.for"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.GracefulRestartHelperPeerMaintainOnLocalResetFor = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier"); value.Exists() && value.Type == gjson.Number {
@@ -1026,7 +1026,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "session.holdtime"); value.Exists() && value.Type == gjson.Number {
 		data.SessionHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.downstream-on-demand.with"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionDownstreamOnDemandWith = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection"); value.Exists() {
@@ -1034,7 +1034,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.SessionProtection = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "session.protection.for.for-access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SessionProtectionForAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session.protection.for.duration.holdup-time"); value.Exists() && value.Type == gjson.Number {
@@ -1176,7 +1176,7 @@ func (data *MPLSLDPData) fromBody(ctx context.Context, res []byte, version strin
 		data.Neighbors = make([]MPLSLDPNeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPNeighbors{}
-			if cValue := v.Get("neighbor-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {

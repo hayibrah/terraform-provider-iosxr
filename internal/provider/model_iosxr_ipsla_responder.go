@@ -286,7 +286,7 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.TypeUdpIpv4[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TypeUdpIpv4[i].Address.IsNull() {
 			data.TypeUdpIpv4[i].Address = types.StringValue(value.String())
 		} else {
 			data.TypeUdpIpv4[i].Address = types.StringNull()
@@ -386,7 +386,7 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, vers
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].Address.IsNull() {
 				data.TwampLightSessions[i].LocalIpv4Addresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.TwampLightSessions[i].LocalIpv4Addresses[ci].Address = types.StringNull()
@@ -419,17 +419,17 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, vers
 						return true
 					},
 				)
-				if value := ccr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Address.IsNull() {
+				if value := ccr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Address.IsNull() {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Address = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Address = types.StringNull()
 				}
-				if value := ccr.Get("remote-port"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].RemotePort.IsNull() {
+				if value := ccr.Get("remote-port"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].RemotePort.IsNull() {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].RemotePort = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].RemotePort = types.StringNull()
 				}
-				if value := ccr.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Vrf.IsNull() {
+				if value := ccr.Get("vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Vrf.IsNull() {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Vrf = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv4Addresses[ci].RemoteIpv4Addresses[cci].Vrf = types.StringNull()
@@ -459,7 +459,7 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, vers
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].Address.IsNull() {
 				data.TwampLightSessions[i].LocalIpv6Addresses[ci].Address = types.StringValue(value.String())
 			} else {
 				data.TwampLightSessions[i].LocalIpv6Addresses[ci].Address = types.StringNull()
@@ -492,17 +492,17 @@ func (data *IPSLAResponder) updateFromBody(ctx context.Context, res []byte, vers
 						return true
 					},
 				)
-				if value := ccr.Get("address"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Address.IsNull() {
+				if value := ccr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Address.IsNull() {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Address = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Address = types.StringNull()
 				}
-				if value := ccr.Get("remote-port"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].RemotePort.IsNull() {
+				if value := ccr.Get("remote-port"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].RemotePort.IsNull() {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].RemotePort = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].RemotePort = types.StringNull()
 				}
-				if value := ccr.Get("vrf"); value.Exists() && value.Type == gjson.String && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Vrf.IsNull() {
+				if value := ccr.Get("vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Vrf.IsNull() {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Vrf = types.StringValue(value.String())
 				} else {
 					data.TwampLightSessions[i].LocalIpv6Addresses[ci].RemoteIpv6Addresses[cci].Vrf = types.StringNull()
@@ -544,7 +544,7 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version st
 		data.TypeUdpIpv4 = make([]IPSLAResponderTypeUdpIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLAResponderTypeUdpIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("port"); cValue.Exists() {
@@ -581,7 +581,7 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version st
 				item.LocalIpv4Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv4Addresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAResponderTwampLightSessionsLocalIpv4Addresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("local-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -591,13 +591,13 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version st
 						cItem.RemoteIpv4Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv4AddressesRemoteIpv4Addresses, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := IPSLAResponderTwampLightSessionsLocalIpv4AddressesRemoteIpv4Addresses{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.RemotePort = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("vrf"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("vrf"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Vrf = types.StringValue(cccValue.String())
 							}
 							cItem.RemoteIpv4Addresses = append(cItem.RemoteIpv4Addresses, ccItem)
@@ -612,7 +612,7 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version st
 				item.LocalIpv6Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv6Addresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAResponderTwampLightSessionsLocalIpv6Addresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("local-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -622,13 +622,13 @@ func (data *IPSLAResponder) fromBody(ctx context.Context, res []byte, version st
 						cItem.RemoteIpv6Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv6AddressesRemoteIpv6Addresses, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := IPSLAResponderTwampLightSessionsLocalIpv6AddressesRemoteIpv6Addresses{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.RemotePort = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("vrf"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("vrf"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Vrf = types.StringValue(cccValue.String())
 							}
 							cItem.RemoteIpv6Addresses = append(cItem.RemoteIpv6Addresses, ccItem)
@@ -667,7 +667,7 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, versio
 		data.TypeUdpIpv4 = make([]IPSLAResponderTypeUdpIpv4, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPSLAResponderTypeUdpIpv4{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("port"); cValue.Exists() {
@@ -704,7 +704,7 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, versio
 				item.LocalIpv4Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv4Addresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAResponderTwampLightSessionsLocalIpv4Addresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("local-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -714,13 +714,13 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, versio
 						cItem.RemoteIpv4Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv4AddressesRemoteIpv4Addresses, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := IPSLAResponderTwampLightSessionsLocalIpv4AddressesRemoteIpv4Addresses{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.RemotePort = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("vrf"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("vrf"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Vrf = types.StringValue(cccValue.String())
 							}
 							cItem.RemoteIpv4Addresses = append(cItem.RemoteIpv4Addresses, ccItem)
@@ -735,7 +735,7 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, versio
 				item.LocalIpv6Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv6Addresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := IPSLAResponderTwampLightSessionsLocalIpv6Addresses{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("local-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -745,13 +745,13 @@ func (data *IPSLAResponderData) fromBody(ctx context.Context, res []byte, versio
 						cItem.RemoteIpv6Addresses = make([]IPSLAResponderTwampLightSessionsLocalIpv6AddressesRemoteIpv6Addresses, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := IPSLAResponderTwampLightSessionsLocalIpv6AddressesRemoteIpv6Addresses{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("remote-port"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.RemotePort = types.StringValue(cccValue.String())
 							}
-							if cccValue := ccv.Get("vrf"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("vrf"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Vrf = types.StringValue(cccValue.String())
 							}
 							cItem.RemoteIpv6Addresses = append(cItem.RemoteIpv6Addresses, ccItem)

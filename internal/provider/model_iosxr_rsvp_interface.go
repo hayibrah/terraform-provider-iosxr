@@ -754,7 +754,7 @@ func (data *RSVPInterface) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.SignallingHelloGracefulRestartInterfaceBased = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String && !data.AuthenticationKeyChain.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthenticationKeyChain.IsNull() {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	} else {
 		data.AuthenticationKeyChain = types.StringNull()
@@ -960,7 +960,7 @@ func (data *RSVPInterface) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.SignallingHelloGracefulRestartInterfaceBased = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {
@@ -1160,7 +1160,7 @@ func (data *RSVPInterfaceData) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.SignallingHelloGracefulRestartInterfaceBased = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {

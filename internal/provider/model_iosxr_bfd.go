@@ -362,7 +362,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.EchoStartupValidateForce = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.EchoIpv4Source.IsNull() {
+	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EchoIpv4Source.IsNull() {
 		data.EchoIpv4Source = types.StringValue(value.String())
 	} else {
 		data.EchoIpv4Source = types.StringNull()
@@ -404,7 +404,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("location-id"); value.Exists() && value.Type == gjson.String && !data.MultipathLocations[i].LocationId.IsNull() {
+		if value := r.Get("location-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MultipathLocations[i].LocationId.IsNull() {
 			data.MultipathLocations[i].LocationId = types.StringValue(value.String())
 		} else {
 			data.MultipathLocations[i].LocationId = types.StringNull()
@@ -433,12 +433,12 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("destination-ip-address"); value.Exists() && value.Type == gjson.String && !data.MultipathDestinations[i].DestinationAddress.IsNull() {
+		if value := r.Get("destination-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MultipathDestinations[i].DestinationAddress.IsNull() {
 			data.MultipathDestinations[i].DestinationAddress = types.StringValue(value.String())
 		} else {
 			data.MultipathDestinations[i].DestinationAddress = types.StringNull()
 		}
-		if value := r.Get("location-id"); value.Exists() && value.Type == gjson.String && !data.MultipathDestinations[i].LocationId.IsNull() {
+		if value := r.Get("location-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MultipathDestinations[i].LocationId.IsNull() {
 			data.MultipathDestinations[i].LocationId = types.StringValue(value.String())
 		} else {
 			data.MultipathDestinations[i].LocationId = types.StringNull()
@@ -511,7 +511,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.DampeningBundleMemberMaximumWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && value.Type == gjson.String && !data.BundleCoexistenceBobBlb.IsNull() {
+	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.BundleCoexistenceBobBlb.IsNull() {
 		data.BundleCoexistenceBobBlb = types.StringValue(value.String())
 	} else {
 		data.BundleCoexistenceBobBlb = types.StringNull()
@@ -548,17 +548,17 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("echo.disable"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].EchoDisable.IsNull() {
+		if value := r.Get("echo.disable"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].EchoDisable.IsNull() {
 			data.Interfaces[i].EchoDisable = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].EchoDisable = types.StringNull()
 		}
-		if value := r.Get("echo.ipv4.source.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].EchoIpv4Source.IsNull() {
+		if value := r.Get("echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].EchoIpv4Source.IsNull() {
 			data.Interfaces[i].EchoIpv4Source = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].EchoIpv4Source = types.StringNull()
@@ -581,7 +581,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Interfaces[i].Disable = types.BoolNull()
 		}
-		if value := r.Get("local-address"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].LocalAddress.IsNull() {
+		if value := r.Get("local-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].LocalAddress.IsNull() {
 			data.Interfaces[i].LocalAddress = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].LocalAddress = types.StringNull()
@@ -630,7 +630,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EchoStartupValidateForce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EchoIpv4Source = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && value.Type == gjson.Number {
@@ -645,7 +645,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 		data.MultipathLocations = make([]BFDMultipathLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDMultipathLocations{}
-			if cValue := v.Get("location-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationId = types.StringValue(cValue.String())
 			}
 			data.MultipathLocations = append(data.MultipathLocations, item)
@@ -656,10 +656,10 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 		data.MultipathDestinations = make([]BFDMultipathDestinations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDMultipathDestinations{}
-			if cValue := v.Get("destination-ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination-ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationId = types.StringValue(cValue.String())
 			}
 			data.MultipathDestinations = append(data.MultipathDestinations, item)
@@ -705,7 +705,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningBundleMemberMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BundleCoexistenceBobBlb = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.checksum.disable"); value.Exists() {
@@ -717,13 +717,13 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 		data.Interfaces = make([]BFDInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("echo.disable"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("echo.disable"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EchoDisable = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("echo.ipv4.source.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("echo.ipv4.source.ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EchoIpv4Source = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv6.checksum.disable"); cValue.Exists() {
@@ -736,7 +736,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Disable = types.BoolValue(false)
 			}
-			if cValue := v.Get("local-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("local-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocalAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -780,7 +780,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EchoStartupValidateForce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EchoIpv4Source = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && value.Type == gjson.Number {
@@ -795,7 +795,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 		data.MultipathLocations = make([]BFDMultipathLocations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDMultipathLocations{}
-			if cValue := v.Get("location-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationId = types.StringValue(cValue.String())
 			}
 			data.MultipathLocations = append(data.MultipathLocations, item)
@@ -806,10 +806,10 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 		data.MultipathDestinations = make([]BFDMultipathDestinations, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDMultipathDestinations{}
-			if cValue := v.Get("destination-ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination-ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("location-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("location-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocationId = types.StringValue(cValue.String())
 			}
 			data.MultipathDestinations = append(data.MultipathDestinations, item)
@@ -855,7 +855,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && value.Type == gjson.Number {
 		data.DampeningBundleMemberMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BundleCoexistenceBobBlb = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ipv6.checksum.disable"); value.Exists() {
@@ -867,13 +867,13 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Interfaces = make([]BFDInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := BFDInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("echo.disable"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("echo.disable"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EchoDisable = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("echo.ipv4.source.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("echo.ipv4.source.ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EchoIpv4Source = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv6.checksum.disable"); cValue.Exists() {
@@ -886,7 +886,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.Disable = types.BoolValue(false)
 			}
-			if cValue := v.Get("local-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("local-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocalAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {

@@ -295,7 +295,7 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].Name.IsNull() {
+		if value := r.Get("af-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].Name.IsNull() {
 			data.AddressFamily[i].Name = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].Name = types.StringNull()
@@ -323,7 +323,7 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 					return true
 				},
 			)
-			if value := cr.Get("lsp-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].Statics[ci].LspAddress.IsNull() {
+			if value := cr.Get("lsp-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].Statics[ci].LspAddress.IsNull() {
 				data.AddressFamily[i].Statics[ci].LspAddress = types.StringValue(value.String())
 			} else {
 				data.AddressFamily[i].Statics[ci].LspAddress = types.StringNull()
@@ -349,7 +349,7 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.AddressFamily[i].MakeBeforeBreakDeleteDelay = types.Int64Null()
 		}
-		if value := r.Get("make-before-break.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].MakeBeforeBreakRoutePolicy.IsNull() {
+		if value := r.Get("make-before-break.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].MakeBeforeBreakRoutePolicy.IsNull() {
 			data.AddressFamily[i].MakeBeforeBreakRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].MakeBeforeBreakRoutePolicy = types.StringNull()
@@ -372,7 +372,7 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.AddressFamily[i].MofrrEnable = types.BoolNull()
 		}
-		if value := r.Get("mofrr.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].MofrrRoutePolicy.IsNull() {
+		if value := r.Get("mofrr.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].MofrrRoutePolicy.IsNull() {
 			data.AddressFamily[i].MofrrRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].MofrrRoutePolicy = types.StringNull()
@@ -386,17 +386,17 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.AddressFamily[i].RecursiveFecEnable = types.BoolNull()
 		}
-		if value := r.Get("recursive-fec.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].RecursiveFecRoutePolicy.IsNull() {
+		if value := r.Get("recursive-fec.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].RecursiveFecRoutePolicy.IsNull() {
 			data.AddressFamily[i].RecursiveFecRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].RecursiveFecRoutePolicy = types.StringNull()
 		}
-		if value := r.Get("neighbors.in.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].NeighborsRoutePolicyIn.IsNull() {
+		if value := r.Get("neighbors.in.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].NeighborsRoutePolicyIn.IsNull() {
 			data.AddressFamily[i].NeighborsRoutePolicyIn = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].NeighborsRoutePolicyIn = types.StringNull()
 		}
-		if value := r.Get("neighbors.out.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].NeighborsRoutePolicyOut.IsNull() {
+		if value := r.Get("neighbors.out.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].NeighborsRoutePolicyOut.IsNull() {
 			data.AddressFamily[i].NeighborsRoutePolicyOut = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].NeighborsRoutePolicyOut = types.StringNull()
@@ -424,17 +424,17 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 					return true
 				},
 			)
-			if value := cr.Get("neighbor-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].Neighbors[ci].NeighborAddress.IsNull() {
+			if value := cr.Get("neighbor-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].Neighbors[ci].NeighborAddress.IsNull() {
 				data.AddressFamily[i].Neighbors[ci].NeighborAddress = types.StringValue(value.String())
 			} else {
 				data.AddressFamily[i].Neighbors[ci].NeighborAddress = types.StringNull()
 			}
-			if value := cr.Get("in.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyIn.IsNull() {
+			if value := cr.Get("in.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyIn.IsNull() {
 				data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyIn = types.StringValue(value.String())
 			} else {
 				data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyIn = types.StringNull()
 			}
-			if value := cr.Get("out.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyOut.IsNull() {
+			if value := cr.Get("out.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyOut.IsNull() {
 				data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyOut = types.StringValue(value.String())
 			} else {
 				data.AddressFamily[i].Neighbors[ci].NeighborRoutePolicyOut = types.StringNull()
@@ -449,7 +449,7 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.AddressFamily[i].ForwardingRecursive = types.BoolNull()
 		}
-		if value := r.Get("forwarding.recursive.route-policy"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].ForwardingRecursiveRoutePolicy.IsNull() {
+		if value := r.Get("forwarding.recursive.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].ForwardingRecursiveRoutePolicy.IsNull() {
 			data.AddressFamily[i].ForwardingRecursiveRoutePolicy = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].ForwardingRecursiveRoutePolicy = types.StringNull()
@@ -485,14 +485,14 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 		data.AddressFamily = make([]MPLSLDPMLDPAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPMLDPAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("statics.static"); cValue.Exists() {
 				item.Statics = make([]MPLSLDPMLDPAddressFamilyStatics, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := MPLSLDPMLDPAddressFamilyStatics{}
-					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspAddress = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("p2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -511,7 +511,7 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MakeBeforeBreakDeleteDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MakeBeforeBreakRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("carrier-supporting-carrier"); cValue.Exists() {
@@ -524,7 +524,7 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.MofrrEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mofrr.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mofrr.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MofrrRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("recursive-fec.enable"); cValue.Exists() {
@@ -532,26 +532,26 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.RecursiveFecEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("recursive-fec.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("recursive-fec.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RecursiveFecRoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("neighbors.in.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbors.in.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborsRoutePolicyIn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("neighbors.out.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbors.out.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborsRoutePolicyOut = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("neighbors.neighbor"); cValue.Exists() {
 				item.Neighbors = make([]MPLSLDPMLDPAddressFamilyNeighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := MPLSLDPMLDPAddressFamilyNeighbors{}
-					if ccValue := cv.Get("neighbor-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("neighbor-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("in.route-policy"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("in.route-policy"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborRoutePolicyIn = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("out.route-policy"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("out.route-policy"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborRoutePolicyOut = types.StringValue(ccValue.String())
 					}
 					item.Neighbors = append(item.Neighbors, cItem)
@@ -563,7 +563,7 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.ForwardingRecursive = types.BoolValue(false)
 			}
-			if cValue := v.Get("forwarding.recursive.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("forwarding.recursive.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ForwardingRecursiveRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rib.unicast-always"); cValue.Exists() {
@@ -596,14 +596,14 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 		data.AddressFamily = make([]MPLSLDPMLDPAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPMLDPAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("statics.static"); cValue.Exists() {
 				item.Statics = make([]MPLSLDPMLDPAddressFamilyStatics, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := MPLSLDPMLDPAddressFamilyStatics{}
-					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspAddress = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("p2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -622,7 +622,7 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MakeBeforeBreakDeleteDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MakeBeforeBreakRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("carrier-supporting-carrier"); cValue.Exists() {
@@ -635,7 +635,7 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.MofrrEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("mofrr.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mofrr.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MofrrRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("recursive-fec.enable"); cValue.Exists() {
@@ -643,26 +643,26 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.RecursiveFecEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("recursive-fec.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("recursive-fec.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RecursiveFecRoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("neighbors.in.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbors.in.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborsRoutePolicyIn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("neighbors.out.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("neighbors.out.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborsRoutePolicyOut = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("neighbors.neighbor"); cValue.Exists() {
 				item.Neighbors = make([]MPLSLDPMLDPAddressFamilyNeighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := MPLSLDPMLDPAddressFamilyNeighbors{}
-					if ccValue := cv.Get("neighbor-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("neighbor-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("in.route-policy"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("in.route-policy"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborRoutePolicyIn = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("out.route-policy"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("out.route-policy"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.NeighborRoutePolicyOut = types.StringValue(ccValue.String())
 					}
 					item.Neighbors = append(item.Neighbors, cItem)
@@ -674,7 +674,7 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.ForwardingRecursive = types.BoolValue(false)
 			}
-			if cValue := v.Get("forwarding.recursive.route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("forwarding.recursive.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ForwardingRecursiveRoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rib.unicast-always"); cValue.Exists() {

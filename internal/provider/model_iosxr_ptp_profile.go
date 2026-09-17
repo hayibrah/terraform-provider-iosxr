@@ -755,12 +755,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.PortStateAny = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && value.Type == gjson.String && !data.SourceIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceIpv4Address.IsNull() {
 		data.SourceIpv4Address = types.StringValue(value.String())
 	} else {
 		data.SourceIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && value.Type == gjson.String && !data.SourceIpv6Address.IsNull() {
+	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceIpv6Address.IsNull() {
 		data.SourceIpv6Address = types.StringValue(value.String())
 	} else {
 		data.SourceIpv6Address = types.StringNull()
@@ -855,12 +855,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.ClockOperationTwoStep = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && value.Type == gjson.String && !data.AnnounceInterval.IsNull() {
+	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AnnounceInterval.IsNull() {
 		data.AnnounceInterval = types.StringValue(value.String())
 	} else {
 		data.AnnounceInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && value.Type == gjson.String && !data.AnnounceFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AnnounceFrequency.IsNull() {
 		data.AnnounceFrequency = types.StringValue(value.String())
 	} else {
 		data.AnnounceFrequency = types.StringNull()
@@ -875,12 +875,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AnnounceGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && value.Type == gjson.String && !data.SyncInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SyncInterval.IsNull() {
 		data.SyncInterval = types.StringValue(value.String())
 	} else {
 		data.SyncInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && value.Type == gjson.String && !data.SyncFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SyncFrequency.IsNull() {
 		data.SyncFrequency = types.StringValue(value.String())
 	} else {
 		data.SyncFrequency = types.StringNull()
@@ -895,12 +895,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.SyncTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && value.Type == gjson.String && !data.DelayRequestInterval.IsNull() {
+	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DelayRequestInterval.IsNull() {
 		data.DelayRequestInterval = types.StringValue(value.String())
 	} else {
 		data.DelayRequestInterval = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && value.Type == gjson.String && !data.DelayRequestFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DelayRequestFrequency.IsNull() {
 		data.DelayRequestFrequency = types.StringValue(value.String())
 	} else {
 		data.DelayRequestFrequency = types.StringNull()
@@ -1028,7 +1028,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SlaveIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SlaveIpv4s[i].Address.IsNull() {
 			data.SlaveIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.SlaveIpv4s[i].Address = types.StringNull()
@@ -1066,7 +1066,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SlaveIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SlaveIpv6s[i].Address.IsNull() {
 			data.SlaveIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.SlaveIpv6s[i].Address = types.StringNull()
@@ -1104,7 +1104,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SlaveEthernets[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SlaveEthernets[i].Address.IsNull() {
 			data.SlaveEthernets[i].Address = types.StringValue(value.String())
 		} else {
 			data.SlaveEthernets[i].Address = types.StringNull()
@@ -1142,7 +1142,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MasterIpv4s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MasterIpv4s[i].Address.IsNull() {
 			data.MasterIpv4s[i].Address = types.StringValue(value.String())
 		} else {
 			data.MasterIpv4s[i].Address = types.StringNull()
@@ -1240,7 +1240,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MasterIpv6s[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MasterIpv6s[i].Address.IsNull() {
 			data.MasterIpv6s[i].Address = types.StringValue(value.String())
 		} else {
 			data.MasterIpv6s[i].Address = types.StringNull()
@@ -1338,7 +1338,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.MasterEthernets[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MasterEthernets[i].Address.IsNull() {
 			data.MasterEthernets[i].Address = types.StringValue(value.String())
 		} else {
 			data.MasterEthernets[i].Address = types.StringNull()
@@ -1594,10 +1594,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.PortStateAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast"); value.Exists() {
@@ -1650,10 +1650,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.ClockOperationTwoStep = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && value.Type == gjson.Number {
@@ -1662,10 +1662,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.AnnounceGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
@@ -1674,10 +1674,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SyncTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cos"); value.Exists() && value.Type == gjson.Number {
@@ -1742,7 +1742,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.SlaveIpv4s = make([]PTPProfileSlaveIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -1758,7 +1758,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.SlaveIpv6s = make([]PTPProfileSlaveIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -1774,7 +1774,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.SlaveEthernets = make([]PTPProfileSlaveEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -1790,7 +1790,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.MasterIpv4s = make([]PTPProfileMasterIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1840,7 +1840,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.MasterIpv6s = make([]PTPProfileMasterIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1890,7 +1890,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 		data.MasterEthernets = make([]PTPProfileMasterEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2039,10 +2039,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.PortStateAny = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source.ipv6.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceIpv6Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast"); value.Exists() {
@@ -2095,10 +2095,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.ClockOperationTwoStep = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "announce.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && value.Type == gjson.Number {
@@ -2107,10 +2107,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
 		data.AnnounceGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
@@ -2119,10 +2119,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && value.Type == gjson.Number {
 		data.SyncTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestInterval = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestFrequency = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "cos"); value.Exists() && value.Type == gjson.Number {
@@ -2187,7 +2187,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.SlaveIpv4s = make([]PTPProfileSlaveIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -2203,7 +2203,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.SlaveIpv6s = make([]PTPProfileSlaveIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -2219,7 +2219,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.SlaveEthernets = make([]PTPProfileSlaveEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileSlaveEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("non-negotiated"); cValue.Exists() {
@@ -2235,7 +2235,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.MasterIpv4s = make([]PTPProfileMasterIpv4s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterIpv4s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2285,7 +2285,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.MasterIpv6s = make([]PTPProfileMasterIpv6s, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterIpv6s{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2335,7 +2335,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 		data.MasterEthernets = make([]PTPProfileMasterEthernets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileMasterEthernets{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {

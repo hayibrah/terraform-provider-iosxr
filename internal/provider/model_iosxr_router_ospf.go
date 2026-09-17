@@ -2139,12 +2139,12 @@ func (data RouterOSPF) GetPatternConstraints() []helpers.FieldPatternConstraint 
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && value.Type == gjson.String && !data.MplsTrafficEngRouterIdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MplsTrafficEngRouterIdIpv4Address.IsNull() {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && value.Type == gjson.String && !data.MplsTrafficEngRouterIdInterfaceName.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MplsTrafficEngRouterIdInterfaceName.IsNull() {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	} else {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringNull()
@@ -2158,7 +2158,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.MplsTrafficEngMulticastIntact = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && value.Type == gjson.String && !data.MplsTrafficEngAutorouteExcludeRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MplsTrafficEngAutorouteExcludeRoutePolicy.IsNull() {
 		data.MplsTrafficEngAutorouteExcludeRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MplsTrafficEngAutorouteExcludeRoutePolicy = types.StringNull()
@@ -2376,7 +2376,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.LogAdjacencyChangesDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
 		data.RouterId = types.StringNull()
@@ -2395,12 +2395,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.RedistributeConnectedTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedMetricType.IsNull() {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedMetricType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedRoutePolicy.IsNull() {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedRoutePolicy = types.StringNull()
@@ -2451,12 +2451,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.RedistributeStaticTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticMetricType.IsNull() {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticMetricType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticRoutePolicy.IsNull() {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticRoutePolicy = types.StringNull()
@@ -2516,7 +2516,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("as-number"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].AsNumber.IsNull() {
+		if value := r.Get("as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].AsNumber.IsNull() {
 			data.RedistributeBgp[i].AsNumber = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].AsNumber = types.StringNull()
@@ -2526,12 +2526,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.RedistributeBgp[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].MetricType.IsNull() {
 			data.RedistributeBgp[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].MetricType = types.StringNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].RoutePolicy.IsNull() {
 			data.RedistributeBgp[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].RoutePolicy = types.StringNull()
@@ -2601,7 +2601,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("instance-name"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].InstanceName.IsNull() {
+		if value := r.Get("instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].InstanceName.IsNull() {
 			data.RedistributeIsis[i].InstanceName = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].InstanceName = types.StringNull()
@@ -2638,12 +2638,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.RedistributeIsis[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].MetricType.IsNull() {
 			data.RedistributeIsis[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].MetricType = types.StringNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
 			data.RedistributeIsis[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].RoutePolicy = types.StringNull()
@@ -2704,7 +2704,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("instance-name"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].InstanceName.IsNull() {
+		if value := r.Get("instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].InstanceName.IsNull() {
 			data.RedistributeOspf[i].InstanceName = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].InstanceName = types.StringNull()
@@ -2714,12 +2714,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.RedistributeOspf[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].MetricType.IsNull() {
 			data.RedistributeOspf[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].MetricType = types.StringNull()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
 			data.RedistributeOspf[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].RoutePolicy = types.StringNull()
@@ -2820,47 +2820,47 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 			data.RedistributeOspf[i].NssaOnly = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListInAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListInAcl.IsNull() {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListInAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && value.Type == gjson.String && !data.DistributeListInRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListInRoutePolicy.IsNull() {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.DistributeListInRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutAcl.IsNull() {
 		data.DistributeListOutAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutConnectedAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutConnectedAcl.IsNull() {
 		data.DistributeListOutConnectedAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutConnectedAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutStaticAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutStaticAcl.IsNull() {
 		data.DistributeListOutStaticAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutStaticAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutBgpAs.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutBgpAs.IsNull() {
 		data.DistributeListOutBgpAs = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutBgpAs = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutBgpAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutBgpAcl.IsNull() {
 		data.DistributeListOutBgpAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutBgpAcl = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutOspfInstanceName.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutOspfInstanceName.IsNull() {
 		data.DistributeListOutOspfInstanceName = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutOspfInstanceName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && value.Type == gjson.String && !data.DistributeListOutOspfAcl.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListOutOspfAcl.IsNull() {
 		data.DistributeListOutOspfAcl = types.StringValue(value.String())
 	} else {
 		data.DistributeListOutOspfAcl = types.StringNull()
@@ -2958,7 +2958,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DefaultInformationOriginateMetricType = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && value.Type == gjson.String && !data.DefaultInformationOriginateRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DefaultInformationOriginateRoutePolicy.IsNull() {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.DefaultInformationOriginateRoutePolicy = types.StringNull()
@@ -2991,12 +2991,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.DistanceSources[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistanceSources[i].Address.IsNull() {
 			data.DistanceSources[i].Address = types.StringValue(value.String())
 		} else {
 			data.DistanceSources[i].Address = types.StringNull()
 		}
-		if value := r.Get("wildcard"); value.Exists() && value.Type == gjson.String && !data.DistanceSources[i].Wildcard.IsNull() {
+		if value := r.Get("wildcard"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistanceSources[i].Wildcard.IsNull() {
 			data.DistanceSources[i].Wildcard = types.StringValue(value.String())
 		} else {
 			data.DistanceSources[i].Wildcard = types.StringNull()
@@ -3006,7 +3006,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.DistanceSources[i].Distance = types.Int64Null()
 		}
-		if value := r.Get("access-list-name"); value.Exists() && value.Type == gjson.String && !data.DistanceSources[i].Acl.IsNull() {
+		if value := r.Get("access-list-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistanceSources[i].Acl.IsNull() {
 			data.DistanceSources[i].Acl = types.StringValue(value.String())
 		} else {
 			data.DistanceSources[i].Acl = types.StringNull()
@@ -3531,12 +3531,12 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SummaryPrefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SummaryPrefixes[i].Address.IsNull() {
 			data.SummaryPrefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.SummaryPrefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("mask"); value.Exists() && value.Type == gjson.String && !data.SummaryPrefixes[i].Mask.IsNull() {
+		if value := r.Get("mask"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SummaryPrefixes[i].Mask.IsNull() {
 			data.SummaryPrefixes[i].Mask = types.StringValue(value.String())
 		} else {
 			data.SummaryPrefixes[i].Mask = types.StringNull()
@@ -3556,7 +3556,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 			data.SummaryPrefixes[i].Tag = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityRoutePolicy.IsNull() {
 		data.SpfPrefixPriorityRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.SpfPrefixPriorityRoutePolicy = types.StringNull()
@@ -3750,7 +3750,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -3779,7 +3779,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -3903,7 +3903,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -3932,7 +3932,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName.IsNull() {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkLfaCandidateInterfaces[i].InterfaceName = types.StringNull()
@@ -4094,7 +4094,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.SegmentRoutingSrPrefer = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingSrPreferPrefixList.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingSrPreferPrefixList.IsNull() {
 		data.SegmentRoutingSrPreferPrefixList = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingSrPreferPrefixList = types.StringNull()
@@ -4140,7 +4140,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("affinity-attribute-name"); value.Exists() && value.Type == gjson.String && !data.AffinityMaps[i].AffinityName.IsNull() {
+		if value := r.Get("affinity-attribute-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AffinityMaps[i].AffinityName.IsNull() {
 			data.AffinityMaps[i].AffinityName = types.StringValue(value.String())
 		} else {
 			data.AffinityMaps[i].AffinityName = types.StringNull()
@@ -4261,7 +4261,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("affinity-attribute-name"); value.Exists() && value.Type == gjson.String && !data.FlexAlgos[i].AffinityExcludeAny[ci].AffinityName.IsNull() {
+			if value := cr.Get("affinity-attribute-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexAlgos[i].AffinityExcludeAny[ci].AffinityName.IsNull() {
 				data.FlexAlgos[i].AffinityExcludeAny[ci].AffinityName = types.StringValue(value.String())
 			} else {
 				data.FlexAlgos[i].AffinityExcludeAny[ci].AffinityName = types.StringNull()
@@ -4290,7 +4290,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("affinity-attribute-name"); value.Exists() && value.Type == gjson.String && !data.FlexAlgos[i].AffinityIncludeAny[ci].AffinityName.IsNull() {
+			if value := cr.Get("affinity-attribute-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexAlgos[i].AffinityIncludeAny[ci].AffinityName.IsNull() {
 				data.FlexAlgos[i].AffinityIncludeAny[ci].AffinityName = types.StringValue(value.String())
 			} else {
 				data.FlexAlgos[i].AffinityIncludeAny[ci].AffinityName = types.StringNull()
@@ -4319,7 +4319,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("affinity-attribute-name"); value.Exists() && value.Type == gjson.String && !data.FlexAlgos[i].AffinityIncludeAll[ci].AffinityName.IsNull() {
+			if value := cr.Get("affinity-attribute-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexAlgos[i].AffinityIncludeAll[ci].AffinityName.IsNull() {
 				data.FlexAlgos[i].AffinityIncludeAll[ci].AffinityName = types.StringValue(value.String())
 			} else {
 				data.FlexAlgos[i].AffinityIncludeAll[ci].AffinityName = types.StringNull()
@@ -4348,7 +4348,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("srlg-name"); value.Exists() && value.Type == gjson.String && !data.FlexAlgos[i].SrlgExcludeAny[ci].SrlgName.IsNull() {
+			if value := cr.Get("srlg-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexAlgos[i].SrlgExcludeAny[ci].SrlgName.IsNull() {
 				data.FlexAlgos[i].SrlgExcludeAny[ci].SrlgName = types.StringValue(value.String())
 			} else {
 				data.FlexAlgos[i].SrlgExcludeAny[ci].SrlgName = types.StringNull()
@@ -4402,7 +4402,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AuthenticationMessageDigest = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String && !data.AuthenticationKeychainName.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthenticationKeychainName.IsNull() {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	} else {
 		data.AuthenticationKeychainName = types.StringNull()
@@ -4516,7 +4516,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AdjacencyStaggerSimultaneousNeighbors = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && value.Type == gjson.String && !data.SnmpContext.IsNull() {
+	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SnmpContext.IsNull() {
 		data.SnmpContext = types.StringValue(value.String())
 	} else {
 		data.SnmpContext = types.StringNull()
@@ -4540,7 +4540,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.MonitorConvergence = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && value.Type == gjson.String && !data.MonitorConvergencePrefixList.IsNull() {
+	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorConvergencePrefixList.IsNull() {
 		data.MonitorConvergencePrefixList = types.StringValue(value.String())
 	} else {
 		data.MonitorConvergencePrefixList = types.StringNull()
@@ -4586,7 +4586,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.UcmpVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && value.Type == gjson.String && !data.UcmpPrefixList.IsNull() {
+	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UcmpPrefixList.IsNull() {
 		data.UcmpPrefixList = types.StringValue(value.String())
 	} else {
 		data.UcmpPrefixList = types.StringNull()
@@ -4614,7 +4614,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.UcmpExcludeInterfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UcmpExcludeInterfaces[i].InterfaceName.IsNull() {
 			data.UcmpExcludeInterfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.UcmpExcludeInterfaces[i].InterfaceName = types.StringNull()
@@ -4653,7 +4653,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("srlg-name"); value.Exists() && value.Type == gjson.String && !data.SrlgNames[i].SrlgName.IsNull() {
+		if value := r.Get("srlg-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SrlgNames[i].SrlgName.IsNull() {
 			data.SrlgNames[i].SrlgName = types.StringValue(value.String())
 		} else {
 			data.SrlgNames[i].SrlgName = types.StringNull()
@@ -4735,7 +4735,7 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DistributeLinkStateExclExternal = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && value.Type == gjson.String && !data.DistributeLinkStateAllowPrefixRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeLinkStateAllowPrefixRoutePolicy.IsNull() {
 		data.DistributeLinkStateAllowPrefixRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.DistributeLinkStateAllowPrefixRoutePolicy = types.StringNull()
@@ -4797,10 +4797,10 @@ func (data *RouterOSPF) updateFromBody(ctx context.Context, res []byte, version 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.multicast-intact"); value.Exists() {
@@ -4808,7 +4808,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.MplsTrafficEngMulticastIntact = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngAutorouteExcludeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.igp-intact"); value.Exists() {
@@ -4932,7 +4932,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.LogAdjacencyChangesDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected"); value.Exists() {
@@ -4943,10 +4943,10 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "redistribute.connected.tag"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeConnectedTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.metric.default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -4975,10 +4975,10 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "redistribute.static.tag"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeStaticTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.metric.default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -5003,16 +5003,16 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.RedistributeBgp = make([]RouterOSPFRedistributeBgp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeBgp{}
-			if cValue := v.Get("as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("preserve-med"); cValue.Exists() {
@@ -5046,7 +5046,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.RedistributeIsis = make([]RouterOSPFRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeIsis{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level-1"); cValue.Exists() {
@@ -5067,10 +5067,10 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric.default-metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5099,16 +5099,16 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.RedistributeOspf = make([]RouterOSPFRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeOspf{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -5168,31 +5168,31 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutConnectedAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutStaticAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutBgpAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutBgpAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutOspfInstanceName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutOspfAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packet-size"); value.Exists() && value.Type == gjson.Number {
@@ -5248,7 +5248,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "default-information.originate.metric-type"); value.Exists() && value.Type == gjson.Number {
 		data.DefaultInformationOriginateMetricType = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -5258,16 +5258,16 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.DistanceSources = make([]RouterOSPFDistanceSources, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFDistanceSources{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("wildcard"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("wildcard"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Wildcard = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("distance"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Distance = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("access-list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Acl = types.StringValue(cValue.String())
 			}
 			data.DistanceSources = append(data.DistanceSources, item)
@@ -5564,10 +5564,10 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.SummaryPrefixes = make([]RouterOSPFSummaryPrefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFSummaryPrefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Mask = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not-advertise"); cValue.Exists() {
@@ -5582,7 +5582,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.enable"); value.Exists() {
@@ -5683,7 +5683,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterOSPFFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixExcludeInterfaces = append(data.FastReroutePerPrefixExcludeInterfaces, item)
@@ -5694,7 +5694,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterOSPFFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixLfaCandidateInterfaces = append(data.FastReroutePerPrefixLfaCandidateInterfaces, item)
@@ -5758,7 +5758,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterOSPFFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkExcludeInterfaces = append(data.FastReroutePerLinkExcludeInterfaces, item)
@@ -5769,7 +5769,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterOSPFFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkLfaCandidateInterfaces = append(data.FastReroutePerLinkLfaCandidateInterfaces, item)
@@ -5864,7 +5864,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.SegmentRoutingSrPrefer = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrPreferPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.forwarding.mpls"); value.Exists() {
@@ -5881,7 +5881,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.AffinityMaps = make([]RouterOSPFAffinityMaps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFAffinityMaps{}
-			if cValue := v.Get("affinity-attribute-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("affinity-attribute-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bit-position"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5935,7 +5935,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 				item.AffinityExcludeAny = make([]RouterOSPFFlexAlgosAffinityExcludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityExcludeAny{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityExcludeAny = append(item.AffinityExcludeAny, cItem)
@@ -5946,7 +5946,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 				item.AffinityIncludeAny = make([]RouterOSPFFlexAlgosAffinityIncludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityIncludeAny{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityIncludeAny = append(item.AffinityIncludeAny, cItem)
@@ -5957,7 +5957,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 				item.AffinityIncludeAll = make([]RouterOSPFFlexAlgosAffinityIncludeAll, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityIncludeAll{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityIncludeAll = append(item.AffinityIncludeAll, cItem)
@@ -5968,7 +5968,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 				item.SrlgExcludeAny = make([]RouterOSPFFlexAlgosSrlgExcludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosSrlgExcludeAny{}
-					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrlgName = types.StringValue(ccValue.String())
 					}
 					item.SrlgExcludeAny = append(item.SrlgExcludeAny, cItem)
@@ -6000,7 +6000,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AuthenticationMessageDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.keychain"); value.Exists() {
@@ -6064,7 +6064,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "adjacency.stagger.maximum-simultaneous-neighbors"); value.Exists() && value.Type == gjson.Number {
 		data.AdjacencyStaggerSimultaneousNeighbors = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SnmpContext = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "snmp.trap.rate-limit"); value.Exists() && value.Type == gjson.Number {
@@ -6078,7 +6078,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.MonitorConvergence = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MonitorConvergencePrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "monitor-convergence.track-summary-routes"); value.Exists() {
@@ -6104,14 +6104,14 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "ucmp.enable.variance"); value.Exists() && value.Type == gjson.Number {
 		data.UcmpVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UcmpPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ucmp.exclude.interfaces.interface"); value.Exists() {
 		data.UcmpExcludeInterfaces = make([]RouterOSPFUcmpExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFUcmpExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.UcmpExcludeInterfaces = append(data.UcmpExcludeInterfaces, item)
@@ -6128,7 +6128,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 		data.SrlgNames = make([]RouterOSPFSrlgNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFSrlgNames{}
-			if cValue := v.Get("srlg-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("srlg-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("admin-weight"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6179,7 +6179,7 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.DistributeLinkStateExclExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeLinkStateAllowPrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "distribute.link-state.follow-on"); value.Exists() && value.Type == gjson.Number {
@@ -6217,10 +6217,10 @@ func (data *RouterOSPF) fromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.multicast-intact"); value.Exists() {
@@ -6228,7 +6228,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.MplsTrafficEngMulticastIntact = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.autoroute-exclude.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngAutorouteExcludeRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.igp-intact"); value.Exists() {
@@ -6352,7 +6352,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.LogAdjacencyChangesDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected"); value.Exists() {
@@ -6363,10 +6363,10 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "redistribute.connected.tag"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeConnectedTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.metric.default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -6395,10 +6395,10 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "redistribute.static.tag"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeStaticTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.metric.default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -6423,16 +6423,16 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.RedistributeBgp = make([]RouterOSPFRedistributeBgp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeBgp{}
-			if cValue := v.Get("as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AsNumber = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("preserve-med"); cValue.Exists() {
@@ -6466,7 +6466,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.RedistributeIsis = make([]RouterOSPFRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeIsis{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level-1"); cValue.Exists() {
@@ -6487,10 +6487,10 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric.default-metric"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -6519,16 +6519,16 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.RedistributeOspf = make([]RouterOSPFRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFRedistributeOspf{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -6588,31 +6588,31 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.in.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.in.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListInRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.connected.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutConnectedAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.static.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutStaticAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutBgpAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.bgp.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutBgpAcl = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutOspfInstanceName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.out.ospf.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListOutOspfAcl = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "packet-size"); value.Exists() && value.Type == gjson.Number {
@@ -6668,7 +6668,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "default-information.originate.metric-type"); value.Exists() && value.Type == gjson.Number {
 		data.DefaultInformationOriginateMetricType = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "default-metric"); value.Exists() && value.Type == gjson.Number {
@@ -6678,16 +6678,16 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.DistanceSources = make([]RouterOSPFDistanceSources, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFDistanceSources{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("wildcard"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("wildcard"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Wildcard = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("distance"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Distance = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("access-list-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("access-list-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Acl = types.StringValue(cValue.String())
 			}
 			data.DistanceSources = append(data.DistanceSources, item)
@@ -6984,10 +6984,10 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.SummaryPrefixes = make([]RouterOSPFSummaryPrefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFSummaryPrefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Mask = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("not-advertise"); cValue.Exists() {
@@ -7002,7 +7002,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.enable"); value.Exists() {
@@ -7103,7 +7103,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.FastReroutePerPrefixExcludeInterfaces = make([]RouterOSPFFastReroutePerPrefixExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerPrefixExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixExcludeInterfaces = append(data.FastReroutePerPrefixExcludeInterfaces, item)
@@ -7114,7 +7114,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.FastReroutePerPrefixLfaCandidateInterfaces = make([]RouterOSPFFastReroutePerPrefixLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerPrefixLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixLfaCandidateInterfaces = append(data.FastReroutePerPrefixLfaCandidateInterfaces, item)
@@ -7178,7 +7178,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.FastReroutePerLinkExcludeInterfaces = make([]RouterOSPFFastReroutePerLinkExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerLinkExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkExcludeInterfaces = append(data.FastReroutePerLinkExcludeInterfaces, item)
@@ -7189,7 +7189,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.FastReroutePerLinkLfaCandidateInterfaces = make([]RouterOSPFFastReroutePerLinkLfaCandidateInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFFastReroutePerLinkLfaCandidateInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkLfaCandidateInterfaces = append(data.FastReroutePerLinkLfaCandidateInterfaces, item)
@@ -7284,7 +7284,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SegmentRoutingSrPrefer = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.sr-prefer.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingSrPreferPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.forwarding.mpls"); value.Exists() {
@@ -7301,7 +7301,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.AffinityMaps = make([]RouterOSPFAffinityMaps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFAffinityMaps{}
-			if cValue := v.Get("affinity-attribute-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("affinity-attribute-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AffinityName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("bit-position"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7355,7 +7355,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 				item.AffinityExcludeAny = make([]RouterOSPFFlexAlgosAffinityExcludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityExcludeAny{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityExcludeAny = append(item.AffinityExcludeAny, cItem)
@@ -7366,7 +7366,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 				item.AffinityIncludeAny = make([]RouterOSPFFlexAlgosAffinityIncludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityIncludeAny{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityIncludeAny = append(item.AffinityIncludeAny, cItem)
@@ -7377,7 +7377,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 				item.AffinityIncludeAll = make([]RouterOSPFFlexAlgosAffinityIncludeAll, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosAffinityIncludeAll{}
-					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("affinity-attribute-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.AffinityName = types.StringValue(ccValue.String())
 					}
 					item.AffinityIncludeAll = append(item.AffinityIncludeAll, cItem)
@@ -7388,7 +7388,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 				item.SrlgExcludeAny = make([]RouterOSPFFlexAlgosSrlgExcludeAny, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFFlexAlgosSrlgExcludeAny{}
-					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("srlg-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SrlgName = types.StringValue(ccValue.String())
 					}
 					item.SrlgExcludeAny = append(item.SrlgExcludeAny, cItem)
@@ -7420,7 +7420,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.AuthenticationMessageDigest = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "authentication.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "authentication.keychain"); value.Exists() {
@@ -7484,7 +7484,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "adjacency.stagger.maximum-simultaneous-neighbors"); value.Exists() && value.Type == gjson.Number {
 		data.AdjacencyStaggerSimultaneousNeighbors = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "snmp.context"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SnmpContext = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "snmp.trap.rate-limit"); value.Exists() && value.Type == gjson.Number {
@@ -7498,7 +7498,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.MonitorConvergence = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "monitor-convergence.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MonitorConvergencePrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "monitor-convergence.track-summary-routes"); value.Exists() {
@@ -7524,14 +7524,14 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "ucmp.enable.variance"); value.Exists() && value.Type == gjson.Number {
 		data.UcmpVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "ucmp.enable.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UcmpPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "ucmp.exclude.interfaces.interface"); value.Exists() {
 		data.UcmpExcludeInterfaces = make([]RouterOSPFUcmpExcludeInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFUcmpExcludeInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			data.UcmpExcludeInterfaces = append(data.UcmpExcludeInterfaces, item)
@@ -7548,7 +7548,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 		data.SrlgNames = make([]RouterOSPFSrlgNames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFSrlgNames{}
-			if cValue := v.Get("srlg-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("srlg-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SrlgName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("admin-weight"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -7599,7 +7599,7 @@ func (data *RouterOSPFData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.DistributeLinkStateExclExternal = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute.link-state.allow-prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeLinkStateAllowPrefixRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "distribute.link-state.follow-on"); value.Exists() && value.Type == gjson.Number {

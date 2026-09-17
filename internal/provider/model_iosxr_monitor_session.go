@@ -330,17 +330,17 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("session-name"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].SessionName.IsNull() {
+		if value := r.Get("session-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].SessionName.IsNull() {
 			data.MonitorSessions[i].SessionName = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].SessionName = types.StringNull()
 		}
-		if value := r.Get("traffic-type"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].TrafficType.IsNull() {
+		if value := r.Get("traffic-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].TrafficType.IsNull() {
 			data.MonitorSessions[i].TrafficType = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].TrafficType = types.StringNull()
 		}
-		if value := r.Get("destination.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DestinationInterface.IsNull() {
+		if value := r.Get("destination.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].DestinationInterface.IsNull() {
 			data.MonitorSessions[i].DestinationInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DestinationInterface = types.StringNull()
@@ -377,7 +377,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].DestinationFileFormatPcapng = types.BoolNull()
 		}
-		if value := r.Get("destination.file.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DestinationFileFilter.IsNull() {
+		if value := r.Get("destination.file.filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].DestinationFileFilter.IsNull() {
 			data.MonitorSessions[i].DestinationFileFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DestinationFileFilter = types.StringNull()
@@ -427,12 +427,12 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].DropsTx = types.BoolNull()
 		}
-		if value := r.Get("drops.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].DropsFilter.IsNull() {
+		if value := r.Get("drops.filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].DropsFilter.IsNull() {
 			data.MonitorSessions[i].DropsFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].DropsFilter = types.StringNull()
 		}
-		if value := r.Get("rx.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].RxInterface.IsNull() {
+		if value := r.Get("rx.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].RxInterface.IsNull() {
 			data.MonitorSessions[i].RxInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].RxInterface = types.StringNull()
@@ -446,7 +446,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].RxPseudowire = types.BoolNull()
 		}
-		if value := r.Get("tx.interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].TxInterface.IsNull() {
+		if value := r.Get("tx.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].TxInterface.IsNull() {
 			data.MonitorSessions[i].TxInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].TxInterface = types.StringNull()
@@ -460,7 +460,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].TxPseudowire = types.BoolNull()
 		}
-		if value := r.Get("inject-interface"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].InjectInterface.IsNull() {
+		if value := r.Get("inject-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].InjectInterface.IsNull() {
 			data.MonitorSessions[i].InjectInterface = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].InjectInterface = types.StringNull()
@@ -480,7 +480,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].MirrorFirst = types.Int64Null()
 		}
-		if value := r.Get("mirror.interval"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].MirrorInterval.IsNull() {
+		if value := r.Get("mirror.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].MirrorInterval.IsNull() {
 			data.MonitorSessions[i].MirrorInterval = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].MirrorInterval = types.StringNull()
@@ -503,7 +503,7 @@ func (data *MonitorSession) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MonitorSessions[i].ProtocolCaptureTx = types.BoolNull()
 		}
-		if value := r.Get("protocol-capture.filter"); value.Exists() && value.Type == gjson.String && !data.MonitorSessions[i].ProtocolCaptureFilter.IsNull() {
+		if value := r.Get("protocol-capture.filter"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MonitorSessions[i].ProtocolCaptureFilter.IsNull() {
 			data.MonitorSessions[i].ProtocolCaptureFilter = types.StringValue(value.String())
 		} else {
 			data.MonitorSessions[i].ProtocolCaptureFilter = types.StringNull()
@@ -576,13 +576,13 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MonitorSessionMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("session-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SessionName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("traffic-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("traffic-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TrafficType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("destination.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.pseudowire"); cValue.Exists() {
@@ -603,7 +603,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DestinationFileFormatPcapng = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination.file.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationFileFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.file.always-on"); cValue.Exists() {
@@ -631,10 +631,10 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DropsTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("drops.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("drops.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DropsFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rx.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("rx.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rx.pseudowire"); cValue.Exists() {
@@ -642,7 +642,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.RxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("tx.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tx.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx.pseudowire"); cValue.Exists() {
@@ -650,7 +650,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.TxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("inject-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("inject-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InjectInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -662,7 +662,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("protocol-capture.rx"); cValue.Exists() {
@@ -675,7 +675,7 @@ func (data *MonitorSession) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.ProtocolCaptureTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProtocolCaptureFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rate-limit.rx"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -725,13 +725,13 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 		data.MonitorSessions = make([]MonitorSessionMonitorSessions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MonitorSessionMonitorSessions{}
-			if cValue := v.Get("session-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("session-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SessionName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("traffic-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("traffic-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TrafficType = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("destination.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.pseudowire"); cValue.Exists() {
@@ -752,7 +752,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DestinationFileFormatPcapng = types.BoolValue(false)
 			}
-			if cValue := v.Get("destination.file.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("destination.file.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DestinationFileFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("destination.file.always-on"); cValue.Exists() {
@@ -780,10 +780,10 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DropsTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("drops.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("drops.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DropsFilter = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("rx.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("rx.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rx.pseudowire"); cValue.Exists() {
@@ -791,7 +791,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.RxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("tx.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("tx.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.TxInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("tx.pseudowire"); cValue.Exists() {
@@ -799,7 +799,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.TxPseudowire = types.BoolValue(false)
 			}
-			if cValue := v.Get("inject-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("inject-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InjectInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -811,7 +811,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("mirror.first"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MirrorFirst = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mirror.interval"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mirror.interval"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MirrorInterval = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("protocol-capture.rx"); cValue.Exists() {
@@ -824,7 +824,7 @@ func (data *MonitorSessionData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.ProtocolCaptureTx = types.BoolValue(false)
 			}
-			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("protocol-capture.filter"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ProtocolCaptureFilter = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("rate-limit.rx"); cValue.Exists() && cValue.Type == gjson.Number {

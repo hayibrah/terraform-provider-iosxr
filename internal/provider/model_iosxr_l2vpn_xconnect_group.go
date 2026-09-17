@@ -711,12 +711,12 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 				return true
 			},
 		)
-		if value := r.Get("p2p-xconnect-name"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].P2pXconnectName.IsNull() {
+		if value := r.Get("p2p-xconnect-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].P2pXconnectName.IsNull() {
 			data.P2ps[i].P2pXconnectName = types.StringValue(value.String())
 		} else {
 			data.P2ps[i].P2pXconnectName = types.StringNull()
 		}
-		if value := r.Get("description"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Description.IsNull() {
+		if value := r.Get("description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Description.IsNull() {
 			data.P2ps[i].Description = types.StringValue(value.String())
 		} else {
 			data.P2ps[i].Description = types.StringNull()
@@ -744,7 +744,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Interfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Interfaces[ci].InterfaceName.IsNull() {
 				data.P2ps[i].Interfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Interfaces[ci].InterfaceName = types.StringNull()
@@ -791,7 +791,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].BackupInterfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].BackupInterfaces[ci].InterfaceName.IsNull() {
 				data.P2ps[i].BackupInterfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].BackupInterfaces[ci].InterfaceName = types.StringNull()
@@ -820,7 +820,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv4Neighbors[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv4Neighbors[ci].Address.IsNull() {
 				data.P2ps[i].Ipv4Neighbors[ci].Address = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Ipv4Neighbors[ci].Address = types.StringNull()
@@ -830,7 +830,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].Ipv4Neighbors[ci].PwId = types.Int64Null()
 			}
-			if value := cr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv4Neighbors[ci].PwClass.IsNull() {
+			if value := cr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv4Neighbors[ci].PwClass.IsNull() {
 				data.P2ps[i].Ipv4Neighbors[ci].PwClass = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Ipv4Neighbors[ci].PwClass = types.StringNull()
@@ -863,7 +863,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 						return true
 					},
 				)
-				if value := ccr.Get("address"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].Address.IsNull() {
+				if value := ccr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].Address.IsNull() {
 					data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].Address = types.StringValue(value.String())
 				} else {
 					data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].Address = types.StringNull()
@@ -873,7 +873,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 				} else {
 					data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwId = types.Int64Null()
 				}
-				if value := ccr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() {
+				if value := ccr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() {
 					data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwClass = types.StringValue(value.String())
 				} else {
 					data.P2ps[i].Ipv4Neighbors[ci].BackupNeighbors[cci].PwClass = types.StringNull()
@@ -928,7 +928,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("address"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv6Neighbors[ci].Address.IsNull() {
+			if value := cr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv6Neighbors[ci].Address.IsNull() {
 				data.P2ps[i].Ipv6Neighbors[ci].Address = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Ipv6Neighbors[ci].Address = types.StringNull()
@@ -938,7 +938,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].Ipv6Neighbors[ci].PwId = types.Int64Null()
 			}
-			if value := cr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv6Neighbors[ci].PwClass.IsNull() {
+			if value := cr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv6Neighbors[ci].PwClass.IsNull() {
 				data.P2ps[i].Ipv6Neighbors[ci].PwClass = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Ipv6Neighbors[ci].PwClass = types.StringNull()
@@ -966,7 +966,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 						return true
 					},
 				)
-				if value := ccr.Get("address"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].Address.IsNull() {
+				if value := ccr.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].Address.IsNull() {
 					data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].Address = types.StringValue(value.String())
 				} else {
 					data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].Address = types.StringNull()
@@ -976,7 +976,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 				} else {
 					data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwId = types.Int64Null()
 				}
-				if value := ccr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() {
+				if value := ccr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwClass.IsNull() {
 					data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwClass = types.StringValue(value.String())
 				} else {
 					data.P2ps[i].Ipv6Neighbors[ci].BackupNeighbors[cci].PwClass = types.StringNull()
@@ -1007,7 +1007,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].Ipv6Neighbors[ci].TagImposeVlan = types.Int64Null()
 			}
-			if value := cr.Get("source.ipv6-address"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].Ipv6Neighbors[ci].SourceIpv6Address.IsNull() {
+			if value := cr.Get("source.ipv6-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].Ipv6Neighbors[ci].SourceIpv6Address.IsNull() {
 				data.P2ps[i].Ipv6Neighbors[ci].SourceIpv6Address = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].Ipv6Neighbors[ci].SourceIpv6Address = types.StringNull()
@@ -1051,7 +1051,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].EvpnTargetNeighbors[ci].Source = types.Int64Null()
 			}
-			if value := cr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].EvpnTargetNeighbors[ci].PwClass.IsNull() {
+			if value := cr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].EvpnTargetNeighbors[ci].PwClass.IsNull() {
 				data.P2ps[i].EvpnTargetNeighbors[ci].PwClass = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].EvpnTargetNeighbors[ci].PwClass = types.StringNull()
@@ -1090,7 +1090,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].EvpnServiceNeighbors[ci].ServiceId = types.Int64Null()
 			}
-			if value := cr.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].EvpnServiceNeighbors[ci].PwClass.IsNull() {
+			if value := cr.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].EvpnServiceNeighbors[ci].PwClass.IsNull() {
 				data.P2ps[i].EvpnServiceNeighbors[ci].PwClass = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].EvpnServiceNeighbors[ci].PwClass = types.StringNull()
@@ -1134,7 +1134,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].Source = types.Int64Null()
 			}
-			if value := cr.Get("segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() {
+			if value := cr.Get("segment-routing.srv6.locator"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() {
 				data.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].EvpnTargetNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator = types.StringNull()
@@ -1173,7 +1173,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 			} else {
 				data.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].ServiceId = types.Int64Null()
 			}
-			if value := cr.Get("segment-routing.srv6.locator"); value.Exists() && value.Type == gjson.String && !data.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() {
+			if value := cr.Get("segment-routing.srv6.locator"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator.IsNull() {
 				data.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator = types.StringValue(value.String())
 			} else {
 				data.P2ps[i].EvpnServiceNeighborsSegmentRouting[ci].SegmentRoutingSrv6Locator = types.StringNull()
@@ -1203,7 +1203,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 				return true
 			},
 		)
-		if value := r.Get("instance-name"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].InstanceName.IsNull() {
+		if value := r.Get("instance-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].InstanceName.IsNull() {
 			data.Mp2mps[i].InstanceName = types.StringValue(value.String())
 		} else {
 			data.Mp2mps[i].InstanceName = types.StringNull()
@@ -1227,12 +1227,12 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 		} else {
 			data.Mp2mps[i].Shutdown = types.BoolNull()
 		}
-		if value := r.Get("l2-encapsulation"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].L2Encapsulation.IsNull() {
+		if value := r.Get("l2-encapsulation"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].L2Encapsulation.IsNull() {
 			data.Mp2mps[i].L2Encapsulation = types.StringValue(value.String())
 		} else {
 			data.Mp2mps[i].L2Encapsulation = types.StringNull()
 		}
-		if value := r.Get("interworking"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].Interworking.IsNull() {
+		if value := r.Get("interworking"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].Interworking.IsNull() {
 			data.Mp2mps[i].Interworking = types.StringValue(value.String())
 		} else {
 			data.Mp2mps[i].Interworking = types.StringNull()
@@ -1284,7 +1284,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 		} else {
 			data.Mp2mps[i].AutodiscoveryBgpRdFourByteAsIndex = types.Int64Null()
 		}
-		if value := r.Get("autodiscovery.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpRdIpv4Address.IsNull() {
+		if value := r.Get("autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpRdIpv4Address.IsNull() {
 			data.Mp2mps[i].AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 		} else {
 			data.Mp2mps[i].AutodiscoveryBgpRdIpv4Address = types.StringNull()
@@ -1385,7 +1385,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[ci].Ipv4Address.IsNull() {
+			if value := cr.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[ci].Ipv4Address.IsNull() {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[ci].Ipv4Address = types.StringValue(value.String())
 			} else {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[ci].Ipv4Address = types.StringNull()
@@ -1487,7 +1487,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[ci].Ipv4Address.IsNull() {
+			if value := cr.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[ci].Ipv4Address.IsNull() {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[ci].Ipv4Address = types.StringValue(value.String())
 			} else {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[ci].Ipv4Address = types.StringNull()
@@ -1589,7 +1589,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 					return true
 				},
 			)
-			if value := cr.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetIpv4AddressFormat[ci].Ipv4Address.IsNull() {
+			if value := cr.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpRouteTargetIpv4AddressFormat[ci].Ipv4Address.IsNull() {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetIpv4AddressFormat[ci].Ipv4Address = types.StringValue(value.String())
 			} else {
 				data.Mp2mps[i].AutodiscoveryBgpRouteTargetIpv4AddressFormat[ci].Ipv4Address = types.StringNull()
@@ -1651,7 +1651,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 						return true
 					},
 				)
-				if value := ccr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces[cci].InterfaceName.IsNull() {
+				if value := ccr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces[cci].InterfaceName.IsNull() {
 					data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces[cci].InterfaceName = types.StringValue(value.String())
 				} else {
 					data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpCeIds[ci].Interfaces[cci].InterfaceName = types.StringNull()
@@ -1728,7 +1728,7 @@ func (data *L2VPNXconnectGroup) updateFromBody(ctx context.Context, res []byte, 
 		} else {
 			data.Mp2mps[i].AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth = types.BoolNull()
 		}
-		if value := r.Get("autodiscovery.bgp.route-policy.export"); value.Exists() && value.Type == gjson.String && !data.Mp2mps[i].AutodiscoveryBgpRoutePolicyExport.IsNull() {
+		if value := r.Get("autodiscovery.bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Mp2mps[i].AutodiscoveryBgpRoutePolicyExport.IsNull() {
 			data.Mp2mps[i].AutodiscoveryBgpRoutePolicyExport = types.StringValue(value.String())
 		} else {
 			data.Mp2mps[i].AutodiscoveryBgpRoutePolicyExport = types.StringNull()
@@ -1745,17 +1745,17 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 		data.P2ps = make([]L2VPNXconnectGroupP2ps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNXconnectGroupP2ps{}
-			if cValue := v.Get("p2p-xconnect-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("p2p-xconnect-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.P2pXconnectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interfaces.interface"); cValue.Exists() {
 				item.Interfaces = make([]L2VPNXconnectGroupP2psInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -1776,7 +1776,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.BackupInterfaces = make([]L2VPNXconnectGroupP2psBackupInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psBackupInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.BackupInterfaces = append(item.BackupInterfaces, cItem)
@@ -1787,13 +1787,13 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.Ipv4Neighbors = make([]L2VPNXconnectGroupP2psIpv4Neighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psIpv4Neighbors{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("pw-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PwId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bandwidth"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -1803,13 +1803,13 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 						cItem.BackupNeighbors = make([]L2VPNXconnectGroupP2psIpv4NeighborsBackupNeighbors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupP2psIpv4NeighborsBackupNeighbors{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("pw-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.PwId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.PwClass = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("mpls.static.label.local"); cccValue.Exists() && cccValue.Type == gjson.Number {
@@ -1839,26 +1839,26 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.Ipv6Neighbors = make([]L2VPNXconnectGroupP2psIpv6Neighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psIpv6Neighbors{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("pw-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PwId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("backup.neighbors.neighbor"); ccValue.Exists() {
 						cItem.BackupNeighbors = make([]L2VPNXconnectGroupP2psIpv6NeighborsBackupNeighbors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupP2psIpv6NeighborsBackupNeighbors{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("pw-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.PwId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.PwClass = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("mpls.static.label.local"); cccValue.Exists() && cccValue.Type == gjson.Number {
@@ -1880,7 +1880,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 					if ccValue := cv.Get("tag-impose.vlan"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TagImposeVlan = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("source.ipv6-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source.ipv6-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceIpv6Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv6Neighbors = append(item.Ipv6Neighbors, cItem)
@@ -1900,7 +1900,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Source = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					item.EvpnTargetNeighbors = append(item.EvpnTargetNeighbors, cItem)
@@ -1917,7 +1917,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 					if ccValue := cv.Get("service-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ServiceId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					item.EvpnServiceNeighbors = append(item.EvpnServiceNeighbors, cItem)
@@ -1937,7 +1937,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Source = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SegmentRoutingSrv6Locator = types.StringValue(ccValue.String())
 					}
 					item.EvpnTargetNeighborsSegmentRouting = append(item.EvpnTargetNeighborsSegmentRouting, cItem)
@@ -1954,7 +1954,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 					if ccValue := cv.Get("service-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ServiceId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SegmentRoutingSrv6Locator = types.StringValue(ccValue.String())
 					}
 					item.EvpnServiceNeighborsSegmentRouting = append(item.EvpnServiceNeighborsSegmentRouting, cItem)
@@ -1969,7 +1969,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 		data.Mp2mps = make([]L2VPNXconnectGroupMp2mps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNXconnectGroupMp2mps{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1983,10 +1983,10 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("l2-encapsulation"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("l2-encapsulation"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.L2Encapsulation = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("interworking"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interworking"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Interworking = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("control-word.disable"); cValue.Exists() {
@@ -2016,7 +2016,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("autodiscovery.bgp.rd.four-byte-as-assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AutodiscoveryBgpRdIpv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address-assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2054,7 +2054,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetImportIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetImportIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2096,7 +2096,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetExportIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetExportIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2138,7 +2138,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 				item.AutodiscoveryBgpRouteTargetIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2159,7 +2159,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 						cItem.Interfaces = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpSignalingProtocolBgpCeIdsInterfaces, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpSignalingProtocolBgpCeIdsInterfaces{}
-							if cccValue := ccv.Get("interface-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("interface-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.InterfaceName = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("remote-ce-id"); cccValue.Exists() {
@@ -2204,7 +2204,7 @@ func (data *L2VPNXconnectGroup) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth = types.BoolValue(false)
 			}
-			if cValue := v.Get("autodiscovery.bgp.route-policy.export"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("autodiscovery.bgp.route-policy.export"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AutodiscoveryBgpRoutePolicyExport = types.StringValue(cValue.String())
 			}
 			data.Mp2mps = append(data.Mp2mps, item)
@@ -2222,17 +2222,17 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 		data.P2ps = make([]L2VPNXconnectGroupP2ps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNXconnectGroupP2ps{}
-			if cValue := v.Get("p2p-xconnect-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("p2p-xconnect-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.P2pXconnectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("description"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interfaces.interface"); cValue.Exists() {
 				item.Interfaces = make([]L2VPNXconnectGroupP2psInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -2253,7 +2253,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.BackupInterfaces = make([]L2VPNXconnectGroupP2psBackupInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psBackupInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.BackupInterfaces = append(item.BackupInterfaces, cItem)
@@ -2264,13 +2264,13 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.Ipv4Neighbors = make([]L2VPNXconnectGroupP2psIpv4Neighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psIpv4Neighbors{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("pw-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PwId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("bandwidth"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2280,13 +2280,13 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 						cItem.BackupNeighbors = make([]L2VPNXconnectGroupP2psIpv4NeighborsBackupNeighbors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupP2psIpv4NeighborsBackupNeighbors{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("pw-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.PwId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.PwClass = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("mpls.static.label.local"); cccValue.Exists() && cccValue.Type == gjson.Number {
@@ -2316,26 +2316,26 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.Ipv6Neighbors = make([]L2VPNXconnectGroupP2psIpv6Neighbors, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupP2psIpv6Neighbors{}
-					if ccValue := cv.Get("address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("pw-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.PwId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("backup.neighbors.neighbor"); ccValue.Exists() {
 						cItem.BackupNeighbors = make([]L2VPNXconnectGroupP2psIpv6NeighborsBackupNeighbors, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupP2psIpv6NeighborsBackupNeighbors{}
-							if cccValue := ccv.Get("address"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("address"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.Address = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("pw-id"); cccValue.Exists() && cccValue.Type == gjson.Number {
 								ccItem.PwId = types.Int64Value(cccValue.Int())
 							}
-							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("pw-class"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.PwClass = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("mpls.static.label.local"); cccValue.Exists() && cccValue.Type == gjson.Number {
@@ -2357,7 +2357,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 					if ccValue := cv.Get("tag-impose.vlan"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.TagImposeVlan = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("source.ipv6-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("source.ipv6-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SourceIpv6Address = types.StringValue(ccValue.String())
 					}
 					item.Ipv6Neighbors = append(item.Ipv6Neighbors, cItem)
@@ -2377,7 +2377,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Source = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					item.EvpnTargetNeighbors = append(item.EvpnTargetNeighbors, cItem)
@@ -2394,7 +2394,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 					if ccValue := cv.Get("service-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ServiceId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pw-class"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("pw-class"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PwClass = types.StringValue(ccValue.String())
 					}
 					item.EvpnServiceNeighbors = append(item.EvpnServiceNeighbors, cItem)
@@ -2414,7 +2414,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 					if ccValue := cv.Get("source"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.Source = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SegmentRoutingSrv6Locator = types.StringValue(ccValue.String())
 					}
 					item.EvpnTargetNeighborsSegmentRouting = append(item.EvpnTargetNeighborsSegmentRouting, cItem)
@@ -2431,7 +2431,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 					if ccValue := cv.Get("service-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.ServiceId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("segment-routing.srv6.locator"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SegmentRoutingSrv6Locator = types.StringValue(ccValue.String())
 					}
 					item.EvpnServiceNeighborsSegmentRouting = append(item.EvpnServiceNeighborsSegmentRouting, cItem)
@@ -2446,7 +2446,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 		data.Mp2mps = make([]L2VPNXconnectGroupMp2mps, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNXconnectGroupMp2mps{}
-			if cValue := v.Get("instance-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("vpn-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2460,10 +2460,10 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.Shutdown = types.BoolValue(false)
 			}
-			if cValue := v.Get("l2-encapsulation"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("l2-encapsulation"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.L2Encapsulation = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("interworking"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interworking"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Interworking = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("control-word.disable"); cValue.Exists() {
@@ -2493,7 +2493,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 			if cValue := v.Get("autodiscovery.bgp.rd.four-byte-as-assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AutodiscoveryBgpRdIpv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("autodiscovery.bgp.rd.ipv4-address-assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -2531,7 +2531,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetImportIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetImportIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2573,7 +2573,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetExportIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetExportIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2615,7 +2615,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 				item.AutodiscoveryBgpRouteTargetIpv4AddressFormat = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetIpv4AddressFormat, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpRouteTargetIpv4AddressFormat{}
-					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("ipv4-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Ipv4Address = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("assigned-number"); ccValue.Exists() && ccValue.Type == gjson.Number {
@@ -2636,7 +2636,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 						cItem.Interfaces = make([]L2VPNXconnectGroupMp2mpsAutodiscoveryBgpSignalingProtocolBgpCeIdsInterfaces, 0)
 						ccValue.ForEach(func(cck, ccv gjson.Result) bool {
 							ccItem := L2VPNXconnectGroupMp2mpsAutodiscoveryBgpSignalingProtocolBgpCeIdsInterfaces{}
-							if cccValue := ccv.Get("interface-name"); cccValue.Exists() && cccValue.Type == gjson.String {
+							if cccValue := ccv.Get("interface-name"); cccValue.Exists() && (cccValue.Type == gjson.String || cccValue.Type == gjson.Number) {
 								ccItem.InterfaceName = types.StringValue(cccValue.String())
 							}
 							if cccValue := ccv.Get("remote-ce-id"); cccValue.Exists() {
@@ -2681,7 +2681,7 @@ func (data *L2VPNXconnectGroupData) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.AutodiscoveryBgpSignalingProtocolBgpLoadBalancingFlowLabelBoth = types.BoolValue(false)
 			}
-			if cValue := v.Get("autodiscovery.bgp.route-policy.export"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("autodiscovery.bgp.route-policy.export"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AutodiscoveryBgpRoutePolicyExport = types.StringValue(cValue.String())
 			}
 			data.Mp2mps = append(data.Mp2mps, item)

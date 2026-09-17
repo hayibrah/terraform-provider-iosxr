@@ -419,12 +419,12 @@ func (data L2VPN) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String && !data.RouterId.IsNull() {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterId.IsNull() {
 		data.RouterId = types.StringValue(value.String())
 	} else {
 		data.RouterId = types.StringNull()
@@ -480,17 +480,17 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.RedundancyIccpGroups[i].Interfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedundancyIccpGroups[i].Interfaces[ci].InterfaceName.IsNull() {
 				data.RedundancyIccpGroups[i].Interfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.RedundancyIccpGroups[i].Interfaces[ci].InterfaceName = types.StringNull()
 			}
-			if value := cr.Get("primary.vlan"); value.Exists() && value.Type == gjson.String && !data.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan.IsNull() {
+			if value := cr.Get("primary.vlan"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan.IsNull() {
 				data.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan = types.StringValue(value.String())
 			} else {
 				data.RedundancyIccpGroups[i].Interfaces[ci].PrimaryVlan = types.StringNull()
 			}
-			if value := cr.Get("secondary.vlan"); value.Exists() && value.Type == gjson.String && !data.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan.IsNull() {
+			if value := cr.Get("secondary.vlan"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan.IsNull() {
 				data.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan = types.StringValue(value.String())
 			} else {
 				data.RedundancyIccpGroups[i].Interfaces[ci].SecondaryVlan = types.StringNull()
@@ -539,7 +539,7 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 				return true
 			},
 		)
-		if value := r.Get("service-name"); value.Exists() && value.Type == gjson.String && !data.FlexibleXconnectServiceVlanUnaware[i].ServiceName.IsNull() {
+		if value := r.Get("service-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexibleXconnectServiceVlanUnaware[i].ServiceName.IsNull() {
 			data.FlexibleXconnectServiceVlanUnaware[i].ServiceName = types.StringValue(value.String())
 		} else {
 			data.FlexibleXconnectServiceVlanUnaware[i].ServiceName = types.StringNull()
@@ -567,7 +567,7 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FlexibleXconnectServiceVlanUnaware[i].Interfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexibleXconnectServiceVlanUnaware[i].Interfaces[ci].InterfaceName.IsNull() {
 				data.FlexibleXconnectServiceVlanUnaware[i].Interfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.FlexibleXconnectServiceVlanUnaware[i].Interfaces[ci].InterfaceName = types.StringNull()
@@ -659,7 +659,7 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 					return true
 				},
 			)
-			if value := cr.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.FlexibleXconnectServiceVlanAwareEvis[i].Interfaces[ci].InterfaceName.IsNull() {
+			if value := cr.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FlexibleXconnectServiceVlanAwareEvis[i].Interfaces[ci].InterfaceName.IsNull() {
 				data.FlexibleXconnectServiceVlanAwareEvis[i].Interfaces[ci].InterfaceName = types.StringValue(value.String())
 			} else {
 				data.FlexibleXconnectServiceVlanAwareEvis[i].Interfaces[ci].InterfaceName = types.StringNull()
@@ -845,7 +845,7 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.PwRoutingBgpRdFourByteAsAssignedNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.PwRoutingBgpRdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PwRoutingBgpRdIpv4Address.IsNull() {
 		data.PwRoutingBgpRdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.PwRoutingBgpRdIpv4Address = types.StringNull()
@@ -880,10 +880,10 @@ func (data *L2VPN) updateFromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redundancy.iccp.groups.group"); value.Exists() {
@@ -897,13 +897,13 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 				item.Interfaces = make([]L2VPNRedundancyIccpGroupsInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNRedundancyIccpGroupsInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("primary.vlan"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("primary.vlan"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PrimaryVlan = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("secondary.vlan"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("secondary.vlan"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SecondaryVlan = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("mac-flush.stp-tcn"); ccValue.Exists() {
@@ -929,14 +929,14 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 		data.FlexibleXconnectServiceVlanUnaware = make([]L2VPNFlexibleXconnectServiceVlanUnaware, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNFlexibleXconnectServiceVlanUnaware{}
-			if cValue := v.Get("service-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("service-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ServiceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interfaces.interface"); cValue.Exists() {
 				item.Interfaces = make([]L2VPNFlexibleXconnectServiceVlanUnawareInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNFlexibleXconnectServiceVlanUnawareInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -972,7 +972,7 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 				item.Interfaces = make([]L2VPNFlexibleXconnectServiceVlanAwareEvisInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNFlexibleXconnectServiceVlanAwareEvisInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -1084,7 +1084,7 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.PwRoutingBgpRdFourByteAsAssignedNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PwRoutingBgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1107,10 +1107,10 @@ func (data *L2VPN) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterId = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redundancy.iccp.groups.group"); value.Exists() {
@@ -1124,13 +1124,13 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string)
 				item.Interfaces = make([]L2VPNRedundancyIccpGroupsInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNRedundancyIccpGroupsInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("primary.vlan"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("primary.vlan"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.PrimaryVlan = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("secondary.vlan"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("secondary.vlan"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.SecondaryVlan = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("mac-flush.stp-tcn"); ccValue.Exists() {
@@ -1156,14 +1156,14 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string)
 		data.FlexibleXconnectServiceVlanUnaware = make([]L2VPNFlexibleXconnectServiceVlanUnaware, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNFlexibleXconnectServiceVlanUnaware{}
-			if cValue := v.Get("service-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("service-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ServiceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("interfaces.interface"); cValue.Exists() {
 				item.Interfaces = make([]L2VPNFlexibleXconnectServiceVlanUnawareInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNFlexibleXconnectServiceVlanUnawareInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -1199,7 +1199,7 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string)
 				item.Interfaces = make([]L2VPNFlexibleXconnectServiceVlanAwareEvisInterfaces, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNFlexibleXconnectServiceVlanAwareEvisInterfaces{}
-					if ccValue := cv.Get("interface-name"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("interface-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.InterfaceName = types.StringValue(ccValue.String())
 					}
 					item.Interfaces = append(item.Interfaces, cItem)
@@ -1311,7 +1311,7 @@ func (data *L2VPNData) fromBody(ctx context.Context, res []byte, version string)
 	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.PwRoutingBgpRdFourByteAsAssignedNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PwRoutingBgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "pw-routing.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {

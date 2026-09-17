@@ -529,12 +529,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.MeshGroupBlocked = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "state"); value.Exists() && value.Type == gjson.String && !data.State.IsNull() {
+	if value := gjson.GetBytes(res, "state"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.State.IsNull() {
 		data.State = types.StringValue(value.String())
 	} else {
 		data.State = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && value.Type == gjson.String && !data.CircuitType.IsNull() {
+	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.CircuitType.IsNull() {
 		data.CircuitType = types.StringValue(value.String())
 	} else {
 		data.CircuitType = types.StringNull()
@@ -578,7 +578,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 			data.CsnpIntervalLevels[i].CsnpInterval = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && value.Type == gjson.String && !data.HelloPadding.IsNull() {
+	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.HelloPadding.IsNull() {
 		data.HelloPadding = types.StringValue(value.String())
 	} else {
 		data.HelloPadding = types.StringNull()
@@ -611,7 +611,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 		} else {
 			data.HelloPaddingLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("hello-padding"); value.Exists() && value.Type == gjson.String && !data.HelloPaddingLevels[i].HelloPadding.IsNull() {
+		if value := r.Get("hello-padding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.HelloPaddingLevels[i].HelloPadding.IsNull() {
 			data.HelloPaddingLevels[i].HelloPadding = types.StringValue(value.String())
 		} else {
 			data.HelloPaddingLevels[i].HelloPadding = types.StringNull()
@@ -781,7 +781,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.HelloPasswordHmacMd5SendOnly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && value.Type == gjson.String && !data.HelloPasswordKeychainName.IsNull() {
+	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.HelloPasswordKeychainName.IsNull() {
 		data.HelloPasswordKeychainName = types.StringValue(value.String())
 	} else {
 		data.HelloPasswordKeychainName = types.StringNull()
@@ -841,7 +841,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 		} else {
 			data.HelloPasswordLevels[i].HmacMd5SendOnly = types.BoolNull()
 		}
-		if value := r.Get("keychain.keychain-name"); value.Exists() && value.Type == gjson.String && !data.HelloPasswordLevels[i].KeychainName.IsNull() {
+		if value := r.Get("keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.HelloPasswordLevels[i].KeychainName.IsNull() {
 			data.HelloPasswordLevels[i].KeychainName = types.StringValue(value.String())
 		} else {
 			data.HelloPasswordLevels[i].KeychainName = types.StringNull()
@@ -1006,7 +1006,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.AffinityFlexAlgosAnomalies = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && value.Type == gjson.String && !data.OverrideMetrics.IsNull() {
+	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.OverrideMetrics.IsNull() {
 		data.OverrideMetrics = types.StringValue(value.String())
 	} else {
 		data.OverrideMetrics = types.StringNull()
@@ -1078,10 +1078,10 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MeshGroupBlocked = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "state"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "state"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.State = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CircuitType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && value.Type == gjson.Number {
@@ -1101,7 +1101,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HelloPadding = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hello-padding-levels.hello-padding-level"); value.Exists() {
@@ -1111,7 +1111,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-padding"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("hello-padding"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.HelloPadding = types.StringValue(cValue.String())
 			}
 			data.HelloPaddingLevels = append(data.HelloPaddingLevels, item)
@@ -1190,7 +1190,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.HelloPasswordHmacMd5SendOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HelloPasswordKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.send-only"); value.Exists() {
@@ -1215,7 +1215,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 			} else {
 				item.HmacMd5SendOnly = types.BoolValue(false)
 			}
-			if cValue := v.Get("keychain.keychain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("keychain.keychain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("keychain.send-only"); cValue.Exists() {
@@ -1301,7 +1301,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.AffinityFlexAlgosAnomalies = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OverrideMetrics = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && value.Type == gjson.Number {
@@ -1349,10 +1349,10 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MeshGroupBlocked = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "state"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "state"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.State = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CircuitType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && value.Type == gjson.Number {
@@ -1372,7 +1372,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "hello-padding"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HelloPadding = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hello-padding-levels.hello-padding-level"); value.Exists() {
@@ -1382,7 +1382,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-padding"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("hello-padding"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.HelloPadding = types.StringValue(cValue.String())
 			}
 			data.HelloPaddingLevels = append(data.HelloPaddingLevels, item)
@@ -1461,7 +1461,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.HelloPasswordHmacMd5SendOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.keychain-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HelloPasswordKeychainName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "hello-password.hello-password-options.keychain.send-only"); value.Exists() {
@@ -1486,7 +1486,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 			} else {
 				item.HmacMd5SendOnly = types.BoolValue(false)
 			}
-			if cValue := v.Get("keychain.keychain-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("keychain.keychain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeychainName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("keychain.send-only"); cValue.Exists() {
@@ -1572,7 +1572,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.AffinityFlexAlgosAnomalies = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OverrideMetrics = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && value.Type == gjson.Number {

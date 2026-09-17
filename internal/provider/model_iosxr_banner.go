@@ -132,7 +132,7 @@ func (data Banner) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Banner) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "line"); value.Exists() && value.Type == gjson.String && !data.Line.IsNull() {
+	if value := gjson.GetBytes(res, "line"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Line.IsNull() {
 		data.Line = types.StringValue(value.String())
 	} else {
 		data.Line = types.StringNull()
@@ -144,7 +144,7 @@ func (data *Banner) updateFromBody(ctx context.Context, res []byte, version stri
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *Banner) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "line"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "line"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Line = types.StringValue(value.String())
 	}
 }
@@ -154,7 +154,7 @@ func (data *Banner) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *BannerData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "line"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "line"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Line = types.StringValue(value.String())
 	}
 }

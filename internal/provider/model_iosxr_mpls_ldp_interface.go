@@ -209,7 +209,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.DiscoveryHelloInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String && !data.DiscoveryHelloDualStackTlv.IsNull() {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DiscoveryHelloDualStackTlv.IsNull() {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	} else {
 		data.DiscoveryHelloDualStackTlv = types.StringNull()
@@ -260,7 +260,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 				return true
 			},
 		)
-		if value := r.Get("af-name"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].AfName.IsNull() {
+		if value := r.Get("af-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].AfName.IsNull() {
 			data.AddressFamily[i].AfName = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].AfName = types.StringNull()
@@ -274,7 +274,7 @@ func (data *MPLSLDPInterface) updateFromBody(ctx context.Context, res []byte, ve
 		} else {
 			data.AddressFamily[i].DiscoveryTransportAddressInterface = types.BoolNull()
 		}
-		if value := r.Get("discovery.transport-address.ip-address"); value.Exists() && value.Type == gjson.String && !data.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() {
+		if value := r.Get("discovery.transport-address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AddressFamily[i].DiscoveryTransportAddressIp.IsNull() {
 			data.AddressFamily[i].DiscoveryTransportAddressIp = types.StringValue(value.String())
 		} else {
 			data.AddressFamily[i].DiscoveryTransportAddressIp = types.StringNull()
@@ -311,7 +311,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "discovery.quick-start.disable"); value.Exists() {
@@ -331,7 +331,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 		data.AddressFamily = make([]MPLSLDPInterfaceAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPInterfaceAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discovery.transport-address.interface"); cValue.Exists() {
@@ -339,7 +339,7 @@ func (data *MPLSLDPInterface) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("igp.auto-config.disable"); cValue.Exists() {
@@ -369,7 +369,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 	if value := gjson.GetBytes(res, "discovery.hello.interval"); value.Exists() && value.Type == gjson.Number {
 		data.DiscoveryHelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "discovery.hello.dual-stack-tlv"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DiscoveryHelloDualStackTlv = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "discovery.quick-start.disable"); value.Exists() {
@@ -389,7 +389,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 		data.AddressFamily = make([]MPLSLDPInterfaceAddressFamily, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPInterfaceAddressFamily{}
-			if cValue := v.Get("af-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("af-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AfName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("discovery.transport-address.interface"); cValue.Exists() {
@@ -397,7 +397,7 @@ func (data *MPLSLDPInterfaceData) fromBody(ctx context.Context, res []byte, vers
 			} else {
 				item.DiscoveryTransportAddressInterface = types.BoolValue(false)
 			}
-			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("discovery.transport-address.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DiscoveryTransportAddressIp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("igp.auto-config.disable"); cValue.Exists() {

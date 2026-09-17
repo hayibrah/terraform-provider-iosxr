@@ -383,7 +383,7 @@ func (data *SNMPServerMIB) updateFromBody(ctx context.Context, res []byte, versi
 				return true
 			},
 		)
-		if value := r.Get("interface-name"); value.Exists() && value.Type == gjson.String && !data.Interfaces[i].InterfaceName.IsNull() {
+		if value := r.Get("interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Interfaces[i].InterfaceName.IsNull() {
 			data.Interfaces[i].InterfaceName = types.StringValue(value.String())
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
@@ -593,7 +593,7 @@ func (data *SNMPServerMIB) fromBody(ctx context.Context, res []byte, version str
 		data.Interfaces = make([]SNMPServerMIBInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerMIBInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("notification.linkupdown.enable"); cValue.Exists() {
@@ -732,7 +732,7 @@ func (data *SNMPServerMIBData) fromBody(ctx context.Context, res []byte, version
 		data.Interfaces = make([]SNMPServerMIBInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := SNMPServerMIBInterfaces{}
-			if cValue := v.Get("interface-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("notification.linkupdown.enable"); cValue.Exists() {

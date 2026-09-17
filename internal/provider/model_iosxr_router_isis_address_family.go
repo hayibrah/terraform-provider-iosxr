@@ -1571,7 +1571,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.DistanceSources[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistanceSources[i].Address.IsNull() {
 			data.DistanceSources[i].Address = types.StringValue(value.String())
 		} else {
 			data.DistanceSources[i].Address = types.StringNull()
@@ -1586,18 +1586,18 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.DistanceSources[i].Distance = types.Int64Null()
 		}
-		if value := r.Get("prefix-list-or-access-list-to"); value.Exists() && value.Type == gjson.String && !data.DistanceSources[i].RouteFilter.IsNull() {
+		if value := r.Get("prefix-list-or-access-list-to"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistanceSources[i].RouteFilter.IsNull() {
 			data.DistanceSources[i].RouteFilter = types.StringValue(value.String())
 		} else {
 			data.DistanceSources[i].RouteFilter = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && value.Type == gjson.String && !data.DistributeListPrefixListIn.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListPrefixListIn.IsNull() {
 		data.DistributeListPrefixListIn = types.StringValue(value.String())
 	} else {
 		data.DistributeListPrefixListIn = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String && !data.DistributeListRoutePolicyIn.IsNull() {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DistributeListRoutePolicyIn.IsNull() {
 		data.DistributeListRoutePolicyIn = types.StringValue(value.String())
 	} else {
 		data.DistributeListRoutePolicyIn = types.StringNull()
@@ -1611,7 +1611,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeConnected = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedLevel.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedLevel.IsNull() {
 		data.RedistributeConnectedLevel = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedLevel = types.StringNull()
@@ -1621,12 +1621,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeConnectedMetric = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedRoutePolicy.IsNull() {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeConnectedMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeConnectedMetricType.IsNull() {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	} else {
 		data.RedistributeConnectedMetricType = types.StringNull()
@@ -1640,7 +1640,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeStatic = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticLevel.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticLevel.IsNull() {
 		data.RedistributeStaticLevel = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticLevel = types.StringNull()
@@ -1650,12 +1650,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.RedistributeStaticMetric = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticRoutePolicy.IsNull() {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeStaticMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeStaticMetricType.IsNull() {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	} else {
 		data.RedistributeStaticMetricType = types.StringNull()
@@ -1683,12 +1683,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("isis-string"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].InstanceId.IsNull() {
+		if value := r.Get("isis-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].InstanceId.IsNull() {
 			data.RedistributeIsis[i].InstanceId = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].InstanceId = types.StringNull()
 		}
-		if value := r.Get("redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].Level.IsNull() {
+		if value := r.Get("redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].Level.IsNull() {
 			data.RedistributeIsis[i].Level = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].Level = types.StringNull()
@@ -1698,12 +1698,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeIsis[i].Metric = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].RoutePolicy.IsNull() {
 			data.RedistributeIsis[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeIsis[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeIsis[i].MetricType.IsNull() {
 			data.RedistributeIsis[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeIsis[i].MetricType = types.StringNull()
@@ -1741,12 +1741,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("as-number"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].AsNumber.IsNull() {
+		if value := r.Get("as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].AsNumber.IsNull() {
 			data.RedistributeBgp[i].AsNumber = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].AsNumber = types.StringNull()
 		}
-		if value := r.Get("redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].Level.IsNull() {
+		if value := r.Get("redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].Level.IsNull() {
 			data.RedistributeBgp[i].Level = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].Level = types.StringNull()
@@ -1756,12 +1756,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeBgp[i].Metric = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].RoutePolicy.IsNull() {
 			data.RedistributeBgp[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeBgp[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeBgp[i].MetricType.IsNull() {
 			data.RedistributeBgp[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeBgp[i].MetricType = types.StringNull()
@@ -1790,7 +1790,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("ospf-process-id"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].InstanceId.IsNull() {
+		if value := r.Get("ospf-process-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].InstanceId.IsNull() {
 			data.RedistributeOspf[i].InstanceId = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].InstanceId = types.StringNull()
@@ -1813,7 +1813,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeOspf[i].MatchExternal = types.BoolNull()
 		}
-		if value := r.Get("redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].Level.IsNull() {
+		if value := r.Get("redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].Level.IsNull() {
 			data.RedistributeOspf[i].Level = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].Level = types.StringNull()
@@ -1823,12 +1823,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeOspf[i].Metric = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].RoutePolicy.IsNull() {
 			data.RedistributeOspf[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspf[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspf[i].MetricType.IsNull() {
 			data.RedistributeOspf[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspf[i].MetricType = types.StringNull()
@@ -1857,7 +1857,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("ospfv3-process-id"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].InstanceId.IsNull() {
+		if value := r.Get("ospfv3-process-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].InstanceId.IsNull() {
 			data.RedistributeOspfv3[i].InstanceId = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].InstanceId = types.StringNull()
@@ -1880,7 +1880,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeOspfv3[i].MatchExternal = types.BoolNull()
 		}
-		if value := r.Get("redistribute-route-level"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].Level.IsNull() {
+		if value := r.Get("redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].Level.IsNull() {
 			data.RedistributeOspfv3[i].Level = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].Level = types.StringNull()
@@ -1890,12 +1890,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.RedistributeOspfv3[i].Metric = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].RoutePolicy.IsNull() {
 			data.RedistributeOspfv3[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].RoutePolicy = types.StringNull()
 		}
-		if value := r.Get("metric-type"); value.Exists() && value.Type == gjson.String && !data.RedistributeOspfv3[i].MetricType.IsNull() {
+		if value := r.Get("metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RedistributeOspfv3[i].MetricType.IsNull() {
 			data.RedistributeOspfv3[i].MetricType = types.StringValue(value.String())
 		} else {
 			data.RedistributeOspfv3[i].MetricType = types.StringNull()
@@ -1906,12 +1906,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.MaximumPaths = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && value.Type == gjson.String && !data.RouterIdInterfaceName.IsNull() {
+	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterIdInterfaceName.IsNull() {
 		data.RouterIdInterfaceName = types.StringValue(value.String())
 	} else {
 		data.RouterIdInterfaceName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && value.Type == gjson.String && !data.RouterIdIpAddress.IsNull() {
+	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.RouterIdIpAddress.IsNull() {
 		data.RouterIdIpAddress = types.StringValue(value.String())
 	} else {
 		data.RouterIdIpAddress = types.StringNull()
@@ -1952,7 +1952,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.MicroloopAvoidanceProtected = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && value.Type == gjson.String && !data.MicroloopAvoidanceSegmentRoutingRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MicroloopAvoidanceSegmentRoutingRoutePolicy.IsNull() {
 		data.MicroloopAvoidanceSegmentRoutingRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.MicroloopAvoidanceSegmentRoutingRoutePolicy = types.StringNull()
@@ -1985,7 +1985,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.SummaryPrefixes[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SummaryPrefixes[i].Address.IsNull() {
 			data.SummaryPrefixes[i].Address = types.StringValue(value.String())
 		} else {
 			data.SummaryPrefixes[i].Address = types.StringNull()
@@ -2342,7 +2342,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.SpfPrefixPriorityCriticalTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityCriticalPrefixListName.IsNull() {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityCriticalPrefixListName.IsNull() {
 		data.SpfPrefixPriorityCriticalPrefixListName = types.StringValue(value.String())
 	} else {
 		data.SpfPrefixPriorityCriticalPrefixListName = types.StringNull()
@@ -2352,7 +2352,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.SpfPrefixPriorityHighTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityHighPrefixListName.IsNull() {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityHighPrefixListName.IsNull() {
 		data.SpfPrefixPriorityHighPrefixListName = types.StringValue(value.String())
 	} else {
 		data.SpfPrefixPriorityHighPrefixListName = types.StringNull()
@@ -2362,7 +2362,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.SpfPrefixPriorityMediumTag = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityMediumPrefixListName.IsNull() {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityMediumPrefixListName.IsNull() {
 		data.SpfPrefixPriorityMediumPrefixListName = types.StringValue(value.String())
 	} else {
 		data.SpfPrefixPriorityMediumPrefixListName = types.StringNull()
@@ -2400,7 +2400,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SpfPrefixPriorityCriticalLevels[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityCriticalLevels[i].PrefixListName.IsNull() {
+		if value := r.Get("prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityCriticalLevels[i].PrefixListName.IsNull() {
 			data.SpfPrefixPriorityCriticalLevels[i].PrefixListName = types.StringValue(value.String())
 		} else {
 			data.SpfPrefixPriorityCriticalLevels[i].PrefixListName = types.StringNull()
@@ -2439,7 +2439,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SpfPrefixPriorityHighLevels[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityHighLevels[i].PrefixListName.IsNull() {
+		if value := r.Get("prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityHighLevels[i].PrefixListName.IsNull() {
 			data.SpfPrefixPriorityHighLevels[i].PrefixListName = types.StringValue(value.String())
 		} else {
 			data.SpfPrefixPriorityHighLevels[i].PrefixListName = types.StringNull()
@@ -2478,7 +2478,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SpfPrefixPriorityMediumLevels[i].Tag = types.Int64Null()
 		}
-		if value := r.Get("prefixlist-name"); value.Exists() && value.Type == gjson.String && !data.SpfPrefixPriorityMediumLevels[i].PrefixListName.IsNull() {
+		if value := r.Get("prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SpfPrefixPriorityMediumLevels[i].PrefixListName.IsNull() {
 			data.SpfPrefixPriorityMediumLevels[i].PrefixListName = types.StringValue(value.String())
 		} else {
 			data.SpfPrefixPriorityMediumLevels[i].PrefixListName = types.StringNull()
@@ -2556,7 +2556,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.PropagateLevels[i].DestinationLevel = types.Int64Null()
 		}
-		if value := r.Get("route-policy"); value.Exists() && value.Type == gjson.String && !data.PropagateLevels[i].RoutePolicy.IsNull() {
+		if value := r.Get("route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PropagateLevels[i].RoutePolicy.IsNull() {
 			data.PropagateLevels[i].RoutePolicy = types.StringValue(value.String())
 		} else {
 			data.PropagateLevels[i].RoutePolicy = types.StringNull()
@@ -2589,7 +2589,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.AttachedBitReceiveIgnore = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && value.Type == gjson.String && !data.AttachedBitSend.IsNull() {
+	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AttachedBitSend.IsNull() {
 		data.AttachedBitSend = types.StringValue(value.String())
 	} else {
 		data.AttachedBitSend = types.StringNull()
@@ -2599,7 +2599,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.FastRerouteDelayInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixPriorityLimit.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixPriorityLimit.IsNull() {
 		data.FastReroutePerPrefixPriorityLimit = types.StringValue(value.String())
 	} else {
 		data.FastReroutePerPrefixPriorityLimit = types.StringNull()
@@ -2632,7 +2632,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.FastReroutePerPrefixPriorityLimitLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("priority-limit"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixPriorityLimitLevels[i].PriorityLimit.IsNull() {
+		if value := r.Get("priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixPriorityLimitLevels[i].PriorityLimit.IsNull() {
 			data.FastReroutePerPrefixPriorityLimitLevels[i].PriorityLimit = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixPriorityLimitLevels[i].PriorityLimit = types.StringNull()
@@ -2685,7 +2685,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 			data.FastReroutePerPrefixSrlgProtectionWeightedGlobalLevels[i].LevelNumber = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixRemoteLfaPrefixList.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixRemoteLfaPrefixList.IsNull() {
 		data.FastReroutePerPrefixRemoteLfaPrefixList = types.StringValue(value.String())
 	} else {
 		data.FastReroutePerPrefixRemoteLfaPrefixList = types.StringNull()
@@ -2718,7 +2718,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.FastReroutePerPrefixRemoteLfaPrefixListLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("prefix-list"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerPrefixRemoteLfaPrefixListLevels[i].PrefixList.IsNull() {
+		if value := r.Get("prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerPrefixRemoteLfaPrefixListLevels[i].PrefixList.IsNull() {
 			data.FastReroutePerPrefixRemoteLfaPrefixListLevels[i].PrefixList = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerPrefixRemoteLfaPrefixListLevels[i].PrefixList = types.StringNull()
@@ -2835,7 +2835,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 			data.FastReroutePerLinkUseCandidateOnlyLevels[i].LevelNumber = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkPriorityLimit.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkPriorityLimit.IsNull() {
 		data.FastReroutePerLinkPriorityLimit = types.StringValue(value.String())
 	} else {
 		data.FastReroutePerLinkPriorityLimit = types.StringNull()
@@ -2868,7 +2868,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.FastReroutePerLinkPriorityLimitLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("priority-limit"); value.Exists() && value.Type == gjson.String && !data.FastReroutePerLinkPriorityLimitLevels[i].PriorityLimit.IsNull() {
+		if value := r.Get("priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.FastReroutePerLinkPriorityLimitLevels[i].PriorityLimit.IsNull() {
 			data.FastReroutePerLinkPriorityLimitLevels[i].PriorityLimit = types.StringValue(value.String())
 		} else {
 			data.FastReroutePerLinkPriorityLimitLevels[i].PriorityLimit = types.StringNull()
@@ -2883,7 +2883,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.DefaultInformationOriginate = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && value.Type == gjson.String && !data.DefaultInformationOriginateRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DefaultInformationOriginateRoutePolicy.IsNull() {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.DefaultInformationOriginateRoutePolicy = types.StringNull()
@@ -2929,12 +2929,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.SegmentRoutingMplsSrPrefer = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsUnlabeledProtectionPrefixList.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsUnlabeledProtectionPrefixList.IsNull() {
 		data.SegmentRoutingMplsUnlabeledProtectionPrefixList = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingMplsUnlabeledProtectionPrefixList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy.IsNull() {
 		data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy = types.StringValue(value.String())
 	} else {
 		data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy = types.StringNull()
@@ -3016,7 +3016,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("ip-address"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IpAddress.IsNull() {
+		if value := r.Get("ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IpAddress.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IpAddress = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IpAddress = types.StringNull()
@@ -3031,7 +3031,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IndexId = types.Int64Null()
 		}
-		if value := r.Get("index.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IndexInterface.IsNull() {
+		if value := r.Get("index.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IndexInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IndexInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].IndexInterface = types.StringNull()
@@ -3059,7 +3059,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].AbsoluteId = types.Int64Null()
 		}
-		if value := r.Get("absolute.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].AbsoluteInterface.IsNull() {
+		if value := r.Get("absolute.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].AbsoluteInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].AbsoluteInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapAddresses[i].AbsoluteInterface = types.StringNull()
@@ -3106,7 +3106,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("ip-address"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IpAddress.IsNull() {
+		if value := r.Get("ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IpAddress.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IpAddress = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IpAddress = types.StringNull()
@@ -3126,7 +3126,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IndexId = types.Int64Null()
 		}
-		if value := r.Get("index.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IndexInterface.IsNull() {
+		if value := r.Get("index.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IndexInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IndexInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].IndexInterface = types.StringNull()
@@ -3154,7 +3154,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].AbsoluteId = types.Int64Null()
 		}
-		if value := r.Get("absolute.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].AbsoluteInterface.IsNull() {
+		if value := r.Get("absolute.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].AbsoluteInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].AbsoluteInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses[i].AbsoluteInterface = types.StringNull()
@@ -3201,7 +3201,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("ip-address"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IpAddress.IsNull() {
+		if value := r.Get("ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IpAddress.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IpAddress = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IpAddress = types.StringNull()
@@ -3216,7 +3216,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IndexId = types.Int64Null()
 		}
-		if value := r.Get("index.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IndexInterface.IsNull() {
+		if value := r.Get("index.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IndexInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IndexInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].IndexInterface = types.StringNull()
@@ -3244,7 +3244,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].AbsoluteId = types.Int64Null()
 		}
-		if value := r.Get("absolute.interface"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].AbsoluteInterface.IsNull() {
+		if value := r.Get("absolute.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].AbsoluteInterface.IsNull() {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].AbsoluteInterface = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses[i].AbsoluteInterface = types.StringNull()
@@ -3291,7 +3291,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("locator-string"); value.Exists() && value.Type == gjson.String && !data.SegmentRoutingSrv6Locators[i].LocatorName.IsNull() {
+		if value := r.Get("locator-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SegmentRoutingSrv6Locators[i].LocatorName.IsNull() {
 			data.SegmentRoutingSrv6Locators[i].LocatorName = types.StringValue(value.String())
 		} else {
 			data.SegmentRoutingSrv6Locators[i].LocatorName = types.StringNull()
@@ -3412,7 +3412,7 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PartitionDetectTracks[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PartitionDetectTracks[i].Address.IsNull() {
 			data.PartitionDetectTracks[i].Address = types.StringValue(value.String())
 		} else {
 			data.PartitionDetectTracks[i].Address = types.StringNull()
@@ -3459,12 +3459,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.PartitionDetectExternalAddressTracks[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PartitionDetectExternalAddressTracks[i].Address.IsNull() {
 			data.PartitionDetectExternalAddressTracks[i].Address = types.StringValue(value.String())
 		} else {
 			data.PartitionDetectExternalAddressTracks[i].Address = types.StringNull()
 		}
-		if value := r.Get("external-address"); value.Exists() && value.Type == gjson.String && !data.PartitionDetectExternalAddressTracks[i].ExternalAddress.IsNull() {
+		if value := r.Get("external-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.PartitionDetectExternalAddressTracks[i].ExternalAddress.IsNull() {
 			data.PartitionDetectExternalAddressTracks[i].ExternalAddress = types.StringValue(value.String())
 		} else {
 			data.PartitionDetectExternalAddressTracks[i].ExternalAddress = types.StringNull()
@@ -3479,12 +3479,12 @@ func (data *RouterISISAddressFamily) updateFromBody(ctx context.Context, res []b
 	} else {
 		data.MplsLdpAutoConfig = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.MplsTrafficEngRouterIdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MplsTrafficEngRouterIdIpv4Address.IsNull() {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && value.Type == gjson.String && !data.MplsTrafficEngRouterIdInterfaceName.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MplsTrafficEngRouterIdInterfaceName.IsNull() {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	} else {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringNull()
@@ -3674,7 +3674,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.DistanceSources = make([]RouterISISAddressFamilyDistanceSources, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyDistanceSources{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -3683,17 +3683,17 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("distance-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Distance = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefix-list-or-access-list-to"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix-list-or-access-list-to"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouteFilter = types.StringValue(cValue.String())
 			}
 			data.DistanceSources = append(data.DistanceSources, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListPrefixListIn = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListRoutePolicyIn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected"); value.Exists() {
@@ -3701,16 +3701,16 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.RedistributeConnected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedLevel = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeConnectedMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static"); value.Exists() {
@@ -3718,35 +3718,35 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.RedistributeStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticLevel = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeStaticMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.isis-processes.isis-process"); value.Exists() {
 		data.RedistributeIsis = make([]RouterISISAddressFamilyRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeIsis{}
-			if cValue := v.Get("isis-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("isis-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("down-flag-clear"); cValue.Exists() {
@@ -3762,19 +3762,19 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.RedistributeBgp = make([]RouterISISAddressFamilyRedistributeBgp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeBgp{}
-			if cValue := v.Get("as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AsNumber = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeBgp = append(data.RedistributeBgp, item)
@@ -3785,7 +3785,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.RedistributeOspf = make([]RouterISISAddressFamilyRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeOspf{}
-			if cValue := v.Get("ospf-process-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospf-process-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -3798,16 +3798,16 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeOspf = append(data.RedistributeOspf, item)
@@ -3818,7 +3818,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.RedistributeOspfv3 = make([]RouterISISAddressFamilyRedistributeOspfv3, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeOspfv3{}
-			if cValue := v.Get("ospfv3-process-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospfv3-process-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -3831,16 +3831,16 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeOspfv3 = append(data.RedistributeOspfv3, item)
@@ -3850,10 +3850,10 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	if value := gjson.GetBytes(res, "maximum-paths"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterIdInterfaceName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterIdIpAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.passive-only"); value.Exists() {
@@ -3876,7 +3876,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MicroloopAvoidanceProtected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MicroloopAvoidanceSegmentRoutingRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "microloop.avoidance.rib-update-delay"); value.Exists() && value.Type == gjson.Number {
@@ -3886,7 +3886,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.SummaryPrefixes = make([]RouterISISAddressFamilySummaryPrefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySummaryPrefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4078,19 +4078,19 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityCriticalTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityCriticalPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority.high.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityHighTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityHighPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityMediumTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityMediumPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority-critical-levels.prefix-priority-critical-level"); value.Exists() {
@@ -4103,7 +4103,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityCriticalLevels = append(data.SpfPrefixPriorityCriticalLevels, item)
@@ -4120,7 +4120,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityHighLevels = append(data.SpfPrefixPriorityHighLevels, item)
@@ -4137,7 +4137,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityMediumLevels = append(data.SpfPrefixPriorityMediumLevels, item)
@@ -4171,7 +4171,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("destination-level"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DestinationLevel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			data.PropagateLevels = append(data.PropagateLevels, item)
@@ -4193,13 +4193,13 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.AttachedBitReceiveIgnore = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AttachedBitSend = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.delay-interval"); value.Exists() && value.Type == gjson.Number {
 		data.FastRerouteDelayInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerPrefixPriorityLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit-levels.priority-limit-level"); value.Exists() {
@@ -4209,7 +4209,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority-limit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("priority-limit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PriorityLimit = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixPriorityLimitLevels = append(data.FastReroutePerPrefixPriorityLimitLevels, item)
@@ -4237,7 +4237,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerPrefixRemoteLfaPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list-levels.prefix-list-level"); value.Exists() {
@@ -4247,7 +4247,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefix-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixList = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixRemoteLfaPrefixListLevels = append(data.FastReroutePerPrefixRemoteLfaPrefixListLevels, item)
@@ -4307,7 +4307,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerLinkPriorityLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit-levels.priority-limit-level"); value.Exists() {
@@ -4317,7 +4317,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority-limit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("priority-limit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PriorityLimit = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkPriorityLimitLevels = append(data.FastReroutePerLinkPriorityLimitLevels, item)
@@ -4329,7 +4329,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.DefaultInformationOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.bundle-member-adj-sid"); value.Exists() {
@@ -4355,10 +4355,10 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.SegmentRoutingMplsSrPrefer = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingMplsUnlabeledProtectionPrefixList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.disable"); value.Exists() {
@@ -4395,7 +4395,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.SegmentRoutingMplsConnectedPrefixSidMapAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4404,7 +4404,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -4420,7 +4420,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -4441,7 +4441,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4453,7 +4453,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -4469,7 +4469,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -4490,7 +4490,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4499,7 +4499,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -4515,7 +4515,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -4536,7 +4536,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.SegmentRoutingSrv6Locators = make([]RouterISISAddressFamilySegmentRoutingSrv6Locators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingSrv6Locators{}
-			if cValue := v.Get("locator-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("locator-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4589,7 +4589,7 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.PartitionDetectTracks = make([]RouterISISAddressFamilyPartitionDetectTracks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyPartitionDetectTracks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4"); cValue.Exists() {
@@ -4610,10 +4610,10 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 		data.PartitionDetectExternalAddressTracks = make([]RouterISISAddressFamilyPartitionDetectExternalAddressTracks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyPartitionDetectExternalAddressTracks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("external-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("external-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ExternalAddress = types.StringValue(cValue.String())
 			}
 			data.PartitionDetectExternalAddressTracks = append(data.PartitionDetectExternalAddressTracks, item)
@@ -4625,10 +4625,10 @@ func (data *RouterISISAddressFamily) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MplsLdpAutoConfig = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.igp-intact"); value.Exists() {
@@ -4736,7 +4736,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.DistanceSources = make([]RouterISISAddressFamilyDistanceSources, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyDistanceSources{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -4745,17 +4745,17 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("distance-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Distance = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefix-list-or-access-list-to"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix-list-or-access-list-to"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RouteFilter = types.StringValue(cValue.String())
 			}
 			data.DistanceSources = append(data.DistanceSources, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.prefix-list.prefix-list-string"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListPrefixListIn = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "distribute-list.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DistributeListRoutePolicyIn = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected"); value.Exists() {
@@ -4763,16 +4763,16 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.RedistributeConnected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedLevel = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeConnectedMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeConnectedMetricType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static"); value.Exists() {
@@ -4780,35 +4780,35 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.RedistributeStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.redistribute-route-level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticLevel = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && value.Type == gjson.Number {
 		data.RedistributeStaticMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "redistribute.static.metric-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RedistributeStaticMetricType = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "redistribute.isis-processes.isis-process"); value.Exists() {
 		data.RedistributeIsis = make([]RouterISISAddressFamilyRedistributeIsis, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeIsis{}
-			if cValue := v.Get("isis-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("isis-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("down-flag-clear"); cValue.Exists() {
@@ -4824,19 +4824,19 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.RedistributeBgp = make([]RouterISISAddressFamilyRedistributeBgp, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeBgp{}
-			if cValue := v.Get("as-number"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("as-number"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AsNumber = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeBgp = append(data.RedistributeBgp, item)
@@ -4847,7 +4847,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.RedistributeOspf = make([]RouterISISAddressFamilyRedistributeOspf, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeOspf{}
-			if cValue := v.Get("ospf-process-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospf-process-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -4860,16 +4860,16 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeOspf = append(data.RedistributeOspf, item)
@@ -4880,7 +4880,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.RedistributeOspfv3 = make([]RouterISISAddressFamilyRedistributeOspfv3, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyRedistributeOspfv3{}
-			if cValue := v.Get("ospfv3-process-id"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ospfv3-process-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InstanceId = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("match.internal"); cValue.Exists() {
@@ -4893,16 +4893,16 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("redistribute-route-level"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Level = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("metric-type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("metric-type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MetricType = types.StringValue(cValue.String())
 			}
 			data.RedistributeOspfv3 = append(data.RedistributeOspfv3, item)
@@ -4912,10 +4912,10 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	if value := gjson.GetBytes(res, "maximum-paths"); value.Exists() && value.Type == gjson.Number {
 		data.MaximumPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterIdInterfaceName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "router-id.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouterIdIpAddress = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "advertise.passive-only"); value.Exists() {
@@ -4938,7 +4938,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.MicroloopAvoidanceProtected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "microloop.avoidance.enable.segment-routing.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MicroloopAvoidanceSegmentRoutingRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "microloop.avoidance.rib-update-delay"); value.Exists() && value.Type == gjson.Number {
@@ -4948,7 +4948,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.SummaryPrefixes = make([]RouterISISAddressFamilySummaryPrefixes, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySummaryPrefixes{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5140,19 +5140,19 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityCriticalTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.critical.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityCriticalPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority.high.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityHighTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.high.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityHighPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.tag"); value.Exists() && value.Type == gjson.Number {
 		data.SpfPrefixPriorityMediumTag = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "spf.prefix-priority.medium.prefixlist-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SpfPrefixPriorityMediumPrefixListName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "spf.prefix-priority-critical-levels.prefix-priority-critical-level"); value.Exists() {
@@ -5165,7 +5165,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityCriticalLevels = append(data.SpfPrefixPriorityCriticalLevels, item)
@@ -5182,7 +5182,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityHighLevels = append(data.SpfPrefixPriorityHighLevels, item)
@@ -5199,7 +5199,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("tag"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.Tag = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefixlist-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefixlist-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixListName = types.StringValue(cValue.String())
 			}
 			data.SpfPrefixPriorityMediumLevels = append(data.SpfPrefixPriorityMediumLevels, item)
@@ -5233,7 +5233,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("destination-level"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.DestinationLevel = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("route-policy"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.RoutePolicy = types.StringValue(cValue.String())
 			}
 			data.PropagateLevels = append(data.PropagateLevels, item)
@@ -5255,13 +5255,13 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.AttachedBitReceiveIgnore = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "attached-bit.send"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AttachedBitSend = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.delay-interval"); value.Exists() && value.Type == gjson.Number {
 		data.FastRerouteDelayInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerPrefixPriorityLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.priority-limit-levels.priority-limit-level"); value.Exists() {
@@ -5271,7 +5271,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority-limit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("priority-limit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PriorityLimit = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixPriorityLimitLevels = append(data.FastReroutePerPrefixPriorityLimitLevels, item)
@@ -5299,7 +5299,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerPrefixRemoteLfaPrefixList = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.prefix-list-levels.prefix-list-level"); value.Exists() {
@@ -5309,7 +5309,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("prefix-list"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("prefix-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PrefixList = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerPrefixRemoteLfaPrefixListLevels = append(data.FastReroutePerPrefixRemoteLfaPrefixListLevels, item)
@@ -5369,7 +5369,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FastReroutePerLinkPriorityLimit = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-link.priority-limit-levels.priority-limit-level"); value.Exists() {
@@ -5379,7 +5379,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority-limit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("priority-limit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PriorityLimit = types.StringValue(cValue.String())
 			}
 			data.FastReroutePerLinkPriorityLimitLevels = append(data.FastReroutePerLinkPriorityLimitLevels, item)
@@ -5391,7 +5391,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.DefaultInformationOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "default-information.originate.route-policy.text"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultInformationOriginateRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.bundle-member-adj-sid"); value.Exists() {
@@ -5417,10 +5417,10 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.SegmentRoutingMplsSrPrefer = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.prefix-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingMplsUnlabeledProtectionPrefixList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SegmentRoutingMplsUnlabeledProtectionRoutePolicy = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "segment-routing.mpls.unlabeled.protection.disable"); value.Exists() {
@@ -5457,7 +5457,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.SegmentRoutingMplsConnectedPrefixSidMapAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5466,7 +5466,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -5482,7 +5482,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -5503,7 +5503,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.SegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapFlexAlgoAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5515,7 +5515,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -5531,7 +5531,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -5552,7 +5552,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.SegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses = make([]RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingMplsConnectedPrefixSidMapStrictSpfAddresses{}
-			if cValue := v.Get("ip-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IpAddress = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5561,7 +5561,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("index.index-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.IndexId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("index.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("index.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IndexInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("index.php-disable"); cValue.Exists() {
@@ -5577,7 +5577,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 			if cValue := v.Get("absolute.absolute-id"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AbsoluteId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("absolute.interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("absolute.interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AbsoluteInterface = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("absolute.php-disable"); cValue.Exists() {
@@ -5598,7 +5598,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.SegmentRoutingSrv6Locators = make([]RouterISISAddressFamilySegmentRoutingSrv6Locators, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilySegmentRoutingSrv6Locators{}
-			if cValue := v.Get("locator-string"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("locator-string"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocatorName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("level"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -5651,7 +5651,7 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.PartitionDetectTracks = make([]RouterISISAddressFamilyPartitionDetectTracks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyPartitionDetectTracks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("ipv4"); cValue.Exists() {
@@ -5672,10 +5672,10 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 		data.PartitionDetectExternalAddressTracks = make([]RouterISISAddressFamilyPartitionDetectExternalAddressTracks, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISAddressFamilyPartitionDetectExternalAddressTracks{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("external-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("external-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ExternalAddress = types.StringValue(cValue.String())
 			}
 			data.PartitionDetectExternalAddressTracks = append(data.PartitionDetectExternalAddressTracks, item)
@@ -5687,10 +5687,10 @@ func (data *RouterISISAddressFamilyData) fromBody(ctx context.Context, res []byt
 	} else {
 		data.MplsLdpAutoConfig = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "mpls.traffic-eng.router-id.interface-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MplsTrafficEngRouterIdInterfaceName = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "mpls.traffic-eng.igp-intact"); value.Exists() {

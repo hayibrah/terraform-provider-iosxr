@@ -421,7 +421,7 @@ func (data PolicyMapQoS) GetPatternConstraints() []helpers.FieldPatternConstrain
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String && !data.Description.IsNull() {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Description.IsNull() {
 		data.Description = types.StringValue(value.String())
 	} else {
 		data.Description = types.StringNull()
@@ -449,42 +449,42 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("name"); value.Exists() && value.Type == gjson.String && !data.Classes[i].Name.IsNull() {
+		if value := r.Get("name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].Name.IsNull() {
 			data.Classes[i].Name = types.StringValue(value.String())
 		} else {
 			data.Classes[i].Name = types.StringNull()
 		}
-		if value := r.Get("type"); value.Exists() && value.Type == gjson.String && !data.Classes[i].Type.IsNull() {
+		if value := r.Get("type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].Type.IsNull() {
 			data.Classes[i].Type = types.StringValue(value.String())
 		} else {
 			data.Classes[i].Type = types.StringNull()
 		}
-		if value := r.Get("bandwidth.value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].BandwidthValue.IsNull() {
+		if value := r.Get("bandwidth.value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].BandwidthValue.IsNull() {
 			data.Classes[i].BandwidthValue = types.StringValue(value.String())
 		} else {
 			data.Classes[i].BandwidthValue = types.StringNull()
 		}
-		if value := r.Get("bandwidth.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].BandwidthUnit.IsNull() {
+		if value := r.Get("bandwidth.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].BandwidthUnit.IsNull() {
 			data.Classes[i].BandwidthUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].BandwidthUnit = types.StringNull()
 		}
-		if value := r.Get("bandwidth-remaining.value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].BandwidthRemainingValue.IsNull() {
+		if value := r.Get("bandwidth-remaining.value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].BandwidthRemainingValue.IsNull() {
 			data.Classes[i].BandwidthRemainingValue = types.StringValue(value.String())
 		} else {
 			data.Classes[i].BandwidthRemainingValue = types.StringNull()
 		}
-		if value := r.Get("bandwidth-remaining.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].BandwidthRemainingUnit.IsNull() {
+		if value := r.Get("bandwidth-remaining.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].BandwidthRemainingUnit.IsNull() {
 			data.Classes[i].BandwidthRemainingUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].BandwidthRemainingUnit = types.StringNull()
 		}
-		if value := r.Get("police.rate.value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceRateValue.IsNull() {
+		if value := r.Get("police.rate.value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceRateValue.IsNull() {
 			data.Classes[i].PoliceRateValue = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceRateValue = types.StringNull()
 		}
-		if value := r.Get("police.rate.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceRateUnit.IsNull() {
+		if value := r.Get("police.rate.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceRateUnit.IsNull() {
 			data.Classes[i].PoliceRateUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceRateUnit = types.StringNull()
@@ -494,17 +494,17 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceBurstValue = types.Int64Null()
 		}
-		if value := r.Get("police.burst.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceBurstUnit.IsNull() {
+		if value := r.Get("police.burst.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceBurstUnit.IsNull() {
 			data.Classes[i].PoliceBurstUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceBurstUnit = types.StringNull()
 		}
-		if value := r.Get("police.peak-rate.value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PolicePeakRateValue.IsNull() {
+		if value := r.Get("police.peak-rate.value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PolicePeakRateValue.IsNull() {
 			data.Classes[i].PolicePeakRateValue = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PolicePeakRateValue = types.StringNull()
 		}
-		if value := r.Get("police.peak-rate.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PolicePeakRateUnit.IsNull() {
+		if value := r.Get("police.peak-rate.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PolicePeakRateUnit.IsNull() {
 			data.Classes[i].PolicePeakRateUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PolicePeakRateUnit = types.StringNull()
@@ -514,7 +514,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PolicePeakBurstValue = types.Int64Null()
 		}
-		if value := r.Get("police.peak-burst.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PolicePeakBurstUnit.IsNull() {
+		if value := r.Get("police.peak-burst.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PolicePeakBurstUnit.IsNull() {
 			data.Classes[i].PolicePeakBurstUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PolicePeakBurstUnit = types.StringNull()
@@ -547,7 +547,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceConformActionSetDiscardClass = types.Int64Null()
 		}
-		if value := r.Get("police.conform-action.set.dscp"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceConformActionSetDscp.IsNull() {
+		if value := r.Get("police.conform-action.set.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceConformActionSetDscp.IsNull() {
 			data.Classes[i].PoliceConformActionSetDscp = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceConformActionSetDscp = types.StringNull()
@@ -562,7 +562,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceConformActionSetMplsExperimentalTopmost = types.Int64Null()
 		}
-		if value := r.Get("police.conform-action.set.precedence"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceConformActionSetPrecedence.IsNull() {
+		if value := r.Get("police.conform-action.set.precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceConformActionSetPrecedence.IsNull() {
 			data.Classes[i].PoliceConformActionSetPrecedence = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceConformActionSetPrecedence = types.StringNull()
@@ -600,7 +600,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceExceedActionSetDiscardClass = types.Int64Null()
 		}
-		if value := r.Get("police.exceed-action.set.dscp"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceExceedActionSetDscp.IsNull() {
+		if value := r.Get("police.exceed-action.set.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceExceedActionSetDscp.IsNull() {
 			data.Classes[i].PoliceExceedActionSetDscp = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceExceedActionSetDscp = types.StringNull()
@@ -615,7 +615,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceExceedActionSetMplsExperimentalTopmost = types.Int64Null()
 		}
-		if value := r.Get("police.exceed-action.set.precedence"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceExceedActionSetPrecedence.IsNull() {
+		if value := r.Get("police.exceed-action.set.precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceExceedActionSetPrecedence.IsNull() {
 			data.Classes[i].PoliceExceedActionSetPrecedence = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceExceedActionSetPrecedence = types.StringNull()
@@ -653,7 +653,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceViolateActionSetDiscardClass = types.Int64Null()
 		}
-		if value := r.Get("police.violate-action.set.dscp"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceViolateActionSetDscp.IsNull() {
+		if value := r.Get("police.violate-action.set.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceViolateActionSetDscp.IsNull() {
 			data.Classes[i].PoliceViolateActionSetDscp = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceViolateActionSetDscp = types.StringNull()
@@ -668,7 +668,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].PoliceViolateActionSetMplsExperimentalTopmost = types.Int64Null()
 		}
-		if value := r.Get("police.violate-action.set.precedence"); value.Exists() && value.Type == gjson.String && !data.Classes[i].PoliceViolateActionSetPrecedence.IsNull() {
+		if value := r.Get("police.violate-action.set.precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].PoliceViolateActionSetPrecedence.IsNull() {
 			data.Classes[i].PoliceViolateActionSetPrecedence = types.StringValue(value.String())
 		} else {
 			data.Classes[i].PoliceViolateActionSetPrecedence = types.StringNull()
@@ -706,12 +706,12 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 					return true
 				},
 			)
-			if value := cr.Get("value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].QueueLimits[ci].Value.IsNull() {
+			if value := cr.Get("value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].QueueLimits[ci].Value.IsNull() {
 				data.Classes[i].QueueLimits[ci].Value = types.StringValue(value.String())
 			} else {
 				data.Classes[i].QueueLimits[ci].Value = types.StringNull()
 			}
-			if value := cr.Get("unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].QueueLimits[ci].Unit.IsNull() {
+			if value := cr.Get("unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].QueueLimits[ci].Unit.IsNull() {
 				data.Classes[i].QueueLimits[ci].Unit = types.StringValue(value.String())
 			} else {
 				data.Classes[i].QueueLimits[ci].Unit = types.StringNull()
@@ -754,7 +754,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.Classes[i].RandomDetect[ci].MinimumThresholdValue = types.Int64Null()
 			}
-			if value := cr.Get("minimum-threshold-unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RandomDetect[ci].MinimumThresholdUnit.IsNull() {
+			if value := cr.Get("minimum-threshold-unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RandomDetect[ci].MinimumThresholdUnit.IsNull() {
 				data.Classes[i].RandomDetect[ci].MinimumThresholdUnit = types.StringValue(value.String())
 			} else {
 				data.Classes[i].RandomDetect[ci].MinimumThresholdUnit = types.StringNull()
@@ -764,13 +764,13 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.Classes[i].RandomDetect[ci].MaximumThresholdValue = types.Int64Null()
 			}
-			if value := cr.Get("maximum-threshold-unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].RandomDetect[ci].MaximumThresholdUnit.IsNull() {
+			if value := cr.Get("maximum-threshold-unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].RandomDetect[ci].MaximumThresholdUnit.IsNull() {
 				data.Classes[i].RandomDetect[ci].MaximumThresholdUnit = types.StringValue(value.String())
 			} else {
 				data.Classes[i].RandomDetect[ci].MaximumThresholdUnit = types.StringNull()
 			}
 		}
-		if value := r.Get("service-policy.name"); value.Exists() && value.Type == gjson.String && !data.Classes[i].ServicePolicyName.IsNull() {
+		if value := r.Get("service-policy.name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].ServicePolicyName.IsNull() {
 			data.Classes[i].ServicePolicyName = types.StringValue(value.String())
 		} else {
 			data.Classes[i].ServicePolicyName = types.StringNull()
@@ -790,7 +790,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].SetDiscardClass = types.Int64Null()
 		}
-		if value := r.Get("set.dscp"); value.Exists() && value.Type == gjson.String && !data.Classes[i].SetDscp.IsNull() {
+		if value := r.Get("set.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].SetDscp.IsNull() {
 			data.Classes[i].SetDscp = types.StringValue(value.String())
 		} else {
 			data.Classes[i].SetDscp = types.StringNull()
@@ -805,7 +805,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].SetMplsExperimentalTopmost = types.Int64Null()
 		}
-		if value := r.Get("set.precedence"); value.Exists() && value.Type == gjson.String && !data.Classes[i].SetPrecedence.IsNull() {
+		if value := r.Get("set.precedence"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].SetPrecedence.IsNull() {
 			data.Classes[i].SetPrecedence = types.StringValue(value.String())
 		} else {
 			data.Classes[i].SetPrecedence = types.StringNull()
@@ -815,12 +815,12 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].SetQosGroup = types.Int64Null()
 		}
-		if value := r.Get("shape.average.rate.value"); value.Exists() && value.Type == gjson.String && !data.Classes[i].ShapeAverageRateValue.IsNull() {
+		if value := r.Get("shape.average.rate.value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].ShapeAverageRateValue.IsNull() {
 			data.Classes[i].ShapeAverageRateValue = types.StringValue(value.String())
 		} else {
 			data.Classes[i].ShapeAverageRateValue = types.StringNull()
 		}
-		if value := r.Get("shape.average.rate.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].ShapeAverageRateUnit.IsNull() {
+		if value := r.Get("shape.average.rate.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].ShapeAverageRateUnit.IsNull() {
 			data.Classes[i].ShapeAverageRateUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].ShapeAverageRateUnit = types.StringNull()
@@ -830,7 +830,7 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].ShapeAverageExcessBurstSize = types.Int64Null()
 		}
-		if value := r.Get("shape.average.excess-burst.unit"); value.Exists() && value.Type == gjson.String && !data.Classes[i].ShapeAverageExcessBurstUnit.IsNull() {
+		if value := r.Get("shape.average.excess-burst.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Classes[i].ShapeAverageExcessBurstUnit.IsNull() {
 			data.Classes[i].ShapeAverageExcessBurstUnit = types.StringValue(value.String())
 		} else {
 			data.Classes[i].ShapeAverageExcessBurstUnit = types.StringNull()
@@ -843,53 +843,53 @@ func (data *PolicyMapQoS) updateFromBody(ctx context.Context, res []byte, versio
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "class"); value.Exists() {
 		data.Classes = make([]PolicyMapQoSClasses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PolicyMapQoSClasses{}
-			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth-remaining.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth-remaining.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthRemainingValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth-remaining.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth-remaining.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthRemainingUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.burst.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceBurstValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceBurstUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.peak-rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.peak-rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.peak-burst.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PolicePeakBurstValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.peak-burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakBurstUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.transmit"); cValue.Exists() {
@@ -908,7 +908,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.conform-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceConformActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.conform-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.conform-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceConformActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -917,7 +917,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.conform-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceConformActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.conform-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.conform-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceConformActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -939,7 +939,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.exceed-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceExceedActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.exceed-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.exceed-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceExceedActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.exceed-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -948,7 +948,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.exceed-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceExceedActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.exceed-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.exceed-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceExceedActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.exceed-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -970,7 +970,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.violate-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceViolateActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.violate-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.violate-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceViolateActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.violate-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -979,7 +979,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("police.violate-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceViolateActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.violate-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.violate-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceViolateActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.violate-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -992,10 +992,10 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 				item.QueueLimits = make([]PolicyMapQoSClassesQueueLimits, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PolicyMapQoSClassesQueueLimits{}
-					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("value"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Value = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Unit = types.StringValue(ccValue.String())
 					}
 					item.QueueLimits = append(item.QueueLimits, cItem)
@@ -1014,20 +1014,20 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("minimum-threshold-value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MinimumThresholdValue = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minimum-threshold-unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("minimum-threshold-unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MinimumThresholdUnit = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("maximum-threshold-value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaximumThresholdValue = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maximum-threshold-unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("maximum-threshold-unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MaximumThresholdUnit = types.StringValue(ccValue.String())
 					}
 					item.RandomDetect = append(item.RandomDetect, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("service-policy.name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("service-policy.name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ServicePolicyName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1039,7 +1039,7 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1048,22 +1048,22 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("shape.average.rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("shape.average.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shape.average.excess-burst.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ShapeAverageExcessBurstSize = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("shape.average.excess-burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.excess-burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageExcessBurstUnit = types.StringValue(cValue.String())
 			}
 			data.Classes = append(data.Classes, item)
@@ -1077,53 +1077,53 @@ func (data *PolicyMapQoS) fromBody(ctx context.Context, res []byte, version stri
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "class"); value.Exists() {
 		data.Classes = make([]PolicyMapQoSClasses, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PolicyMapQoSClasses{}
-			if cValue := v.Get("name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Name = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("type"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth-remaining.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth-remaining.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthRemainingValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("bandwidth-remaining.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("bandwidth-remaining.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.BandwidthRemainingUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.burst.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceBurstValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceBurstUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.peak-rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.peak-rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.peak-burst.value"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PolicePeakBurstValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.peak-burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.peak-burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PolicePeakBurstUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.transmit"); cValue.Exists() {
@@ -1142,7 +1142,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.conform-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceConformActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.conform-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.conform-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceConformActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1151,7 +1151,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.conform-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceConformActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.conform-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.conform-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceConformActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.conform-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1173,7 +1173,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.exceed-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceExceedActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.exceed-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.exceed-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceExceedActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.exceed-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1182,7 +1182,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.exceed-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceExceedActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.exceed-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.exceed-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceExceedActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.exceed-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1204,7 +1204,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.violate-action.set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceViolateActionSetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.violate-action.set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.violate-action.set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceViolateActionSetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.violate-action.set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1213,7 +1213,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("police.violate-action.set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.PoliceViolateActionSetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("police.violate-action.set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("police.violate-action.set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PoliceViolateActionSetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("police.violate-action.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1226,10 +1226,10 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 				item.QueueLimits = make([]PolicyMapQoSClassesQueueLimits, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := PolicyMapQoSClassesQueueLimits{}
-					if ccValue := cv.Get("value"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("value"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Value = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Unit = types.StringValue(ccValue.String())
 					}
 					item.QueueLimits = append(item.QueueLimits, cItem)
@@ -1248,20 +1248,20 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("minimum-threshold-value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MinimumThresholdValue = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("minimum-threshold-unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("minimum-threshold-unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MinimumThresholdUnit = types.StringValue(ccValue.String())
 					}
 					if ccValue := cv.Get("maximum-threshold-value"); ccValue.Exists() && ccValue.Type == gjson.Number {
 						cItem.MaximumThresholdValue = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("maximum-threshold-unit"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("maximum-threshold-unit"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MaximumThresholdUnit = types.StringValue(ccValue.String())
 					}
 					item.RandomDetect = append(item.RandomDetect, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("service-policy.name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("service-policy.name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ServicePolicyName = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.traffic-class"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1273,7 +1273,7 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("set.discard-class"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetDiscardClass = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("set.dscp"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.mpls.experimental.imposition"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1282,22 +1282,22 @@ func (data *PolicyMapQoSData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("set.mpls.experimental.topmost"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetMplsExperimentalTopmost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("set.precedence"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("set.precedence"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetPrecedence = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("shape.average.rate.value"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.rate.value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageRateValue = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("shape.average.rate.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageRateUnit = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("shape.average.excess-burst.size"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.ShapeAverageExcessBurstSize = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("shape.average.excess-burst.unit"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("shape.average.excess-burst.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ShapeAverageExcessBurstUnit = types.StringValue(cValue.String())
 			}
 			data.Classes = append(data.Classes, item)

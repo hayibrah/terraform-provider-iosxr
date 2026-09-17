@@ -146,7 +146,7 @@ func (data TACACSSourceInterface) GetPatternConstraints() []helpers.FieldPattern
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String && !data.SourceInterface.IsNull() {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceInterface.IsNull() {
 		data.SourceInterface = types.StringValue(value.String())
 	} else {
 		data.SourceInterface = types.StringNull()
@@ -174,12 +174,12 @@ func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byt
 				return true
 			},
 		)
-		if value := r.Get("vrf-name"); value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].Vrf.IsNull() {
+		if value := r.Get("vrf-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceInterfaces[i].Vrf.IsNull() {
 			data.SourceInterfaces[i].Vrf = types.StringValue(value.String())
 		} else {
 			data.SourceInterfaces[i].Vrf = types.StringNull()
 		}
-		if value := r.Get("source-interface"); value.Exists() && value.Type == gjson.String && !data.SourceInterfaces[i].Interface.IsNull() {
+		if value := r.Get("source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SourceInterfaces[i].Interface.IsNull() {
 			data.SourceInterfaces[i].Interface = types.StringValue(value.String())
 		} else {
 			data.SourceInterfaces[i].Interface = types.StringNull()
@@ -192,17 +192,17 @@ func (data *TACACSSourceInterface) updateFromBody(ctx context.Context, res []byt
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *TACACSSourceInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
 		data.SourceInterfaces = make([]TACACSSourceInterfaceSourceInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TACACSSourceInterfaceSourceInterfaces{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Interface = types.StringValue(cValue.String())
 			}
 			data.SourceInterfaces = append(data.SourceInterfaces, item)
@@ -216,17 +216,17 @@ func (data *TACACSSourceInterface) fromBody(ctx context.Context, res []byte, ver
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *TACACSSourceInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SourceInterface = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
 		data.SourceInterfaces = make([]TACACSSourceInterfaceSourceInterfaces, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TACACSSourceInterfaceSourceInterfaces{}
-			if cValue := v.Get("vrf-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("source-interface"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Interface = types.StringValue(cValue.String())
 			}
 			data.SourceInterfaces = append(data.SourceInterfaces, item)

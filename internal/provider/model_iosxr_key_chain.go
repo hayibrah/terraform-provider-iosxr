@@ -416,12 +416,12 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("ckn"); value.Exists() && value.Type == gjson.String && !data.MacsecKeys[i].Ckn.IsNull() {
+		if value := r.Get("ckn"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MacsecKeys[i].Ckn.IsNull() {
 			data.MacsecKeys[i].Ckn = types.StringValue(value.String())
 		} else {
 			data.MacsecKeys[i].Ckn = types.StringNull()
 		}
-		if value := r.Get("key-string.cryptographic-algorithm"); value.Exists() && value.Type == gjson.String && !data.MacsecKeys[i].KeyStringCryptographicAlgorithm.IsNull() {
+		if value := r.Get("key-string.cryptographic-algorithm"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MacsecKeys[i].KeyStringCryptographicAlgorithm.IsNull() {
 			data.MacsecKeys[i].KeyStringCryptographicAlgorithm = types.StringValue(value.String())
 		} else {
 			data.MacsecKeys[i].KeyStringCryptographicAlgorithm = types.StringNull()
@@ -441,7 +441,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.MacsecKeys[i].LifetimeStartTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("lifetime.start-time.month"); value.Exists() && value.Type == gjson.String && !data.MacsecKeys[i].LifetimeStartTimeMonth.IsNull() {
+		if value := r.Get("lifetime.start-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MacsecKeys[i].LifetimeStartTimeMonth.IsNull() {
 			data.MacsecKeys[i].LifetimeStartTimeMonth = types.StringValue(value.String())
 		} else {
 			data.MacsecKeys[i].LifetimeStartTimeMonth = types.StringNull()
@@ -471,7 +471,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.MacsecKeys[i].LifetimeEndTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("lifetime.end-time.month"); value.Exists() && value.Type == gjson.String && !data.MacsecKeys[i].LifetimeEndTimeMonth.IsNull() {
+		if value := r.Get("lifetime.end-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MacsecKeys[i].LifetimeEndTimeMonth.IsNull() {
 			data.MacsecKeys[i].LifetimeEndTimeMonth = types.StringValue(value.String())
 		} else {
 			data.MacsecKeys[i].LifetimeEndTimeMonth = types.StringNull()
@@ -524,12 +524,12 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 				return true
 			},
 		)
-		if value := r.Get("key-name"); value.Exists() && value.Type == gjson.String && !data.Keys[i].KeyName.IsNull() {
+		if value := r.Get("key-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].KeyName.IsNull() {
 			data.Keys[i].KeyName = types.StringValue(value.String())
 		} else {
 			data.Keys[i].KeyName = types.StringNull()
 		}
-		if value := r.Get("cryptographic-algorithm"); value.Exists() && value.Type == gjson.String && !data.Keys[i].CryptographicAlgorithm.IsNull() {
+		if value := r.Get("cryptographic-algorithm"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].CryptographicAlgorithm.IsNull() {
 			data.Keys[i].CryptographicAlgorithm = types.StringValue(value.String())
 		} else {
 			data.Keys[i].CryptographicAlgorithm = types.StringNull()
@@ -549,7 +549,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.Keys[i].AcceptLifetimeStartTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("accept-lifetime.start-time.month"); value.Exists() && value.Type == gjson.String && !data.Keys[i].AcceptLifetimeStartTimeMonth.IsNull() {
+		if value := r.Get("accept-lifetime.start-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].AcceptLifetimeStartTimeMonth.IsNull() {
 			data.Keys[i].AcceptLifetimeStartTimeMonth = types.StringValue(value.String())
 		} else {
 			data.Keys[i].AcceptLifetimeStartTimeMonth = types.StringNull()
@@ -579,7 +579,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.Keys[i].AcceptLifetimeEndTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("accept-lifetime.end-time.month"); value.Exists() && value.Type == gjson.String && !data.Keys[i].AcceptLifetimeEndTimeMonth.IsNull() {
+		if value := r.Get("accept-lifetime.end-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].AcceptLifetimeEndTimeMonth.IsNull() {
 			data.Keys[i].AcceptLifetimeEndTimeMonth = types.StringValue(value.String())
 		} else {
 			data.Keys[i].AcceptLifetimeEndTimeMonth = types.StringNull()
@@ -623,7 +623,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.Keys[i].SendLifetimeStartTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("send-lifetime.start-time.month"); value.Exists() && value.Type == gjson.String && !data.Keys[i].SendLifetimeStartTimeMonth.IsNull() {
+		if value := r.Get("send-lifetime.start-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].SendLifetimeStartTimeMonth.IsNull() {
 			data.Keys[i].SendLifetimeStartTimeMonth = types.StringValue(value.String())
 		} else {
 			data.Keys[i].SendLifetimeStartTimeMonth = types.StringNull()
@@ -653,7 +653,7 @@ func (data *KeyChain) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.Keys[i].SendLifetimeEndTimeSecond = types.Int64Null()
 		}
-		if value := r.Get("send-lifetime.end-time.month"); value.Exists() && value.Type == gjson.String && !data.Keys[i].SendLifetimeEndTimeMonth.IsNull() {
+		if value := r.Get("send-lifetime.end-time.month"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Keys[i].SendLifetimeEndTimeMonth.IsNull() {
 			data.Keys[i].SendLifetimeEndTimeMonth = types.StringValue(value.String())
 		} else {
 			data.Keys[i].SendLifetimeEndTimeMonth = types.StringNull()
@@ -720,10 +720,10 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 		data.MacsecKeys = make([]KeyChainMacsecKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := KeyChainMacsecKeys{}
-			if cValue := v.Get("ckn"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ckn"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ckn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("key-string.cryptographic-algorithm"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("key-string.cryptographic-algorithm"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeyStringCryptographicAlgorithm = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.start-time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -735,7 +735,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -753,7 +753,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -778,10 +778,10 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 		data.Keys = make([]KeyChainKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := KeyChainKeys{}
-			if cValue := v.Get("key-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("key-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("cryptographic-algorithm"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("cryptographic-algorithm"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.CryptographicAlgorithm = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.start-time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -793,7 +793,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("accept-lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AcceptLifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("accept-lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("accept-lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AcceptLifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -811,7 +811,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("accept-lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AcceptLifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("accept-lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("accept-lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AcceptLifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -837,7 +837,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("send-lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SendLifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("send-lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("send-lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SendLifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("send-lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -855,7 +855,7 @@ func (data *KeyChain) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("send-lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SendLifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("send-lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("send-lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SendLifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("send-lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -905,10 +905,10 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 		data.MacsecKeys = make([]KeyChainMacsecKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := KeyChainMacsecKeys{}
-			if cValue := v.Get("ckn"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ckn"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ckn = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("key-string.cryptographic-algorithm"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("key-string.cryptographic-algorithm"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeyStringCryptographicAlgorithm = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.start-time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -920,7 +920,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -938,7 +938,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.LifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -963,10 +963,10 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 		data.Keys = make([]KeyChainKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := KeyChainKeys{}
-			if cValue := v.Get("key-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("key-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.KeyName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("cryptographic-algorithm"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("cryptographic-algorithm"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.CryptographicAlgorithm = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.start-time.hour"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -978,7 +978,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("accept-lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AcceptLifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("accept-lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("accept-lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AcceptLifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -996,7 +996,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("accept-lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.AcceptLifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("accept-lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("accept-lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AcceptLifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("accept-lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1022,7 +1022,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("send-lifetime.start-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SendLifetimeStartTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("send-lifetime.start-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("send-lifetime.start-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SendLifetimeStartTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("send-lifetime.start-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1040,7 +1040,7 @@ func (data *KeyChainData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("send-lifetime.end-time.second"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.SendLifetimeEndTimeSecond = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("send-lifetime.end-time.month"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("send-lifetime.end-time.month"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SendLifetimeEndTimeMonth = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("send-lifetime.end-time.day-of-month"); cValue.Exists() && cValue.Type == gjson.Number {

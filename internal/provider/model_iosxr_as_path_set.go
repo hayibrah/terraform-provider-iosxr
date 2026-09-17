@@ -132,7 +132,7 @@ func (data ASPathSet) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *ASPathSet) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -144,7 +144,7 @@ func (data *ASPathSet) updateFromBody(ctx context.Context, res []byte, version s
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *ASPathSet) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -154,7 +154,7 @@ func (data *ASPathSet) fromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *ASPathSetData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rplas-path-set"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

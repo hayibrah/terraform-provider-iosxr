@@ -132,7 +132,7 @@ func (data RoutePolicy) GetPatternConstraints() []helpers.FieldPatternConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RoutePolicy) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && value.Type == gjson.String && !data.Rpl.IsNull() {
+	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Rpl.IsNull() {
 		data.Rpl = types.StringValue(value.String())
 	} else {
 		data.Rpl = types.StringNull()
@@ -144,7 +144,7 @@ func (data *RoutePolicy) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RoutePolicy) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }
@@ -154,7 +154,7 @@ func (data *RoutePolicy) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RoutePolicyData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "rpl-route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Rpl = types.StringValue(value.String())
 	}
 }

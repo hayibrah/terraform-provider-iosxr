@@ -338,17 +338,17 @@ func (data *LLDP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.Reinit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String && !data.SystemName.IsNull() {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SystemName.IsNull() {
 		data.SystemName = types.StringValue(value.String())
 	} else {
 		data.SystemName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String && !data.SystemDescription.IsNull() {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SystemDescription.IsNull() {
 		data.SystemDescription = types.StringValue(value.String())
 	} else {
 		data.SystemDescription = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String && !data.ChassisId.IsNull() {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.ChassisId.IsNull() {
 		data.ChassisId = types.StringValue(value.String())
 	} else {
 		data.ChassisId = types.StringNull()
@@ -522,13 +522,13 @@ func (data *LLDP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
 		data.Reinit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {
@@ -660,13 +660,13 @@ func (data *LLDPData) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
 		data.Reinit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "system-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "system-description"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
 	if version == "" || !helpers.VersionAtLeast(version, "25.4") {

@@ -597,7 +597,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpRdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpRdIpv4Address.IsNull() {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringNull()
@@ -698,7 +698,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -800,7 +800,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -902,7 +902,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("ipv4-address"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address.IsNull() {
+		if value := r.Get("ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address.IsNull() {
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringValue(value.String())
 		} else {
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringNull()
@@ -996,7 +996,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringValue(value.String())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringNull()
@@ -1042,12 +1042,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpTablePolicy.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpTablePolicy.IsNull() {
 		data.AutodiscoveryBgpTablePolicy = types.StringValue(value.String())
 	} else {
 		data.AutodiscoveryBgpTablePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && value.Type == gjson.String && !data.AutodiscoveryBgpRoutePolicyExport.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AutodiscoveryBgpRoutePolicyExport.IsNull() {
 		data.AutodiscoveryBgpRoutePolicyExport = types.StringValue(value.String())
 	} else {
 		data.AutodiscoveryBgpRoutePolicyExport = types.StringNull()
@@ -1070,7 +1070,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.MulticastP2mpTransportRsvpTe = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && value.Type == gjson.String && !data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe.IsNull() {
+	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe.IsNull() {
 		data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe = types.StringValue(value.String())
 	} else {
 		data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe = types.StringNull()
@@ -1107,7 +1107,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].Address.IsNull() {
+		if value := r.Get("address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].Address.IsNull() {
 			data.Neighbors[i].Address = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
@@ -1140,7 +1140,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 					return true
 				},
 			)
-			if value := cr.Get("mac-address"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].StaticMacAddresses[ci].MacAddress.IsNull() {
+			if value := cr.Get("mac-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].StaticMacAddresses[ci].MacAddress.IsNull() {
 				data.Neighbors[i].StaticMacAddresses[ci].MacAddress = types.StringValue(value.String())
 			} else {
 				data.Neighbors[i].StaticMacAddresses[ci].MacAddress = types.StringNull()
@@ -1156,12 +1156,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.Neighbors[i].MplsStaticLabelRemote = types.Int64Null()
 		}
-		if value := r.Get("pw-class"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].PwClass.IsNull() {
+		if value := r.Get("pw-class"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].PwClass.IsNull() {
 			data.Neighbors[i].PwClass = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].PwClass = types.StringNull()
 		}
-		if value := r.Get("dhcp.ipv4.snoop.profile"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].DhcpIpv4SnoopingProfile.IsNull() {
+		if value := r.Get("dhcp.ipv4.snoop.profile"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].DhcpIpv4SnoopingProfile.IsNull() {
 			data.Neighbors[i].DhcpIpv4SnoopingProfile = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].DhcpIpv4SnoopingProfile = types.StringNull()
@@ -1175,12 +1175,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.Neighbors[i].DhcpIpv4None = types.BoolNull()
 		}
-		if value := r.Get("igmp.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].IgmpSnoopingProfile.IsNull() {
+		if value := r.Get("igmp.snooping.profile"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].IgmpSnoopingProfile.IsNull() {
 			data.Neighbors[i].IgmpSnoopingProfile = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].IgmpSnoopingProfile = types.StringNull()
 		}
-		if value := r.Get("mld.snooping.profile"); value.Exists() && value.Type == gjson.String && !data.Neighbors[i].MldSnoopingProfile.IsNull() {
+		if value := r.Get("mld.snooping.profile"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Neighbors[i].MldSnoopingProfile.IsNull() {
 			data.Neighbors[i].MldSnoopingProfile = types.StringValue(value.String())
 		} else {
 			data.Neighbors[i].MldSnoopingProfile = types.StringNull()
@@ -1223,7 +1223,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1261,7 +1261,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1303,7 +1303,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1345,7 +1345,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1402,7 +1402,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1428,10 +1428,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpTablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRoutePolicyExport = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast.p2mp"); value.Exists() {
@@ -1444,7 +1444,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	} else {
 		data.MulticastP2mpTransportRsvpTe = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast.p2mp.signaling-protocol.bgp"); value.Exists() {
@@ -1456,7 +1456,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.Neighbors = make([]L2VPNBridgeGroupBridgeDomainVFINeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFINeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1466,7 +1466,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainVFINeighborsStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainVFINeighborsStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
@@ -1479,10 +1479,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsStaticLabelRemote = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("pw-class"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("pw-class"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PwClass = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dhcp.ipv4.snoop.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dhcp.ipv4.snoop.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DhcpIpv4SnoopingProfile = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("dhcp.ipv4.none"); cValue.Exists() {
@@ -1490,10 +1490,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			} else {
 				item.DhcpIpv4None = types.BoolValue(false)
 			}
-			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IgmpSnoopingProfile = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MldSnoopingProfile = types.StringValue(cValue.String())
 			}
 			data.Neighbors = append(data.Neighbors, item)
@@ -1537,7 +1537,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1575,7 +1575,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1617,7 +1617,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1659,7 +1659,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetIpv4AddressFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetIpv4AddressFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetIpv4AddressFormat{}
-			if cValue := v.Get("ipv4-address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1716,7 +1716,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
@@ -1742,10 +1742,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdLoadBalancingFlowLabelStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpTablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-policy.export"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRoutePolicyExport = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast.p2mp"); value.Exists() {
@@ -1758,7 +1758,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	} else {
 		data.MulticastP2mpTransportRsvpTe = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "multicast.p2mp.transport.rsvp-te.attribute-set.p2mp-te"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MulticastP2mpTransportRsvpTeAttributeSetP2mpTe = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "multicast.p2mp.signaling-protocol.bgp"); value.Exists() {
@@ -1770,7 +1770,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.Neighbors = make([]L2VPNBridgeGroupBridgeDomainVFINeighbors, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFINeighbors{}
-			if cValue := v.Get("address"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
@@ -1780,7 +1780,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 				item.StaticMacAddresses = make([]L2VPNBridgeGroupBridgeDomainVFINeighborsStaticMacAddresses, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := L2VPNBridgeGroupBridgeDomainVFINeighborsStaticMacAddresses{}
-					if ccValue := cv.Get("mac-address"); ccValue.Exists() && ccValue.Type == gjson.String {
+					if ccValue := cv.Get("mac-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.MacAddress = types.StringValue(ccValue.String())
 					}
 					item.StaticMacAddresses = append(item.StaticMacAddresses, cItem)
@@ -1793,10 +1793,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() && cValue.Type == gjson.Number {
 				item.MplsStaticLabelRemote = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("pw-class"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("pw-class"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PwClass = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("dhcp.ipv4.snoop.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("dhcp.ipv4.snoop.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DhcpIpv4SnoopingProfile = types.StringValue(cValue.String())
 			}
 			if cValue := v.Get("dhcp.ipv4.none"); cValue.Exists() {
@@ -1804,10 +1804,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			} else {
 				item.DhcpIpv4None = types.BoolValue(false)
 			}
-			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("igmp.snooping.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IgmpSnoopingProfile = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("mld.snooping.profile"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MldSnoopingProfile = types.StringValue(cValue.String())
 			}
 			data.Neighbors = append(data.Neighbors, item)

@@ -367,27 +367,27 @@ func (data LineDefault) GetPatternConstraints() []helpers.FieldPatternConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && value.Type == gjson.String && !data.Autocommand.IsNull() {
+	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Autocommand.IsNull() {
 		data.Autocommand = types.StringValue(value.String())
 	} else {
 		data.Autocommand = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && value.Type == gjson.String && !data.AccessClassIngress.IsNull() {
+	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AccessClassIngress.IsNull() {
 		data.AccessClassIngress = types.StringValue(value.String())
 	} else {
 		data.AccessClassIngress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && value.Type == gjson.String && !data.AccessClassEgress.IsNull() {
+	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AccessClassEgress.IsNull() {
 		data.AccessClassEgress = types.StringValue(value.String())
 	} else {
 		data.AccessClassEgress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && value.Type == gjson.String && !data.DisconnectCharacter.IsNull() {
+	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.DisconnectCharacter.IsNull() {
 		data.DisconnectCharacter = types.StringValue(value.String())
 	} else {
 		data.DisconnectCharacter = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && value.Type == gjson.String && !data.EscapeCharacter.IsNull() {
+	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.EscapeCharacter.IsNull() {
 		data.EscapeCharacter = types.StringValue(value.String())
 	} else {
 		data.EscapeCharacter = types.StringNull()
@@ -537,32 +537,32 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.CliWhitespaceCompletion = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && value.Type == gjson.String && !data.LoginAuthentication.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.LoginAuthentication.IsNull() {
 		data.LoginAuthentication = types.StringValue(value.String())
 	} else {
 		data.LoginAuthentication = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && value.Type == gjson.String && !data.AuthorizationExec.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthorizationExec.IsNull() {
 		data.AuthorizationExec = types.StringValue(value.String())
 	} else {
 		data.AuthorizationExec = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && value.Type == gjson.String && !data.AuthorizationEventmanager.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthorizationEventmanager.IsNull() {
 		data.AuthorizationEventmanager = types.StringValue(value.String())
 	} else {
 		data.AuthorizationEventmanager = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && value.Type == gjson.String && !data.AuthorizationCommands.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AuthorizationCommands.IsNull() {
 		data.AuthorizationCommands = types.StringValue(value.String())
 	} else {
 		data.AuthorizationCommands = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && value.Type == gjson.String && !data.AccountingExec.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AccountingExec.IsNull() {
 		data.AccountingExec = types.StringValue(value.String())
 	} else {
 		data.AccountingExec = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && value.Type == gjson.String && !data.AccountingCommands.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AccountingCommands.IsNull() {
 		data.AccountingCommands = types.StringValue(value.String())
 	} else {
 		data.AccountingCommands = types.StringNull()
@@ -595,7 +595,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 				return true
 			},
 		)
-		if value := r.Get("group-name"); value.Exists() && value.Type == gjson.String && !data.UsersGroup[i].GroupName.IsNull() {
+		if value := r.Get("group-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.UsersGroup[i].GroupName.IsNull() {
 			data.UsersGroup[i].GroupName = types.StringValue(value.String())
 		} else {
 			data.UsersGroup[i].GroupName = types.StringNull()
@@ -635,7 +635,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.TimestampDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && value.Type == gjson.String && !data.Pager.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.Pager.IsNull() {
 		data.Pager = types.StringValue(value.String())
 	} else {
 		data.Pager = types.StringNull()
@@ -656,19 +656,19 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LineDefault) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Autocommand = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccessClassIngress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccessClassEgress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DisconnectCharacter = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EscapeCharacter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && value.Type == gjson.Number {
@@ -752,22 +752,22 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.CliWhitespaceCompletion = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LoginAuthentication = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationExec = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationEventmanager = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationCommands = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingExec = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingCommands = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && value.Type == gjson.Number {
@@ -777,7 +777,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 		data.UsersGroup = make([]LineDefaultUsersGroup, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LineDefaultUsersGroup{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			data.UsersGroup = append(data.UsersGroup, item)
@@ -804,7 +804,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.TimestampDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Pager = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-telnet-cfg:telnet.transparent"); value.Exists() {
@@ -819,19 +819,19 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "autocommand"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Autocommand = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "access-class.ingress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccessClassIngress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "access-class.egress"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccessClassEgress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "disconnect-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DisconnectCharacter = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EscapeCharacter = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && value.Type == gjson.Number {
@@ -915,22 +915,22 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.CliWhitespaceCompletion = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:login.authentication"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LoginAuthentication = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationExec = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.eventmanager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationEventmanager = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:authorization.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthorizationCommands = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.exec"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingExec = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingCommands = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && value.Type == gjson.Number {
@@ -940,7 +940,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 		data.UsersGroup = make([]LineDefaultUsersGroup, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := LineDefaultUsersGroup{}
-			if cValue := v.Get("group-name"); cValue.Exists() && cValue.Type == gjson.String {
+			if cValue := v.Get("group-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.GroupName = types.StringValue(cValue.String())
 			}
 			data.UsersGroup = append(data.UsersGroup, item)
@@ -967,7 +967,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.TimestampDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:pager"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Pager = types.StringValue(value.String())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-telnet-cfg:telnet.transparent"); value.Exists() {

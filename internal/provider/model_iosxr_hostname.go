@@ -126,7 +126,7 @@ func (data Hostname) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Hostname) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && value.Type == gjson.String && !data.SystemNetworkName.IsNull() {
+	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.SystemNetworkName.IsNull() {
 		data.SystemNetworkName = types.StringValue(value.String())
 	} else {
 		data.SystemNetworkName = types.StringNull()
@@ -138,7 +138,7 @@ func (data *Hostname) updateFromBody(ctx context.Context, res []byte, version st
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *Hostname) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemNetworkName = types.StringValue(value.String())
 	}
 }
@@ -148,7 +148,7 @@ func (data *Hostname) fromBody(ctx context.Context, res []byte, version string) 
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *HostnameData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && value.Type == gjson.String {
+	if value := gjson.GetBytes(res, "system-network-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SystemNetworkName = types.StringValue(value.String())
 	}
 }
