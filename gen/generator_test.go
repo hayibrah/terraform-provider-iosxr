@@ -36,91 +36,102 @@ import (
 // mergeConfigs tests
 // ---------------------------------------------------------------------------
 
-func TestMergeConfigs_BasicFieldOverride(t *testing.T) {
-	base := YamlConfig{
-		Name: "Logging",
-		Path: "Cisco-IOS-XR-um-logging-cfg:/logging",
-	}
-	override := YamlConfig{
-		Version:    "25.4",
-		ResDescription: "Updated description",
-		DocCategory: "Logging",
-	}
-
-	got := mergeConfigs(base, override)
-
-	if got.Name != "Logging" {
-		t.Errorf("Name: got %q, want %q", got.Name, "Logging")
-	}
-	if got.Path != "Cisco-IOS-XR-um-logging-cfg:/logging" {
-		t.Errorf("Path: got %q, should be unchanged", got.Path)
-	}
-	if got.ResDescription != "Updated description" {
-		t.Errorf("ResDescription: got %q, want %q", got.ResDescription, "Updated description")
-	}
-	if got.DocCategory != "Logging" {
-		t.Errorf("DocCategory: got %q, want %q", got.DocCategory, "Logging")
-	}
-}
-
-func TestMergeConfigs_NameOverride(t *testing.T) {
-	base := YamlConfig{Name: "Service Timestamps Old", Path: "old-module:/service/timestamps"}
-	override := YamlConfig{Version: "25.4", Name: "Service Timestamps", Path: "new-module:/service/timestamps"}
-
-	got := mergeConfigs(base, override)
-
-	if got.Name != "Service Timestamps" {
-		t.Errorf("Name: got %q, want %q", got.Name, "Service Timestamps")
-	}
-	if got.Path != "new-module:/service/timestamps" {
-		t.Errorf("Path: got %q, want %q", got.Path, "new-module:/service/timestamps")
-	}
-}
-
-func TestMergeConfigs_PathUnchanged(t *testing.T) {
-	path := "Cisco-IOS-XR-um-logging-cfg:/logging"
-	base := YamlConfig{Name: "Logging", Path: path}
-	override := YamlConfig{Version: "25.4", ResDescription: "New desc"}
-
-	got := mergeConfigs(base, override)
-
-	if got.Path != path {
-		t.Errorf("Path: got %q, want %q (unchanged)", got.Path, path)
-	}
-}
-
-func TestMergeConfigs_LegacyResource(t *testing.T) {
-	base := YamlConfig{
-		Name: "Old Feature",
-		Path: "old-module:/feature",
-		Attributes: []YamlConfigAttribute{
-			{YangName: "attr1", TfName: "attr1", Type: "String"},
+func TestMergeConfigs(t *testing.T) {
+	tests := []struct {
+		name     string
+		base     YamlConfig
+		override YamlConfig
+		check    func(t *testing.T, got YamlConfig)
+	}{
+		{
+			name: "basic field override",
+			base: YamlConfig{
+				Name: "Logging",
+				Path: "Cisco-IOS-XR-um-logging-cfg:/logging",
+			},
+			override: YamlConfig{
+				Version:        "25.4",
+				ResDescription: "Updated description",
+				DocCategory:    "Logging",
+			},
+			check: func(t *testing.T, got YamlConfig) {
+				if got.Name != "Logging" {
+					t.Errorf("Name: got %q, want %q", got.Name, "Logging")
+				}
+				if got.Path != "Cisco-IOS-XR-um-logging-cfg:/logging" {
+					t.Errorf("Path: got %q, should be unchanged", got.Path)
+				}
+				if got.ResDescription != "Updated description" {
+					t.Errorf("ResDescription: got %q, want %q", got.ResDescription, "Updated description")
+				}
+				if got.DocCategory != "Logging" {
+					t.Errorf("DocCategory: got %q, want %q", got.DocCategory, "Logging")
+				}
+			},
+		},
+		{
+			name:     "name override",
+			base:     YamlConfig{Name: "Service Timestamps Old", Path: "old-module:/service/timestamps"},
+			override: YamlConfig{Version: "25.4", Name: "Service Timestamps", Path: "new-module:/service/timestamps"},
+			check: func(t *testing.T, got YamlConfig) {
+				if got.Name != "Service Timestamps" {
+					t.Errorf("Name: got %q, want %q", got.Name, "Service Timestamps")
+				}
+				if got.Path != "new-module:/service/timestamps" {
+					t.Errorf("Path: got %q, want %q", got.Path, "new-module:/service/timestamps")
+				}
+			},
+		},
+		{
+			name:     "path unchanged",
+			base:     YamlConfig{Name: "Logging", Path: "Cisco-IOS-XR-um-logging-cfg:/logging"},
+			override: YamlConfig{Version: "25.4", ResDescription: "New desc"},
+			check: func(t *testing.T, got YamlConfig) {
+				if got.Path != "Cisco-IOS-XR-um-logging-cfg:/logging" {
+					t.Errorf("Path: got %q, want %q (unchanged)", got.Path, "Cisco-IOS-XR-um-logging-cfg:/logging")
+				}
+			},
+		},
+		{
+			name: "legacy resource",
+			base: YamlConfig{
+				Name: "Old Feature",
+				Path: "old-module:/feature",
+				Attributes: []YamlConfigAttribute{
+					{YangName: "attr1", TfName: "attr1", Type: "String"},
+				},
+			},
+			override: YamlConfig{Version: "25.4", Legacy: true},
+			check: func(t *testing.T, got YamlConfig) {
+				if got.RemovedInVersion != "25.4" {
+					t.Errorf("RemovedInVersion: got %q, want %q", got.RemovedInVersion, "25.4")
+				}
+				if !got.Legacy {
+					t.Error("Legacy: got false, want true")
+				}
+				// Attributes should be unchanged — early return preserves base state
+				if len(got.Attributes) != 1 {
+					t.Errorf("Attributes: got %d, want 1 (preserved from base)", len(got.Attributes))
+				}
+			},
+		},
+		{
+			name:     "no_delete propagates",
+			base:     YamlConfig{Name: "Feature", NoDelete: false},
+			override: YamlConfig{Version: "25.4", NoDelete: true},
+			check: func(t *testing.T, got YamlConfig) {
+				if !got.NoDelete {
+					t.Error("NoDelete: got false, want true")
+				}
+			},
 		},
 	}
-	override := YamlConfig{Version: "25.4", Legacy: true}
 
-	got := mergeConfigs(base, override)
-
-	if got.RemovedInVersion != "25.4" {
-		t.Errorf("RemovedInVersion: got %q, want %q", got.RemovedInVersion, "25.4")
-	}
-	if !got.Legacy {
-		t.Error("Legacy: got false, want true")
-	}
-	// Attributes should be unchanged — early return preserves base state
-	if len(got.Attributes) != 1 {
-		t.Errorf("Attributes: got %d, want 1 (preserved from base)", len(got.Attributes))
-	}
-}
-
-func TestMergeConfigs_NoDeletePropagates(t *testing.T) {
-	base := YamlConfig{Name: "Feature", NoDelete: false}
-	override := YamlConfig{Version: "25.4", NoDelete: true}
-
-	got := mergeConfigs(base, override)
-
-	if !got.NoDelete {
-		t.Error("NoDelete: got false, want true")
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := mergeConfigs(tc.base, tc.override)
+			tc.check(t, got)
+		})
 	}
 }
 
@@ -128,143 +139,154 @@ func TestMergeConfigs_NoDeletePropagates(t *testing.T) {
 // mergeAttributes tests
 // ---------------------------------------------------------------------------
 
-func TestMergeAttributes_NewAttrGetsAddedInVersion(t *testing.T) {
-	base := []YamlConfigAttribute{
-		{YangName: "console", TfName: "console", Type: "String"},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "new-leaf", TfName: "new_leaf", Type: "String"},
+func TestMergeAttributes(t *testing.T) {
+	tests := []struct {
+		name     string
+		base     []YamlConfigAttribute
+		override []YamlConfigAttribute
+		check    func(t *testing.T, got []YamlConfigAttribute)
+	}{
+		{
+			name: "new attr gets AddedInVersion",
+			base: []YamlConfigAttribute{
+				{YangName: "console", TfName: "console", Type: "String"},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "new-leaf", TfName: "new_leaf", Type: "String"},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 2 {
+					t.Fatalf("len: got %d, want 2", len(got))
+				}
+				newAttr := got[1]
+				if newAttr.YangName != "new-leaf" {
+					t.Errorf("YangName: got %q, want %q", newAttr.YangName, "new-leaf")
+				}
+				if newAttr.AddedInVersion != "25.4" {
+					t.Errorf("AddedInVersion: got %q, want %q", newAttr.AddedInVersion, "25.4")
+				}
+			},
+		},
+		{
+			name: "legacy attr gets RemovedInVersion",
+			base: []YamlConfigAttribute{
+				{YangName: "source-interface-name", TfName: "name", Type: "String", Id: true},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "source-interface-name", Legacy: true},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 1 {
+					t.Fatalf("len: got %d, want 1 (legacy keeps the attr)", len(got))
+				}
+				if got[0].RemovedInVersion != "25.4" {
+					t.Errorf("RemovedInVersion: got %q, want %q", got[0].RemovedInVersion, "25.4")
+				}
+				if !got[0].Legacy {
+					t.Error("Legacy: got false, want true")
+				}
+				// TfName should be unchanged when override doesn't specify one
+				if got[0].TfName != "name" {
+					t.Errorf("TfName: got %q, want %q (unchanged)", got[0].TfName, "name")
+				}
+			},
+		},
+		{
+			// F7 fix: legacy block with explicit tf_name renames the base attribute
+			// so the natural name is freed for a replacement attribute.
+			name: "legacy attr renames tf_name",
+			base: []YamlConfigAttribute{
+				{YangName: "console", TfName: "console", Type: "String"},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "console", TfName: "console_legacy", Legacy: true},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 1 {
+					t.Fatalf("len: got %d, want 1", len(got))
+				}
+				if got[0].TfName != "console_legacy" {
+					t.Errorf("TfName: got %q, want %q", got[0].TfName, "console_legacy")
+				}
+				if got[0].RemovedInVersion != "25.4" {
+					t.Errorf("RemovedInVersion: got %q, want %q", got[0].RemovedInVersion, "25.4")
+				}
+			},
+		},
+		{
+			// A legacy entry in the override that has no matching base attr is a no-op.
+			name: "legacy attr not in base is skipped",
+			base: []YamlConfigAttribute{
+				{YangName: "existing", TfName: "existing", Type: "String"},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "ghost", Legacy: true},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 1 {
+					t.Errorf("len: got %d, want 1 (ghost attr should be skipped)", len(got))
+				}
+			},
+		},
+		{
+			name: "existing attr fields updated",
+			base: []YamlConfigAttribute{
+				{YangName: "severity", TfName: "severity", Type: "String", Description: "old desc"},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "severity", Description: "new desc", DefaultValue: "informational"},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 1 {
+					t.Fatalf("len: got %d, want 1", len(got))
+				}
+				if got[0].Description != "new desc" {
+					t.Errorf("Description: got %q, want %q", got[0].Description, "new desc")
+				}
+				// DefaultValue introduced in an override becomes a versioned default (F17 VersionDefaults).
+				// The base had no default (""), so this is a version-scoped change: stored in
+				// VersionDefaults, DefaultValue is cleared to "".
+				if got[0].DefaultValue != "" {
+					t.Errorf("DefaultValue: got %q, want empty (versioned default stored in VersionDefaults)", got[0].DefaultValue)
+				}
+				if got[0].VersionDefaults["25.4"] != "informational" {
+					t.Errorf("VersionDefaults[25.4]: got %q, want %q", got[0].VersionDefaults["25.4"], "informational")
+				}
+				// Version not stamped on existing attrs
+				if got[0].AddedInVersion != "" {
+					t.Errorf("AddedInVersion: got %q, want empty (existing attr)", got[0].AddedInVersion)
+				}
+			},
+		},
+		{
+			// When yang_names differ but tf_names match, merge uses tf_name match.
+			name: "match by tf_name",
+			base: []YamlConfigAttribute{
+				{YangName: "old-yang", TfName: "shared_name", Type: "String"},
+			},
+			override: []YamlConfigAttribute{
+				{YangName: "new-yang", TfName: "shared_name", Type: "Int64"},
+			},
+			check: func(t *testing.T, got []YamlConfigAttribute) {
+				if len(got) != 1 {
+					t.Fatalf("len: got %d, want 1 (matched by tf_name)", len(got))
+				}
+				if got[0].Type != "Int64" {
+					t.Errorf("Type: got %q, want %q", got[0].Type, "Int64")
+				}
+			},
+		},
 	}
 
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 2 {
-		t.Fatalf("len: got %d, want 2", len(got))
-	}
-	newAttr := got[1]
-	if newAttr.YangName != "new-leaf" {
-		t.Errorf("YangName: got %q, want %q", newAttr.YangName, "new-leaf")
-	}
-	if newAttr.AddedInVersion != "25.4" {
-		t.Errorf("AddedInVersion: got %q, want %q", newAttr.AddedInVersion, "25.4")
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := mergeAttributes(tc.base, tc.override, "25.4")
+			tc.check(t, got)
+		})
 	}
 }
 
-func TestMergeAttributes_LegacyAttrGetsRemovedInVersion(t *testing.T) {
-	base := []YamlConfigAttribute{
-		{YangName: "source-interface-name", TfName: "name", Type: "String", Id: true},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "source-interface-name", Legacy: true},
-	}
-
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 1 {
-		t.Fatalf("len: got %d, want 1 (legacy keeps the attr)", len(got))
-	}
-	if got[0].RemovedInVersion != "25.4" {
-		t.Errorf("RemovedInVersion: got %q, want %q", got[0].RemovedInVersion, "25.4")
-	}
-	if !got[0].Legacy {
-		t.Error("Legacy: got false, want true")
-	}
-	// TfName should be unchanged when override doesn't specify one
-	if got[0].TfName != "name" {
-		t.Errorf("TfName: got %q, want %q (unchanged)", got[0].TfName, "name")
-	}
-}
-
-func TestMergeAttributes_LegacyAttrRenamesTfName(t *testing.T) {
-	// F7 fix: legacy block with explicit tf_name renames the base attribute
-	// so the natural name is freed for a replacement attribute.
-	base := []YamlConfigAttribute{
-		{YangName: "console", TfName: "console", Type: "String"},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "console", TfName: "console_legacy", Legacy: true},
-	}
-
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 1 {
-		t.Fatalf("len: got %d, want 1", len(got))
-	}
-	if got[0].TfName != "console_legacy" {
-		t.Errorf("TfName: got %q, want %q", got[0].TfName, "console_legacy")
-	}
-	if got[0].RemovedInVersion != "25.4" {
-		t.Errorf("RemovedInVersion: got %q, want %q", got[0].RemovedInVersion, "25.4")
-	}
-}
-
-func TestMergeAttributes_LegacyAttrNotInBase_IsSkipped(t *testing.T) {
-	// A legacy entry in the override that has no matching base attr is a no-op.
-	base := []YamlConfigAttribute{
-		{YangName: "existing", TfName: "existing", Type: "String"},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "ghost", Legacy: true},
-	}
-
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 1 {
-		t.Errorf("len: got %d, want 1 (ghost attr should be skipped)", len(got))
-	}
-}
-
-func TestMergeAttributes_ExistingAttrFieldsUpdated(t *testing.T) {
-	base := []YamlConfigAttribute{
-		{YangName: "severity", TfName: "severity", Type: "String", Description: "old desc"},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "severity", Description: "new desc", DefaultValue: "informational"},
-	}
-
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 1 {
-		t.Fatalf("len: got %d, want 1", len(got))
-	}
-	if got[0].Description != "new desc" {
-		t.Errorf("Description: got %q, want %q", got[0].Description, "new desc")
-	}
-	// DefaultValue introduced in an override becomes a versioned default (F17 VersionDefaults).
-	// The base had no default (""), so this is a version-scoped change: stored in VersionDefaults,
-	// DefaultValue is cleared to "".
-	if got[0].DefaultValue != "" {
-		t.Errorf("DefaultValue: got %q, want empty (versioned default stored in VersionDefaults)", got[0].DefaultValue)
-	}
-	if got[0].VersionDefaults["25.4"] != "informational" {
-		t.Errorf("VersionDefaults[25.4]: got %q, want %q", got[0].VersionDefaults["25.4"], "informational")
-	}
-	// Version not stamped on existing attrs
-	if got[0].AddedInVersion != "" {
-		t.Errorf("AddedInVersion: got %q, want empty (existing attr)", got[0].AddedInVersion)
-	}
-}
-
-func TestMergeAttributes_MatchByTfName(t *testing.T) {
-	// When yang_names differ but tf_names match, merge uses tf_name match.
-	base := []YamlConfigAttribute{
-		{YangName: "old-yang", TfName: "shared_name", Type: "String"},
-	}
-	override := []YamlConfigAttribute{
-		{YangName: "new-yang", TfName: "shared_name", Type: "Int64"},
-	}
-
-	got := mergeAttributes(base, override, "25.4")
-
-	if len(got) != 1 {
-		t.Fatalf("len: got %d, want 1 (matched by tf_name)", len(got))
-	}
-	if got[0].Type != "Int64" {
-		t.Errorf("Type: got %q, want %q", got[0].Type, "Int64")
-	}
-}
-
-func TestMergeAttributes_NewAttrWithNestedGetAddedInVersion(t *testing.T) {
+func TestMergeAttributes_NestedAttrsInheritAddedInVersion(t *testing.T) {
 	// A completely new list attr in the override: its nested attrs should be
 	// stamped with AddedInVersion too.
 	base := []YamlConfigAttribute{}
@@ -296,7 +318,7 @@ func TestMergeAttributes_NewAttrWithNestedGetAddedInVersion(t *testing.T) {
 	}
 }
 
-func TestMergeAttributes_CompositeKeyVersionedKeys(t *testing.T) {
+func TestMergeAttributes_CompositeKeyPromotion(t *testing.T) {
 	// Reproduces the logging source_interfaces scenario:
 	// 24.4 key: source-interface-name (id:true)
 	// 25.4: retire source-interface-name, add interface-name + vrf-name (both id:true)
@@ -450,151 +472,118 @@ func TestMergeAttributes_ReplacesYangName_ThreeVersionChain(t *testing.T) {
 // VersionDeleteMode merge scenarios
 // ---------------------------------------------------------------------------
 
-// Scenario 1: base has delete_parent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
-// Expected: 25.4 inherits delete_parent — no VersionDeleteMode created.
-func TestVersionDeleteMode_Scenario1_InheritDeleteParent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:     "maxfilesize",
-		TfName:       "maxfilesize",
-		DeleteParent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName: "maxfilesize",
-		TfName:   "maxfilesize",
-		// no ReplacesYangName, no delete flag
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode != nil {
-		t.Errorf("Scenario 1: VersionDeleteMode should be nil (inherited), got %v", attr.VersionDeleteMode)
+func TestVersionDeleteMode(t *testing.T) {
+	tests := []struct {
+		name                   string
+		baseDeleteParent       bool
+		baseDeleteGrandparent  bool
+		deltaReplacesYangName  string
+		deltaDeleteParent      bool
+		deltaDeleteGrandparent bool
+		wantVersionDeleteMode  map[string]string // nil means expect nil (inherited/unchanged)
+		checkFlags             bool              // also assert the OR-merged DeleteParent/DeleteGrandparent scalars
+		wantDeleteParent       bool
+		wantDeleteGrandparent  bool
+	}{
+		{
+			// base has delete_parent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
+			// Expected: 25.4 inherits delete_parent — no VersionDeleteMode created.
+			name:             "inherit delete_parent (no rename, no flag)",
+			baseDeleteParent: true,
+			checkFlags:       true,
+			wantDeleteParent: true,
+		},
+		{
+			// base has delete_grandparent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
+			// Expected: 25.4 inherits delete_grandparent — no VersionDeleteMode created.
+			name:                  "inherit delete_grandparent (no rename, no flag)",
+			baseDeleteGrandparent: true,
+			checkFlags:            true,
+			wantDeleteGrandparent: true,
+		},
+		{
+			// base has delete_parent, 25.4 has replaces_yang_name and NO delete flag.
+			// Expected: version-specific map — 24.4 deletes parent, 25.4 deletes leaf directly.
+			name:                  "replacement drops delete_parent (rename, no flag)",
+			baseDeleteParent:      true,
+			deltaReplacesYangName: "maxfilesize",
+			wantVersionDeleteMode: map[string]string{"_base": "parent", "25.4": ""},
+		},
+		{
+			// base has delete_parent, 25.4 has replaces_yang_name WITH delete_parent.
+			// Expected: both versions delete parent — no VersionDeleteMode, static path.
+			name:                  "replacement keeps delete_parent (rename, with flag)",
+			baseDeleteParent:      true,
+			deltaReplacesYangName: "maxfilesize",
+			deltaDeleteParent:     true,
+			checkFlags:            true,
+			wantDeleteParent:      true,
+		},
+		{
+			// Same as above, delete_grandparent variant for base.
+			name:                  "replacement drops delete_grandparent (rename, no flag)",
+			baseDeleteGrandparent: true,
+			deltaReplacesYangName: "maxfilesize",
+			wantVersionDeleteMode: map[string]string{"_base": "grandparent", "25.4": ""},
+		},
+		{
+			// base has delete_grandparent, 25.4 has replaces_yang_name WITH delete_grandparent.
+			// Expected: no VersionDeleteMode, same mode throughout.
+			name:                   "replacement keeps delete_grandparent (rename, with flag)",
+			baseDeleteGrandparent:  true,
+			deltaReplacesYangName:  "maxfilesize",
+			deltaDeleteGrandparent: true,
+			checkFlags:             true,
+			wantDeleteGrandparent:  true,
+		},
 	}
-	if !attr.DeleteParent {
-		t.Error("Scenario 1: DeleteParent should remain true after inherit")
-	}
-}
 
-// Scenario 2: base has delete_grandparent, 25.4 has same yang_name (no replaces_yang_name) and no delete flag.
-// Expected: 25.4 inherits delete_grandparent — no VersionDeleteMode created.
-func TestVersionDeleteMode_Scenario2_InheritDeleteGrandparent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:          "maxfilesize",
-		TfName:            "maxfilesize",
-		DeleteGrandparent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName: "maxfilesize",
-		TfName:   "maxfilesize",
-		// no ReplacesYangName, no delete flag
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode != nil {
-		t.Errorf("Scenario 2: VersionDeleteMode should be nil (inherited), got %v", attr.VersionDeleteMode)
-	}
-	if !attr.DeleteGrandparent {
-		t.Error("Scenario 2: DeleteGrandparent should remain true after inherit")
-	}
-}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			base := []YamlConfigAttribute{{
+				YangName:          "maxfilesize",
+				TfName:            "maxfilesize",
+				DeleteParent:      tc.baseDeleteParent,
+				DeleteGrandparent: tc.baseDeleteGrandparent,
+			}}
+			yangName := "maxfilesize"
+			if tc.deltaReplacesYangName != "" {
+				yangName = "path/maxfilesize"
+			}
+			delta := []YamlConfigAttribute{{
+				YangName:          yangName,
+				TfName:            "maxfilesize",
+				ReplacesYangName:  tc.deltaReplacesYangName,
+				DeleteParent:      tc.deltaDeleteParent,
+				DeleteGrandparent: tc.deltaDeleteGrandparent,
+			}}
+			got := mergeAttributes(base, delta, "25.4")
+			attr := got[0]
 
-// Scenario 3: base has delete_parent, 25.4 has replaces_yang_name and NO delete flag.
-// Expected: version-specific map — 24.4 deletes parent, 25.4 deletes leaf directly.
-func TestVersionDeleteMode_Scenario3_ReplacementDropsDeleteParent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:     "maxfilesize",
-		TfName:       "maxfilesize",
-		DeleteParent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName:         "path/maxfilesize",
-		TfName:           "maxfilesize",
-		ReplacesYangName: "maxfilesize",
-		// no delete flag — intentionally drops parent delete
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode == nil {
-		t.Fatal("Scenario 3: VersionDeleteMode should be set")
-	}
-	if v, ok := attr.VersionDeleteMode["_base"]; !ok || v != "parent" {
-		t.Errorf("Scenario 3: expected _base=parent, got %v", attr.VersionDeleteMode)
-	}
-	if v, ok := attr.VersionDeleteMode["25.4"]; !ok || v != "" {
-		t.Errorf("Scenario 3: expected 25.4='', got %v", attr.VersionDeleteMode)
-	}
-}
+			if tc.wantVersionDeleteMode == nil {
+				if attr.VersionDeleteMode != nil {
+					t.Errorf("VersionDeleteMode should be nil, got %v", attr.VersionDeleteMode)
+				}
+			} else {
+				if attr.VersionDeleteMode == nil {
+					t.Fatal("VersionDeleteMode should be set")
+				}
+				for k, want := range tc.wantVersionDeleteMode {
+					if got := attr.VersionDeleteMode[k]; got != want {
+						t.Errorf("VersionDeleteMode[%q] = %q, want %q (full map: %v)", k, got, want, attr.VersionDeleteMode)
+					}
+				}
+			}
 
-// Scenario 4: base has delete_parent, 25.4 has replaces_yang_name WITH delete_parent.
-// Expected: both versions delete parent — no VersionDeleteMode, static path.
-func TestVersionDeleteMode_Scenario4_ReplacementKeepsDeleteParent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:     "maxfilesize",
-		TfName:       "maxfilesize",
-		DeleteParent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName:         "path/maxfilesize",
-		TfName:           "maxfilesize",
-		ReplacesYangName: "maxfilesize",
-		DeleteParent:     true,
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode != nil {
-		t.Errorf("Scenario 4: VersionDeleteMode should be nil (same mode), got %v", attr.VersionDeleteMode)
-	}
-	if !attr.DeleteParent {
-		t.Error("Scenario 4: DeleteParent should be true")
-	}
-}
-
-// Scenario 5a: base has delete_parent, 25.4 has replaces_yang_name with NO delete flag.
-// (Same as 3, delete_grandparent variant for base.)
-func TestVersionDeleteMode_Scenario5a_ReplacementDropsDeleteGrandparent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:          "maxfilesize",
-		TfName:            "maxfilesize",
-		DeleteGrandparent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName:         "path/maxfilesize",
-		TfName:           "maxfilesize",
-		ReplacesYangName: "maxfilesize",
-		// no delete flag
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode == nil {
-		t.Fatal("Scenario 5a: VersionDeleteMode should be set")
-	}
-	if v := attr.VersionDeleteMode["_base"]; v != "grandparent" {
-		t.Errorf("Scenario 5a: expected _base=grandparent, got %q", v)
-	}
-	if v := attr.VersionDeleteMode["25.4"]; v != "" {
-		t.Errorf("Scenario 5a: expected 25.4='', got %q", v)
-	}
-}
-
-// Scenario 5b: base has delete_grandparent, 25.4 has replaces_yang_name WITH delete_grandparent.
-// Expected: no VersionDeleteMode, same mode throughout.
-func TestVersionDeleteMode_Scenario5b_ReplacementKeepsDeleteGrandparent(t *testing.T) {
-	base := []YamlConfigAttribute{{
-		YangName:          "maxfilesize",
-		TfName:            "maxfilesize",
-		DeleteGrandparent: true,
-	}}
-	delta := []YamlConfigAttribute{{
-		YangName:          "path/maxfilesize",
-		TfName:            "maxfilesize",
-		ReplacesYangName:  "maxfilesize",
-		DeleteGrandparent: true,
-	}}
-	got := mergeAttributes(base, delta, "25.4")
-	attr := got[0]
-	if attr.VersionDeleteMode != nil {
-		t.Errorf("Scenario 5b: VersionDeleteMode should be nil, got %v", attr.VersionDeleteMode)
-	}
-	if !attr.DeleteGrandparent {
-		t.Error("Scenario 5b: DeleteGrandparent should be true")
+			if tc.checkFlags {
+				if attr.DeleteParent != tc.wantDeleteParent {
+					t.Errorf("DeleteParent = %v, want %v", attr.DeleteParent, tc.wantDeleteParent)
+				}
+				if attr.DeleteGrandparent != tc.wantDeleteGrandparent {
+					t.Errorf("DeleteGrandparent = %v, want %v", attr.DeleteGrandparent, tc.wantDeleteGrandparent)
+				}
+			}
+		})
 	}
 }
 
@@ -694,11 +683,11 @@ func TestGetVersionValue(t *testing.T) {
 	}
 }
 
-// TestGetDeletePathExpr_ThreeVersionChain_RenameWithoutModeChange reproduces the read-side
+// TestGetDeletePathExpr_RenameWithoutModeChange_ThreeVersionChain reproduces the read-side
 // stale-fallback bug fixed by getVersionValue: a mode change recorded at 25.4, followed by a
 // 26.2 rename that restates the same mode (correctly producing no new VersionDeleteMode
 // entry), used to bake the wrong, stale oldest mode into 26.2's generated path.
-func TestGetDeletePathExpr_ThreeVersionChain_RenameWithoutModeChange(t *testing.T) {
+func TestGetDeletePathExpr_RenameWithoutModeChange_ThreeVersionChain(t *testing.T) {
 	base := []YamlConfigAttribute{{
 		YangName:     "o1/m1/a",
 		TfName:       "x",

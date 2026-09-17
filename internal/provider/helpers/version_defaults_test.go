@@ -29,33 +29,27 @@ func TestGetVersionDefault(t *testing.T) {
 		"25.4": "warnings",
 	}
 	tests := []struct {
-		name    string
-		version string
-		want    string
+		name     string
+		version  string
+		defaults map[string]string
+		want     string
 	}{
-		{"empty version", "", ""},
-		{"below all thresholds", "24.1", ""},
-		{"exact lower threshold", "24.4", "informational"},
-		{"between thresholds", "24.11", "informational"},
-		{"exact upper threshold", "25.4", "warnings"},
-		{"above all thresholds", "25.11", "warnings"},
+		{"empty version", "", defaults, ""},
+		{"below all thresholds", "24.1", defaults, ""},
+		{"exact lower threshold", "24.4", defaults, "informational"},
+		{"between thresholds", "24.11", defaults, "informational"},
+		{"exact upper threshold", "25.4", defaults, "warnings"},
+		{"above all thresholds", "25.11", defaults, "warnings"},
+		{"nil map", "24.4", nil, ""},
+		{"empty map", "24.4", map[string]string{}, ""},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := helpers.GetVersionDefault(tt.version, defaults)
+			got := helpers.GetVersionDefault(tt.version, tt.defaults)
 			if got != tt.want {
 				t.Errorf("GetVersionDefault(%q) = %q, want %q", tt.version, got, tt.want)
 			}
 		})
-	}
-}
-
-func TestGetVersionDefaultEmpty(t *testing.T) {
-	if got := helpers.GetVersionDefault("24.4", nil); got != "" {
-		t.Errorf("expected empty string for nil map, got %q", got)
-	}
-	if got := helpers.GetVersionDefault("24.4", map[string]string{}); got != "" {
-		t.Errorf("expected empty string for empty map, got %q", got)
 	}
 }
 
@@ -71,10 +65,12 @@ func TestParseInt64(t *testing.T) {
 		{"", 0},
 	}
 	for _, tt := range tests {
-		got := helpers.ParseInt64(tt.input)
-		if got != tt.want {
-			t.Errorf("ParseInt64(%q) = %d, want %d", tt.input, got, tt.want)
-		}
+		t.Run(tt.input, func(t *testing.T) {
+			got := helpers.ParseInt64(tt.input)
+			if got != tt.want {
+				t.Errorf("ParseInt64(%q) = %d, want %d", tt.input, got, tt.want)
+			}
+		})
 	}
 }
 
@@ -92,9 +88,11 @@ func TestParseBool(t *testing.T) {
 		{"yes", false},
 	}
 	for _, tt := range tests {
-		got := helpers.ParseBool(tt.input)
-		if got != tt.want {
-			t.Errorf("ParseBool(%q) = %v, want %v", tt.input, got, tt.want)
-		}
+		t.Run(tt.input, func(t *testing.T) {
+			got := helpers.ParseBool(tt.input)
+			if got != tt.want {
+				t.Errorf("ParseBool(%q) = %v, want %v", tt.input, got, tt.want)
+			}
+		})
 	}
 }

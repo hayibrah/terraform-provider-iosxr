@@ -45,84 +45,40 @@ var bgpASFormatConstraints = []helpers.FieldEnumConstraint{
 	},
 }
 
-func TestValidateVersionEnums_24_4_allowsAsdot(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asdot")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("24.4", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for asdot on 24.4, got: %v", diags)
+func TestValidateVersionEnums(t *testing.T) {
+	tests := []struct {
+		name      string
+		version   string
+		asFormat  *string // nil means types.StringNull()
+		wantError bool
+	}{
+		{name: "24.4 allows asdot", version: "24.4", asFormat: strPtr("asdot"), wantError: false},
+		{name: "24.4 allows asplain", version: "24.4", asFormat: strPtr("asplain"), wantError: false},
+		{name: "24.4 rejects asdot+ (not in 24.4 set)", version: "24.4", asFormat: strPtr("asdot+"), wantError: true},
+		{name: "25.4 allows asdot", version: "25.4", asFormat: strPtr("asdot"), wantError: false},
+		{name: "25.4 allows asdot+", version: "25.4", asFormat: strPtr("asdot+"), wantError: false},
+		{name: "25.4 rejects asplain (removed in 25.4)", version: "25.4", asFormat: strPtr("asplain"), wantError: true},
+		{name: "null field skipped", version: "25.4", asFormat: nil, wantError: false},
+		{name: "empty version skipped", version: "", asFormat: strPtr("asplain"), wantError: false},
+		// 24.3 is below both 24.4 and 25.4 thresholds — no restriction applies.
+		{name: "version below all thresholds skipped", version: "24.3", asFormat: strPtr("asplain"), wantError: false},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			asFormat := types.StringNull()
+			if tc.asFormat != nil {
+				asFormat = types.StringValue(*tc.asFormat)
+			}
+			plan := bgpASFormatModel{AsFormat: asFormat}
+			var diags diag.Diagnostics
+			helpers.ValidateVersionEnums(tc.version, plan, bgpASFormatConstraints, &diags)
+			if diags.HasError() != tc.wantError {
+				t.Errorf("ValidateVersionEnums(%q, AsFormat=%v): HasError() = %v, want %v (diags: %v)",
+					tc.version, tc.asFormat, diags.HasError(), tc.wantError, diags)
+			}
+		})
 	}
 }
 
-func TestValidateVersionEnums_24_4_allowsAsplain(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asplain")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("24.4", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for asplain on 24.4, got: %v", diags)
-	}
-}
-
-func TestValidateVersionEnums_24_4_rejectsAsdotPlus(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asdot+")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("24.4", plan, bgpASFormatConstraints, &diags)
-	if !diags.HasError() {
-		t.Error("expected error for asdot+ on 24.4 (not in 24.4 set), got none")
-	}
-}
-
-func TestValidateVersionEnums_25_4_allowsAsdot(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asdot")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("25.4", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for asdot on 25.4, got: %v", diags)
-	}
-}
-
-func TestValidateVersionEnums_25_4_allowsAsdotPlus(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asdot+")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("25.4", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for asdot+ on 25.4, got: %v", diags)
-	}
-}
-
-func TestValidateVersionEnums_25_4_rejectsAsplain(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asplain")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("25.4", plan, bgpASFormatConstraints, &diags)
-	if !diags.HasError() {
-		t.Error("expected error for asplain on 25.4 (removed in 25.4), got none")
-	}
-}
-
-func TestValidateVersionEnums_nullFieldSkipped(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringNull()}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("25.4", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for null field, got: %v", diags)
-	}
-}
-
-func TestValidateVersionEnums_emptyVersionSkipped(t *testing.T) {
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asplain")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error when version is empty, got: %v", diags)
-	}
-}
-
-func TestValidateVersionEnums_versionBelowAllThresholdsSkipped(t *testing.T) {
-	// Version 24.3 is below both 24.4 and 25.4 thresholds — no restriction applies.
-	plan := bgpASFormatModel{AsFormat: types.StringValue("asplain")}
-	var diags diag.Diagnostics
-	helpers.ValidateVersionEnums("24.3", plan, bgpASFormatConstraints, &diags)
-	if diags.HasError() {
-		t.Errorf("expected no error for version below all thresholds, got: %v", diags)
-	}
-}
+func strPtr(s string) *string { return &s }
