@@ -142,7 +142,8 @@ type YamlConfigAttribute struct {
 	XPath             string                     `yaml:"xpath"`
 	Type              string                     `yaml:"type"`
 	ReadRaw           bool                       `yaml:"read_raw"`
-	TypeYangBool      string                     `yaml:"type_yang_bool"`
+	TypeYangBool        string            `yaml:"type_yang_bool"`
+	VersionTypeYangBool map[string]string // internal — computed by mergeAttributes; no yaml tag
 	Id                bool                       `yaml:"id"`
 	Reference         bool                       `yaml:"reference"`
 	Mandatory         bool                       `yaml:"mandatory"`
@@ -173,7 +174,8 @@ type YamlConfigAttribute struct {
 	VersionMinimumTestValues map[string]string          // computed during merge: version → minimum test value (nil if same across all versions)
 	AddedInVersion    string                     // Which version introduced this attribute (e.g., "25.4", "26.2") — dot-separated major.minor, matches gen/definitions/ subdirectory names
 	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
-	Legacy            bool                       `yaml:"legacy"` // If true, this attribute is removed/dropped in this version
+	Legacy            bool                       `yaml:"legacy"`           // If true, this attribute is removed/dropped in this version
+	YangTypeChange    bool                       `yaml:"yang_type_change"` // If true, treat as a new attribute addition despite matching yang_name (incompatible type change)
 	VersionRanges        map[string]RangeConstraint        // Version-specific ranges for Int64 fields (nil if same across all versions)
 	VersionEnums         map[string][]string               // Version-specific enum sets for String fields (nil if same across all versions)
 	VersionStringLengths map[string]StringLengthConstraint // Version-specific string length constraints (nil if same across all versions)
@@ -326,6 +328,23 @@ func KeyPathExpr(attr YamlConfigAttribute, versionVar string) string {
 	}
 	return fmt.Sprintf("helpers.SelectYangPath(%s, map[string]string{%s}, %q)",
 		versionVar, strings.Join(entries, ", "), defaultPath)
+}
+
+// TypeYangBoolExpr returns a Go expression that evaluates to the correct TypeYangBool
+// string ("empty", "presence", or "boolean") for a given providerVersion at runtime.
+// When VersionTypeYangBool is nil, returns a quoted constant (the static TypeYangBool value).
+// When populated, returns a helpers.GetPathVersion(...) call with sorted version keys,
+// matching the deterministic-ordering pattern used by JsonPathExpr/KeyPathExpr.
+func TypeYangBoolExpr(attr YamlConfigAttribute, versionVar string) string {
+	if len(attr.VersionTypeYangBool) == 0 {
+		return fmt.Sprintf("%q", attr.TypeYangBool)
+	}
+	var entries []string
+	for _, v := range sortedVersionKeys(attr.VersionTypeYangBool) {
+		entries = append(entries, fmt.Sprintf("%q: %q", v, attr.VersionTypeYangBool[v]))
+	}
+	return fmt.Sprintf("helpers.GetPathVersion(%s, %q, map[string]string{%s})",
+		versionVar, attr.TypeYangBool, strings.Join(entries, ", "))
 }
 
 // Templating helper function to convert string to camel case
@@ -1153,6 +1172,7 @@ var functions = template.FuncMap{
 	"toJsonPath":                     ToJsonPath,
 	"jsonPathExpr":                   JsonPathExpr,
 	"keyPathExpr":                    KeyPathExpr,
+	"typeYangBoolExpr":               TypeYangBoolExpr,
 	"camelCase":                      CamelCase,
 	"snakeCase":                      SnakeCase,
 	"versionSuffix":                  VersionSuffix,
@@ -1591,6 +1611,20 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 	for _, newAttr := range override {
 		found := false
 		for i := range result {
+			// yang_type_change guard: missing tf_name is a misconfiguration
+			if result[i].YangName == newAttr.YangName && newAttr.YangTypeChange && newAttr.TfName == "" {
+				log.Fatalf("attribute %q: yang_type_change: true requires a non-empty tf_name", newAttr.YangName)
+			}
+			// yang_type_change guard: non-unique tf_name would silently merge instead of appending — misconfiguration
+			if result[i].YangName == newAttr.YangName && newAttr.YangTypeChange && newAttr.TfName != "" && result[i].TfName == newAttr.TfName {
+				log.Fatalf("attribute %q: yang_type_change: true requires a unique tf_name (conflicts with existing %q)", newAttr.YangName, result[i].TfName)
+			}
+			// yang_type_change bypass: same YANG path but incompatible type → treat as new addition, not a merge
+			if result[i].YangName == newAttr.YangName &&
+				newAttr.YangTypeChange && newAttr.TfName != "" &&
+				result[i].TfName != newAttr.TfName && !newAttr.Legacy {
+				continue
+			}
 			// Match by yang_name, tf_name, or replaces_yang_name (for YANG path renames)
 			if result[i].YangName == newAttr.YangName ||
 				(result[i].TfName != "" && newAttr.TfName != "" && result[i].TfName == newAttr.TfName) ||
@@ -1642,7 +1676,15 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if newAttr.ReadRaw {
 					result[i].ReadRaw = newAttr.ReadRaw
 				}
-				if newAttr.TypeYangBool != "" {
+				if newAttr.TypeYangBool != "" && newAttr.TypeYangBool != result[i].TypeYangBool {
+					// Bool encoding changed in this version — version-gate it, keep base as default
+					if result[i].VersionTypeYangBool == nil {
+						result[i].VersionTypeYangBool = make(map[string]string)
+					}
+					result[i].VersionTypeYangBool[overrideVersion] = newAttr.TypeYangBool
+					// Do NOT overwrite result[i].TypeYangBool — base encoding remains the default
+				} else if newAttr.TypeYangBool != "" {
+					// Same value — no version map needed
 					result[i].TypeYangBool = newAttr.TypeYangBool
 				}
 				if newAttr.Id {

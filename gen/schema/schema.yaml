@@ -51,6 +51,7 @@ attribute:
   test_tags: list(str(), required=False)  # List of test tags, tests are only executed if an environment variable for each of these tags is configured
   minimum_test_value: any(str(), int(), bool(), list(), required=False) # Value used for "minimum" resource acceptance test
   legacy: bool(required=False)  # Set to true if the attribute is removed/dropped in this version (used in override definitions)
+  yang_type_change: bool(required=False)  # Set to true for an incompatible type change at the same YANG path — treat as new attr addition (requires a distinct tf_name)
   attributes: list(include('attribute'), required=False)  # List of attributes in case of a list
 
 test_prerequisite:
