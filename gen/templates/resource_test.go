@@ -466,12 +466,12 @@ func TestAccIosxr{{camelCase .Name}}(t *testing.T) {
 	{{- if not .SkipMinimumTest}}
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
-			Config: {{if .TestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccIosxr{{camelCase .Name}}Config_minimum(),
+			Config: {{if .VersionTestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig()+{{else if .TestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccIosxr{{camelCase .Name}}Config_minimum(),
 		})
 	}
 	{{- end}}
 	steps = append(steps, resource.TestStep{
-		Config: {{if .TestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccIosxr{{camelCase .Name}}Config_all(),
+		Config: {{if .VersionTestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig()+{{else if .TestPrerequisites}}testAccIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccIosxr{{camelCase .Name}}Config_all(),
 		Check: resource.ComposeTestCheckFunc(checks...),
 	})
 	steps = append(steps, resource.TestStep{
@@ -509,7 +509,61 @@ func iosxr{{camelCase .Name}}ImportStateIdFunc(resourceName string) resource.Imp
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
 
-{{- if .TestPrerequisites}}
+{{- if or .TestPrerequisites .VersionTestPrerequisites}}
+{{- if .VersionTestPrerequisites}}
+{{- range $ver, $prereqs := .VersionTestPrerequisites}}
+const testAccIosxr{{camelCase $.Name}}PrerequisitesConfig_{{versionSuffix $ver}} = `
+{{- range $index, $item := $prereqs}}
+resource "iosxr_gnmi" "PreReq{{$index}}" {
+	path = "{{.Path}}"
+	{{- if .NoDelete}}
+	delete = false
+	{{- end}}
+	attributes = {
+		{{- range .Attributes}}
+		"{{.Name}}" = {{if .Reference}}{{.Reference}}{{else}}"{{.Value}}"{{end}}
+		{{- end}}
+	}
+	{{- if .Lists}}
+	lists = [
+		{{- range .Lists}}
+		{
+			name = "{{.Name}}"
+			{{ if .Key}}key = "{{.Key}}"{{end}}
+			{{- if len .Items}}
+			items = [
+				{{- range .Items}}
+				{
+					{{- range .Attributes}}
+					"{{.Name}}" = {{if .Reference}}{{.Reference}}{{else}}"{{.Value}}"{{end}}
+					{{- end}}
+				},
+				{{- end}}
+			]
+			{{- end}}
+			{{- if len .Values}}
+			values = [{{range .Values}}"{{.}}", {{end}}]
+			{{- end}}
+		},
+		{{- end}}
+	]
+	{{- end}}
+	{{- if .Dependencies}}
+	depends_on = [{{range .Dependencies}}iosxr_gnmi.PreReq{{.}}, {{end}}]
+	{{- end}}
+}
+{{ end}}
+`
+{{- end}}
+
+func testAccIosxr{{camelCase .Name}}PrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			{{formatVersionTestPrerequisites .VersionTestPrerequisites "testAccIosxr" (camelCase .Name)}}
+		},
+	)
+}
+{{- else}}
 const testAccIosxr{{camelCase .Name}}PrerequisitesConfig = `
 {{- range $index, $item := .TestPrerequisites}}
 resource "iosxr_gnmi" "PreReq{{$index}}" {
@@ -552,6 +606,7 @@ resource "iosxr_gnmi" "PreReq{{$index}}" {
 }
 {{ end}}
 `
+{{- end}}
 {{- end}}
 
 // End of section. //template:end testPrerequisites
@@ -1111,7 +1166,13 @@ func testAccIosxr{{camelCase .Name}}Config_minimum() string {
 	{{- end}}
 	{{- end}}
 	{{- end}}
-	{{- if .TestPrerequisites}}
+	{{- if .VersionTestPrerequisites}}
+	config += selectVersionDependsOn(map[string]string{
+		{{- range $ver, $prereqs := .VersionTestPrerequisites}}
+		"{{$ver}}": `[{{range $i, $_ := $prereqs}}iosxr_gnmi.PreReq{{$i}}, {{end}}]`,
+		{{- end}}
+	}) + "\n"
+	{{- else if .TestPrerequisites}}
 	config += `	depends_on = [{{range $index, $item := .TestPrerequisites}}iosxr_gnmi.PreReq{{$index}}, {{end}}]` + "\n"
 	{{- end}}
 	config += `}` + "\n"
@@ -1674,7 +1735,13 @@ func testAccIosxr{{camelCase .Name}}Config_all() string {
 	{{- end}}
 	{{- end}}
 	{{- end}}
-	{{- if .TestPrerequisites}}
+	{{- if .VersionTestPrerequisites}}
+	config += selectVersionDependsOn(map[string]string{
+		{{- range $ver, $prereqs := .VersionTestPrerequisites}}
+		"{{$ver}}": `[{{range $i, $_ := $prereqs}}iosxr_gnmi.PreReq{{$i}}, {{end}}]`,
+		{{- end}}
+	}) + "\n"
+	{{- else if .TestPrerequisites}}
 	config += `	depends_on = [{{range $index, $item := .TestPrerequisites}}iosxr_gnmi.PreReq{{$index}}, {{end}}]` + "\n"
 	{{- end}}
 	config += `}` + "\n"

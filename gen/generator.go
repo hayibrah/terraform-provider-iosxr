@@ -109,84 +109,93 @@ var templates = []t{
 }
 
 type YamlConfig struct {
-	Name                    string                `yaml:"name"`
-	Version                 string                `yaml:"version"` // drives type-name suffix; empty for unified files
-	SupportedVersions       []string              // All versions this resource supports (for unified files)
-	BaseVersion             string                // The minimum/base version (first version in SupportedVersions)
-	IntroducedInVersion     string                // Set when this resource only exists from a higher version (not the global min)
-	HasVersionDifferences   bool                  // True if there are version-specific changes (added/removed fields or definitions)
-	Path                    string                `yaml:"path"`
-	AugmentPath             string                `yaml:"augment_path"`
-	NoDelete                bool                  `yaml:"no_delete"`
-	NoDeleteAttributes      bool                  `yaml:"no_delete_attributes"`
-	DefaultDeleteAttributes bool                  `yaml:"default_delete_attributes"`
-	TestTags                []string              `yaml:"test_tags"`
-	VersionTestTags         map[string][]string   // computed during merge: version → tag set (nil if same across all versions)
-	SkipMinimumTest         bool                  `yaml:"skip_minimum_test"`
-	NoAugmentConfig         bool                  `yaml:"no_augment_config"`
-	DsDescription           string                `yaml:"ds_description"`
-	ResDescription          string                `yaml:"res_description"`
-	DocCategory             string                `yaml:"doc_category"`
-	Legacy                  bool                  `yaml:"legacy"` // If true, entire resource is removed/not available in this version
-	RemovedInVersion        string                // Version where entire resource was removed (set when Legacy is true)
-	PathVersion             map[string]string     `yaml:"path_version"` // version threshold → gNMI module path override
-	HasPathVersion          bool                  // True when PathVersion is non-empty (computed after merge)
-	Attributes              []YamlConfigAttribute `yaml:"attributes"`
-	TestPrerequisites       []YamlTest            `yaml:"test_prerequisites"`
+	Name                     string                `yaml:"name"`
+	Version                  string                `yaml:"version"` // drives type-name suffix; empty for unified files
+	SupportedVersions        []string              // All versions this resource supports (for unified files)
+	BaseVersion              string                // The minimum/base version (first version in SupportedVersions)
+	IntroducedInVersion      string                // Set when this resource only exists from a higher version (not the global min)
+	HasVersionDifferences    bool                  // True if there are version-specific changes (added/removed fields or definitions)
+	Path                     string                `yaml:"path"`
+	AugmentPath              string                `yaml:"augment_path"`
+	NoDelete                 bool                  `yaml:"no_delete"`
+	NoDeleteAttributes       bool                  `yaml:"no_delete_attributes"`
+	DefaultDeleteAttributes  bool                  `yaml:"default_delete_attributes"`
+	TestTags                 []string              `yaml:"test_tags"`
+	VersionTestTags          map[string][]string   // computed during merge: version → tag set (nil if same across all versions)
+	SkipMinimumTest          bool                  `yaml:"skip_minimum_test"`
+	NoAugmentConfig          bool                  `yaml:"no_augment_config"`
+	DsDescription            string                `yaml:"ds_description"`
+	ResDescription           string                `yaml:"res_description"`
+	DocCategory              string                `yaml:"doc_category"`
+	Legacy                   bool                  `yaml:"legacy"` // If true, entire resource is removed/not available in this version
+	RemovedInVersion         string                // Version where entire resource was removed (set when Legacy is true)
+	PathVersion              map[string]string     `yaml:"path_version"` // version threshold → gNMI module path override
+	HasPathVersion           bool                  // True when PathVersion is non-empty (computed after merge)
+	Attributes               []YamlConfigAttribute `yaml:"attributes"`
+	TestPrerequisites        []YamlTest            `yaml:"test_prerequisites"`
+	VersionTestPrerequisites map[string][]YamlTest // computed during merge: version → prerequisite set (nil if same across all versions)
 }
 
 type YamlConfigAttribute struct {
-	YangName          string                     `yaml:"yang_name"`
-	YangScope         string                     `yaml:"yang_scope"`
-	TfName            string                     `yaml:"tf_name"`
-	XPath             string                     `yaml:"xpath"`
-	Type              string                     `yaml:"type"`
-	ReadRaw           bool                       `yaml:"read_raw"`
-	TypeYangBool        string            `yaml:"type_yang_bool"`
-	VersionTypeYangBool map[string]string // internal — computed by mergeAttributes; no yaml tag
-	Id                bool                       `yaml:"id"`
-	Reference         bool                       `yaml:"reference"`
-	Mandatory         bool                       `yaml:"mandatory"`
-	Optional          bool                       `yaml:"optional"`
-	WriteOnly         bool                       `yaml:"write_only"`
-	Sensitive         bool                       `yaml:"sensitive"`
-	ExcludeTest       bool                       `yaml:"exclude_test"`
-	ExcludeExample    bool                       `yaml:"exclude_example"`
-	IncludeExample    bool                       `yaml:"include_example"`
-	Description       string                     `yaml:"description"`
-	Example                  string                     `yaml:"example"`
-	VersionExamples          map[string]string          // computed during merge: version → example value (nil if same across all versions)
-	EnumValues        []string                   `yaml:"enum_values"`
-	MinInt            int64                      `yaml:"min_int"`
-	MaxInt            int64                      `yaml:"max_int"`
-	StringPatterns    []string                   `yaml:"string_patterns"`
-	StringMinLength   int64                      `yaml:"string_min_length"`
-	StringMaxLength   int64                      `yaml:"string_max_length"`
-	DefaultValue      string                     `yaml:"default_value"`
-	RequiresReplace   bool                       `yaml:"requires_replace"`
-	NoAugmentConfig   bool                       `yaml:"no_augment_config"`
-	DeleteParent      bool                       `yaml:"delete_parent"`
-	DeleteGrandparent bool                       `yaml:"delete_grandparent"`
-	NoDelete          bool                       `yaml:"no_delete"`
-	TestTags          []string                   `yaml:"test_tags"`
-	VersionTestTags   map[string][]string                              // computed during merge: version → tag set (nil if same across all versions)
-	MinimumTestValue         string                     `yaml:"minimum_test_value"`
-	VersionMinimumTestValues map[string]string          // computed during merge: version → minimum test value (nil if same across all versions)
-	AddedInVersion    string                     // Which version introduced this attribute (e.g., "25.4", "26.2") — dot-separated major.minor, matches gen/definitions/ subdirectory names
-	RemovedInVersion  string                     // Which version removed this attribute (populated when legacy: true)
-	Legacy            bool                       `yaml:"legacy"`           // If true, this attribute is removed/dropped in this version
-	YangTypeChange    bool                       `yaml:"yang_type_change"` // If true, treat as a new attribute addition despite matching yang_name (incompatible type change)
-	VersionRanges        map[string]RangeConstraint        // Version-specific ranges for Int64 fields (nil if same across all versions)
-	VersionEnums         map[string][]string               // Version-specific enum sets for String fields (nil if same across all versions)
-	VersionStringLengths map[string]StringLengthConstraint // Version-specific string length constraints (nil if same across all versions)
-	VersionPatterns      map[string][]string               // Version-specific string patterns (nil if same across all versions)
-	VersionDefaults      map[string]string                 // Version-specific default values (nil if same across all versions)
-	ReplacesYangName string            `yaml:"replaces_yang_name"`
-	ReplacesXPath    string            // preserved from base XPath before it is cleared
-	VersionYangNames  map[string]string // computed during merge: version → yang_name
-	MovedInVersion    string            // earliest version with new path (derived in fixAttributeBaseVersion)
-	VersionDeleteMode map[string]string // Version-specific delete mode: "" (direct), "parent", "grandparent". Nil if mode is uniform across all versions.
-	Attributes        []YamlConfigAttribute      `yaml:"attributes"`
+	YangName                 string                            `yaml:"yang_name"`
+	YangScope                string                            `yaml:"yang_scope"`
+	TfName                   string                            `yaml:"tf_name"`
+	XPath                    string                            `yaml:"xpath"`
+	VersionXPath             map[string]string                 // Version-specific xpath overrides (nil if same across all versions); independent of VersionYangNames
+	Type                     string                            `yaml:"type"`
+	ReadRaw                  bool                              `yaml:"read_raw"`
+	TypeYangBool             string                            `yaml:"type_yang_bool"`
+	VersionTypeYangBool      map[string]string                 // internal — computed by mergeAttributes; no yaml tag
+	lastTypeYangBool         string                            // unexported: last delta's own explicit value, decoupled from the deliberately-frozen TypeYangBool default above. Never read by templates.
+	Id                       bool                              `yaml:"id"`
+	Reference                bool                              `yaml:"reference"`
+	Mandatory                bool                              `yaml:"mandatory"`
+	Optional                 bool                              `yaml:"optional"`
+	WriteOnly                bool                              `yaml:"write_only"`
+	Sensitive                bool                              `yaml:"sensitive"`
+	ExcludeTest              bool                              `yaml:"exclude_test"`
+	ExcludeExample           bool                              `yaml:"exclude_example"`
+	IncludeExample           bool                              `yaml:"include_example"`
+	Description              string                            `yaml:"description"`
+	Example                  string                            `yaml:"example"`
+	VersionExamples          map[string]string                 // computed during merge: version → example value (nil if same across all versions)
+	EnumValues               []string                          `yaml:"enum_values"`
+	lastEnumValues           []string                          // unexported: last delta's own explicit list, decoupled from the ever-growing union above. Never read by templates.
+	MinInt                   int64                             `yaml:"min_int"`
+	MaxInt                   int64                             `yaml:"max_int"`
+	lastRangeMin             int64                             // unexported: last delta's own explicit value, decoupled from the frozen schema scalar above. Never read by templates, never part of any "_base" map — pure merge-time bookkeeping.
+	lastRangeMax             int64                             // same, for the max side.
+	StringPatterns           []string                          `yaml:"string_patterns"`
+	StringMinLength          int64                             `yaml:"string_min_length"`
+	StringMaxLength          int64                             `yaml:"string_max_length"`
+	lastStringMinLength      int64                             // unexported: last delta's own explicit value, decoupled from the widened schema scalar above. Never read by templates, never part of any "_base" map — pure merge-time bookkeeping.
+	lastStringMaxLength      int64                             // same, for the max side.
+	DefaultValue             string                            `yaml:"default_value"`
+	lastDefaultValue         string                            // unexported: last delta's own explicit value, decoupled from the cleared "" sentinel above. Never read by templates.
+	RequiresReplace          bool                              `yaml:"requires_replace"`
+	NoAugmentConfig          bool                              `yaml:"no_augment_config"`
+	DeleteParent             bool                              `yaml:"delete_parent"`
+	DeleteGrandparent        bool                              `yaml:"delete_grandparent"`
+	NoDelete                 bool                              `yaml:"no_delete"`
+	TestTags                 []string                          `yaml:"test_tags"`
+	VersionTestTags          map[string][]string               // computed during merge: version → tag set (nil if same across all versions)
+	MinimumTestValue         string                            `yaml:"minimum_test_value"`
+	VersionMinimumTestValues map[string]string                 // computed during merge: version → minimum test value (nil if same across all versions)
+	AddedInVersion           string                            // Which version introduced this attribute (e.g., "25.4", "26.2") — dot-separated major.minor, matches gen/definitions/ subdirectory names
+	RemovedInVersion         string                            // Which version removed this attribute (populated when legacy: true)
+	Legacy                   bool                              `yaml:"legacy"`           // If true, this attribute is removed/dropped in this version
+	YangTypeChange           bool                              `yaml:"yang_type_change"` // If true, treat as a new attribute addition despite matching yang_name (incompatible type change)
+	VersionRanges            map[string]RangeConstraint        // Version-specific ranges for Int64 fields (nil if same across all versions)
+	VersionEnums             map[string][]string               // Version-specific enum sets for String fields (nil if same across all versions)
+	VersionStringLengths     map[string]StringLengthConstraint // Version-specific string length constraints (nil if same across all versions)
+	VersionPatterns          map[string][]string               // Version-specific string patterns (nil if same across all versions)
+	VersionDefaults          map[string]string                 // Version-specific default values (nil if same across all versions)
+	ReplacesYangName         string                            `yaml:"replaces_yang_name"`
+	ReplacesXPath            string                            // preserved from base XPath before it is cleared
+	VersionYangNames         map[string]string                 // computed during merge: version → yang_name
+	MovedInVersion           string                            // earliest version with new path (derived in fixAttributeBaseVersion)
+	VersionDeleteMode        map[string]string                 // Version-specific delete mode: "" (direct), "parent", "grandparent". Nil if mode is uniform across all versions.
+	Attributes               []YamlConfigAttribute             `yaml:"attributes"`
 }
 
 // RangeConstraint represents min/max constraints for a version
@@ -306,19 +315,35 @@ func getVersionValue(target string, byVersion map[string]string, defaultValue st
 // with a map[string]string of version thresholds so any number of moves is handled.
 func JsonPathExpr(attr YamlConfigAttribute, versionVar string) string {
 	path := ToJsonPath(attr.YangName, attr.XPath)
-	if len(attr.VersionYangNames) == 0 {
+	if len(attr.VersionYangNames) == 0 && len(attr.VersionXPath) == 0 {
 		return fmt.Sprintf("%q", path)
 	}
 	defaultPath := ToJsonPath(attr.ReplacesYangName, attr.ReplacesXPath)
+	// allVersions is the union of both independent per-version axes: a rename
+	// (VersionYangNames) and an xpath-only change (VersionXPath) -- mirrors
+	// GetDeletePathExpr's identical composition of VersionYangNames + VersionDeleteMode.
+	allVersions := make(map[string]string)
+	for v := range attr.VersionYangNames {
+		allVersions[v] = ""
+	}
+	for v := range attr.VersionXPath {
+		allVersions[v] = ""
+	}
 	var entries []string
-	for _, v := range sortedVersionKeys(attr.VersionYangNames) {
-		yangName := attr.VersionYangNames[v]
-		var xpath string
-		if yangName == attr.ReplacesYangName {
-			xpath = attr.ReplacesXPath
-		} else if yangName == attr.YangName {
-			xpath = attr.XPath
+	for _, v := range sortedVersionKeys(allVersions) {
+		yangName := attr.YangName
+		xpath := attr.XPath
+		if name, ok := attr.VersionYangNames[v]; ok {
+			yangName = name
+			if yangName == attr.ReplacesYangName {
+				xpath = attr.ReplacesXPath
+			} else if yangName != attr.YangName {
+				xpath = ""
+			}
 		}
+		// The rename-driven xpath (or lack thereof) is the default; an explicit
+		// VersionXPath entry for this version, or the nearest lower threshold, refines it.
+		xpath = getVersionValue(v, attr.VersionXPath, xpath)
 		entries = append(entries, fmt.Sprintf("%q: %q", v, ToJsonPath(yangName, xpath)))
 	}
 	return fmt.Sprintf("helpers.SelectYangPath(%s, map[string]string{%s}, %q)",
@@ -330,19 +355,30 @@ func JsonPathExpr(attr YamlConfigAttribute, versionVar string) string {
 // Uses XPath form (slash-separated, gNMI predicate-compatible) not dot-notation.
 func KeyPathExpr(attr YamlConfigAttribute, versionVar string) string {
 	path := GetXPath(attr.YangName, attr.XPath)
-	if len(attr.VersionYangNames) == 0 {
+	if len(attr.VersionYangNames) == 0 && len(attr.VersionXPath) == 0 {
 		return fmt.Sprintf("%q", path)
 	}
 	defaultPath := GetXPath(attr.ReplacesYangName, attr.ReplacesXPath)
+	allVersions := make(map[string]string)
+	for v := range attr.VersionYangNames {
+		allVersions[v] = ""
+	}
+	for v := range attr.VersionXPath {
+		allVersions[v] = ""
+	}
 	var entries []string
-	for _, v := range sortedVersionKeys(attr.VersionYangNames) {
-		yangName := attr.VersionYangNames[v]
-		var xpath string
-		if yangName == attr.ReplacesYangName {
-			xpath = attr.ReplacesXPath
-		} else if yangName == attr.YangName {
-			xpath = attr.XPath
+	for _, v := range sortedVersionKeys(allVersions) {
+		yangName := attr.YangName
+		xpath := attr.XPath
+		if name, ok := attr.VersionYangNames[v]; ok {
+			yangName = name
+			if yangName == attr.ReplacesYangName {
+				xpath = attr.ReplacesXPath
+			} else if yangName != attr.YangName {
+				xpath = ""
+			}
 		}
+		xpath = getVersionValue(v, attr.VersionXPath, xpath)
 		entries = append(entries, fmt.Sprintf("%q: %q", v, GetXPath(yangName, xpath)))
 	}
 	return fmt.Sprintf("helpers.SelectYangPath(%s, map[string]string{%s}, %q)",
@@ -935,6 +971,24 @@ func FormatVersionTestTags(m map[string][]string) string {
 	return strings.Join(parts, ", ") + ","
 }
 
+// FormatVersionTestPrerequisites returns sorted "ver": constName, entries for use in the
+// selectVersionPrerequisitesConfig map literal in generated test code.
+// prefix is the constant name prefix ("testAccIosxr" for resource tests,
+// "testAccDataSourceIosxr" for data source tests); camelName is the CamelCase resource
+// name (e.g. "Logging"), used to build constant names.
+func FormatVersionTestPrerequisites(m map[string][]YamlTest, prefix, camelName string) string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	parts := make([]string, len(keys))
+	for i, k := range keys {
+		parts[i] = fmt.Sprintf("%q: %s%sPrerequisitesConfig_%s", k, prefix, camelName, VersionSuffix(k))
+	}
+	return strings.Join(parts, ",\n\t\t\t") + ","
+}
+
 // HasVersionTestTags returns true if any attribute (recursively) has version-specific test tags.
 func HasVersionTestTags(attributes []YamlConfigAttribute) bool {
 	for _, attr := range attributes {
@@ -1184,34 +1238,34 @@ func SortedAttrs(attrs []YamlConfigAttribute) []YamlConfigAttribute {
 
 // Map of templating functions
 var functions = template.FuncMap{
-	"toGoName":                       ToGoName,
-	"toJsonPath":                     ToJsonPath,
-	"jsonPathExpr":                   JsonPathExpr,
-	"keyPathExpr":                    KeyPathExpr,
-	"typeYangBoolExpr":               TypeYangBoolExpr,
-	"camelCase":                      CamelCase,
-	"snakeCase":                      SnakeCase,
-	"versionSuffix":                  VersionSuffix,
-	"hasId":                          HasId,
-	"hasReference":                   HasReference,
-	"importParts":                    ImportParts,
-	"importAttributes":               ImportAttributes,
-	"add":                            Add,
-	"getExamplePath":                 GetExamplePath,
-	"isLast":                         IsLast,
-	"sprintf":                        fmt.Sprintf,
-	"removeLastPathElement":          RemoveLastPathElement,
-	"getXPath":                       GetXPath,
-	"getDeletePath":                  GetDeletePath,
-	"getDeletePathExpr":              GetDeletePathExpr,
-	"reverseAttributes":              ReverseAttributes,
-	"collectVersionConstraints":      CollectVersionConstraints,
-	"hasVersionConstraints":          HasVersionConstraints,
-	"formatVersionRanges":            FormatVersionRanges,
-	"formatVersionDisplay":           FormatVersionDisplay,
-	"hasVersionRanges":               HasVersionRanges,
-	"collectVersionRangeConstraints": CollectVersionRangeConstraints,
-	"getWidestRange":                 GetWidestRange,
+	"toGoName":                              ToGoName,
+	"toJsonPath":                            ToJsonPath,
+	"jsonPathExpr":                          JsonPathExpr,
+	"keyPathExpr":                           KeyPathExpr,
+	"typeYangBoolExpr":                      TypeYangBoolExpr,
+	"camelCase":                             CamelCase,
+	"snakeCase":                             SnakeCase,
+	"versionSuffix":                         VersionSuffix,
+	"hasId":                                 HasId,
+	"hasReference":                          HasReference,
+	"importParts":                           ImportParts,
+	"importAttributes":                      ImportAttributes,
+	"add":                                   Add,
+	"getExamplePath":                        GetExamplePath,
+	"isLast":                                IsLast,
+	"sprintf":                               fmt.Sprintf,
+	"removeLastPathElement":                 RemoveLastPathElement,
+	"getXPath":                              GetXPath,
+	"getDeletePath":                         GetDeletePath,
+	"getDeletePathExpr":                     GetDeletePathExpr,
+	"reverseAttributes":                     ReverseAttributes,
+	"collectVersionConstraints":             CollectVersionConstraints,
+	"hasVersionConstraints":                 HasVersionConstraints,
+	"formatVersionRanges":                   FormatVersionRanges,
+	"formatVersionDisplay":                  FormatVersionDisplay,
+	"hasVersionRanges":                      HasVersionRanges,
+	"collectVersionRangeConstraints":        CollectVersionRangeConstraints,
+	"getWidestRange":                        GetWidestRange,
 	"formatVersionEnums":                    FormatVersionEnums,
 	"hasVersionEnums":                       HasVersionEnums,
 	"formatVersionExamples":                 FormatVersionExamples,
@@ -1219,6 +1273,7 @@ var functions = template.FuncMap{
 	"hasVersionExamples":                    HasVersionExamples,
 	"hasVersionMinimumTestValues":           HasVersionMinimumTestValues,
 	"formatVersionTestTags":                 FormatVersionTestTags,
+	"formatVersionTestPrerequisites":        FormatVersionTestPrerequisites,
 	"hasVersionTestTags":                    HasVersionTestTags,
 	"collectVersionEnumConstraints":         CollectVersionEnumConstraints,
 	"formatVersionStringLengths":            FormatVersionStringLengths,
@@ -1684,6 +1739,20 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					result[i].TfName = newAttr.TfName
 				}
 				if newAttr.XPath != "" {
+					// originalXPath (captured above, before this override) is always the true
+					// immediately-preceding version's own value -- .XPath is a plain
+					// last-version-wins scalar with no freezing/unioning, so unlike
+					// min_int/enum_values/string_min_length it needs no separate tracking
+					// field to avoid staleness. Record a version-gated entry whenever this
+					// delta's xpath actually differs from that value, independent of whether
+					// replaces_yang_name is also set on the same delta.
+					if originalXPath != "" && newAttr.XPath != originalXPath {
+						if result[i].VersionXPath == nil {
+							result[i].VersionXPath = make(map[string]string)
+							result[i].VersionXPath["_base"] = originalXPath
+						}
+						result[i].VersionXPath[overrideVersion] = newAttr.XPath
+					}
 					result[i].XPath = newAttr.XPath
 				}
 				if newAttr.Type != "" {
@@ -1692,8 +1761,17 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if newAttr.ReadRaw {
 					result[i].ReadRaw = newAttr.ReadRaw
 				}
-				if newAttr.TypeYangBool != "" && newAttr.TypeYangBool != result[i].TypeYangBool {
-					// Bool encoding changed in this version — version-gate it, keep base as default
+				typeYangBoolBaseline := result[i].lastTypeYangBool
+				if typeYangBoolBaseline == "" {
+					// Never tracked yet -- fall back to the real base value (still accurate
+					// at this point, before this fold's own assignment below runs).
+					typeYangBoolBaseline = result[i].TypeYangBool
+				}
+				if newAttr.TypeYangBool != "" && newAttr.TypeYangBool != typeYangBoolBaseline {
+					// Bool encoding changed in this version — version-gate it, keep base as default.
+					// Compared against typeYangBoolBaseline (the true immediately-preceding
+					// delta's own value), not result[i].TypeYangBool, which is deliberately
+					// frozen below.
 					if result[i].VersionTypeYangBool == nil {
 						result[i].VersionTypeYangBool = make(map[string]string)
 					}
@@ -1702,6 +1780,12 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				} else if newAttr.TypeYangBool != "" {
 					// Same value — no version map needed
 					result[i].TypeYangBool = newAttr.TypeYangBool
+				}
+				if newAttr.TypeYangBool != "" {
+					// Track this delta's own explicit value unconditionally, decoupled from the
+					// deliberately-frozen default above, so the next fold's comparison is always
+					// against the true immediately-preceding version.
+					result[i].lastTypeYangBool = newAttr.TypeYangBool
 				}
 				if newAttr.Id {
 					result[i].Id = newAttr.Id
@@ -1743,8 +1827,18 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					}
 					result[i].Example = newAttr.Example
 				}
-				if len(newAttr.EnumValues) > 0 && !stringSlicesEqual(result[i].EnumValues, newAttr.EnumValues) {
+				lastEnumBaseline := result[i].lastEnumValues
+				if lastEnumBaseline == nil {
+					// Never tracked yet -- result[i].EnumValues is still the untouched base
+					// list at this point (the union only ever grows inside this same block,
+					// which also always updates lastEnumValues, so nil here means "no delta
+					// has ever set EnumValues before this one").
+					lastEnumBaseline = result[i].EnumValues
+				}
+				if len(newAttr.EnumValues) > 0 && !stringSlicesEqual(lastEnumBaseline, newAttr.EnumValues) {
 					// Enum sets differ between versions — record per-version sets and use the union at schema level.
+					// Compared against lastEnumBaseline (the true immediately-preceding delta's
+					// own list), not result[i].EnumValues, which is a monotonically-growing union.
 					if result[i].VersionEnums == nil {
 						result[i].VersionEnums = make(map[string][]string)
 						if len(result[i].EnumValues) > 0 {
@@ -1756,25 +1850,40 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				} else if len(newAttr.EnumValues) > 0 {
 					result[i].EnumValues = newAttr.EnumValues
 				}
+				if len(newAttr.EnumValues) > 0 {
+					// Track this delta's own explicit list unconditionally, decoupled from the
+					// ever-growing union above, so the next fold's comparison is always against
+					// the true immediately-preceding version.
+					result[i].lastEnumValues = newAttr.EnumValues
+				}
 
 				// Handle range merging - detect when ranges differ across versions
 				if newAttr.MinInt != 0 || newAttr.MaxInt != 0 {
-					// Check if ranges differ
-					baseMin := result[i].MinInt
-					baseMax := result[i].MaxInt
+					// hasBase reflects whether a real prior range exists at all (unaffected by
+					// the fix — read from the true schema scalar, which is only frozen, never
+					// zeroed, once a range exists). The divergence comparison itself is against
+					// lastRangeMin/Max — the true immediately-preceding delta's own value — not
+					// result[i].MinInt/MaxInt, which freezes at the original base value once
+					// VersionRanges exists.
+					hasBase := result[i].MinInt != 0 || result[i].MaxInt != 0
+					baseMin := result[i].lastRangeMin
+					if baseMin == 0 {
+						// Never tracked yet -- result[i].MinInt is still accurate at this point.
+						baseMin = result[i].MinInt
+					}
+					baseMax := result[i].lastRangeMax
+					if baseMax == 0 {
+						baseMax = result[i].MaxInt
+					}
 					overrideMin := newAttr.MinInt
 					overrideMax := newAttr.MaxInt
 
-					if (baseMin != 0 || baseMax != 0) && (overrideMin != baseMin || overrideMax != baseMax) {
+					if hasBase && (overrideMin != baseMin || overrideMax != baseMax) {
 						// Ranges differ - initialize version ranges map if needed
 						if result[i].VersionRanges == nil {
 							result[i].VersionRanges = make(map[string]RangeConstraint)
 							// Add base version range if we have one
-							if baseMin != 0 || baseMax != 0 {
-								// Find base version - it's the first non-override version
-								// We'll set this later when we know all versions
-								result[i].VersionRanges["_base"] = RangeConstraint{Min: baseMin, Max: baseMax}
-							}
+							result[i].VersionRanges["_base"] = RangeConstraint{Min: result[i].MinInt, Max: result[i].MaxInt}
 						}
 						// Add override version range
 						result[i].VersionRanges[overrideVersion] = RangeConstraint{Min: overrideMin, Max: overrideMax}
@@ -1786,6 +1895,15 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 						if newAttr.MaxInt != 0 {
 							result[i].MaxInt = newAttr.MaxInt
 						}
+					}
+					// Track this delta's own explicit range unconditionally, decoupled from the
+					// frozen schema scalar above, so the next fold's comparison is always against
+					// the true immediately-preceding version.
+					if newAttr.MinInt != 0 {
+						result[i].lastRangeMin = newAttr.MinInt
+					}
+					if newAttr.MaxInt != 0 {
+						result[i].lastRangeMax = newAttr.MaxInt
 					}
 				}
 				if len(newAttr.StringPatterns) > 0 && !stringSlicesEqual(result[i].StringPatterns, newAttr.StringPatterns) {
@@ -1800,8 +1918,20 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				} else if len(newAttr.StringPatterns) > 0 {
 					result[i].StringPatterns = newAttr.StringPatterns
 				}
-				baseMin := result[i].StringMinLength
-				baseMax := result[i].StringMaxLength
+				// Compared against lastStringMinLength/MaxLength (the true immediately-preceding
+				// delta's own value), not result[i].StringMinLength/MaxLength, which only ever
+				// widens and so can go stale relative to the true previous version.
+				baseMin := result[i].lastStringMinLength
+				if baseMin == 0 {
+					// Never tracked yet -- result[i].StringMinLength is still the untouched
+					// base value at this point (widening only ever runs inside this same
+					// block, which also always updates lastStringMinLength).
+					baseMin = result[i].StringMinLength
+				}
+				baseMax := result[i].lastStringMaxLength
+				if baseMax == 0 {
+					baseMax = result[i].StringMaxLength
+				}
 				newMin := newAttr.StringMinLength
 				newMax := newAttr.StringMaxLength
 				minChanged := newMin != 0 && newMin != baseMin
@@ -1809,12 +1939,15 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 				if minChanged || maxChanged {
 					if result[i].VersionStringLengths == nil {
 						result[i].VersionStringLengths = make(map[string]StringLengthConstraint)
-						if baseMin != 0 || baseMax != 0 {
-							result[i].VersionStringLengths["_base"] = StringLengthConstraint{Min: baseMin, Max: baseMax}
+						// Seed "_base" from the real schema scalar (the true base value), not
+						// from lastStringMinLength/MaxLength, which is still 0 on first divergence.
+						if result[i].StringMinLength != 0 || result[i].StringMaxLength != 0 {
+							result[i].VersionStringLengths["_base"] = StringLengthConstraint{Min: result[i].StringMinLength, Max: result[i].StringMaxLength}
 						}
 					}
 					result[i].VersionStringLengths[overrideVersion] = StringLengthConstraint{Min: newMin, Max: newMax}
-					// Widen to most permissive span across all versions
+					// Widen to most permissive span across all versions. Unchanged from before --
+					// this part was already correct.
 					if newMin != 0 && (result[i].StringMinLength == 0 || newMin < result[i].StringMinLength) {
 						result[i].StringMinLength = newMin
 					}
@@ -1829,7 +1962,26 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 						result[i].StringMaxLength = newMax
 					}
 				}
-				if newAttr.DefaultValue != "" && newAttr.DefaultValue != result[i].DefaultValue {
+				// Track this delta's own explicit value unconditionally, decoupled from the
+				// widened scalar above, so the next fold's comparison is always against the
+				// true immediately-preceding version.
+				if newMin != 0 {
+					result[i].lastStringMinLength = newMin
+				}
+				if newMax != 0 {
+					result[i].lastStringMaxLength = newMax
+				}
+				defaultValueBaseline := result[i].lastDefaultValue
+				if defaultValueBaseline == "" {
+					// Never tracked yet -- result[i].DefaultValue is still the untouched base
+					// value at this point (it's only cleared to the "" sentinel inside this
+					// same block, which also always updates lastDefaultValue).
+					defaultValueBaseline = result[i].DefaultValue
+				}
+				if newAttr.DefaultValue != "" && newAttr.DefaultValue != defaultValueBaseline {
+					// Compared against defaultValueBaseline (the true immediately-preceding
+					// delta's own value), not result[i].DefaultValue, which is cleared to ""
+					// as a "use VersionDefaults at runtime" sentinel once it diverges.
 					if err := validateDefaultValue(newAttr.DefaultValue, result[i].Type); err != nil {
 						log.Fatalf("attribute %q (type %s): default_value %q in %s: %v",
 							result[i].TfName, result[i].Type, newAttr.DefaultValue, overrideVersion, err)
@@ -1842,8 +1994,16 @@ func mergeAttributes(base, override []YamlConfigAttribute, overrideVersion strin
 					}
 					result[i].VersionDefaults[overrideVersion] = newAttr.DefaultValue
 					result[i].DefaultValue = ""
-				} else if newAttr.DefaultValue != "" {
+				} else if newAttr.DefaultValue != "" && result[i].VersionDefaults == nil {
+					// Only update the scalar if we have not yet diverged into the map.
+					// Once the "" sentinel is set, leave it as-is.
 					result[i].DefaultValue = newAttr.DefaultValue
+				}
+				if newAttr.DefaultValue != "" {
+					// Track this delta's own explicit value unconditionally, decoupled from the
+					// cleared sentinel above, so the next fold's comparison is always against
+					// the true immediately-preceding version.
+					result[i].lastDefaultValue = newAttr.DefaultValue
 				}
 				if newAttr.RequiresReplace {
 					result[i].RequiresReplace = newAttr.RequiresReplace
@@ -1968,6 +2128,25 @@ func markAttributesWithVersion(attr *YamlConfigAttribute, version string) {
 
 // fixBaseVersionInRanges replaces "_base" placeholder with actual base version
 func fixBaseVersionInRanges(config *YamlConfig, baseVersion string) {
+	if config.VersionTestTags != nil {
+		if base, exists := config.VersionTestTags["_base"]; exists {
+			delete(config.VersionTestTags, "_base")
+			config.VersionTestTags[baseVersion] = base
+		}
+	}
+	// test_prerequisites never cascades (see mergeConfigs), so there's no "_base"
+	// sentinel to resolve here. But if the base version declared its own
+	// test_prerequisites and this resource has other versions too, the base's entry
+	// must exist in the map under its own real key -- otherwise the single-constant
+	// template branch would apply the base's prerequisites to every version's test.
+	if len(config.SupportedVersions) > 1 && len(config.TestPrerequisites) > 0 {
+		if config.VersionTestPrerequisites == nil {
+			config.VersionTestPrerequisites = make(map[string][]YamlTest)
+		}
+		if _, exists := config.VersionTestPrerequisites[baseVersion]; !exists {
+			config.VersionTestPrerequisites[baseVersion] = config.TestPrerequisites
+		}
+	}
 	for i := range config.Attributes {
 		fixAttributeBaseVersion(&config.Attributes[i], baseVersion)
 	}
@@ -1997,6 +2176,12 @@ func fixAttributeBaseVersion(attr *YamlConfigAttribute, baseVersion string) {
 		if base, exists := attr.VersionPatterns["_base"]; exists {
 			delete(attr.VersionPatterns, "_base")
 			attr.VersionPatterns[baseVersion] = base
+		}
+	}
+	if attr.VersionXPath != nil {
+		if base, exists := attr.VersionXPath["_base"]; exists {
+			delete(attr.VersionXPath, "_base")
+			attr.VersionXPath[baseVersion] = base
 		}
 	}
 	if attr.VersionDefaults != nil {
@@ -2084,7 +2269,11 @@ func mergeConfigs(base, override YamlConfig) YamlConfig {
 		if !stringSlicesEqual(merged.TestTags, override.TestTags) {
 			if merged.VersionTestTags == nil {
 				merged.VersionTestTags = make(map[string][]string)
-				merged.VersionTestTags[base.Version] = merged.TestTags
+				// "_base" sentinel, not base.Version -- mergeConfigs overwrites
+				// merged.Version on every call, so by fold 2+ it no longer holds the
+				// true original base version. Resolved to the real base version by
+				// fixBaseVersionInRanges after all folds complete.
+				merged.VersionTestTags["_base"] = merged.TestTags
 			}
 			merged.VersionTestTags[override.Version] = override.TestTags
 		}
@@ -2105,8 +2294,17 @@ func mergeConfigs(base, override YamlConfig) YamlConfig {
 	if override.DocCategory != "" {
 		merged.DocCategory = override.DocCategory
 	}
+	// test_prerequisites deliberately does not cascade -- unlike every other VersionXxx
+	// field, a later version's silence means "not needed for this version," not
+	// "unchanged," since these are real, version-specific YANG paths. Record only this
+	// version's own declared value, under its own real version key. No "_base" sentinel
+	// (nothing to resolve later) and no merged.TestPrerequisites carry-forward (there is
+	// no fallback that would ever read it).
 	if len(override.TestPrerequisites) > 0 {
-		merged.TestPrerequisites = override.TestPrerequisites
+		if merged.VersionTestPrerequisites == nil {
+			merged.VersionTestPrerequisites = make(map[string][]YamlTest)
+		}
+		merged.VersionTestPrerequisites[override.Version] = override.TestPrerequisites
 	}
 
 	// Accumulate path_version entries from the override.

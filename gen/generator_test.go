@@ -191,7 +191,7 @@ func TestMergeConfigs_PathVersionThreeVersionChain(t *testing.T) {
 		}
 	})
 
-	t.Run("mixed: multi-key delta then single-key delta", func(t *testing.T) {
+	t.Run("mixed multi-key delta then single-key delta", func(t *testing.T) {
 		base := YamlConfig{Name: "Feature", Path: "module-a:/feature"}
 		after25 := mergeConfigs(base, YamlConfig{
 			Version: "25.4",
@@ -219,6 +219,93 @@ func TestMergeConfigs_PathVersionThreeVersionChain(t *testing.T) {
 			}
 		}
 	})
+}
+
+// TestMergeConfigs_TestTagsThreeVersionChain covers F24 (BUG-3): resource-level test_tags
+// must seed its version map with the "_base" sentinel, not the mutable base.Version field,
+// or a divergence first occurring at fold 2+ mislabels the base entry under the wrong version.
+func TestMergeConfigs_TestTagsThreeVersionChain(t *testing.T) {
+	base := YamlConfig{Name: "Feature", TestTags: []string{"A"}}
+	after25 := mergeConfigs(base, YamlConfig{Version: "25.4", TestTags: []string{"A"}})
+	after26 := mergeConfigs(after25, YamlConfig{Version: "26.2", TestTags: []string{"B"}})
+
+	if !stringSlicesEqual(after26.VersionTestTags["_base"], []string{"A"}) {
+		t.Errorf("VersionTestTags[_base]: got %v, want %v (must not be mislabeled under an intermediate version string)",
+			after26.VersionTestTags["_base"], []string{"A"})
+	}
+	if !stringSlicesEqual(after26.VersionTestTags["26.2"], []string{"B"}) {
+		t.Errorf("VersionTestTags[26.2]: got %v, want %v", after26.VersionTestTags["26.2"], []string{"B"})
+	}
+
+	fixBaseVersionInRanges(&after26, "24.4")
+	if !stringSlicesEqual(after26.VersionTestTags["24.4"], []string{"A"}) {
+		t.Errorf("VersionTestTags[24.4] after fixup: got %v, want %v", after26.VersionTestTags["24.4"], []string{"A"})
+	}
+	if _, hasBase := after26.VersionTestTags["_base"]; hasBase {
+		t.Error("VersionTestTags[_base]: still present after fixBaseVersionInRanges, want removed")
+	}
+}
+
+// TestMergeConfigs_TestPrerequisitesNoInheritance covers F25's design: unlike every
+// other VersionXxx field, test_prerequisites must never cascade -- a version that
+// doesn't declare its own gets none, never a neighboring version's. Base declares one
+// prerequisite; 25.4 overrides with a different (two-prerequisite) list; 26.2 declares
+// none at all and must end up with no prerequisites, not 25.4's or 24.4's.
+func TestMergeConfigs_TestPrerequisitesNoInheritance(t *testing.T) {
+	prereq24 := []YamlTest{{Path: "module-a:/prereq"}}
+	prereq25 := []YamlTest{{Path: "module-a:/prereq"}, {Path: "module-b:/prereq"}}
+
+	base := YamlConfig{Name: "Feature", TestPrerequisites: prereq24}
+	after25 := mergeConfigs(base, YamlConfig{Version: "25.4", TestPrerequisites: prereq25})
+	after26 := mergeConfigs(after25, YamlConfig{Version: "26.2"})
+
+	if _, has24 := after26.VersionTestPrerequisites["24.4"]; has24 {
+		t.Error("VersionTestPrerequisites[24.4]: present before fixBaseVersionInRanges, want absent (base-seeding hasn't run yet)")
+	}
+	if len(after26.VersionTestPrerequisites["25.4"]) != 2 {
+		t.Errorf("VersionTestPrerequisites[25.4]: got %d entries, want 2", len(after26.VersionTestPrerequisites["25.4"]))
+	}
+	if _, has26 := after26.VersionTestPrerequisites["26.2"]; has26 {
+		t.Error("VersionTestPrerequisites[26.2]: present, want absent (26.2 never declared its own test_prerequisites, and must not inherit 25.4's)")
+	}
+	if _, hasBase := after26.VersionTestPrerequisites["_base"]; hasBase {
+		t.Error("VersionTestPrerequisites[_base]: present, want absent (test_prerequisites never seeds a \"_base\" sentinel)")
+	}
+
+	// fixBaseVersionInRanges' base-seeding case requires SupportedVersions to know
+	// whether this resource has more than one version -- mergeConfigs itself never
+	// sets that field, only the real generation pipeline's outer loop does.
+	after26.SupportedVersions = []string{"24.4", "25.4", "26.2"}
+	fixBaseVersionInRanges(&after26, "24.4")
+
+	if len(after26.VersionTestPrerequisites["24.4"]) != 1 {
+		t.Errorf("VersionTestPrerequisites[24.4] after fixup: got %d entries, want 1", len(after26.VersionTestPrerequisites["24.4"]))
+	}
+	if _, has26 := after26.VersionTestPrerequisites["26.2"]; has26 {
+		t.Error("VersionTestPrerequisites[26.2]: present after fixBaseVersionInRanges, want absent")
+	}
+	if _, hasBase := after26.VersionTestPrerequisites["_base"]; hasBase {
+		t.Error("VersionTestPrerequisites[_base]: present after fixBaseVersionInRanges, want absent")
+	}
+}
+
+// TestMergeConfigs_TestPrerequisitesSingleVersion_NoVersionMap covers the guard on
+// fixBaseVersionInRanges' base-seeding case: a resource with only one supported version
+// has no neighboring version to isolate from, so it must keep the plain single-constant
+// template path instead of being forced into VersionTestPrerequisites.
+func TestMergeConfigs_TestPrerequisitesSingleVersion_NoVersionMap(t *testing.T) {
+	config := YamlConfig{Name: "Feature", TestPrerequisites: []YamlTest{{Path: "module-a:/prereq"}}}
+	config.SupportedVersions = []string{"24.4"}
+
+	fixBaseVersionInRanges(&config, "24.4")
+
+	if config.VersionTestPrerequisites != nil {
+		t.Errorf("VersionTestPrerequisites: got %v, want nil (single-version resource must not be forced into the versioned path)",
+			config.VersionTestPrerequisites)
+	}
+	if len(config.TestPrerequisites) != 1 {
+		t.Errorf("TestPrerequisites (plain scalar): got %d entries, want 1 (unchanged)", len(config.TestPrerequisites))
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -555,6 +642,314 @@ func TestMergeAttributes_ReplacesYangName_ThreeVersionChain(t *testing.T) {
 }
 
 // ---------------------------------------------------------------------------
+// Stale-comparison-baseline regression tests (F18/F19/F21/F22).
+//
+// Each reproduces a 3-version chain where the 3rd version reverts to a value
+// already seen in an earlier version. Before the fix, each of these silently
+// dropped the 3rd version's VersionXxx entry because the merge compared the
+// incoming delta against something other than the true immediately-preceding
+// version's own value.
+// ---------------------------------------------------------------------------
+
+func TestMergeAttributes_RangeBaselineFreeze_ThreeVersionChain(t *testing.T) {
+	// base(24.4)={1,10} -> 25.4={1,20} -> 26.2 reverts to {1,10}.
+	base := []YamlConfigAttribute{
+		{YangName: "mtu", TfName: "mtu", Type: "Int64", MinInt: 1, MaxInt: 10},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "mtu", MinInt: 1, MaxInt: 20},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "mtu", MinInt: 1, MaxInt: 10},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if got := attr.VersionRanges["26.2"]; got != (RangeConstraint{Min: 1, Max: 10}) {
+		t.Errorf("VersionRanges[26.2]: got %+v, want %+v", got, RangeConstraint{Min: 1, Max: 10})
+	}
+	if got := attr.VersionRanges["25.4"]; got != (RangeConstraint{Min: 1, Max: 20}) {
+		t.Errorf("VersionRanges[25.4]: got %+v, want %+v", got, RangeConstraint{Min: 1, Max: 20})
+	}
+	// The schema-facing scalar stays frozen at the original base value -- deliberately
+	// unaffected by this fix (see F18's Fix section: no template reads it once
+	// VersionRanges is set).
+	if attr.MinInt != 1 || attr.MaxInt != 10 {
+		t.Errorf("MinInt/MaxInt: got {%d,%d}, want {1,10} (frozen, unaffected by the fix)", attr.MinInt, attr.MaxInt)
+	}
+
+	fixAttributeBaseVersion(&attr, "24.4")
+	if got := attr.VersionRanges["24.4"]; got != (RangeConstraint{Min: 1, Max: 10}) {
+		t.Errorf("VersionRanges[24.4] after fixup: got %+v, want %+v", got, RangeConstraint{Min: 1, Max: 10})
+	}
+	if _, hasBase := attr.VersionRanges["_base"]; hasBase {
+		t.Error("VersionRanges[_base]: still present after fixAttributeBaseVersion, want removed")
+	}
+}
+
+func TestMergeAttributes_EnumUnionStaleness_ThreeVersionChain(t *testing.T) {
+	// base=[a,b,c] -> 25.4 removes c ([a,b]) -> 26.2 re-adds c ([a,b,c]).
+	base := []YamlConfigAttribute{
+		{YangName: "mode", TfName: "mode", Type: "String", EnumValues: []string{"a", "b", "c"}},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "mode", EnumValues: []string{"a", "b"}},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "mode", EnumValues: []string{"a", "b", "c"}},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if !stringSlicesEqual(attr.VersionEnums["26.2"], []string{"a", "b", "c"}) {
+		t.Errorf("VersionEnums[26.2]: got %v, want %v", attr.VersionEnums["26.2"], []string{"a", "b", "c"})
+	}
+	if !stringSlicesEqual(attr.VersionEnums["25.4"], []string{"a", "b"}) {
+		t.Errorf("VersionEnums[25.4]: got %v, want %v", attr.VersionEnums["25.4"], []string{"a", "b"})
+	}
+	// The schema-facing union is unaffected by this fix -- still the correct superset.
+	if !stringSlicesEqual(attr.EnumValues, []string{"a", "b", "c"}) {
+		t.Errorf("EnumValues (union): got %v, want %v", attr.EnumValues, []string{"a", "b", "c"})
+	}
+
+	fixAttributeBaseVersion(&attr, "24.4")
+	if !stringSlicesEqual(attr.VersionEnums["24.4"], []string{"a", "b", "c"}) {
+		t.Errorf("VersionEnums[24.4] after fixup: got %v, want %v", attr.VersionEnums["24.4"], []string{"a", "b", "c"})
+	}
+	if _, hasBase := attr.VersionEnums["_base"]; hasBase {
+		t.Error("VersionEnums[_base]: still present after fixAttributeBaseVersion, want removed")
+	}
+}
+
+func TestMergeAttributes_StringLengthEnvelopeStaleness_ThreeVersionChain(t *testing.T) {
+	// base min=5 -> 25.4 sets min=10 (less permissive) -> 26.2 reverts to min=5.
+	base := []YamlConfigAttribute{
+		{YangName: "name", TfName: "name", Type: "String", StringMinLength: 5},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "name", StringMinLength: 10},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "name", StringMinLength: 5},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if got := attr.VersionStringLengths["26.2"]; got != (StringLengthConstraint{Min: 5}) {
+		t.Errorf("VersionStringLengths[26.2]: got %+v, want %+v", got, StringLengthConstraint{Min: 5})
+	}
+	if got := attr.VersionStringLengths["25.4"]; got != (StringLengthConstraint{Min: 10}) {
+		t.Errorf("VersionStringLengths[25.4]: got %+v, want %+v", got, StringLengthConstraint{Min: 10})
+	}
+	// The widened schema-facing scalar is unaffected by this fix -- still load-bearing
+	// (gen/templates/resource.go reads it even when VersionStringLengths is set).
+	if attr.StringMinLength != 5 {
+		t.Errorf("StringMinLength (widened): got %d, want 5", attr.StringMinLength)
+	}
+
+	fixAttributeBaseVersion(&attr, "24.4")
+	if got := attr.VersionStringLengths["24.4"]; got != (StringLengthConstraint{Min: 5}) {
+		t.Errorf("VersionStringLengths[24.4] after fixup: got %+v, want %+v", got, StringLengthConstraint{Min: 5})
+	}
+	if _, hasBase := attr.VersionStringLengths["_base"]; hasBase {
+		t.Error("VersionStringLengths[_base]: still present after fixAttributeBaseVersion, want removed")
+	}
+}
+
+func TestMergeAttributes_TypeYangBoolFreezeReuse_ThreeVersionChain(t *testing.T) {
+	// base 24.4="presence" -> 25.4="empty" -> 26.2 reverts to "presence".
+	base := []YamlConfigAttribute{
+		{YangName: "monitor-receiver", TfName: "monitor_receiver", Type: "Bool", TypeYangBool: "presence"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "monitor-receiver", TypeYangBool: "empty"},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "monitor-receiver", TypeYangBool: "presence"},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if got := attr.VersionTypeYangBool["26.2"]; got != "presence" {
+		t.Errorf("VersionTypeYangBool[26.2]: got %q, want %q", got, "presence")
+	}
+	if got := attr.VersionTypeYangBool["25.4"]; got != "empty" {
+		t.Errorf("VersionTypeYangBool[25.4]: got %q, want %q", got, "empty")
+	}
+	// The deliberately-frozen default is unaffected by this fix -- still the base value,
+	// since it's read as GetPathVersion's defaultValue argument by TypeYangBoolExpr.
+	if attr.TypeYangBool != "presence" {
+		t.Errorf("TypeYangBool (frozen default): got %q, want %q", attr.TypeYangBool, "presence")
+	}
+	// VersionTypeYangBool never seeds a "_base" key -- confirmed by construction, unlike
+	// every other VersionXxx map in this file.
+	if _, hasBase := attr.VersionTypeYangBool["_base"]; hasBase {
+		t.Error("VersionTypeYangBool[_base]: present, want absent (TypeYangBoolExpr never needs one)")
+	}
+}
+
+func TestMergeAttributes_XPathVersionBleed_ThreeVersionChain(t *testing.T) {
+	// A bare xpath-only change with no rename: base xpath="a/b" -> 25.4 xpath="c/d" ->
+	// 26.2 reverts to "a/b".
+	base := []YamlConfigAttribute{
+		{YangName: "leaf", TfName: "leaf", Type: "String", XPath: "a/b"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "leaf", XPath: "c/d"},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "leaf", XPath: "a/b"},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if got := attr.VersionXPath["26.2"]; got != "a/b" {
+		t.Errorf("VersionXPath[26.2]: got %q, want %q", got, "a/b")
+	}
+	if got := attr.VersionXPath["25.4"]; got != "c/d" {
+		t.Errorf("VersionXPath[25.4]: got %q, want %q", got, "c/d")
+	}
+	// .XPath keeps its existing last-version-wins role, used as JsonPathExpr/KeyPathExpr's
+	// per-version default -- unaffected by this fix.
+	if attr.XPath != "a/b" {
+		t.Errorf("XPath (last-version-wins): got %q, want %q", attr.XPath, "a/b")
+	}
+
+	fixAttributeBaseVersion(&attr, "24.4")
+	if got := attr.VersionXPath["24.4"]; got != "a/b" {
+		t.Errorf("VersionXPath[24.4] after fixup: got %q, want %q", got, "a/b")
+	}
+	if _, hasBase := attr.VersionXPath["_base"]; hasBase {
+		t.Error("VersionXPath[_base]: still present after fixAttributeBaseVersion, want removed")
+	}
+}
+
+// TestMergeAttributes_DefaultValueOverTriggering_ThreeVersionChain covers F23: once
+// DefaultValue diverges and is cleared to "" as the "use VersionDefaults" sentinel, a later
+// delta that restates the *same* value as the immediately-preceding version must not be
+// treated as a fresh divergence (comparing against the tracking field, not the cleared "").
+func TestMergeAttributes_DefaultValueOverTriggering_ThreeVersionChain(t *testing.T) {
+	// base "true" -> 25.4 "false" -> 26.2 "false" (unchanged from 25.4).
+	base := []YamlConfigAttribute{
+		{YangName: "flag", TfName: "flag", Type: "Bool", DefaultValue: "true"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "flag", DefaultValue: "false"},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "flag", DefaultValue: "false"},
+	}, "26.2")
+
+	if len(after26) != 1 {
+		t.Fatalf("len: got %d, want 1", len(after26))
+	}
+	attr := after26[0]
+	if _, has26 := attr.VersionDefaults["26.2"]; has26 {
+		t.Errorf("VersionDefaults[26.2]: got an entry (%q), want none (26.2 restates 25.4's unchanged value, not a fresh divergence)",
+			attr.VersionDefaults["26.2"])
+	}
+	if got := attr.VersionDefaults["25.4"]; got != "false" {
+		t.Errorf("VersionDefaults[25.4]: got %q, want %q", got, "false")
+	}
+	// The "" sentinel must still be in effect -- the guarded else-if branch must not have
+	// re-populated it once VersionDefaults exists.
+	if attr.DefaultValue != "" {
+		t.Errorf("DefaultValue (sentinel): got %q, want \"\" (must stay cleared once VersionDefaults exists)", attr.DefaultValue)
+	}
+}
+
+// ---------------------------------------------------------------------------
+// Regression tests: a delta that merely restates the base's own value on the very
+// FIRST fold must not be treated as a divergence. Found via real generated output
+// (go generate against actual definitions) after the fixes above shipped: each new
+// unexported "last*" tracking field starts at its zero value, so comparing a restated
+// base value against that zero value looked like a change even when nothing differs.
+// ---------------------------------------------------------------------------
+
+func TestMergeAttributes_RangeBaselineFreeze_RestatedBaseValueIsNotADivergence(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "mtu", TfName: "mtu", Type: "Int64", MinInt: 1, MaxInt: 10},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "mtu", MinInt: 1, MaxInt: 10}, // restates the base's own value
+	}, "25.4")
+
+	attr := after25[0]
+	if attr.VersionRanges != nil {
+		t.Errorf("VersionRanges: got %v, want nil (25.4 restated the base's own {1,10}, not a real change)", attr.VersionRanges)
+	}
+}
+
+func TestMergeAttributes_EnumUnionStaleness_RestatedBaseValueIsNotADivergence(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "mode", TfName: "mode", Type: "String", EnumValues: []string{"a", "b", "c"}},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "mode", EnumValues: []string{"a", "b", "c"}}, // restates the base's own list
+	}, "25.4")
+
+	attr := after25[0]
+	if attr.VersionEnums != nil {
+		t.Errorf("VersionEnums: got %v, want nil (25.4 restated the base's own list, not a real change)", attr.VersionEnums)
+	}
+}
+
+func TestMergeAttributes_StringLengthEnvelopeStaleness_RestatedBaseValueIsNotADivergence(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "name", TfName: "name", Type: "String", StringMinLength: 5},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "name", StringMinLength: 5}, // restates the base's own value
+	}, "25.4")
+
+	attr := after25[0]
+	if attr.VersionStringLengths != nil {
+		t.Errorf("VersionStringLengths: got %v, want nil (25.4 restated the base's own min=5, not a real change)", attr.VersionStringLengths)
+	}
+}
+
+func TestMergeAttributes_TypeYangBoolFreezeReuse_RestatedBaseValueIsNotADivergence(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "monitor-receiver", TfName: "monitor_receiver", Type: "Bool", TypeYangBool: "presence"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "monitor-receiver", TypeYangBool: "presence"}, // restates the base's own value
+	}, "25.4")
+
+	attr := after25[0]
+	if attr.VersionTypeYangBool != nil {
+		t.Errorf("VersionTypeYangBool: got %v, want nil (25.4 restated the base's own \"presence\", not a real change)", attr.VersionTypeYangBool)
+	}
+}
+
+func TestMergeAttributes_DefaultValueOverTriggering_RestatedBaseValueIsNotADivergence(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "flag", TfName: "flag", Type: "Bool", DefaultValue: "true"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "flag", DefaultValue: "true"}, // restates the base's own value
+	}, "25.4")
+
+	attr := after25[0]
+	if attr.VersionDefaults != nil {
+		t.Errorf("VersionDefaults: got %v, want nil (25.4 restated the base's own \"true\", not a real change)", attr.VersionDefaults)
+	}
+	if attr.DefaultValue != "true" {
+		t.Errorf("DefaultValue: got %q, want %q (unchanged, no divergence occurred)", attr.DefaultValue, "true")
+	}
+}
+
+// ---------------------------------------------------------------------------
 // VersionDeleteMode merge scenarios
 // ---------------------------------------------------------------------------
 
@@ -809,5 +1204,54 @@ func TestGetDeletePathExpr_RenameWithoutModeChange_ThreeVersionChain(t *testing.
 	want := `helpers.SelectYangPath(version, map[string]string{"24.4": "o1/m1", "25.4": "o2", "26.2": "o3"}, "o1/m1")`
 	if got != want {
 		t.Errorf("GetDeletePathExpr =\n  %s\nwant\n  %s", got, want)
+	}
+}
+
+// TestJsonPathExpr_XPathOnlyChange_NoRename covers F20: a bare xpath-only change with
+// no rename at all, across a 3-version chain that reverts back to the original value.
+func TestJsonPathExpr_XPathOnlyChange_NoRename(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "leaf", TfName: "leaf", Type: "String", XPath: "a/b"},
+	}
+	merged := mergeAttributes(base, []YamlConfigAttribute{{YangName: "leaf", XPath: "c/d"}}, "25.4")
+	merged = mergeAttributes(merged, []YamlConfigAttribute{{YangName: "leaf", XPath: "a/b"}}, "26.2")
+	attr := merged[0]
+	fixAttributeBaseVersion(&attr, "24.4")
+
+	got := JsonPathExpr(attr, "version")
+	want := `helpers.SelectYangPath(version, map[string]string{"24.4": "a.b", "25.4": "c.d", "26.2": "a.b"}, "")`
+	if got != want {
+		t.Errorf("JsonPathExpr =\n  %s\nwant\n  %s", got, want)
+	}
+
+	gotKey := KeyPathExpr(attr, "version")
+	wantKey := `helpers.SelectYangPath(version, map[string]string{"24.4": "a/b", "25.4": "c/d", "26.2": "a/b"}, "")`
+	if gotKey != wantKey {
+		t.Errorf("KeyPathExpr =\n  %s\nwant\n  %s", gotKey, wantKey)
+	}
+}
+
+// TestJsonPathExpr_XPathVersionBleed_CombinedWithRename_ThreeVersionChain covers F20's
+// composition with a rename: 25.4 renames the attribute AND independently changes its
+// xpath in the same delta; 26.2 renames again without restating the xpath, which must
+// still carry forward via VersionXPath's own cascade (getVersionValue), independent of
+// the rename-driven default.
+func TestJsonPathExpr_XPathVersionBleed_CombinedWithRename_ThreeVersionChain(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "o1/m1", TfName: "x", XPath: "orig/path"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "o2", TfName: "x", ReplacesYangName: "o1/m1", XPath: "x/y"},
+	}, "25.4")
+	after26 := mergeAttributes(after25, []YamlConfigAttribute{
+		{YangName: "o3", TfName: "x", ReplacesYangName: "o2"},
+	}, "26.2")
+	attr := after26[0]
+	fixAttributeBaseVersion(&attr, "24.4")
+
+	got := JsonPathExpr(attr, "version")
+	want := `helpers.SelectYangPath(version, map[string]string{"24.4": "orig.path", "25.4": "x.y", "26.2": "x.y"}, "orig.path")`
+	if got != want {
+		t.Errorf("JsonPathExpr =\n  %s\nwant\n  %s", got, want)
 	}
 }

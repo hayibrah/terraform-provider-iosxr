@@ -466,7 +466,7 @@ func TestAccDataSourceIosxr{{camelCase .Name}}(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: {{if .TestPrerequisites}}testAccDataSourceIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccDataSourceIosxr{{camelCase .Name}}Config(),
+				Config: {{if .VersionTestPrerequisites}}testAccDataSourceIosxr{{camelCase .Name}}PrerequisitesConfig()+{{else if .TestPrerequisites}}testAccDataSourceIosxr{{camelCase .Name}}PrerequisitesConfig+{{end}}testAccDataSourceIosxr{{camelCase .Name}}Config(),
 				Check: resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -478,7 +478,61 @@ func TestAccDataSourceIosxr{{camelCase .Name}}(t *testing.T) {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
 
-{{- if .TestPrerequisites}}
+{{- if or .TestPrerequisites .VersionTestPrerequisites}}
+{{- if .VersionTestPrerequisites}}
+{{- range $ver, $prereqs := .VersionTestPrerequisites}}
+const testAccDataSourceIosxr{{camelCase $.Name}}PrerequisitesConfig_{{versionSuffix $ver}} = `
+{{- range $index, $item := $prereqs}}
+resource "iosxr_gnmi" "PreReq{{$index}}" {
+	path = "{{.Path}}"
+	{{- if .NoDelete}}
+	delete = false
+	{{- end}}
+	attributes = {
+		{{- range .Attributes}}
+		"{{.Name}}" = {{if .Reference}}{{.Reference}}{{else}}"{{.Value}}"{{end}}
+		{{- end}}
+	}
+	{{- if .Lists}}
+	lists = [
+		{{- range .Lists}}
+		{
+			name = "{{.Name}}"
+			{{ if .Key}}key = "{{.Key}}"{{end}}
+			{{- if len .Items}}
+			items = [
+				{{- range .Items}}
+				{
+					{{- range .Attributes}}
+					"{{.Name}}" = {{if .Reference}}{{.Reference}}{{else}}"{{.Value}}"{{end}}
+					{{- end}}
+				},
+				{{- end}}
+			]
+			{{- end}}
+			{{- if len .Values}}
+			values = [{{range .Values}}"{{.}}", {{end}}]
+			{{- end}}
+		},
+		{{- end}}
+	]
+	{{- end}}
+	{{- if .Dependencies}}
+	depends_on = [{{range .Dependencies}}iosxr_gnmi.PreReq{{.}}, {{end}}]
+	{{- end}}
+}
+{{ end}}
+`
+{{- end}}
+
+func testAccDataSourceIosxr{{camelCase .Name}}PrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			{{formatVersionTestPrerequisites .VersionTestPrerequisites "testAccDataSourceIosxr" (camelCase .Name)}}
+		},
+	)
+}
+{{- else}}
 const testAccDataSourceIosxr{{camelCase .Name}}PrerequisitesConfig = `
 {{- range $index, $item := .TestPrerequisites}}
 resource "iosxr_gnmi" "PreReq{{$index}}" {
@@ -519,6 +573,7 @@ resource "iosxr_gnmi" "PreReq{{$index}}" {
 }
 {{ end}}
 `
+{{- end}}
 {{- end}}
 
 // End of section. //template:end testPrerequisites
@@ -1078,7 +1133,13 @@ func testAccDataSourceIosxr{{camelCase .Name}}Config() string {
 	{{- end}}
 	{{- end}}
 	{{- end}}
-	{{- if .TestPrerequisites}}
+	{{- if .VersionTestPrerequisites}}
+	config += selectVersionDependsOn(map[string]string{
+		{{- range $ver, $prereqs := .VersionTestPrerequisites}}
+		"{{$ver}}": `[{{range $i, $_ := $prereqs}}iosxr_gnmi.PreReq{{$i}}, {{end}}]`,
+		{{- end}}
+	}) + "\n"
+	{{- else if .TestPrerequisites}}
 	config += `	depends_on = [{{range $index, $item := .TestPrerequisites}}iosxr_gnmi.PreReq{{$index}}, {{end}}]` + "\n"
 	{{- end}}
 	config += `}` + "\n"
