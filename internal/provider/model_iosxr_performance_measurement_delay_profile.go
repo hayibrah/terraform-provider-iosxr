@@ -116,9 +116,13 @@ type PerformanceMeasurementDelayProfile struct {
 	EndpointDefaultAdvertisementAnomalyCheckLowerBound     types.Int64                                  `tfsdk:"endpoint_default_advertisement_anomaly_check_lower_bound"`
 	EndpointDefaultAdvertisementAnomalyLossUpperBound      types.Int64                                  `tfsdk:"endpoint_default_advertisement_anomaly_loss_upper_bound"`
 	Profiles                                               []PerformanceMeasurementDelayProfileProfiles `tfsdk:"profiles"`
-	DelayBinsExplicit                                      types.List                                   `tfsdk:"delay_bins_explicit"`
-	CollectHbh                                             types.Bool                                   `tfsdk:"collect_hbh"`
-	Ntp                                                    types.Bool                                   `tfsdk:"ntp"`
+	EndpointDefaultHistogramDelayBinsExplicit              types.List                                   `tfsdk:"endpoint_default_histogram_delay_bins_explicit"`
+	EndpointDefaultProbeCollectHbh                         types.Bool                                   `tfsdk:"endpoint_default_probe_collect_hbh"`
+	EndpointDefaultProbeMeasurementModeTimestampFormatNtp  types.Bool                                   `tfsdk:"endpoint_default_probe_measurement_mode_timestamp_format_ntp"`
+	InterfacesDefaultProbeTimestampFormatNtp               types.Bool                                   `tfsdk:"interfaces_default_probe_timestamp_format_ntp"`
+	RsvpTeDefaultProbeTimestampFormatNtp                   types.Bool                                   `tfsdk:"rsvp_te_default_probe_timestamp_format_ntp"`
+	SrPolicyDefaultProbeCollectHbh                         types.Bool                                   `tfsdk:"sr_policy_default_probe_collect_hbh"`
+	SrPolicyDefaultProbeTimestampFormatNtp                 types.Bool                                   `tfsdk:"sr_policy_default_probe_timestamp_format_ntp"`
 }
 
 type PerformanceMeasurementDelayProfileData struct {
@@ -200,9 +204,13 @@ type PerformanceMeasurementDelayProfileData struct {
 	EndpointDefaultAdvertisementAnomalyCheckLowerBound     types.Int64                                  `tfsdk:"endpoint_default_advertisement_anomaly_check_lower_bound"`
 	EndpointDefaultAdvertisementAnomalyLossUpperBound      types.Int64                                  `tfsdk:"endpoint_default_advertisement_anomaly_loss_upper_bound"`
 	Profiles                                               []PerformanceMeasurementDelayProfileProfiles `tfsdk:"profiles"`
-	DelayBinsExplicit                                      types.List                                   `tfsdk:"delay_bins_explicit"`
-	CollectHbh                                             types.Bool                                   `tfsdk:"collect_hbh"`
-	Ntp                                                    types.Bool                                   `tfsdk:"ntp"`
+	EndpointDefaultHistogramDelayBinsExplicit              types.List                                   `tfsdk:"endpoint_default_histogram_delay_bins_explicit"`
+	EndpointDefaultProbeCollectHbh                         types.Bool                                   `tfsdk:"endpoint_default_probe_collect_hbh"`
+	EndpointDefaultProbeMeasurementModeTimestampFormatNtp  types.Bool                                   `tfsdk:"endpoint_default_probe_measurement_mode_timestamp_format_ntp"`
+	InterfacesDefaultProbeTimestampFormatNtp               types.Bool                                   `tfsdk:"interfaces_default_probe_timestamp_format_ntp"`
+	RsvpTeDefaultProbeTimestampFormatNtp                   types.Bool                                   `tfsdk:"rsvp_te_default_probe_timestamp_format_ntp"`
+	SrPolicyDefaultProbeCollectHbh                         types.Bool                                   `tfsdk:"sr_policy_default_probe_collect_hbh"`
+	SrPolicyDefaultProbeTimestampFormatNtp                 types.Bool                                   `tfsdk:"sr_policy_default_probe_timestamp_format_ntp"`
 }
 type PerformanceMeasurementDelayProfileProfiles struct {
 	ProfileName                         types.String `tfsdk:"profile_name"`
@@ -238,8 +246,8 @@ type PerformanceMeasurementDelayProfileProfiles struct {
 	AdvertiseAnomalyCheckLowerBound     types.Int64  `tfsdk:"advertise_anomaly_check_lower_bound"`
 	AdvertiseAnomalyLossUpperBound      types.Int64  `tfsdk:"advertise_anomaly_loss_upper_bound"`
 	AdvertiseAnomalyLossLowerBound      types.Int64  `tfsdk:"advertise_anomaly_loss_lower_bound"`
-	CollectHbh                          types.Bool   `tfsdk:"collect_hbh"`
-	Ntp                                 types.Bool   `tfsdk:"ntp"`
+	ProbeCollectHbh                     types.Bool   `tfsdk:"probe_collect_hbh"`
+	ProbeTimestampFormatNtp             types.Bool   `tfsdk:"probe_timestamp_format_ntp"`
 }
 
 // End of section. //template:end types
@@ -550,22 +558,50 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 		body, _ = sjson.Set(body, "endpoint.default.advertisement.anomaly-loss.upper-bound", strconv.FormatInt(data.EndpointDefaultAdvertisementAnomalyLossUpperBound.ValueInt64(), 10))
 	}
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
-		if !data.DelayBinsExplicit.IsNull() && !data.DelayBinsExplicit.IsUnknown() {
+		if !data.EndpointDefaultHistogramDelayBinsExplicit.IsNull() && !data.EndpointDefaultHistogramDelayBinsExplicit.IsUnknown() {
 			var values []int
-			data.DelayBinsExplicit.ElementsAs(ctx, &values, false)
+			data.EndpointDefaultHistogramDelayBinsExplicit.ElementsAs(ctx, &values, false)
 			body, _ = sjson.Set(body, "endpoint.default.histogram.delay-bins.explicit", values)
 		}
 	}
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
-		if !data.CollectHbh.IsNull() && !data.CollectHbh.IsUnknown() {
-			if data.CollectHbh.ValueBool() {
+		if !data.EndpointDefaultProbeCollectHbh.IsNull() && !data.EndpointDefaultProbeCollectHbh.IsUnknown() {
+			if data.EndpointDefaultProbeCollectHbh.ValueBool() {
+				body, _ = sjson.Set(body, "endpoint.default.probe.collect-hbh", map[string]string{})
+			}
+		}
+	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() && !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsUnknown() {
+			if data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.ValueBool() {
+				body, _ = sjson.Set(body, "endpoint.default.probe.measurement-mode.timestamp-format.ntp", map[string]string{})
+			}
+		}
+	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.InterfacesDefaultProbeTimestampFormatNtp.IsNull() && !data.InterfacesDefaultProbeTimestampFormatNtp.IsUnknown() {
+			if data.InterfacesDefaultProbeTimestampFormatNtp.ValueBool() {
+				body, _ = sjson.Set(body, "interfaces.default.probe.timestamp-format.ntp", map[string]string{})
+			}
+		}
+	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() && !data.RsvpTeDefaultProbeTimestampFormatNtp.IsUnknown() {
+			if data.RsvpTeDefaultProbeTimestampFormatNtp.ValueBool() {
+				body, _ = sjson.Set(body, "rsvp-te.default.probe.timestamp-format.ntp", map[string]string{})
+			}
+		}
+	}
+	if helpers.VersionAtLeast(providerVersion, "25.4") {
+		if !data.SrPolicyDefaultProbeCollectHbh.IsNull() && !data.SrPolicyDefaultProbeCollectHbh.IsUnknown() {
+			if data.SrPolicyDefaultProbeCollectHbh.ValueBool() {
 				body, _ = sjson.Set(body, "sr-policy.default.probe.collect-hbh", map[string]string{})
 			}
 		}
 	}
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
-		if !data.Ntp.IsNull() && !data.Ntp.IsUnknown() {
-			if data.Ntp.ValueBool() {
+		if !data.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() && !data.SrPolicyDefaultProbeTimestampFormatNtp.IsUnknown() {
+			if data.SrPolicyDefaultProbeTimestampFormatNtp.ValueBool() {
 				body, _ = sjson.Set(body, "sr-policy.default.probe.timestamp-format.ntp", map[string]string{})
 			}
 		}
@@ -699,15 +735,15 @@ func (data PerformanceMeasurementDelayProfile) toBody(ctx context.Context, provi
 				body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"advertisement.anomaly-loss.lower-bound", strconv.FormatInt(item.AdvertiseAnomalyLossLowerBound.ValueInt64(), 10))
 			}
 			if helpers.VersionAtLeast(providerVersion, "25.4") {
-				if !item.CollectHbh.IsNull() && !item.CollectHbh.IsUnknown() {
-					if item.CollectHbh.ValueBool() {
+				if !item.ProbeCollectHbh.IsNull() && !item.ProbeCollectHbh.IsUnknown() {
+					if item.ProbeCollectHbh.ValueBool() {
 						body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.collect-hbh", map[string]string{})
 					}
 				}
 			}
 			if helpers.VersionAtLeast(providerVersion, "25.4") {
-				if !item.Ntp.IsNull() && !item.Ntp.IsUnknown() {
-					if item.Ntp.ValueBool() {
+				if !item.ProbeTimestampFormatNtp.IsNull() && !item.ProbeTimestampFormatNtp.IsUnknown() {
+					if item.ProbeTimestampFormatNtp.ValueBool() {
 						body, _ = sjson.Set(body, "names.name"+"."+strconv.Itoa(index)+"."+"probe.timestamp-format.ntp", map[string]string{})
 					}
 				}
@@ -727,23 +763,39 @@ func (data PerformanceMeasurementDelayProfile) GetVersionConstraints() []helpers
 
 	constraints = append(constraints, []helpers.FieldVersionConstraint{
 		{
-			FieldPath:      "profiles.collect_hbh",
+			FieldPath:      "profiles.probe_collect_hbh",
 			AddedInVersion: "25.4",
 		},
 		{
-			FieldPath:      "profiles.ntp",
+			FieldPath:      "profiles.probe_timestamp_format_ntp",
 			AddedInVersion: "25.4",
 		},
 		{
-			FieldPath:      "delay_bins_explicit",
+			FieldPath:      "endpoint_default_histogram_delay_bins_explicit",
 			AddedInVersion: "25.4",
 		},
 		{
-			FieldPath:      "collect_hbh",
+			FieldPath:      "endpoint_default_probe_collect_hbh",
 			AddedInVersion: "25.4",
 		},
 		{
-			FieldPath:      "ntp",
+			FieldPath:      "endpoint_default_probe_measurement_mode_timestamp_format_ntp",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "interfaces_default_probe_timestamp_format_ntp",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "rsvp_te_default_probe_timestamp_format_ntp",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "sr_policy_default_probe_collect_hbh",
+			AddedInVersion: "25.4",
+		},
+		{
+			FieldPath:      "sr_policy_default_probe_timestamp_format_ntp",
 			AddedInVersion: "25.4",
 		},
 	}...)
@@ -1531,47 +1583,83 @@ func (data *PerformanceMeasurementDelayProfile) updateFromBody(ctx context.Conte
 		} else {
 			data.Profiles[i].AdvertiseAnomalyLossLowerBound = types.Int64Null()
 		}
-		if value := r.Get("probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].CollectHbh.IsNull() {
+		if value := r.Get("probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].ProbeCollectHbh.IsNull() {
 			if value.Exists() {
-				data.Profiles[i].CollectHbh = types.BoolValue(true)
+				data.Profiles[i].ProbeCollectHbh = types.BoolValue(true)
 			} else {
-				data.Profiles[i].CollectHbh = types.BoolValue(false)
+				data.Profiles[i].ProbeCollectHbh = types.BoolValue(false)
 			}
 		} else {
-			data.Profiles[i].CollectHbh = types.BoolNull()
+			data.Profiles[i].ProbeCollectHbh = types.BoolNull()
 		}
-		if value := r.Get("probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].Ntp.IsNull() {
+		if value := r.Get("probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].ProbeTimestampFormatNtp.IsNull() {
 			if value.Exists() {
-				data.Profiles[i].Ntp = types.BoolValue(true)
+				data.Profiles[i].ProbeTimestampFormatNtp = types.BoolValue(true)
 			} else {
-				data.Profiles[i].Ntp = types.BoolValue(false)
+				data.Profiles[i].ProbeTimestampFormatNtp = types.BoolValue(false)
 			}
 		} else {
-			data.Profiles[i].Ntp = types.BoolNull()
+			data.Profiles[i].ProbeTimestampFormatNtp = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.DelayBinsExplicit.IsNull() {
-		data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+	if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.EndpointDefaultHistogramDelayBinsExplicit.IsNull() {
+		data.EndpointDefaultHistogramDelayBinsExplicit = helpers.GetInt64List(value.Array())
 	} else {
-		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+		data.EndpointDefaultHistogramDelayBinsExplicit = types.ListNull(types.Int64Type)
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeCollectHbh.IsNull() {
 		if value.Exists() {
-			data.CollectHbh = types.BoolValue(true)
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(true)
 		} else {
-			data.CollectHbh = types.BoolValue(false)
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(false)
 		}
 	} else {
-		data.CollectHbh = types.BoolNull()
+		data.EndpointDefaultProbeCollectHbh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
+	if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() {
 		if value.Exists() {
-			data.Ntp = types.BoolValue(true)
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(true)
 		} else {
-			data.Ntp = types.BoolValue(false)
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(false)
 		}
 	} else {
-		data.Ntp = types.BoolNull()
+		data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolNull()
+	}
+	if value := gjson.GetBytes(res, "interfaces.default.probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.InterfacesDefaultProbeTimestampFormatNtp.IsNull() {
+		if value.Exists() {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolNull()
+	}
+	if value := gjson.GetBytes(res, "rsvp-te.default.probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() {
+		if value.Exists() {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolNull()
+	}
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeCollectHbh.IsNull() {
+		if value.Exists() {
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(true)
+		} else {
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(false)
+		}
+	} else {
+		data.SrPolicyDefaultProbeCollectHbh = types.BoolNull()
+	}
+	if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() {
+		if value.Exists() {
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolNull()
 	}
 }
 
@@ -2000,21 +2088,21 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
 				if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
-					item.CollectHbh = types.BoolValue(true)
+					item.ProbeCollectHbh = types.BoolValue(true)
 				} else {
-					item.CollectHbh = types.BoolValue(false)
+					item.ProbeCollectHbh = types.BoolValue(false)
 				}
 			} else {
-				item.CollectHbh = types.BoolNull()
+				item.ProbeCollectHbh = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
 				if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
-					item.Ntp = types.BoolValue(true)
+					item.ProbeTimestampFormatNtp = types.BoolValue(true)
 				} else {
-					item.Ntp = types.BoolValue(false)
+					item.ProbeTimestampFormatNtp = types.BoolValue(false)
 				}
 			} else {
-				item.Ntp = types.BoolNull()
+				item.ProbeTimestampFormatNtp = types.BoolNull()
 			}
 			data.Profiles = append(data.Profiles, item)
 			return true
@@ -2022,30 +2110,66 @@ func (data *PerformanceMeasurementDelayProfile) fromBody(ctx context.Context, re
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
-			data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+			data.EndpointDefaultHistogramDelayBinsExplicit = helpers.GetInt64List(value.Array())
 		} else {
-			data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+			data.EndpointDefaultHistogramDelayBinsExplicit = types.ListNull(types.Int64Type)
 		}
 	} else {
-		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+		data.EndpointDefaultHistogramDelayBinsExplicit = types.ListNull(types.Int64Type)
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(true)
+		} else {
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(false)
+		}
+	} else {
+		data.EndpointDefaultProbeCollectHbh = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "interfaces.default.probe.timestamp-format.ntp"); value.Exists() {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "rsvp-te.default.probe.timestamp-format.ntp"); value.Exists() {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
-			data.CollectHbh = types.BoolValue(true)
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(true)
 		} else {
-			data.CollectHbh = types.BoolValue(false)
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(false)
 		}
 	} else {
-		data.CollectHbh = types.BoolNull()
+		data.SrPolicyDefaultProbeCollectHbh = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
-			data.Ntp = types.BoolValue(true)
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(true)
 		} else {
-			data.Ntp = types.BoolValue(false)
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(false)
 		}
 	} else {
-		data.Ntp = types.BoolNull()
+		data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolNull()
 	}
 }
 
@@ -2474,21 +2598,21 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
 				if cValue := v.Get("probe.collect-hbh"); cValue.Exists() {
-					item.CollectHbh = types.BoolValue(true)
+					item.ProbeCollectHbh = types.BoolValue(true)
 				} else {
-					item.CollectHbh = types.BoolValue(false)
+					item.ProbeCollectHbh = types.BoolValue(false)
 				}
 			} else {
-				item.CollectHbh = types.BoolNull()
+				item.ProbeCollectHbh = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
 				if cValue := v.Get("probe.timestamp-format.ntp"); cValue.Exists() {
-					item.Ntp = types.BoolValue(true)
+					item.ProbeTimestampFormatNtp = types.BoolValue(true)
 				} else {
-					item.Ntp = types.BoolValue(false)
+					item.ProbeTimestampFormatNtp = types.BoolValue(false)
 				}
 			} else {
-				item.Ntp = types.BoolNull()
+				item.ProbeTimestampFormatNtp = types.BoolNull()
 			}
 			data.Profiles = append(data.Profiles, item)
 			return true
@@ -2496,30 +2620,66 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "endpoint.default.histogram.delay-bins.explicit"); value.Exists() {
-			data.DelayBinsExplicit = helpers.GetInt64List(value.Array())
+			data.EndpointDefaultHistogramDelayBinsExplicit = helpers.GetInt64List(value.Array())
 		} else {
-			data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+			data.EndpointDefaultHistogramDelayBinsExplicit = types.ListNull(types.Int64Type)
 		}
 	} else {
-		data.DelayBinsExplicit = types.ListNull(types.Int64Type)
+		data.EndpointDefaultHistogramDelayBinsExplicit = types.ListNull(types.Int64Type)
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.collect-hbh"); value.Exists() {
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(true)
+		} else {
+			data.EndpointDefaultProbeCollectHbh = types.BoolValue(false)
+		}
+	} else {
+		data.EndpointDefaultProbeCollectHbh = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "endpoint.default.probe.measurement-mode.timestamp-format.ntp"); value.Exists() {
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "interfaces.default.probe.timestamp-format.ntp"); value.Exists() {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.InterfacesDefaultProbeTimestampFormatNtp = types.BoolNull()
+	}
+	if helpers.VersionAtLeast(version, "25.4") {
+		if value := gjson.GetBytes(res, "rsvp-te.default.probe.timestamp-format.ntp"); value.Exists() {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(true)
+		} else {
+			data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolValue(false)
+		}
+	} else {
+		data.RsvpTeDefaultProbeTimestampFormatNtp = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "sr-policy.default.probe.collect-hbh"); value.Exists() {
-			data.CollectHbh = types.BoolValue(true)
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(true)
 		} else {
-			data.CollectHbh = types.BoolValue(false)
+			data.SrPolicyDefaultProbeCollectHbh = types.BoolValue(false)
 		}
 	} else {
-		data.CollectHbh = types.BoolNull()
+		data.SrPolicyDefaultProbeCollectHbh = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
 		if value := gjson.GetBytes(res, "sr-policy.default.probe.timestamp-format.ntp"); value.Exists() {
-			data.Ntp = types.BoolValue(true)
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(true)
 		} else {
-			data.Ntp = types.BoolValue(false)
+			data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolValue(false)
 		}
 	} else {
-		data.Ntp = types.BoolNull()
+		data.SrPolicyDefaultProbeTimestampFormatNtp = types.BoolNull()
 	}
 }
 
@@ -2529,13 +2689,25 @@ func (data *PerformanceMeasurementDelayProfileData) fromBody(ctx context.Context
 
 func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Context, state PerformanceMeasurementDelayProfile, version string) []string {
 	deletedItems := make([]string, 0)
-	if helpers.VersionAtLeast(version, "25.4") && !state.Ntp.IsNull() && data.Ntp.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() && data.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
-	if helpers.VersionAtLeast(version, "25.4") && !state.CollectHbh.IsNull() && data.CollectHbh.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.SrPolicyDefaultProbeCollectHbh.IsNull() && data.SrPolicyDefaultProbeCollectHbh.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "sr-policy/default/probe/collect-hbh"))
 	}
-	if helpers.VersionAtLeast(version, "25.4") && !state.DelayBinsExplicit.IsNull() && data.DelayBinsExplicit.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !state.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() && data.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() {
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "rsvp-te/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !state.InterfacesDefaultProbeTimestampFormatNtp.IsNull() && data.InterfacesDefaultProbeTimestampFormatNtp.IsNull() {
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "interfaces/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !state.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() && data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() {
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/measurement-mode/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !state.EndpointDefaultProbeCollectHbh.IsNull() && data.EndpointDefaultProbeCollectHbh.IsNull() {
+		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/probe/collect-hbh"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !state.EndpointDefaultHistogramDelayBinsExplicit.IsNull() && data.EndpointDefaultHistogramDelayBinsExplicit.IsNull() {
 		deletedItems = append(deletedItems, path.Join(state.getPath(), "endpoint/default/histogram/delay-bins/explicit"))
 	}
 	for i := range state.Profiles {
@@ -2561,10 +2733,10 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 				found = false
 			}
 			if found {
-				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].Ntp.IsNull() && data.Profiles[j].Ntp.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].ProbeTimestampFormatNtp.IsNull() && data.Profiles[j].ProbeTimestampFormatNtp.IsNull() {
 					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "names/name", keyString), "probe/timestamp-format/ntp"))
 				}
-				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].CollectHbh.IsNull() && data.Profiles[j].CollectHbh.IsNull() {
+				if helpers.VersionAtLeast(version, "25.4") && !state.Profiles[i].ProbeCollectHbh.IsNull() && data.Profiles[j].ProbeCollectHbh.IsNull() {
 					deletedItems = append(deletedItems, path.Join(fmt.Sprintf("%v/%v%v", state.getPath(), "names/name", keyString), "probe/collect-hbh"))
 				}
 				if !state.Profiles[i].AdvertiseAnomalyLossLowerBound.IsNull() && data.Profiles[j].AdvertiseAnomalyLossLowerBound.IsNull() {
@@ -2904,11 +3076,23 @@ func (data *PerformanceMeasurementDelayProfile) getDeletedItems(ctx context.Cont
 
 func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.Context, version string) []string {
 	emptyLeafsDelete := make([]string, 0)
-	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() && !data.Ntp.ValueBool() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() && !data.SrPolicyDefaultProbeTimestampFormatNtp.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
-	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() && !data.CollectHbh.ValueBool() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeCollectHbh.IsNull() && !data.SrPolicyDefaultProbeCollectHbh.ValueBool() {
 		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "sr-policy/default/probe/collect-hbh"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() && !data.RsvpTeDefaultProbeTimestampFormatNtp.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "rsvp-te/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.InterfacesDefaultProbeTimestampFormatNtp.IsNull() && !data.InterfacesDefaultProbeTimestampFormatNtp.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "interfaces/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() && !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeCollectHbh.IsNull() && !data.EndpointDefaultProbeCollectHbh.ValueBool() {
+		emptyLeafsDelete = append(emptyLeafsDelete, path.Join(data.getPath(), "endpoint/default/probe/collect-hbh"))
 	}
 	for i := range data.Profiles {
 		keys := [...]string{"profile-name"}
@@ -2917,10 +3101,10 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 		for ki := range keys {
 			keyString += "[" + keys[ki] + "=" + keyValues[ki] + "]"
 		}
-		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].Ntp.IsNull() && !data.Profiles[i].Ntp.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].ProbeTimestampFormatNtp.IsNull() && !data.Profiles[i].ProbeTimestampFormatNtp.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "names/name", keyString), "probe/timestamp-format/ntp"))
 		}
-		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].CollectHbh.IsNull() && !data.Profiles[i].CollectHbh.ValueBool() {
+		if helpers.VersionAtLeast(version, "25.4") && !data.Profiles[i].ProbeCollectHbh.IsNull() && !data.Profiles[i].ProbeCollectHbh.ValueBool() {
 			emptyLeafsDelete = append(emptyLeafsDelete, path.Join(fmt.Sprintf("%v/%v%v", data.getPath(), "names/name", keyString), "probe/collect-hbh"))
 		}
 		if !data.Profiles[i].AdvertiseAccelerated.IsNull() && !data.Profiles[i].AdvertiseAccelerated.ValueBool() {
@@ -3061,13 +3245,25 @@ func (data *PerformanceMeasurementDelayProfile) getEmptyLeafsDelete(ctx context.
 // Section below is generated&owned by "gen/generator.go". //template:begin getDeletePaths
 func (data *PerformanceMeasurementDelayProfile) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
-	if helpers.VersionAtLeast(version, "25.4") && !data.Ntp.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeTimestampFormatNtp.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/timestamp-format/ntp"))
 	}
-	if helpers.VersionAtLeast(version, "25.4") && !data.CollectHbh.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.SrPolicyDefaultProbeCollectHbh.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "sr-policy/default/probe/collect-hbh"))
 	}
-	if helpers.VersionAtLeast(version, "25.4") && !data.DelayBinsExplicit.IsNull() {
+	if helpers.VersionAtLeast(version, "25.4") && !data.RsvpTeDefaultProbeTimestampFormatNtp.IsNull() {
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "rsvp-te/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.InterfacesDefaultProbeTimestampFormatNtp.IsNull() {
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "interfaces/default/probe/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeMeasurementModeTimestampFormatNtp.IsNull() {
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/measurement-mode/timestamp-format/ntp"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultProbeCollectHbh.IsNull() {
+		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/probe/collect-hbh"))
+	}
+	if helpers.VersionAtLeast(version, "25.4") && !data.EndpointDefaultHistogramDelayBinsExplicit.IsNull() {
 		deletePaths = append(deletePaths, path.Join(data.getPath(), "endpoint/default/histogram/delay-bins/explicit"))
 	}
 	for i := range data.Profiles {

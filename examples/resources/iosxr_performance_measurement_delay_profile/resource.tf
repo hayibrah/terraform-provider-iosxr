@@ -1,6 +1,4 @@
 resource "iosxr_performance_measurement_delay_profile" "example" {
-  collect_hbh                                                  = true
-  delay_bins_explicit                                          = [100]
   endpoint_default                                             = true
   endpoint_default_advertisement_accelerated                   = true
   endpoint_default_advertisement_accelerated_minimum_change    = 500
@@ -16,12 +14,15 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
   endpoint_default_advertisement_threshold_check_average_delay = true
   endpoint_default_advertisement_threshold_check_maximum_delay = false
   endpoint_default_advertisement_threshold_check_minimum_delay = false
+  endpoint_default_histogram_delay_bins_explicit               = [100]
+  endpoint_default_probe_collect_hbh                           = true
   endpoint_default_probe_computation_interval                  = 60
   endpoint_default_probe_flow_label_from                       = 100
   endpoint_default_probe_flow_label_increment                  = 50
   endpoint_default_probe_flow_label_to                         = 500
   endpoint_default_probe_measurement_mode_loopback             = false
   endpoint_default_probe_measurement_mode_one_way              = true
+  endpoint_default_probe_measurement_mode_timestamp_format_ntp = true
   endpoint_default_probe_measurement_mode_two_way              = false
   endpoint_default_probe_sweep_destination_ipv4                = "127.0.0.1"
   endpoint_default_probe_sweep_destination_range               = 10
@@ -42,9 +43,9 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
   interfaces_default_probe_measurement_mode_one_way            = true
   interfaces_default_probe_measurement_mode_two_way            = false
   interfaces_default_probe_protocol_twamp_light                = true
+  interfaces_default_probe_timestamp_format_ntp                = true
   interfaces_default_probe_tos_dscp                            = 48
   interfaces_default_probe_tx_interval                         = 30000
-  ntp                                                          = true
   profiles = [
     {
       advertise_accelerated                   = true
@@ -62,8 +63,7 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
       advertise_threshold_check_average_delay = true
       advertise_threshold_check_maximum_delay = false
       advertise_threshold_check_minimum_delay = false
-      collect_hbh                             = true
-      ntp                                     = true
+      probe_collect_hbh                       = true
       probe_computation_interval              = 60
       probe_flow_label_from                   = 100
       probe_flow_label_increment              = 50
@@ -75,11 +75,13 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
       probe_static_delay                      = 1000
       probe_sweep_destination_ipv4            = "127.0.0.1"
       probe_sweep_destination_range           = 10
+      probe_timestamp_format_ntp              = true
       probe_tos_dscp                          = 48
       probe_tx_interval                       = 30000
       profile_name                            = "DELAY_PROFILE_1"
     }
   ]
+  rsvp_te_default_probe_timestamp_format_ntp                    = true
   sr_policy_default                                             = true
   sr_policy_default_advertisement_accelerated                   = true
   sr_policy_default_advertisement_accelerated_minimum_change    = 500
@@ -96,6 +98,7 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
   sr_policy_default_advertisement_threshold_check_average_delay = true
   sr_policy_default_advertisement_threshold_check_maximum_delay = false
   sr_policy_default_advertisement_threshold_check_minimum_delay = false
+  sr_policy_default_probe_collect_hbh                           = true
   sr_policy_default_probe_computation_interval                  = 120
   sr_policy_default_probe_measurement_mode_loopback             = false
   sr_policy_default_probe_measurement_mode_one_way              = true
@@ -104,6 +107,7 @@ resource "iosxr_performance_measurement_delay_profile" "example" {
   sr_policy_default_probe_static_delay                          = 1000
   sr_policy_default_probe_sweep_destination_ipv4                = "127.0.0.1"
   sr_policy_default_probe_sweep_destination_range               = 10
+  sr_policy_default_probe_timestamp_format_ntp                  = true
   sr_policy_default_probe_tos_dscp                              = 48
   sr_policy_default_probe_tx_interval                           = 30000
 }

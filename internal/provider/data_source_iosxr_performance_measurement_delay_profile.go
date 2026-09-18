@@ -506,27 +506,43 @@ func (d *PerformanceMeasurementDelayProfileDataSource) Schema(ctx context.Contex
 							MarkdownDescription: "Anomaly Loss advertisement lower-bound",
 							Computed:            true,
 						},
-						"collect_hbh": schema.BoolAttribute{
+						"probe_collect_hbh": schema.BoolAttribute{
 							MarkdownDescription: "Collect hop by hop data for delay sessions" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
-						"ntp": schema.BoolAttribute{
+						"probe_timestamp_format_ntp": schema.BoolAttribute{
 							MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
 							Computed:            true,
 						},
 					},
 				},
 			},
-			"delay_bins_explicit": schema.ListAttribute{
+			"endpoint_default_histogram_delay_bins_explicit": schema.ListAttribute{
 				MarkdownDescription: "explicit list of 27 numbers to split 28 bins. All 27 entries must be configured" + "\n  - Supported from version: `25.4`",
 				ElementType:         types.Int64Type,
 				Computed:            true,
 			},
-			"collect_hbh": schema.BoolAttribute{
+			"endpoint_default_probe_collect_hbh": schema.BoolAttribute{
 				MarkdownDescription: "Collect hop by hop data for delay sessions" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
-			"ntp": schema.BoolAttribute{
+			"endpoint_default_probe_measurement_mode_timestamp_format_ntp": schema.BoolAttribute{
+				MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"interfaces_default_probe_timestamp_format_ntp": schema.BoolAttribute{
+				MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"rsvp_te_default_probe_timestamp_format_ntp": schema.BoolAttribute{
+				MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"sr_policy_default_probe_collect_hbh": schema.BoolAttribute{
+				MarkdownDescription: "Collect hop by hop data for delay sessions" + "\n  - Supported from version: `25.4`",
+				Computed:            true,
+			},
+			"sr_policy_default_probe_timestamp_format_ntp": schema.BoolAttribute{
 				MarkdownDescription: "Network Time Protocol timestamp format" + "\n  - Supported from version: `25.4`",
 				Computed:            true,
 			},
