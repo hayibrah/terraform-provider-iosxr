@@ -29,6 +29,7 @@
 package main
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -1253,5 +1254,219 @@ func TestJsonPathExpr_XPathVersionBleed_CombinedWithRename_ThreeVersionChain(t *
 	want := `helpers.SelectYangPath(version, map[string]string{"24.4": "orig.path", "25.4": "x.y", "26.2": "x.y"}, "orig.path")`
 	if got != want {
 		t.Errorf("JsonPathExpr =\n  %s\nwant\n  %s", got, want)
+	}
+}
+
+// F27/BUG-10: GetWidestRange had no test coverage despite being registered in the template
+// FuncMap -- it was never called from any template until F27 wired it into the schema's Range
+// validator.
+func TestGetWidestRange_ThreeVersionChain(t *testing.T) {
+	versionRanges := map[string]RangeConstraint{
+		"24.4": {Min: 1, Max: 10},
+		"25.4": {Min: 1, Max: 20},
+		"26.2": {Min: 5, Max: 15},
+	}
+	got := GetWidestRange(versionRanges)
+	want := []int64{1, 20}
+	if len(got) != 2 || got[0] != want[0] || got[1] != want[1] {
+		t.Errorf("GetWidestRange = %v, want %v", got, want)
+	}
+}
+
+func TestGetWidestRange_Empty(t *testing.T) {
+	got := GetWidestRange(nil)
+	want := []int64{0, 0}
+	if len(got) != 2 || got[0] != want[0] || got[1] != want[1] {
+		t.Errorf("GetWidestRange(nil) = %v, want %v", got, want)
+	}
+}
+
+// F28/BUG-11: hasAttributeVersionDifferences only checked AddedInVersion/RemovedInVersion/
+// VersionRanges/VersionYangNames, silently omitting HasVersionDifferences from generated
+// Create/Update/Delete functions for a resource whose only divergence was VersionEnums,
+// VersionStringLengths, or VersionPatterns -- meaning ValidateVersionEnums/StringLengths/Patterns
+// would never run for that resource at all.
+func TestHasAttributeVersionDifferences_VersionEnumsOnly_True(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{YangName: "severity", VersionEnums: map[string][]string{"25.4": {"alerts", "critical"}}},
+	}
+	if !hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = false, want true for VersionEnums-only divergence")
+	}
+}
+
+func TestHasAttributeVersionDifferences_VersionStringLengthsOnly_True(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{YangName: "name", VersionStringLengths: map[string]StringLengthConstraint{"25.4": {Min: 1, Max: 32}}},
+	}
+	if !hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = false, want true for VersionStringLengths-only divergence")
+	}
+}
+
+func TestHasAttributeVersionDifferences_VersionPatternsOnly_True(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{YangName: "hostname", VersionPatterns: map[string][]string{"25.4": {`^[a-z]+$`}}},
+	}
+	if !hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = false, want true for VersionPatterns-only divergence")
+	}
+}
+
+// VersionDeleteMode is a defensive-only addition -- it can never independently trip true in
+// practice (it always co-occurs with VersionYangNames, already checked), but this confirms the
+// check works in isolation regardless.
+func TestHasAttributeVersionDifferences_VersionDeleteModeOnly_True(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{YangName: "path", VersionDeleteMode: map[string]string{"25.4": "parent"}},
+	}
+	if !hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = false, want true for VersionDeleteMode-only divergence")
+	}
+}
+
+// VersionDefaults is deliberately NOT a trigger -- it's gated independently by
+// hasVersionDefaultsRecursive for ModifyPlan, unrelated to helpers.Validate(). This guards
+// against a future well-meaning contributor adding it back in by mistake.
+func TestHasAttributeVersionDifferences_VersionDefaultsOnly_False(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{YangName: "level", VersionDefaults: map[string]string{"25.4": "informational"}},
+	}
+	if hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = true, want false -- VersionDefaults has its own unrelated gate")
+	}
+}
+
+func TestHasAttributeVersionDifferences_NestedListAttribute(t *testing.T) {
+	attrs := []YamlConfigAttribute{
+		{
+			YangName: "file", TfName: "file", Type: "List",
+			Attributes: []YamlConfigAttribute{
+				{YangName: "severity", VersionEnums: map[string][]string{"25.4": {"alerts"}}},
+			},
+		},
+	}
+	if !hasAttributeVersionDifferences(attrs) {
+		t.Error("hasAttributeVersionDifferences = false, want true for VersionEnums nested inside a List attribute")
+	}
+}
+
+// F26/BUG-5: findNoAugmentConfigViolations/validateNoAugmentConfigCarryover -- an attribute (or
+// whole resource) with no_augment_config: true in an earlier version must have that flag
+// restated in any later delta that re-lists it, or real YANG augmentation would silently
+// overwrite hand-authored fields. See provider-yaml-authoring-rules.md Rule 4.
+
+func TestFindNoAugmentConfigViolations_MissingRestatement_Fails(t *testing.T) {
+	acc := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{YangName: "archive/threshold", NoAugmentConfig: true, Type: "Int64"},
+		},
+	}
+	raw := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{YangName: "archive/threshold", Example: "80"}, // re-listed for an unrelated reason, flag omitted
+		},
+	}
+	violations := findNoAugmentConfigViolations(acc, raw, "25.4")
+	if len(violations) != 1 {
+		t.Fatalf("violations = %v, want exactly 1", violations)
+	}
+	if !strings.Contains(violations[0], `"archive/threshold"`) || !strings.Contains(violations[0], "25.4") {
+		t.Errorf("violation message = %q, want it to name the attribute and version", violations[0])
+	}
+}
+
+func TestFindNoAugmentConfigViolations_CorrectRestatement_Passes(t *testing.T) {
+	acc := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{YangName: "archive/threshold", NoAugmentConfig: true, Type: "Int64"},
+		},
+	}
+	raw := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{YangName: "archive/threshold", NoAugmentConfig: true, Example: "80"},
+		},
+	}
+	if violations := findNoAugmentConfigViolations(acc, raw, "25.4"); len(violations) != 0 {
+		t.Errorf("violations = %v, want none (flag correctly restated)", violations)
+	}
+}
+
+func TestFindNoAugmentConfigViolations_ThreeVersionChain(t *testing.T) {
+	base := []YamlConfigAttribute{
+		{YangName: "archive/threshold", NoAugmentConfig: true, Type: "Int64"},
+	}
+	after25 := mergeAttributes(base, []YamlConfigAttribute{
+		{YangName: "archive/threshold", NoAugmentConfig: true, Example: "80"},
+	}, "25.4")
+	acc26 := YamlConfig{Name: "Logging", Attributes: after25}
+	raw26 := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{YangName: "archive/threshold", Example: "90"}, // v3 forgets the flag
+		},
+	}
+	violations := findNoAugmentConfigViolations(acc26, raw26, "26.2")
+	if len(violations) != 1 {
+		t.Fatalf("violations = %v, want exactly 1 (attributed to 26.2)", violations)
+	}
+	if !strings.Contains(violations[0], "26.2") {
+		t.Errorf("violation message = %q, want it attributed to 26.2, not an earlier version", violations[0])
+	}
+}
+
+func TestFindNoAugmentConfigViolations_NestedListAttribute(t *testing.T) {
+	acc := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{
+				YangName: "files/file", TfName: "file", Type: "List",
+				Attributes: []YamlConfigAttribute{
+					{YangName: "maxfilesize", NoAugmentConfig: true, Type: "Int64"},
+				},
+			},
+		},
+	}
+	raw := YamlConfig{
+		Name: "Logging",
+		Attributes: []YamlConfigAttribute{
+			{
+				YangName: "files/file", TfName: "file", Type: "List",
+				Attributes: []YamlConfigAttribute{
+					{YangName: "maxfilesize", Example: "1000"}, // nested re-list, flag omitted
+				},
+			},
+		},
+	}
+	violations := findNoAugmentConfigViolations(acc, raw, "25.4")
+	if len(violations) != 1 {
+		t.Fatalf("violations = %v, want exactly 1 from the nested list attribute", violations)
+	}
+	if !strings.Contains(violations[0], `"maxfilesize"`) {
+		t.Errorf("violation message = %q, want it to name the nested attribute", violations[0])
+	}
+}
+
+func TestFindNoAugmentConfigViolations_ResourceLevel_MissingRestatement_Fails(t *testing.T) {
+	acc := YamlConfig{Name: "SomeResource", NoAugmentConfig: true}
+	raw := YamlConfig{Name: "SomeResource"}
+	violations := findNoAugmentConfigViolations(acc, raw, "25.4")
+	if len(violations) != 1 {
+		t.Fatalf("violations = %v, want exactly 1 (resource-level)", violations)
+	}
+	if !strings.Contains(violations[0], "SomeResource") || !strings.Contains(violations[0], "resource-level") {
+		t.Errorf("violation message = %q, want it to identify the resource and call out resource-level", violations[0])
+	}
+}
+
+func TestFindNoAugmentConfigViolations_ResourceLevel_CorrectRestatement_Passes(t *testing.T) {
+	acc := YamlConfig{Name: "SomeResource", NoAugmentConfig: true}
+	raw := YamlConfig{Name: "SomeResource", NoAugmentConfig: true}
+	if violations := findNoAugmentConfigViolations(acc, raw, "25.4"); len(violations) != 0 {
+		t.Errorf("violations = %v, want none (resource-level flag correctly restated)", violations)
 	}
 }

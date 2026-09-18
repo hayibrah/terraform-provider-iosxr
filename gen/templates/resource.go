@@ -161,7 +161,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 				{{- else if .VersionEnums}}
 				// Version-specific enum validation done at runtime in Create/Update
 				{{- else if .VersionRanges}}
-				// Version-specific range validation done at runtime in Create/Update
+				Validators: []validator.Int64{
+					int64validator.Between({{index (getWidestRange .VersionRanges) 0}}, {{index (getWidestRange .VersionRanges) 1}}),
+				},
+				// Precise per-version range validation still done at runtime in Create/Update.
 				{{- else if or (ne .MinInt 0) (ne .MaxInt 0)}}
 				Validators: []validator.Int64{
 					int64validator.Between({{.MinInt}}, {{.MaxInt}}),
@@ -241,7 +244,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 							{{- else if .VersionEnums}}
 							// Version-specific enum validation done at runtime in Create/Update
 							{{- else if .VersionRanges}}
-							// Version-specific range validation done at runtime in Create/Update
+							Validators: []validator.Int64{
+								int64validator.Between({{index (getWidestRange .VersionRanges) 0}}, {{index (getWidestRange .VersionRanges) 1}}),
+							},
+							// Precise per-version range validation still done at runtime in Create/Update.
 							{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
 							// Field removed in version {{.RemovedInVersion}} - keep base range validation + runtime check
 							Validators: []validator.Int64{
@@ -321,7 +327,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 										{{- else if .VersionEnums}}
 										// Version-specific enum validation done at runtime in Create/Update
 										{{- else if .VersionRanges}}
-										// Version-specific range validation done at runtime in Create/Update
+										Validators: []validator.Int64{
+											int64validator.Between({{index (getWidestRange .VersionRanges) 0}}, {{index (getWidestRange .VersionRanges) 1}}),
+										},
+										// Precise per-version range validation still done at runtime in Create/Update.
 										{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
 										// Field removed in version {{.RemovedInVersion}} - keep base range validation + runtime check
 										Validators: []validator.Int64{
@@ -401,7 +410,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 												{{- else if .VersionEnums}}
 												// Version-specific enum validation done at runtime in Create/Update
 												{{- else if .VersionRanges}}
-												// Version-specific range validation done at runtime in Create/Update
+												Validators: []validator.Int64{
+													int64validator.Between({{index (getWidestRange .VersionRanges) 0}}, {{index (getWidestRange .VersionRanges) 1}}),
+												},
+												// Precise per-version range validation still done at runtime in Create/Update.
 												{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
 												// Field removed in version {{.RemovedInVersion}} - keep base range validation + runtime check
 												Validators: []validator.Int64{
@@ -481,7 +493,10 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) Schema(ctx context.Conte
 															{{- else if .VersionEnums}}
 															// Version-specific enum validation done at runtime in Create/Update
 															{{- else if .VersionRanges}}
-															// Version-specific range validation done at runtime in Create/Update
+															Validators: []validator.Int64{
+																int64validator.Between({{index (getWidestRange .VersionRanges) 0}}, {{index (getWidestRange .VersionRanges) 1}}),
+															},
+															// Precise per-version range validation still done at runtime in Create/Update.
 															{{- else if and .RemovedInVersion (or (ne .MinInt 0) (ne .MaxInt 0))}}
 															// Field removed in version {{.RemovedInVersion}} - keep base range validation + runtime check
 															Validators: []validator.Int64{

@@ -703,6 +703,24 @@ func hasAttributeVersionDifferences(attributes []YamlConfigAttribute) bool {
 		if len(attr.VersionYangNames) > 0 {
 			return true
 		}
+		// These three feed GetEnumConstraints/GetStringLengthConstraints/GetPatternConstraints
+		// exactly like VersionRanges feeds GetRangeConstraints -- omitting them here was BUG-11.
+		if len(attr.VersionEnums) > 0 {
+			return true
+		}
+		if len(attr.VersionStringLengths) > 0 {
+			return true
+		}
+		if len(attr.VersionPatterns) > 0 {
+			return true
+		}
+		// Defensive only, not currently load-bearing: VersionDeleteMode can only ever be
+		// populated together with VersionYangNames (both require replaces_yang_name on the same
+		// attribute, see mergeAttributes), so this never independently trips true today. Kept
+		// explicit rather than relying on that coupling implicitly.
+		if len(attr.VersionDeleteMode) > 0 {
+			return true
+		}
 		if len(attr.Attributes) > 0 && hasAttributeVersionDifferences(attr.Attributes) {
 			return true
 		}
@@ -1172,6 +1190,75 @@ func validateDefaultValue(val, attrType string) error {
 		}
 	}
 	return nil
+}
+
+// findNoAugmentConfigViolations returns a log.Fatalf-ready message for every case where acc
+// (the config merged through the immediately-preceding version) has NoAugmentConfig=true and
+// raw (this version's own, not-yet-merged delta) re-lists the same resource or attribute
+// without also restating NoAugmentConfig=true. Per provider-yaml-authoring-rules.md Rule 4,
+// the merged NoAugmentConfig flag is sticky (mergeConfigs/mergeAttributes only ever set it to
+// true), but the gate that actually skips YANG augmentation (augmentForVersion) reads the raw,
+// pre-merge delta for the version being processed -- so an author re-touching an already
+// hand-modeled resource or attribute for any unrelated reason, without repeating
+// no_augment_config: true, would silently get real YANG data written back into it.
+//
+// Pure and testable; validateNoAugmentConfigCarryover below is the log.Fatalf wrapper called
+// from main().
+func findNoAugmentConfigViolations(acc, raw YamlConfig, version string) []string {
+	var violations []string
+	if acc.NoAugmentConfig && !raw.NoAugmentConfig {
+		violations = append(violations, fmt.Sprintf(
+			"%s: has no_augment_config: true (resource-level) in an earlier version but the %s "+
+				"delta does not restate no_augment_config: true -- this would run full YANG "+
+				"augmentation against every attribute in this delta.",
+			acc.Name, version,
+		))
+	}
+	violations = append(violations, findAttributeNoAugmentConfigViolations(acc.Attributes, raw.Attributes, acc.Name, version)...)
+	return violations
+}
+
+// findAttributeNoAugmentConfigViolations walks acc and raw in lockstep, matching attributes the
+// same way mergeAttributes does (yang_name / tf_name / replaces_yang_name), and recurses into
+// nested List attributes exactly the way mergeAttributes' own nested merge does -- a flat,
+// global lookup would incorrectly conflate same-named attributes nested under different parents.
+func findAttributeNoAugmentConfigViolations(acc, raw []YamlConfigAttribute, resourceName, version string) []string {
+	var violations []string
+	for _, rawAttr := range raw {
+		for _, accAttr := range acc {
+			matched := accAttr.YangName == rawAttr.YangName ||
+				(accAttr.TfName != "" && rawAttr.TfName != "" && accAttr.TfName == rawAttr.TfName) ||
+				(rawAttr.ReplacesYangName != "" && accAttr.YangName == rawAttr.ReplacesYangName)
+			if !matched {
+				continue
+			}
+			if accAttr.NoAugmentConfig && !rawAttr.NoAugmentConfig {
+				violations = append(violations, fmt.Sprintf(
+					"attribute %q (%s): has no_augment_config: true in an earlier version but "+
+						"the %s delta re-lists it without restating no_augment_config: true -- "+
+						"this would silently overwrite hand-authored type/range/enum values with "+
+						"real YANG data. Add no_augment_config: true to this attribute in the %s delta.",
+					rawAttr.YangName, resourceName, version, version,
+				))
+			}
+			if len(rawAttr.Attributes) > 0 && len(accAttr.Attributes) > 0 {
+				violations = append(violations, findAttributeNoAugmentConfigViolations(accAttr.Attributes, rawAttr.Attributes, resourceName, version)...)
+			}
+			break
+		}
+	}
+	return violations
+}
+
+// validateNoAugmentConfigCarryover fails the build on the first no_augment_config carryover
+// violation found. Must be called with acc/raw BEFORE augmentForVersion runs on raw for this
+// version -- augmentForVersion's YANG augmentation mutates raw's attributes in place (Go slice
+// aliasing with the versionConfigs map entry), so by the time it returns, the hand-authored data
+// this check exists to protect may already be gone.
+func validateNoAugmentConfigCarryover(acc, raw YamlConfig, version string) {
+	for _, msg := range findNoAugmentConfigViolations(acc, raw, version) {
+		log.Fatalf("%s", msg)
+	}
 }
 
 // HasVersionDefaults returns true if any top-level attribute has VersionDefaults.
@@ -2487,6 +2574,9 @@ func main() {
 		// Build cumulative merge across ALL versions
 		var unifiedConfig YamlConfig
 		for i, v := range resourceVersions {
+			if i > 0 {
+				validateNoAugmentConfigCarryover(unifiedConfig, versionConfigs[v], v)
+			}
 			augmented := augmentForVersion(versionConfigs[v], v)
 
 			if i == 0 {

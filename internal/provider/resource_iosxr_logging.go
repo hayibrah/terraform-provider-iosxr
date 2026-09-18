@@ -243,7 +243,10 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 			"buffered_size": schema.Int64Attribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Logging buffer size").String + "\n  - Range: `307200`-`125000000` (v24.4), `2097152`-`125000000` (v25.4)",
 				Optional:            true,
-				// Version-specific range validation done at runtime in Create/Update
+				Validators: []validator.Int64{
+					int64validator.Between(307200, 125000000),
+				},
+				// Precise per-version range validation still done at runtime in Create/Update.
 			},
 			"buffered_level": schema.StringAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("buffered level").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String,
