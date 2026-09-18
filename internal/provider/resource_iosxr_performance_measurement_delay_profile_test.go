@@ -151,11 +151,11 @@ func TestAccIosxrPerformanceMeasurementDelayProfile(t *testing.T) {
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
-			Config: testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig + testAccIosxrPerformanceMeasurementDelayProfileConfig_minimum(),
+			Config: testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig() + testAccIosxrPerformanceMeasurementDelayProfileConfig_minimum(),
 		})
 	}
 	steps = append(steps, resource.TestStep{
-		Config: testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig + testAccIosxrPerformanceMeasurementDelayProfileConfig_all(),
+		Config: testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig() + testAccIosxrPerformanceMeasurementDelayProfileConfig_all(),
 		Check:  resource.ComposeTestCheckFunc(checks...),
 	})
 	steps = append(steps, resource.TestStep{
@@ -185,7 +185,7 @@ func iosxrPerformanceMeasurementDelayProfileImportStateIdFunc(resourceName strin
 // End of section. //template:end importStateIdFunc
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig = `
+const testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-performance-measurement-cfg:/performance-measurement"
 	attributes = {
@@ -194,6 +194,14 @@ resource "iosxr_gnmi" "PreReq0" {
 
 `
 
+func testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccConfigMinimal
@@ -201,7 +209,9 @@ resource "iosxr_gnmi" "PreReq0" {
 func testAccIosxrPerformanceMeasurementDelayProfileConfig_minimum() string {
 	config := `resource "iosxr_performance_measurement_delay_profile" "test" {` + "\n"
 	config += `	interfaces_default_probe_computation_interval = "60"` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }
@@ -327,7 +337,9 @@ func testAccIosxrPerformanceMeasurementDelayProfileConfig_all() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	ntp = true` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }

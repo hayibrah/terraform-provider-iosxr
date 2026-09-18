@@ -80,11 +80,11 @@ func TestAccIosxrRouterBGPVRFNeighborAddressFamily(t *testing.T) {
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
-			Config: testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig + testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_minimum(),
+			Config: testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig() + testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_minimum(),
 		})
 	}
 	steps = append(steps, resource.TestStep{
-		Config: testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig + testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_all(),
+		Config: testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig() + testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_all(),
 		Check:  resource.ComposeTestCheckFunc(checks...),
 	})
 	steps = append(steps, resource.TestStep{
@@ -119,7 +119,7 @@ func iosxrRouterBGPVRFNeighborAddressFamilyImportStateIdFunc(resourceName string
 // End of section. //template:end importStateIdFunc
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig = `
+const testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-vrf-cfg:/vrfs/vrf[vrf-name=VRF2]"
 	attributes = {
@@ -215,6 +215,14 @@ resource "iosxr_gnmi" "PreReq5" {
 
 `
 
+func testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccConfigMinimal
@@ -225,7 +233,9 @@ func testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_minimum() string {
 	config += `	vrf_name = "VRF2"` + "\n"
 	config += `	address = "10.1.1.2"` + "\n"
 	config += `	af_name = "ipv4-unicast"` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }
@@ -281,7 +291,9 @@ func testAccIosxrRouterBGPVRFNeighborAddressFamilyConfig_all() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_out = "accept"` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }

@@ -78,7 +78,7 @@ func TestAccDataSourceIosxrRouterBGPNeighborAddressFamily(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig + testAccDataSourceIosxrRouterBGPNeighborAddressFamilyConfig(),
+				Config: testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig() + testAccDataSourceIosxrRouterBGPNeighborAddressFamilyConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -88,7 +88,7 @@ func TestAccDataSourceIosxrRouterBGPNeighborAddressFamily(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig = `
+const testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-router-bgp-cfg:/router/bgp/as[as-number=65001]"
 	attributes = {
@@ -145,6 +145,14 @@ resource "iosxr_gnmi" "PreReq2" {
 
 `
 
+func testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrRouterBGPNeighborAddressFamilyPrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccDataSourceConfig
@@ -195,7 +203,9 @@ func testAccDataSourceIosxrRouterBGPNeighborAddressFamilyConfig() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_out = "accept"` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

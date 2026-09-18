@@ -79,7 +79,7 @@ func TestAccDataSourceIosxrRouterBGPVRFNeighborAddressFamily(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig + testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyConfig(),
+				Config: testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig() + testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -89,7 +89,7 @@ func TestAccDataSourceIosxrRouterBGPVRFNeighborAddressFamily(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig = `
+const testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-vrf-cfg:/vrfs/vrf[vrf-name=VRF2]"
 	attributes = {
@@ -185,6 +185,14 @@ resource "iosxr_gnmi" "PreReq5" {
 
 `
 
+func testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyPrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccDataSourceConfig
@@ -237,7 +245,9 @@ func testAccDataSourceIosxrRouterBGPVRFNeighborAddressFamilyConfig() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_out = "accept"` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

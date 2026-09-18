@@ -131,7 +131,7 @@ func TestAccDataSourceIosxrRouterBGPNeighborGroup(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig + testAccDataSourceIosxrRouterBGPNeighborGroupConfig(),
+				Config: testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig() + testAccDataSourceIosxrRouterBGPNeighborGroupConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -141,7 +141,7 @@ func TestAccDataSourceIosxrRouterBGPNeighborGroup(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig = `
+const testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-router-bgp-cfg:/router/bgp/as[as-number=65001]"
 	attributes = {
@@ -225,6 +225,14 @@ resource "iosxr_gnmi" "PreReq4" {
 }
 
 `
+
+func testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrRouterBGPNeighborGroupPrerequisitesConfig_V24_4,
+		},
+	)
+}
 
 // End of section. //template:end testPrerequisites
 
@@ -333,7 +341,9 @@ func testAccDataSourceIosxrRouterBGPNeighborGroupConfig() string {
 		config += `		default_policy_action_out = "accept"` + "\n"
 	}
 	config += `	}]` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

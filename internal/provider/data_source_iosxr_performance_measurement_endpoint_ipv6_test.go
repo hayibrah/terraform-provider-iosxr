@@ -47,7 +47,7 @@ func TestAccDataSourceIosxrPerformanceMeasurementEndpointIPv6(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig + testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6Config(),
+				Config: testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig() + testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6Config(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -57,7 +57,7 @@ func TestAccDataSourceIosxrPerformanceMeasurementEndpointIPv6(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig = `
+const testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-vrf-cfg:/vrfs/vrf[vrf-name=VRF1]"
 	attributes = {
@@ -73,6 +73,14 @@ resource "iosxr_gnmi" "PreReq1" {
 }
 
 `
+
+func testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6PrerequisitesConfig_V24_4,
+		},
+	)
+}
 
 // End of section. //template:end testPrerequisites
 
@@ -97,7 +105,9 @@ func testAccDataSourceIosxrPerformanceMeasurementEndpointIPv6Config() string {
 	config += `		insert_srh_sl_zero = true` + "\n"
 	config += `	}]` + "\n"
 	config += `	segment_routing_te_explicit_reverse_path_list = "SEG_LIST_GLOBAL_REVERSE"` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

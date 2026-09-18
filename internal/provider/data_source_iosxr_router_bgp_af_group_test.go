@@ -78,7 +78,7 @@ func TestAccDataSourceIosxrRouterBGPAFGroup(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig + testAccDataSourceIosxrRouterBGPAFGroupConfig(),
+				Config: testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig() + testAccDataSourceIosxrRouterBGPAFGroupConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -88,7 +88,7 @@ func TestAccDataSourceIosxrRouterBGPAFGroup(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig = `
+const testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-router-bgp-cfg:/router/bgp/as[as-number=65001]"
 	attributes = {
@@ -155,6 +155,14 @@ resource "iosxr_gnmi" "PreReq3" {
 
 `
 
+func testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrRouterBGPAFGroupPrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccDataSourceConfig
@@ -205,7 +213,9 @@ func testAccDataSourceIosxrRouterBGPAFGroupConfig() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	default_policy_action_out = "accept"` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

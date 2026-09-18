@@ -123,11 +123,11 @@ func TestAccIosxrRouterBGPVRFAddressFamily(t *testing.T) {
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
-			Config: testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig + testAccIosxrRouterBGPVRFAddressFamilyConfig_minimum(),
+			Config: testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig() + testAccIosxrRouterBGPVRFAddressFamilyConfig_minimum(),
 		})
 	}
 	steps = append(steps, resource.TestStep{
-		Config: testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig + testAccIosxrRouterBGPVRFAddressFamilyConfig_all(),
+		Config: testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig() + testAccIosxrRouterBGPVRFAddressFamilyConfig_all(),
 		Check:  resource.ComposeTestCheckFunc(checks...),
 	})
 	steps = append(steps, resource.TestStep{
@@ -161,7 +161,7 @@ func iosxrRouterBGPVRFAddressFamilyImportStateIdFunc(resourceName string) resour
 // End of section. //template:end importStateIdFunc
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig = `
+const testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-route-policy-cfg:/routing-policy/route-policies/route-policy[route-policy-name=ROUTE_POLICY_1]"
 	attributes = {
@@ -235,6 +235,14 @@ resource "iosxr_gnmi" "PreReq5" {
 
 `
 
+func testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccIosxrRouterBGPVRFAddressFamilyPrerequisitesConfig_V24_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccConfigMinimal
@@ -244,7 +252,9 @@ func testAccIosxrRouterBGPVRFAddressFamilyConfig_minimum() string {
 	config += `	as_number = "65001"` + "\n"
 	config += `	vrf_name = "VRF2"` + "\n"
 	config += `	af_name = "ipv4-unicast"` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }
@@ -352,7 +362,9 @@ func testAccIosxrRouterBGPVRFAddressFamilyConfig_all() string {
 	config += `	nexthop_route_policy = "ROUTE_POLICY_1"` + "\n"
 	config += `	as_path_loopcheck_out_disable = true` + "\n"
 	config += `	mvpn_single_forwarder_selection = "highest-ip-address"` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, iosxr_gnmi.PreReq1, iosxr_gnmi.PreReq2, iosxr_gnmi.PreReq3, iosxr_gnmi.PreReq4, iosxr_gnmi.PreReq5, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }

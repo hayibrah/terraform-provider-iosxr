@@ -151,7 +151,7 @@ func TestAccDataSourceIosxrPerformanceMeasurementDelayProfile(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig + testAccDataSourceIosxrPerformanceMeasurementDelayProfileConfig(),
+				Config: testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig() + testAccDataSourceIosxrPerformanceMeasurementDelayProfileConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -161,7 +161,7 @@ func TestAccDataSourceIosxrPerformanceMeasurementDelayProfile(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig = `
+const testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-performance-measurement-cfg:/performance-measurement"
 	attributes = {
@@ -169,6 +169,14 @@ resource "iosxr_gnmi" "PreReq0" {
 }
 
 `
+
+func testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrPerformanceMeasurementDelayProfilePrerequisitesConfig_V24_4,
+		},
+	)
+}
 
 // End of section. //template:end testPrerequisites
 
@@ -292,7 +300,9 @@ func testAccDataSourceIosxrPerformanceMeasurementDelayProfileConfig() string {
 	if iosxrVersionAtLeast(os.Getenv("IOSXR_VERSION"), "25.4") {
 		config += `	ntp = true` + "\n"
 	}
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `
