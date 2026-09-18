@@ -4,4 +4,4 @@ package helpers
 
 // DefinitionVersions lists the IOS-XR versions that have a definitions
 // directory under gen/definitions/. Updated automatically on make gen.
-var DefinitionVersions = []string{"24.4", "25.4"}
+var DefinitionVersions = []string{"24.4", "25.4", "26.2"}
