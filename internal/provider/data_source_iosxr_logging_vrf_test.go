@@ -81,7 +81,7 @@ func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDataSourceIosxrLoggingVRFPrerequisitesConfig + testAccDataSourceIosxrLoggingVRFConfig(),
+				Config: testAccDataSourceIosxrLoggingVRFPrerequisitesConfig() + testAccDataSourceIosxrLoggingVRFConfig(),
 				Check:  resource.ComposeTestCheckFunc(checks...),
 			},
 		},
@@ -91,7 +91,7 @@ func TestAccDataSourceIosxrLoggingVRF(t *testing.T) {
 // End of section. //template:end testAccDataSource
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccDataSourceIosxrLoggingVRFPrerequisitesConfig = `
+const testAccDataSourceIosxrLoggingVRFPrerequisitesConfig_V24_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-domain-cfg:/domain/ipv4/hosts/host[host-name=server.cisco.com]"
 	attributes = {
@@ -100,15 +100,38 @@ resource "iosxr_gnmi" "PreReq0" {
 	lists = [
 		{
 			name = "ip-address"
-			key = ""
-			items = [
-			]
+			
 			values = ["1.1.1.1", ]
 		},
 	]
 }
 
 `
+const testAccDataSourceIosxrLoggingVRFPrerequisitesConfig_V25_4 = `
+resource "iosxr_gnmi" "PreReq0" {
+	path = "Cisco-IOS-XR-um-domain-cfg:/domain/ipv4/hosts/host[host-name=server.cisco.com]"
+	attributes = {
+		"host-name" = "server.cisco.com"
+	}
+	lists = [
+		{
+			name = "ip-address"
+			
+			values = ["1.1.1.1", ]
+		},
+	]
+}
+
+`
+
+func testAccDataSourceIosxrLoggingVRFPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccDataSourceIosxrLoggingVRFPrerequisitesConfig_V24_4,
+			"25.4": testAccDataSourceIosxrLoggingVRFPrerequisitesConfig_V25_4,
+		},
+	)
+}
 
 // End of section. //template:end testPrerequisites
 
@@ -163,7 +186,10 @@ func testAccDataSourceIosxrLoggingVRFConfig() string {
 		config += `		udp_port = "510"` + "\n"
 	}
 	config += `	}]` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+		"25.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 
 	config += `

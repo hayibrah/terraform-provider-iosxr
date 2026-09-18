@@ -81,11 +81,11 @@ func TestAccIosxrLoggingVRF(t *testing.T) {
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
 		steps = append(steps, resource.TestStep{
-			Config: testAccIosxrLoggingVRFPrerequisitesConfig + testAccIosxrLoggingVRFConfig_minimum(),
+			Config: testAccIosxrLoggingVRFPrerequisitesConfig() + testAccIosxrLoggingVRFConfig_minimum(),
 		})
 	}
 	steps = append(steps, resource.TestStep{
-		Config: testAccIosxrLoggingVRFPrerequisitesConfig + testAccIosxrLoggingVRFConfig_all(),
+		Config: testAccIosxrLoggingVRFPrerequisitesConfig() + testAccIosxrLoggingVRFConfig_all(),
 		Check:  resource.ComposeTestCheckFunc(checks...),
 	})
 	steps = append(steps, resource.TestStep{
@@ -117,7 +117,23 @@ func iosxrLoggingVRFImportStateIdFunc(resourceName string) resource.ImportStateI
 // End of section. //template:end importStateIdFunc
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testPrerequisites
-const testAccIosxrLoggingVRFPrerequisitesConfig = `
+const testAccIosxrLoggingVRFPrerequisitesConfig_V24_4 = `
+resource "iosxr_gnmi" "PreReq0" {
+	path = "Cisco-IOS-XR-um-domain-cfg:/domain/ipv4/hosts/host[host-name=server.cisco.com]"
+	attributes = {
+		"host-name" = "server.cisco.com"
+	}
+	lists = [
+		{
+			name = "ip-address"
+			
+			values = ["1.1.1.1", ]
+		},
+	]
+}
+
+`
+const testAccIosxrLoggingVRFPrerequisitesConfig_V25_4 = `
 resource "iosxr_gnmi" "PreReq0" {
 	path = "Cisco-IOS-XR-um-domain-cfg:/domain/ipv4/hosts/host[host-name=server.cisco.com]"
 	attributes = {
@@ -134,6 +150,15 @@ resource "iosxr_gnmi" "PreReq0" {
 
 `
 
+func testAccIosxrLoggingVRFPrerequisitesConfig() string {
+	return selectVersionPrerequisitesConfig(
+		map[string]string{
+			"24.4": testAccIosxrLoggingVRFPrerequisitesConfig_V24_4,
+			"25.4": testAccIosxrLoggingVRFPrerequisitesConfig_V25_4,
+		},
+	)
+}
+
 // End of section. //template:end testPrerequisites
 
 // Section below is generated&owned by "gen/generator.go". //template:begin testAccConfigMinimal
@@ -147,7 +172,10 @@ func testAccIosxrLoggingVRFConfig_minimum() string {
 		"24.4": "\"info\"", "25.4": "\"informational\"",
 	}, "\"informational\"") + "\n"
 	config += `		}]` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+		"25.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }
@@ -204,7 +232,10 @@ func testAccIosxrLoggingVRFConfig_all() string {
 		config += `		udp_port = "510"` + "\n"
 	}
 	config += `		}]` + "\n"
-	config += `	depends_on = [iosxr_gnmi.PreReq0, ]` + "\n"
+	config += selectVersionDependsOn(map[string]string{
+		"24.4": `[iosxr_gnmi.PreReq0, ]`,
+		"25.4": `[iosxr_gnmi.PreReq0, ]`,
+	}) + "\n"
 	config += `}` + "\n"
 	return config
 }
