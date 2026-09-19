@@ -927,6 +927,54 @@ func (r *{{camelCase .Name}}{{$versionSuffix}}Resource) ModifyPlan(ctx context.C
 				}
 			}
 			{{- end}}
+			{{- if and (or (eq $l2.Type "List") (eq $l2.Type "Set")) (hasVersionDefaultsRecursive $l2.Attributes)}}
+			for k := range plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}} {
+				{{- range $l3 := $l2.Attributes}}
+				{{- if len $l3.VersionDefaults}}
+				if plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}}.IsNull() {
+					if def := helpers.GetVersionDefault(device.Version, map[string]string{
+						{{- range $ver, $val := $l3.VersionDefaults}}
+						"{{$ver}}": "{{$val}}",
+						{{- end}}
+					}); def != "" {
+						{{- if eq $l3.Type "Int64"}}
+						plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}} = types.Int64Value(helpers.ParseInt64(def))
+						{{- else if eq $l3.Type "Bool"}}
+						plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}} = types.BoolValue(helpers.ParseBool(def))
+						{{- else}}
+						plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}} = types.StringValue(def)
+						{{- end}}
+						modified = true
+					}
+				}
+				{{- end}}
+				{{- if and (or (eq $l3.Type "List") (eq $l3.Type "Set")) (hasVersionDefaultsRecursive $l3.Attributes)}}
+				for l := range plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}} {
+					{{- range $l4 := $l3.Attributes}}
+					{{- if len $l4.VersionDefaults}}
+					if plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}}[l].{{toGoName $l4.TfName}}.IsNull() {
+						if def := helpers.GetVersionDefault(device.Version, map[string]string{
+							{{- range $ver, $val := $l4.VersionDefaults}}
+							"{{$ver}}": "{{$val}}",
+							{{- end}}
+						}); def != "" {
+							{{- if eq $l4.Type "Int64"}}
+							plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}}[l].{{toGoName $l4.TfName}} = types.Int64Value(helpers.ParseInt64(def))
+							{{- else if eq $l4.Type "Bool"}}
+							plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}}[l].{{toGoName $l4.TfName}} = types.BoolValue(helpers.ParseBool(def))
+							{{- else}}
+							plan.{{toGoName $l0.TfName}}[i].{{toGoName $l1.TfName}}[j].{{toGoName $l2.TfName}}[k].{{toGoName $l3.TfName}}[l].{{toGoName $l4.TfName}} = types.StringValue(def)
+							{{- end}}
+							modified = true
+						}
+					}
+					{{- end}}
+					{{- end}}
+				}
+				{{- end}}
+				{{- end}}
+			}
+			{{- end}}
 			{{- end}}
 		}
 		{{- end}}
