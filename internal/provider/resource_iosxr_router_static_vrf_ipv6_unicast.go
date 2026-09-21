@@ -719,10 +719,15 @@ func (r *RouterStaticVRFIPv6UnicastResource) Create(ctx context.Context, req res
 				ops = append(ops, gnmi.Update(plan.getPath(), body))
 			}
 
-			_, err := device.GnmiClient.Set(ctx, ops)
-			if err != nil {
-				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-				return
+			if device.AutoCommit {
+				_, err := device.GnmiClient.Set(ctx, ops)
+				if err != nil {
+					resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+					return
+				}
+			} else {
+				device.AppendCandidateOps(ops)
+				tflog.Debug(ctx, fmt.Sprintf("%s: Queued %d operation(s) in candidate store (total pending: %d)", plan.getPath(), len(ops), device.PendingOpsCount()))
 			}
 		} else {
 			// Serialize NETCONF operations when reuse disabled, or writes when reuse enabled
@@ -791,6 +796,24 @@ func (r *RouterStaticVRFIPv6UnicastResource) Read(ctx context.Context, req resou
 	if device.Managed {
 		_ = diags // Avoid unused variable error
 		if device.Protocol == "gnmi" {
+			// When auto_commit is false, flush any staged operations now before
+			// reading, so a batch that was never explicitly committed via
+			// iosxr_commit still reaches the device the next time anything
+			// reads state (e.g. a later, unrelated `terraform plan`/`apply`).
+			if !device.AutoCommit && device.HasPendingOps() {
+				flushOps := device.DrainCandidateOps()
+				tflog.Info(ctx, fmt.Sprintf("Flushing %d batched operation(s) before Read", len(flushOps)))
+				if !device.ReuseConnection {
+					defer func() { _ = device.GnmiClient.Disconnect() }()
+				}
+				if _, err := device.GnmiClient.Set(ctx, flushOps); err != nil {
+					device.AppendCandidateOps(flushOps) // re-queue on failure so a later apply can retry
+					resp.Diagnostics.AddError("Batch operation failed", fmt.Sprintf("Failed to commit %d batched operation(s): %s", len(flushOps), err.Error()))
+					return
+				}
+				tflog.Info(ctx, fmt.Sprintf("Successfully committed %d batched operation(s) to device", len(flushOps)))
+			}
+
 			locked := helpers.AcquireGnmiLock(device.GetOpMutex(), device.ReuseConnection, false)
 			defer helpers.CloseGnmiConnection(ctx, device.GnmiClient, device.ReuseConnection)
 			if locked {
@@ -944,10 +967,15 @@ func (r *RouterStaticVRFIPv6UnicastResource) Update(ctx context.Context, req res
 				ops = append(ops, gnmi.Update(plan.getPath(), body))
 			}
 
-			_, err := device.GnmiClient.Set(ctx, ops)
-			if err != nil {
-				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-				return
+			if device.AutoCommit {
+				_, err := device.GnmiClient.Set(ctx, ops)
+				if err != nil {
+					resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+					return
+				}
+			} else {
+				device.AppendCandidateOps(ops)
+				tflog.Debug(ctx, fmt.Sprintf("%s: Queued %d operation(s) in candidate store (total pending: %d)", plan.Id.ValueString(), len(ops), device.PendingOpsCount()))
 			}
 		} else {
 			// Serialize NETCONF operations when reuse disabled, or writes when reuse enabled
@@ -1026,10 +1054,26 @@ func (r *RouterStaticVRFIPv6UnicastResource) Delete(ctx context.Context, req res
 				var ops []gnmi.SetOperation
 				ops = append(ops, gnmi.Delete(state.Id.ValueString()))
 
-				_, err := device.GnmiClient.Set(ctx, ops)
-				if err != nil {
-					resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-					return
+				if device.AutoCommit {
+					// auto_commit=true: commit this delete immediately, exactly
+					// like every other operation on this device.
+					_, err := device.GnmiClient.Set(ctx, ops)
+					if err != nil {
+						resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+						return
+					}
+					tflog.Debug(ctx, fmt.Sprintf("%s: Committed delete operation immediately (auto_commit=true)", state.Id.ValueString()))
+				} else {
+					// auto_commit=false (batch mode): stage the delete alongside
+					// any other pending Create/Update/Delete operations. It is
+					// flushed together with them in one atomic gNMI Set, either
+					// by the `iosxr_commit` action (see action_iosxr_commit.go)
+					// or, on destroy, by `iosxr_commit_on_destroy`'s Delete()
+					// (see resource_iosxr_commit.go) -- Terraform Actions have
+					// no destroy-time action_trigger event, so that resource's
+					// own Delete() is the only reliable destroy-time flush hook.
+					device.AppendCandidateOps(ops)
+					tflog.Debug(ctx, fmt.Sprintf("%s: Queued delete operation in candidate store (total pending: %d)", state.Id.ValueString(), device.PendingOpsCount()))
 				}
 			} else {
 				// NETCONF - Serialize write operations
@@ -1082,12 +1126,26 @@ func (r *RouterStaticVRFIPv6UnicastResource) Delete(ctx context.Context, req res
 					ops = append(ops, gnmi.Delete(i))
 				}
 
-				if len(ops) > 0 {
-					_, err := device.GnmiClient.Set(ctx, ops)
-					if err != nil {
-						resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-						return
+				if device.AutoCommit {
+					// auto_commit=true: commit these deletes immediately, exactly
+					// like every other operation on this device.
+					if len(ops) > 0 {
+						_, err := device.GnmiClient.Set(ctx, ops)
+						if err != nil {
+							resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+							return
+						}
 					}
+					tflog.Debug(ctx, fmt.Sprintf("%s: Committed %d delete operation(s) immediately (auto_commit=true)", state.Id.ValueString(), len(ops)))
+				} else {
+					// auto_commit=false (batch mode): stage the deletes alongside
+					// any other pending Create/Update/Delete operations -- see
+					// the "deleteMode == all" branch above for the flush
+					// mechanisms (iosxr_commit action / iosxr_commit_on_destroy).
+					if len(ops) > 0 {
+						device.AppendCandidateOps(ops)
+					}
+					tflog.Debug(ctx, fmt.Sprintf("%s: Queued %d delete operation(s) in candidate store (total pending: %d)", state.Id.ValueString(), len(ops), device.PendingOpsCount()))
 				}
 			} else {
 				// NETCONF - Serialize write operations

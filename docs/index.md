@@ -90,6 +90,7 @@ provider "iosxr" {
 
 ### Optional
 
+- `auto_commit` (Boolean) Automatically commit configuration changes after each resource operation. When `true` (default), each resource commits its changes immediately (gNMI only). When `false`, Create/Update operations are staged in an in-memory candidate store instead of being sent to the device, and must be explicitly flushed using the `iosxr_commit` resource. Delete operations always commit immediately regardless of this setting, so destroying/removing a resource never leaves a queued delete unflushed. This can also be set as the IOSXR_AUTO_COMMIT environment variable. Defaults to `true`.
 - `ca_certificate` (String) Path to the TLS CA certificate file. This can also be set as the IOSXR_CA_CERTIFICATE environment variable.
 - `certificate` (String) Path to the TLS certificate file. This can also be set as the IOSXR_CERTIFICATE environment variable.
 - `client_cache` (Boolean) Enable or disable client-side caching of device connections. This can improve performance by reusing existing connections. Defaults to `true`.
@@ -116,4 +117,5 @@ Required:
 
 Optional:
 
+- `auto_commit` (Boolean) Enable automatic commit of changes for this device (gNMI only). When `true` (default), changes are committed to the device immediately. When `false`, Create/Update changes are staged and must be explicitly flushed using the `iosxr_commit` resource; Delete always commits immediately regardless of this setting. Overrides the provider-level `auto_commit` for this device.
 - `managed` (Boolean) Enable or disable device management. This can be used to temporarily skip a device due to maintenance for example. Defaults to `true`.
