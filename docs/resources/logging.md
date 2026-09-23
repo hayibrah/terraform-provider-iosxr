@@ -140,8 +140,8 @@ resource "iosxr_logging" "example" {
 - `archive_harddisk` (Boolean) Use harddisk as the archive device
 - `archive_length` (Number) The maximum no of weeks of log to maintain
   - Range: `1`-`256`
-- `archive_severity` (String) The minimum severity of log messages to archive
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings`
+- `archive_severity` (String) severity of remote host
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v24.4), `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warning` (v25.4)
 - `archive_size` (Number) The total size of the archive
   - Range: `1`-`2047`
 - `archive_threshold` (Number) The size threshold at which a syslog is generated
@@ -206,12 +206,13 @@ resource "iosxr_logging" "example" {
 - `history_size` (Number) Logging history size
   - Range: `1`-`500`
 - `hostnameprefix` (String) Hostname prefix to add on msgs to servers
+  - Length: `1`-`800` (v24.4), `1`-`1024` (v25.4)
 - `ipv4_dscp` (String) Set IP DSCP (DiffServ CodePoint)
 - `ipv4_precedence` (String) Set precedence
 - `ipv6_dscp` (String) Set IP DSCP (DiffServ CodePoint)
 - `ipv6_precedence` (String) Set precedence
 - `localfilesize` (Number) Set size of the local log file
-  - Range: `0`-`4294967295`
+  - Range: `0`-`4294967295` (v24.4), `1`-`125000000` (v25.4)
 - `monitor` (String) Set monitor logging
   - Choices: `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning`
 - `monitor_discriminator_match1` (String) Set match discriminator 1
@@ -228,7 +229,7 @@ resource "iosxr_logging" "example" {
 - `trap` (String) Set trap logging
   - Choices: `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warning`
 - `yang` (String) Set yang logging parameters
-  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings`
+  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v24.4), `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v25.4)
 
 ### Read-Only
 

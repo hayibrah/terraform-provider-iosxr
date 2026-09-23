@@ -140,7 +140,7 @@ func (d *LoggingDataSource) Schema(ctx context.Context, req datasource.SchemaReq
 				Computed:            true,
 			},
 			"archive_severity": schema.StringAttribute{
-				MarkdownDescription: "The minimum severity of log messages to archive",
+				MarkdownDescription: "severity of remote host",
 				Computed:            true,
 			},
 			"archive_threshold": schema.Int64Attribute{

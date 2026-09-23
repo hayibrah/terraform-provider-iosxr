@@ -198,7 +198,11 @@ func (r *IPv6PrefixListResource) Create(ctx context.Context, req resource.Create
 
 		// Create object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		// Skip an empty Update -- IOS-XR rejects a truly empty gNMI Update ("data is presented at
+		// none leaf node") instead of treating it as a no-op.
+		if body != "{}" {
+			ops = append(ops, gnmi.Update(plan.getPath(), body))
+		}
 
 		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
@@ -210,10 +214,14 @@ func (r *IPv6PrefixListResource) Create(ctx context.Context, req resource.Create
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		_, err := device.Client.Set(ctx, ops)
-		if err != nil {
-			resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-			return
+		// Skip Set entirely when there's nothing to send -- the gNMI client rejects an empty
+		// operations list ("operations cannot be empty").
+		if len(ops) > 0 {
+			_, err := device.Client.Set(ctx, ops)
+			if err != nil {
+				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+				return
+			}
 		}
 	}
 
@@ -256,6 +264,14 @@ func (r *IPv6PrefixListResource) Read(ctx context.Context, req resource.ReadRequ
 		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
+				// A no-op state (nothing written, see Create's empty-body guard) reads back as
+				// "not found" -- that's expected, not drift. Don't remove, or every plan
+				// perpetually re-proposes create.
+				if state.toBody(ctx, device.Version) == "{}" {
+					diags = resp.State.Set(ctx, &state)
+					resp.Diagnostics.Append(diags...)
+					return
+				}
 				resp.State.RemoveResource(ctx)
 				return
 			} else {
@@ -330,7 +346,10 @@ func (r *IPv6PrefixListResource) Update(ctx context.Context, req resource.Update
 
 		// Update object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		// Skip an empty Update -- see Create above.
+		if body != "{}" {
+			ops = append(ops, gnmi.Update(plan.getPath(), body))
+		}
 
 		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
@@ -349,10 +368,13 @@ func (r *IPv6PrefixListResource) Update(ctx context.Context, req resource.Update
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		_, err := device.Client.Set(ctx, ops)
-		if err != nil {
-			resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-			return
+		// Skip Set entirely when there's nothing to send -- see Create above.
+		if len(ops) > 0 {
+			_, err := device.Client.Set(ctx, ops)
+			if err != nil {
+				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+				return
+			}
 		}
 	}
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))

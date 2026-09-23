@@ -188,14 +188,14 @@ func (data ServiceTimestamps) toBody(ctx context.Context, providerVersion string
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.DebugDatetimeUsec.IsNull() && !data.DebugDatetimeUsec.IsUnknown() {
 			if data.DebugDatetimeUsec.ValueBool() {
-				body, _ = sjson.Set(body, "debug.datetime.usec", map[string]string{})
+				body, _ = sjson.Set(body, "debug.datetime.usec", []interface{}{nil})
 			}
 		}
 	}
 	if helpers.VersionAtLeast(providerVersion, "25.4") {
 		if !data.LogDatetimeUsec.IsNull() && !data.LogDatetimeUsec.IsUnknown() {
 			if data.LogDatetimeUsec.ValueBool() {
-				body, _ = sjson.Set(body, "log.datetime.usec", map[string]string{})
+				body, _ = sjson.Set(body, "log.datetime.usec", []interface{}{nil})
 			}
 		}
 	}

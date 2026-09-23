@@ -838,6 +838,13 @@ func (data Logging) GetRangeConstraints() []helpers.FieldRangeConstraint {
 				"25.4": {Min: 2097152, Max: 125000000},
 			},
 		},
+		{
+			FieldPath: "localfilesize",
+			VersionRanges: map[string]helpers.VersionRange{
+				"24.4": {Min: 0, Max: 4294967295},
+				"25.4": {Min: 1, Max: 125000000},
+			},
+		},
 	}
 }
 
@@ -848,6 +855,13 @@ func (data Logging) GetRangeConstraints() []helpers.FieldRangeConstraint {
 // GetEnumConstraints returns the version-specific enum constraints for string fields
 func (data Logging) GetEnumConstraints() []helpers.FieldEnumConstraint {
 	return []helpers.FieldEnumConstraint{
+		{
+			FieldPath: "archive_severity",
+			VersionEnums: map[string][]string{
+				"24.4": {"alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"},
+				"25.4": {"alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warning"},
+			},
+		},
 		{
 			FieldPath: "file.severity",
 			VersionEnums: map[string][]string{
@@ -862,6 +876,13 @@ func (data Logging) GetEnumConstraints() []helpers.FieldEnumConstraint {
 				"25.4": {"auth", "cron", "daemon", "kern", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp"},
 			},
 		},
+		{
+			FieldPath: "yang",
+			VersionEnums: map[string][]string{
+				"24.4": {"alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"},
+				"25.4": {"alerts", "critical", "debugging", "disable", "emergencies", "errors", "informational", "notifications", "warnings"},
+			},
+		},
 	}
 }
 
@@ -871,7 +892,15 @@ func (data Logging) GetEnumConstraints() []helpers.FieldEnumConstraint {
 
 // GetStringLengthConstraints returns the version-specific string length constraints
 func (data Logging) GetStringLengthConstraints() []helpers.FieldStringLengthConstraint {
-	return nil
+	return []helpers.FieldStringLengthConstraint{
+		{
+			FieldPath: "hostnameprefix",
+			VersionStringLengths: map[string]helpers.StringLengthConstraint{
+				"24.4": {Min: 1, Max: 800},
+				"25.4": {Min: 1, Max: 1024},
+			},
+		},
+	}
 }
 
 // End of section. //template:end getStringLengthConstraints

@@ -197,10 +197,10 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"archive_severity": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("The minimum severity of log messages to archive").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String,
+				MarkdownDescription: helpers.NewAttributeDescription("severity of remote host").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v24.4), `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warning` (v25.4)",
 				Optional:            true,
 				Validators: []validator.String{
-					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
+					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings", "warning"),
 				},
 			},
 			"archive_threshold": schema.Int64Attribute{
@@ -426,19 +426,19 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				},
 			},
 			"hostnameprefix": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Hostname prefix to add on msgs to servers").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Hostname prefix to add on msgs to servers").String + "\n  - Length: `1`-`800` (v24.4), `1`-`1024` (v25.4)",
 				Optional:            true,
 				Validators: []validator.String{
-					stringvalidator.LengthBetween(1, 800),
-					stringvalidator.RegexMatches(regexp.MustCompile(`[\w\-\.:,_@#%$\+=\| ;]+`), ""),
+					stringvalidator.LengthBetween(1, 1024),
 				},
 			},
 			"localfilesize": schema.Int64Attribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set size of the local log file").AddIntegerRangeDescription(0, 4294967295).String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set size of the local log file").String + "\n  - Range: `0`-`4294967295` (v24.4), `1`-`125000000` (v25.4)",
 				Optional:            true,
 				Validators: []validator.Int64{
 					int64validator.Between(0, 4294967295),
 				},
+				// Precise per-version range validation still done at runtime in Create/Update.
 			},
 			"source_interfaces": schema.ListNestedAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Specify interface for source address in logging transactions").String,
@@ -488,10 +488,10 @@ func (r *LoggingResource) Schema(ctx context.Context, req resource.SchemaRequest
 				Optional:            true,
 			},
 			"yang": schema.StringAttribute{
-				MarkdownDescription: helpers.NewAttributeDescription("Set yang logging parameters").AddStringEnumDescription("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings").String,
+				MarkdownDescription: helpers.NewAttributeDescription("Set yang logging parameters").String + "\n  - Choices: `alerts`, `critical`, `debugging`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v24.4), `alerts`, `critical`, `debugging`, `disable`, `emergencies`, `errors`, `informational`, `notifications`, `warnings` (v25.4)",
 				Optional:            true,
 				Validators: []validator.String{
-					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings"),
+					stringvalidator.OneOf("alerts", "critical", "debugging", "emergencies", "errors", "informational", "notifications", "warnings", "disable"),
 				},
 			},
 			"suppress_rules": schema.ListNestedAttribute{
@@ -788,7 +788,11 @@ func (r *LoggingResource) Create(ctx context.Context, req resource.CreateRequest
 
 		// Create object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		// Skip an empty Update -- IOS-XR rejects a truly empty gNMI Update ("data is presented at
+		// none leaf node") instead of treating it as a no-op.
+		if body != "{}" {
+			ops = append(ops, gnmi.Update(plan.getPath(), body))
+		}
 
 		emptyLeafsDelete := plan.getEmptyLeafsDelete(ctx, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("List of empty leafs to delete: %+v", emptyLeafsDelete))
@@ -800,10 +804,14 @@ func (r *LoggingResource) Create(ctx context.Context, req resource.CreateRequest
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		_, err := device.Client.Set(ctx, ops)
-		if err != nil {
-			resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-			return
+		// Skip Set entirely when there's nothing to send -- the gNMI client rejects an empty
+		// operations list ("operations cannot be empty").
+		if len(ops) > 0 {
+			_, err := device.Client.Set(ctx, ops)
+			if err != nil {
+				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+				return
+			}
 		}
 	}
 
@@ -846,6 +854,14 @@ func (r *LoggingResource) Read(ctx context.Context, req resource.ReadRequest, re
 		getResp, err := device.Client.Get(ctx, []string{readPath})
 		if err != nil {
 			if strings.Contains(err.Error(), "Requested element(s) not found") {
+				// A no-op state (nothing written, see Create's empty-body guard) reads back as
+				// "not found" -- that's expected, not drift. Don't remove, or every plan
+				// perpetually re-proposes create.
+				if state.toBody(ctx, device.Version) == "{}" {
+					diags = resp.State.Set(ctx, &state)
+					resp.Diagnostics.Append(diags...)
+					return
+				}
 				resp.State.RemoveResource(ctx)
 				return
 			} else {
@@ -924,7 +940,10 @@ func (r *LoggingResource) Update(ctx context.Context, req resource.UpdateRequest
 
 		// Update object
 		body := plan.toBody(ctx, device.Version)
-		ops = append(ops, gnmi.Update(plan.getPath(), body))
+		// Skip an empty Update -- see Create above.
+		if body != "{}" {
+			ops = append(ops, gnmi.Update(plan.getPath(), body))
+		}
 
 		deletedListItems := plan.getDeletedItems(ctx, state, device.Version)
 		tflog.Debug(ctx, fmt.Sprintf("Removed items to delete: %+v", deletedListItems))
@@ -943,10 +962,13 @@ func (r *LoggingResource) Update(ctx context.Context, req resource.UpdateRequest
 		if !r.data.ReuseConnection {
 			defer device.Client.Disconnect()
 		}
-		_, err := device.Client.Set(ctx, ops)
-		if err != nil {
-			resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
-			return
+		// Skip Set entirely when there's nothing to send -- see Create above.
+		if len(ops) > 0 {
+			_, err := device.Client.Set(ctx, ops)
+			if err != nil {
+				resp.Diagnostics.AddError("Unable to apply gNMI Set operation", err.Error())
+				return
+			}
 		}
 	}
 	tflog.Debug(ctx, fmt.Sprintf("%s: Update finished successfully", plan.Id.ValueString()))

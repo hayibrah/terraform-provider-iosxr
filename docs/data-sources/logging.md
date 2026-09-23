@@ -49,7 +49,7 @@ data "iosxr_logging" "example" {
   - **Not supported from version `25.4` and above**
 - `archive_harddisk` (Boolean) Use harddisk as the archive device
 - `archive_length` (Number) The maximum no of weeks of log to maintain
-- `archive_severity` (String) The minimum severity of log messages to archive
+- `archive_severity` (String) severity of remote host
 - `archive_size` (Number) The total size of the archive
 - `archive_threshold` (Number) The size threshold at which a syslog is generated
 - `buffered_discriminator_match1` (String) Set match discriminator 1
