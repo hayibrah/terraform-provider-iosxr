@@ -22,12 +22,11 @@ package provider
 // Section below is generated&owned by "gen/generator.go". //template:begin imports
 import (
 	"context"
-	"path"
+	"fmt"
 
 	"github.com/CiscoDevNet/terraform-provider-iosxr/internal/provider/helpers"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/tidwall/gjson"
-	"github.com/tidwall/sjson"
 )
 
 // End of section. //template:end imports
@@ -63,11 +62,10 @@ func (data BGPASFormatData) getPath() string {
 // Section below is generated&owned by "gen/generator.go". //template:begin toBody
 
 func (data BGPASFormat) toBody(ctx context.Context, providerVersion string) string {
-	body := "{}"
 	if !data.AsFormat.IsNull() && !data.AsFormat.IsUnknown() {
-		body, _ = sjson.Set(body, "as-format", data.AsFormat.ValueString())
+		return fmt.Sprintf(`"%s"`, data.AsFormat.ValueString())
 	}
-	return body
+	return "{}"
 }
 
 // End of section. //template:end toBody
@@ -127,7 +125,7 @@ func (data BGPASFormat) GetPatternConstraints() []helpers.FieldPatternConstraint
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AsFormat.IsNull() {
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.AsFormat.IsNull() {
 		data.AsFormat = types.StringValue(value.String())
 	} else {
 		data.AsFormat = types.StringNull()
@@ -139,7 +137,7 @@ func (data *BGPASFormat) updateFromBody(ctx context.Context, res []byte, version
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *BGPASFormat) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsFormat = types.StringValue(value.String())
 	}
 }
@@ -149,7 +147,7 @@ func (data *BGPASFormat) fromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "as-format"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AsFormat = types.StringValue(value.String())
 	}
 }
@@ -161,7 +159,7 @@ func (data *BGPASFormatData) fromBody(ctx context.Context, res []byte, version s
 func (data *BGPASFormat) getDeletedItems(ctx context.Context, state BGPASFormat, version string) []string {
 	deletedItems := make([]string, 0)
 	if !state.AsFormat.IsNull() && data.AsFormat.IsNull() {
-		deletedItems = append(deletedItems, path.Join(state.getPath(), "as-format"))
+		deletedItems = append(deletedItems, state.getPath())
 	}
 	return deletedItems
 }
@@ -181,7 +179,7 @@ func (data *BGPASFormat) getEmptyLeafsDelete(ctx context.Context, version string
 func (data *BGPASFormat) getDeletePaths(ctx context.Context, version string) []string {
 	var deletePaths []string
 	if !data.AsFormat.IsNull() {
-		deletePaths = append(deletePaths, path.Join(data.getPath(), "as-format"))
+		deletePaths = append(deletePaths, data.getPath())
 	}
 	return deletePaths
 }

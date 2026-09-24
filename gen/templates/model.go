@@ -233,6 +233,20 @@ func (data {{camelCase .Name}}{{$versionSuffix}}Data) getPathForVersion(provider
 // Section below is generated&owned by "gen/generator.go". //template:begin toBody
 
 func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, providerVersion string) string {
+	{{- $noAugmentCount := 0}}
+	{{- $totalAttrCount := 0}}
+	{{- range .Attributes}}{{if and (not .Id) (not .Reference)}}{{$totalAttrCount = add $totalAttrCount 1}}{{end}}{{end}}
+	{{- range .Attributes}}{{if and .NoAugmentConfig (eq .Type "String") (not .Id) (not .Reference) (ne .Type "List") (ne .Type "Set")}}{{$noAugmentCount = add $noAugmentCount 1}}{{end}}{{end}}
+	{{- if and (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+	{{- range .Attributes}}
+	{{- if and .NoAugmentConfig (eq .Type "String") (not .Id) (not .Reference) (ne .Type "List") (ne .Type "Set")}}
+	if !data.{{toGoName .TfName}}.IsNull() && !data.{{toGoName .TfName}}.IsUnknown() {
+		return fmt.Sprintf(`"%s"`, data.{{toGoName .TfName}}.ValueString())
+	}
+	return "{}"
+	{{- end}}
+	{{- end}}
+	{{- else}}
 	body := "{}"
 	{{- range .Attributes}}
 	{{- if and (not .Reference) (ne .Type "List") (ne .Type "Set")}}
@@ -515,6 +529,7 @@ func (data {{camelCase .Name}}{{$versionSuffix}}) toBody(ctx context.Context, pr
 	{{- end}}
 	{{- end}}
 	return body
+	{{- end}}
 }
 
 // End of section. //template:end toBody
@@ -705,11 +720,19 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 		data.{{toGoName .TfName}} = types.BoolNull()
 	}
 	{{- else if eq .Type "String"}}
+	{{- if and .NoAugmentConfig (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) && !data.{{toGoName .TfName}}.IsNull() {
+		data.{{toGoName .TfName}} = types.StringValue(value.String())
+	} else {
+		data.{{toGoName .TfName}} = types.StringNull()
+	}
+	{{- else}}
 	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists(){{if not .ReadRaw}} && (value.Type == gjson.String || value.Type == gjson.Number){{end}} && !data.{{toGoName .TfName}}.IsNull() {
 		data.{{toGoName .TfName}} = types.StringValue({{if .ReadRaw}}value.Raw{{else}}value.String(){{end}})
 	} else {
 		data.{{toGoName .TfName}} = types.StringNull()
 	}
+	{{- end}}
 	{{- else if eq .Type "StringList"}}
 	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{toGoName .TfName}}.IsNull() {
 		data.{{toGoName .TfName}} = helpers.GetStringList(value.Array())
@@ -1207,9 +1230,15 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 	}
 	{{- end}}
 	{{- else if eq .Type "String"}}
+	{{- if and .NoAugmentConfig (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
+		data.{{toGoName .TfName}} = types.StringValue(value.String())
+	}
+	{{- else}}
 	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists(){{if not .ReadRaw}} && (value.Type == gjson.String || value.Type == gjson.Number){{end}} {
 		data.{{toGoName .TfName}} = types.StringValue({{if .ReadRaw}}value.Raw{{else}}value.String(){{end}})
 	}
+	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	} else {
 		data.{{toGoName .TfName}} = {{$nullExpr}}
@@ -1595,9 +1624,15 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 	}
 	{{- end}}
 	{{- else if eq .Type "String"}}
+	{{- if and .NoAugmentConfig (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+	if value := gjson.ParseBytes(res); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
+		data.{{toGoName .TfName}} = types.StringValue(value.String())
+	}
+	{{- else}}
 	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists(){{if not .ReadRaw}} && (value.Type == gjson.String || value.Type == gjson.Number){{end}} {
 		data.{{toGoName .TfName}} = types.StringValue({{if .ReadRaw}}value.Raw{{else}}value.String(){{end}})
 	}
+	{{- end}}
 	{{- if or .AddedInVersion .RemovedInVersion}}
 	} else {
 		data.{{toGoName .TfName}} = {{$nullExpr}}
@@ -1956,7 +1991,11 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletedItems(ctx context.C
 	{{- range reverseAttributes .Attributes}}
 	{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!state.{{toGoName .TfName}}.IsNull() && data.{{toGoName .TfName}}.IsNull() {
+		{{- if and .NoAugmentConfig (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+		deletedItems = append(deletedItems, {{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}})
+		{{- else}}
 		deletedItems = append(deletedItems, path.Join({{if $.HasPathVersion}}state.getPathForVersion(version){{else}}state.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
+		{{- end}}
 	}
 	{{- else if or (eq .Type "List") (eq .Type "Set")}}
 	{{- $xpath := getXPath .YangName .XPath}}
@@ -2490,7 +2529,11 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) getDeletePaths(ctx context.Co
 	{{- range reverseAttributes .Attributes}}
 	{{- if and (not .Reference) (not .Id) (ne .Type "List") (ne .Type "Set") (not .NoDelete)}}
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}!data.{{toGoName .TfName}}.IsNull() {
+		{{- if and .NoAugmentConfig (eq $noAugmentCount 1) (eq $totalAttrCount 1)}}
+		deletePaths = append(deletePaths, {{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}})
+		{{- else}}
 		deletePaths = append(deletePaths, path.Join({{if $.HasPathVersion}}data.getPathForVersion(version){{else}}data.getPath(){{end}}, {{getDeletePathExpr . "version"}}))
+		{{- end}}
 	}
 	{{- else if and (or (eq .Type "List") (eq .Type "Set")) (not .NoDelete)}}
 	{{- $xpathExpr := keyPathExpr . "version"}}
