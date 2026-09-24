@@ -488,12 +488,12 @@ func (data Track) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *Track) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number && !data.DelayUp.IsNull() {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && !data.DelayUp.IsNull() {
 		data.DelayUp = types.Int64Value(value.Int())
 	} else {
 		data.DelayUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number && !data.DelayDown.IsNull() {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && !data.DelayDown.IsNull() {
 		data.DelayDown = types.Int64Value(value.Int())
 	} else {
 		data.DelayDown = types.Int64Null()
@@ -513,7 +513,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.RouteAddressPrefix = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number && !data.RouteAddressPrefixLength.IsNull() {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && !data.RouteAddressPrefixLength.IsNull() {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	} else {
 		data.RouteAddressPrefixLength = types.Int64Null()
@@ -528,7 +528,7 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.LineProtocolState = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number && !data.Rtr.IsNull() {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && !data.Rtr.IsNull() {
 		data.Rtr = types.Int64Value(value.Int())
 	} else {
 		data.Rtr = types.Int64Null()
@@ -637,18 +637,18 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.ThresholdPercentage[i].ObjectName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentage[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && !data.ThresholdPercentage[i].Weight.IsNull() {
 			data.ThresholdPercentage[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.ThresholdPercentage[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentageUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && !data.ThresholdPercentageUp.IsNull() {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdPercentageUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number && !data.ThresholdPercentageDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && !data.ThresholdPercentageDown.IsNull() {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdPercentageDown = types.Int64Null()
@@ -681,28 +681,28 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.ThresholdWeight[i].ObjectName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeight[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && !data.ThresholdWeight[i].Weight.IsNull() {
 			data.ThresholdWeight[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.ThresholdWeight[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeightUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && !data.ThresholdWeightUp.IsNull() {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdWeightUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number && !data.ThresholdWeightDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && !data.ThresholdWeightDown.IsNull() {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	} else {
 		data.ThresholdWeightDown = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeightUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && !data.LineProtocolWeightUp.IsNull() {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolWeightUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeightDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && !data.LineProtocolWeightDown.IsNull() {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolWeightDown = types.Int64Null()
@@ -735,18 +735,18 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 		} else {
 			data.LineProtocolWeight[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("weight"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolWeight[i].Weight.IsNull() {
+		if value := r.Get("weight"); value.Exists() && !data.LineProtocolWeight[i].Weight.IsNull() {
 			data.LineProtocolWeight[i].Weight = types.Int64Value(value.Int())
 		} else {
 			data.LineProtocolWeight[i].Weight = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolPercentageUp.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && !data.LineProtocolPercentageUp.IsNull() {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolPercentageUp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number && !data.LineProtocolPercentageDown.IsNull() {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && !data.LineProtocolPercentageDown.IsNull() {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	} else {
 		data.LineProtocolPercentageDown = types.Int64Null()
@@ -838,12 +838,12 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 			data.LineProtocolBooleanOr[i].InterfaceName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number && !data.BfdRate.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && !data.BfdRate.IsNull() {
 		data.BfdRate = types.Int64Value(value.Int())
 	} else {
 		data.BfdRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number && !data.BfdDebounce.IsNull() {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && !data.BfdDebounce.IsNull() {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	} else {
 		data.BfdDebounce = types.Int64Null()
@@ -1040,10 +1040,10 @@ func (data *Track) updateFromBody(ctx context.Context, res []byte, version strin
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() {
 		data.DelayDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1055,7 +1055,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouteAddressPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1064,7 +1064,7 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LineProtocolState = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() {
 		data.Rtr = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.boolean.and.objects.object"); value.Exists() {
@@ -1106,17 +1106,17 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdPercentage = append(data.ThresholdPercentage, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.threshold.weight.objects.object"); value.Exists() {
@@ -1126,23 +1126,23 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdWeight = append(data.ThresholdWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.interfaces.interface"); value.Exists() {
@@ -1152,17 +1152,17 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.LineProtocolWeight = append(data.LineProtocolWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.interfaces.interface"); value.Exists() {
@@ -1198,10 +1198,10 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() {
 		data.BfdRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1306,10 +1306,10 @@ func (data *Track) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *TrackData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "delay.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.up"); value.Exists() {
 		data.DelayUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.down"); value.Exists() {
 		data.DelayDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.route.reachability.route.ipv4.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1321,7 +1321,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RouteAddressPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.route.reachability.route.address-prefix-length"); value.Exists() {
 		data.RouteAddressPrefixLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.route.reachability.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1330,7 +1330,7 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 	if value := gjson.GetBytes(res, "type.line-protocol.state.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LineProtocolState = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.rtr"); value.Exists() {
 		data.Rtr = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.boolean.and.objects.object"); value.Exists() {
@@ -1372,17 +1372,17 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdPercentage = append(data.ThresholdPercentage, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.up"); value.Exists() {
 		data.ThresholdPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.percentage.threshold.percentage.down"); value.Exists() {
 		data.ThresholdPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.threshold.weight.objects.object"); value.Exists() {
@@ -1392,23 +1392,23 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 			if cValue := v.Get("object-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.ObjectName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.ThresholdWeight = append(data.ThresholdWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.up"); value.Exists() {
 		data.ThresholdWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.threshold.weight.threshold.weight.down"); value.Exists() {
 		data.ThresholdWeightDown = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.up"); value.Exists() {
 		data.LineProtocolWeightUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.threshold.weight.down"); value.Exists() {
 		data.LineProtocolWeightDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.weight.interfaces.interface"); value.Exists() {
@@ -1418,17 +1418,17 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("weight"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("weight"); cValue.Exists() {
 				item.Weight = types.Int64Value(cValue.Int())
 			}
 			data.LineProtocolWeight = append(data.LineProtocolWeight, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.up"); value.Exists() {
 		data.LineProtocolPercentageUp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.threshold.percentage.down"); value.Exists() {
 		data.LineProtocolPercentageDown = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.list.line-protocol.state.threshold.percentage.interfaces.interface"); value.Exists() {
@@ -1464,10 +1464,10 @@ func (data *TrackData) fromBody(ctx context.Context, res []byte, version string)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.bfdrtr.rate"); value.Exists() {
 		data.BfdRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "type.bfdrtr.debounce"); value.Exists() {
 		data.BfdDebounce = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "type.bfdrtr.interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

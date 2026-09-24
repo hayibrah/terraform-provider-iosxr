@@ -1734,7 +1734,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.VrfAllTablePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && value.Type == gjson.Number && !data.DomainDistinguisherAs.IsNull() {
+	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && !data.DomainDistinguisherAs.IsNull() {
 		data.DomainDistinguisherAs = types.Int64Value(value.Int())
 	} else {
 		data.DomainDistinguisherAs = types.Int64Null()
@@ -1744,22 +1744,22 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.DomainDistinguisherRouterId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && value.Type == gjson.Number && !data.DistanceBgpExternalRoute.IsNull() {
+	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && !data.DistanceBgpExternalRoute.IsNull() {
 		data.DistanceBgpExternalRoute = types.Int64Value(value.Int())
 	} else {
 		data.DistanceBgpExternalRoute = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() && value.Type == gjson.Number && !data.DistanceBgpInternalRoute.IsNull() {
+	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() && !data.DistanceBgpInternalRoute.IsNull() {
 		data.DistanceBgpInternalRoute = types.Int64Value(value.Int())
 	} else {
 		data.DistanceBgpInternalRoute = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() && value.Type == gjson.Number && !data.DistanceBgpLocalRoute.IsNull() {
+	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() && !data.DistanceBgpLocalRoute.IsNull() {
 		data.DistanceBgpLocalRoute = types.Int64Value(value.Int())
 	} else {
 		data.DistanceBgpLocalRoute = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() && value.Type == gjson.Number && !data.MaximumPathsEbgpMultipath.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() && !data.MaximumPathsEbgpMultipath.IsNull() {
 		data.MaximumPathsEbgpMultipath = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPathsEbgpMultipath = types.Int64Null()
@@ -1778,7 +1778,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.MaximumPathsEbgpRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && value.Type == gjson.Number && !data.MaximumPathsIbgpMultipath.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && !data.MaximumPathsIbgpMultipath.IsNull() {
 		data.MaximumPathsIbgpMultipath = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPathsIbgpMultipath = types.Int64Null()
@@ -1815,7 +1815,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.MaximumPathsIbgpRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && value.Type == gjson.Number && !data.MaximumPathsEibgpMultipath.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && !data.MaximumPathsEibgpMultipath.IsNull() {
 		data.MaximumPathsEibgpMultipath = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPathsEibgpMultipath = types.Int64Null()
@@ -1879,7 +1879,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.AdditionalPathsReceive = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && value.Type == gjson.Number && !data.AdditionalPathsAdvertiseLimit.IsNull() {
+	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && !data.AdditionalPathsAdvertiseLimit.IsNull() {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Value(value.Int())
 	} else {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Null()
@@ -1972,7 +1972,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.Networks[i].Address = types.StringNull()
 		}
-		if value := r.Get("address-prefix"); value.Exists() && value.Type == gjson.Number && !data.Networks[i].Prefix.IsNull() {
+		if value := r.Get("address-prefix"); value.Exists() && !data.Networks[i].Prefix.IsNull() {
 			data.Networks[i].Prefix = types.Int64Value(value.Int())
 		} else {
 			data.Networks[i].Prefix = types.Int64Null()
@@ -2029,7 +2029,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AggregateAddresses[i].Address = types.StringNull()
 		}
-		if value := r.Get("address-prefix"); value.Exists() && value.Type == gjson.Number && !data.AggregateAddresses[i].Prefix.IsNull() {
+		if value := r.Get("address-prefix"); value.Exists() && !data.AggregateAddresses[i].Prefix.IsNull() {
 			data.AggregateAddresses[i].Prefix = types.Int64Value(value.Int())
 		} else {
 			data.AggregateAddresses[i].Prefix = types.Int64Null()
@@ -2071,7 +2071,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.AggregateAddresses[i].Description = types.StringNull()
 		}
-		if value := r.Get("set-tag"); value.Exists() && value.Type == gjson.Number && !data.AggregateAddresses[i].SetTag.IsNull() {
+		if value := r.Get("set-tag"); value.Exists() && !data.AggregateAddresses[i].SetTag.IsNull() {
 			data.AggregateAddresses[i].SetTag = types.Int64Value(value.Int())
 		} else {
 			data.AggregateAddresses[i].SetTag = types.Int64Null()
@@ -2384,7 +2384,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeOspf[i].MatchNssaExternal2 = types.BoolNull()
 		}
-		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeOspf[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && !data.RedistributeOspf[i].Metric.IsNull() {
 			data.RedistributeOspf[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.RedistributeOspf[i].Metric = types.Int64Null()
@@ -2716,7 +2716,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeOspfv3[i].MatchNssaExternal2 = types.BoolNull()
 		}
-		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeOspfv3[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && !data.RedistributeOspfv3[i].Metric.IsNull() {
 			data.RedistributeOspfv3[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.RedistributeOspfv3[i].Metric = types.Int64Null()
@@ -2796,7 +2796,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeEigrp[i].MatchExternal = types.BoolNull()
 		}
-		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeEigrp[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && !data.RedistributeEigrp[i].Metric.IsNull() {
 			data.RedistributeEigrp[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.RedistributeEigrp[i].Metric = types.Int64Null()
@@ -2912,7 +2912,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 		} else {
 			data.RedistributeIsis[i].Level1InterArea = types.BoolNull()
 		}
-		if value := r.Get("metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeIsis[i].Metric.IsNull() {
+		if value := r.Get("metric"); value.Exists() && !data.RedistributeIsis[i].Metric.IsNull() {
 			data.RedistributeIsis[i].Metric = types.Int64Value(value.Int())
 		} else {
 			data.RedistributeIsis[i].Metric = types.Int64Null()
@@ -2946,7 +2946,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.RedistributeConnected = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeConnectedMetric.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && !data.RedistributeConnectedMetric.IsNull() {
 		data.RedistributeConnectedMetric = types.Int64Value(value.Int())
 	} else {
 		data.RedistributeConnectedMetric = types.Int64Null()
@@ -2974,7 +2974,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.RedistributeStatic = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeStaticMetric.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && !data.RedistributeStaticMetric.IsNull() {
 		data.RedistributeStaticMetric = types.Int64Value(value.Int())
 	} else {
 		data.RedistributeStaticMetric = types.Int64Null()
@@ -3002,7 +3002,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.RedistributeRip = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() && value.Type == gjson.Number && !data.RedistributeRipMetric.IsNull() {
+	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() && !data.RedistributeRipMetric.IsNull() {
 		data.RedistributeRipMetric = types.Int64Value(value.Int())
 	} else {
 		data.RedistributeRipMetric = types.Int64Null()
@@ -3026,7 +3026,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.TablePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() && value.Type == gjson.Number && !data.RetainLocalLabel.IsNull() {
+	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() && !data.RetainLocalLabel.IsNull() {
 		data.RetainLocalLabel = types.Int64Value(value.Int())
 	} else {
 		data.RetainLocalLabel = types.Int64Null()
@@ -3154,12 +3154,12 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.RnhInstallExtcommOnly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() && value.Type == gjson.Number && !data.PrefixEcmpDelay.IsNull() {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() && !data.PrefixEcmpDelay.IsNull() {
 		data.PrefixEcmpDelay = types.Int64Value(value.Int())
 	} else {
 		data.PrefixEcmpDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() && value.Type == gjson.Number && !data.PrefixEcmpDelayOorThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() && !data.PrefixEcmpDelayOorThreshold.IsNull() {
 		data.PrefixEcmpDelayOorThreshold = types.Int64Value(value.Int())
 	} else {
 		data.PrefixEcmpDelayOorThreshold = types.Int64Null()
@@ -3200,7 +3200,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.BgpBestpathOriginAsAllowInvalid = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() && value.Type == gjson.Number && !data.BgpScanTime.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() && !data.BgpScanTime.IsNull() {
 		data.BgpScanTime = types.Int64Value(value.Int())
 	} else {
 		data.BgpScanTime = types.Int64Null()
@@ -3214,22 +3214,22 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.BgpAttributeDownload = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() && value.Type == gjson.Number && !data.BgpImportDelaySeconds.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() && !data.BgpImportDelaySeconds.IsNull() {
 		data.BgpImportDelaySeconds = types.Int64Value(value.Int())
 	} else {
 		data.BgpImportDelaySeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() && value.Type == gjson.Number && !data.BgpImportDelayMilliseconds.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() && !data.BgpImportDelayMilliseconds.IsNull() {
 		data.BgpImportDelayMilliseconds = types.Int64Value(value.Int())
 	} else {
 		data.BgpImportDelayMilliseconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() && value.Type == gjson.Number && !data.BgpLabelDelaySeconds.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() && !data.BgpLabelDelaySeconds.IsNull() {
 		data.BgpLabelDelaySeconds = types.Int64Value(value.Int())
 	} else {
 		data.BgpLabelDelaySeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() && value.Type == gjson.Number && !data.BgpLabelDelayMilliseconds.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() && !data.BgpLabelDelayMilliseconds.IsNull() {
 		data.BgpLabelDelayMilliseconds = types.Int64Value(value.Int())
 	} else {
 		data.BgpLabelDelayMilliseconds = types.Int64Null()
@@ -3266,7 +3266,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("cluster-number"); value.Exists() && value.Type == gjson.Number && !data.BgpClientToClientReflectionClusterIds32bitFormat[i].ClusterAs.IsNull() {
+		if value := r.Get("cluster-number"); value.Exists() && !data.BgpClientToClientReflectionClusterIds32bitFormat[i].ClusterAs.IsNull() {
 			data.BgpClientToClientReflectionClusterIds32bitFormat[i].ClusterAs = types.Int64Value(value.Int())
 		} else {
 			data.BgpClientToClientReflectionClusterIds32bitFormat[i].ClusterAs = types.Int64Null()
@@ -3319,22 +3319,22 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 			data.BgpClientToClientReflectionClusterIdsIpFormat[i].Disable = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() && value.Type == gjson.Number && !data.BgpDampeningDecayHalfLife.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() && !data.BgpDampeningDecayHalfLife.IsNull() {
 		data.BgpDampeningDecayHalfLife = types.Int64Value(value.Int())
 	} else {
 		data.BgpDampeningDecayHalfLife = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() && value.Type == gjson.Number && !data.BgpDampeningReuseThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() && !data.BgpDampeningReuseThreshold.IsNull() {
 		data.BgpDampeningReuseThreshold = types.Int64Value(value.Int())
 	} else {
 		data.BgpDampeningReuseThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() && value.Type == gjson.Number && !data.BgpDampeningSuppressThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() && !data.BgpDampeningSuppressThreshold.IsNull() {
 		data.BgpDampeningSuppressThreshold = types.Int64Value(value.Int())
 	} else {
 		data.BgpDampeningSuppressThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && value.Type == gjson.Number && !data.BgpDampeningMaxSuppressTime.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && !data.BgpDampeningMaxSuppressTime.IsNull() {
 		data.BgpDampeningMaxSuppressTime = types.Int64Value(value.Int())
 	} else {
 		data.BgpDampeningMaxSuppressTime = types.Int64Null()
@@ -3349,7 +3349,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.EventPrefixRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && value.Type == gjson.Number && !data.DynamicMedInterval.IsNull() {
+	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && !data.DynamicMedInterval.IsNull() {
 		data.DynamicMedInterval = types.Int64Value(value.Int())
 	} else {
 		data.DynamicMedInterval = types.Int64Null()
@@ -3363,12 +3363,12 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.WeightResetOnImport = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() && value.Type == gjson.Number && !data.NexthopTriggerDelayCritical.IsNull() {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() && !data.NexthopTriggerDelayCritical.IsNull() {
 		data.NexthopTriggerDelayCritical = types.Int64Value(value.Int())
 	} else {
 		data.NexthopTriggerDelayCritical = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() && value.Type == gjson.Number && !data.NexthopTriggerDelayNonCritical.IsNull() {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() && !data.NexthopTriggerDelayNonCritical.IsNull() {
 		data.NexthopTriggerDelayNonCritical = types.Int64Value(value.Int())
 	} else {
 		data.NexthopTriggerDelayNonCritical = types.Int64Null()
@@ -3378,27 +3378,27 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.NexthopRoutePolicy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() && value.Type == gjson.Number && !data.NexthopResolutionPrefixLengthMinimumIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() && !data.NexthopResolutionPrefixLengthMinimumIpv4.IsNull() {
 		data.NexthopResolutionPrefixLengthMinimumIpv4 = types.Int64Value(value.Int())
 	} else {
 		data.NexthopResolutionPrefixLengthMinimumIpv4 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() && value.Type == gjson.Number && !data.NexthopResolutionPrefixLengthMinimumIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() && !data.NexthopResolutionPrefixLengthMinimumIpv6.IsNull() {
 		data.NexthopResolutionPrefixLengthMinimumIpv6 = types.Int64Value(value.Int())
 	} else {
 		data.NexthopResolutionPrefixLengthMinimumIpv6 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() && value.Type == gjson.Number && !data.UpdateLimitSubGroupEbgp.IsNull() {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() && !data.UpdateLimitSubGroupEbgp.IsNull() {
 		data.UpdateLimitSubGroupEbgp = types.Int64Value(value.Int())
 	} else {
 		data.UpdateLimitSubGroupEbgp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() && value.Type == gjson.Number && !data.UpdateLimitSubGroupIbgp.IsNull() {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() && !data.UpdateLimitSubGroupIbgp.IsNull() {
 		data.UpdateLimitSubGroupIbgp = types.Int64Value(value.Int())
 	} else {
 		data.UpdateLimitSubGroupIbgp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() && value.Type == gjson.Number && !data.UpdateLimitAddressFamily.IsNull() {
+	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() && !data.UpdateLimitAddressFamily.IsNull() {
 		data.UpdateLimitAddressFamily = types.Int64Value(value.Int())
 	} else {
 		data.UpdateLimitAddressFamily = types.Int64Null()
@@ -3412,7 +3412,7 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.UpdateWaitInstall = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() && value.Type == gjson.Number && !data.UpdateWaitInstallDelayStartup.IsNull() {
+	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() && !data.UpdateWaitInstallDelayStartup.IsNull() {
 		data.UpdateWaitInstallDelayStartup = types.Int64Value(value.Int())
 	} else {
 		data.UpdateWaitInstallDelayStartup = types.Int64Null()
@@ -3576,12 +3576,12 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 				return true
 			},
 		)
-		if value := r.Get("peer-set-id-number"); value.Exists() && value.Type == gjson.Number && !data.PeerSetIds[i].PeerId.IsNull() {
+		if value := r.Get("peer-set-id-number"); value.Exists() && !data.PeerSetIds[i].PeerId.IsNull() {
 			data.PeerSetIds[i].PeerId = types.Int64Value(value.Int())
 		} else {
 			data.PeerSetIds[i].PeerId = types.Int64Null()
 		}
-		if value := r.Get("peer-set-sid.index"); value.Exists() && value.Type == gjson.Number && !data.PeerSetIds[i].PeerSidIndex.IsNull() {
+		if value := r.Get("peer-set-sid.index"); value.Exists() && !data.PeerSetIds[i].PeerSidIndex.IsNull() {
 			data.PeerSetIds[i].PeerSidIndex = types.Int64Value(value.Int())
 		} else {
 			data.PeerSetIds[i].PeerSidIndex = types.Int64Null()
@@ -3592,22 +3592,22 @@ func (data *RouterBGPAddressFamily) updateFromBody(ctx context.Context, res []by
 	} else {
 		data.AsBasedAsList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.AsBasedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.AsBasedDelay.IsNull() {
 		data.AsBasedDelay = types.Int64Value(value.Int())
 	} else {
 		data.AsBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.FixedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.FixedDelay.IsNull() {
 		data.FixedDelay = types.Int64Value(value.Int())
 	} else {
 		data.FixedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.PlatformOorBasedDelay.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.PlatformOorBasedDelay.IsNull() {
 		data.PlatformOorBasedDelay = types.Int64Value(value.Int())
 	} else {
 		data.PlatformOorBasedDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.PlatformOorBasedThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.PlatformOorBasedThreshold.IsNull() {
 		data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
 	} else {
 		data.PlatformOorBasedThreshold = types.Int64Null()
@@ -3678,22 +3678,22 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "vrf.all.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.VrfAllTablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() {
 		data.DomainDistinguisherAs = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DomainDistinguisherRouterId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() {
 		data.DistanceBgpExternalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() {
 		data.DistanceBgpInternalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() {
 		data.DistanceBgpLocalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() {
 		data.MaximumPathsEbgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ebgp.selective"); value.Exists() {
@@ -3704,7 +3704,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEbgpRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() {
 		data.MaximumPathsIbgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.unequal-cost"); value.Exists() {
@@ -3725,7 +3725,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsIbgpRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() {
 		data.MaximumPathsEibgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.eibgp.equal-cost"); value.Exists() {
@@ -3761,7 +3761,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.AdditionalPathsReceive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -3805,7 +3805,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("address-prefix"); cValue.Exists() {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -3832,7 +3832,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("address-prefix"); cValue.Exists() {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("as-set"); cValue.Exists() {
@@ -3856,7 +3856,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set-tag"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("set-tag"); cValue.Exists() {
 				item.SetTag = types.Int64Value(cValue.Int())
 			}
 			data.AggregateAddresses = append(data.AggregateAddresses, item)
@@ -4025,7 +4025,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.MatchNssaExternal2 = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -4209,7 +4209,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.MatchNssaExternal2 = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -4253,7 +4253,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -4317,7 +4317,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			} else {
 				item.Level1InterArea = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -4344,7 +4344,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.RedistributeConnected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() {
 		data.RedistributeConnectedMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.multipath"); value.Exists() {
@@ -4360,7 +4360,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.RedistributeStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() {
 		data.RedistributeStaticMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.multipath"); value.Exists() {
@@ -4376,7 +4376,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.RedistributeRip = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() {
 		data.RedistributeRipMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.rip.multipath"); value.Exists() {
@@ -4390,7 +4390,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() {
 		data.RetainLocalLabel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retain.route-target.all"); value.Exists() {
@@ -4462,10 +4462,10 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.RnhInstallExtcommOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() {
 		data.PrefixEcmpDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() {
 		data.PrefixEcmpDelayOorThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.origin-as.validation.enable"); value.Exists() {
@@ -4488,7 +4488,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.BgpBestpathOriginAsAllowInvalid = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() {
 		data.BgpScanTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.attribute-download"); value.Exists() {
@@ -4496,16 +4496,16 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.BgpAttributeDownload = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() {
 		data.BgpImportDelaySeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() {
 		data.BgpImportDelayMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() {
 		data.BgpLabelDelaySeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() {
 		data.BgpLabelDelayMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.client-to-client.reflection.disable"); value.Exists() {
@@ -4517,7 +4517,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 		data.BgpClientToClientReflectionClusterIds32bitFormat = make([]RouterBGPAddressFamilyBgpClientToClientReflectionClusterIds32bitFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPAddressFamilyBgpClientToClientReflectionClusterIds32bitFormat{}
-			if cValue := v.Get("cluster-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cluster-number"); cValue.Exists() {
 				item.ClusterAs = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -4545,16 +4545,16 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() {
 		data.BgpDampeningDecayHalfLife = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() {
 		data.BgpDampeningReuseThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() {
 		data.BgpDampeningSuppressThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() {
 		data.BgpDampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -4563,7 +4563,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	if value := gjson.GetBytes(res, "event.prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventPrefixRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() {
 		data.DynamicMedInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "weight.reset-on-import"); value.Exists() {
@@ -4571,28 +4571,28 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.WeightResetOnImport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() {
 		data.NexthopTriggerDelayCritical = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() {
 		data.NexthopTriggerDelayNonCritical = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NexthopRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() {
 		data.NexthopResolutionPrefixLengthMinimumIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() {
 		data.NexthopResolutionPrefixLengthMinimumIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() {
 		data.UpdateLimitSubGroupEbgp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() {
 		data.UpdateLimitSubGroupIbgp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() {
 		data.UpdateLimitAddressFamily = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "update.wait-install"); value.Exists() {
@@ -4600,7 +4600,7 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.UpdateWaitInstall = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() {
 		data.UpdateWaitInstallDelayStartup = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "as-path-loopcheck.out.disable"); value.Exists() {
@@ -4683,10 +4683,10 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 		data.PeerSetIds = make([]RouterBGPAddressFamilyPeerSetIds, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPAddressFamilyPeerSetIds{}
-			if cValue := v.Get("peer-set-id-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer-set-id-number"); cValue.Exists() {
 				item.PeerId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("peer-set-sid.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer-set-sid.index"); cValue.Exists() {
 				item.PeerSidIndex = types.Int64Value(cValue.Int())
 			}
 			data.PeerSetIds = append(data.PeerSetIds, item)
@@ -4701,28 +4701,28 @@ func (data *RouterBGPAddressFamily) fromBody(ctx context.Context, res []byte, ve
 		data.AsBasedAsList = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
 			data.AsBasedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.AsBasedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
 			data.FixedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.FixedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
 			data.PlatformOorBasedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.PlatformOorBasedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
 			data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
 		}
 	} else {
@@ -4794,22 +4794,22 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "vrf.all.table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.VrfAllTablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "domain-distinguisher.domain-distinguisher-number"); value.Exists() {
 		data.DomainDistinguisherAs = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domain-distinguisher.octet-routerid"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DomainDistinguisherRouterId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.external-route-distance"); value.Exists() {
 		data.DistanceBgpExternalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.internal-route-distance"); value.Exists() {
 		data.DistanceBgpInternalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "distance.bgp.local-route-distance"); value.Exists() {
 		data.DistanceBgpLocalRoute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.ebgp.ebgp-number"); value.Exists() {
 		data.MaximumPathsEbgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ebgp.selective"); value.Exists() {
@@ -4820,7 +4820,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "maximum-paths.ebgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsEbgpRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.ibgp.ibgp-number"); value.Exists() {
 		data.MaximumPathsIbgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.unequal-cost"); value.Exists() {
@@ -4841,7 +4841,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "maximum-paths.ibgp.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.MaximumPathsIbgpRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-paths.eibgp.eibgp-number"); value.Exists() {
 		data.MaximumPathsEibgpMultipath = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-paths.eibgp.equal-cost"); value.Exists() {
@@ -4877,7 +4877,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.AdditionalPathsReceive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "additional-paths.advertise-limit.advertise-path-limit"); value.Exists() {
 		data.AdditionalPathsAdvertiseLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "additional-paths.selection.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -4921,7 +4921,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("address-prefix"); cValue.Exists() {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -4948,7 +4948,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("address-prefix"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("address-prefix"); cValue.Exists() {
 				item.Prefix = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("as-set"); cValue.Exists() {
@@ -4972,7 +4972,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set-tag"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("set-tag"); cValue.Exists() {
 				item.SetTag = types.Int64Value(cValue.Int())
 			}
 			data.AggregateAddresses = append(data.AggregateAddresses, item)
@@ -5141,7 +5141,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.MatchNssaExternal2 = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -5325,7 +5325,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.MatchNssaExternal2 = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -5369,7 +5369,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.MatchExternal = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -5433,7 +5433,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			} else {
 				item.Level1InterArea = types.BoolValue(false)
 			}
-			if cValue := v.Get("metric"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("metric"); cValue.Exists() {
 				item.Metric = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multipath"); cValue.Exists() {
@@ -5460,7 +5460,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.RedistributeConnected = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.connected.metric"); value.Exists() {
 		data.RedistributeConnectedMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.connected.multipath"); value.Exists() {
@@ -5476,7 +5476,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.RedistributeStatic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.static.metric"); value.Exists() {
 		data.RedistributeStaticMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.static.multipath"); value.Exists() {
@@ -5492,7 +5492,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.RedistributeRip = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "redistribute.rip.metric"); value.Exists() {
 		data.RedistributeRipMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "redistribute.rip.multipath"); value.Exists() {
@@ -5506,7 +5506,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "table-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TablePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retain.local-label"); value.Exists() {
 		data.RetainLocalLabel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retain.route-target.all"); value.Exists() {
@@ -5578,10 +5578,10 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.RnhInstallExtcommOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.prefix-ecmp-delay-number"); value.Exists() {
 		data.PrefixEcmpDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "prefix-ecmp-delay.oor-threshold"); value.Exists() {
 		data.PrefixEcmpDelayOorThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.origin-as.validation.enable"); value.Exists() {
@@ -5604,7 +5604,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.BgpBestpathOriginAsAllowInvalid = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.scan-time"); value.Exists() {
 		data.BgpScanTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.attribute-download"); value.Exists() {
@@ -5612,16 +5612,16 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.BgpAttributeDownload = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-seconds"); value.Exists() {
 		data.BgpImportDelaySeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.import-delay.import-delay-milliseconds"); value.Exists() {
 		data.BgpImportDelayMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-seconds"); value.Exists() {
 		data.BgpLabelDelaySeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.label-delay.label-delay-milliseconds"); value.Exists() {
 		data.BgpLabelDelayMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.client-to-client.reflection.disable"); value.Exists() {
@@ -5633,7 +5633,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 		data.BgpClientToClientReflectionClusterIds32bitFormat = make([]RouterBGPAddressFamilyBgpClientToClientReflectionClusterIds32bitFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPAddressFamilyBgpClientToClientReflectionClusterIds32bitFormat{}
-			if cValue := v.Get("cluster-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cluster-number"); cValue.Exists() {
 				item.ClusterAs = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("disable"); cValue.Exists() {
@@ -5661,16 +5661,16 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.half-life-time-number"); value.Exists() {
 		data.BgpDampeningDecayHalfLife = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.route-reuse-number"); value.Exists() {
 		data.BgpDampeningReuseThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.suppress-route-number"); value.Exists() {
 		data.BgpDampeningSuppressThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.dampening.halflife-time.stable-route-max-suppress-number"); value.Exists() {
 		data.BgpDampeningMaxSuppressTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.dampening.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -5679,7 +5679,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	if value := gjson.GetBytes(res, "event.prefix.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventPrefixRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dynamic-med.interval"); value.Exists() {
 		data.DynamicMedInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "weight.reset-on-import"); value.Exists() {
@@ -5687,28 +5687,28 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.WeightResetOnImport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.critical"); value.Exists() {
 		data.NexthopTriggerDelayCritical = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.trigger-delay.non-critical"); value.Exists() {
 		data.NexthopTriggerDelayNonCritical = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nexthop.route-policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.NexthopRoutePolicy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv4-minimum"); value.Exists() {
 		data.NexthopResolutionPrefixLengthMinimumIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nexthop.resolution.prefix-length.minimum.ipv6-minimum"); value.Exists() {
 		data.NexthopResolutionPrefixLengthMinimumIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ebgp"); value.Exists() {
 		data.UpdateLimitSubGroupEbgp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.sub-group.ibgp"); value.Exists() {
 		data.UpdateLimitSubGroupIbgp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.limit.address-family"); value.Exists() {
 		data.UpdateLimitAddressFamily = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "update.wait-install"); value.Exists() {
@@ -5716,7 +5716,7 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 	} else {
 		data.UpdateWaitInstall = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.wait-install.delay.startup"); value.Exists() {
 		data.UpdateWaitInstallDelayStartup = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "as-path-loopcheck.out.disable"); value.Exists() {
@@ -5799,10 +5799,10 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 		data.PeerSetIds = make([]RouterBGPAddressFamilyPeerSetIds, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPAddressFamilyPeerSetIds{}
-			if cValue := v.Get("peer-set-id-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer-set-id-number"); cValue.Exists() {
 				item.PeerId = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("peer-set-sid.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer-set-sid.index"); cValue.Exists() {
 				item.PeerSidIndex = types.Int64Value(cValue.Int())
 			}
 			data.PeerSetIds = append(data.PeerSetIds, item)
@@ -5817,28 +5817,28 @@ func (data *RouterBGPAddressFamilyData) fromBody(ctx context.Context, res []byte
 		data.AsBasedAsList = types.StringNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.as-based.delay"); value.Exists() {
 			data.AsBasedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.AsBasedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.fixed.delay"); value.Exists() {
 			data.FixedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.FixedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.delay"); value.Exists() {
 			data.PlatformOorBasedDelay = types.Int64Value(value.Int())
 		}
 	} else {
 		data.PlatformOorBasedDelay = types.Int64Null()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "ecmp-delay.platform-oor-based.threshold"); value.Exists() {
 			data.PlatformOorBasedThreshold = types.Int64Value(value.Int())
 		}
 	} else {

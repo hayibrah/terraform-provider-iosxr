@@ -219,7 +219,7 @@ func (data *Telnet) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.Vrfs[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.server.max-servers"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].Ipv4ServerMaxServers.IsNull() {
+		if value := r.Get("ipv4.server.max-servers"); value.Exists() && !data.Vrfs[i].Ipv4ServerMaxServers.IsNull() {
 			data.Vrfs[i].Ipv4ServerMaxServers = types.Int64Value(value.Int())
 		} else {
 			data.Vrfs[i].Ipv4ServerMaxServers = types.Int64Null()
@@ -229,7 +229,7 @@ func (data *Telnet) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.Vrfs[i].Ipv4ServerAccessList = types.StringNull()
 		}
-		if value := r.Get("ipv6.server.max-servers"); value.Exists() && value.Type == gjson.Number && !data.Vrfs[i].Ipv6ServerMaxServers.IsNull() {
+		if value := r.Get("ipv6.server.max-servers"); value.Exists() && !data.Vrfs[i].Ipv6ServerMaxServers.IsNull() {
 			data.Vrfs[i].Ipv6ServerMaxServers = types.Int64Value(value.Int())
 		} else {
 			data.Vrfs[i].Ipv6ServerMaxServers = types.Int64Null()
@@ -268,7 +268,7 @@ func (data *Telnet) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.VrfsDscp[i].VrfName = types.StringNull()
 		}
-		if value := r.Get("ipv4.dscp"); value.Exists() && value.Type == gjson.Number && !data.VrfsDscp[i].Ipv4Dscp.IsNull() {
+		if value := r.Get("ipv4.dscp"); value.Exists() && !data.VrfsDscp[i].Ipv4Dscp.IsNull() {
 			data.VrfsDscp[i].Ipv4Dscp = types.Int64Value(value.Int())
 		} else {
 			data.VrfsDscp[i].Ipv4Dscp = types.Int64Null()
@@ -294,13 +294,13 @@ func (data *Telnet) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() {
 				item.Ipv4ServerMaxServers = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() {
 				item.Ipv6ServerMaxServers = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -317,7 +317,7 @@ func (data *Telnet) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv4.dscp"); cValue.Exists() {
 				item.Ipv4Dscp = types.Int64Value(cValue.Int())
 			}
 			data.VrfsDscp = append(data.VrfsDscp, item)
@@ -344,13 +344,13 @@ func (data *TelnetData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv4.server.max-servers"); cValue.Exists() {
 				item.Ipv4ServerMaxServers = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ipv4.server.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4ServerAccessList = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv6.server.max-servers"); cValue.Exists() {
 				item.Ipv6ServerMaxServers = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ipv6.server.access-list"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -367,7 +367,7 @@ func (data *TelnetData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("vrf-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.VrfName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ipv4.dscp"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ipv4.dscp"); cValue.Exists() {
 				item.Ipv4Dscp = types.Int64Value(cValue.Int())
 			}
 			data.VrfsDscp = append(data.VrfsDscp, item)

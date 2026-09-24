@@ -252,12 +252,12 @@ func (data *MPLSOAM) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.OamEchoRevisionFour = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() && value.Type == gjson.Number && !data.OamDpmPps.IsNull() {
+	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() && !data.OamDpmPps.IsNull() {
 		data.OamDpmPps = types.Int64Value(value.Int())
 	} else {
 		data.OamDpmPps = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() && value.Type == gjson.Number && !data.OamDpmInterval.IsNull() {
+	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() && !data.OamDpmInterval.IsNull() {
 		data.OamDpmInterval = types.Int64Value(value.Int())
 	} else {
 		data.OamDpmInterval = types.Int64Null()
@@ -313,10 +313,10 @@ func (data *MPLSOAM) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.OamEchoRevisionFour = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() {
 		data.OamDpmPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() {
 		data.OamDpmInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "oam.dpm.downstream-ecmp-faults"); value.Exists() {
@@ -366,10 +366,10 @@ func (data *MPLSOAMData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.OamEchoRevisionFour = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "oam.dpm.pps"); value.Exists() {
 		data.OamDpmPps = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "oam.dpm.interval"); value.Exists() {
 		data.OamDpmInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "oam.dpm.downstream-ecmp-faults"); value.Exists() {

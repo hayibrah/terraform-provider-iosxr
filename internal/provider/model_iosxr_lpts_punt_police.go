@@ -243,42 +243,42 @@ func (data LPTSPuntPolice) GetPatternConstraints() []helpers.FieldPatternConstra
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() && value.Type == gjson.Number && !data.McastRate.IsNull() {
+	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() && !data.McastRate.IsNull() {
 		data.McastRate = types.Int64Value(value.Int())
 	} else {
 		data.McastRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() && value.Type == gjson.Number && !data.BcastRate.IsNull() {
+	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() && !data.BcastRate.IsNull() {
 		data.BcastRate = types.Int64Value(value.Int())
 	} else {
 		data.BcastRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolArpRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() && !data.ProtocolArpRate.IsNull() {
 		data.ProtocolArpRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolArpRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolCdpRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() && !data.ProtocolCdpRate.IsNull() {
 		data.ProtocolCdpRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolCdpRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolLacpRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() && !data.ProtocolLacpRate.IsNull() {
 		data.ProtocolLacpRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolLacpRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolLldpRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() && !data.ProtocolLldpRate.IsNull() {
 		data.ProtocolLldpRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolLldpRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolSsfpRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() && !data.ProtocolSsfpRate.IsNull() {
 		data.ProtocolSsfpRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolSsfpRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() && value.Type == gjson.Number && !data.ProtocolIpv6NdProxyRate.IsNull() {
+	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() && !data.ProtocolIpv6NdProxyRate.IsNull() {
 		data.ProtocolIpv6NdProxyRate = types.Int64Value(value.Int())
 	} else {
 		data.ProtocolIpv6NdProxyRate = types.Int64Null()
@@ -311,42 +311,42 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Domains[i].DomainName = types.StringNull()
 		}
-		if value := r.Get("mcast.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].McastRate.IsNull() {
+		if value := r.Get("mcast.rate"); value.Exists() && !data.Domains[i].McastRate.IsNull() {
 			data.Domains[i].McastRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].McastRate = types.Int64Null()
 		}
-		if value := r.Get("bcast.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].BcastRate.IsNull() {
+		if value := r.Get("bcast.rate"); value.Exists() && !data.Domains[i].BcastRate.IsNull() {
 			data.Domains[i].BcastRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].BcastRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.arp.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolArpRate.IsNull() {
+		if value := r.Get("protocol.arp.rate"); value.Exists() && !data.Domains[i].ProtocolArpRate.IsNull() {
 			data.Domains[i].ProtocolArpRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolArpRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.cdp.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolCdpRate.IsNull() {
+		if value := r.Get("protocol.cdp.rate"); value.Exists() && !data.Domains[i].ProtocolCdpRate.IsNull() {
 			data.Domains[i].ProtocolCdpRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolCdpRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.lacp.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolLacpRate.IsNull() {
+		if value := r.Get("protocol.lacp.rate"); value.Exists() && !data.Domains[i].ProtocolLacpRate.IsNull() {
 			data.Domains[i].ProtocolLacpRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolLacpRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.lldp.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolLldpRate.IsNull() {
+		if value := r.Get("protocol.lldp.rate"); value.Exists() && !data.Domains[i].ProtocolLldpRate.IsNull() {
 			data.Domains[i].ProtocolLldpRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolLldpRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.ssfp.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolSsfpRate.IsNull() {
+		if value := r.Get("protocol.ssfp.rate"); value.Exists() && !data.Domains[i].ProtocolSsfpRate.IsNull() {
 			data.Domains[i].ProtocolSsfpRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolSsfpRate = types.Int64Null()
 		}
-		if value := r.Get("protocol.ipv6-nd-proxy.rate"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].ProtocolIpv6NdProxyRate.IsNull() {
+		if value := r.Get("protocol.ipv6-nd-proxy.rate"); value.Exists() && !data.Domains[i].ProtocolIpv6NdProxyRate.IsNull() {
 			data.Domains[i].ProtocolIpv6NdProxyRate = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].ProtocolIpv6NdProxyRate = types.Int64Null()
@@ -380,7 +380,7 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Interfaces[i].InterfaceName = types.StringNull()
 		}
-		if value := r.Get("mcast.rate"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].McastRate.IsNull() {
+		if value := r.Get("mcast.rate"); value.Exists() && !data.Interfaces[i].McastRate.IsNull() {
 			data.Interfaces[i].McastRate = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].McastRate = types.Int64Null()
@@ -394,7 +394,7 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Interfaces[i].McastDisabled = types.BoolNull()
 		}
-		if value := r.Get("bcast.rate"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].BcastRate.IsNull() {
+		if value := r.Get("bcast.rate"); value.Exists() && !data.Interfaces[i].BcastRate.IsNull() {
 			data.Interfaces[i].BcastRate = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].BcastRate = types.Int64Null()
@@ -416,28 +416,28 @@ func (data *LPTSPuntPolice) updateFromBody(ctx context.Context, res []byte, vers
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() {
 		data.McastRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() {
 		data.BcastRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() {
 		data.ProtocolArpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() {
 		data.ProtocolCdpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() {
 		data.ProtocolLacpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() {
 		data.ProtocolLldpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() {
 		data.ProtocolSsfpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() {
 		data.ProtocolIpv6NdProxyRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domains.domain"); value.Exists() {
@@ -447,28 +447,28 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mcast.rate"); cValue.Exists() {
 				item.McastRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("bcast.rate"); cValue.Exists() {
 				item.BcastRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.arp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.arp.rate"); cValue.Exists() {
 				item.ProtocolArpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.cdp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.cdp.rate"); cValue.Exists() {
 				item.ProtocolCdpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.lacp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.lacp.rate"); cValue.Exists() {
 				item.ProtocolLacpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.lldp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.lldp.rate"); cValue.Exists() {
 				item.ProtocolLldpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.ssfp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.ssfp.rate"); cValue.Exists() {
 				item.ProtocolSsfpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.ipv6-nd-proxy.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.ipv6-nd-proxy.rate"); cValue.Exists() {
 				item.ProtocolIpv6NdProxyRate = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -482,7 +482,7 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mcast.rate"); cValue.Exists() {
 				item.McastRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mcast.disabled"); cValue.Exists() {
@@ -490,7 +490,7 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.McastDisabled = types.BoolValue(false)
 			}
-			if cValue := v.Get("bcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("bcast.rate"); cValue.Exists() {
 				item.BcastRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("bcast.disabled"); cValue.Exists() {
@@ -509,28 +509,28 @@ func (data *LPTSPuntPolice) fromBody(ctx context.Context, res []byte, version st
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mcast.rate"); value.Exists() {
 		data.McastRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bcast.rate"); value.Exists() {
 		data.BcastRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.arp.rate"); value.Exists() {
 		data.ProtocolArpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.cdp.rate"); value.Exists() {
 		data.ProtocolCdpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.lacp.rate"); value.Exists() {
 		data.ProtocolLacpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.lldp.rate"); value.Exists() {
 		data.ProtocolLldpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.ssfp.rate"); value.Exists() {
 		data.ProtocolSsfpRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "protocol.ipv6-nd-proxy.rate"); value.Exists() {
 		data.ProtocolIpv6NdProxyRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "domains.domain"); value.Exists() {
@@ -540,28 +540,28 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mcast.rate"); cValue.Exists() {
 				item.McastRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("bcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("bcast.rate"); cValue.Exists() {
 				item.BcastRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.arp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.arp.rate"); cValue.Exists() {
 				item.ProtocolArpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.cdp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.cdp.rate"); cValue.Exists() {
 				item.ProtocolCdpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.lacp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.lacp.rate"); cValue.Exists() {
 				item.ProtocolLacpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.lldp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.lldp.rate"); cValue.Exists() {
 				item.ProtocolLldpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.ssfp.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.ssfp.rate"); cValue.Exists() {
 				item.ProtocolSsfpRate = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protocol.ipv6-nd-proxy.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protocol.ipv6-nd-proxy.rate"); cValue.Exists() {
 				item.ProtocolIpv6NdProxyRate = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -575,7 +575,7 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("interface-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.InterfaceName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mcast.rate"); cValue.Exists() {
 				item.McastRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mcast.disabled"); cValue.Exists() {
@@ -583,7 +583,7 @@ func (data *LPTSPuntPoliceData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.McastDisabled = types.BoolValue(false)
 			}
-			if cValue := v.Get("bcast.rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("bcast.rate"); cValue.Exists() {
 				item.BcastRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("bcast.disabled"); cValue.Exists() {

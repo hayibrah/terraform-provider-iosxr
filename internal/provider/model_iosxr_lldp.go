@@ -323,17 +323,17 @@ func (data LLDP) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *LLDP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number && !data.Holdtime.IsNull() {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && !data.Holdtime.IsNull() {
 		data.Holdtime = types.Int64Value(value.Int())
 	} else {
 		data.Holdtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number && !data.Timer.IsNull() {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() && !data.Timer.IsNull() {
 		data.Timer = types.Int64Value(value.Int())
 	} else {
 		data.Timer = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number && !data.Reinit.IsNull() {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() && !data.Reinit.IsNull() {
 		data.Reinit = types.Int64Value(value.Int())
 	} else {
 		data.Reinit = types.Int64Null()
@@ -513,13 +513,13 @@ func (data *LLDP) updateFromBody(ctx context.Context, res []byte, version string
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *LLDP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() {
 		data.Timer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() {
 		data.Reinit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "system-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -651,13 +651,13 @@ func (data *LLDP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *LLDPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdtime"); value.Exists() {
 		data.Holdtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timer"); value.Exists() {
 		data.Timer = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "reinit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "reinit"); value.Exists() {
 		data.Reinit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "system-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

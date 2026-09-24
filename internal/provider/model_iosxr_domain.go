@@ -254,7 +254,7 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.Domains[i].DomainName = types.StringNull()
 		}
-		if value := r.Get("order"); value.Exists() && value.Type == gjson.Number && !data.Domains[i].Order.IsNull() {
+		if value := r.Get("order"); value.Exists() && !data.Domains[i].Order.IsNull() {
 			data.Domains[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.Domains[i].Order = types.Int64Null()
@@ -341,7 +341,7 @@ func (data *Domain) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.NameServers[i].Address = types.StringNull()
 		}
-		if value := r.Get("order"); value.Exists() && value.Type == gjson.Number && !data.NameServers[i].Order.IsNull() {
+		if value := r.Get("order"); value.Exists() && !data.NameServers[i].Order.IsNull() {
 			data.NameServers[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.NameServers[i].Order = types.Int64Null()
@@ -409,7 +409,7 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("order"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -450,7 +450,7 @@ func (data *Domain) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("order"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.NameServers = append(data.NameServers, item)
@@ -495,7 +495,7 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("domain-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DomainName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("order"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.Domains = append(data.Domains, item)
@@ -536,7 +536,7 @@ func (data *DomainData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("order"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("order"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			data.NameServers = append(data.NameServers, item)

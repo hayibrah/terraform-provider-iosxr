@@ -854,7 +854,7 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.RecordMplsIpv4Ipv6Fields = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() && value.Type == gjson.Number && !data.RecordMplsLabels.IsNull() {
+	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() && !data.RecordMplsLabels.IsNull() {
 		data.RecordMplsLabels = types.Int64Value(value.Int())
 	} else {
 		data.RecordMplsLabels = types.Int64Null()
@@ -904,27 +904,27 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.RecordDefaultMdi = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() && value.Type == gjson.Number && !data.CacheEntries.IsNull() {
+	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() && !data.CacheEntries.IsNull() {
 		data.CacheEntries = types.Int64Value(value.Int())
 	} else {
 		data.CacheEntries = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() && value.Type == gjson.Number && !data.CacheTimeoutActive.IsNull() {
+	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() && !data.CacheTimeoutActive.IsNull() {
 		data.CacheTimeoutActive = types.Int64Value(value.Int())
 	} else {
 		data.CacheTimeoutActive = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number && !data.CacheTimeoutInactive.IsNull() {
+	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() && !data.CacheTimeoutInactive.IsNull() {
 		data.CacheTimeoutInactive = types.Int64Value(value.Int())
 	} else {
 		data.CacheTimeoutInactive = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() && value.Type == gjson.Number && !data.CacheTimeoutUpdate.IsNull() {
+	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() && !data.CacheTimeoutUpdate.IsNull() {
 		data.CacheTimeoutUpdate = types.Int64Value(value.Int())
 	} else {
 		data.CacheTimeoutUpdate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() && value.Type == gjson.Number && !data.CacheTimeoutRateLimit.IsNull() {
+	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() && !data.CacheTimeoutRateLimit.IsNull() {
 		data.CacheTimeoutRateLimit = types.Int64Value(value.Int())
 	} else {
 		data.CacheTimeoutRateLimit = types.Int64Null()
@@ -947,7 +947,7 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.CacheImmediate = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number && !data.HwCacheTimeoutInactive.IsNull() {
+	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() && !data.HwCacheTimeoutInactive.IsNull() {
 		data.HwCacheTimeoutInactive = types.Int64Value(value.Int())
 	} else {
 		data.HwCacheTimeoutInactive = types.Int64Null()
@@ -997,12 +997,12 @@ func (data *FlowMonitorMap) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.SflowOptionsExtendedIpv6TunnelEgress = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() && value.Type == gjson.Number && !data.SflowOptionsIfCountersPollingInterval.IsNull() {
+	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() && !data.SflowOptionsIfCountersPollingInterval.IsNull() {
 		data.SflowOptionsIfCountersPollingInterval = types.Int64Value(value.Int())
 	} else {
 		data.SflowOptionsIfCountersPollingInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && value.Type == gjson.Number && !data.SflowOptionsSampleHeaderSize.IsNull() {
+	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && !data.SflowOptionsSampleHeaderSize.IsNull() {
 		data.SflowOptionsSampleHeaderSize = types.Int64Value(value.Int())
 	} else {
 		data.SflowOptionsSampleHeaderSize = types.Int64Null()
@@ -1205,7 +1205,7 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.RecordMplsIpv4Ipv6Fields = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() {
 		data.RecordMplsLabels = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "record.map-t"); value.Exists() {
@@ -1233,19 +1233,19 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.RecordDefaultMdi = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() {
 		data.CacheEntries = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() {
 		data.CacheTimeoutActive = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() {
 		data.CacheTimeoutInactive = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() {
 		data.CacheTimeoutUpdate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() {
 		data.CacheTimeoutRateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cache.permanent"); value.Exists() {
@@ -1258,7 +1258,7 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.CacheImmediate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() {
 		data.HwCacheTimeoutInactive = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sflow.options"); value.Exists() {
@@ -1286,10 +1286,10 @@ func (data *FlowMonitorMap) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SflowOptionsExtendedIpv6TunnelEgress = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() {
 		data.SflowOptionsIfCountersPollingInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() {
 		data.SflowOptionsSampleHeaderSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1486,7 +1486,7 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.RecordMplsIpv4Ipv6Fields = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "record.mpls.labels"); value.Exists() {
 		data.RecordMplsLabels = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "record.map-t"); value.Exists() {
@@ -1514,19 +1514,19 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.RecordDefaultMdi = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.entries"); value.Exists() {
 		data.CacheEntries = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.active"); value.Exists() {
 		data.CacheTimeoutActive = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.inactive"); value.Exists() {
 		data.CacheTimeoutInactive = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.update"); value.Exists() {
 		data.CacheTimeoutUpdate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cache.timeout.rate-limit"); value.Exists() {
 		data.CacheTimeoutRateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cache.permanent"); value.Exists() {
@@ -1539,7 +1539,7 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.CacheImmediate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hw-cache.timeout.inactive"); value.Exists() {
 		data.HwCacheTimeoutInactive = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sflow.options"); value.Exists() {
@@ -1567,10 +1567,10 @@ func (data *FlowMonitorMapData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.SflowOptionsExtendedIpv6TunnelEgress = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sflow.options.if-counters.polling-interval"); value.Exists() {
 		data.SflowOptionsIfCountersPollingInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sflow.options.sample-header.size"); value.Exists() {
 		data.SflowOptionsSampleHeaderSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sflow.options.input.ifindex"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

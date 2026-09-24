@@ -353,7 +353,7 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Hostnames[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.Hostnames[i].Port.IsNull() {
+		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.Hostnames[i].Port.IsNull() {
 			data.Hostnames[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.Hostnames[i].Port = types.Int64Null()
@@ -412,7 +412,7 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.HostIpv4Addresses[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.HostIpv4Addresses[i].Port.IsNull() {
+		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.HostIpv4Addresses[i].Port.IsNull() {
 			data.HostIpv4Addresses[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.HostIpv4Addresses[i].Port = types.Int64Null()
@@ -471,7 +471,7 @@ func (data *LoggingVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.HostIpv6Addresses[i].Severity = types.StringNull()
 		}
-		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && value.Type == gjson.Number && !data.HostIpv6Addresses[i].Port.IsNull() {
+		if value := r.Get("port"); (version == "" || !helpers.VersionAtLeast(version, "25.4")) && value.Exists() && !data.HostIpv6Addresses[i].Port.IsNull() {
 			data.HostIpv6Addresses[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.HostIpv6Addresses[i].Port = types.Int64Null()
@@ -515,7 +515,7 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -552,7 +552,7 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -589,7 +589,7 @@ func (data *LoggingVRF) fromBody(ctx context.Context, res []byte, version string
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -633,7 +633,7 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -670,7 +670,7 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -707,7 +707,7 @@ func (data *LoggingVRFData) fromBody(ctx context.Context, res []byte, version st
 				item.Severity = types.StringValue(cValue.String())
 			}
 			if version == "" || !helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("port"); cValue.Exists() {
 					item.Port = types.Int64Value(cValue.Int())
 				}
 			} else {

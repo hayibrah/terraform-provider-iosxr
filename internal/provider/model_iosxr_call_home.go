@@ -403,7 +403,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 		} else {
 			data.MailServers[i].MailServerName = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.MailServers[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && !data.MailServers[i].Priority.IsNull() {
 			data.MailServers[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.MailServers[i].Priority = types.Int64Null()
@@ -458,7 +458,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SiteId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number && !data.RateLimit.IsNull() {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && !data.RateLimit.IsNull() {
 		data.RateLimit = types.Int64Value(value.Int())
 	} else {
 		data.RateLimit = types.Int64Null()
@@ -495,7 +495,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.HttpProxyName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && value.Type == gjson.Number && !data.HttpProxyPort.IsNull() {
+	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && !data.HttpProxyPort.IsNull() {
 		data.HttpProxyPort = types.Int64Value(value.Int())
 	} else {
 		data.HttpProxyPort = types.Int64Null()
@@ -604,7 +604,7 @@ func (data *CallHome) updateFromBody(ctx context.Context, res []byte, version st
 				data.Profiles[i].DestinationAddresses[ci].DestinationAddress = types.StringNull()
 			}
 		}
-		if value := r.Get("destination.message-size-limit"); value.Exists() && value.Type == gjson.Number && !data.Profiles[i].DestinationMessageSizeLimit.IsNull() {
+		if value := r.Get("destination.message-size-limit"); value.Exists() && !data.Profiles[i].DestinationMessageSizeLimit.IsNull() {
 			data.Profiles[i].DestinationMessageSizeLimit = types.Int64Value(value.Int())
 		} else {
 			data.Profiles[i].DestinationMessageSizeLimit = types.Int64Null()
@@ -728,7 +728,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("mail-server-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MailServerName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
 			data.MailServers = append(data.MailServers, item)
@@ -764,7 +764,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "site-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "data-privacy.hostname"); value.Exists() {
@@ -785,7 +785,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HttpProxyName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() {
 		data.HttpProxyPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -833,7 +833,7 @@ func (data *CallHome) fromBody(ctx context.Context, res []byte, version string) 
 					return true
 				})
 			}
-			if cValue := v.Get("destination.message-size-limit"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("destination.message-size-limit"); cValue.Exists() {
 				item.DestinationMessageSizeLimit = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("destination.preferred-msg-format.short-text"); cValue.Exists() {
@@ -914,7 +914,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("mail-server-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.MailServerName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
 			data.MailServers = append(data.MailServers, item)
@@ -950,7 +950,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "site-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "data-privacy.hostname"); value.Exists() {
@@ -971,7 +971,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "http-proxy.server-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.HttpProxyName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "http-proxy.port"); value.Exists() {
 		data.HttpProxyPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interface"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1019,7 +1019,7 @@ func (data *CallHomeData) fromBody(ctx context.Context, res []byte, version stri
 					return true
 				})
 			}
-			if cValue := v.Get("destination.message-size-limit"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("destination.message-size-limit"); cValue.Exists() {
 				item.DestinationMessageSizeLimit = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("destination.preferred-msg-format.short-text"); cValue.Exists() {

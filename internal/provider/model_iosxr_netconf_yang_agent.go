@@ -187,22 +187,22 @@ func (data *NetconfYangAgent) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.WithDefaultsSupport = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number && !data.RateLimit.IsNull() {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && !data.RateLimit.IsNull() {
 		data.RateLimit = types.Int64Value(value.Int())
 	} else {
 		data.RateLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number && !data.SessionLimit.IsNull() {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && !data.SessionLimit.IsNull() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	} else {
 		data.SessionLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionIdleTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && !data.SessionIdleTimeout.IsNull() {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionIdleTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionAbsoluteTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && !data.SessionAbsoluteTimeout.IsNull() {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionAbsoluteTimeout = types.Int64Null()
@@ -238,16 +238,16 @@ func (data *NetconfYangAgent) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.WithDefaultsSupport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "netconf1\\\\.0.support"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -275,16 +275,16 @@ func (data *NetconfYangAgentData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.WithDefaultsSupport = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "rate-limit"); value.Exists() {
 		data.RateLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.limit"); value.Exists() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.idle-timeout"); value.Exists() {
 		data.SessionIdleTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.absolute-timeout"); value.Exists() {
 		data.SessionAbsoluteTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "netconf1\\\\.0.support"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

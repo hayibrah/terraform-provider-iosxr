@@ -138,7 +138,7 @@ func (data *LACP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.Mac = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number && !data.Priority.IsNull() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && !data.Priority.IsNull() {
 		data.Priority = types.Int64Value(value.Int())
 	} else {
 		data.Priority = types.Int64Null()
@@ -153,7 +153,7 @@ func (data *LACP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "mac"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Mac = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
 }
@@ -166,7 +166,7 @@ func (data *LACPData) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "mac"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Mac = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
 }

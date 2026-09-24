@@ -421,7 +421,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ProbeSendPacketOnce = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() && value.Type == gjson.Number && !data.ProbeSendPacketEveryInterval.IsNull() {
+	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() && !data.ProbeSendPacketEveryInterval.IsNull() {
 		data.ProbeSendPacketEveryInterval = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSendPacketEveryInterval = types.Int64Null()
@@ -471,7 +471,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ProbeSendBurstOnce = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() && value.Type == gjson.Number && !data.ProbeSendBurstEveryInterval.IsNull() {
+	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() && !data.ProbeSendBurstEveryInterval.IsNull() {
 		data.ProbeSendBurstEveryInterval = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSendBurstEveryInterval = types.Int64Null()
@@ -503,37 +503,37 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ProbeSendBurstEveryHours = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() && value.Type == gjson.Number && !data.ProbeSendBurstPacketCount.IsNull() {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() && !data.ProbeSendBurstPacketCount.IsNull() {
 		data.ProbeSendBurstPacketCount = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSendBurstPacketCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() && value.Type == gjson.Number && !data.ProbeSendBurstPacketIntervalSeconds.IsNull() {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() && !data.ProbeSendBurstPacketIntervalSeconds.IsNull() {
 		data.ProbeSendBurstPacketIntervalSeconds = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSendBurstPacketIntervalSeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() && value.Type == gjson.Number && !data.ProbeSendBurstPacketIntervalMilliseconds.IsNull() {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() && !data.ProbeSendBurstPacketIntervalMilliseconds.IsNull() {
 		data.ProbeSendBurstPacketIntervalMilliseconds = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSendBurstPacketIntervalMilliseconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() && value.Type == gjson.Number && !data.ProbePacketSize.IsNull() {
+	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() && !data.ProbePacketSize.IsNull() {
 		data.ProbePacketSize = types.Int64Value(value.Int())
 	} else {
 		data.ProbePacketSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() && value.Type == gjson.Number && !data.ProbePacketTestPatternHex.IsNull() {
+	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() && !data.ProbePacketTestPatternHex.IsNull() {
 		data.ProbePacketTestPatternHex = types.Int64Value(value.Int())
 	} else {
 		data.ProbePacketTestPatternHex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() && value.Type == gjson.Number && !data.ProbePriority.IsNull() {
+	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() && !data.ProbePriority.IsNull() {
 		data.ProbePriority = types.Int64Value(value.Int())
 	} else {
 		data.ProbePriority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() && value.Type == gjson.Number && !data.ProbeSyntheticLossCalculationPackets.IsNull() {
+	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() && !data.ProbeSyntheticLossCalculationPackets.IsNull() {
 		data.ProbeSyntheticLossCalculationPackets = types.Int64Value(value.Int())
 	} else {
 		data.ProbeSyntheticLossCalculationPackets = types.Int64Null()
@@ -575,17 +575,17 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.StatisticsMeasure[i].AggregateNone = types.BoolNull()
 		}
-		if value := r.Get("aggregate.bins"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].AggregateBins.IsNull() {
+		if value := r.Get("aggregate.bins"); value.Exists() && !data.StatisticsMeasure[i].AggregateBins.IsNull() {
 			data.StatisticsMeasure[i].AggregateBins = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].AggregateBins = types.Int64Null()
 		}
-		if value := r.Get("aggregate.width"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].AggregateWidth.IsNull() {
+		if value := r.Get("aggregate.width"); value.Exists() && !data.StatisticsMeasure[i].AggregateWidth.IsNull() {
 			data.StatisticsMeasure[i].AggregateWidth = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].AggregateWidth = types.Int64Null()
 		}
-		if value := r.Get("aggregate.width-tenths"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].AggregateWidthPercentage.IsNull() {
+		if value := r.Get("aggregate.width-tenths"); value.Exists() && !data.StatisticsMeasure[i].AggregateWidthPercentage.IsNull() {
 			data.StatisticsMeasure[i].AggregateWidthPercentage = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].AggregateWidthPercentage = types.Int64Null()
@@ -599,7 +599,7 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.StatisticsMeasure[i].AggregateUsec = types.BoolNull()
 		}
-		if value := r.Get("buckets.size"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].BucketsSize.IsNull() {
+		if value := r.Get("buckets.size"); value.Exists() && !data.StatisticsMeasure[i].BucketsSize.IsNull() {
 			data.StatisticsMeasure[i].BucketsSize = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].BucketsSize = types.Int64Null()
@@ -613,72 +613,72 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 		} else {
 			data.StatisticsMeasure[i].BucketsProbes = types.BoolNull()
 		}
-		if value := r.Get("buckets.archive"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].BucketsArchive.IsNull() {
+		if value := r.Get("buckets.archive"); value.Exists() && !data.StatisticsMeasure[i].BucketsArchive.IsNull() {
 			data.StatisticsMeasure[i].BucketsArchive = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].BucketsArchive = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.log.on.max-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue.IsNull() {
+		if value := r.Get("thresholds.type.stateful.log.on.max-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnMaxValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.log.on.mean-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue.IsNull() {
+		if value := r.Get("thresholds.type.stateful.log.on.mean-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnMeanValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.log.on.sample-count"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount.IsNull() {
+		if value := r.Get("thresholds.type.stateful.log.on.sample-count"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnSampleCount = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.log.on.in-and-above.bin"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin.IsNull() {
+		if value := r.Get("thresholds.type.stateful.log.on.in-and-above.bin"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulLogOnInAndAboveBin = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.efd.on.max-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue.IsNull() {
+		if value := r.Get("thresholds.type.stateful.efd.on.max-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMaxValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.efd.on.mean-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue.IsNull() {
+		if value := r.Get("thresholds.type.stateful.efd.on.mean-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnMeanValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.efd.on.sample-count"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount.IsNull() {
+		if value := r.Get("thresholds.type.stateful.efd.on.sample-count"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnSampleCount = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() {
+		if value := r.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatefulEfdOnInAndAboveBin = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateless.log.on.max-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue.IsNull() {
+		if value := r.Get("thresholds.type.stateless.log.on.max-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnMaxValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateless.log.on.mean-value"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue.IsNull() {
+		if value := r.Get("thresholds.type.stateless.log.on.mean-value"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnMeanValue = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateless.log.on.sample-count"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount.IsNull() {
+		if value := r.Get("thresholds.type.stateless.log.on.sample-count"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnSampleCount = types.Int64Null()
 		}
-		if value := r.Get("thresholds.type.stateless.log.on.in-and-above.bin"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin.IsNull() {
+		if value := r.Get("thresholds.type.stateless.log.on.in-and-above.bin"); value.Exists() && !data.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin.IsNull() {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].ThresholdsStatelessLogOnInAndAboveBin = types.Int64Null()
 		}
-		if value := r.Get("aggregate.minimum-delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() {
+		if value := r.Get("aggregate.minimum-delay"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.StatisticsMeasure[i].AggregateMinimumDelay.IsNull() {
 			data.StatisticsMeasure[i].AggregateMinimumDelay = types.Int64Value(value.Int())
 		} else {
 			data.StatisticsMeasure[i].AggregateMinimumDelay = types.Int64Null()
@@ -707,27 +707,27 @@ func (data *EthernetSLA) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ScheduleEveryDay = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() && value.Type == gjson.Number && !data.ScheduleEveryMinutes.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() && !data.ScheduleEveryMinutes.IsNull() {
 		data.ScheduleEveryMinutes = types.Int64Value(value.Int())
 	} else {
 		data.ScheduleEveryMinutes = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() && value.Type == gjson.Number && !data.ScheduleEveryHours.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() && !data.ScheduleEveryHours.IsNull() {
 		data.ScheduleEveryHours = types.Int64Value(value.Int())
 	} else {
 		data.ScheduleEveryHours = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() && value.Type == gjson.Number && !data.ScheduleEveryAtHours.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() && !data.ScheduleEveryAtHours.IsNull() {
 		data.ScheduleEveryAtHours = types.Int64Value(value.Int())
 	} else {
 		data.ScheduleEveryAtHours = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() && value.Type == gjson.Number && !data.ScheduleEveryAtMinutes.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() && !data.ScheduleEveryAtMinutes.IsNull() {
 		data.ScheduleEveryAtMinutes = types.Int64Value(value.Int())
 	} else {
 		data.ScheduleEveryAtMinutes = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && value.Type == gjson.Number && !data.ScheduleEveryForTime.IsNull() {
+	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && !data.ScheduleEveryForTime.IsNull() {
 		data.ScheduleEveryForTime = types.Int64Value(value.Int())
 	} else {
 		data.ScheduleEveryForTime = types.Int64Null()
@@ -752,7 +752,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ProbeSendPacketOnce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() {
 		data.ProbeSendPacketEveryInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "probe.send.packet.every.milliseconds"); value.Exists() {
@@ -780,7 +780,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ProbeSendBurstOnce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() {
 		data.ProbeSendBurstEveryInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "probe.send.burst.every.seconds"); value.Exists() {
@@ -798,25 +798,25 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ProbeSendBurstEveryHours = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() {
 		data.ProbeSendBurstPacketCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() {
 		data.ProbeSendBurstPacketIntervalSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() {
 		data.ProbeSendBurstPacketIntervalMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() {
 		data.ProbePacketSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() {
 		data.ProbePacketTestPatternHex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() {
 		data.ProbePriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() {
 		data.ProbeSyntheticLossCalculationPackets = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "statistics.measures.measure"); value.Exists() {
@@ -831,13 +831,13 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.AggregateNone = types.BoolValue(false)
 			}
-			if cValue := v.Get("aggregate.bins"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.bins"); cValue.Exists() {
 				item.AggregateBins = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.width"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.width"); cValue.Exists() {
 				item.AggregateWidth = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.width-tenths"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.width-tenths"); cValue.Exists() {
 				item.AggregateWidthPercentage = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("aggregate.usec"); cValue.Exists() {
@@ -845,7 +845,7 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.AggregateUsec = types.BoolValue(false)
 			}
-			if cValue := v.Get("buckets.size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("buckets.size"); cValue.Exists() {
 				item.BucketsSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("buckets.probes"); cValue.Exists() {
@@ -853,47 +853,47 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 			} else {
 				item.BucketsProbes = types.BoolValue(false)
 			}
-			if cValue := v.Get("buckets.archive"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("buckets.archive"); cValue.Exists() {
 				item.BucketsArchive = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
 					item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -920,19 +920,19 @@ func (data *EthernetSLA) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ScheduleEveryDay = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() {
 		data.ScheduleEveryMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() {
 		data.ScheduleEveryHours = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() {
 		data.ScheduleEveryAtHours = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() {
 		data.ScheduleEveryAtMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() {
 		data.ScheduleEveryForTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -953,7 +953,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProbeSendPacketOnce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.packet.every.interval"); value.Exists() {
 		data.ProbeSendPacketEveryInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "probe.send.packet.every.milliseconds"); value.Exists() {
@@ -981,7 +981,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProbeSendBurstOnce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.every.interval"); value.Exists() {
 		data.ProbeSendBurstEveryInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "probe.send.burst.every.seconds"); value.Exists() {
@@ -999,25 +999,25 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ProbeSendBurstEveryHours = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.count"); value.Exists() {
 		data.ProbeSendBurstPacketCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-seconds"); value.Exists() {
 		data.ProbeSendBurstPacketIntervalSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.send.burst.packet.interval-in-milliseconds"); value.Exists() {
 		data.ProbeSendBurstPacketIntervalMilliseconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.packet.size"); value.Exists() {
 		data.ProbePacketSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.packet.test.pattern.hex"); value.Exists() {
 		data.ProbePacketTestPatternHex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.priority"); value.Exists() {
 		data.ProbePriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "probe.synthetic.loss.calculation.packets"); value.Exists() {
 		data.ProbeSyntheticLossCalculationPackets = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "statistics.measures.measure"); value.Exists() {
@@ -1032,13 +1032,13 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.AggregateNone = types.BoolValue(false)
 			}
-			if cValue := v.Get("aggregate.bins"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.bins"); cValue.Exists() {
 				item.AggregateBins = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.width"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.width"); cValue.Exists() {
 				item.AggregateWidth = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("aggregate.width-tenths"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("aggregate.width-tenths"); cValue.Exists() {
 				item.AggregateWidthPercentage = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("aggregate.usec"); cValue.Exists() {
@@ -1046,7 +1046,7 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.AggregateUsec = types.BoolValue(false)
 			}
-			if cValue := v.Get("buckets.size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("buckets.size"); cValue.Exists() {
 				item.BucketsSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("buckets.probes"); cValue.Exists() {
@@ -1054,47 +1054,47 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 			} else {
 				item.BucketsProbes = types.BoolValue(false)
 			}
-			if cValue := v.Get("buckets.archive"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("buckets.archive"); cValue.Exists() {
 				item.BucketsArchive = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.log.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatefulLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateful.efd.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatefulEfdOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.max-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.max-value"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnMaxValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.mean-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.mean-value"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnMeanValue = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.sample-count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.sample-count"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnSampleCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("thresholds.type.stateless.log.on.in-and-above.bin"); cValue.Exists() {
 				item.ThresholdsStatelessLogOnInAndAboveBin = types.Int64Value(cValue.Int())
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("aggregate.minimum-delay"); cValue.Exists() {
 					item.AggregateMinimumDelay = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -1121,19 +1121,19 @@ func (data *EthernetSLAData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.ScheduleEveryDay = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-minutes"); value.Exists() {
 		data.ScheduleEveryMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.interval-in-hours"); value.Exists() {
 		data.ScheduleEveryHours = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.at.hours"); value.Exists() {
 		data.ScheduleEveryAtHours = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.at.minutes"); value.Exists() {
 		data.ScheduleEveryAtMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "schedule.every.for.time"); value.Exists() {
 		data.ScheduleEveryForTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "schedule.every.for.unit"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

@@ -211,7 +211,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) updateFromBody(ctx context.Co
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
 		}
-		if value := r.Get("pw-id"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].PwId.IsNull() {
+		if value := r.Get("pw-id"); value.Exists() && !data.Neighbors[i].PwId.IsNull() {
 			data.Neighbors[i].PwId = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].PwId = types.Int64Null()
@@ -270,7 +270,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFI) fromBody(ctx context.Context,
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("pw-id"); cValue.Exists() {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
@@ -310,7 +310,7 @@ func (data *L2VPNBridgeGroupBridgeDomainAccessVFIData) fromBody(ctx context.Cont
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("pw-id"); cValue.Exists() {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {

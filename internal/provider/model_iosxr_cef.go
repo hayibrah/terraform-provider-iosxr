@@ -217,22 +217,22 @@ func (data *CEF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.AdjacencyRouteOverrideRib = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() && value.Type == gjson.Number && !data.PlatformLsmFrrHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() && !data.PlatformLsmFrrHoldtime.IsNull() {
 		data.PlatformLsmFrrHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.PlatformLsmFrrHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() && value.Type == gjson.Number && !data.RetryServiceTime.IsNull() {
+	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() && !data.RetryServiceTime.IsNull() {
 		data.RetryServiceTime = types.Int64Value(value.Int())
 	} else {
 		data.RetryServiceTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() && value.Type == gjson.Number && !data.RetryTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() && !data.RetryTimeout.IsNull() {
 		data.RetryTimeout = types.Int64Value(value.Int())
 	} else {
 		data.RetryTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() && value.Type == gjson.Number && !data.RetrySyslogTimer.IsNull() {
+	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() && !data.RetrySyslogTimer.IsNull() {
 		data.RetrySyslogTimer = types.Int64Value(value.Int())
 	} else {
 		data.RetrySyslogTimer = types.Int64Null()
@@ -264,17 +264,17 @@ func (data *CEF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ProactiveArpNdEnable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() && value.Type == gjson.Number && !data.LtraceMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() && !data.LtraceMultiplier.IsNull() {
 		data.LtraceMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.LtraceMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() && value.Type == gjson.Number && !data.LoadBalancingModeHierarchicalEcmpMinPaths.IsNull() {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() && !data.LoadBalancingModeHierarchicalEcmpMinPaths.IsNull() {
 		data.LoadBalancingModeHierarchicalEcmpMinPaths = types.Int64Value(value.Int())
 	} else {
 		data.LoadBalancingModeHierarchicalEcmpMinPaths = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() && value.Type == gjson.Number && !data.LoadBalancingModeHierarchicalUcmpGroupSize.IsNull() {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() && !data.LoadBalancingModeHierarchicalUcmpGroupSize.IsNull() {
 		data.LoadBalancingModeHierarchicalUcmpGroupSize = types.Int64Value(value.Int())
 	} else {
 		data.LoadBalancingModeHierarchicalUcmpGroupSize = types.Int64Null()
@@ -288,17 +288,17 @@ func (data *CEF) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlb = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() && value.Type == gjson.Number && !data.LoadBalancingRecursiveOorModeDampeningResourceThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() && !data.LoadBalancingRecursiveOorModeDampeningResourceThreshold.IsNull() {
 		data.LoadBalancingRecursiveOorModeDampeningResourceThreshold = types.Int64Value(value.Int())
 	} else {
 		data.LoadBalancingRecursiveOorModeDampeningResourceThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() && value.Type == gjson.Number && !data.LoadBalancingRecursiveOorModeDlbResourceThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() && !data.LoadBalancingRecursiveOorModeDlbResourceThreshold.IsNull() {
 		data.LoadBalancingRecursiveOorModeDlbResourceThreshold = types.Int64Value(value.Int())
 	} else {
 		data.LoadBalancingRecursiveOorModeDlbResourceThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() && value.Type == gjson.Number && !data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() && !data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration.IsNull() {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration = types.Int64Value(value.Int())
 	} else {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration = types.Int64Null()
@@ -315,16 +315,16 @@ func (data *CEF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.AdjacencyRouteOverrideRib = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() {
 		data.PlatformLsmFrrHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() {
 		data.RetryServiceTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() {
 		data.RetryTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() {
 		data.RetrySyslogTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encap-sharing.disable"); value.Exists() {
@@ -342,13 +342,13 @@ func (data *CEF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ProactiveArpNdEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() {
 		data.LtraceMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() {
 		data.LoadBalancingModeHierarchicalEcmpMinPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() {
 		data.LoadBalancingModeHierarchicalUcmpGroupSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb"); value.Exists() {
@@ -356,13 +356,13 @@ func (data *CEF) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlb = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDampeningResourceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDlbResourceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration = types.Int64Value(value.Int())
 	}
 }
@@ -377,16 +377,16 @@ func (data *CEFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.AdjacencyRouteOverrideRib = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "platform.lsm.frr-holdtime"); value.Exists() {
 		data.PlatformLsmFrrHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.service-time"); value.Exists() {
 		data.RetryServiceTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.timeout"); value.Exists() {
 		data.RetryTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retry.syslog-timer"); value.Exists() {
 		data.RetrySyslogTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encap-sharing.disable"); value.Exists() {
@@ -404,13 +404,13 @@ func (data *CEFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ProactiveArpNdEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ltrace-multiplier"); value.Exists() {
 		data.LtraceMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ecmp.min-paths"); value.Exists() {
 		data.LoadBalancingModeHierarchicalEcmpMinPaths = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.mode.hierarchical.ucmp.group-size"); value.Exists() {
 		data.LoadBalancingModeHierarchicalUcmpGroupSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb"); value.Exists() {
@@ -418,13 +418,13 @@ func (data *CEFData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlb = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dampening.resource-threshold"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDampeningResourceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.dlb.resource-threshold"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDlbResourceThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "load-balancing.recursive.oor.mode.dampening-and-dlb.max-duration"); value.Exists() {
 		data.LoadBalancingRecursiveOorModeDampeningAndDlbMaxDuration = types.Int64Value(value.Int())
 	}
 }

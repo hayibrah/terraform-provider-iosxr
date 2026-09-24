@@ -818,7 +818,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number && !data.Bandwidth.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && !data.Bandwidth.IsNull() {
 		data.Bandwidth = types.Int64Value(value.Int())
 	} else {
 		data.Bandwidth = types.Int64Null()
@@ -828,7 +828,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.Description = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number && !data.LoadInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && !data.LoadInterval.IsNull() {
 		data.LoadInterval = types.Int64Value(value.Int())
 	} else {
 		data.LoadInterval = types.Int64Null()
@@ -884,7 +884,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.Ipv6TtlPropagateDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number && !data.MplsMtu.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && !data.MplsMtu.IsNull() {
 		data.MplsMtu = types.Int64Value(value.Int())
 	} else {
 		data.MplsMtu = types.Int64Null()
@@ -908,17 +908,17 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.AutorouteAnnounce = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() && value.Type == gjson.Number && !data.AutorouteAnnounceMetricAbsolute.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() && !data.AutorouteAnnounceMetricAbsolute.IsNull() {
 		data.AutorouteAnnounceMetricAbsolute = types.Int64Value(value.Int())
 	} else {
 		data.AutorouteAnnounceMetricAbsolute = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() && value.Type == gjson.Number && !data.AutorouteAnnounceMetricRelative.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() && !data.AutorouteAnnounceMetricRelative.IsNull() {
 		data.AutorouteAnnounceMetricRelative = types.Int64Value(value.Int())
 	} else {
 		data.AutorouteAnnounceMetricRelative = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() && value.Type == gjson.Number && !data.AutorouteAnnounceMetric.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() && !data.AutorouteAnnounceMetric.IsNull() {
 		data.AutorouteAnnounceMetric = types.Int64Value(value.Int())
 	} else {
 		data.AutorouteAnnounceMetric = types.Int64Null()
@@ -980,7 +980,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BackupBwClassType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() && value.Type == gjson.Number && !data.BackupBwValue.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() && !data.BackupBwValue.IsNull() {
 		data.BackupBwValue = types.Int64Value(value.Int())
 	} else {
 		data.BackupBwValue = types.Int64Null()
@@ -994,12 +994,12 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BackupBwUnlimited = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() && value.Type == gjson.Number && !data.SignalledBandwidth.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() && !data.SignalledBandwidth.IsNull() {
 		data.SignalledBandwidth = types.Int64Value(value.Int())
 	} else {
 		data.SignalledBandwidth = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() && value.Type == gjson.Number && !data.SignalledBandwidthClassType.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() && !data.SignalledBandwidthClassType.IsNull() {
 		data.SignalledBandwidthClassType = types.Int64Value(value.Int())
 	} else {
 		data.SignalledBandwidthClassType = types.Int64Null()
@@ -1040,7 +1040,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.FastRerouteProtectBandwidth = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() && value.Type == gjson.Number && !data.ForwardClass.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() && !data.ForwardClass.IsNull() {
 		data.ForwardClass = types.Int64Value(value.Int())
 	} else {
 		data.ForwardClass = types.Int64Null()
@@ -1054,7 +1054,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ForwardingAdjacency = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() && value.Type == gjson.Number && !data.ForwardingAdjacencyHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() && !data.ForwardingAdjacencyHoldtime.IsNull() {
 		data.ForwardingAdjacencyHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.ForwardingAdjacencyHoldtime = types.Int64Null()
@@ -1068,7 +1068,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ForwardingAdjacencyIncludeIpv6 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() && value.Type == gjson.Number && !data.LoadShare.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() && !data.LoadShare.IsNull() {
 		data.LoadShare = types.Int64Value(value.Int())
 	} else {
 		data.LoadShare = types.Int64Null()
@@ -1200,7 +1200,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 				return true
 			},
 		)
-		if value := r.Get("preference"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].Preference.IsNull() {
+		if value := r.Get("preference"); value.Exists() && !data.PathOptions[i].Preference.IsNull() {
 			data.PathOptions[i].Preference = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].Preference = types.Int64Null()
@@ -1214,7 +1214,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.PathOptions[i].Dynamic = types.BoolNull()
 		}
-		if value := r.Get("explicit.identifier"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].ExplicitPathId.IsNull() {
+		if value := r.Get("explicit.identifier"); value.Exists() && !data.PathOptions[i].ExplicitPathId.IsNull() {
 			data.PathOptions[i].ExplicitPathId = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].ExplicitPathId = types.Int64Null()
@@ -1238,7 +1238,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.PathOptions[i].OspfInstance = types.StringNull()
 		}
-		if value := r.Get("ospf.area.decimal"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].OspfAreaId.IsNull() {
+		if value := r.Get("ospf.area.decimal"); value.Exists() && !data.PathOptions[i].OspfAreaId.IsNull() {
 			data.PathOptions[i].OspfAreaId = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].OspfAreaId = types.Int64Null()
@@ -1253,7 +1253,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.PathOptions[i].IsisInstance = types.StringNull()
 		}
-		if value := r.Get("isis.level"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].IsisLevel.IsNull() {
+		if value := r.Get("isis.level"); value.Exists() && !data.PathOptions[i].IsisLevel.IsNull() {
 			data.PathOptions[i].IsisLevel = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].IsisLevel = types.Int64Null()
@@ -1263,12 +1263,12 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 		} else {
 			data.PathOptions[i].AttributeSet = types.StringNull()
 		}
-		if value := r.Get("protected-by.index"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].ProtectedByIndex.IsNull() {
+		if value := r.Get("protected-by.index"); value.Exists() && !data.PathOptions[i].ProtectedByIndex.IsNull() {
 			data.PathOptions[i].ProtectedByIndex = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].ProtectedByIndex = types.Int64Null()
 		}
-		if value := r.Get("protected-by.index-secondary"); value.Exists() && value.Type == gjson.Number && !data.PathOptions[i].ProtectedByIndexSecondary.IsNull() {
+		if value := r.Get("protected-by.index-secondary"); value.Exists() && !data.PathOptions[i].ProtectedByIndexSecondary.IsNull() {
 			data.PathOptions[i].ProtectedByIndexSecondary = types.Int64Value(value.Int())
 		} else {
 			data.PathOptions[i].ProtectedByIndexSecondary = types.Int64Null()
@@ -1292,12 +1292,12 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 			data.PathOptions[i].LockdownSticky = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() && value.Type == gjson.Number && !data.PrioritySetup.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() && !data.PrioritySetup.IsNull() {
 		data.PrioritySetup = types.Int64Value(value.Int())
 	} else {
 		data.PrioritySetup = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() && value.Type == gjson.Number && !data.PriorityHold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() && !data.PriorityHold.IsNull() {
 		data.PriorityHold = types.Int64Value(value.Int())
 	} else {
 		data.PriorityHold = types.Int64Null()
@@ -1311,7 +1311,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.RecordRoute = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() && value.Type == gjson.Number && !data.BindingSidMplsLabel.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() && !data.BindingSidMplsLabel.IsNull() {
 		data.BindingSidMplsLabel = types.Int64Value(value.Int())
 	} else {
 		data.BindingSidMplsLabel = types.Int64Null()
@@ -1321,12 +1321,12 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.PolicyClasses = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() && value.Type == gjson.Number && !data.AutoBwLimitMin.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() && !data.AutoBwLimitMin.IsNull() {
 		data.AutoBwLimitMin = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwLimitMin = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() && value.Type == gjson.Number && !data.AutoBwLimitMax.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() && !data.AutoBwLimitMax.IsNull() {
 		data.AutoBwLimitMax = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwLimitMax = types.Int64Null()
@@ -1340,47 +1340,47 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.AutoBwCollectOnly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() && value.Type == gjson.Number && !data.AutoBwAdjustmentThresholdPercent.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() && !data.AutoBwAdjustmentThresholdPercent.IsNull() {
 		data.AutoBwAdjustmentThresholdPercent = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwAdjustmentThresholdPercent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() && value.Type == gjson.Number && !data.AutoBwAdjustmentThresholdMin.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() && !data.AutoBwAdjustmentThresholdMin.IsNull() {
 		data.AutoBwAdjustmentThresholdMin = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwAdjustmentThresholdMin = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() && value.Type == gjson.Number && !data.AutoBwOverflowThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() && !data.AutoBwOverflowThreshold.IsNull() {
 		data.AutoBwOverflowThreshold = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwOverflowThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() && value.Type == gjson.Number && !data.AutoBwOverflowMin.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() && !data.AutoBwOverflowMin.IsNull() {
 		data.AutoBwOverflowMin = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwOverflowMin = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() && value.Type == gjson.Number && !data.AutoBwOverflowLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() && !data.AutoBwOverflowLimit.IsNull() {
 		data.AutoBwOverflowLimit = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwOverflowLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() && value.Type == gjson.Number && !data.AutoBwUnderflowThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() && !data.AutoBwUnderflowThreshold.IsNull() {
 		data.AutoBwUnderflowThreshold = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwUnderflowThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() && value.Type == gjson.Number && !data.AutoBwUnderflowMin.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() && !data.AutoBwUnderflowMin.IsNull() {
 		data.AutoBwUnderflowMin = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwUnderflowMin = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() && value.Type == gjson.Number && !data.AutoBwUnderflowLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() && !data.AutoBwUnderflowLimit.IsNull() {
 		data.AutoBwUnderflowLimit = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwUnderflowLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() && value.Type == gjson.Number && !data.AutoBwResignalLastBandwidthTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() && !data.AutoBwResignalLastBandwidthTimeout.IsNull() {
 		data.AutoBwResignalLastBandwidthTimeout = types.Int64Value(value.Int())
 	} else {
 		data.AutoBwResignalLastBandwidthTimeout = types.Int64Null()
@@ -1475,22 +1475,22 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.PathSelectionTiebreakerRandom = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() && value.Type == gjson.Number && !data.PathSelectionHopLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() && !data.PathSelectionHopLimit.IsNull() {
 		data.PathSelectionHopLimit = types.Int64Value(value.Int())
 	} else {
 		data.PathSelectionHopLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() && value.Type == gjson.Number && !data.PathSelectionCostLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() && !data.PathSelectionCostLimit.IsNull() {
 		data.PathSelectionCostLimit = types.Int64Value(value.Int())
 	} else {
 		data.PathSelectionCostLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() && value.Type == gjson.Number && !data.PathSelectionDelayLimit.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() && !data.PathSelectionDelayLimit.IsNull() {
 		data.PathSelectionDelayLimit = types.Int64Value(value.Int())
 	} else {
 		data.PathSelectionDelayLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() && value.Type == gjson.Number && !data.BidirectionalAssociationId.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() && !data.BidirectionalAssociationId.IsNull() {
 		data.BidirectionalAssociationId = types.Int64Value(value.Int())
 	} else {
 		data.BidirectionalAssociationId = types.Int64Null()
@@ -1500,7 +1500,7 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BidirectionalAssociationSourceAddress = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() && value.Type == gjson.Number && !data.BidirectionalAssociationGlobalId.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() && !data.BidirectionalAssociationGlobalId.IsNull() {
 		data.BidirectionalAssociationGlobalId = types.Int64Value(value.Int())
 	} else {
 		data.BidirectionalAssociationGlobalId = types.Int64Null()
@@ -1559,22 +1559,22 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BfdSbfd = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.BfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() && !data.BfdMinimumInterval.IsNull() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.BfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() && !data.BfdMultiplier.IsNull() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.BfdMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() && value.Type == gjson.Number && !data.BfdBringupTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() && !data.BfdBringupTimeout.IsNull() {
 		data.BfdBringupTimeout = types.Int64Value(value.Int())
 	} else {
 		data.BfdBringupTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() && value.Type == gjson.Number && !data.BfdLspPingInterval.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() && !data.BfdLspPingInterval.IsNull() {
 		data.BfdLspPingInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdLspPingInterval = types.Int64Null()
@@ -1588,17 +1588,17 @@ func (data *InterfaceTunnelTE) updateFromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BfdLspPingDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() && value.Type == gjson.Number && !data.BfdDampeningInitialWait.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() && !data.BfdDampeningInitialWait.IsNull() {
 		data.BfdDampeningInitialWait = types.Int64Value(value.Int())
 	} else {
 		data.BfdDampeningInitialWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number && !data.BfdDampeningMaximumWait.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() && !data.BfdDampeningMaximumWait.IsNull() {
 		data.BfdDampeningMaximumWait = types.Int64Value(value.Int())
 	} else {
 		data.BfdDampeningMaximumWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number && !data.BfdDampeningSecondaryWait.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() && !data.BfdDampeningSecondaryWait.IsNull() {
 		data.BfdDampeningSecondaryWait = types.Int64Value(value.Int())
 	} else {
 		data.BfdDampeningSecondaryWait = types.Int64Null()
@@ -1634,13 +1634,13 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() {
 		data.Bandwidth = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() {
 		data.LoadInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1672,7 +1672,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.Ipv6TtlPropagateDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() {
 		data.MplsMtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:affinity.affinity-attribute-value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1686,13 +1686,13 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.AutorouteAnnounce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() {
 		data.AutorouteAnnounceMetricAbsolute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() {
 		data.AutorouteAnnounceMetricRelative = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() {
 		data.AutorouteAnnounceMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.include-ipv6"); value.Exists() {
@@ -1722,7 +1722,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.class-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BackupBwClassType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() {
 		data.BackupBwValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.unlimited"); value.Exists() {
@@ -1730,10 +1730,10 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.BackupBwUnlimited = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() {
 		data.SignalledBandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() {
 		data.SignalledBandwidthClassType = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.sub-pool"); value.Exists() {
@@ -1756,7 +1756,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.FastRerouteProtectBandwidth = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() {
 		data.ForwardClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency"); value.Exists() {
@@ -1764,7 +1764,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ForwardingAdjacency = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() {
 		data.ForwardingAdjacencyHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.include-ipv6"); value.Exists() {
@@ -1772,7 +1772,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.ForwardingAdjacencyIncludeIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() {
 		data.LoadShare = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:logging.events.lsp-status.state"); value.Exists() {
@@ -1837,7 +1837,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 		data.PathOptions = make([]InterfaceTunnelTEPathOptions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceTunnelTEPathOptions{}
-			if cValue := v.Get("preference"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("preference"); cValue.Exists() {
 				item.Preference = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("dynamic"); cValue.Exists() {
@@ -1845,7 +1845,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 			} else {
 				item.Dynamic = types.BoolValue(false)
 			}
-			if cValue := v.Get("explicit.identifier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("explicit.identifier"); cValue.Exists() {
 				item.ExplicitPathId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("explicit.name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1859,7 +1859,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 			if cValue := v.Get("ospf.instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.OspfInstance = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ospf.area.decimal"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ospf.area.decimal"); cValue.Exists() {
 				item.OspfAreaId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ospf.area.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1868,16 +1868,16 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 			if cValue := v.Get("isis.instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IsisInstance = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("isis.level"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("isis.level"); cValue.Exists() {
 				item.IsisLevel = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("attribute-set.attribute-set-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AttributeSet = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("protected-by.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protected-by.index"); cValue.Exists() {
 				item.ProtectedByIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protected-by.index-secondary"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protected-by.index-secondary"); cValue.Exists() {
 				item.ProtectedByIndexSecondary = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("lockdown"); cValue.Exists() {
@@ -1894,10 +1894,10 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() {
 		data.PrioritySetup = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() {
 		data.PriorityHold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:record-route"); value.Exists() {
@@ -1905,7 +1905,7 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.RecordRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() {
 		data.BindingSidMplsLabel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:policy-class.tunnel-policy-class-values.tunnel-policy-class-value"); value.Exists() {
@@ -1913,10 +1913,10 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.PolicyClasses = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() {
 		data.AutoBwLimitMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() {
 		data.AutoBwLimitMax = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.collect-bw-only"); value.Exists() {
@@ -1924,31 +1924,31 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.AutoBwCollectOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() {
 		data.AutoBwAdjustmentThresholdPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() {
 		data.AutoBwAdjustmentThresholdMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() {
 		data.AutoBwOverflowThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() {
 		data.AutoBwOverflowMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() {
 		data.AutoBwOverflowLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() {
 		data.AutoBwUnderflowThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() {
 		data.AutoBwUnderflowMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() {
 		data.AutoBwUnderflowLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() {
 		data.AutoBwResignalLastBandwidthTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-protection"); value.Exists() {
@@ -2001,22 +2001,22 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.PathSelectionTiebreakerRandom = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() {
 		data.PathSelectionHopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() {
 		data.PathSelectionCostLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() {
 		data.PathSelectionDelayLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() {
 		data.BidirectionalAssociationId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BidirectionalAssociationSourceAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() {
 		data.BidirectionalAssociationGlobalId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.type.co-routed"); value.Exists() {
@@ -2049,16 +2049,16 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.BfdSbfd = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() {
 		data.BfdBringupTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() {
 		data.BfdLspPingInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.disable"); value.Exists() {
@@ -2066,13 +2066,13 @@ func (data *InterfaceTunnelTE) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.BfdLspPingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() {
 		data.BfdDampeningInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() {
 		data.BfdDampeningMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() {
 		data.BfdDampeningSecondaryWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.encap-mode.gal"); value.Exists() {
@@ -2100,13 +2100,13 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.LoggingEventsLinkStatus = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth"); value.Exists() {
 		data.Bandwidth = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-statistics-cfg:load-interval"); value.Exists() {
 		data.LoadInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.Cisco-IOS-XR-um-if-ip-address-cfg:addresses.address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2138,7 +2138,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.Ipv6TtlPropagateDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-if-mpls-cfg:mpls.mtu"); value.Exists() {
 		data.MplsMtu = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:affinity.affinity-attribute-value"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2152,13 +2152,13 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.AutorouteAnnounce = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.absolute"); value.Exists() {
 		data.AutorouteAnnounceMetricAbsolute = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.relative"); value.Exists() {
 		data.AutorouteAnnounceMetricRelative = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.metric.constant-metric"); value.Exists() {
 		data.AutorouteAnnounceMetric = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:autoroute.announce.include-ipv6"); value.Exists() {
@@ -2188,7 +2188,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.class-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BackupBwClassType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.bandwidth"); value.Exists() {
 		data.BackupBwValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:backup-bw.unlimited"); value.Exists() {
@@ -2196,10 +2196,10 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.BackupBwUnlimited = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.bandwidth"); value.Exists() {
 		data.SignalledBandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.class-type"); value.Exists() {
 		data.SignalledBandwidthClassType = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:signalled-bandwidth.sub-pool"); value.Exists() {
@@ -2222,7 +2222,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.FastRerouteProtectBandwidth = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forward-class"); value.Exists() {
 		data.ForwardClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency"); value.Exists() {
@@ -2230,7 +2230,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.ForwardingAdjacency = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.holdtime"); value.Exists() {
 		data.ForwardingAdjacencyHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:forwarding-adjacency.include-ipv6"); value.Exists() {
@@ -2238,7 +2238,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.ForwardingAdjacencyIncludeIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:load-share"); value.Exists() {
 		data.LoadShare = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:logging.events.lsp-status.state"); value.Exists() {
@@ -2303,7 +2303,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 		data.PathOptions = make([]InterfaceTunnelTEPathOptions, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := InterfaceTunnelTEPathOptions{}
-			if cValue := v.Get("preference"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("preference"); cValue.Exists() {
 				item.Preference = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("dynamic"); cValue.Exists() {
@@ -2311,7 +2311,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 			} else {
 				item.Dynamic = types.BoolValue(false)
 			}
-			if cValue := v.Get("explicit.identifier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("explicit.identifier"); cValue.Exists() {
 				item.ExplicitPathId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("explicit.name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2325,7 +2325,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 			if cValue := v.Get("ospf.instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.OspfInstance = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("ospf.area.decimal"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ospf.area.decimal"); cValue.Exists() {
 				item.OspfAreaId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("ospf.area.ip-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2334,16 +2334,16 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 			if cValue := v.Get("isis.instance-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.IsisInstance = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("isis.level"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("isis.level"); cValue.Exists() {
 				item.IsisLevel = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("attribute-set.attribute-set-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AttributeSet = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("protected-by.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protected-by.index"); cValue.Exists() {
 				item.ProtectedByIndex = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("protected-by.index-secondary"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("protected-by.index-secondary"); cValue.Exists() {
 				item.ProtectedByIndexSecondary = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("lockdown"); cValue.Exists() {
@@ -2360,10 +2360,10 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.setup-priority"); value.Exists() {
 		data.PrioritySetup = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:priority.hold-priority"); value.Exists() {
 		data.PriorityHold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:record-route"); value.Exists() {
@@ -2371,7 +2371,7 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.RecordRoute = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:binding-sid.mpls.label"); value.Exists() {
 		data.BindingSidMplsLabel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:policy-class.tunnel-policy-class-values.tunnel-policy-class-value"); value.Exists() {
@@ -2379,10 +2379,10 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.PolicyClasses = types.ListNull(types.StringType)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.min"); value.Exists() {
 		data.AutoBwLimitMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.bw-limit.max"); value.Exists() {
 		data.AutoBwLimitMax = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.collect-bw-only"); value.Exists() {
@@ -2390,31 +2390,31 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.AutoBwCollectOnly = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.threshold"); value.Exists() {
 		data.AutoBwAdjustmentThresholdPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.adjustment-threshold.min"); value.Exists() {
 		data.AutoBwAdjustmentThresholdMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.threshold"); value.Exists() {
 		data.AutoBwOverflowThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.min"); value.Exists() {
 		data.AutoBwOverflowMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.overflow.limit"); value.Exists() {
 		data.AutoBwOverflowLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.threshold"); value.Exists() {
 		data.AutoBwUnderflowThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.min"); value.Exists() {
 		data.AutoBwUnderflowMin = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.underflow.limit"); value.Exists() {
 		data.AutoBwUnderflowLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:auto-bw.resignal.last-bandwidth.time-out"); value.Exists() {
 		data.AutoBwResignalLastBandwidthTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-protection"); value.Exists() {
@@ -2467,22 +2467,22 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.PathSelectionTiebreakerRandom = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.hop-limit"); value.Exists() {
 		data.PathSelectionHopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.cost-limit"); value.Exists() {
 		data.PathSelectionCostLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:path-selection.delay-limit"); value.Exists() {
 		data.PathSelectionDelayLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.association-id"); value.Exists() {
 		data.BidirectionalAssociationId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BidirectionalAssociationSourceAddress = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.id.global-id"); value.Exists() {
 		data.BidirectionalAssociationGlobalId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bidirectional.association.type.co-routed"); value.Exists() {
@@ -2515,16 +2515,16 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.BfdSbfd = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.bringup-timeout"); value.Exists() {
 		data.BfdBringupTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.interval"); value.Exists() {
 		data.BfdLspPingInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.lsp-ping.disable"); value.Exists() {
@@ -2532,13 +2532,13 @@ func (data *InterfaceTunnelTEData) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.BfdLspPingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.initial-wait"); value.Exists() {
 		data.BfdDampeningInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.maximum-wait"); value.Exists() {
 		data.BfdDampeningMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.dampening.secondary-wait"); value.Exists() {
 		data.BfdDampeningSecondaryWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-mpls-te-cfg:bfd.encap-mode.gal"); value.Exists() {

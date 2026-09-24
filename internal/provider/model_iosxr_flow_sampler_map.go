@@ -138,12 +138,12 @@ func (data FlowSamplerMap) GetPatternConstraints() []helpers.FieldPatternConstra
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *FlowSamplerMap) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "random"); value.Exists() && value.Type == gjson.Number && !data.Random.IsNull() {
+	if value := gjson.GetBytes(res, "random"); value.Exists() && !data.Random.IsNull() {
 		data.Random = types.Int64Value(value.Int())
 	} else {
 		data.Random = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "out-of"); value.Exists() && value.Type == gjson.Number && !data.OutOf.IsNull() {
+	if value := gjson.GetBytes(res, "out-of"); value.Exists() && !data.OutOf.IsNull() {
 		data.OutOf = types.Int64Value(value.Int())
 	} else {
 		data.OutOf = types.Int64Null()
@@ -155,10 +155,10 @@ func (data *FlowSamplerMap) updateFromBody(ctx context.Context, res []byte, vers
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *FlowSamplerMap) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "random"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "random"); value.Exists() {
 		data.Random = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "out-of"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "out-of"); value.Exists() {
 		data.OutOf = types.Int64Value(value.Int())
 	}
 }
@@ -168,10 +168,10 @@ func (data *FlowSamplerMap) fromBody(ctx context.Context, res []byte, version st
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *FlowSamplerMapData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "random"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "random"); value.Exists() {
 		data.Random = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "out-of"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "out-of"); value.Exists() {
 		data.OutOf = types.Int64Value(value.Int())
 	}
 }

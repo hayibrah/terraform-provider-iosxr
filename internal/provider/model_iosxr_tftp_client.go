@@ -187,12 +187,12 @@ func (data *TFTPClient) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.ClientVrfs[i].SourceInterface = types.StringNull()
 		}
-		if value := r.Get("retries"); value.Exists() && value.Type == gjson.Number && !data.ClientVrfs[i].Retries.IsNull() {
+		if value := r.Get("retries"); value.Exists() && !data.ClientVrfs[i].Retries.IsNull() {
 			data.ClientVrfs[i].Retries = types.Int64Value(value.Int())
 		} else {
 			data.ClientVrfs[i].Retries = types.Int64Null()
 		}
-		if value := r.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.ClientVrfs[i].Timeout.IsNull() {
+		if value := r.Get("timeout"); value.Exists() && !data.ClientVrfs[i].Timeout.IsNull() {
 			data.ClientVrfs[i].Timeout = types.Int64Value(value.Int())
 		} else {
 			data.ClientVrfs[i].Timeout = types.Int64Null()
@@ -220,10 +220,10 @@ func (data *TFTPClient) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("retries"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retries"); cValue.Exists() {
 				item.Retries = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("timeout"); cValue.Exists() {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -250,10 +250,10 @@ func (data *TFTPClientData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("source-interface"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SourceInterface = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("retries"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retries"); cValue.Exists() {
 				item.Retries = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("timeout"); cValue.Exists() {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {

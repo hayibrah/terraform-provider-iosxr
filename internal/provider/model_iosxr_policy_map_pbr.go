@@ -281,7 +281,7 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].Type = types.StringNull()
 		}
-		if value := r.Get("police.rate.value"); value.Exists() && value.Type == gjson.Number && !data.Classes[i].PoliceRateValue.IsNull() {
+		if value := r.Get("police.rate.value"); value.Exists() && !data.Classes[i].PoliceRateValue.IsNull() {
 			data.Classes[i].PoliceRateValue = types.Int64Value(value.Int())
 		} else {
 			data.Classes[i].PoliceRateValue = types.Int64Null()
@@ -388,7 +388,7 @@ func (data *PolicyMapPBR) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Classes[i].SetDscp = types.StringNull()
 		}
-		if value := r.Get("set.forward-class"); value.Exists() && value.Type == gjson.Number && !data.Classes[i].SetForwardClass.IsNull() {
+		if value := r.Get("set.forward-class"); value.Exists() && !data.Classes[i].SetForwardClass.IsNull() {
 			data.Classes[i].SetForwardClass = types.Int64Value(value.Int())
 		} else {
 			data.Classes[i].SetForwardClass = types.Int64Null()
@@ -423,7 +423,7 @@ func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("police.rate.value"); cValue.Exists() {
 				item.PoliceRateValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -486,7 +486,7 @@ func (data *PolicyMapPBR) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set.forward-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("set.forward-class"); cValue.Exists() {
 				item.SetForwardClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("decapsulate.gre"); cValue.Exists() {
@@ -518,7 +518,7 @@ func (data *PolicyMapPBRData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("type"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Type = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("police.rate.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("police.rate.value"); cValue.Exists() {
 				item.PoliceRateValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("police.rate.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -581,7 +581,7 @@ func (data *PolicyMapPBRData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("set.dscp"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SetDscp = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("set.forward-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("set.forward-class"); cValue.Exists() {
 				item.SetForwardClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("decapsulate.gre"); cValue.Exists() {

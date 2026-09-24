@@ -2858,7 +2858,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].Order.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].Order = types.Int64Null()
@@ -2868,18 +2868,18 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("auth-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].AuthPort.IsNull() {
+			if value := cr.Get("auth-port"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].AuthPort.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].AuthPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].AuthPort = types.Int64Null()
 			}
-			if value := cr.Get("acct-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Servers[ci].AcctPort.IsNull() {
+			if value := cr.Get("acct-port"); value.Exists() && !data.RadiusServerGroups[i].Servers[ci].AcctPort.IsNull() {
 				data.RadiusServerGroups[i].Servers[ci].AcctPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].Servers[ci].AcctPort = types.Int64Null()
 			}
 		}
-		if value := r.Get("load-balance.method.least-outstanding.batch-size"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() {
+		if value := r.Get("load-balance.method.least-outstanding.batch-size"); value.Exists() && !data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize.IsNull() {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Null()
@@ -2902,22 +2902,22 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.RadiusServerGroups[i].LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolNull()
 		}
-		if value := r.Get("deadtime"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].Deadtime.IsNull() {
+		if value := r.Get("deadtime"); value.Exists() && !data.RadiusServerGroups[i].Deadtime.IsNull() {
 			data.RadiusServerGroups[i].Deadtime = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].Deadtime = types.Int64Null()
 		}
-		if value := r.Get("throttle.access"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccess.IsNull() {
+		if value := r.Get("throttle.access"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccess.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccess = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccess = types.Int64Null()
 		}
-		if value := r.Get("throttle.access-timeout"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccessTimeout.IsNull() {
+		if value := r.Get("throttle.access-timeout"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccessTimeout.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccessTimeout = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccessTimeout = types.Int64Null()
 		}
-		if value := r.Get("throttle.accounting"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ThrottleAccounting.IsNull() {
+		if value := r.Get("throttle.accounting"); value.Exists() && !data.RadiusServerGroups[i].ThrottleAccounting.IsNull() {
 			data.RadiusServerGroups[i].ThrottleAccounting = types.Int64Value(value.Int())
 		} else {
 			data.RadiusServerGroups[i].ThrottleAccounting = types.Int64Null()
@@ -2945,7 +2945,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Order.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Order = types.Int64Null()
@@ -2955,22 +2955,22 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("auth-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort.IsNull() {
+			if value := cr.Get("auth-port"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AuthPort = types.Int64Null()
 			}
-			if value := cr.Get("acct-port"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort.IsNull() {
+			if value := cr.Get("acct-port"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].AcctPort = types.Int64Null()
 			}
-			if value := cr.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
+			if value := cr.Get("timeout"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Null()
 			}
-			if value := cr.Get("retransmit"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit.IsNull() {
+			if value := cr.Get("retransmit"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].Retransmit = types.Int64Null()
@@ -2980,7 +2980,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].TestUsername = types.StringNull()
 			}
-			if value := cr.Get("idle-time"); value.Exists() && value.Type == gjson.Number && !data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime.IsNull() {
+			if value := cr.Get("idle-time"); value.Exists() && !data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime.IsNull() {
 				data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime = types.Int64Value(value.Int())
 			} else {
 				data.RadiusServerGroups[i].ServerPrivates[ci].IdleTime = types.Int64Null()
@@ -3107,7 +3107,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			data.RadiusServerGroups[i].AccountingReplyRadiusAttributeList = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number && !data.ServerRadiusDynamicAuthorPort.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && !data.ServerRadiusDynamicAuthorPort.IsNull() {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	} else {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Null()
@@ -3206,7 +3206,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].Servers[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && !data.TacacsServerGroups[i].Servers[ci].Order.IsNull() {
 				data.TacacsServerGroups[i].Servers[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].Servers[ci].Order = types.Int64Null()
@@ -3222,7 +3222,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.TacacsServerGroups[i].Vrf = types.StringNull()
 		}
-		if value := r.Get("holddown-time"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].HolddownTime.IsNull() {
+		if value := r.Get("holddown-time"); value.Exists() && !data.TacacsServerGroups[i].HolddownTime.IsNull() {
 			data.TacacsServerGroups[i].HolddownTime = types.Int64Value(value.Int())
 		} else {
 			data.TacacsServerGroups[i].HolddownTime = types.Int64Null()
@@ -3250,7 +3250,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 					return true
 				},
 			)
-			if value := cr.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Order.IsNull() {
+			if value := cr.Get("ordering-index"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Order.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Order = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Order = types.Int64Null()
@@ -3260,7 +3260,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("port"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Port.IsNull() {
+			if value := cr.Get("port"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Port.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Port = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Port = types.Int64Null()
@@ -3274,17 +3274,17 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnection = types.BoolNull()
 			}
-			if value := cr.Get("single-connection-idle-timeout"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout.IsNull() {
+			if value := cr.Get("single-connection-idle-timeout"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].SingleConnectionIdleTimeout = types.Int64Null()
 			}
-			if value := cr.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
+			if value := cr.Get("timeout"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].Timeout.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].Timeout = types.Int64Null()
 			}
-			if value := cr.Get("holddown-time"); value.Exists() && value.Type == gjson.Number && !data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime.IsNull() {
+			if value := cr.Get("holddown-time"); value.Exists() && !data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime.IsNull() {
 				data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime = types.Int64Value(value.Int())
 			} else {
 				data.TacacsServerGroups[i].ServerPrivates[ci].HolddownTime = types.Int64Null()
@@ -3314,7 +3314,7 @@ func (data *AAA) updateFromBody(ctx context.Context, res []byte, version string)
 				return true
 			},
 		)
-		if value := r.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.Usernames[i].Order.IsNull() {
+		if value := r.Get("ordering-index"); value.Exists() && !data.Usernames[i].Order.IsNull() {
 			data.Usernames[i].Order = types.Int64Value(value.Int())
 		} else {
 			data.Usernames[i].Order = types.Int64Null()
@@ -6860,23 +6860,23 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.Servers = make([]AAARadiusServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() {
 				item.LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("load-balance.method.least-outstanding"); cValue.Exists() {
@@ -6889,44 +6889,44 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolValue(false)
 			}
-			if cValue := v.Get("deadtime"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deadtime"); cValue.Exists() {
 				item.Deadtime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.access"); cValue.Exists() {
 				item.ThrottleAccess = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() {
 				item.ThrottleAccessTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.accounting"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.accounting"); cValue.Exists() {
 				item.ThrottleAccounting = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAARadiusServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("retransmit"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("retransmit"); ccValue.Exists() {
 						cItem.Retransmit = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("test.username"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.TestUsername = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("idle-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("idle-time"); ccValue.Exists() {
 						cItem.IdleTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ignore-auth-port"); ccValue.Exists() {
@@ -7005,7 +7005,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.ignore.server-key"); value.Exists() {
@@ -7038,7 +7038,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 				item.Servers = make([]AAATacacsServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
@@ -7051,20 +7051,20 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("holddown-time"); cValue.Exists() {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAATacacsServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("port"); ccValue.Exists() {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("single-connection"); ccValue.Exists() {
@@ -7072,13 +7072,13 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.SingleConnection = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() {
 						cItem.SingleConnectionIdleTimeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("holddown-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("holddown-time"); ccValue.Exists() {
 						cItem.HolddownTime = types.Int64Value(ccValue.Int())
 					}
 					item.ServerPrivates = append(item.ServerPrivates, cItem)
@@ -7093,7 +7093,7 @@ func (data *AAA) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usernames = make([]AAAUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsernames{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ordering-index"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -9048,23 +9048,23 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Servers = make([]AAARadiusServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
 					item.Servers = append(item.Servers, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("load-balance.method.least-outstanding.batch-size"); cValue.Exists() {
 				item.LoadBalanceMethodLeastOutstandingBatchSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("load-balance.method.least-outstanding"); cValue.Exists() {
@@ -9077,44 +9077,44 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			} else {
 				item.LoadBalanceMethodLeastOutstandingIgnorePreferredServer = types.BoolValue(false)
 			}
-			if cValue := v.Get("deadtime"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deadtime"); cValue.Exists() {
 				item.Deadtime = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.access"); cValue.Exists() {
 				item.ThrottleAccess = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.access-timeout"); cValue.Exists() {
 				item.ThrottleAccessTimeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("throttle.accounting"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("throttle.accounting"); cValue.Exists() {
 				item.ThrottleAccounting = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAARadiusServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAARadiusServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("auth-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("auth-port"); ccValue.Exists() {
 						cItem.AuthPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("acct-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("acct-port"); ccValue.Exists() {
 						cItem.AcctPort = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("retransmit"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("retransmit"); ccValue.Exists() {
 						cItem.Retransmit = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("test.username"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.TestUsername = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("idle-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("idle-time"); ccValue.Exists() {
 						cItem.IdleTime = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ignore-auth-port"); ccValue.Exists() {
@@ -9193,7 +9193,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.port"); value.Exists() {
 		data.ServerRadiusDynamicAuthorPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-radius-server-cfg:server.radius.dynamic-author.ignore.server-key"); value.Exists() {
@@ -9226,7 +9226,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 				item.Servers = make([]AAATacacsServerGroupsServers, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServers{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
@@ -9239,20 +9239,20 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("vrf"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Vrf = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("holddown-time"); cValue.Exists() {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("server-privates.server-private"); cValue.Exists() {
 				item.ServerPrivates = make([]AAATacacsServerGroupsServerPrivates, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := AAATacacsServerGroupsServerPrivates{}
-					if ccValue := cv.Get("ordering-index"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ordering-index"); ccValue.Exists() {
 						cItem.Order = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("port"); ccValue.Exists() {
 						cItem.Port = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("single-connection"); ccValue.Exists() {
@@ -9260,13 +9260,13 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 					} else {
 						cItem.SingleConnection = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("single-connection-idle-timeout"); ccValue.Exists() {
 						cItem.SingleConnectionIdleTimeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("timeout"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("timeout"); ccValue.Exists() {
 						cItem.Timeout = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("holddown-time"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("holddown-time"); ccValue.Exists() {
 						cItem.HolddownTime = types.Int64Value(ccValue.Int())
 					}
 					item.ServerPrivates = append(item.ServerPrivates, cItem)
@@ -9281,7 +9281,7 @@ func (data *AAAData) fromBody(ctx context.Context, res []byte, version string) {
 		data.Usernames = make([]AAAUsernames, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := AAAUsernames{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ordering-index"); cValue.Exists() {
 				item.Order = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {

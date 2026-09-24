@@ -180,12 +180,12 @@ func (data VTYPool) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *VTYPool) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() && value.Type == gjson.Number && !data.DefaultFirstVty.IsNull() {
+	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() && !data.DefaultFirstVty.IsNull() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	} else {
 		data.DefaultFirstVty = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() && value.Type == gjson.Number && !data.DefaultLastVty.IsNull() {
+	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() && !data.DefaultLastVty.IsNull() {
 		data.DefaultLastVty = types.Int64Value(value.Int())
 	} else {
 		data.DefaultLastVty = types.Int64Null()
@@ -195,12 +195,12 @@ func (data *VTYPool) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.DefaultLineTemplate = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() && value.Type == gjson.Number && !data.EemFirstVty.IsNull() {
+	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() && !data.EemFirstVty.IsNull() {
 		data.EemFirstVty = types.Int64Value(value.Int())
 	} else {
 		data.EemFirstVty = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() && value.Type == gjson.Number && !data.EemLastVty.IsNull() {
+	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() && !data.EemLastVty.IsNull() {
 		data.EemLastVty = types.Int64Value(value.Int())
 	} else {
 		data.EemLastVty = types.Int64Null()
@@ -261,19 +261,19 @@ func (data *VTYPool) updateFromBody(ctx context.Context, res []byte, version str
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *VTYPool) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() {
 		data.DefaultLastVty = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default.line-template"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultLineTemplate = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() {
 		data.EemFirstVty = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() {
 		data.EemLastVty = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "eem.line-template"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -306,19 +306,19 @@ func (data *VTYPool) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *VTYPoolData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default.first-vty-number"); value.Exists() {
 		data.DefaultFirstVty = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default.last-vty-number"); value.Exists() {
 		data.DefaultLastVty = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "default.line-template"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DefaultLineTemplate = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "eem.first-vty-number"); value.Exists() {
 		data.EemFirstVty = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "eem.last-vty-number"); value.Exists() {
 		data.EemLastVty = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "eem.line-template"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

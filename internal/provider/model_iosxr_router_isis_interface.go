@@ -515,7 +515,7 @@ func (data RouterISISInterface) GetPatternConstraints() []helpers.FieldPatternCo
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() && value.Type == gjson.Number && !data.MeshGroup.IsNull() {
+	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() && !data.MeshGroup.IsNull() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	} else {
 		data.MeshGroup = types.Int64Null()
@@ -539,7 +539,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.CircuitType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && value.Type == gjson.Number && !data.CsnpInterval.IsNull() {
+	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && !data.CsnpInterval.IsNull() {
 		data.CsnpInterval = types.Int64Value(value.Int())
 	} else {
 		data.CsnpInterval = types.Int64Null()
@@ -567,12 +567,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.CsnpIntervalLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.CsnpIntervalLevels[i].LevelNumber.IsNull() {
 			data.CsnpIntervalLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.CsnpIntervalLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("csnp-interval"); value.Exists() && value.Type == gjson.Number && !data.CsnpIntervalLevels[i].CsnpInterval.IsNull() {
+		if value := r.Get("csnp-interval"); value.Exists() && !data.CsnpIntervalLevels[i].CsnpInterval.IsNull() {
 			data.CsnpIntervalLevels[i].CsnpInterval = types.Int64Value(value.Int())
 		} else {
 			data.CsnpIntervalLevels[i].CsnpInterval = types.Int64Null()
@@ -606,7 +606,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.HelloPaddingLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.HelloPaddingLevels[i].LevelNumber.IsNull() {
 			data.HelloPaddingLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.HelloPaddingLevels[i].LevelNumber = types.Int64Null()
@@ -617,7 +617,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 			data.HelloPaddingLevels[i].HelloPadding = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number && !data.HelloInterval.IsNull() {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && !data.HelloInterval.IsNull() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	} else {
 		data.HelloInterval = types.Int64Null()
@@ -645,18 +645,18 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.HelloIntervalLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.HelloIntervalLevels[i].LevelNumber.IsNull() {
 			data.HelloIntervalLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.HelloIntervalLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("hello-interval"); value.Exists() && value.Type == gjson.Number && !data.HelloIntervalLevels[i].HelloInterval.IsNull() {
+		if value := r.Get("hello-interval"); value.Exists() && !data.HelloIntervalLevels[i].HelloInterval.IsNull() {
 			data.HelloIntervalLevels[i].HelloInterval = types.Int64Value(value.Int())
 		} else {
 			data.HelloIntervalLevels[i].HelloInterval = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() && value.Type == gjson.Number && !data.HelloMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() && !data.HelloMultiplier.IsNull() {
 		data.HelloMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.HelloMultiplier = types.Int64Null()
@@ -684,18 +684,18 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.HelloMultiplierLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.HelloMultiplierLevels[i].LevelNumber.IsNull() {
 			data.HelloMultiplierLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.HelloMultiplierLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("hello-multiplier"); value.Exists() && value.Type == gjson.Number && !data.HelloMultiplierLevels[i].HelloMultiplier.IsNull() {
+		if value := r.Get("hello-multiplier"); value.Exists() && !data.HelloMultiplierLevels[i].HelloMultiplier.IsNull() {
 			data.HelloMultiplierLevels[i].HelloMultiplier = types.Int64Value(value.Int())
 		} else {
 			data.HelloMultiplierLevels[i].HelloMultiplier = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() && value.Type == gjson.Number && !data.LspInterval.IsNull() {
+	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() && !data.LspInterval.IsNull() {
 		data.LspInterval = types.Int64Value(value.Int())
 	} else {
 		data.LspInterval = types.Int64Null()
@@ -723,12 +723,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.LspIntervalLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.LspIntervalLevels[i].LevelNumber.IsNull() {
 			data.LspIntervalLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.LspIntervalLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("lsp-interval"); value.Exists() && value.Type == gjson.Number && !data.LspIntervalLevels[i].LspInterval.IsNull() {
+		if value := r.Get("lsp-interval"); value.Exists() && !data.LspIntervalLevels[i].LspInterval.IsNull() {
 			data.LspIntervalLevels[i].LspInterval = types.Int64Value(value.Int())
 		} else {
 			data.LspIntervalLevels[i].LspInterval = types.Int64Null()
@@ -757,7 +757,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.HelloPasswordAcceptsLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.HelloPasswordAcceptsLevels[i].LevelNumber.IsNull() {
 			data.HelloPasswordAcceptsLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.HelloPasswordAcceptsLevels[i].LevelNumber = types.Int64Null()
@@ -818,7 +818,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.HelloPasswordLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.HelloPasswordLevels[i].LevelNumber.IsNull() {
 			data.HelloPasswordLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.HelloPasswordLevels[i].LevelNumber = types.Int64Null()
@@ -856,12 +856,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 			data.HelloPasswordLevels[i].KeychainSendOnly = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() && value.Type == gjson.Number && !data.RemotePsnpDelay.IsNull() {
+	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() && !data.RemotePsnpDelay.IsNull() {
 		data.RemotePsnpDelay = types.Int64Value(value.Int())
 	} else {
 		data.RemotePsnpDelay = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number && !data.Priority.IsNull() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && !data.Priority.IsNull() {
 		data.Priority = types.Int64Value(value.Int())
 	} else {
 		data.Priority = types.Int64Null()
@@ -889,12 +889,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.PriorityLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.PriorityLevels[i].LevelNumber.IsNull() {
 			data.PriorityLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.PriorityLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.PriorityLevels[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && !data.PriorityLevels[i].Priority.IsNull() {
 			data.PriorityLevels[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.PriorityLevels[i].Priority = types.Int64Null()
@@ -909,7 +909,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.PointToPoint = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number && !data.RetransmitInterval.IsNull() {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && !data.RetransmitInterval.IsNull() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	} else {
 		data.RetransmitInterval = types.Int64Null()
@@ -937,18 +937,18 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.RetransmitIntervalLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.RetransmitIntervalLevels[i].LevelNumber.IsNull() {
 			data.RetransmitIntervalLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.RetransmitIntervalLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("retransmit-interval"); value.Exists() && value.Type == gjson.Number && !data.RetransmitIntervalLevels[i].RetransmitInterval.IsNull() {
+		if value := r.Get("retransmit-interval"); value.Exists() && !data.RetransmitIntervalLevels[i].RetransmitInterval.IsNull() {
 			data.RetransmitIntervalLevels[i].RetransmitInterval = types.Int64Value(value.Int())
 		} else {
 			data.RetransmitIntervalLevels[i].RetransmitInterval = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() && value.Type == gjson.Number && !data.RetransmitThrottleInterval.IsNull() {
+	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() && !data.RetransmitThrottleInterval.IsNull() {
 		data.RetransmitThrottleInterval = types.Int64Value(value.Int())
 	} else {
 		data.RetransmitThrottleInterval = types.Int64Null()
@@ -976,12 +976,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 				return true
 			},
 		)
-		if value := r.Get("level-number"); value.Exists() && value.Type == gjson.Number && !data.RetransmitThrottleIntervalLevels[i].LevelNumber.IsNull() {
+		if value := r.Get("level-number"); value.Exists() && !data.RetransmitThrottleIntervalLevels[i].LevelNumber.IsNull() {
 			data.RetransmitThrottleIntervalLevels[i].LevelNumber = types.Int64Value(value.Int())
 		} else {
 			data.RetransmitThrottleIntervalLevels[i].LevelNumber = types.Int64Null()
 		}
-		if value := r.Get("retransmit-throttle-interval"); value.Exists() && value.Type == gjson.Number && !data.RetransmitThrottleIntervalLevels[i].RetransmitThrottleInterval.IsNull() {
+		if value := r.Get("retransmit-throttle-interval"); value.Exists() && !data.RetransmitThrottleIntervalLevels[i].RetransmitThrottleInterval.IsNull() {
 			data.RetransmitThrottleIntervalLevels[i].RetransmitThrottleInterval = types.Int64Value(value.Int())
 		} else {
 			data.RetransmitThrottleIntervalLevels[i].RetransmitThrottleInterval = types.Int64Null()
@@ -1011,12 +1011,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.OverrideMetrics = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && value.Type == gjson.Number && !data.DelayNormalizeInterval.IsNull() {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && !data.DelayNormalizeInterval.IsNull() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	} else {
 		data.DelayNormalizeInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() && value.Type == gjson.Number && !data.DelayNormalizeOffset.IsNull() {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() && !data.DelayNormalizeOffset.IsNull() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	} else {
 		data.DelayNormalizeOffset = types.Int64Null()
@@ -1030,7 +1030,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.MplsLdpSync = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() && value.Type == gjson.Number && !data.MplsLdpSyncLevel.IsNull() {
+	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() && !data.MplsLdpSyncLevel.IsNull() {
 		data.MplsLdpSyncLevel = types.Int64Value(value.Int())
 	} else {
 		data.MplsLdpSyncLevel = types.Int64Null()
@@ -1053,12 +1053,12 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.BfdFastDetectIpv6 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.BfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && !data.BfdMinimumInterval.IsNull() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.BfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && !data.BfdMultiplier.IsNull() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.BfdMultiplier = types.Int64Null()
@@ -1070,7 +1070,7 @@ func (data *RouterISISInterface) updateFromBody(ctx context.Context, res []byte,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mesh-group.blocked"); value.Exists() {
@@ -1084,17 +1084,17 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CircuitType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() {
 		data.CsnpInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "csnp-interval-levels.csnp-interval-level"); value.Exists() {
 		data.CsnpIntervalLevels = make([]RouterISISInterfaceCsnpIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceCsnpIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("csnp-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("csnp-interval"); cValue.Exists() {
 				item.CsnpInterval = types.Int64Value(cValue.Int())
 			}
 			data.CsnpIntervalLevels = append(data.CsnpIntervalLevels, item)
@@ -1108,7 +1108,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 		data.HelloPaddingLevels = make([]RouterISISInterfaceHelloPaddingLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPaddingLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("hello-padding"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1118,51 +1118,51 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hello-interval-levels.hello-interval-level"); value.Exists() {
 		data.HelloIntervalLevels = make([]RouterISISInterfaceHelloIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
 			data.HelloIntervalLevels = append(data.HelloIntervalLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() {
 		data.HelloMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hello-multiplier-levels.hello-multiplier-level"); value.Exists() {
 		data.HelloMultiplierLevels = make([]RouterISISInterfaceHelloMultiplierLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloMultiplierLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-multiplier"); cValue.Exists() {
 				item.HelloMultiplier = types.Int64Value(cValue.Int())
 			}
 			data.HelloMultiplierLevels = append(data.HelloMultiplierLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() {
 		data.LspInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "lsp-interval-levels.lsp-interval-level"); value.Exists() {
 		data.LspIntervalLevels = make([]RouterISISInterfaceLspIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceLspIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lsp-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("lsp-interval"); cValue.Exists() {
 				item.LspInterval = types.Int64Value(cValue.Int())
 			}
 			data.LspIntervalLevels = append(data.LspIntervalLevels, item)
@@ -1173,7 +1173,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 		data.HelloPasswordAcceptsLevels = make([]RouterISISInterfaceHelloPasswordAcceptsLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPasswordAcceptsLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			data.HelloPasswordAcceptsLevels = append(data.HelloPasswordAcceptsLevels, item)
@@ -1202,7 +1202,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 		data.HelloPasswordLevels = make([]RouterISISInterfaceHelloPasswordLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPasswordLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("text.hello-password-options.send-only"); cValue.Exists() {
@@ -1227,20 +1227,20 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() {
 		data.RemotePsnpDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "priority-levels.priority-level"); value.Exists() {
 		data.PriorityLevels = make([]RouterISISInterfacePriorityLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfacePriorityLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
 			data.PriorityLevels = append(data.PriorityLevels, item)
@@ -1252,34 +1252,34 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.PointToPoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retransmit-interval-levels.retransmit-interval-level"); value.Exists() {
 		data.RetransmitIntervalLevels = make([]RouterISISInterfaceRetransmitIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceRetransmitIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
 			data.RetransmitIntervalLevels = append(data.RetransmitIntervalLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() {
 		data.RetransmitThrottleInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retransmit-throttle-interval-levels.retransmit-throttle-interval-level"); value.Exists() {
 		data.RetransmitThrottleIntervalLevels = make([]RouterISISInterfaceRetransmitThrottleIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceRetransmitThrottleIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-throttle-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-throttle-interval"); cValue.Exists() {
 				item.RetransmitThrottleInterval = types.Int64Value(cValue.Int())
 			}
 			data.RetransmitThrottleIntervalLevels = append(data.RetransmitThrottleIntervalLevels, item)
@@ -1304,10 +1304,10 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OverrideMetrics = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mpls.ldp.sync"); value.Exists() {
@@ -1315,7 +1315,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MplsLdpSync = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() {
 		data.MplsLdpSyncLevel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bfd.fast-detect.ipv4"); value.Exists() {
@@ -1328,10 +1328,10 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.BfdFastDetectIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 }
@@ -1341,7 +1341,7 @@ func (data *RouterISISInterface) fromBody(ctx context.Context, res []byte, versi
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mesh-group.mesh-group-number"); value.Exists() {
 		data.MeshGroup = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mesh-group.blocked"); value.Exists() {
@@ -1355,17 +1355,17 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	if value := gjson.GetBytes(res, "circuit-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CircuitType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "csnp-interval"); value.Exists() {
 		data.CsnpInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "csnp-interval-levels.csnp-interval-level"); value.Exists() {
 		data.CsnpIntervalLevels = make([]RouterISISInterfaceCsnpIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceCsnpIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("csnp-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("csnp-interval"); cValue.Exists() {
 				item.CsnpInterval = types.Int64Value(cValue.Int())
 			}
 			data.CsnpIntervalLevels = append(data.CsnpIntervalLevels, item)
@@ -1379,7 +1379,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 		data.HelloPaddingLevels = make([]RouterISISInterfaceHelloPaddingLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPaddingLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("hello-padding"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1389,51 +1389,51 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hello-interval-levels.hello-interval-level"); value.Exists() {
 		data.HelloIntervalLevels = make([]RouterISISInterfaceHelloIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
 			data.HelloIntervalLevels = append(data.HelloIntervalLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-multiplier"); value.Exists() {
 		data.HelloMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hello-multiplier-levels.hello-multiplier-level"); value.Exists() {
 		data.HelloMultiplierLevels = make([]RouterISISInterfaceHelloMultiplierLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloMultiplierLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-multiplier"); cValue.Exists() {
 				item.HelloMultiplier = types.Int64Value(cValue.Int())
 			}
 			data.HelloMultiplierLevels = append(data.HelloMultiplierLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "lsp-interval"); value.Exists() {
 		data.LspInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "lsp-interval-levels.lsp-interval-level"); value.Exists() {
 		data.LspIntervalLevels = make([]RouterISISInterfaceLspIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceLspIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("lsp-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("lsp-interval"); cValue.Exists() {
 				item.LspInterval = types.Int64Value(cValue.Int())
 			}
 			data.LspIntervalLevels = append(data.LspIntervalLevels, item)
@@ -1444,7 +1444,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 		data.HelloPasswordAcceptsLevels = make([]RouterISISInterfaceHelloPasswordAcceptsLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPasswordAcceptsLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			data.HelloPasswordAcceptsLevels = append(data.HelloPasswordAcceptsLevels, item)
@@ -1473,7 +1473,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 		data.HelloPasswordLevels = make([]RouterISISInterfaceHelloPasswordLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceHelloPasswordLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("text.hello-password-options.send-only"); cValue.Exists() {
@@ -1498,20 +1498,20 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "remote-psnp-delay"); value.Exists() {
 		data.RemotePsnpDelay = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "priority-levels.priority-level"); value.Exists() {
 		data.PriorityLevels = make([]RouterISISInterfacePriorityLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfacePriorityLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
 			data.PriorityLevels = append(data.PriorityLevels, item)
@@ -1523,34 +1523,34 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.PointToPoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retransmit-interval-levels.retransmit-interval-level"); value.Exists() {
 		data.RetransmitIntervalLevels = make([]RouterISISInterfaceRetransmitIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceRetransmitIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
 			data.RetransmitIntervalLevels = append(data.RetransmitIntervalLevels, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-throttle-interval"); value.Exists() {
 		data.RetransmitThrottleInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "retransmit-throttle-interval-levels.retransmit-throttle-interval-level"); value.Exists() {
 		data.RetransmitThrottleIntervalLevels = make([]RouterISISInterfaceRetransmitThrottleIntervalLevels, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterISISInterfaceRetransmitThrottleIntervalLevels{}
-			if cValue := v.Get("level-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("level-number"); cValue.Exists() {
 				item.LevelNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-throttle-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-throttle-interval"); cValue.Exists() {
 				item.RetransmitThrottleInterval = types.Int64Value(cValue.Int())
 			}
 			data.RetransmitThrottleIntervalLevels = append(data.RetransmitThrottleIntervalLevels, item)
@@ -1575,10 +1575,10 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	if value := gjson.GetBytes(res, "override.metrics"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.OverrideMetrics = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.interval-number"); value.Exists() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval.offset"); value.Exists() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "mpls.ldp.sync"); value.Exists() {
@@ -1586,7 +1586,7 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MplsLdpSync = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mpls.ldp.sync.level"); value.Exists() {
 		data.MplsLdpSyncLevel = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bfd.fast-detect.ipv4"); value.Exists() {
@@ -1599,10 +1599,10 @@ func (data *RouterISISInterfaceData) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.BfdFastDetectIpv6 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 }

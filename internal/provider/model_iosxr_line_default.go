@@ -392,7 +392,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.EscapeCharacter = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && value.Type == gjson.Number && !data.SessionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && !data.SessionTimeout.IsNull() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionTimeout = types.Int64Null()
@@ -523,7 +523,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.TransportPreferredSsh = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "session-limit"); value.Exists() && value.Type == gjson.Number && !data.SessionLimit.IsNull() {
+	if value := gjson.GetBytes(res, "session-limit"); value.Exists() && !data.SessionLimit.IsNull() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	} else {
 		data.SessionLimit = types.Int64Null()
@@ -567,7 +567,7 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 	} else {
 		data.AccountingCommands = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && value.Type == gjson.Number && !data.TimeoutLoginResponse.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && !data.TimeoutLoginResponse.IsNull() {
 		data.TimeoutLoginResponse = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutLoginResponse = types.Int64Null()
@@ -601,27 +601,27 @@ func (data *LineDefault) updateFromBody(ctx context.Context, res []byte, version
 			data.UsersGroup[i].GroupName = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() && value.Type == gjson.Number && !data.ExecTimeoutMinutes.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() && !data.ExecTimeoutMinutes.IsNull() {
 		data.ExecTimeoutMinutes = types.Int64Value(value.Int())
 	} else {
 		data.ExecTimeoutMinutes = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() && value.Type == gjson.Number && !data.ExecTimeoutSeconds.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() && !data.ExecTimeoutSeconds.IsNull() {
 		data.ExecTimeoutSeconds = types.Int64Value(value.Int())
 	} else {
 		data.ExecTimeoutSeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() && value.Type == gjson.Number && !data.AbsoluteTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() && !data.AbsoluteTimeout.IsNull() {
 		data.AbsoluteTimeout = types.Int64Value(value.Int())
 	} else {
 		data.AbsoluteTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() && value.Type == gjson.Number && !data.Width.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() && !data.Width.IsNull() {
 		data.Width = types.Int64Value(value.Int())
 	} else {
 		data.Width = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() && value.Type == gjson.Number && !data.Length.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() && !data.Length.IsNull() {
 		data.Length = types.Int64Value(value.Int())
 	} else {
 		data.Length = types.Int64Null()
@@ -671,7 +671,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EscapeCharacter = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session-timeout.output"); value.Exists() {
@@ -744,7 +744,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.TransportPreferredSsh = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session-limit"); value.Exists() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cli.whitespace.completion"); value.Exists() {
@@ -770,7 +770,7 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingCommands = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() {
 		data.TimeoutLoginResponse = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:users.group"); value.Exists() {
@@ -784,19 +784,19 @@ func (data *LineDefault) fromBody(ctx context.Context, res []byte, version strin
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() {
 		data.ExecTimeoutMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() {
 		data.ExecTimeoutSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() {
 		data.AbsoluteTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() {
 		data.Width = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() {
 		data.Length = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:timestamp.disable"); value.Exists() {
@@ -834,7 +834,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 	if value := gjson.GetBytes(res, "escape-character"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EscapeCharacter = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session-timeout.timeout-interval"); value.Exists() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "session-timeout.output"); value.Exists() {
@@ -907,7 +907,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 	} else {
 		data.TransportPreferredSsh = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "session-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session-limit"); value.Exists() {
 		data.SessionLimit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cli.whitespace.completion"); value.Exists() {
@@ -933,7 +933,7 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:accounting.commands"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AccountingCommands = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:timeout.login.response"); value.Exists() {
 		data.TimeoutLoginResponse = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-aaa-task-user-cfg:users.group"); value.Exists() {
@@ -947,19 +947,19 @@ func (data *LineDefaultData) fromBody(ctx context.Context, res []byte, version s
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-minutes"); value.Exists() {
 		data.ExecTimeoutMinutes = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-exec-timeout-cfg:exec-timeout.timeout-in-seconds"); value.Exists() {
 		data.ExecTimeoutSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:absolute-timeout"); value.Exists() {
 		data.AbsoluteTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:width"); value.Exists() {
 		data.Width = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-general-cfg:length"); value.Exists() {
 		data.Length = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-line-timestamp-cfg:timestamp.disable"); value.Exists() {

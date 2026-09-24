@@ -197,7 +197,7 @@ func (data *IPv6PrefixList) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("sequence-number"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].SequenceNumber.IsNull() {
+		if value := r.Get("sequence-number"); value.Exists() && !data.Sequences[i].SequenceNumber.IsNull() {
 			data.Sequences[i].SequenceNumber = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].SequenceNumber = types.Int64Null()
@@ -222,22 +222,22 @@ func (data *IPv6PrefixList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].Zone = types.StringNull()
 		}
-		if value := r.Get("mask"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].Mask.IsNull() {
+		if value := r.Get("mask"); value.Exists() && !data.Sequences[i].Mask.IsNull() {
 			data.Sequences[i].Mask = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].Mask = types.Int64Null()
 		}
-		if value := r.Get("match-prefix-length.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].MatchPrefixLengthEq.IsNull() {
+		if value := r.Get("match-prefix-length.eq"); value.Exists() && !data.Sequences[i].MatchPrefixLengthEq.IsNull() {
 			data.Sequences[i].MatchPrefixLengthEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].MatchPrefixLengthEq = types.Int64Null()
 		}
-		if value := r.Get("match-prefix-length.ge"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].MatchPrefixLengthGe.IsNull() {
+		if value := r.Get("match-prefix-length.ge"); value.Exists() && !data.Sequences[i].MatchPrefixLengthGe.IsNull() {
 			data.Sequences[i].MatchPrefixLengthGe = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].MatchPrefixLengthGe = types.Int64Null()
 		}
-		if value := r.Get("match-prefix-length.le"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].MatchPrefixLengthLe.IsNull() {
+		if value := r.Get("match-prefix-length.le"); value.Exists() && !data.Sequences[i].MatchPrefixLengthLe.IsNull() {
 			data.Sequences[i].MatchPrefixLengthLe = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].MatchPrefixLengthLe = types.Int64Null()
@@ -254,7 +254,7 @@ func (data *IPv6PrefixList) fromBody(ctx context.Context, res []byte, version st
 		data.Sequences = make([]IPv6PrefixListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPv6PrefixListSequences{}
-			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("sequence-number"); cValue.Exists() {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -269,16 +269,16 @@ func (data *IPv6PrefixList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("zone"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mask"); cValue.Exists() {
 				item.Mask = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.eq"); cValue.Exists() {
 				item.MatchPrefixLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.ge"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.ge"); cValue.Exists() {
 				item.MatchPrefixLengthGe = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.le"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.le"); cValue.Exists() {
 				item.MatchPrefixLengthLe = types.Int64Value(cValue.Int())
 			}
 			data.Sequences = append(data.Sequences, item)
@@ -296,7 +296,7 @@ func (data *IPv6PrefixListData) fromBody(ctx context.Context, res []byte, versio
 		data.Sequences = make([]IPv6PrefixListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPv6PrefixListSequences{}
-			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("sequence-number"); cValue.Exists() {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -311,16 +311,16 @@ func (data *IPv6PrefixListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("zone"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Zone = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("mask"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mask"); cValue.Exists() {
 				item.Mask = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.eq"); cValue.Exists() {
 				item.MatchPrefixLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.ge"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.ge"); cValue.Exists() {
 				item.MatchPrefixLengthGe = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("match-prefix-length.le"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("match-prefix-length.le"); cValue.Exists() {
 				item.MatchPrefixLengthLe = types.Int64Value(cValue.Int())
 			}
 			data.Sequences = append(data.Sequences, item)

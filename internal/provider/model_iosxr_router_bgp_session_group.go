@@ -865,7 +865,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.RemoteAsList = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && value.Type == gjson.Number && !data.MaximumPeers.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && !data.MaximumPeers.IsNull() {
 		data.MaximumPeers = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPeers = types.Int64Null()
@@ -926,12 +926,12 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.UseSessionGroup = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && value.Type == gjson.Number && !data.AdvertisementIntervalSeconds.IsNull() {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && !data.AdvertisementIntervalSeconds.IsNull() {
 		data.AdvertisementIntervalSeconds = types.Int64Value(value.Int())
 	} else {
 		data.AdvertisementIntervalSeconds = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number && !data.AdvertisementIntervalMilliseconds.IsNull() {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && !data.AdvertisementIntervalMilliseconds.IsNull() {
 		data.AdvertisementIntervalMilliseconds = types.Int64Value(value.Int())
 	} else {
 		data.AdvertisementIntervalMilliseconds = types.Int64Null()
@@ -968,7 +968,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.InternalVpnClient = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() && value.Type == gjson.Number && !data.EbgpMultihopMaximumHopCount.IsNull() {
+	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() && !data.EbgpMultihopMaximumHopCount.IsNull() {
 		data.EbgpMultihopMaximumHopCount = types.Int64Value(value.Int())
 	} else {
 		data.EbgpMultihopMaximumHopCount = types.Int64Null()
@@ -982,7 +982,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.EbgpMultihopMpls = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() && value.Type == gjson.Number && !data.TcpMssValue.IsNull() {
+	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() && !data.TcpMssValue.IsNull() {
 		data.TcpMssValue = types.Int64Value(value.Int())
 	} else {
 		data.TcpMssValue = types.Int64Null()
@@ -1055,18 +1055,18 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 				return true
 			},
 		)
-		if value := r.Get("server-number"); value.Exists() && value.Type == gjson.Number && !data.BmpActivateServers[i].ServerNumber.IsNull() {
+		if value := r.Get("server-number"); value.Exists() && !data.BmpActivateServers[i].ServerNumber.IsNull() {
 			data.BmpActivateServers[i].ServerNumber = types.Int64Value(value.Int())
 		} else {
 			data.BmpActivateServers[i].ServerNumber = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.BfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && !data.BfdMinimumInterval.IsNull() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.BfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && !data.BfdMultiplier.IsNull() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.BfdMultiplier = types.Int64Null()
@@ -1180,22 +1180,22 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.PasswordInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() && value.Type == gjson.Number && !data.ReceiveBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() && !data.ReceiveBufferSize.IsNull() {
 		data.ReceiveBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.ReceiveBufferSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() && value.Type == gjson.Number && !data.ReceiveBufferSizeRead.IsNull() {
+	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() && !data.ReceiveBufferSizeRead.IsNull() {
 		data.ReceiveBufferSizeRead = types.Int64Value(value.Int())
 	} else {
 		data.ReceiveBufferSizeRead = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() && value.Type == gjson.Number && !data.SendBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() && !data.SendBufferSize.IsNull() {
 		data.SendBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.SendBufferSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && value.Type == gjson.Number && !data.SendBufferSizeWrite.IsNull() {
+	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && !data.SendBufferSizeWrite.IsNull() {
 		data.SendBufferSizeWrite = types.Int64Value(value.Int())
 	} else {
 		data.SendBufferSizeWrite = types.Int64Null()
@@ -1209,7 +1209,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.Shutdown = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() && value.Type == gjson.Number && !data.TimersKeepaliveInterval.IsNull() {
+	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() && !data.TimersKeepaliveInterval.IsNull() {
 		data.TimersKeepaliveInterval = types.Int64Value(value.Int())
 	} else {
 		data.TimersKeepaliveInterval = types.Int64Null()
@@ -1232,17 +1232,17 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.TimersHolddownZeroMinimumAcceptableZero = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number && !data.TimersHolddownZeroMinimumAcceptableHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() && !data.TimersHolddownZeroMinimumAcceptableHoldtime.IsNull() {
 		data.TimersHolddownZeroMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.TimersHolddownZeroMinimumAcceptableHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() && value.Type == gjson.Number && !data.TimersHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() && !data.TimersHoldtime.IsNull() {
 		data.TimersHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.TimersHoldtime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number && !data.TimersHoldtimeMinimumAcceptableHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && !data.TimersHoldtimeMinimumAcceptableHoldtime.IsNull() {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Null()
@@ -1288,7 +1288,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.LogNeighborChangesInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() && value.Type == gjson.Number && !data.LogMessageInSize.IsNull() {
+	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() && !data.LogMessageInSize.IsNull() {
 		data.LogMessageInSize = types.Int64Value(value.Int())
 	} else {
 		data.LogMessageInSize = types.Int64Null()
@@ -1311,7 +1311,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.LogMessageInInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() && value.Type == gjson.Number && !data.LogMessageOutSize.IsNull() {
+	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() && !data.LogMessageOutSize.IsNull() {
 		data.LogMessageOutSize = types.Int64Value(value.Int())
 	} else {
 		data.LogMessageOutSize = types.Int64Null()
@@ -1344,7 +1344,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.LocalAddressSubnetPrefix = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && value.Type == gjson.Number && !data.LocalAddressSubnetMask.IsNull() {
+	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && !data.LocalAddressSubnetMask.IsNull() {
 		data.LocalAddressSubnetMask = types.Int64Value(value.Int())
 	} else {
 		data.LocalAddressSubnetMask = types.Int64Null()
@@ -1571,12 +1571,12 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.GracefulRestartHelperOnlyInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() && value.Type == gjson.Number && !data.GracefulRestartRestartTime.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() && !data.GracefulRestartRestartTime.IsNull() {
 		data.GracefulRestartRestartTime = types.Int64Value(value.Int())
 	} else {
 		data.GracefulRestartRestartTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && value.Type == gjson.Number && !data.GracefulRestartStalepathTime.IsNull() {
+	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && !data.GracefulRestartStalepathTime.IsNull() {
 		data.GracefulRestartStalepathTime = types.Int64Value(value.Int())
 	} else {
 		data.GracefulRestartStalepathTime = types.Int64Null()
@@ -1586,7 +1586,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.EnforceFirstAs = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && value.Type == gjson.Number && !data.ClusterId32bitFormat.IsNull() {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && !data.ClusterId32bitFormat.IsNull() {
 		data.ClusterId32bitFormat = types.Int64Value(value.Int())
 	} else {
 		data.ClusterId32bitFormat = types.Int64Null()
@@ -1596,12 +1596,12 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 	} else {
 		data.ClusterIdIpFormat = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && value.Type == gjson.Number && !data.IdleWatchTime.IsNull() {
+	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && !data.IdleWatchTime.IsNull() {
 		data.IdleWatchTime = types.Int64Value(value.Int())
 	} else {
 		data.IdleWatchTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number && !data.AllowasIn.IsNull() {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && !data.AllowasIn.IsNull() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	} else {
 		data.AllowasIn = types.Int64Null()
@@ -1647,7 +1647,7 @@ func (data *RouterBGPSessionGroup) updateFromBody(ctx context.Context, res []byt
 				return true
 			},
 		)
-		if value := r.Get("peer"); value.Exists() && value.Type == gjson.Number && !data.PeerSets[i].Peer.IsNull() {
+		if value := r.Get("peer"); value.Exists() && !data.PeerSets[i].Peer.IsNull() {
 			data.PeerSets[i].Peer = types.Int64Value(value.Int())
 		} else {
 			data.PeerSets[i].Peer = types.Int64Null()
@@ -1750,7 +1750,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAsList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() {
 		data.MaximumPeers = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "send-community-ebgp"); value.Exists() {
@@ -1785,10 +1785,10 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseSessionGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() {
 		data.AdvertisementIntervalSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() {
 		data.AdvertisementIntervalMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1809,7 +1809,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.InternalVpnClient = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() {
 		data.EbgpMultihopMaximumHopCount = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ebgp-multihop.mpls"); value.Exists() {
@@ -1817,7 +1817,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.EbgpMultihopMpls = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() {
 		data.TcpMssValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "tcp.mss.inheritance-disable"); value.Exists() {
@@ -1849,17 +1849,17 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 		data.BmpActivateServers = make([]RouterBGPSessionGroupBmpActivateServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPSessionGroupBmpActivateServers{}
-			if cValue := v.Get("server-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("server-number"); cValue.Exists() {
 				item.ServerNumber = types.Int64Value(cValue.Int())
 			}
 			data.BmpActivateServers = append(data.BmpActivateServers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bfd.fast-detect"); value.Exists() {
@@ -1923,16 +1923,16 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.PasswordInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() {
 		data.ReceiveBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() {
 		data.ReceiveBufferSizeRead = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() {
 		data.SendBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() {
 		data.SendBufferSizeWrite = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -1940,7 +1940,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() {
 		data.TimersKeepaliveInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timers.zero"); value.Exists() {
@@ -1953,13 +1953,13 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.TimersHolddownZeroMinimumAcceptableZero = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() {
 		data.TimersHolddownZeroMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() {
 		data.TimersHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1985,7 +1985,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.LogNeighborChangesInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() {
 		data.LogMessageInSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log.message.in.disable"); value.Exists() {
@@ -1998,7 +1998,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.LogMessageInInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() {
 		data.LogMessageOutSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log.message.out.disable"); value.Exists() {
@@ -2017,7 +2017,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddressSubnetPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() {
 		data.LocalAddressSubnetMask = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dmz-link-bandwidth"); value.Exists() {
@@ -2144,25 +2144,25 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 	} else {
 		data.GracefulRestartHelperOnlyInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() {
 		data.GracefulRestartRestartTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() {
 		data.GracefulRestartStalepathTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EnforceFirstAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() {
 		data.ClusterId32bitFormat = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClusterIdIpFormat = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() {
 		data.IdleWatchTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "egress-engineering"); value.Exists() {
@@ -2179,7 +2179,7 @@ func (data *RouterBGPSessionGroup) fromBody(ctx context.Context, res []byte, ver
 		data.PeerSets = make([]RouterBGPSessionGroupPeerSets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPSessionGroupPeerSets{}
-			if cValue := v.Get("peer"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer"); cValue.Exists() {
 				item.Peer = types.Int64Value(cValue.Int())
 			}
 			data.PeerSets = append(data.PeerSets, item)
@@ -2247,7 +2247,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "remote-as-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.RemoteAsList = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-peers"); value.Exists() {
 		data.MaximumPeers = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "send-community-ebgp"); value.Exists() {
@@ -2282,10 +2282,10 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "use.session-group"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.UseSessionGroup = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-seconds"); value.Exists() {
 		data.AdvertisementIntervalSeconds = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "advertisement-interval.advertisement-interval-time-in-milliseconds"); value.Exists() {
 		data.AdvertisementIntervalMilliseconds = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2306,7 +2306,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.InternalVpnClient = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ebgp-multihop.maximum-hop-count"); value.Exists() {
 		data.EbgpMultihopMaximumHopCount = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ebgp-multihop.mpls"); value.Exists() {
@@ -2314,7 +2314,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.EbgpMultihopMpls = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tcp.mss.tcp-initial-maximum-segment-size"); value.Exists() {
 		data.TcpMssValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "tcp.mss.inheritance-disable"); value.Exists() {
@@ -2346,17 +2346,17 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 		data.BmpActivateServers = make([]RouterBGPSessionGroupBmpActivateServers, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPSessionGroupBmpActivateServers{}
-			if cValue := v.Get("server-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("server-number"); cValue.Exists() {
 				item.ServerNumber = types.Int64Value(cValue.Int())
 			}
 			data.BmpActivateServers = append(data.BmpActivateServers, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bfd.fast-detect"); value.Exists() {
@@ -2420,16 +2420,16 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.PasswordInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-buffer-size.receive-buffer-size-number"); value.Exists() {
 		data.ReceiveBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-buffer-size.bgp-read-buffer-size-byte"); value.Exists() {
 		data.ReceiveBufferSizeRead = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "send-buffer-size.send-buffer-size-number"); value.Exists() {
 		data.SendBufferSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "send-buffer-size.bgp-write-buffer-size-byte"); value.Exists() {
 		data.SendBufferSizeWrite = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -2437,7 +2437,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.Shutdown = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.keepalive-interval"); value.Exists() {
 		data.TimersKeepaliveInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timers.zero"); value.Exists() {
@@ -2450,13 +2450,13 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.TimersHolddownZeroMinimumAcceptableZero = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.zero.minimum-acceptable-holdtime"); value.Exists() {
 		data.TimersHolddownZeroMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.holdtime.holdtime-number"); value.Exists() {
 		data.TimersHoldtime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timers.holdtime.minimum-acceptable-holdtime"); value.Exists() {
 		data.TimersHoldtimeMinimumAcceptableHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "local.address.ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2482,7 +2482,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.LogNeighborChangesInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "log.message.in.log-buffer-size"); value.Exists() {
 		data.LogMessageInSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log.message.in.disable"); value.Exists() {
@@ -2495,7 +2495,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.LogMessageInInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "log.message.out.log-buffer-size"); value.Exists() {
 		data.LogMessageOutSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "log.message.out.disable"); value.Exists() {
@@ -2514,7 +2514,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "local-address-subnet.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.LocalAddressSubnetPrefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-address-subnet.address-prefix"); value.Exists() {
 		data.LocalAddressSubnetMask = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dmz-link-bandwidth"); value.Exists() {
@@ -2641,25 +2641,25 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 	} else {
 		data.GracefulRestartHelperOnlyInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "graceful-restart.restart-time"); value.Exists() {
 		data.GracefulRestartRestartTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "graceful-restart.stalepath-time"); value.Exists() {
 		data.GracefulRestartStalepathTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "enforce-first-as"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EnforceFirstAs = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cluster-id.route-reflector-number"); value.Exists() {
 		data.ClusterId32bitFormat = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cluster-id.route-reflector-ip-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClusterIdIpFormat = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "idle-watch-time"); value.Exists() {
 		data.IdleWatchTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "egress-engineering"); value.Exists() {
@@ -2676,7 +2676,7 @@ func (data *RouterBGPSessionGroupData) fromBody(ctx context.Context, res []byte,
 		data.PeerSets = make([]RouterBGPSessionGroupPeerSets, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterBGPSessionGroupPeerSets{}
-			if cValue := v.Get("peer"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("peer"); cValue.Exists() {
 				item.Peer = types.Int64Value(cValue.Int())
 			}
 			data.PeerSets = append(data.PeerSets, item)

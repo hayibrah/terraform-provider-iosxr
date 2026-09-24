@@ -1427,7 +1427,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 			data.Ranges[i].NotAdvertise = types.BoolNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "default-cost"); value.Exists() && value.Type == gjson.Number && !data.DefaultCost.IsNull() {
+	if value := gjson.GetBytes(res, "default-cost"); value.Exists() && !data.DefaultCost.IsNull() {
 		data.DefaultCost = types.Int64Value(value.Int())
 	} else {
 		data.DefaultCost = types.Int64Null()
@@ -1477,12 +1477,12 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.NssaDefaultInformationOriginate = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() && value.Type == gjson.Number && !data.NssaDefaultInformationOriginateMetric.IsNull() {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() && !data.NssaDefaultInformationOriginateMetric.IsNull() {
 		data.NssaDefaultInformationOriginateMetric = types.Int64Value(value.Int())
 	} else {
 		data.NssaDefaultInformationOriginateMetric = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() && value.Type == gjson.Number && !data.NssaDefaultInformationOriginateMetricType.IsNull() {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() && !data.NssaDefaultInformationOriginateMetricType.IsNull() {
 		data.NssaDefaultInformationOriginateMetricType = types.Int64Value(value.Int())
 	} else {
 		data.NssaDefaultInformationOriginateMetricType = types.Int64Null()
@@ -1570,12 +1570,12 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 			} else {
 				data.MultiAreaInterfaces[i].Neighbors[ci].DatabaseFilterAllOut = types.BoolNull()
 			}
-			if value := cr.Get("poll-interval"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].Neighbors[ci].PollInterval.IsNull() {
+			if value := cr.Get("poll-interval"); value.Exists() && !data.MultiAreaInterfaces[i].Neighbors[ci].PollInterval.IsNull() {
 				data.MultiAreaInterfaces[i].Neighbors[ci].PollInterval = types.Int64Value(value.Int())
 			} else {
 				data.MultiAreaInterfaces[i].Neighbors[ci].PollInterval = types.Int64Null()
 			}
-			if value := cr.Get("cost"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].Neighbors[ci].Cost.IsNull() {
+			if value := cr.Get("cost"); value.Exists() && !data.MultiAreaInterfaces[i].Neighbors[ci].Cost.IsNull() {
 				data.MultiAreaInterfaces[i].Neighbors[ci].Cost = types.Int64Value(value.Int())
 			} else {
 				data.MultiAreaInterfaces[i].Neighbors[ci].Cost = types.Int64Null()
@@ -1604,7 +1604,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 					return true
 				},
 			)
-			if value := cr.Get("message-digest-key-id"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].MessageDigestKeys[ci].KeyId.IsNull() {
+			if value := cr.Get("message-digest-key-id"); value.Exists() && !data.MultiAreaInterfaces[i].MessageDigestKeys[ci].KeyId.IsNull() {
 				data.MultiAreaInterfaces[i].MessageDigestKeys[ci].KeyId = types.Int64Value(value.Int())
 			} else {
 				data.MultiAreaInterfaces[i].MessageDigestKeys[ci].KeyId = types.Int64Null()
@@ -1651,37 +1651,37 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].AuthenticationNull = types.BoolNull()
 		}
-		if value := r.Get("cost"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].Cost.IsNull() {
+		if value := r.Get("cost"); value.Exists() && !data.MultiAreaInterfaces[i].Cost.IsNull() {
 			data.MultiAreaInterfaces[i].Cost = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].Cost = types.Int64Null()
 		}
-		if value := r.Get("cost-fallback.cost"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].CostFallback.IsNull() {
+		if value := r.Get("cost-fallback.cost"); value.Exists() && !data.MultiAreaInterfaces[i].CostFallback.IsNull() {
 			data.MultiAreaInterfaces[i].CostFallback = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].CostFallback = types.Int64Null()
 		}
-		if value := r.Get("cost-fallback.threshold"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].CostFallbackThreshold.IsNull() {
+		if value := r.Get("cost-fallback.threshold"); value.Exists() && !data.MultiAreaInterfaces[i].CostFallbackThreshold.IsNull() {
 			data.MultiAreaInterfaces[i].CostFallbackThreshold = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].CostFallbackThreshold = types.Int64Null()
 		}
-		if value := r.Get("hello-interval"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].HelloInterval.IsNull() {
+		if value := r.Get("hello-interval"); value.Exists() && !data.MultiAreaInterfaces[i].HelloInterval.IsNull() {
 			data.MultiAreaInterfaces[i].HelloInterval = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].HelloInterval = types.Int64Null()
 		}
-		if value := r.Get("dead-interval"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].DeadInterval.IsNull() {
+		if value := r.Get("dead-interval"); value.Exists() && !data.MultiAreaInterfaces[i].DeadInterval.IsNull() {
 			data.MultiAreaInterfaces[i].DeadInterval = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].DeadInterval = types.Int64Null()
 		}
-		if value := r.Get("retransmit-interval"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].RetransmitInterval.IsNull() {
+		if value := r.Get("retransmit-interval"); value.Exists() && !data.MultiAreaInterfaces[i].RetransmitInterval.IsNull() {
 			data.MultiAreaInterfaces[i].RetransmitInterval = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].RetransmitInterval = types.Int64Null()
 		}
-		if value := r.Get("transmit-delay"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].TransmitDelay.IsNull() {
+		if value := r.Get("transmit-delay"); value.Exists() && !data.MultiAreaInterfaces[i].TransmitDelay.IsNull() {
 			data.MultiAreaInterfaces[i].TransmitDelay = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].TransmitDelay = types.Int64Null()
@@ -1732,7 +1732,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].DistributeListInRoutePolicy = types.StringNull()
 		}
-		if value := r.Get("packet-size"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].PacketSize.IsNull() {
+		if value := r.Get("packet-size"); value.Exists() && !data.MultiAreaInterfaces[i].PacketSize.IsNull() {
 			data.MultiAreaInterfaces[i].PacketSize = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].PacketSize = types.Int64Null()
@@ -1934,7 +1934,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixRemoteLfaDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixRemoteLfaMaximumCost.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixRemoteLfaMaximumCost.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Null()
@@ -1957,7 +1957,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiLfaDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerDownstreamIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerDownstreamIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Null()
@@ -1971,7 +1971,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLcDisjointIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLcDisjointIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Null()
@@ -1985,7 +1985,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLowestBackupMetricIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLowestBackupMetricIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Null()
@@ -1999,7 +1999,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerNodeProtectingIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerNodeProtectingIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Null()
@@ -2013,7 +2013,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerPrimaryPathIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerPrimaryPathIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Null()
@@ -2027,7 +2027,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSecondaryPathIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSecondaryPathIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Null()
@@ -2041,7 +2041,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerInterfaceDisjointIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerInterfaceDisjointIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Null()
@@ -2055,7 +2055,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolNull()
 		}
-		if value := r.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSrlgDisjointIndex.IsNull() {
+		if value := r.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && !data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSrlgDisjointIndex.IsNull() {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Null()
@@ -2087,12 +2087,12 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.MultiAreaInterfaces[i].PassiveDisable = types.BoolNull()
 		}
-		if value := r.Get("delay.normalize.interval"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].DelayNormalizeInterval.IsNull() {
+		if value := r.Get("delay.normalize.interval"); value.Exists() && !data.MultiAreaInterfaces[i].DelayNormalizeInterval.IsNull() {
 			data.MultiAreaInterfaces[i].DelayNormalizeInterval = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].DelayNormalizeInterval = types.Int64Null()
 		}
-		if value := r.Get("delay.normalize.offset"); value.Exists() && value.Type == gjson.Number && !data.MultiAreaInterfaces[i].DelayNormalizeOffset.IsNull() {
+		if value := r.Get("delay.normalize.offset"); value.Exists() && !data.MultiAreaInterfaces[i].DelayNormalizeOffset.IsNull() {
 			data.MultiAreaInterfaces[i].DelayNormalizeOffset = types.Int64Value(value.Int())
 		} else {
 			data.MultiAreaInterfaces[i].DelayNormalizeOffset = types.Int64Null()
@@ -2284,7 +2284,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("message-digest-key-id"); value.Exists() && value.Type == gjson.Number && !data.MessageDigestKeys[i].KeyId.IsNull() {
+		if value := r.Get("message-digest-key-id"); value.Exists() && !data.MessageDigestKeys[i].KeyId.IsNull() {
 			data.MessageDigestKeys[i].KeyId = types.Int64Value(value.Int())
 		} else {
 			data.MessageDigestKeys[i].KeyId = types.Int64Null()
@@ -2367,22 +2367,22 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.NetworkPointToMultipoint = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "cost"); value.Exists() && value.Type == gjson.Number && !data.Cost.IsNull() {
+	if value := gjson.GetBytes(res, "cost"); value.Exists() && !data.Cost.IsNull() {
 		data.Cost = types.Int64Value(value.Int())
 	} else {
 		data.Cost = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayIgpMetricIncrement.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() && !data.CostFallbackAnomalyDelayIgpMetricIncrement.IsNull() {
 		data.CostFallbackAnomalyDelayIgpMetricIncrement = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayIgpMetricMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() && !data.CostFallbackAnomalyDelayIgpMetricMultiplier.IsNull() {
 		data.CostFallbackAnomalyDelayIgpMetricMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayIgpMetricValue.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() && !data.CostFallbackAnomalyDelayIgpMetricValue.IsNull() {
 		data.CostFallbackAnomalyDelayIgpMetricValue = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricValue = types.Int64Null()
@@ -2396,17 +2396,17 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayTeMetricIncrement.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() && !data.CostFallbackAnomalyDelayTeMetricIncrement.IsNull() {
 		data.CostFallbackAnomalyDelayTeMetricIncrement = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricIncrement = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayTeMetricMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() && !data.CostFallbackAnomalyDelayTeMetricMultiplier.IsNull() {
 		data.CostFallbackAnomalyDelayTeMetricMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricMultiplier = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() && value.Type == gjson.Number && !data.CostFallbackAnomalyDelayTeMetricValue.IsNull() {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() && !data.CostFallbackAnomalyDelayTeMetricValue.IsNull() {
 		data.CostFallbackAnomalyDelayTeMetricValue = types.Int64Value(value.Int())
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricValue = types.Int64Null()
@@ -2420,27 +2420,27 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number && !data.HelloInterval.IsNull() {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && !data.HelloInterval.IsNull() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	} else {
 		data.HelloInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() && value.Type == gjson.Number && !data.DeadInterval.IsNull() {
+	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() && !data.DeadInterval.IsNull() {
 		data.DeadInterval = types.Int64Value(value.Int())
 	} else {
 		data.DeadInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number && !data.Priority.IsNull() {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() && !data.Priority.IsNull() {
 		data.Priority = types.Int64Value(value.Int())
 	} else {
 		data.Priority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number && !data.RetransmitInterval.IsNull() {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && !data.RetransmitInterval.IsNull() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	} else {
 		data.RetransmitInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() && value.Type == gjson.Number && !data.TransmitDelay.IsNull() {
+	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() && !data.TransmitDelay.IsNull() {
 		data.TransmitDelay = types.Int64Value(value.Int())
 	} else {
 		data.TransmitDelay = types.Int64Null()
@@ -2572,12 +2572,12 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.BfdFastDetectDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.BfdMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && !data.BfdMinimumInterval.IsNull() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.BfdMinimumInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number && !data.BfdMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && !data.BfdMultiplier.IsNull() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.BfdMultiplier = types.Int64Null()
@@ -2591,7 +2591,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.SecurityTtl = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() && value.Type == gjson.Number && !data.SecurityTtlHops.IsNull() {
+	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() && !data.SecurityTtlHops.IsNull() {
 		data.SecurityTtlHops = types.Int64Value(value.Int())
 	} else {
 		data.SecurityTtlHops = types.Int64Null()
@@ -2838,7 +2838,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixRemoteLfaDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixRemoteLfaMaximumCost.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && !data.FastReroutePerPrefixRemoteLfaMaximumCost.IsNull() {
 		data.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Null()
@@ -2861,7 +2861,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiLfaDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerDownstreamIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerDownstreamIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Null()
@@ -2875,7 +2875,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerLcDisjointIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerLcDisjointIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Null()
@@ -2889,7 +2889,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Null()
@@ -2903,7 +2903,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerNodeProtectingIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerNodeProtectingIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Null()
@@ -2917,7 +2917,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerPrimaryPathIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerPrimaryPathIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Null()
@@ -2931,7 +2931,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerSecondaryPathIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerSecondaryPathIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Null()
@@ -2945,7 +2945,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Null()
@@ -2959,7 +2959,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && value.Type == gjson.Number && !data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex.IsNull() {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && !data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex.IsNull() {
 		data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(value.Int())
 	} else {
 		data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Null()
@@ -3000,17 +3000,17 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.LinkDownFastDetect = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number && !data.Weight.IsNull() {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() && !data.Weight.IsNull() {
 		data.Weight = types.Int64Value(value.Int())
 	} else {
 		data.Weight = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && value.Type == gjson.Number && !data.DelayNormalizeInterval.IsNull() {
+	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && !data.DelayNormalizeInterval.IsNull() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	} else {
 		data.DelayNormalizeInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() && value.Type == gjson.Number && !data.DelayNormalizeOffset.IsNull() {
+	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() && !data.DelayNormalizeOffset.IsNull() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	} else {
 		data.DelayNormalizeOffset = types.Int64Null()
@@ -3043,22 +3043,22 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.VirtualLinks[i].Address = types.StringNull()
 		}
-		if value := r.Get("hello-interval"); value.Exists() && value.Type == gjson.Number && !data.VirtualLinks[i].HelloInterval.IsNull() {
+		if value := r.Get("hello-interval"); value.Exists() && !data.VirtualLinks[i].HelloInterval.IsNull() {
 			data.VirtualLinks[i].HelloInterval = types.Int64Value(value.Int())
 		} else {
 			data.VirtualLinks[i].HelloInterval = types.Int64Null()
 		}
-		if value := r.Get("dead-interval"); value.Exists() && value.Type == gjson.Number && !data.VirtualLinks[i].DeadInterval.IsNull() {
+		if value := r.Get("dead-interval"); value.Exists() && !data.VirtualLinks[i].DeadInterval.IsNull() {
 			data.VirtualLinks[i].DeadInterval = types.Int64Value(value.Int())
 		} else {
 			data.VirtualLinks[i].DeadInterval = types.Int64Null()
 		}
-		if value := r.Get("retransmit-interval"); value.Exists() && value.Type == gjson.Number && !data.VirtualLinks[i].RetransmitInterval.IsNull() {
+		if value := r.Get("retransmit-interval"); value.Exists() && !data.VirtualLinks[i].RetransmitInterval.IsNull() {
 			data.VirtualLinks[i].RetransmitInterval = types.Int64Value(value.Int())
 		} else {
 			data.VirtualLinks[i].RetransmitInterval = types.Int64Null()
 		}
-		if value := r.Get("transmit-delay"); value.Exists() && value.Type == gjson.Number && !data.VirtualLinks[i].TransmitDelay.IsNull() {
+		if value := r.Get("transmit-delay"); value.Exists() && !data.VirtualLinks[i].TransmitDelay.IsNull() {
 			data.VirtualLinks[i].TransmitDelay = types.Int64Value(value.Int())
 		} else {
 			data.VirtualLinks[i].TransmitDelay = types.Int64Null()
@@ -3086,7 +3086,7 @@ func (data *RouterOSPFArea) updateFromBody(ctx context.Context, res []byte, vers
 					return true
 				},
 			)
-			if value := cr.Get("message-digest-key-id"); value.Exists() && value.Type == gjson.Number && !data.VirtualLinks[i].MessageDigestKeys[ci].KeyId.IsNull() {
+			if value := cr.Get("message-digest-key-id"); value.Exists() && !data.VirtualLinks[i].MessageDigestKeys[ci].KeyId.IsNull() {
 				data.VirtualLinks[i].MessageDigestKeys[ci].KeyId = types.Int64Value(value.Int())
 			} else {
 				data.VirtualLinks[i].MessageDigestKeys[ci].KeyId = types.Int64Null()
@@ -3156,7 +3156,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "default-cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default-cost"); value.Exists() {
 		data.DefaultCost = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "stub"); value.Exists() {
@@ -3184,10 +3184,10 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.NssaDefaultInformationOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() {
 		data.NssaDefaultInformationOriginateMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() {
 		data.NssaDefaultInformationOriginateMetricType = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nssa.no-summary"); value.Exists() {
@@ -3219,10 +3219,10 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 					} else {
 						cItem.DatabaseFilterAllOut = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("poll-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("poll-interval"); ccValue.Exists() {
 						cItem.PollInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("cost"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("cost"); ccValue.Exists() {
 						cItem.Cost = types.Int64Value(ccValue.Int())
 					}
 					item.Neighbors = append(item.Neighbors, cItem)
@@ -3233,7 +3233,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 				item.MessageDigestKeys = make([]RouterOSPFAreaMultiAreaInterfacesMessageDigestKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFAreaMultiAreaInterfacesMessageDigestKeys{}
-					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() {
 						cItem.KeyId = types.Int64Value(ccValue.Int())
 					}
 					item.MessageDigestKeys = append(item.MessageDigestKeys, cItem)
@@ -3263,25 +3263,25 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.AuthenticationNull = types.BoolValue(false)
 			}
-			if cValue := v.Get("cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost"); cValue.Exists() {
 				item.Cost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cost-fallback.cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost-fallback.cost"); cValue.Exists() {
 				item.CostFallback = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cost-fallback.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost-fallback.threshold"); cValue.Exists() {
 				item.CostFallbackThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dead-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("dead-interval"); cValue.Exists() {
 				item.DeadInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("transmit-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("transmit-delay"); cValue.Exists() {
 				item.TransmitDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mtu-ignore.enable"); cValue.Exists() {
@@ -3310,7 +3310,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("distribute-list.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DistributeListInRoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("packet-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("packet-size"); cValue.Exists() {
 				item.PacketSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-link.enable"); cValue.Exists() {
@@ -3402,7 +3402,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixRemoteLfaDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); cValue.Exists() {
 				item.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.ti-lfa.enable"); cValue.Exists() {
@@ -3415,7 +3415,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiLfaDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.disable"); cValue.Exists() {
@@ -3423,7 +3423,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.disable"); cValue.Exists() {
@@ -3431,7 +3431,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.disable"); cValue.Exists() {
@@ -3439,7 +3439,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.disable"); cValue.Exists() {
@@ -3447,7 +3447,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.disable"); cValue.Exists() {
@@ -3455,7 +3455,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.disable"); cValue.Exists() {
@@ -3463,7 +3463,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.disable"); cValue.Exists() {
@@ -3471,7 +3471,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.disable"); cValue.Exists() {
@@ -3489,10 +3489,10 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.PassiveDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay.normalize.interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay.normalize.interval"); cValue.Exists() {
 				item.DelayNormalizeInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("delay.normalize.offset"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay.normalize.offset"); cValue.Exists() {
 				item.DelayNormalizeOffset = types.Int64Value(cValue.Int())
 			}
 			data.MultiAreaInterfaces = append(data.MultiAreaInterfaces, item)
@@ -3594,7 +3594,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 		data.MessageDigestKeys = make([]RouterOSPFAreaMessageDigestKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFAreaMessageDigestKeys{}
-			if cValue := v.Get("message-digest-key-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("message-digest-key-id"); cValue.Exists() {
 				item.KeyId = types.Int64Value(cValue.Int())
 			}
 			data.MessageDigestKeys = append(data.MessageDigestKeys, item)
@@ -3644,16 +3644,16 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.NetworkPointToMultipoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost"); value.Exists() {
 		data.Cost = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.disable"); value.Exists() {
@@ -3661,13 +3661,13 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.disable"); value.Exists() {
@@ -3675,19 +3675,19 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() {
 		data.DeadInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() {
 		data.TransmitDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "flood-reduction.enable"); value.Exists() {
@@ -3761,10 +3761,10 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.BfdFastDetectDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "security.ttl"); value.Exists() {
@@ -3772,7 +3772,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SecurityTtl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() {
 		data.SecurityTtlHops = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "security.ttl.disable"); value.Exists() {
@@ -3889,7 +3889,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixRemoteLfaDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() {
 		data.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.ti-lfa.enable"); value.Exists() {
@@ -3902,7 +3902,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiLfaDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.disable"); value.Exists() {
@@ -3910,7 +3910,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.disable"); value.Exists() {
@@ -3918,7 +3918,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.disable"); value.Exists() {
@@ -3926,7 +3926,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.disable"); value.Exists() {
@@ -3934,7 +3934,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.disable"); value.Exists() {
@@ -3942,7 +3942,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.disable"); value.Exists() {
@@ -3950,7 +3950,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.disable"); value.Exists() {
@@ -3958,7 +3958,7 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.disable"); value.Exists() {
@@ -3981,13 +3981,13 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.LinkDownFastDetect = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() {
 		data.Weight = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "virtual-links.virtual-link"); value.Exists() {
@@ -3997,23 +3997,23 @@ func (data *RouterOSPFArea) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("virtual-link-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dead-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("dead-interval"); cValue.Exists() {
 				item.DeadInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("transmit-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("transmit-delay"); cValue.Exists() {
 				item.TransmitDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("message-digest-keys.message-digest-key"); cValue.Exists() {
 				item.MessageDigestKeys = make([]RouterOSPFAreaVirtualLinksMessageDigestKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFAreaVirtualLinksMessageDigestKeys{}
-					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() {
 						cItem.KeyId = types.Int64Value(ccValue.Int())
 					}
 					item.MessageDigestKeys = append(item.MessageDigestKeys, cItem)
@@ -4073,7 +4073,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "default-cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "default-cost"); value.Exists() {
 		data.DefaultCost = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "stub"); value.Exists() {
@@ -4101,10 +4101,10 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.NssaDefaultInformationOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric"); value.Exists() {
 		data.NssaDefaultInformationOriginateMetric = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "nssa.default-information-originate.metric-type"); value.Exists() {
 		data.NssaDefaultInformationOriginateMetricType = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nssa.no-summary"); value.Exists() {
@@ -4136,10 +4136,10 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 					} else {
 						cItem.DatabaseFilterAllOut = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("poll-interval"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("poll-interval"); ccValue.Exists() {
 						cItem.PollInterval = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("cost"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("cost"); ccValue.Exists() {
 						cItem.Cost = types.Int64Value(ccValue.Int())
 					}
 					item.Neighbors = append(item.Neighbors, cItem)
@@ -4150,7 +4150,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 				item.MessageDigestKeys = make([]RouterOSPFAreaMultiAreaInterfacesMessageDigestKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFAreaMultiAreaInterfacesMessageDigestKeys{}
-					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() {
 						cItem.KeyId = types.Int64Value(ccValue.Int())
 					}
 					item.MessageDigestKeys = append(item.MessageDigestKeys, cItem)
@@ -4180,25 +4180,25 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.AuthenticationNull = types.BoolValue(false)
 			}
-			if cValue := v.Get("cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost"); cValue.Exists() {
 				item.Cost = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cost-fallback.cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost-fallback.cost"); cValue.Exists() {
 				item.CostFallback = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("cost-fallback.threshold"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("cost-fallback.threshold"); cValue.Exists() {
 				item.CostFallbackThreshold = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dead-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("dead-interval"); cValue.Exists() {
 				item.DeadInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("transmit-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("transmit-delay"); cValue.Exists() {
 				item.TransmitDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("mtu-ignore.enable"); cValue.Exists() {
@@ -4227,7 +4227,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("distribute-list.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DistributeListInRoutePolicy = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("packet-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("packet-size"); cValue.Exists() {
 				item.PacketSize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-link.enable"); cValue.Exists() {
@@ -4319,7 +4319,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixRemoteLfaDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.remote-lfa.maximum-cost"); cValue.Exists() {
 				item.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.ti-lfa.enable"); cValue.Exists() {
@@ -4332,7 +4332,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiLfaDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.downstream.disable"); cValue.Exists() {
@@ -4340,7 +4340,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lc-disjoint.disable"); cValue.Exists() {
@@ -4348,7 +4348,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.disable"); cValue.Exists() {
@@ -4356,7 +4356,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.node-protecting.disable"); cValue.Exists() {
@@ -4364,7 +4364,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.primary-path.disable"); cValue.Exists() {
@@ -4372,7 +4372,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.secondary-path.disable"); cValue.Exists() {
@@ -4380,7 +4380,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.interface-disjoint.disable"); cValue.Exists() {
@@ -4388,7 +4388,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); cValue.Exists() {
 				item.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("fast-reroute.per-prefix.tiebreaker.srlg-disjoint.disable"); cValue.Exists() {
@@ -4406,10 +4406,10 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.PassiveDisable = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay.normalize.interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay.normalize.interval"); cValue.Exists() {
 				item.DelayNormalizeInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("delay.normalize.offset"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay.normalize.offset"); cValue.Exists() {
 				item.DelayNormalizeOffset = types.Int64Value(cValue.Int())
 			}
 			data.MultiAreaInterfaces = append(data.MultiAreaInterfaces, item)
@@ -4511,7 +4511,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 		data.MessageDigestKeys = make([]RouterOSPFAreaMessageDigestKeys, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := RouterOSPFAreaMessageDigestKeys{}
-			if cValue := v.Get("message-digest-key-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("message-digest-key-id"); cValue.Exists() {
 				item.KeyId = types.Int64Value(cValue.Int())
 			}
 			data.MessageDigestKeys = append(data.MessageDigestKeys, item)
@@ -4561,16 +4561,16 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.NetworkPointToMultipoint = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost"); value.Exists() {
 		data.Cost = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.increment"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.multiplier"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.value"); value.Exists() {
 		data.CostFallbackAnomalyDelayIgpMetricValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.igp-metric.disable"); value.Exists() {
@@ -4578,13 +4578,13 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.CostFallbackAnomalyDelayIgpMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.increment"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricIncrement = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.multiplier"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricMultiplier = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.value"); value.Exists() {
 		data.CostFallbackAnomalyDelayTeMetricValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "cost-fallback.anomaly.delay.te-metric.disable"); value.Exists() {
@@ -4592,19 +4592,19 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.CostFallbackAnomalyDelayTeMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "hello-interval"); value.Exists() {
 		data.HelloInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dead-interval"); value.Exists() {
 		data.DeadInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "priority"); value.Exists() {
 		data.Priority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "retransmit-interval"); value.Exists() {
 		data.RetransmitInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "transmit-delay"); value.Exists() {
 		data.TransmitDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "flood-reduction.enable"); value.Exists() {
@@ -4678,10 +4678,10 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.BfdFastDetectDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.minimum-interval"); value.Exists() {
 		data.BfdMinimumInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bfd.multiplier"); value.Exists() {
 		data.BfdMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "security.ttl"); value.Exists() {
@@ -4689,7 +4689,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.SecurityTtl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "security.ttl.hops"); value.Exists() {
 		data.SecurityTtlHops = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "security.ttl.disable"); value.Exists() {
@@ -4806,7 +4806,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixRemoteLfaDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.remote-lfa.maximum-cost"); value.Exists() {
 		data.FastReroutePerPrefixRemoteLfaMaximumCost = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.ti-lfa.enable"); value.Exists() {
@@ -4819,7 +4819,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiLfaDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerDownstreamIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.downstream.disable"); value.Exists() {
@@ -4827,7 +4827,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerDownstreamDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerLcDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lc-disjoint.disable"); value.Exists() {
@@ -4835,7 +4835,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerLcDisjointDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.lowest-backup-metric.disable"); value.Exists() {
@@ -4843,7 +4843,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerLowestBackupMetricDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.node-protecting.disable"); value.Exists() {
@@ -4851,7 +4851,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerNodeProtectingDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.primary-path.disable"); value.Exists() {
@@ -4859,7 +4859,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerPrimaryPathDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.secondary-path.disable"); value.Exists() {
@@ -4867,7 +4867,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerSecondaryPathDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.interface-disjoint.disable"); value.Exists() {
@@ -4875,7 +4875,7 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.FastReroutePerPrefixTiebreakerInterfaceDisjointDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.index"); value.Exists() {
 		data.FastReroutePerPrefixTiebreakerSrlgDisjointIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fast-reroute.per-prefix.tiebreaker.srlg-disjoint.disable"); value.Exists() {
@@ -4898,13 +4898,13 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.LinkDownFastDetect = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() {
 		data.Weight = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.interval"); value.Exists() {
 		data.DelayNormalizeInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay.normalize.offset"); value.Exists() {
 		data.DelayNormalizeOffset = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "virtual-links.virtual-link"); value.Exists() {
@@ -4914,23 +4914,23 @@ func (data *RouterOSPFAreaData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("virtual-link-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("hello-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("hello-interval"); cValue.Exists() {
 				item.HelloInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("dead-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("dead-interval"); cValue.Exists() {
 				item.DeadInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("retransmit-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("retransmit-interval"); cValue.Exists() {
 				item.RetransmitInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("transmit-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("transmit-delay"); cValue.Exists() {
 				item.TransmitDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("message-digest-keys.message-digest-key"); cValue.Exists() {
 				item.MessageDigestKeys = make([]RouterOSPFAreaVirtualLinksMessageDigestKeys, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := RouterOSPFAreaVirtualLinksMessageDigestKeys{}
-					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("message-digest-key-id"); ccValue.Exists() {
 						cItem.KeyId = types.Int64Value(ccValue.Int())
 					}
 					item.MessageDigestKeys = append(item.MessageDigestKeys, cItem)

@@ -865,12 +865,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AnnounceFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && value.Type == gjson.Number && !data.AnnounceTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && !data.AnnounceTimeout.IsNull() {
 		data.AnnounceTimeout = types.Int64Value(value.Int())
 	} else {
 		data.AnnounceTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.AnnounceGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && !data.AnnounceGrantDuration.IsNull() {
 		data.AnnounceGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.AnnounceGrantDuration = types.Int64Null()
@@ -885,12 +885,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.SyncFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.SyncGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && !data.SyncGrantDuration.IsNull() {
 		data.SyncGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.SyncGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && value.Type == gjson.Number && !data.SyncTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && !data.SyncTimeout.IsNull() {
 		data.SyncTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SyncTimeout = types.Int64Null()
@@ -905,47 +905,47 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DelayRequestFrequency = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "cos"); value.Exists() && value.Type == gjson.Number && !data.Cos.IsNull() {
+	if value := gjson.GetBytes(res, "cos"); value.Exists() && !data.Cos.IsNull() {
 		data.Cos = types.Int64Value(value.Int())
 	} else {
 		data.Cos = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "event-cos"); value.Exists() && value.Type == gjson.Number && !data.CosEvent.IsNull() {
+	if value := gjson.GetBytes(res, "event-cos"); value.Exists() && !data.CosEvent.IsNull() {
 		data.CosEvent = types.Int64Value(value.Int())
 	} else {
 		data.CosEvent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "general-cos"); value.Exists() && value.Type == gjson.Number && !data.CosGeneral.IsNull() {
+	if value := gjson.GetBytes(res, "general-cos"); value.Exists() && !data.CosGeneral.IsNull() {
 		data.CosGeneral = types.Int64Value(value.Int())
 	} else {
 		data.CosGeneral = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number && !data.Dscp.IsNull() {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() && !data.Dscp.IsNull() {
 		data.Dscp = types.Int64Value(value.Int())
 	} else {
 		data.Dscp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() && value.Type == gjson.Number && !data.DscpEvent.IsNull() {
+	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() && !data.DscpEvent.IsNull() {
 		data.DscpEvent = types.Int64Value(value.Int())
 	} else {
 		data.DscpEvent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() && value.Type == gjson.Number && !data.DscpGeneral.IsNull() {
+	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() && !data.DscpGeneral.IsNull() {
 		data.DscpGeneral = types.Int64Value(value.Int())
 	} else {
 		data.DscpGeneral = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() && value.Type == gjson.Number && !data.Ipv4Ttl.IsNull() {
+	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() && !data.Ipv4Ttl.IsNull() {
 		data.Ipv4Ttl = types.Int64Value(value.Int())
 	} else {
 		data.Ipv4Ttl = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number && !data.Ipv6HopLimit.IsNull() {
+	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() && !data.Ipv6HopLimit.IsNull() {
 		data.Ipv6HopLimit = types.Int64Value(value.Int())
 	} else {
 		data.Ipv6HopLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.DelayAsymmetryValue.IsNull() {
+	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() && !data.DelayAsymmetryValue.IsNull() {
 		data.DelayAsymmetryValue = types.Int64Value(value.Int())
 	} else {
 		data.DelayAsymmetryValue = types.Int64Null()
@@ -977,12 +977,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DelayAsymmetryUnitMilliseconds = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number && !data.DelayResponseGrantDuration.IsNull() {
+	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() && !data.DelayResponseGrantDuration.IsNull() {
 		data.DelayResponseGrantDuration = types.Int64Value(value.Int())
 	} else {
 		data.DelayResponseGrantDuration = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() && value.Type == gjson.Number && !data.DelayResponseTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() && !data.DelayResponseTimeout.IsNull() {
 		data.DelayResponseTimeout = types.Int64Value(value.Int())
 	} else {
 		data.DelayResponseTimeout = types.Int64Null()
@@ -1147,12 +1147,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterIpv4s[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv4s[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && !data.MasterIpv4s[i].Priority.IsNull() {
 			data.MasterIpv4s[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv4s[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv4s[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && !data.MasterIpv4s[i].ClockClass.IsNull() {
 			data.MasterIpv4s[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv4s[i].ClockClass = types.Int64Null()
@@ -1184,7 +1184,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterIpv4s[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv4s[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && !data.MasterIpv4s[i].DelayAsymmetry.IsNull() {
 			data.MasterIpv4s[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv4s[i].DelayAsymmetry = types.Int64Null()
@@ -1245,12 +1245,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterIpv6s[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv6s[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && !data.MasterIpv6s[i].Priority.IsNull() {
 			data.MasterIpv6s[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv6s[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv6s[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && !data.MasterIpv6s[i].ClockClass.IsNull() {
 			data.MasterIpv6s[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv6s[i].ClockClass = types.Int64Null()
@@ -1282,7 +1282,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterIpv6s[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.MasterIpv6s[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && !data.MasterIpv6s[i].DelayAsymmetry.IsNull() {
 			data.MasterIpv6s[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.MasterIpv6s[i].DelayAsymmetry = types.Int64Null()
@@ -1343,12 +1343,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterEthernets[i].Address = types.StringNull()
 		}
-		if value := r.Get("priority"); value.Exists() && value.Type == gjson.Number && !data.MasterEthernets[i].Priority.IsNull() {
+		if value := r.Get("priority"); value.Exists() && !data.MasterEthernets[i].Priority.IsNull() {
 			data.MasterEthernets[i].Priority = types.Int64Value(value.Int())
 		} else {
 			data.MasterEthernets[i].Priority = types.Int64Null()
 		}
-		if value := r.Get("clock-class"); value.Exists() && value.Type == gjson.Number && !data.MasterEthernets[i].ClockClass.IsNull() {
+		if value := r.Get("clock-class"); value.Exists() && !data.MasterEthernets[i].ClockClass.IsNull() {
 			data.MasterEthernets[i].ClockClass = types.Int64Value(value.Int())
 		} else {
 			data.MasterEthernets[i].ClockClass = types.Int64Null()
@@ -1380,7 +1380,7 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.MasterEthernets[i].NonNegotiated = types.BoolNull()
 		}
-		if value := r.Get("delay-asymmetry"); value.Exists() && value.Type == gjson.Number && !data.MasterEthernets[i].DelayAsymmetry.IsNull() {
+		if value := r.Get("delay-asymmetry"); value.Exists() && !data.MasterEthernets[i].DelayAsymmetry.IsNull() {
 			data.MasterEthernets[i].DelayAsymmetry = types.Int64Value(value.Int())
 		} else {
 			data.MasterEthernets[i].DelayAsymmetry = types.Int64Null()
@@ -1449,32 +1449,32 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.InteropProfileG82752 = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() && value.Type == gjson.Number && !data.InteropDomain.IsNull() {
+	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() && !data.InteropDomain.IsNull() {
 		data.InteropDomain = types.Int64Value(value.Int())
 	} else {
 		data.InteropDomain = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() && !data.InteropEgressConversionPriority1.IsNull() {
 		data.InteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.InteropEgressConversionPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() && !data.InteropEgressConversionPriority2.IsNull() {
 		data.InteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.InteropEgressConversionPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionClockAccuracy.IsNull() {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() && !data.InteropEgressConversionClockAccuracy.IsNull() {
 		data.InteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	} else {
 		data.InteropEgressConversionClockAccuracy = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionOffsetScaledLogVariance.IsNull() {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && !data.InteropEgressConversionOffsetScaledLogVariance.IsNull() {
 		data.InteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	} else {
 		data.InteropEgressConversionOffsetScaledLogVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionClockClassDefault.IsNull() {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() && !data.InteropEgressConversionClockClassDefault.IsNull() {
 		data.InteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	} else {
 		data.InteropEgressConversionClockClassDefault = types.Int64Null()
@@ -1502,38 +1502,38 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("clock-class-to-map-from"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
+		if value := r.Get("clock-class-to-map-from"); value.Exists() && !data.InteropEgressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
 			data.InteropEgressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Value(value.Int())
 		} else {
 			data.InteropEgressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Null()
 		}
-		if value := r.Get("clock-class-to-map-to"); value.Exists() && value.Type == gjson.Number && !data.InteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
+		if value := r.Get("clock-class-to-map-to"); value.Exists() && !data.InteropEgressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
 			data.InteropEgressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Value(value.Int())
 		} else {
 			data.InteropEgressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() && !data.InteropIngressConversionPriority1.IsNull() {
 		data.InteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.InteropIngressConversionPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() && !data.InteropIngressConversionPriority2.IsNull() {
 		data.InteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.InteropIngressConversionPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionClockAccuracy.IsNull() {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() && !data.InteropIngressConversionClockAccuracy.IsNull() {
 		data.InteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	} else {
 		data.InteropIngressConversionClockAccuracy = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionOffsetScaledLogVariance.IsNull() {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && !data.InteropIngressConversionOffsetScaledLogVariance.IsNull() {
 		data.InteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	} else {
 		data.InteropIngressConversionOffsetScaledLogVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionClockClassDefault.IsNull() {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() && !data.InteropIngressConversionClockClassDefault.IsNull() {
 		data.InteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	} else {
 		data.InteropIngressConversionClockClassDefault = types.Int64Null()
@@ -1561,12 +1561,12 @@ func (data *PTPProfile) updateFromBody(ctx context.Context, res []byte, version 
 				return true
 			},
 		)
-		if value := r.Get("clock-class-to-map-from"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
+		if value := r.Get("clock-class-to-map-from"); value.Exists() && !data.InteropIngressConversionClockClassMappings[i].ClockClassToMapFrom.IsNull() {
 			data.InteropIngressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Value(value.Int())
 		} else {
 			data.InteropIngressConversionClockClassMappings[i].ClockClassToMapFrom = types.Int64Null()
 		}
-		if value := r.Get("clock-class-to-map-to"); value.Exists() && value.Type == gjson.Number && !data.InteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
+		if value := r.Get("clock-class-to-map-to"); value.Exists() && !data.InteropIngressConversionClockClassMappings[i].ClockClassToMapTo.IsNull() {
 			data.InteropIngressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Value(value.Int())
 		} else {
 			data.InteropIngressConversionClockClassMappings[i].ClockClassToMapTo = types.Int64Null()
@@ -1656,10 +1656,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() {
 		data.AnnounceTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() {
 		data.AnnounceGrantDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1668,10 +1668,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() {
 		data.SyncGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() {
 		data.SyncTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1680,31 +1680,31 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cos"); value.Exists() {
 		data.Cos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "event-cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "event-cos"); value.Exists() {
 		data.CosEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "general-cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "general-cos"); value.Exists() {
 		data.CosGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() {
 		data.Dscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() {
 		data.DscpEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() {
 		data.DscpGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() {
 		data.Ipv4Ttl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() {
 		data.Ipv6HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() {
 		data.DelayAsymmetryValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nanoseconds"); value.Exists() {
@@ -1722,10 +1722,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.DelayAsymmetryUnitMilliseconds = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() {
 		data.DelayResponseGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() {
 		data.DelayResponseTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "unicast-grant.invalid-request.reduce"); value.Exists() {
@@ -1793,10 +1793,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -1814,7 +1814,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -1843,10 +1843,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -1864,7 +1864,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -1893,10 +1893,10 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -1914,7 +1914,7 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -1956,61 +1956,61 @@ func (data *PTPProfile) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.InteropProfileG82752 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() {
 		data.InteropDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() {
 		data.InteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() {
 		data.InteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() {
 		data.InteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() {
 		data.InteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() {
 		data.InteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.InteropEgressConversionClockClassMappings = make([]PTPProfileInteropEgressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileInteropEgressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.InteropEgressConversionClockClassMappings = append(data.InteropEgressConversionClockClassMappings, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() {
 		data.InteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() {
 		data.InteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() {
 		data.InteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() {
 		data.InteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() {
 		data.InteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.InteropIngressConversionClockClassMappings = make([]PTPProfileInteropIngressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileInteropIngressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.InteropIngressConversionClockClassMappings = append(data.InteropIngressConversionClockClassMappings, item)
@@ -2101,10 +2101,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "announce.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AnnounceFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "announce.timeout"); value.Exists() {
 		data.AnnounceTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "announce.grant-duration"); value.Exists() {
 		data.AnnounceGrantDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "sync.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2113,10 +2113,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "sync.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SyncFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sync.grant-duration"); value.Exists() {
 		data.SyncGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sync.timeout"); value.Exists() {
 		data.SyncTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "delay-request.interval"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2125,31 +2125,31 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "delay-request.frequency"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.DelayRequestFrequency = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "cos"); value.Exists() {
 		data.Cos = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "event-cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "event-cos"); value.Exists() {
 		data.CosEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "general-cos"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "general-cos"); value.Exists() {
 		data.CosGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dscp"); value.Exists() {
 		data.Dscp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "event-dscp"); value.Exists() {
 		data.DscpEvent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "general-dscp"); value.Exists() {
 		data.DscpGeneral = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ipv4-ttl"); value.Exists() {
 		data.Ipv4Ttl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ipv6-hop-limit"); value.Exists() {
 		data.Ipv6HopLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-asymmetry"); value.Exists() {
 		data.DelayAsymmetryValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "nanoseconds"); value.Exists() {
@@ -2167,10 +2167,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.DelayAsymmetryUnitMilliseconds = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-response.grant-duration"); value.Exists() {
 		data.DelayResponseGrantDuration = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "delay-response.timeout"); value.Exists() {
 		data.DelayResponseTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "unicast-grant.invalid-request.reduce"); value.Exists() {
@@ -2238,10 +2238,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -2259,7 +2259,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -2288,10 +2288,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -2309,7 +2309,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -2338,10 +2338,10 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("priority"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("priority"); cValue.Exists() {
 				item.Priority = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class"); cValue.Exists() {
 				item.ClockClass = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("multicast"); cValue.Exists() {
@@ -2359,7 +2359,7 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.NonNegotiated = types.BoolValue(false)
 			}
-			if cValue := v.Get("delay-asymmetry"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("delay-asymmetry"); cValue.Exists() {
 				item.DelayAsymmetry = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("nanoseconds"); cValue.Exists() {
@@ -2401,61 +2401,61 @@ func (data *PTPProfileData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.InteropProfileG82752 = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.domain"); value.Exists() {
 		data.InteropDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority1"); value.Exists() {
 		data.InteropEgressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.priority2"); value.Exists() {
 		data.InteropEgressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-accuracy"); value.Exists() {
 		data.InteropEgressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.offset-scaled-log-variance"); value.Exists() {
 		data.InteropEgressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.default"); value.Exists() {
 		data.InteropEgressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interop.egress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.InteropEgressConversionClockClassMappings = make([]PTPProfileInteropEgressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileInteropEgressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.InteropEgressConversionClockClassMappings = append(data.InteropEgressConversionClockClassMappings, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority1"); value.Exists() {
 		data.InteropIngressConversionPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.priority2"); value.Exists() {
 		data.InteropIngressConversionPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-accuracy"); value.Exists() {
 		data.InteropIngressConversionClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.offset-scaled-log-variance"); value.Exists() {
 		data.InteropIngressConversionOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.default"); value.Exists() {
 		data.InteropIngressConversionClockClassDefault = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "interop.ingress-conversion.clock-class.mappings.mapping"); value.Exists() {
 		data.InteropIngressConversionClockClassMappings = make([]PTPProfileInteropIngressConversionClockClassMappings, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := PTPProfileInteropIngressConversionClockClassMappings{}
-			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-from"); cValue.Exists() {
 				item.ClockClassToMapFrom = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("clock-class-to-map-to"); cValue.Exists() {
 				item.ClockClassToMapTo = types.Int64Value(cValue.Int())
 			}
 			data.InteropIngressConversionClockClassMappings = append(data.InteropIngressConversionClockClassMappings, item)

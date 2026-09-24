@@ -1456,32 +1456,32 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.ChassisId = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && value.Type == gjson.Number && !data.Packetsize.IsNull() {
+	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && !data.Packetsize.IsNull() {
 		data.Packetsize = types.Int64Value(value.Int())
 	} else {
 		data.Packetsize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() && value.Type == gjson.Number && !data.TrapTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() && !data.TrapTimeout.IsNull() {
 		data.TrapTimeout = types.Int64Value(value.Int())
 	} else {
 		data.TrapTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "queue-length"); value.Exists() && value.Type == gjson.Number && !data.QueueLength.IsNull() {
+	if value := gjson.GetBytes(res, "queue-length"); value.Exists() && !data.QueueLength.IsNull() {
 		data.QueueLength = types.Int64Value(value.Int())
 	} else {
 		data.QueueLength = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() && value.Type == gjson.Number && !data.ThrottleTime.IsNull() {
+	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() && !data.ThrottleTime.IsNull() {
 		data.ThrottleTime = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "overload-control"); value.Exists() && value.Type == gjson.Number && !data.OverloadControl.IsNull() {
+	if value := gjson.GetBytes(res, "overload-control"); value.Exists() && !data.OverloadControl.IsNull() {
 		data.OverloadControl = types.Int64Value(value.Int())
 	} else {
 		data.OverloadControl = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() && value.Type == gjson.Number && !data.OverloadThrottleRate.IsNull() {
+	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() && !data.OverloadThrottleRate.IsNull() {
 		data.OverloadThrottleRate = types.Int64Value(value.Int())
 	} else {
 		data.OverloadThrottleRate = types.Int64Null()
@@ -1795,7 +1795,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.TrapsMplsL3vpnMaxThresholdCleared = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() && value.Type == gjson.Number && !data.TrapsMplsL3vpnMaxThresholdReissueNotifTime.IsNull() {
+	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() && !data.TrapsMplsL3vpnMaxThresholdReissueNotifTime.IsNull() {
 		data.TrapsMplsL3vpnMaxThresholdReissueNotifTime = types.Int64Value(value.Int())
 	} else {
 		data.TrapsMplsL3vpnMaxThresholdReissueNotifTime = types.Int64Null()
@@ -2409,7 +2409,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].TrapsUnencryptedStrings[ci].UdpPort = types.Int64Null()
@@ -2452,7 +2452,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].TrapsEncryptedDefault[ci].UdpPort = types.Int64Null()
@@ -2495,7 +2495,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].TrapsEncryptedAes[ci].UdpPort.IsNull() {
 				data.Hosts[i].TrapsEncryptedAes[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].TrapsEncryptedAes[ci].UdpPort = types.Int64Null()
@@ -2538,7 +2538,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].InformsUnencryptedStrings[ci].UdpPort = types.Int64Null()
@@ -2581,7 +2581,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsEncryptedDefault[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsEncryptedDefault[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].InformsEncryptedDefault[ci].UdpPort = types.Int64Null()
@@ -2624,7 +2624,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 					return true
 				},
 			)
-			if value := cr.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() {
+			if value := cr.Get("udp-port"); value.Exists() && !data.Hosts[i].InformsEncryptedAes[ci].UdpPort.IsNull() {
 				data.Hosts[i].InformsEncryptedAes[ci].UdpPort = types.Int64Value(value.Int())
 			} else {
 				data.Hosts[i].InformsEncryptedAes[ci].UdpPort = types.Int64Null()
@@ -2736,12 +2736,12 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.TrapSourceIpv6 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && value.Type == gjson.Number && !data.TrapSourcePort.IsNull() {
+	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && !data.TrapSourcePort.IsNull() {
 		data.TrapSourcePort = types.Int64Value(value.Int())
 	} else {
 		data.TrapSourcePort = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() && value.Type == gjson.Number && !data.TrapThrottleTime.IsNull() {
+	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() && !data.TrapThrottleTime.IsNull() {
 		data.TrapThrottleTime = types.Int64Value(value.Int())
 	} else {
 		data.TrapThrottleTime = types.Int64Null()
@@ -2755,7 +2755,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.TrapAuthenticationVrfDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && value.Type == gjson.Number && !data.TrapDelayTimer.IsNull() {
+	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && !data.TrapDelayTimer.IsNull() {
 		data.TrapDelayTimer = types.Int64Value(value.Int())
 	} else {
 		data.TrapDelayTimer = types.Int64Null()
@@ -2991,7 +2991,7 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.EngineIdRemotes[i].EngineId = types.StringNull()
 		}
-		if value := r.Get("udp-port"); value.Exists() && value.Type == gjson.Number && !data.EngineIdRemotes[i].UdpPort.IsNull() {
+		if value := r.Get("udp-port"); value.Exists() && !data.EngineIdRemotes[i].UdpPort.IsNull() {
 			data.EngineIdRemotes[i].UdpPort = types.Int64Value(value.Int())
 		} else {
 			data.EngineIdRemotes[i].UdpPort = types.Int64Null()
@@ -3124,52 +3124,52 @@ func (data *SNMPServer) updateFromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.OidPollStats = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() && value.Type == gjson.Number && !data.TimeoutsSubagent.IsNull() {
+	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() && !data.TimeoutsSubagent.IsNull() {
 		data.TimeoutsSubagent = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutsSubagent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() && value.Type == gjson.Number && !data.TimeoutsDuplicate.IsNull() {
+	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() && !data.TimeoutsDuplicate.IsNull() {
 		data.TimeoutsDuplicate = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutsDuplicate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() && value.Type == gjson.Number && !data.TimeoutsInQdrop.IsNull() {
+	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() && !data.TimeoutsInQdrop.IsNull() {
 		data.TimeoutsInQdrop = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutsInQdrop = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() && value.Type == gjson.Number && !data.TimeoutsThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() && !data.TimeoutsThreshold.IsNull() {
 		data.TimeoutsThreshold = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutsThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() && value.Type == gjson.Number && !data.TimeoutsPduStats.IsNull() {
+	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() && !data.TimeoutsPduStats.IsNull() {
 		data.TimeoutsPduStats = types.Int64Value(value.Int())
 	} else {
 		data.TimeoutsPduStats = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() && value.Type == gjson.Number && !data.LoggingThresholdOidProcessing.IsNull() {
+	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() && !data.LoggingThresholdOidProcessing.IsNull() {
 		data.LoggingThresholdOidProcessing = types.Int64Value(value.Int())
 	} else {
 		data.LoggingThresholdOidProcessing = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() && value.Type == gjson.Number && !data.LoggingThresholdPduProcessing.IsNull() {
+	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() && !data.LoggingThresholdPduProcessing.IsNull() {
 		data.LoggingThresholdPduProcessing = types.Int64Value(value.Int())
 	} else {
 		data.LoggingThresholdPduProcessing = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() && value.Type == gjson.Number && !data.InformRetries.IsNull() {
+	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() && !data.InformRetries.IsNull() {
 		data.InformRetries = types.Int64Value(value.Int())
 	} else {
 		data.InformRetries = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() && value.Type == gjson.Number && !data.InformTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() && !data.InformTimeout.IsNull() {
 		data.InformTimeout = types.Int64Value(value.Int())
 	} else {
 		data.InformTimeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() && value.Type == gjson.Number && !data.InformPending.IsNull() {
+	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() && !data.InformPending.IsNull() {
 		data.InformPending = types.Int64Value(value.Int())
 	} else {
 		data.InformPending = types.Int64Null()
@@ -3190,22 +3190,22 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "packetsize"); value.Exists() {
 		data.Packetsize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() {
 		data.TrapTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "queue-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "queue-length"); value.Exists() {
 		data.QueueLength = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() {
 		data.ThrottleTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "overload-control"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "overload-control"); value.Exists() {
 		data.OverloadControl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() {
 		data.OverloadThrottleRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "community.unencrypted.unencrypted-string"); value.Exists() {
@@ -3375,7 +3375,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.TrapsMplsL3vpnMaxThresholdCleared = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() {
 		data.TrapsMplsL3vpnMaxThresholdReissueNotifTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-te-cfg:mpls.traffic-eng.cisco"); value.Exists() {
@@ -3699,7 +3699,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.TrapsUnencryptedStrings = make([]SNMPServerHostsTrapsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3718,7 +3718,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.TrapsEncryptedDefault = make([]SNMPServerHostsTrapsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3737,7 +3737,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.TrapsEncryptedAes = make([]SNMPServerHostsTrapsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3756,7 +3756,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.InformsUnencryptedStrings = make([]SNMPServerHostsInformsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3775,7 +3775,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.InformsEncryptedDefault = make([]SNMPServerHostsInformsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3794,7 +3794,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 				item.InformsEncryptedAes = make([]SNMPServerHostsInformsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -3854,10 +3854,10 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() {
 		data.TrapSourcePort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() {
 		data.TrapThrottleTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "trap.authentication.vrf.disable"); value.Exists() {
@@ -3865,7 +3865,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.TrapAuthenticationVrfDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() {
 		data.TrapDelayTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -3988,7 +3988,7 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("engine-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EngineId = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("udp-port"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("udp-port"); cValue.Exists() {
 				item.UdpPort = types.Int64Value(cValue.Int())
 			}
 			data.EngineIdRemotes = append(data.EngineIdRemotes, item)
@@ -4062,34 +4062,34 @@ func (data *SNMPServer) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.OidPollStats = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() {
 		data.TimeoutsSubagent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() {
 		data.TimeoutsDuplicate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() {
 		data.TimeoutsInQdrop = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() {
 		data.TimeoutsThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() {
 		data.TimeoutsPduStats = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() {
 		data.LoggingThresholdOidProcessing = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() {
 		data.LoggingThresholdPduProcessing = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() {
 		data.InformRetries = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() {
 		data.InformTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() {
 		data.InformPending = types.Int64Value(value.Int())
 	}
 }
@@ -4108,22 +4108,22 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "chassis-id"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ChassisId = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "packetsize"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "packetsize"); value.Exists() {
 		data.Packetsize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap-timeout"); value.Exists() {
 		data.TrapTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "queue-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "queue-length"); value.Exists() {
 		data.QueueLength = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle-time"); value.Exists() {
 		data.ThrottleTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "overload-control"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "overload-control"); value.Exists() {
 		data.OverloadControl = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "overload-throttle-rate"); value.Exists() {
 		data.OverloadThrottleRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "community.unencrypted.unencrypted-string"); value.Exists() {
@@ -4293,7 +4293,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.TrapsMplsL3vpnMaxThresholdCleared = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-l3vpn-cfg:mpls.l3vpn.max-threshold-reissue-notif-time"); value.Exists() {
 		data.TrapsMplsL3vpnMaxThresholdReissueNotifTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "traps.Cisco-IOS-XR-um-mpls-te-cfg:mpls.traffic-eng.cisco"); value.Exists() {
@@ -4617,7 +4617,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.TrapsUnencryptedStrings = make([]SNMPServerHostsTrapsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4636,7 +4636,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.TrapsEncryptedDefault = make([]SNMPServerHostsTrapsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4655,7 +4655,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.TrapsEncryptedAes = make([]SNMPServerHostsTrapsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsTrapsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4674,7 +4674,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.InformsUnencryptedStrings = make([]SNMPServerHostsInformsUnencryptedStrings, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsUnencryptedStrings{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4693,7 +4693,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.InformsEncryptedDefault = make([]SNMPServerHostsInformsEncryptedDefault, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsEncryptedDefault{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4712,7 +4712,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 				item.InformsEncryptedAes = make([]SNMPServerHostsInformsEncryptedAes, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := SNMPServerHostsInformsEncryptedAes{}
-					if ccValue := cv.Get("udp-port"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("udp-port"); ccValue.Exists() {
 						cItem.UdpPort = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("version.v2c"); ccValue.Exists() {
@@ -4772,10 +4772,10 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	if value := gjson.GetBytes(res, "trap-source.ipv6"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TrapSourceIpv6 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap-source.port"); value.Exists() {
 		data.TrapSourcePort = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap.throttle-time"); value.Exists() {
 		data.TrapThrottleTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "trap.authentication.vrf.disable"); value.Exists() {
@@ -4783,7 +4783,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.TrapAuthenticationVrfDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "trap.delay-timer"); value.Exists() {
 		data.TrapDelayTimer = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -4906,7 +4906,7 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("engine-id"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.EngineId = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("udp-port"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("udp-port"); cValue.Exists() {
 				item.UdpPort = types.Int64Value(cValue.Int())
 			}
 			data.EngineIdRemotes = append(data.EngineIdRemotes, item)
@@ -4980,34 +4980,34 @@ func (data *SNMPServerData) fromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.OidPollStats = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.subagent"); value.Exists() {
 		data.TimeoutsSubagent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.duplicate"); value.Exists() {
 		data.TimeoutsDuplicate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.in-qdrop"); value.Exists() {
 		data.TimeoutsInQdrop = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.threshold"); value.Exists() {
 		data.TimeoutsThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeouts.pdu.stats"); value.Exists() {
 		data.TimeoutsPduStats = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.threshold.oid-processing"); value.Exists() {
 		data.LoggingThresholdOidProcessing = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.threshold.pdu-processing"); value.Exists() {
 		data.LoggingThresholdPduProcessing = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.retries"); value.Exists() {
 		data.InformRetries = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.timeout"); value.Exists() {
 		data.InformTimeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "inform.pending"); value.Exists() {
 		data.InformPending = types.Int64Value(value.Int())
 	}
 }

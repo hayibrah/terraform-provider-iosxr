@@ -526,12 +526,12 @@ func (data PTP) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() && value.Type == gjson.Number && !data.FrequencyPriority.IsNull() {
+	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() && !data.FrequencyPriority.IsNull() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	} else {
 		data.FrequencyPriority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() && value.Type == gjson.Number && !data.TimeOfDayPriority.IsNull() {
+	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() && !data.TimeOfDayPriority.IsNull() {
 		data.TimeOfDayPriority = types.Int64Value(value.Int())
 	} else {
 		data.TimeOfDayPriority = types.Int64Null()
@@ -545,12 +545,12 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Ipv6VerifyChecksum = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() && value.Type == gjson.Number && !data.MinClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() && !data.MinClockClass.IsNull() {
 		data.MinClockClass = types.Int64Value(value.Int())
 	} else {
 		data.MinClockClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() && value.Type == gjson.Number && !data.UtcOffsetBaseline.IsNull() {
+	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() && !data.UtcOffsetBaseline.IsNull() {
 		data.UtcOffsetBaseline = types.Int64Value(value.Int())
 	} else {
 		data.UtcOffsetBaseline = types.Int64Null()
@@ -583,13 +583,13 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.UtcOffsets[i].Date = types.StringNull()
 		}
-		if value := r.Get("offset-value"); value.Exists() && value.Type == gjson.Number && !data.UtcOffsets[i].OffsetValue.IsNull() {
+		if value := r.Get("offset-value"); value.Exists() && !data.UtcOffsets[i].OffsetValue.IsNull() {
 			data.UtcOffsets[i].OffsetValue = types.Int64Value(value.Int())
 		} else {
 			data.UtcOffsets[i].OffsetValue = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() && value.Type == gjson.Number && !data.UncalibratedClockClassClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() && !data.UncalibratedClockClassClockClass.IsNull() {
 		data.UncalibratedClockClassClockClass = types.Int64Value(value.Int())
 	} else {
 		data.UncalibratedClockClassClockClass = types.Int64Null()
@@ -612,17 +612,17 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.UncalibratedTraceableOverride = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() && value.Type == gjson.Number && !data.StartupClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() && !data.StartupClockClass.IsNull() {
 		data.StartupClockClass = types.Int64Value(value.Int())
 	} else {
 		data.StartupClockClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() && value.Type == gjson.Number && !data.FreerunClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() && !data.FreerunClockClass.IsNull() {
 		data.FreerunClockClass = types.Int64Value(value.Int())
 	} else {
 		data.FreerunClockClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() && value.Type == gjson.Number && !data.DoubleFailureClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() && !data.DoubleFailureClockClass.IsNull() {
 		data.DoubleFailureClockClass = types.Int64Value(value.Int())
 	} else {
 		data.DoubleFailureClockClass = types.Int64Null()
@@ -654,17 +654,17 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.NetworkTypeHighPdv = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() && value.Type == gjson.Number && !data.ServoSlowTracking.IsNull() {
+	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() && !data.ServoSlowTracking.IsNull() {
 		data.ServoSlowTracking = types.Int64Value(value.Int())
 	} else {
 		data.ServoSlowTracking = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() && value.Type == gjson.Number && !data.HoldoverSpecClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() && !data.HoldoverSpecClockClass.IsNull() {
 		data.HoldoverSpecClockClass = types.Int64Value(value.Int())
 	} else {
 		data.HoldoverSpecClockClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() && value.Type == gjson.Number && !data.HoldoverSpecDuration.IsNull() {
+	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() && !data.HoldoverSpecDuration.IsNull() {
 		data.HoldoverSpecDuration = types.Int64Value(value.Int())
 	} else {
 		data.HoldoverSpecDuration = types.Int64Null()
@@ -687,7 +687,7 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Apts = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() && value.Type == gjson.Number && !data.PhaseDifferenceThresholdBreach.IsNull() {
+	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() && !data.PhaseDifferenceThresholdBreach.IsNull() {
 		data.PhaseDifferenceThresholdBreach = types.Int64Value(value.Int())
 	} else {
 		data.PhaseDifferenceThresholdBreach = types.Int64Null()
@@ -737,37 +737,37 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.VirtualPort = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() && !data.VirtualPortPriority1.IsNull() {
 		data.VirtualPortPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() && !data.VirtualPortPriority2.IsNull() {
 		data.VirtualPortPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() && !data.VirtualPortClockClass.IsNull() {
 		data.VirtualPortClockClass = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortClockClass = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortClockAccuracy.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() && !data.VirtualPortClockAccuracy.IsNull() {
 		data.VirtualPortClockAccuracy = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortClockAccuracy = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortOffsetScaledLogVariance.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() && !data.VirtualPortOffsetScaledLogVariance.IsNull() {
 		data.VirtualPortOffsetScaledLogVariance = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortOffsetScaledLogVariance = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortLocalPriority.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() && !data.VirtualPortLocalPriority.IsNull() {
 		data.VirtualPortLocalPriority = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortLocalPriority = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && value.Type == gjson.Number && !data.VirtualPortGmThresholdBreach.IsNull() {
+	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && !data.VirtualPortGmThresholdBreach.IsNull() {
 		data.VirtualPortGmThresholdBreach = types.Int64Value(value.Int())
 	} else {
 		data.VirtualPortGmThresholdBreach = types.Int64Null()
@@ -791,22 +791,22 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.ClockIdentityEui64 = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && value.Type == gjson.Number && !data.ClockDomain.IsNull() {
+	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && !data.ClockDomain.IsNull() {
 		data.ClockDomain = types.Int64Value(value.Int())
 	} else {
 		data.ClockDomain = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() && value.Type == gjson.Number && !data.ClockPriority1.IsNull() {
+	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() && !data.ClockPriority1.IsNull() {
 		data.ClockPriority1 = types.Int64Value(value.Int())
 	} else {
 		data.ClockPriority1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() && value.Type == gjson.Number && !data.ClockPriority2.IsNull() {
+	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() && !data.ClockPriority2.IsNull() {
 		data.ClockPriority2 = types.Int64Value(value.Int())
 	} else {
 		data.ClockPriority2 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() && value.Type == gjson.Number && !data.ClockClockClass.IsNull() {
+	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() && !data.ClockClockClass.IsNull() {
 		data.ClockClockClass = types.Int64Value(value.Int())
 	} else {
 		data.ClockClockClass = types.Int64Null()
@@ -1007,10 +1007,10 @@ func (data *PTP) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() {
 		data.TimeOfDayPriority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6-verify-checksum"); value.Exists() {
@@ -1018,10 +1018,10 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6VerifyChecksum = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() {
 		data.MinClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() {
 		data.UtcOffsetBaseline = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "utc-offset.offsets.offset"); value.Exists() {
@@ -1031,14 +1031,14 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("date"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Date = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("offset-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("offset-value"); cValue.Exists() {
 				item.OffsetValue = types.Int64Value(cValue.Int())
 			}
 			data.UtcOffsets = append(data.UtcOffsets, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() {
 		data.UncalibratedClockClassClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "uncalibrated-clock-class.unless-from-holdover"); value.Exists() {
@@ -1051,13 +1051,13 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.UncalibratedTraceableOverride = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() {
 		data.StartupClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() {
 		data.FreerunClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() {
 		data.DoubleFailureClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "transparent-clock.domain.all"); value.Exists() {
@@ -1075,13 +1075,13 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.NetworkTypeHighPdv = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() {
 		data.ServoSlowTracking = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() {
 		data.HoldoverSpecClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() {
 		data.HoldoverSpecDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "holdover-spec-traceable-override"); value.Exists() {
@@ -1094,7 +1094,7 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Apts = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() {
 		data.PhaseDifferenceThresholdBreach = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "detect-ptsf-unusable"); value.Exists() {
@@ -1122,25 +1122,25 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.VirtualPort = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() {
 		data.VirtualPortPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() {
 		data.VirtualPortPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() {
 		data.VirtualPortClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() {
 		data.VirtualPortClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() {
 		data.VirtualPortOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() {
 		data.VirtualPortLocalPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() {
 		data.VirtualPortGmThresholdBreach = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1154,16 +1154,16 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityEui64 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() {
 		data.ClockDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() {
 		data.ClockPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() {
 		data.ClockPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() {
 		data.ClockClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "clock.timescale.ptp"); value.Exists() {
@@ -1286,10 +1286,10 @@ func (data *PTP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "frequency.priority"); value.Exists() {
 		data.FrequencyPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "time-of-day.priority"); value.Exists() {
 		data.TimeOfDayPriority = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv6-verify-checksum"); value.Exists() {
@@ -1297,10 +1297,10 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Ipv6VerifyChecksum = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "min-clock-class"); value.Exists() {
 		data.MinClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "utc-offset.baseline"); value.Exists() {
 		data.UtcOffsetBaseline = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "utc-offset.offsets.offset"); value.Exists() {
@@ -1310,14 +1310,14 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("date"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Date = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("offset-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("offset-value"); cValue.Exists() {
 				item.OffsetValue = types.Int64Value(cValue.Int())
 			}
 			data.UtcOffsets = append(data.UtcOffsets, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "uncalibrated-clock-class.clock-class"); value.Exists() {
 		data.UncalibratedClockClassClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "uncalibrated-clock-class.unless-from-holdover"); value.Exists() {
@@ -1330,13 +1330,13 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.UncalibratedTraceableOverride = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "startup-clock-class"); value.Exists() {
 		data.StartupClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "freerun-clock-class"); value.Exists() {
 		data.FreerunClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "double-failure-clock-class"); value.Exists() {
 		data.DoubleFailureClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "transparent-clock.domain.all"); value.Exists() {
@@ -1354,13 +1354,13 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.NetworkTypeHighPdv = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "servo-slow-tracking"); value.Exists() {
 		data.ServoSlowTracking = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdover-spec-clock-class"); value.Exists() {
 		data.HoldoverSpecClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holdover-spec-duration"); value.Exists() {
 		data.HoldoverSpecDuration = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "holdover-spec-traceable-override"); value.Exists() {
@@ -1373,7 +1373,7 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Apts = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "phase-difference-threshold-breach"); value.Exists() {
 		data.PhaseDifferenceThresholdBreach = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "detect-ptsf-unusable"); value.Exists() {
@@ -1401,25 +1401,25 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.VirtualPort = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.priority1"); value.Exists() {
 		data.VirtualPortPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.priority2"); value.Exists() {
 		data.VirtualPortPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.clock-class"); value.Exists() {
 		data.VirtualPortClockClass = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.clock-accuracy"); value.Exists() {
 		data.VirtualPortClockAccuracy = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.offset-scaled-log-variance"); value.Exists() {
 		data.VirtualPortOffsetScaledLogVariance = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.local-priority"); value.Exists() {
 		data.VirtualPortLocalPriority = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "virtual-port.gm-threshold-breach"); value.Exists() {
 		data.VirtualPortGmThresholdBreach = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "clock.identity.mac-address.custom"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1433,16 +1433,16 @@ func (data *PTPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "clock.identity.eui-64"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ClockIdentityEui64 = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.domain"); value.Exists() {
 		data.ClockDomain = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.priority1"); value.Exists() {
 		data.ClockPriority1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.priority2"); value.Exists() {
 		data.ClockPriority2 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "clock.clock-class"); value.Exists() {
 		data.ClockClockClass = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "clock.timescale.ptp"); value.Exists() {

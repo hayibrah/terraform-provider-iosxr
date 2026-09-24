@@ -859,12 +859,12 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.MulticastRouteScale = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && !data.ProfileTcamFibIpv4UnicastPercent.IsNull() {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	} else {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number && !data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && !data.ProfileTcamFibIpv6UnicastPercent.IsNull() {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	} else {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Null()
@@ -1269,7 +1269,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 	} else {
 		data.ProfileCefLptsAcl = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number && !data.ProfileCefLptsPifibEntryCounters.IsNull() {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && !data.ProfileCefLptsPifibEntryCounters.IsNull() {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	} else {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Null()
@@ -1507,17 +1507,17 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 					return true
 				},
 			)
-			if value := cr.Get("traffic-class-id"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId.IsNull() {
+			if value := cr.Get("traffic-class-id"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].TrafficClassId = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() {
+			if value := cr.Get("pause-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThreshold = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold-bytes"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() {
+			if value := cr.Get("pause-threshold-bytes"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].PauseThresholdBytes = types.Int64Null()
@@ -1531,7 +1531,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Ms = types.BoolNull()
 			}
-			if value := cr.Get("ms.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() {
+			if value := cr.Get("ms.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MsHeadroom = types.Int64Null()
@@ -1545,7 +1545,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Us = types.BoolNull()
 			}
-			if value := cr.Get("us.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() {
+			if value := cr.Get("us.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].UsHeadroom = types.Int64Null()
@@ -1559,7 +1559,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Kbytes = types.BoolNull()
 			}
-			if value := cr.Get("kbytes.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() {
+			if value := cr.Get("kbytes.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].KbytesHeadroom = types.Int64Null()
@@ -1573,7 +1573,7 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].Mbytes = types.BoolNull()
 			}
-			if value := cr.Get("mbytes.headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() {
+			if value := cr.Get("mbytes.headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferExtendedTrafficClass[ci].MbytesHeadroom = types.Int64Null()
@@ -1602,32 +1602,32 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 					return true
 				},
 			)
-			if value := cr.Get("traffic-class-id"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId.IsNull() {
+			if value := cr.Get("traffic-class-id"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].TrafficClassId = types.Int64Null()
 			}
-			if value := cr.Get("pause-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() {
+			if value := cr.Get("pause-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].PauseThreshold = types.Int64Null()
 			}
-			if value := cr.Get("headroom"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() {
+			if value := cr.Get("headroom"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Headroom = types.Int64Null()
 			}
-			if value := cr.Get("ecn"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() {
+			if value := cr.Get("ecn"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].Ecn = types.Int64Null()
 			}
-			if value := cr.Get("max-threshold"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() {
+			if value := cr.Get("max-threshold"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].MaxThreshold = types.Int64Null()
 			}
-			if value := cr.Get("probability-percentage"); value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() {
+			if value := cr.Get("probability-percentage"); value.Exists() && !data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage.IsNull() {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage = types.Int64Value(value.Int())
 			} else {
 				data.ProfilePriorityFlowControlLocations[i].BufferInternalTrafficClass[ci].ProbabilityPercentage = types.Int64Null()
@@ -1642,28 +1642,28 @@ func (data *HWModuleProfile8000) updateFromBody(ctx context.Context, res []byte,
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcs = types.BoolNull()
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs.IsNull() {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(value.Int())
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 		}
-		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
+		if value := r.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage.IsNull() {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(value.Int())
 		} else {
 			data.ProfilePriorityFlowControlLocations[i].NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortIpv4.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && !data.ProfileGueUdpDestPortIpv4.IsNull() {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortIpv6.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && !data.ProfileGueUdpDestPortIpv6.IsNull() {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number && !data.ProfileGueUdpDestPortMpls.IsNull() {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && !data.ProfileGueUdpDestPortMpls.IsNull() {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	} else {
 		data.ProfileGueUdpDestPortMpls = types.Int64Null()
@@ -1795,10 +1795,10 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.MulticastRouteScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.src-addr"); value.Exists() {
@@ -2031,7 +2031,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.ProfileCefLptsAcl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.vxlan.ipv6-tnl-scale"); value.Exists() {
@@ -2137,13 +2137,13 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 				item.BufferExtendedTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() {
 						cItem.PauseThresholdBytes = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ms"); ccValue.Exists() {
@@ -2151,7 +2151,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Ms = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() {
 						cItem.MsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("us"); ccValue.Exists() {
@@ -2159,7 +2159,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Us = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("us.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("us.headroom"); ccValue.Exists() {
 						cItem.UsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("kbytes"); ccValue.Exists() {
@@ -2167,7 +2167,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Kbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() {
 						cItem.KbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("mbytes"); ccValue.Exists() {
@@ -2175,7 +2175,7 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 					} else {
 						cItem.Mbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() {
 						cItem.MbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					item.BufferExtendedTrafficClass = append(item.BufferExtendedTrafficClass, cItem)
@@ -2186,22 +2186,22 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 				item.BufferInternalTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("headroom"); ccValue.Exists() {
 						cItem.Headroom = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ecn"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ecn"); ccValue.Exists() {
 						cItem.Ecn = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("max-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("max-threshold"); ccValue.Exists() {
 						cItem.MaxThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() {
 						cItem.ProbabilityPercentage = types.Int64Value(ccValue.Int())
 					}
 					item.BufferInternalTrafficClass = append(item.BufferInternalTrafficClass, cItem)
@@ -2218,14 +2218,14 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 				item.NonPfcTcs = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
 					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
 					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -2235,13 +2235,13 @@ func (data *HWModuleProfile8000) fromBody(ctx context.Context, res []byte, versi
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.npu.buffer-extended.locations.location"); value.Exists() {
@@ -2315,10 +2315,10 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.MulticastRouteScale = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv4.unicast.percent"); value.Exists() {
 		data.ProfileTcamFibIpv4UnicastPercent = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.tcam.fib.ipv6.unicast.percent"); value.Exists() {
 		data.ProfileTcamFibIpv6UnicastPercent = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.tcam.format.access-list.ipv4.src-addr"); value.Exists() {
@@ -2551,7 +2551,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 	} else {
 		data.ProfileCefLptsAcl = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.cef.lpts.pifib-entry-counters"); value.Exists() {
 		data.ProfileCefLptsPifibEntryCounters = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.cef.vxlan.ipv6-tnl-scale"); value.Exists() {
@@ -2657,13 +2657,13 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 				item.BufferExtendedTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferExtendedTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold-bytes"); ccValue.Exists() {
 						cItem.PauseThresholdBytes = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("ms"); ccValue.Exists() {
@@ -2671,7 +2671,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Ms = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ms.headroom"); ccValue.Exists() {
 						cItem.MsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("us"); ccValue.Exists() {
@@ -2679,7 +2679,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Us = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("us.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("us.headroom"); ccValue.Exists() {
 						cItem.UsHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("kbytes"); ccValue.Exists() {
@@ -2687,7 +2687,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Kbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("kbytes.headroom"); ccValue.Exists() {
 						cItem.KbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					if ccValue := cv.Get("mbytes"); ccValue.Exists() {
@@ -2695,7 +2695,7 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 					} else {
 						cItem.Mbytes = types.BoolValue(false)
 					}
-					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("mbytes.headroom"); ccValue.Exists() {
 						cItem.MbytesHeadroom = types.Int64Value(ccValue.Int())
 					}
 					item.BufferExtendedTrafficClass = append(item.BufferExtendedTrafficClass, cItem)
@@ -2706,22 +2706,22 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 				item.BufferInternalTrafficClass = make([]HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass, 0)
 				cValue.ForEach(func(ck, cv gjson.Result) bool {
 					cItem := HWModuleProfile8000ProfilePriorityFlowControlLocationsBufferInternalTrafficClass{}
-					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("traffic-class-id"); ccValue.Exists() {
 						cItem.TrafficClassId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("pause-threshold"); ccValue.Exists() {
 						cItem.PauseThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("headroom"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("headroom"); ccValue.Exists() {
 						cItem.Headroom = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("ecn"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("ecn"); ccValue.Exists() {
 						cItem.Ecn = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("max-threshold"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("max-threshold"); ccValue.Exists() {
 						cItem.MaxThreshold = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("probability-percentage"); ccValue.Exists() {
 						cItem.ProbabilityPercentage = types.Int64Value(ccValue.Int())
 					}
 					item.BufferInternalTrafficClass = append(item.BufferInternalTrafficClass, cItem)
@@ -2738,14 +2738,14 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 				item.NonPfcTcs = types.BoolNull()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.number-of-evict-voqs"); cValue.Exists() {
 					item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Value(cValue.Int())
 				}
 			} else {
 				item.NonPfcTcsMaxNonPfcVoqsNumberOfEvictVoqs = types.Int64Null()
 			}
 			if helpers.VersionAtLeast(version, "25.4") {
-				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() && cValue.Type == gjson.Number {
+				if cValue := v.Get("buffer-extended.non-pfc-tcs.max-non-pfc-voqs.hbm-buffers-percentage"); cValue.Exists() {
 					item.NonPfcTcsMaxNonPfcVoqsHbmBuffersPercentage = types.Int64Value(cValue.Int())
 				}
 			} else {
@@ -2755,13 +2755,13 @@ func (data *HWModuleProfile8000Data) fromBody(ctx context.Context, res []byte, v
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv4"); value.Exists() {
 		data.ProfileGueUdpDestPortIpv4 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.ipv6"); value.Exists() {
 		data.ProfileGueUdpDestPortIpv6 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "profile.gue.udp-dest-port.mpls"); value.Exists() {
 		data.ProfileGueUdpDestPortMpls = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "profile.npu.buffer-extended.locations.location"); value.Exists() {

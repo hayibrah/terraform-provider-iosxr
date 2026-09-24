@@ -303,7 +303,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.TtyEnable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && value.Type == gjson.Number && !data.TtyStreamingSize.IsNull() {
+	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && !data.TtyStreamingSize.IsNull() {
 		data.TtyStreamingSize = types.Int64Value(value.Int())
 	} else {
 		data.TtyStreamingSize = types.Int64Null()
@@ -313,17 +313,17 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.TtyIterationSize = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && value.Type == gjson.Number && !data.TtyThrottleProcessRate.IsNull() {
+	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && !data.TtyThrottleProcessRate.IsNull() {
 		data.TtyThrottleProcessRate = types.Int64Value(value.Int())
 	} else {
 		data.TtyThrottleProcessRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() && value.Type == gjson.Number && !data.TtyThrottleMemory.IsNull() {
+	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() && !data.TtyThrottleMemory.IsNull() {
 		data.TtyThrottleMemory = types.Int64Value(value.Int())
 	} else {
 		data.TtyThrottleMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() && value.Type == gjson.Number && !data.TtySessionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() && !data.TtySessionTimeout.IsNull() {
 		data.TtySessionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.TtySessionTimeout = types.Int64Null()
@@ -337,7 +337,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SslEnable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && value.Type == gjson.Number && !data.SslStreamingSize.IsNull() {
+	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && !data.SslStreamingSize.IsNull() {
 		data.SslStreamingSize = types.Int64Value(value.Int())
 	} else {
 		data.SslStreamingSize = types.Int64Null()
@@ -347,17 +347,17 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.SslIterationSize = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && value.Type == gjson.Number && !data.SslThrottleProcessRate.IsNull() {
+	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && !data.SslThrottleProcessRate.IsNull() {
 		data.SslThrottleProcessRate = types.Int64Value(value.Int())
 	} else {
 		data.SslThrottleProcessRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() && value.Type == gjson.Number && !data.SslThrottleMemory.IsNull() {
+	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() && !data.SslThrottleMemory.IsNull() {
 		data.SslThrottleMemory = types.Int64Value(value.Int())
 	} else {
 		data.SslThrottleMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() && value.Type == gjson.Number && !data.SslSessionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() && !data.SslSessionTimeout.IsNull() {
 		data.SslSessionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SslSessionTimeout = types.Int64Null()
@@ -423,7 +423,7 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.Ipv4Disable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && value.Type == gjson.Number && !data.StreamingSize.IsNull() {
+	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && !data.StreamingSize.IsNull() {
 		data.StreamingSize = types.Int64Value(value.Int())
 	} else {
 		data.StreamingSize = types.Int64Null()
@@ -433,17 +433,17 @@ func (data *XMLAgent) updateFromBody(ctx context.Context, res []byte, version st
 	} else {
 		data.IterationSize = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number && !data.ThrottleProcessRate.IsNull() {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && !data.ThrottleProcessRate.IsNull() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleProcessRate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number && !data.ThrottleMemory.IsNull() {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && !data.ThrottleMemory.IsNull() {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleMemory = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number && !data.SessionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && !data.SessionTimeout.IsNull() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.SessionTimeout = types.Int64Null()
@@ -513,19 +513,19 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.TtyEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() {
 		data.TtyStreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TtyIterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() {
 		data.TtyThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() {
 		data.TtyThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() {
 		data.TtySessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl"); value.Exists() {
@@ -533,19 +533,19 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.SslEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() {
 		data.SslStreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SslIterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() {
 		data.SslThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() {
 		data.SslThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() {
 		data.SslSessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl.vrfs.vrf"); value.Exists() {
@@ -577,19 +577,19 @@ func (data *XMLAgent) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.Ipv4Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() {
 		data.StreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.IterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
@@ -631,19 +631,19 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.TtyEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.streaming.on.size"); value.Exists() {
 		data.TtyStreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "tty.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.TtyIterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.throttle.process-rate"); value.Exists() {
 		data.TtyThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.throttle.memory"); value.Exists() {
 		data.TtyThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "tty.session.timeout"); value.Exists() {
 		data.TtySessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl"); value.Exists() {
@@ -651,19 +651,19 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.SslEnable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.streaming.on.size"); value.Exists() {
 		data.SslStreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl.iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SslIterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.throttle.process-rate"); value.Exists() {
 		data.SslThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.throttle.memory"); value.Exists() {
 		data.SslThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ssl.session.timeout"); value.Exists() {
 		data.SslSessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ssl.vrfs.vrf"); value.Exists() {
@@ -695,19 +695,19 @@ func (data *XMLAgentData) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.Ipv4Disable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "streaming.on.size"); value.Exists() {
 		data.StreamingSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "iteration.size"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.IterationSize = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle.process-rate"); value.Exists() {
 		data.ThrottleProcessRate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle.memory"); value.Exists() {
 		data.ThrottleMemory = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "session.timeout"); value.Exists() {
 		data.SessionTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {

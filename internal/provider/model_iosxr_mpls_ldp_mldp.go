@@ -328,23 +328,23 @@ func (data *MPLSLDPMLDP) updateFromBody(ctx context.Context, res []byte, version
 			} else {
 				data.AddressFamily[i].Statics[ci].LspAddress = types.StringNull()
 			}
-			if value := cr.Get("p2mp"); value.Exists() && value.Type == gjson.Number && !data.AddressFamily[i].Statics[ci].P2mp.IsNull() {
+			if value := cr.Get("p2mp"); value.Exists() && !data.AddressFamily[i].Statics[ci].P2mp.IsNull() {
 				data.AddressFamily[i].Statics[ci].P2mp = types.Int64Value(value.Int())
 			} else {
 				data.AddressFamily[i].Statics[ci].P2mp = types.Int64Null()
 			}
-			if value := cr.Get("mp2mp"); value.Exists() && value.Type == gjson.Number && !data.AddressFamily[i].Statics[ci].Mp2mp.IsNull() {
+			if value := cr.Get("mp2mp"); value.Exists() && !data.AddressFamily[i].Statics[ci].Mp2mp.IsNull() {
 				data.AddressFamily[i].Statics[ci].Mp2mp = types.Int64Value(value.Int())
 			} else {
 				data.AddressFamily[i].Statics[ci].Mp2mp = types.Int64Null()
 			}
 		}
-		if value := r.Get("make-before-break.delay.forwarding-delay"); value.Exists() && value.Type == gjson.Number && !data.AddressFamily[i].MakeBeforeBreakDelay.IsNull() {
+		if value := r.Get("make-before-break.delay.forwarding-delay"); value.Exists() && !data.AddressFamily[i].MakeBeforeBreakDelay.IsNull() {
 			data.AddressFamily[i].MakeBeforeBreakDelay = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamily[i].MakeBeforeBreakDelay = types.Int64Null()
 		}
-		if value := r.Get("make-before-break.delay.delete-delay"); value.Exists() && value.Type == gjson.Number && !data.AddressFamily[i].MakeBeforeBreakDeleteDelay.IsNull() {
+		if value := r.Get("make-before-break.delay.delete-delay"); value.Exists() && !data.AddressFamily[i].MakeBeforeBreakDeleteDelay.IsNull() {
 			data.AddressFamily[i].MakeBeforeBreakDeleteDelay = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamily[i].MakeBeforeBreakDeleteDelay = types.Int64Null()
@@ -495,20 +495,20 @@ func (data *MPLSLDPMLDP) fromBody(ctx context.Context, res []byte, version strin
 					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("p2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("p2mp"); ccValue.Exists() {
 						cItem.P2mp = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("mp2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("mp2mp"); ccValue.Exists() {
 						cItem.Mp2mp = types.Int64Value(ccValue.Int())
 					}
 					item.Statics = append(item.Statics, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("make-before-break.delay.forwarding-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("make-before-break.delay.forwarding-delay"); cValue.Exists() {
 				item.MakeBeforeBreakDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() {
 				item.MakeBeforeBreakDeleteDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -606,20 +606,20 @@ func (data *MPLSLDPMLDPData) fromBody(ctx context.Context, res []byte, version s
 					if ccValue := cv.Get("lsp-address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.LspAddress = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("p2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("p2mp"); ccValue.Exists() {
 						cItem.P2mp = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("mp2mp"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("mp2mp"); ccValue.Exists() {
 						cItem.Mp2mp = types.Int64Value(ccValue.Int())
 					}
 					item.Statics = append(item.Statics, cItem)
 					return true
 				})
 			}
-			if cValue := v.Get("make-before-break.delay.forwarding-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("make-before-break.delay.forwarding-delay"); cValue.Exists() {
 				item.MakeBeforeBreakDelay = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("make-before-break.delay.delete-delay"); cValue.Exists() {
 				item.MakeBeforeBreakDeleteDelay = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("make-before-break.route-policy"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {

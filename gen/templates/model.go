@@ -698,7 +698,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 	{{- range .Attributes}}
 	{{- if and (not .Reference) (not .Id) (not .WriteOnly)}}
 	{{- if eq .Type "Int64"}}
-	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && value.Type == gjson.Number && !data.{{toGoName .TfName}}.IsNull() {
+	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{toGoName .TfName}}.IsNull() {
 		data.{{toGoName .TfName}} = types.Int64Value(value.Int())
 	} else {
 		data.{{toGoName .TfName}} = types.Int64Null()
@@ -809,7 +809,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 		{{- range .Attributes}}
 		{{- if not .WriteOnly}}
 		{{- if eq .Type "Int64"}}
-		if value := r.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && value.Type == gjson.Number && !data.{{$list}}[i].{{toGoName .TfName}}.IsNull() {
+		if value := r.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{$list}}[i].{{toGoName .TfName}}.IsNull() {
 			data.{{$list}}[i].{{toGoName .TfName}} = types.Int64Value(value.Int())
 		} else {
 			data.{{$list}}[i].{{toGoName .TfName}} = types.Int64Null()
@@ -912,7 +912,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 			{{- range .Attributes}}
 			{{- if not .WriteOnly}}
 			{{- if eq .Type "Int64"}}
-			if value := cr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && value.Type == gjson.Number && !data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() {
+			if value := cr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}}.IsNull() {
 				data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}} = types.Int64Value(value.Int())
 			} else {
 				data.{{$list}}[i].{{$clist}}[ci].{{toGoName .TfName}} = types.Int64Null()
@@ -1015,7 +1015,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 				{{- range .Attributes}}
 				{{- if not .WriteOnly}}
 				{{- if eq .Type "Int64"}}
-				if value := ccr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && value.Type == gjson.Number && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() {
+				if value := ccr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}}.IsNull() {
 					data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}} = types.Int64Value(value.Int())
 				} else {
 					data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{toGoName .TfName}} = types.Int64Null()
@@ -1119,7 +1119,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) updateFromBody(ctx context.Co
 					{{- if not .WriteOnly}}
 					{{- if and (ne .Type "List") (ne .Type "Set")}}
 					{{- if eq .Type "Int64"}}
-					if value := cccr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && value.Type == gjson.Number && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() {
+					if value := cccr.Get({{jsonPathExpr . "version"}}); {{- if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}") && {{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")) && {{end}}value.Exists() && !data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}}.IsNull() {
 						data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}} = types.Int64Value(value.Int())
 					} else {
 						data.{{$list}}[i].{{$clist}}[ci].{{$cclist}}[cci].{{$ccclist}}[ccci].{{toGoName .TfName}} = types.Int64Null()
@@ -1206,7 +1206,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
 	{{- if eq .Type "Int64"}}
-	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists() {
 		data.{{toGoName .TfName}} = types.Int64Value(value.Int())
 	}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1300,7 +1300,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 			{{- end}}
 			{{- if eq .Type "Int64"}}
-			if cValue := v.Get({{jsonPathExpr . "version"}}); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get({{jsonPathExpr . "version"}}); cValue.Exists() {
 				item.{{toGoName .TfName}} = types.Int64Value(cValue.Int())
 			}
 			{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1367,7 +1367,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 					if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 					{{- end}}
 					{{- if eq .Type "Int64"}}
-					if ccValue := cv.Get({{jsonPathExpr . "version"}}); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get({{jsonPathExpr . "version"}}); ccValue.Exists() {
 						cItem.{{toGoName .TfName}} = types.Int64Value(ccValue.Int())
 					}
 					{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1434,7 +1434,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 						{{- end}}
 						{{- if eq .Type "Int64"}}
-						if cccValue := ccv.Get({{jsonPathExpr . "version"}}); cccValue.Exists() && cccValue.Type == gjson.Number {
+						if cccValue := ccv.Get({{jsonPathExpr . "version"}}); cccValue.Exists() {
 							ccItem.{{toGoName .TfName}} = types.Int64Value(cccValue.Int())
 						}
 						{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1500,7 +1500,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}) fromBody(ctx context.Context,
 								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 								{{- end}}
 								{{- if eq .Type "Int64"}}
-								if ccccValue := cccv.Get({{jsonPathExpr . "version"}}); ccccValue.Exists() && ccccValue.Type == gjson.Number {
+								if ccccValue := cccv.Get({{jsonPathExpr . "version"}}); ccccValue.Exists() {
 									cccItem.{{toGoName .TfName}} = types.Int64Value(ccccValue.Int())
 								}
 								{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1600,7 +1600,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 	if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 	{{- end}}
 	{{- if eq .Type "Int64"}}
-	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, {{jsonPathExpr . "version"}}); value.Exists() {
 		data.{{toGoName .TfName}} = types.Int64Value(value.Int())
 	}
 	{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1694,7 +1694,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 			if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 			{{- end}}
 			{{- if eq .Type "Int64"}}
-			if cValue := v.Get({{jsonPathExpr . "version"}}); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get({{jsonPathExpr . "version"}}); cValue.Exists() {
 				item.{{toGoName .TfName}} = types.Int64Value(cValue.Int())
 			}
 			{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1761,7 +1761,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 					if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 					{{- end}}
 					{{- if eq .Type "Int64"}}
-					if ccValue := cv.Get({{jsonPathExpr . "version"}}); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get({{jsonPathExpr . "version"}}); ccValue.Exists() {
 						cItem.{{toGoName .TfName}} = types.Int64Value(ccValue.Int())
 					}
 					{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1828,7 +1828,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 						if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 						{{- end}}
 						{{- if eq .Type "Int64"}}
-						if cccValue := ccv.Get({{jsonPathExpr . "version"}}); cccValue.Exists() && cccValue.Type == gjson.Number {
+						if cccValue := ccv.Get({{jsonPathExpr . "version"}}); cccValue.Exists() {
 							ccItem.{{toGoName .TfName}} = types.Int64Value(cccValue.Int())
 						}
 						{{- if or .AddedInVersion .RemovedInVersion}}
@@ -1894,7 +1894,7 @@ func (data *{{camelCase .Name}}{{$versionSuffix}}Data) fromBody(ctx context.Cont
 								if {{if .AddedInVersion}}helpers.VersionAtLeast(version, "{{.AddedInVersion}}"){{if .RemovedInVersion}} && {{end}}{{end}}{{if .RemovedInVersion}}(version == "" || !helpers.VersionAtLeast(version, "{{.RemovedInVersion}}")){{end}} {
 								{{- end}}
 								{{- if eq .Type "Int64"}}
-								if ccccValue := cccv.Get({{jsonPathExpr . "version"}}); ccccValue.Exists() && ccccValue.Type == gjson.Number {
+								if ccccValue := cccv.Get({{jsonPathExpr . "version"}}); ccccValue.Exists() {
 									cccItem.{{toGoName .TfName}} = types.Int64Value(ccccValue.Int())
 								}
 								{{- if or .AddedInVersion .RemovedInVersion}}

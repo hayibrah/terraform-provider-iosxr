@@ -250,7 +250,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.Enable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() && value.Type == gjson.Number && !data.SidHoldtime.IsNull() {
+	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() && !data.SidHoldtime.IsNull() {
 		data.SidHoldtime = types.Int64Value(value.Int())
 	} else {
 		data.SidHoldtime = types.Int64Null()
@@ -301,17 +301,17 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 		} else {
 			data.Formats[i].FormatEnable = types.BoolNull()
 		}
-		if value := r.Get("usid.local-id-block-ranges.lib-start"); value.Exists() && value.Type == gjson.Number && !data.Formats[i].UsidLocalIdBlockRangesLibStart.IsNull() {
+		if value := r.Get("usid.local-id-block-ranges.lib-start"); value.Exists() && !data.Formats[i].UsidLocalIdBlockRangesLibStart.IsNull() {
 			data.Formats[i].UsidLocalIdBlockRangesLibStart = types.Int64Value(value.Int())
 		} else {
 			data.Formats[i].UsidLocalIdBlockRangesLibStart = types.Int64Null()
 		}
-		if value := r.Get("usid.local-id-block-ranges.explict-lib-start"); value.Exists() && value.Type == gjson.Number && !data.Formats[i].UsidLocalIdBlockRangesExplictLibStart.IsNull() {
+		if value := r.Get("usid.local-id-block-ranges.explict-lib-start"); value.Exists() && !data.Formats[i].UsidLocalIdBlockRangesExplictLibStart.IsNull() {
 			data.Formats[i].UsidLocalIdBlockRangesExplictLibStart = types.Int64Value(value.Int())
 		} else {
 			data.Formats[i].UsidLocalIdBlockRangesExplictLibStart = types.Int64Null()
 		}
-		if value := r.Get("usid.wide-local-id-block-explicit-range"); value.Exists() && value.Type == gjson.Number && !data.Formats[i].UsidWideLocalIdBlockExplicitRange.IsNull() {
+		if value := r.Get("usid.wide-local-id-block-explicit-range"); value.Exists() && !data.Formats[i].UsidWideLocalIdBlockExplicitRange.IsNull() {
 			data.Formats[i].UsidWideLocalIdBlockExplicitRange = types.Int64Value(value.Int())
 		} else {
 			data.Formats[i].UsidWideLocalIdBlockExplicitRange = types.Int64Null()
@@ -364,7 +364,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 		} else {
 			data.Locators[i].Prefix = types.StringNull()
 		}
-		if value := r.Get("prefix.prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Locators[i].PrefixLength.IsNull() {
+		if value := r.Get("prefix.prefix-length"); value.Exists() && !data.Locators[i].PrefixLength.IsNull() {
 			data.Locators[i].PrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Locators[i].PrefixLength = types.Int64Null()
@@ -378,7 +378,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 		} else {
 			data.Locators[i].Anycast = types.BoolNull()
 		}
-		if value := r.Get("algorithm"); value.Exists() && value.Type == gjson.Number && !data.Locators[i].Algorithm.IsNull() {
+		if value := r.Get("algorithm"); value.Exists() && !data.Locators[i].Algorithm.IsNull() {
 			data.Locators[i].Algorithm = types.Int64Value(value.Int())
 		} else {
 			data.Locators[i].Algorithm = types.Int64Null()
@@ -389,7 +389,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.EncapsulationTrafficClassOption = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationTrafficClassValue.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() && !data.EncapsulationTrafficClassValue.IsNull() {
 		data.EncapsulationTrafficClassValue = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationTrafficClassValue = types.Int64Null()
@@ -399,7 +399,7 @@ func (data *SegmentRoutingV6) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.EncapsulationHopLimitOption = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationHopLimitValue.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() && !data.EncapsulationHopLimitValue.IsNull() {
 		data.EncapsulationHopLimitValue = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationHopLimitValue = types.Int64Null()
@@ -421,7 +421,7 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.Enable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() {
 		data.SidHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.locator-status"); value.Exists() {
@@ -441,13 +441,13 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.FormatEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("usid.local-id-block-ranges.lib-start"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.local-id-block-ranges.lib-start"); cValue.Exists() {
 				item.UsidLocalIdBlockRangesLibStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("usid.local-id-block-ranges.explict-lib-start"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.local-id-block-ranges.explict-lib-start"); cValue.Exists() {
 				item.UsidLocalIdBlockRangesExplictLibStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("usid.wide-local-id-block-explicit-range"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.wide-local-id-block-explicit-range"); cValue.Exists() {
 				item.UsidWideLocalIdBlockExplicitRange = types.Int64Value(cValue.Int())
 			}
 			data.Formats = append(data.Formats, item)
@@ -472,7 +472,7 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("prefix.prefix"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Prefix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("prefix.prefix-length"); cValue.Exists() {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("anycast"); cValue.Exists() {
@@ -480,7 +480,7 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.Anycast = types.BoolValue(false)
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("algorithm"); cValue.Exists() {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Locators = append(data.Locators, item)
@@ -490,13 +490,13 @@ func (data *SegmentRoutingV6) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "encapsulation.traffic-class.option"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationTrafficClassOption = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() {
 		data.EncapsulationTrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.hop-limit.option"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationHopLimitOption = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() {
 		data.EncapsulationHopLimitValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -514,7 +514,7 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.Enable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "sid-holdtime"); value.Exists() {
 		data.SidHoldtime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.locator-status"); value.Exists() {
@@ -534,13 +534,13 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, vers
 			} else {
 				item.FormatEnable = types.BoolValue(false)
 			}
-			if cValue := v.Get("usid.local-id-block-ranges.lib-start"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.local-id-block-ranges.lib-start"); cValue.Exists() {
 				item.UsidLocalIdBlockRangesLibStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("usid.local-id-block-ranges.explict-lib-start"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.local-id-block-ranges.explict-lib-start"); cValue.Exists() {
 				item.UsidLocalIdBlockRangesExplictLibStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("usid.wide-local-id-block-explicit-range"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("usid.wide-local-id-block-explicit-range"); cValue.Exists() {
 				item.UsidWideLocalIdBlockExplicitRange = types.Int64Value(cValue.Int())
 			}
 			data.Formats = append(data.Formats, item)
@@ -565,7 +565,7 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, vers
 			if cValue := v.Get("prefix.prefix"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Prefix = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("prefix.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("prefix.prefix-length"); cValue.Exists() {
 				item.PrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("anycast"); cValue.Exists() {
@@ -573,7 +573,7 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, vers
 			} else {
 				item.Anycast = types.BoolValue(false)
 			}
-			if cValue := v.Get("algorithm"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("algorithm"); cValue.Exists() {
 				item.Algorithm = types.Int64Value(cValue.Int())
 			}
 			data.Locators = append(data.Locators, item)
@@ -583,13 +583,13 @@ func (data *SegmentRoutingV6Data) fromBody(ctx context.Context, res []byte, vers
 	if value := gjson.GetBytes(res, "encapsulation.traffic-class.option"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationTrafficClassOption = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.traffic-class.value"); value.Exists() {
 		data.EncapsulationTrafficClassValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.hop-limit.option"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationHopLimitOption = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.hop-limit.value"); value.Exists() {
 		data.EncapsulationHopLimitValue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.source-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

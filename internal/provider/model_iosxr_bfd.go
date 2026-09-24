@@ -343,12 +343,12 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.EchoLatencyDetect = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() && value.Type == gjson.Number && !data.EchoLatencyDetectPercentage.IsNull() {
+	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() && !data.EchoLatencyDetectPercentage.IsNull() {
 		data.EchoLatencyDetectPercentage = types.Int64Value(value.Int())
 	} else {
 		data.EchoLatencyDetectPercentage = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() && value.Type == gjson.Number && !data.EchoLatencyDetectCount.IsNull() {
+	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() && !data.EchoLatencyDetectCount.IsNull() {
 		data.EchoLatencyDetectCount = types.Int64Value(value.Int())
 	} else {
 		data.EchoLatencyDetectCount = types.Int64Null()
@@ -367,7 +367,7 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.EchoIpv4Source = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && value.Type == gjson.Number && !data.EchoIpv4BundlePerMemberMinimumInterval.IsNull() {
+	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && !data.EchoIpv4BundlePerMemberMinimumInterval.IsNull() {
 		data.EchoIpv4BundlePerMemberMinimumInterval = types.Int64Value(value.Int())
 	} else {
 		data.EchoIpv4BundlePerMemberMinimumInterval = types.Int64Null()
@@ -444,27 +444,27 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 			data.MultipathDestinations[i].LocationId = types.StringNull()
 		}
 	}
-	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() && value.Type == gjson.Number && !data.MultihopTtlDropThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() && !data.MultihopTtlDropThreshold.IsNull() {
 		data.MultihopTtlDropThreshold = types.Int64Value(value.Int())
 	} else {
 		data.MultihopTtlDropThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningInitialWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() && !data.DampeningInitialWait.IsNull() {
 		data.DampeningInitialWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningInitialWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningSecondaryWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() && !data.DampeningSecondaryWait.IsNull() {
 		data.DampeningSecondaryWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningSecondaryWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningMaximumWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() && !data.DampeningMaximumWait.IsNull() {
 		data.DampeningMaximumWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningMaximumWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() && value.Type == gjson.Number && !data.DampeningThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() && !data.DampeningThreshold.IsNull() {
 		data.DampeningThreshold = types.Int64Value(value.Int())
 	} else {
 		data.DampeningThreshold = types.Int64Null()
@@ -496,17 +496,17 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.DampeningBundleMemberL3OnlyMode = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningBundleMemberInitialWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() && !data.DampeningBundleMemberInitialWait.IsNull() {
 		data.DampeningBundleMemberInitialWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningBundleMemberInitialWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningBundleMemberSecondaryWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() && !data.DampeningBundleMemberSecondaryWait.IsNull() {
 		data.DampeningBundleMemberSecondaryWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningBundleMemberSecondaryWait = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && value.Type == gjson.Number && !data.DampeningBundleMemberMaximumWait.IsNull() {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && !data.DampeningBundleMemberMaximumWait.IsNull() {
 		data.DampeningBundleMemberMaximumWait = types.Int64Value(value.Int())
 	} else {
 		data.DampeningBundleMemberMaximumWait = types.Int64Null()
@@ -586,17 +586,17 @@ func (data *BFD) updateFromBody(ctx context.Context, res []byte, version string)
 		} else {
 			data.Interfaces[i].LocalAddress = types.StringNull()
 		}
-		if value := r.Get("tx-interval"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].TxInterval.IsNull() {
+		if value := r.Get("tx-interval"); value.Exists() && !data.Interfaces[i].TxInterval.IsNull() {
 			data.Interfaces[i].TxInterval = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].TxInterval = types.Int64Null()
 		}
-		if value := r.Get("rx-interval"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].RxInterval.IsNull() {
+		if value := r.Get("rx-interval"); value.Exists() && !data.Interfaces[i].RxInterval.IsNull() {
 			data.Interfaces[i].RxInterval = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].RxInterval = types.Int64Null()
 		}
-		if value := r.Get("multiplier"); value.Exists() && value.Type == gjson.Number && !data.Interfaces[i].Multiplier.IsNull() {
+		if value := r.Get("multiplier"); value.Exists() && !data.Interfaces[i].Multiplier.IsNull() {
 			data.Interfaces[i].Multiplier = types.Int64Value(value.Int())
 		} else {
 			data.Interfaces[i].Multiplier = types.Int64Null()
@@ -619,10 +619,10 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EchoLatencyDetect = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() {
 		data.EchoLatencyDetectPercentage = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() {
 		data.EchoLatencyDetectCount = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "echo.startup.validate.force"); value.Exists() {
@@ -633,7 +633,7 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EchoIpv4Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() {
 		data.EchoIpv4BundlePerMemberMinimumInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "trap.singlehop.pre-mapped"); value.Exists() {
@@ -666,19 +666,19 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() {
 		data.MultihopTtlDropThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() {
 		data.DampeningInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() {
 		data.DampeningSecondaryWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() {
 		data.DampeningMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() {
 		data.DampeningThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dampening.extensions.down-monitoring"); value.Exists() {
@@ -696,13 +696,13 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.DampeningBundleMemberL3OnlyMode = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() {
 		data.DampeningBundleMemberInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() {
 		data.DampeningBundleMemberSecondaryWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() {
 		data.DampeningBundleMemberMaximumWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -739,13 +739,13 @@ func (data *BFD) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("local-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocalAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("tx-interval"); cValue.Exists() {
 				item.TxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("rx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("rx-interval"); cValue.Exists() {
 				item.RxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("multiplier"); cValue.Exists() {
 				item.Multiplier = types.Int64Value(cValue.Int())
 			}
 			data.Interfaces = append(data.Interfaces, item)
@@ -769,10 +769,10 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.EchoLatencyDetect = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.latency.detect.percentage"); value.Exists() {
 		data.EchoLatencyDetectPercentage = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.latency.detect.count"); value.Exists() {
 		data.EchoLatencyDetectCount = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "echo.startup.validate.force"); value.Exists() {
@@ -783,7 +783,7 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "echo.ipv4.source.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EchoIpv4Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "echo.ipv4.bundle-per-member.minimum-interval"); value.Exists() {
 		data.EchoIpv4BundlePerMemberMinimumInterval = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "trap.singlehop.pre-mapped"); value.Exists() {
@@ -816,19 +816,19 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "multihop.ttl-drop-threshold"); value.Exists() {
 		data.MultihopTtlDropThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.initial-wait"); value.Exists() {
 		data.DampeningInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.secondary-wait"); value.Exists() {
 		data.DampeningSecondaryWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.maximum-wait"); value.Exists() {
 		data.DampeningMaximumWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.threshold"); value.Exists() {
 		data.DampeningThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "dampening.extensions.down-monitoring"); value.Exists() {
@@ -846,13 +846,13 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.DampeningBundleMemberL3OnlyMode = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.initial-wait"); value.Exists() {
 		data.DampeningBundleMemberInitialWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.secondary-wait"); value.Exists() {
 		data.DampeningBundleMemberSecondaryWait = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "dampening.bundle-member.maximum-wait"); value.Exists() {
 		data.DampeningBundleMemberMaximumWait = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bundle.coexistence.bob-blb"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -889,13 +889,13 @@ func (data *BFDData) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("local-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.LocalAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("tx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("tx-interval"); cValue.Exists() {
 				item.TxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("rx-interval"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("rx-interval"); cValue.Exists() {
 				item.RxInterval = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("multiplier"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("multiplier"); cValue.Exists() {
 				item.Multiplier = types.Int64Value(cValue.Int())
 			}
 			data.Interfaces = append(data.Interfaces, item)

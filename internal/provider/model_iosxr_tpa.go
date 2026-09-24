@@ -259,7 +259,7 @@ func (data TPA) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() && value.Type == gjson.Number && !data.StatisticsUpdateFrequency.IsNull() {
+	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() && !data.StatisticsUpdateFrequency.IsNull() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	} else {
 		data.StatisticsUpdateFrequency = types.Int64Null()
@@ -273,22 +273,22 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.StatisticsDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMaxLptsEvents.IsNull() {
+	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() && !data.StatisticsMaxLptsEvents.IsNull() {
 		data.StatisticsMaxLptsEvents = types.Int64Value(value.Int())
 	} else {
 		data.StatisticsMaxLptsEvents = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() && value.Type == gjson.Number && !data.StatisticsMaxIntfEvents.IsNull() {
+	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() && !data.StatisticsMaxIntfEvents.IsNull() {
 		data.StatisticsMaxIntfEvents = types.Int64Value(value.Int())
 	} else {
 		data.StatisticsMaxIntfEvents = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() && value.Type == gjson.Number && !data.LoggingFileMaxSizeKb.IsNull() {
+	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() && !data.LoggingFileMaxSizeKb.IsNull() {
 		data.LoggingFileMaxSizeKb = types.Int64Value(value.Int())
 	} else {
 		data.LoggingFileMaxSizeKb = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() && value.Type == gjson.Number && !data.LoggingRotationMaxFiles.IsNull() {
+	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() && !data.LoggingRotationMaxFiles.IsNull() {
 		data.LoggingRotationMaxFiles = types.Int64Value(value.Int())
 	} else {
 		data.LoggingRotationMaxFiles = types.Int64Null()
@@ -482,7 +482,7 @@ func (data *TPA) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "statistics.disable"); value.Exists() {
@@ -490,16 +490,16 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.StatisticsDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() {
 		data.StatisticsMaxLptsEvents = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() {
 		data.StatisticsMaxIntfEvents = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() {
 		data.LoggingFileMaxSizeKb = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() {
 		data.LoggingRotationMaxFiles = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {
@@ -591,7 +591,7 @@ func (data *TPA) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.update-frequency"); value.Exists() {
 		data.StatisticsUpdateFrequency = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "statistics.disable"); value.Exists() {
@@ -599,16 +599,16 @@ func (data *TPAData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.StatisticsDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.max-lpts-events"); value.Exists() {
 		data.StatisticsMaxLptsEvents = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "statistics.max-intf-events"); value.Exists() {
 		data.StatisticsMaxIntfEvents = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.kim.file-max-size-kb"); value.Exists() {
 		data.LoggingFileMaxSizeKb = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "logging.kim.rotation-max"); value.Exists() {
 		data.LoggingRotationMaxFiles = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "vrfs.vrf"); value.Exists() {

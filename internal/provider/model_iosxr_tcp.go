@@ -226,12 +226,12 @@ func (data TCP) GetPatternConstraints() []helpers.FieldPatternConstraint {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number && !data.WindowSize.IsNull() {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() && !data.WindowSize.IsNull() {
 		data.WindowSize = types.Int64Value(value.Int())
 	} else {
 		data.WindowSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() && value.Type == gjson.Number && !data.SynwaitTime.IsNull() {
+	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() && !data.SynwaitTime.IsNull() {
 		data.SynwaitTime = types.Int64Value(value.Int())
 	} else {
 		data.SynwaitTime = types.Int64Null()
@@ -250,7 +250,7 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.PathMtuDiscoveryAgeTimer = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && value.Type == gjson.Number && !data.ReceiveQueue.IsNull() {
+	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && !data.ReceiveQueue.IsNull() {
 		data.ReceiveQueue = types.Int64Value(value.Int())
 	} else {
 		data.ReceiveQueue = types.Int64Null()
@@ -264,12 +264,12 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.Timestamp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "throttle"); value.Exists() && value.Type == gjson.Number && !data.Throttle.IsNull() {
+	if value := gjson.GetBytes(res, "throttle"); value.Exists() && !data.Throttle.IsNull() {
 		data.Throttle = types.Int64Value(value.Int())
 	} else {
 		data.Throttle = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() && value.Type == gjson.Number && !data.ThrottleHighWaterMark.IsNull() {
+	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() && !data.ThrottleHighWaterMark.IsNull() {
 		data.ThrottleHighWaterMark = types.Int64Value(value.Int())
 	} else {
 		data.ThrottleHighWaterMark = types.Int64Null()
@@ -283,12 +283,12 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 	} else {
 		data.SelectiveAck = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "mss"); value.Exists() && value.Type == gjson.Number && !data.Mss.IsNull() {
+	if value := gjson.GetBytes(res, "mss"); value.Exists() && !data.Mss.IsNull() {
 		data.Mss = types.Int64Value(value.Int())
 	} else {
 		data.Mss = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() && value.Type == gjson.Number && !data.AcceptRate.IsNull() {
+	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() && !data.AcceptRate.IsNull() {
 		data.AcceptRate = types.Int64Value(value.Int())
 	} else {
 		data.AcceptRate = types.Int64Null()
@@ -358,12 +358,12 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 			} else {
 				data.AoKeychains[i].Keys[ci].KeyName = types.StringNull()
 			}
-			if value := cr.Get("send-id"); value.Exists() && value.Type == gjson.Number && !data.AoKeychains[i].Keys[ci].SendId.IsNull() {
+			if value := cr.Get("send-id"); value.Exists() && !data.AoKeychains[i].Keys[ci].SendId.IsNull() {
 				data.AoKeychains[i].Keys[ci].SendId = types.Int64Value(value.Int())
 			} else {
 				data.AoKeychains[i].Keys[ci].SendId = types.Int64Null()
 			}
-			if value := cr.Get("receive-id"); value.Exists() && value.Type == gjson.Number && !data.AoKeychains[i].Keys[ci].ReceiveId.IsNull() {
+			if value := cr.Get("receive-id"); value.Exists() && !data.AoKeychains[i].Keys[ci].ReceiveId.IsNull() {
 				data.AoKeychains[i].Keys[ci].ReceiveId = types.Int64Value(value.Int())
 			} else {
 				data.AoKeychains[i].Keys[ci].ReceiveId = types.Int64Null()
@@ -377,10 +377,10 @@ func (data *TCP) updateFromBody(ctx context.Context, res []byte, version string)
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() {
 		data.SynwaitTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "path-mtu-discovery"); value.Exists() {
@@ -391,7 +391,7 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PathMtuDiscoveryAgeTimer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() {
 		data.ReceiveQueue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timestamp"); value.Exists() {
@@ -399,10 +399,10 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Timestamp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "throttle"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle"); value.Exists() {
 		data.Throttle = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() {
 		data.ThrottleHighWaterMark = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "selective-ack"); value.Exists() {
@@ -410,10 +410,10 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SelectiveAck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mss"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mss"); value.Exists() {
 		data.Mss = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() {
 		data.AcceptRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ao"); value.Exists() {
@@ -435,10 +435,10 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("key-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.KeyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("send-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("send-id"); ccValue.Exists() {
 						cItem.SendId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("receive-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("receive-id"); ccValue.Exists() {
 						cItem.ReceiveId = types.Int64Value(ccValue.Int())
 					}
 					item.Keys = append(item.Keys, cItem)
@@ -456,10 +456,10 @@ func (data *TCP) fromBody(ctx context.Context, res []byte, version string) {
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "window-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "window-size"); value.Exists() {
 		data.WindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "synwait-time"); value.Exists() {
 		data.SynwaitTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "path-mtu-discovery"); value.Exists() {
@@ -470,7 +470,7 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "path-mtu-discovery.age-timer"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.PathMtuDiscoveryAgeTimer = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "receive-queue"); value.Exists() {
 		data.ReceiveQueue = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "timestamp"); value.Exists() {
@@ -478,10 +478,10 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.Timestamp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "throttle"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "throttle"); value.Exists() {
 		data.Throttle = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "high-water-mark-throttling"); value.Exists() {
 		data.ThrottleHighWaterMark = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "selective-ack"); value.Exists() {
@@ -489,10 +489,10 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SelectiveAck = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "mss"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "mss"); value.Exists() {
 		data.Mss = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "accept-rate"); value.Exists() {
 		data.AcceptRate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ao"); value.Exists() {
@@ -514,10 +514,10 @@ func (data *TCPData) fromBody(ctx context.Context, res []byte, version string) {
 					if ccValue := cv.Get("key-name"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.KeyName = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("send-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("send-id"); ccValue.Exists() {
 						cItem.SendId = types.Int64Value(ccValue.Int())
 					}
-					if ccValue := cv.Get("receive-id"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("receive-id"); ccValue.Exists() {
 						cItem.ReceiveId = types.Int64Value(ccValue.Int())
 					}
 					item.Keys = append(item.Keys, cItem)

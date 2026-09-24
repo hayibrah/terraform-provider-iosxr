@@ -150,22 +150,22 @@ func (data SegmentRouting) GetPatternConstraints() []helpers.FieldPatternConstra
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *SegmentRouting) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.LocalBlockLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() && !data.LocalBlockLowerBound.IsNull() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.LocalBlockLowerBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.LocalBlockUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() && !data.LocalBlockUpperBound.IsNull() {
 		data.LocalBlockUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.LocalBlockUpperBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() && value.Type == gjson.Number && !data.GlobalBlockLowerBound.IsNull() {
+	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() && !data.GlobalBlockLowerBound.IsNull() {
 		data.GlobalBlockLowerBound = types.Int64Value(value.Int())
 	} else {
 		data.GlobalBlockLowerBound = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() && value.Type == gjson.Number && !data.GlobalBlockUpperBound.IsNull() {
+	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() && !data.GlobalBlockUpperBound.IsNull() {
 		data.GlobalBlockUpperBound = types.Int64Value(value.Int())
 	} else {
 		data.GlobalBlockUpperBound = types.Int64Null()
@@ -186,16 +186,16 @@ func (data *SegmentRouting) updateFromBody(ctx context.Context, res []byte, vers
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *SegmentRouting) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() {
 		data.LocalBlockUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() {
 		data.GlobalBlockLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() {
 		data.GlobalBlockUpperBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {
@@ -210,16 +210,16 @@ func (data *SegmentRouting) fromBody(ctx context.Context, res []byte, version st
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *SegmentRoutingData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-block.lower-bound"); value.Exists() {
 		data.LocalBlockLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "local-block.upper-bound"); value.Exists() {
 		data.LocalBlockUpperBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "global-block.lower-bound"); value.Exists() {
 		data.GlobalBlockLowerBound = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "global-block.upper-bound"); value.Exists() {
 		data.GlobalBlockUpperBound = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "enable"); value.Exists() {

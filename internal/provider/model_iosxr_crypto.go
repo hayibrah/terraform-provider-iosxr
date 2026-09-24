@@ -554,12 +554,12 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.CaTrustpointSystemDescription = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpointSystemEnrollmentRetryCount.IsNull() {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() && !data.CaTrustpointSystemEnrollmentRetryCount.IsNull() {
 		data.CaTrustpointSystemEnrollmentRetryCount = types.Int64Value(value.Int())
 	} else {
 		data.CaTrustpointSystemEnrollmentRetryCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpointSystemEnrollmentRetryPeriod.IsNull() {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() && !data.CaTrustpointSystemEnrollmentRetryPeriod.IsNull() {
 		data.CaTrustpointSystemEnrollmentRetryPeriod = types.Int64Value(value.Int())
 	} else {
 		data.CaTrustpointSystemEnrollmentRetryPeriod = types.Int64Null()
@@ -597,7 +597,7 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.CaTrustpointSystemSftpPassword = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpointSystemAutoEnroll.IsNull() {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() && !data.CaTrustpointSystemAutoEnroll.IsNull() {
 		data.CaTrustpointSystemAutoEnroll = types.Int64Value(value.Int())
 	} else {
 		data.CaTrustpointSystemAutoEnroll = types.Int64Null()
@@ -760,12 +760,12 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.CaTrustpointSystemVrf = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpointSystemLifetimeCaCertificate.IsNull() {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() && !data.CaTrustpointSystemLifetimeCaCertificate.IsNull() {
 		data.CaTrustpointSystemLifetimeCaCertificate = types.Int64Value(value.Int())
 	} else {
 		data.CaTrustpointSystemLifetimeCaCertificate = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpointSystemLifetimeCertificate.IsNull() {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() && !data.CaTrustpointSystemLifetimeCertificate.IsNull() {
 		data.CaTrustpointSystemLifetimeCertificate = types.Int64Value(value.Int())
 	} else {
 		data.CaTrustpointSystemLifetimeCertificate = types.Int64Null()
@@ -808,12 +808,12 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.CaTrustpoints[i].Description = types.StringNull()
 		}
-		if value := r.Get("enrollment.retry.count"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpoints[i].EnrollmentRetryCount.IsNull() {
+		if value := r.Get("enrollment.retry.count"); value.Exists() && !data.CaTrustpoints[i].EnrollmentRetryCount.IsNull() {
 			data.CaTrustpoints[i].EnrollmentRetryCount = types.Int64Value(value.Int())
 		} else {
 			data.CaTrustpoints[i].EnrollmentRetryCount = types.Int64Null()
 		}
-		if value := r.Get("enrollment.retry.period"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpoints[i].EnrollmentRetryPeriod.IsNull() {
+		if value := r.Get("enrollment.retry.period"); value.Exists() && !data.CaTrustpoints[i].EnrollmentRetryPeriod.IsNull() {
 			data.CaTrustpoints[i].EnrollmentRetryPeriod = types.Int64Value(value.Int())
 		} else {
 			data.CaTrustpoints[i].EnrollmentRetryPeriod = types.Int64Null()
@@ -842,7 +842,7 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 		} else {
 			data.CaTrustpoints[i].SftpPassword = types.StringNull()
 		}
-		if value := r.Get("auto-enroll"); value.Exists() && value.Type == gjson.Number && !data.CaTrustpoints[i].AutoEnroll.IsNull() {
+		if value := r.Get("auto-enroll"); value.Exists() && !data.CaTrustpoints[i].AutoEnroll.IsNull() {
 			data.CaTrustpoints[i].AutoEnroll = types.Int64Value(value.Int())
 		} else {
 			data.CaTrustpoints[i].AutoEnroll = types.Int64Null()
@@ -1005,7 +1005,7 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.CaHttpProxy = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "ca.port"); value.Exists() && value.Type == gjson.Number && !data.CaHttpProxyPort.IsNull() {
+	if value := gjson.GetBytes(res, "ca.port"); value.Exists() && !data.CaHttpProxyPort.IsNull() {
 		data.CaHttpProxyPort = types.Int64Value(value.Int())
 	} else {
 		data.CaHttpProxyPort = types.Int64Null()
@@ -1038,7 +1038,7 @@ func (data *Crypto) updateFromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.CaFqdnCheckIpAddressAllow = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() && value.Type == gjson.Number && !data.CaCrlCurlTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() && !data.CaCrlCurlTimeout.IsNull() {
 		data.CaCrlCurlTimeout = types.Int64Value(value.Int())
 	} else {
 		data.CaCrlCurlTimeout = types.Int64Null()
@@ -1062,10 +1062,10 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() {
 		data.CaTrustpointSystemEnrollmentRetryCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() {
 		data.CaTrustpointSystemEnrollmentRetryPeriod = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.url"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1087,7 +1087,7 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.sftp-password.password"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemSftpPassword = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() {
 		data.CaTrustpointSystemAutoEnroll = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.renewal-message-type.pkcsreq"); value.Exists() {
@@ -1182,10 +1182,10 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() {
 		data.CaTrustpointSystemLifetimeCaCertificate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() {
 		data.CaTrustpointSystemLifetimeCertificate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.message-digest"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1201,10 +1201,10 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("enrollment.retry.count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("enrollment.retry.count"); cValue.Exists() {
 				item.EnrollmentRetryCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("enrollment.retry.period"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("enrollment.retry.period"); cValue.Exists() {
 				item.EnrollmentRetryPeriod = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("enrollment.url"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1221,7 +1221,7 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("sftp-password.password"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SftpPassword = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("auto-enroll"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("auto-enroll"); cValue.Exists() {
 				item.AutoEnroll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("renewal-message-type.pkcsreq"); cValue.Exists() {
@@ -1325,7 +1325,7 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "ca.http-proxy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaHttpProxy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.port"); value.Exists() {
 		data.CaHttpProxyPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.source-interface.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1344,7 +1344,7 @@ func (data *Crypto) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.CaFqdnCheckIpAddressAllow = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() {
 		data.CaCrlCurlTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fips-mode"); value.Exists() {
@@ -1362,10 +1362,10 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemDescription = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.count"); value.Exists() {
 		data.CaTrustpointSystemEnrollmentRetryCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.retry.period"); value.Exists() {
 		data.CaTrustpointSystemEnrollmentRetryPeriod = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.enrollment.url"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1387,7 +1387,7 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.sftp-password.password"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemSftpPassword = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.auto-enroll"); value.Exists() {
 		data.CaTrustpointSystemAutoEnroll = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.renewal-message-type.pkcsreq"); value.Exists() {
@@ -1482,10 +1482,10 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.vrf"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaTrustpointSystemVrf = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.ca-certificate"); value.Exists() {
 		data.CaTrustpointSystemLifetimeCaCertificate = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.lifetime.certificate"); value.Exists() {
 		data.CaTrustpointSystemLifetimeCertificate = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.trustpoint.system-trustpoint.message-digest"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1501,10 +1501,10 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("description"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Description = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("enrollment.retry.count"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("enrollment.retry.count"); cValue.Exists() {
 				item.EnrollmentRetryCount = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("enrollment.retry.period"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("enrollment.retry.period"); cValue.Exists() {
 				item.EnrollmentRetryPeriod = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("enrollment.url"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1521,7 +1521,7 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("sftp-password.password"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.SftpPassword = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("auto-enroll"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("auto-enroll"); cValue.Exists() {
 				item.AutoEnroll = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("renewal-message-type.pkcsreq"); cValue.Exists() {
@@ -1625,7 +1625,7 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 	if value := gjson.GetBytes(res, "ca.http-proxy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.CaHttpProxy = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "ca.port"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.port"); value.Exists() {
 		data.CaHttpProxyPort = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ca.source-interface.ipv4"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1644,7 +1644,7 @@ func (data *CryptoData) fromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.CaFqdnCheckIpAddressAllow = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ca.crl.curl-timeout"); value.Exists() {
 		data.CaCrlCurlTimeout = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "fips-mode"); value.Exists() {

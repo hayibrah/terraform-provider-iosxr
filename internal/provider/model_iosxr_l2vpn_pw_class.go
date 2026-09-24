@@ -429,7 +429,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsSequencingTransmit = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsSequencingTransmitResync.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() && !data.EncapsulationMplsSequencingTransmitResync.IsNull() {
 		data.EncapsulationMplsSequencingTransmitResync = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsSequencingTransmitResync = types.Int64Null()
@@ -443,7 +443,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsSequencingReceive = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsSequencingReceiveResync.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() && !data.EncapsulationMplsSequencingReceiveResync.IsNull() {
 		data.EncapsulationMplsSequencingReceiveResync = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsSequencingReceiveResync = types.Int64Null()
@@ -457,12 +457,12 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsSequencingBoth = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsSequencingBothResync.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() && !data.EncapsulationMplsSequencingBothResync.IsNull() {
 		data.EncapsulationMplsSequencingBothResync = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsSequencingBothResync = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && !data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber.IsNull() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Null()
@@ -472,12 +472,12 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsPreferredPathInterfaceTunnelIp.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && !data.EncapsulationMplsPreferredPathInterfaceTunnelIp.IsNull() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelIp = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelIp = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsPreferredPathInterfaceTunnelTp.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && !data.EncapsulationMplsPreferredPathInterfaceTunnelTp.IsNull() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Null()
@@ -505,7 +505,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsSwitchingTlvHide = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsTagRewriteIngressVlan.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() && !data.EncapsulationMplsTagRewriteIngressVlan.IsNull() {
 		data.EncapsulationMplsTagRewriteIngressVlan = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsTagRewriteIngressVlan = types.Int64Null()
@@ -519,7 +519,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsRedundancyOneWay = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() && value.Type == gjson.Number && !data.EncapsulationMplsRedundancyInitialDelay.IsNull() {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() && !data.EncapsulationMplsRedundancyInitialDelay.IsNull() {
 		data.EncapsulationMplsRedundancyInitialDelay = types.Int64Value(value.Int())
 	} else {
 		data.EncapsulationMplsRedundancyInitialDelay = types.Int64Null()
@@ -610,7 +610,7 @@ func (data *L2VPNPWClass) updateFromBody(ctx context.Context, res []byte, versio
 	} else {
 		data.EncapsulationMplsIpv4Source = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && value.Type == gjson.Number && !data.BackupDisableDelay.IsNull() {
+	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && !data.BackupDisableDelay.IsNull() {
 		data.BackupDisableDelay = types.Int64Value(value.Int())
 	} else {
 		data.BackupDisableDelay = types.Int64Null()
@@ -680,7 +680,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsSequencingTransmit = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingTransmitResync = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive"); value.Exists() {
@@ -688,7 +688,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsSequencingReceive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingReceiveResync = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both"); value.Exists() {
@@ -696,19 +696,19 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsSequencingBoth = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingBothResync = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelIp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -724,7 +724,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsSwitchingTlvHide = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() {
 		data.EncapsulationMplsTagRewriteIngressVlan = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.one-way"); value.Exists() {
@@ -732,7 +732,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	} else {
 		data.EncapsulationMplsRedundancyOneWay = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() {
 		data.EncapsulationMplsRedundancyInitialDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.load-balancing.pw-label"); value.Exists() {
@@ -783,7 +783,7 @@ func (data *L2VPNPWClass) fromBody(ctx context.Context, res []byte, version stri
 	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsIpv4Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() {
 		data.BackupDisableDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "backup.disable.never"); value.Exists() {
@@ -843,7 +843,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsSequencingTransmit = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.transmit.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingTransmitResync = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive"); value.Exists() {
@@ -851,7 +851,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsSequencingReceive = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.receive.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingReceiveResync = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both"); value.Exists() {
@@ -859,19 +859,19 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsSequencingBoth = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.sequencing.both.resync"); value.Exists() {
 		data.EncapsulationMplsSequencingBothResync = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-number"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelNumber = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-te.tunnel-name"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTeTunnelName = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-ip"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelIp = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.interface.tunnel-tp"); value.Exists() {
 		data.EncapsulationMplsPreferredPathInterfaceTunnelTp = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.preferred-path.sr-te.policy"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -887,7 +887,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsSwitchingTlvHide = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.tag-rewrite.ingress.vlan"); value.Exists() {
 		data.EncapsulationMplsTagRewriteIngressVlan = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.one-way"); value.Exists() {
@@ -895,7 +895,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.EncapsulationMplsRedundancyOneWay = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "encapsulation.mpls.redundancy.initial-delay"); value.Exists() {
 		data.EncapsulationMplsRedundancyInitialDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "encapsulation.mpls.load-balancing.pw-label"); value.Exists() {
@@ -946,7 +946,7 @@ func (data *L2VPNPWClassData) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "encapsulation.mpls.ipv4.source"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationMplsIpv4Source = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "backup.disable.delay"); value.Exists() {
 		data.BackupDisableDelay = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "backup.disable.never"); value.Exists() {

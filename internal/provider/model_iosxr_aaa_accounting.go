@@ -622,7 +622,7 @@ func (data *AAAAccounting) updateFromBody(ctx context.Context, res []byte, versi
 	} else {
 		data.UpdateNewinfo = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() && value.Type == gjson.Number && !data.UpdatePeriodic.IsNull() {
+	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() && !data.UpdatePeriodic.IsNull() {
 		data.UpdatePeriodic = types.Int64Value(value.Int())
 	} else {
 		data.UpdatePeriodic = types.Int64Null()
@@ -1375,7 +1375,7 @@ func (data *AAAAccounting) fromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.UpdateNewinfo = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() {
 		data.UpdatePeriodic = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "exec.accounting-list"); value.Exists() {
@@ -1782,7 +1782,7 @@ func (data *AAAAccountingData) fromBody(ctx context.Context, res []byte, version
 	} else {
 		data.UpdateNewinfo = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "update.periodic"); value.Exists() {
 		data.UpdatePeriodic = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "exec.accounting-list"); value.Exists() {

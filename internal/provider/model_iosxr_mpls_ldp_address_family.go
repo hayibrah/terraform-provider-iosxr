@@ -495,7 +495,7 @@ func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte
 				return true
 			},
 		)
-		if value := r.Get("group-id"); value.Exists() && value.Type == gjson.Number && !data.TrafficEngAutoTunnelMeshGroups[i].GroupId.IsNull() {
+		if value := r.Get("group-id"); value.Exists() && !data.TrafficEngAutoTunnelMeshGroups[i].GroupId.IsNull() {
 			data.TrafficEngAutoTunnelMeshGroups[i].GroupId = types.Int64Value(value.Int())
 		} else {
 			data.TrafficEngAutoTunnelMeshGroups[i].GroupId = types.Int64Null()
@@ -600,7 +600,7 @@ func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte
 		} else {
 			data.LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
 			data.LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -711,7 +711,7 @@ func (data *MPLSLDPAddressFamily) updateFromBody(ctx context.Context, res []byte
 		} else {
 			data.LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
 			data.LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -785,7 +785,7 @@ func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte, vers
 		data.TrafficEngAutoTunnelMeshGroups = make([]MPLSLDPAddressFamilyTrafficEngAutoTunnelMeshGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPAddressFamilyTrafficEngAutoTunnelMeshGroups{}
-			if cValue := v.Get("group-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("group-id"); cValue.Exists() {
 				item.GroupId = types.Int64Value(cValue.Int())
 			}
 			data.TrafficEngAutoTunnelMeshGroups = append(data.TrafficEngAutoTunnelMeshGroups, item)
@@ -840,7 +840,7 @@ func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte, vers
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -887,7 +887,7 @@ func (data *MPLSLDPAddressFamily) fromBody(ctx context.Context, res []byte, vers
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -960,7 +960,7 @@ func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte, 
 		data.TrafficEngAutoTunnelMeshGroups = make([]MPLSLDPAddressFamilyTrafficEngAutoTunnelMeshGroups, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := MPLSLDPAddressFamilyTrafficEngAutoTunnelMeshGroups{}
-			if cValue := v.Get("group-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("group-id"); cValue.Exists() {
 				item.GroupId = types.Int64Value(cValue.Int())
 			}
 			data.TrafficEngAutoTunnelMeshGroups = append(data.TrafficEngAutoTunnelMeshGroups, item)
@@ -1015,7 +1015,7 @@ func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte, 
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1062,7 +1062,7 @@ func (data *MPLSLDPAddressFamilyData) fromBody(ctx context.Context, res []byte, 
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {

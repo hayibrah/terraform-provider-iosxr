@@ -225,7 +225,7 @@ func (data *TACACSServer) updateFromBody(ctx context.Context, res []byte, versio
 				return true
 			},
 		)
-		if value := r.Get("ordering-index"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].OrderingIndex.IsNull() {
+		if value := r.Get("ordering-index"); value.Exists() && !data.Hosts[i].OrderingIndex.IsNull() {
 			data.Hosts[i].OrderingIndex = types.Int64Value(value.Int())
 		} else {
 			data.Hosts[i].OrderingIndex = types.Int64Null()
@@ -235,17 +235,17 @@ func (data *TACACSServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].Address = types.StringNull()
 		}
-		if value := r.Get("port"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].Port.IsNull() {
+		if value := r.Get("port"); value.Exists() && !data.Hosts[i].Port.IsNull() {
 			data.Hosts[i].Port = types.Int64Value(value.Int())
 		} else {
 			data.Hosts[i].Port = types.Int64Null()
 		}
-		if value := r.Get("timeout"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].Timeout.IsNull() {
+		if value := r.Get("timeout"); value.Exists() && !data.Hosts[i].Timeout.IsNull() {
 			data.Hosts[i].Timeout = types.Int64Value(value.Int())
 		} else {
 			data.Hosts[i].Timeout = types.Int64Null()
 		}
-		if value := r.Get("holddown-time"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].HolddownTime.IsNull() {
+		if value := r.Get("holddown-time"); value.Exists() && !data.Hosts[i].HolddownTime.IsNull() {
 			data.Hosts[i].HolddownTime = types.Int64Value(value.Int())
 		} else {
 			data.Hosts[i].HolddownTime = types.Int64Null()
@@ -259,18 +259,18 @@ func (data *TACACSServer) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.Hosts[i].SingleConnection = types.BoolNull()
 		}
-		if value := r.Get("single-connection-idle-timeout"); value.Exists() && value.Type == gjson.Number && !data.Hosts[i].SingleConnectionIdleTimeout.IsNull() {
+		if value := r.Get("single-connection-idle-timeout"); value.Exists() && !data.Hosts[i].SingleConnectionIdleTimeout.IsNull() {
 			data.Hosts[i].SingleConnectionIdleTimeout = types.Int64Value(value.Int())
 		} else {
 			data.Hosts[i].SingleConnectionIdleTimeout = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number && !data.Timeout.IsNull() {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() && !data.Timeout.IsNull() {
 		data.Timeout = types.Int64Value(value.Int())
 	} else {
 		data.Timeout = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && value.Type == gjson.Number && !data.HolddownTime.IsNull() {
+	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && !data.HolddownTime.IsNull() {
 		data.HolddownTime = types.Int64Value(value.Int())
 	} else {
 		data.HolddownTime = types.Int64Null()
@@ -296,19 +296,19 @@ func (data *TACACSServer) fromBody(ctx context.Context, res []byte, version stri
 		data.Hosts = make([]TACACSServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TACACSServerHosts{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ordering-index"); cValue.Exists() {
 				item.OrderingIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("port"); cValue.Exists() {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("timeout"); cValue.Exists() {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("holddown-time"); cValue.Exists() {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("single-connection"); cValue.Exists() {
@@ -316,17 +316,17 @@ func (data *TACACSServer) fromBody(ctx context.Context, res []byte, version stri
 			} else {
 				item.SingleConnection = types.BoolValue(false)
 			}
-			if cValue := v.Get("single-connection-idle-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("single-connection-idle-timeout"); cValue.Exists() {
 				item.SingleConnectionIdleTimeout = types.Int64Value(cValue.Int())
 			}
 			data.Hosts = append(data.Hosts, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() {
 		data.Timeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() {
 		data.HolddownTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -346,19 +346,19 @@ func (data *TACACSServerData) fromBody(ctx context.Context, res []byte, version 
 		data.Hosts = make([]TACACSServerHosts, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := TACACSServerHosts{}
-			if cValue := v.Get("ordering-index"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("ordering-index"); cValue.Exists() {
 				item.OrderingIndex = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("port"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("port"); cValue.Exists() {
 				item.Port = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("timeout"); cValue.Exists() {
 				item.Timeout = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("holddown-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("holddown-time"); cValue.Exists() {
 				item.HolddownTime = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("single-connection"); cValue.Exists() {
@@ -366,17 +366,17 @@ func (data *TACACSServerData) fromBody(ctx context.Context, res []byte, version 
 			} else {
 				item.SingleConnection = types.BoolValue(false)
 			}
-			if cValue := v.Get("single-connection-idle-timeout"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("single-connection-idle-timeout"); cValue.Exists() {
 				item.SingleConnectionIdleTimeout = types.Int64Value(cValue.Int())
 			}
 			data.Hosts = append(data.Hosts, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "timeout"); value.Exists() {
 		data.Timeout = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "holddown-time"); value.Exists() {
 		data.HolddownTime = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ipv4.dscp"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {

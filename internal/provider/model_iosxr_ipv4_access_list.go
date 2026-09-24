@@ -881,7 +881,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 				return true
 			},
 		)
-		if value := r.Get("sequence-number"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].SequenceNumber.IsNull() {
+		if value := r.Get("sequence-number"); value.Exists() && !data.Sequences[i].SequenceNumber.IsNull() {
 			data.Sequences[i].SequenceNumber = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].SequenceNumber = types.Int64Null()
@@ -931,7 +931,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitSourceWildcardMask = types.StringNull()
 		}
-		if value := r.Get("permit.source.prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitSourcePrefixLength.IsNull() {
+		if value := r.Get("permit.source.prefix-length"); value.Exists() && !data.Sequences[i].PermitSourcePrefixLength.IsNull() {
 			data.Sequences[i].PermitSourcePrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitSourcePrefixLength = types.Int64Null()
@@ -1000,7 +1000,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitDestinationWildcardMask = types.StringNull()
 		}
-		if value := r.Get("permit.destination.prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitDestinationPrefixLength.IsNull() {
+		if value := r.Get("permit.destination.prefix-length"); value.Exists() && !data.Sequences[i].PermitDestinationPrefixLength.IsNull() {
 			data.Sequences[i].PermitDestinationPrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitDestinationPrefixLength = types.Int64Null()
@@ -1064,12 +1064,12 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitIcmpMessageTypeName = types.StringNull()
 		}
-		if value := r.Get("permit.icmp.message-type"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitIcmpMessageType.IsNull() {
+		if value := r.Get("permit.icmp.message-type"); value.Exists() && !data.Sequences[i].PermitIcmpMessageType.IsNull() {
 			data.Sequences[i].PermitIcmpMessageType = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitIcmpMessageType = types.Int64Null()
 		}
-		if value := r.Get("permit.icmp.message-code"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitIcmpMessageCode.IsNull() {
+		if value := r.Get("permit.icmp.message-code"); value.Exists() && !data.Sequences[i].PermitIcmpMessageCode.IsNull() {
 			data.Sequences[i].PermitIcmpMessageCode = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitIcmpMessageCode = types.Int64Null()
@@ -1119,92 +1119,92 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitDscpRangeEnd = types.StringNull()
 		}
-		if value := r.Get("permit.packet-length.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthEq.IsNull() {
+		if value := r.Get("permit.packet-length.eq"); value.Exists() && !data.Sequences[i].PermitPacketLengthEq.IsNull() {
 			data.Sequences[i].PermitPacketLengthEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthEq = types.Int64Null()
 		}
-		if value := r.Get("permit.packet-length.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthGt.IsNull() {
+		if value := r.Get("permit.packet-length.gt"); value.Exists() && !data.Sequences[i].PermitPacketLengthGt.IsNull() {
 			data.Sequences[i].PermitPacketLengthGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthGt = types.Int64Null()
 		}
-		if value := r.Get("permit.packet-length.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthLt.IsNull() {
+		if value := r.Get("permit.packet-length.lt"); value.Exists() && !data.Sequences[i].PermitPacketLengthLt.IsNull() {
 			data.Sequences[i].PermitPacketLengthLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthLt = types.Int64Null()
 		}
-		if value := r.Get("permit.packet-length.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthNeq.IsNull() {
+		if value := r.Get("permit.packet-length.neq"); value.Exists() && !data.Sequences[i].PermitPacketLengthNeq.IsNull() {
 			data.Sequences[i].PermitPacketLengthNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthNeq = types.Int64Null()
 		}
-		if value := r.Get("permit.packet-length.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthRangeStart.IsNull() {
+		if value := r.Get("permit.packet-length.range.start-value"); value.Exists() && !data.Sequences[i].PermitPacketLengthRangeStart.IsNull() {
 			data.Sequences[i].PermitPacketLengthRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthRangeStart = types.Int64Null()
 		}
-		if value := r.Get("permit.packet-length.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPacketLengthRangeEnd.IsNull() {
+		if value := r.Get("permit.packet-length.range.end-value"); value.Exists() && !data.Sequences[i].PermitPacketLengthRangeEnd.IsNull() {
 			data.Sequences[i].PermitPacketLengthRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPacketLengthRangeEnd = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlEq.IsNull() {
+		if value := r.Get("permit.ttl.eq"); value.Exists() && !data.Sequences[i].PermitTtlEq.IsNull() {
 			data.Sequences[i].PermitTtlEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlEq = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlGt.IsNull() {
+		if value := r.Get("permit.ttl.gt"); value.Exists() && !data.Sequences[i].PermitTtlGt.IsNull() {
 			data.Sequences[i].PermitTtlGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlGt = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlLt.IsNull() {
+		if value := r.Get("permit.ttl.lt"); value.Exists() && !data.Sequences[i].PermitTtlLt.IsNull() {
 			data.Sequences[i].PermitTtlLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlLt = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlNeq.IsNull() {
+		if value := r.Get("permit.ttl.neq"); value.Exists() && !data.Sequences[i].PermitTtlNeq.IsNull() {
 			data.Sequences[i].PermitTtlNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlNeq = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlRangeStart.IsNull() {
+		if value := r.Get("permit.ttl.range.start-value"); value.Exists() && !data.Sequences[i].PermitTtlRangeStart.IsNull() {
 			data.Sequences[i].PermitTtlRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlRangeStart = types.Int64Null()
 		}
-		if value := r.Get("permit.ttl.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitTtlRangeEnd.IsNull() {
+		if value := r.Get("permit.ttl.range.end-value"); value.Exists() && !data.Sequences[i].PermitTtlRangeEnd.IsNull() {
 			data.Sequences[i].PermitTtlRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitTtlRangeEnd = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetEq.IsNull() {
+		if value := r.Get("permit.fragment-offset.eq"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetEq.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetEq = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetGt.IsNull() {
+		if value := r.Get("permit.fragment-offset.gt"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetGt.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetGt = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetLt.IsNull() {
+		if value := r.Get("permit.fragment-offset.lt"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetLt.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetLt = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetNeq.IsNull() {
+		if value := r.Get("permit.fragment-offset.neq"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetNeq.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetNeq = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetRangeStart.IsNull() {
+		if value := r.Get("permit.fragment-offset.range.start-value"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetRangeStart.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetRangeStart = types.Int64Null()
 		}
-		if value := r.Get("permit.fragment-offset.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitFragmentOffsetRangeEnd.IsNull() {
+		if value := r.Get("permit.fragment-offset.range.end-value"); value.Exists() && !data.Sequences[i].PermitFragmentOffsetRangeEnd.IsNull() {
 			data.Sequences[i].PermitFragmentOffsetRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitFragmentOffsetRangeEnd = types.Int64Null()
@@ -1218,7 +1218,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitFragments = types.BoolNull()
 		}
-		if value := r.Get("permit.police.value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPoliceValue.IsNull() {
+		if value := r.Get("permit.police.value"); value.Exists() && !data.Sequences[i].PermitPoliceValue.IsNull() {
 			data.Sequences[i].PermitPoliceValue = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPoliceValue = types.Int64Null()
@@ -1228,7 +1228,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitPoliceUnit = types.StringNull()
 		}
-		if value := r.Get("permit.police.peak-rate"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitPolicePeakRate.IsNull() {
+		if value := r.Get("permit.police.peak-rate"); value.Exists() && !data.Sequences[i].PermitPolicePeakRate.IsNull() {
 			data.Sequences[i].PermitPolicePeakRate = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitPolicePeakRate = types.Int64Null()
@@ -1329,12 +1329,12 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].PermitLogInput = types.BoolNull()
 		}
-		if value := r.Get("permit.set.qos-group"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitSetQosGroup.IsNull() {
+		if value := r.Get("permit.set.qos-group"); value.Exists() && !data.Sequences[i].PermitSetQosGroup.IsNull() {
 			data.Sequences[i].PermitSetQosGroup = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitSetQosGroup = types.Int64Null()
 		}
-		if value := r.Get("permit.set.ttl"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].PermitSetTtl.IsNull() {
+		if value := r.Get("permit.set.ttl"); value.Exists() && !data.Sequences[i].PermitSetTtl.IsNull() {
 			data.Sequences[i].PermitSetTtl = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].PermitSetTtl = types.Int64Null()
@@ -1384,7 +1384,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenySourceWildcardMask = types.StringNull()
 		}
-		if value := r.Get("deny.source.prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenySourcePrefixLength.IsNull() {
+		if value := r.Get("deny.source.prefix-length"); value.Exists() && !data.Sequences[i].DenySourcePrefixLength.IsNull() {
 			data.Sequences[i].DenySourcePrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenySourcePrefixLength = types.Int64Null()
@@ -1453,7 +1453,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyDestinationWildcardMask = types.StringNull()
 		}
-		if value := r.Get("deny.destination.prefix-length"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyDestinationPrefixLength.IsNull() {
+		if value := r.Get("deny.destination.prefix-length"); value.Exists() && !data.Sequences[i].DenyDestinationPrefixLength.IsNull() {
 			data.Sequences[i].DenyDestinationPrefixLength = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyDestinationPrefixLength = types.Int64Null()
@@ -1517,12 +1517,12 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyIcmpMessageTypeName = types.StringNull()
 		}
-		if value := r.Get("deny.icmp.message-type"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyIcmpMessageType.IsNull() {
+		if value := r.Get("deny.icmp.message-type"); value.Exists() && !data.Sequences[i].DenyIcmpMessageType.IsNull() {
 			data.Sequences[i].DenyIcmpMessageType = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyIcmpMessageType = types.Int64Null()
 		}
-		if value := r.Get("deny.icmp.message-code"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyIcmpMessageCode.IsNull() {
+		if value := r.Get("deny.icmp.message-code"); value.Exists() && !data.Sequences[i].DenyIcmpMessageCode.IsNull() {
 			data.Sequences[i].DenyIcmpMessageCode = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyIcmpMessageCode = types.Int64Null()
@@ -1572,92 +1572,92 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyDscpRangeEnd = types.StringNull()
 		}
-		if value := r.Get("deny.packet-length.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthEq.IsNull() {
+		if value := r.Get("deny.packet-length.eq"); value.Exists() && !data.Sequences[i].DenyPacketLengthEq.IsNull() {
 			data.Sequences[i].DenyPacketLengthEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthEq = types.Int64Null()
 		}
-		if value := r.Get("deny.packet-length.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthGt.IsNull() {
+		if value := r.Get("deny.packet-length.gt"); value.Exists() && !data.Sequences[i].DenyPacketLengthGt.IsNull() {
 			data.Sequences[i].DenyPacketLengthGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthGt = types.Int64Null()
 		}
-		if value := r.Get("deny.packet-length.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthLt.IsNull() {
+		if value := r.Get("deny.packet-length.lt"); value.Exists() && !data.Sequences[i].DenyPacketLengthLt.IsNull() {
 			data.Sequences[i].DenyPacketLengthLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthLt = types.Int64Null()
 		}
-		if value := r.Get("deny.packet-length.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthNeq.IsNull() {
+		if value := r.Get("deny.packet-length.neq"); value.Exists() && !data.Sequences[i].DenyPacketLengthNeq.IsNull() {
 			data.Sequences[i].DenyPacketLengthNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthNeq = types.Int64Null()
 		}
-		if value := r.Get("deny.packet-length.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthRangeStart.IsNull() {
+		if value := r.Get("deny.packet-length.range.start-value"); value.Exists() && !data.Sequences[i].DenyPacketLengthRangeStart.IsNull() {
 			data.Sequences[i].DenyPacketLengthRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthRangeStart = types.Int64Null()
 		}
-		if value := r.Get("deny.packet-length.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPacketLengthRangeEnd.IsNull() {
+		if value := r.Get("deny.packet-length.range.end-value"); value.Exists() && !data.Sequences[i].DenyPacketLengthRangeEnd.IsNull() {
 			data.Sequences[i].DenyPacketLengthRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPacketLengthRangeEnd = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlEq.IsNull() {
+		if value := r.Get("deny.ttl.eq"); value.Exists() && !data.Sequences[i].DenyTtlEq.IsNull() {
 			data.Sequences[i].DenyTtlEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlEq = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlGt.IsNull() {
+		if value := r.Get("deny.ttl.gt"); value.Exists() && !data.Sequences[i].DenyTtlGt.IsNull() {
 			data.Sequences[i].DenyTtlGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlGt = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlLt.IsNull() {
+		if value := r.Get("deny.ttl.lt"); value.Exists() && !data.Sequences[i].DenyTtlLt.IsNull() {
 			data.Sequences[i].DenyTtlLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlLt = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlNeq.IsNull() {
+		if value := r.Get("deny.ttl.neq"); value.Exists() && !data.Sequences[i].DenyTtlNeq.IsNull() {
 			data.Sequences[i].DenyTtlNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlNeq = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlRangeStart.IsNull() {
+		if value := r.Get("deny.ttl.range.start-value"); value.Exists() && !data.Sequences[i].DenyTtlRangeStart.IsNull() {
 			data.Sequences[i].DenyTtlRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlRangeStart = types.Int64Null()
 		}
-		if value := r.Get("deny.ttl.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyTtlRangeEnd.IsNull() {
+		if value := r.Get("deny.ttl.range.end-value"); value.Exists() && !data.Sequences[i].DenyTtlRangeEnd.IsNull() {
 			data.Sequences[i].DenyTtlRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyTtlRangeEnd = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.eq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetEq.IsNull() {
+		if value := r.Get("deny.fragment-offset.eq"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetEq.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetEq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetEq = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.gt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetGt.IsNull() {
+		if value := r.Get("deny.fragment-offset.gt"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetGt.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetGt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetGt = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.lt"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetLt.IsNull() {
+		if value := r.Get("deny.fragment-offset.lt"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetLt.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetLt = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetLt = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.neq"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetNeq.IsNull() {
+		if value := r.Get("deny.fragment-offset.neq"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetNeq.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetNeq = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetNeq = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.range.start-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetRangeStart.IsNull() {
+		if value := r.Get("deny.fragment-offset.range.start-value"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetRangeStart.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetRangeStart = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetRangeStart = types.Int64Null()
 		}
-		if value := r.Get("deny.fragment-offset.range.end-value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyFragmentOffsetRangeEnd.IsNull() {
+		if value := r.Get("deny.fragment-offset.range.end-value"); value.Exists() && !data.Sequences[i].DenyFragmentOffsetRangeEnd.IsNull() {
 			data.Sequences[i].DenyFragmentOffsetRangeEnd = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyFragmentOffsetRangeEnd = types.Int64Null()
@@ -1671,7 +1671,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyFragments = types.BoolNull()
 		}
-		if value := r.Get("deny.police.value"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPoliceValue.IsNull() {
+		if value := r.Get("deny.police.value"); value.Exists() && !data.Sequences[i].DenyPoliceValue.IsNull() {
 			data.Sequences[i].DenyPoliceValue = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPoliceValue = types.Int64Null()
@@ -1681,7 +1681,7 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyPoliceUnit = types.StringNull()
 		}
-		if value := r.Get("deny.police.peak-rate"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenyPolicePeakRate.IsNull() {
+		if value := r.Get("deny.police.peak-rate"); value.Exists() && !data.Sequences[i].DenyPolicePeakRate.IsNull() {
 			data.Sequences[i].DenyPolicePeakRate = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenyPolicePeakRate = types.Int64Null()
@@ -1777,12 +1777,12 @@ func (data *IPv4AccessList) updateFromBody(ctx context.Context, res []byte, vers
 		} else {
 			data.Sequences[i].DenyLogInput = types.BoolNull()
 		}
-		if value := r.Get("deny.set.qos-group"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenySetQosGroup.IsNull() {
+		if value := r.Get("deny.set.qos-group"); value.Exists() && !data.Sequences[i].DenySetQosGroup.IsNull() {
 			data.Sequences[i].DenySetQosGroup = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenySetQosGroup = types.Int64Null()
 		}
-		if value := r.Get("deny.set.ttl"); value.Exists() && value.Type == gjson.Number && !data.Sequences[i].DenySetTtl.IsNull() {
+		if value := r.Get("deny.set.ttl"); value.Exists() && !data.Sequences[i].DenySetTtl.IsNull() {
 			data.Sequences[i].DenySetTtl = types.Int64Value(value.Int())
 		} else {
 			data.Sequences[i].DenySetTtl = types.Int64Null()
@@ -1817,7 +1817,7 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 		data.Sequences = make([]IPv4AccessListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPv4AccessListSequences{}
-			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("sequence-number"); cValue.Exists() {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1847,7 +1847,7 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("permit.source.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitSourceWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.source.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.source.prefix-length"); cValue.Exists() {
 				item.PermitSourcePrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.source.any"); cValue.Exists() {
@@ -1888,7 +1888,7 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("permit.destination.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitDestinationWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.destination.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.destination.prefix-length"); cValue.Exists() {
 				item.PermitDestinationPrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.destination.any"); cValue.Exists() {
@@ -1926,10 +1926,10 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("permit.icmp.message-type-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitIcmpMessageTypeName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.icmp.message-type"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.icmp.message-type"); cValue.Exists() {
 				item.PermitIcmpMessageType = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.icmp.message-code"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.icmp.message-code"); cValue.Exists() {
 				item.PermitIcmpMessageCode = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.tcp-flags.tcp-bits"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1959,58 +1959,58 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("permit.dscp.range.end-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitDscpRangeEnd = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.packet-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.eq"); cValue.Exists() {
 				item.PermitPacketLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.gt"); cValue.Exists() {
 				item.PermitPacketLengthGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.lt"); cValue.Exists() {
 				item.PermitPacketLengthLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.neq"); cValue.Exists() {
 				item.PermitPacketLengthNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.range.start-value"); cValue.Exists() {
 				item.PermitPacketLengthRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.range.end-value"); cValue.Exists() {
 				item.PermitPacketLengthRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.eq"); cValue.Exists() {
 				item.PermitTtlEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.gt"); cValue.Exists() {
 				item.PermitTtlGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.lt"); cValue.Exists() {
 				item.PermitTtlLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.neq"); cValue.Exists() {
 				item.PermitTtlNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.range.start-value"); cValue.Exists() {
 				item.PermitTtlRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.range.end-value"); cValue.Exists() {
 				item.PermitTtlRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.eq"); cValue.Exists() {
 				item.PermitFragmentOffsetEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.gt"); cValue.Exists() {
 				item.PermitFragmentOffsetGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.lt"); cValue.Exists() {
 				item.PermitFragmentOffsetLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.neq"); cValue.Exists() {
 				item.PermitFragmentOffsetNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.range.start-value"); cValue.Exists() {
 				item.PermitFragmentOffsetRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.range.end-value"); cValue.Exists() {
 				item.PermitFragmentOffsetRangeEnd = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.fragments"); cValue.Exists() {
@@ -2018,13 +2018,13 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.PermitFragments = types.BoolValue(false)
 			}
-			if cValue := v.Get("permit.police.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.police.value"); cValue.Exists() {
 				item.PermitPoliceValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.police.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitPoliceUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.police.peak-rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.police.peak-rate"); cValue.Exists() {
 				item.PermitPolicePeakRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.police.peak-unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2083,10 +2083,10 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.PermitLogInput = types.BoolValue(false)
 			}
-			if cValue := v.Get("permit.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.set.qos-group"); cValue.Exists() {
 				item.PermitSetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.set.ttl"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.set.ttl"); cValue.Exists() {
 				item.PermitSetTtl = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.protocol"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2116,7 +2116,7 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("deny.source.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenySourceWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.source.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.source.prefix-length"); cValue.Exists() {
 				item.DenySourcePrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.source.any"); cValue.Exists() {
@@ -2157,7 +2157,7 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("deny.destination.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyDestinationWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.destination.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.destination.prefix-length"); cValue.Exists() {
 				item.DenyDestinationPrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.destination.any"); cValue.Exists() {
@@ -2195,10 +2195,10 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("deny.icmp.message-type-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyIcmpMessageTypeName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.icmp.message-type"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.icmp.message-type"); cValue.Exists() {
 				item.DenyIcmpMessageType = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.icmp.message-code"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.icmp.message-code"); cValue.Exists() {
 				item.DenyIcmpMessageCode = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.tcp-flags.tcp-bits"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2228,58 +2228,58 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("deny.dscp.range.end-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyDscpRangeEnd = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.packet-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.eq"); cValue.Exists() {
 				item.DenyPacketLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.gt"); cValue.Exists() {
 				item.DenyPacketLengthGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.lt"); cValue.Exists() {
 				item.DenyPacketLengthLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.neq"); cValue.Exists() {
 				item.DenyPacketLengthNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.range.start-value"); cValue.Exists() {
 				item.DenyPacketLengthRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.range.end-value"); cValue.Exists() {
 				item.DenyPacketLengthRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.eq"); cValue.Exists() {
 				item.DenyTtlEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.gt"); cValue.Exists() {
 				item.DenyTtlGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.lt"); cValue.Exists() {
 				item.DenyTtlLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.neq"); cValue.Exists() {
 				item.DenyTtlNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.range.start-value"); cValue.Exists() {
 				item.DenyTtlRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.range.end-value"); cValue.Exists() {
 				item.DenyTtlRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.eq"); cValue.Exists() {
 				item.DenyFragmentOffsetEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.gt"); cValue.Exists() {
 				item.DenyFragmentOffsetGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.lt"); cValue.Exists() {
 				item.DenyFragmentOffsetLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.neq"); cValue.Exists() {
 				item.DenyFragmentOffsetNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.range.start-value"); cValue.Exists() {
 				item.DenyFragmentOffsetRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.range.end-value"); cValue.Exists() {
 				item.DenyFragmentOffsetRangeEnd = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.fragments"); cValue.Exists() {
@@ -2287,13 +2287,13 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DenyFragments = types.BoolValue(false)
 			}
-			if cValue := v.Get("deny.police.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.police.value"); cValue.Exists() {
 				item.DenyPoliceValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.police.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyPoliceUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.police.peak-rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.police.peak-rate"); cValue.Exists() {
 				item.DenyPolicePeakRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.police.peak-unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2349,10 +2349,10 @@ func (data *IPv4AccessList) fromBody(ctx context.Context, res []byte, version st
 			} else {
 				item.DenyLogInput = types.BoolValue(false)
 			}
-			if cValue := v.Get("deny.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.set.qos-group"); cValue.Exists() {
 				item.DenySetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.set.ttl"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.set.ttl"); cValue.Exists() {
 				item.DenySetTtl = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.icmp-off"); cValue.Exists() {
@@ -2380,7 +2380,7 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 		data.Sequences = make([]IPv4AccessListSequences, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := IPv4AccessListSequences{}
-			if cValue := v.Get("sequence-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("sequence-number"); cValue.Exists() {
 				item.SequenceNumber = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("remark"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2410,7 +2410,7 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("permit.source.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitSourceWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.source.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.source.prefix-length"); cValue.Exists() {
 				item.PermitSourcePrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.source.any"); cValue.Exists() {
@@ -2451,7 +2451,7 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("permit.destination.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitDestinationWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.destination.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.destination.prefix-length"); cValue.Exists() {
 				item.PermitDestinationPrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.destination.any"); cValue.Exists() {
@@ -2489,10 +2489,10 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("permit.icmp.message-type-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitIcmpMessageTypeName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.icmp.message-type"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.icmp.message-type"); cValue.Exists() {
 				item.PermitIcmpMessageType = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.icmp.message-code"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.icmp.message-code"); cValue.Exists() {
 				item.PermitIcmpMessageCode = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.tcp-flags.tcp-bits"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2522,58 +2522,58 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("permit.dscp.range.end-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitDscpRangeEnd = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.packet-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.eq"); cValue.Exists() {
 				item.PermitPacketLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.gt"); cValue.Exists() {
 				item.PermitPacketLengthGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.lt"); cValue.Exists() {
 				item.PermitPacketLengthLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.neq"); cValue.Exists() {
 				item.PermitPacketLengthNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.range.start-value"); cValue.Exists() {
 				item.PermitPacketLengthRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.packet-length.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.packet-length.range.end-value"); cValue.Exists() {
 				item.PermitPacketLengthRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.eq"); cValue.Exists() {
 				item.PermitTtlEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.gt"); cValue.Exists() {
 				item.PermitTtlGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.lt"); cValue.Exists() {
 				item.PermitTtlLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.neq"); cValue.Exists() {
 				item.PermitTtlNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.range.start-value"); cValue.Exists() {
 				item.PermitTtlRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.ttl.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.ttl.range.end-value"); cValue.Exists() {
 				item.PermitTtlRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.eq"); cValue.Exists() {
 				item.PermitFragmentOffsetEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.gt"); cValue.Exists() {
 				item.PermitFragmentOffsetGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.lt"); cValue.Exists() {
 				item.PermitFragmentOffsetLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.neq"); cValue.Exists() {
 				item.PermitFragmentOffsetNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.range.start-value"); cValue.Exists() {
 				item.PermitFragmentOffsetRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.fragment-offset.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.fragment-offset.range.end-value"); cValue.Exists() {
 				item.PermitFragmentOffsetRangeEnd = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.fragments"); cValue.Exists() {
@@ -2581,13 +2581,13 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.PermitFragments = types.BoolValue(false)
 			}
-			if cValue := v.Get("permit.police.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.police.value"); cValue.Exists() {
 				item.PermitPoliceValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.police.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.PermitPoliceUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("permit.police.peak-rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.police.peak-rate"); cValue.Exists() {
 				item.PermitPolicePeakRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("permit.police.peak-unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2646,10 +2646,10 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.PermitLogInput = types.BoolValue(false)
 			}
-			if cValue := v.Get("permit.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.set.qos-group"); cValue.Exists() {
 				item.PermitSetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("permit.set.ttl"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("permit.set.ttl"); cValue.Exists() {
 				item.PermitSetTtl = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.protocol"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2679,7 +2679,7 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("deny.source.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenySourceWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.source.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.source.prefix-length"); cValue.Exists() {
 				item.DenySourcePrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.source.any"); cValue.Exists() {
@@ -2720,7 +2720,7 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("deny.destination.wildcard-mask"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyDestinationWildcardMask = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.destination.prefix-length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.destination.prefix-length"); cValue.Exists() {
 				item.DenyDestinationPrefixLength = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.destination.any"); cValue.Exists() {
@@ -2758,10 +2758,10 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("deny.icmp.message-type-name"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyIcmpMessageTypeName = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.icmp.message-type"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.icmp.message-type"); cValue.Exists() {
 				item.DenyIcmpMessageType = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.icmp.message-code"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.icmp.message-code"); cValue.Exists() {
 				item.DenyIcmpMessageCode = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.tcp-flags.tcp-bits"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2791,58 +2791,58 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			if cValue := v.Get("deny.dscp.range.end-value"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyDscpRangeEnd = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.packet-length.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.eq"); cValue.Exists() {
 				item.DenyPacketLengthEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.gt"); cValue.Exists() {
 				item.DenyPacketLengthGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.lt"); cValue.Exists() {
 				item.DenyPacketLengthLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.neq"); cValue.Exists() {
 				item.DenyPacketLengthNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.range.start-value"); cValue.Exists() {
 				item.DenyPacketLengthRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.packet-length.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.packet-length.range.end-value"); cValue.Exists() {
 				item.DenyPacketLengthRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.eq"); cValue.Exists() {
 				item.DenyTtlEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.gt"); cValue.Exists() {
 				item.DenyTtlGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.lt"); cValue.Exists() {
 				item.DenyTtlLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.neq"); cValue.Exists() {
 				item.DenyTtlNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.range.start-value"); cValue.Exists() {
 				item.DenyTtlRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.ttl.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.ttl.range.end-value"); cValue.Exists() {
 				item.DenyTtlRangeEnd = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.eq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.eq"); cValue.Exists() {
 				item.DenyFragmentOffsetEq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.gt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.gt"); cValue.Exists() {
 				item.DenyFragmentOffsetGt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.lt"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.lt"); cValue.Exists() {
 				item.DenyFragmentOffsetLt = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.neq"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.neq"); cValue.Exists() {
 				item.DenyFragmentOffsetNeq = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.range.start-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.range.start-value"); cValue.Exists() {
 				item.DenyFragmentOffsetRangeStart = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.fragment-offset.range.end-value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.fragment-offset.range.end-value"); cValue.Exists() {
 				item.DenyFragmentOffsetRangeEnd = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.fragments"); cValue.Exists() {
@@ -2850,13 +2850,13 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DenyFragments = types.BoolValue(false)
 			}
-			if cValue := v.Get("deny.police.value"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.police.value"); cValue.Exists() {
 				item.DenyPoliceValue = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.police.unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.DenyPoliceUnit = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("deny.police.peak-rate"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.police.peak-rate"); cValue.Exists() {
 				item.DenyPolicePeakRate = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.police.peak-unit"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2912,10 +2912,10 @@ func (data *IPv4AccessListData) fromBody(ctx context.Context, res []byte, versio
 			} else {
 				item.DenyLogInput = types.BoolValue(false)
 			}
-			if cValue := v.Get("deny.set.qos-group"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.set.qos-group"); cValue.Exists() {
 				item.DenySetQosGroup = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("deny.set.ttl"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("deny.set.ttl"); cValue.Exists() {
 				item.DenySetTtl = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("deny.icmp-off"); cValue.Exists() {

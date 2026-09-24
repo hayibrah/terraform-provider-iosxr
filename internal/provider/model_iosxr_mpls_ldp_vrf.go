@@ -505,7 +505,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.Neighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.Neighbors[i].LabelSpaceId.IsNull() {
 			data.Neighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].LabelSpaceId = types.Int64Null()
@@ -614,7 +614,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamilyIpv4LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -691,7 +691,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamilyIpv4LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -796,7 +796,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId.IsNull() {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamilyIpv6LabelLocalAdvertiseToNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -873,7 +873,7 @@ func (data *MPLSLDPVRF) updateFromBody(ctx context.Context, res []byte, version 
 		} else {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].NeighborAddress = types.StringNull()
 		}
-		if value := r.Get("label-space-id"); value.Exists() && value.Type == gjson.Number && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
+		if value := r.Get("label-space-id"); value.Exists() && !data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId.IsNull() {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Value(value.Int())
 		} else {
 			data.AddressFamilyIpv6LabelRemoteAcceptFromNeighbors[i].LabelSpaceId = types.Int64Null()
@@ -982,7 +982,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("password.disable"); cValue.Exists() {
@@ -1039,7 +1039,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1072,7 +1072,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1127,7 +1127,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1160,7 +1160,7 @@ func (data *MPLSLDPVRF) fromBody(ctx context.Context, res []byte, version string
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1230,7 +1230,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("password.disable"); cValue.Exists() {
@@ -1287,7 +1287,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1320,7 +1320,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1375,7 +1375,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1408,7 +1408,7 @@ func (data *MPLSLDPVRFData) fromBody(ctx context.Context, res []byte, version st
 			if cValue := v.Get("neighbor-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.NeighborAddress = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("label-space-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("label-space-id"); cValue.Exists() {
 				item.LabelSpaceId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("for"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {

@@ -1014,17 +1014,17 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && value.Type == gjson.Number && !data.ArchiveFilesize.IsNull() {
+	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && !data.ArchiveFilesize.IsNull() {
 		data.ArchiveFilesize = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveFilesize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && value.Type == gjson.Number && !data.ArchiveSize.IsNull() {
+	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && !data.ArchiveSize.IsNull() {
 		data.ArchiveSize = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && value.Type == gjson.Number && !data.ArchiveLength.IsNull() {
+	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && !data.ArchiveLength.IsNull() {
 		data.ArchiveLength = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveLength = types.Int64Null()
@@ -1034,7 +1034,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.ArchiveSeverity = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number && !data.ArchiveThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && !data.ArchiveThreshold.IsNull() {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	} else {
 		data.ArchiveThreshold = types.Int64Null()
@@ -1064,12 +1064,12 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.FacilityLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() && value.Type == gjson.Number && !data.BufferedEntriesCount.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() && !data.BufferedEntriesCount.IsNull() {
 		data.BufferedEntriesCount = types.Int64Value(value.Int())
 	} else {
 		data.BufferedEntriesCount = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() && value.Type == gjson.Number && !data.BufferedSize.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() && !data.BufferedSize.IsNull() {
 		data.BufferedSize = types.Int64Value(value.Int())
 	} else {
 		data.BufferedSize = types.Int64Null()
@@ -1160,7 +1160,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 		} else {
 			data.File[i].Path = types.StringNull()
 		}
-		if value := r.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); value.Exists() && value.Type == gjson.Number && !data.File[i].Maxfilesize.IsNull() {
+		if value := r.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); value.Exists() && !data.File[i].Maxfilesize.IsNull() {
 			data.File[i].Maxfilesize = types.Int64Value(value.Int())
 		} else {
 			data.File[i].Maxfilesize = types.Int64Null()
@@ -1229,7 +1229,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.History = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() && value.Type == gjson.Number && !data.HistorySize.IsNull() {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() && !data.HistorySize.IsNull() {
 		data.HistorySize = types.Int64Value(value.Int())
 	} else {
 		data.HistorySize = types.Int64Null()
@@ -1239,7 +1239,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.Hostnameprefix = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number && !data.Localfilesize.IsNull() {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && !data.Localfilesize.IsNull() {
 		data.Localfilesize = types.Int64Value(value.Int())
 	} else {
 		data.Localfilesize = types.Int64Null()
@@ -1460,7 +1460,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 			}
 		}
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number && !data.EventsBufferSize.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && !data.EventsBufferSize.IsNull() {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	} else {
 		data.EventsBufferSize = types.Int64Null()
@@ -1508,7 +1508,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.EventsLevel = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number && !data.EventsThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && !data.EventsThreshold.IsNull() {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	} else {
 		data.EventsThreshold = types.Int64Null()
@@ -1518,7 +1518,7 @@ func (data *Logging) updateFromBody(ctx context.Context, res []byte, version str
 	} else {
 		data.EventsPrecfgSuppression = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number && !data.EventsPrecfgSuppressionTimeout.IsNull() {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && !data.EventsPrecfgSuppressionTimeout.IsNull() {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	} else {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Null()
@@ -1716,19 +1716,19 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() {
 		data.ArchiveFilesize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() {
 		data.ArchiveSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() {
 		data.ArchiveLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "archive.severity"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ArchiveSeverity = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1746,10 +1746,10 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "facility.level", "25.4": "facility"}, "facility.level")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FacilityLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() {
 		data.BufferedEntriesCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() {
 		data.BufferedSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.level", "25.4": "buffered.buffered-level"}, "buffered.level")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -1793,7 +1793,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "path", "25.4": "path.path-name"}, "path")); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Path = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); cValue.Exists() {
 				item.Maxfilesize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "severity", "25.4": "path.severity"}, "severity")); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1837,13 +1837,13 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history", "25.4": "history.level"}, "history")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.History = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() {
 		data.HistorySize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Hostnameprefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() {
 		data.Localfilesize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interfaces.source-interface"); value.Exists() {
@@ -1950,7 +1950,7 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.filter.match"); value.Exists() {
@@ -1972,13 +1972,13 @@ func (data *Logging) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventsLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventsPrecfgSuppression = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
@@ -2192,19 +2192,19 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	} else {
 		data.ArchiveFrequencyWeekly = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.file-size"); value.Exists() {
 		data.ArchiveFilesize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.archive-size"); value.Exists() {
 		data.ArchiveSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.archive-length"); value.Exists() {
 		data.ArchiveLength = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "archive.severity"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.ArchiveSeverity = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "archive.threshold"); value.Exists() {
 		data.ArchiveThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "ipv4.dscp", "25.4": "ipv4.dscp.dscp-value"}, "ipv4.dscp")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2222,10 +2222,10 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "facility.level", "25.4": "facility"}, "facility.level")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.FacilityLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.buffered-entries.count", "25.4": "buffered.entries-count"}, "buffered.buffered-entries.count")); value.Exists() {
 		data.BufferedEntriesCount = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.logging-buffer-size", "25.4": "buffered.log-buffer-size"}, "buffered.logging-buffer-size")); value.Exists() {
 		data.BufferedSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "buffered.level", "25.4": "buffered.buffered-level"}, "buffered.level")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -2269,7 +2269,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "path", "25.4": "path.path-name"}, "path")); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Path = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "maxfilesize", "25.4": "path.maxfilesize"}, "maxfilesize")); cValue.Exists() {
 				item.Maxfilesize = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get(helpers.SelectYangPath(version, map[string]string{"24.4": "severity", "25.4": "path.severity"}, "severity")); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -2313,13 +2313,13 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history", "25.4": "history.level"}, "history")); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.History = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, helpers.SelectYangPath(version, map[string]string{"24.4": "history-size", "25.4": "history.size"}, "history-size")); value.Exists() {
 		data.HistorySize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "hostnameprefix"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Hostnameprefix = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "localfilesize"); value.Exists() {
 		data.Localfilesize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "source-interfaces.source-interface"); value.Exists() {
@@ -2426,7 +2426,7 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.buffer-size"); value.Exists() {
 		data.EventsBufferSize = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.filter.match"); value.Exists() {
@@ -2448,13 +2448,13 @@ func (data *LoggingData) fromBody(ctx context.Context, res []byte, version strin
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.level"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventsLevel = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.threshold"); value.Exists() {
 		data.EventsThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EventsPrecfgSuppression = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "Cisco-IOS-XR-um-logging-events-cfg:events.precfg-suppression-timeout"); value.Exists() {
 		data.EventsPrecfgSuppressionTimeout = types.Int64Value(value.Int())
 	}
 	if helpers.VersionAtLeast(version, "25.4") {

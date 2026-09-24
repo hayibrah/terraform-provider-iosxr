@@ -750,7 +750,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.EncapsulationType = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number && !data.Weight.IsNull() {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() && !data.Weight.IsNull() {
 		data.Weight = types.Int64Value(value.Int())
 	} else {
 		data.Weight = types.Int64Null()
@@ -833,17 +833,17 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.DefaultOriginateInheritanceDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() && value.Type == gjson.Number && !data.MaximumPrefixLimit.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() && !data.MaximumPrefixLimit.IsNull() {
 		data.MaximumPrefixLimit = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPrefixLimit = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() && value.Type == gjson.Number && !data.MaximumPrefixThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() && !data.MaximumPrefixThreshold.IsNull() {
 		data.MaximumPrefixThreshold = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPrefixThreshold = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() && value.Type == gjson.Number && !data.MaximumPrefixRestart.IsNull() {
+	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() && !data.MaximumPrefixRestart.IsNull() {
 		data.MaximumPrefixRestart = types.Int64Value(value.Int())
 	} else {
 		data.MaximumPrefixRestart = types.Int64Null()
@@ -1241,12 +1241,12 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.ImportReOriginate = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number && !data.AllowasIn.IsNull() {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && !data.AllowasIn.IsNull() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	} else {
 		data.AllowasIn = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() && value.Type == gjson.Number && !data.AllowconfedasIn.IsNull() {
+	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() && !data.AllowconfedasIn.IsNull() {
 		data.AllowconfedasIn = types.Int64Value(value.Int())
 	} else {
 		data.AllowconfedasIn = types.Int64Null()
@@ -1256,7 +1256,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.SiteOfOriginTwoByteAsNumber = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() && value.Type == gjson.Number && !data.SiteOfOriginTwoByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() && !data.SiteOfOriginTwoByteAsIndex.IsNull() {
 		data.SiteOfOriginTwoByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.SiteOfOriginTwoByteAsIndex = types.Int64Null()
@@ -1266,7 +1266,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.SiteOfOriginFourByteAsNumber = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() && value.Type == gjson.Number && !data.SiteOfOriginFourByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() && !data.SiteOfOriginFourByteAsIndex.IsNull() {
 		data.SiteOfOriginFourByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.SiteOfOriginFourByteAsIndex = types.Int64Null()
@@ -1276,7 +1276,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.SiteOfOriginIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() && value.Type == gjson.Number && !data.SiteOfOriginIpv4AddressIndex.IsNull() {
+	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() && !data.SiteOfOriginIpv4AddressIndex.IsNull() {
 		data.SiteOfOriginIpv4AddressIndex = types.Int64Value(value.Int())
 	} else {
 		data.SiteOfOriginIpv4AddressIndex = types.Int64Null()
@@ -1344,7 +1344,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.AigpSendCostCommunityDisable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() && value.Type == gjson.Number && !data.AigpSendCostCommunityId.IsNull() {
+	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() && !data.AigpSendCostCommunityId.IsNull() {
 		data.AigpSendCostCommunityId = types.Int64Value(value.Int())
 	} else {
 		data.AigpSendCostCommunityId = types.Int64Null()
@@ -1430,7 +1430,7 @@ func (data *RouterBGPAFGroup) updateFromBody(ctx context.Context, res []byte, ve
 	} else {
 		data.SlowPeerDynamic = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() && value.Type == gjson.Number && !data.SlowPeerDynamicThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() && !data.SlowPeerDynamicThreshold.IsNull() {
 		data.SlowPeerDynamicThreshold = types.Int64Value(value.Int())
 	} else {
 		data.SlowPeerDynamicThreshold = types.Int64Null()
@@ -1491,7 +1491,7 @@ func (data *RouterBGPAFGroup) fromBody(ctx context.Context, res []byte, version 
 	if value := gjson.GetBytes(res, "encapsulation-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() {
 		data.Weight = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "multipath"); value.Exists() {
@@ -1538,13 +1538,13 @@ func (data *RouterBGPAFGroup) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.DefaultOriginateInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() {
 		data.MaximumPrefixLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() {
 		data.MaximumPrefixThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() {
 		data.MaximumPrefixRestart = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-prefix.discard-extra-paths"); value.Exists() {
@@ -1766,28 +1766,28 @@ func (data *RouterBGPAFGroup) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.ImportReOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() {
 		data.AllowconfedasIn = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginTwoByteAsNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() {
 		data.SiteOfOriginTwoByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginFourByteAsNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() {
 		data.SiteOfOriginFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() {
 		data.SiteOfOriginIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "as-override"); value.Exists() {
@@ -1825,7 +1825,7 @@ func (data *RouterBGPAFGroup) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.AigpSendCostCommunityDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() {
 		data.AigpSendCostCommunityId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.poi.igp-cost"); value.Exists() {
@@ -1873,7 +1873,7 @@ func (data *RouterBGPAFGroup) fromBody(ctx context.Context, res []byte, version 
 	} else {
 		data.SlowPeerDynamic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() {
 		data.SlowPeerDynamicThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "slow-peer.dynamic.disable"); value.Exists() {
@@ -1920,7 +1920,7 @@ func (data *RouterBGPAFGroupData) fromBody(ctx context.Context, res []byte, vers
 	if value := gjson.GetBytes(res, "encapsulation-type"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.EncapsulationType = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "weight"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "weight"); value.Exists() {
 		data.Weight = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "multipath"); value.Exists() {
@@ -1967,13 +1967,13 @@ func (data *RouterBGPAFGroupData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.DefaultOriginateInheritanceDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.maximum-prefix-number"); value.Exists() {
 		data.MaximumPrefixLimit = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.threshold-value"); value.Exists() {
 		data.MaximumPrefixThreshold = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "maximum-prefix.restart"); value.Exists() {
 		data.MaximumPrefixRestart = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "maximum-prefix.discard-extra-paths"); value.Exists() {
@@ -2195,28 +2195,28 @@ func (data *RouterBGPAFGroupData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.ImportReOriginate = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowas-in.number-of-occurrences-of-as-number"); value.Exists() {
 		data.AllowasIn = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "allowconfedas-in.number-of-occurrences-of-confederation-number"); value.Exists() {
 		data.AllowconfedasIn = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.two-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginTwoByteAsNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.two-byte-as.asn2-index"); value.Exists() {
 		data.SiteOfOriginTwoByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.four-byte-as-number"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginFourByteAsNumber = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.four-byte-as.asn4-index"); value.Exists() {
 		data.SiteOfOriginFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.SiteOfOriginIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "site-of-origin.ipv4-address.ipv4address-index"); value.Exists() {
 		data.SiteOfOriginIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "as-override"); value.Exists() {
@@ -2254,7 +2254,7 @@ func (data *RouterBGPAFGroupData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.AigpSendCostCommunityDisable = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.cost-community-id-number"); value.Exists() {
 		data.AigpSendCostCommunityId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "aigp.send.cost-community.cost-community-id.poi.igp-cost"); value.Exists() {
@@ -2302,7 +2302,7 @@ func (data *RouterBGPAFGroupData) fromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.SlowPeerDynamic = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "slow-peer.dynamic.threshold"); value.Exists() {
 		data.SlowPeerDynamicThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "slow-peer.dynamic.disable"); value.Exists() {

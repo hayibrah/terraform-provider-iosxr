@@ -370,27 +370,27 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.SignallingGracefulRestartLspCtype = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() && value.Type == gjson.Number && !data.SignallingGracefulRestartRecoveryTime.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() && !data.SignallingGracefulRestartRecoveryTime.IsNull() {
 		data.SignallingGracefulRestartRecoveryTime = types.Int64Value(value.Int())
 	} else {
 		data.SignallingGracefulRestartRecoveryTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() && value.Type == gjson.Number && !data.SignallingGracefulRestartRestartTime.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() && !data.SignallingGracefulRestartRestartTime.IsNull() {
 		data.SignallingGracefulRestartRestartTime = types.Int64Value(value.Int())
 	} else {
 		data.SignallingGracefulRestartRestartTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() && value.Type == gjson.Number && !data.SignallingHelloGracefulRestartRefreshInterval.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() && !data.SignallingHelloGracefulRestartRefreshInterval.IsNull() {
 		data.SignallingHelloGracefulRestartRefreshInterval = types.Int64Value(value.Int())
 	} else {
 		data.SignallingHelloGracefulRestartRefreshInterval = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() && value.Type == gjson.Number && !data.SignallingHelloGracefulRestartRefreshMisses.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() && !data.SignallingHelloGracefulRestartRefreshMisses.IsNull() {
 		data.SignallingHelloGracefulRestartRefreshMisses = types.Int64Value(value.Int())
 	} else {
 		data.SignallingHelloGracefulRestartRefreshMisses = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && value.Type == gjson.Number && !data.SignallingEventPerPulse.IsNull() {
+	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && !data.SignallingEventPerPulse.IsNull() {
 		data.SignallingEventPerPulse = types.Int64Value(value.Int())
 	} else {
 		data.SignallingEventPerPulse = types.Int64Null()
@@ -455,17 +455,17 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.AuthenticationKeyChain = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number && !data.AuthenticationWindowSize.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && !data.AuthenticationWindowSize.IsNull() {
 		data.AuthenticationWindowSize = types.Int64Value(value.Int())
 	} else {
 		data.AuthenticationWindowSize = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() && value.Type == gjson.Number && !data.AuthenticationLifeTime.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() && !data.AuthenticationLifeTime.IsNull() {
 		data.AuthenticationLifeTime = types.Int64Value(value.Int())
 	} else {
 		data.AuthenticationLifeTime = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() && value.Type == gjson.Number && !data.AuthenticationRetransmit.IsNull() {
+	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() && !data.AuthenticationRetransmit.IsNull() {
 		data.AuthenticationRetransmit = types.Int64Value(value.Int())
 	} else {
 		data.AuthenticationRetransmit = types.Int64Null()
@@ -503,43 +503,43 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 		} else {
 			data.Neighbors[i].AuthenticationKeyChain = types.StringNull()
 		}
-		if value := r.Get("authentication.window-size"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].AuthenticationWindowSize.IsNull() {
+		if value := r.Get("authentication.window-size"); value.Exists() && !data.Neighbors[i].AuthenticationWindowSize.IsNull() {
 			data.Neighbors[i].AuthenticationWindowSize = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].AuthenticationWindowSize = types.Int64Null()
 		}
-		if value := r.Get("authentication.life-time"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].AuthenticationLifeTime.IsNull() {
+		if value := r.Get("authentication.life-time"); value.Exists() && !data.Neighbors[i].AuthenticationLifeTime.IsNull() {
 			data.Neighbors[i].AuthenticationLifeTime = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].AuthenticationLifeTime = types.Int64Null()
 		}
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() && value.Type == gjson.Number && !data.BandwidthMamPercentageMaxReservableBandwidth.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() && !data.BandwidthMamPercentageMaxReservableBandwidth.IsNull() {
 		data.BandwidthMamPercentageMaxReservableBandwidth = types.Int64Value(value.Int())
 	} else {
 		data.BandwidthMamPercentageMaxReservableBandwidth = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() && value.Type == gjson.Number && !data.BandwidthMamPercentageMaxReservableBc0.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() && !data.BandwidthMamPercentageMaxReservableBc0.IsNull() {
 		data.BandwidthMamPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	} else {
 		data.BandwidthMamPercentageMaxReservableBc0 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() && value.Type == gjson.Number && !data.BandwidthMamPercentageMaxReservableBc1.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() && !data.BandwidthMamPercentageMaxReservableBc1.IsNull() {
 		data.BandwidthMamPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	} else {
 		data.BandwidthMamPercentageMaxReservableBc1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() && value.Type == gjson.Number && !data.BandwidthRdmPercentageMaxReservableBc0.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() && !data.BandwidthRdmPercentageMaxReservableBc0.IsNull() {
 		data.BandwidthRdmPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	} else {
 		data.BandwidthRdmPercentageMaxReservableBc0 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() && value.Type == gjson.Number && !data.BandwidthRdmPercentageMaxReservableBc1.IsNull() {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() && !data.BandwidthRdmPercentageMaxReservableBc1.IsNull() {
 		data.BandwidthRdmPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	} else {
 		data.BandwidthRdmPercentageMaxReservableBc1 = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() && value.Type == gjson.Number && !data.LatencyThreshold.IsNull() {
+	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() && !data.LatencyThreshold.IsNull() {
 		data.LatencyThreshold = types.Int64Value(value.Int())
 	} else {
 		data.LatencyThreshold = types.Int64Null()
@@ -562,7 +562,7 @@ func (data *RSVP) updateFromBody(ctx context.Context, res []byte, version string
 	} else {
 		data.LoggingEventsIssu = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() && value.Type == gjson.Number && !data.LtraceBufferMultiplier.IsNull() {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() && !data.LtraceBufferMultiplier.IsNull() {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	} else {
 		data.LtraceBufferMultiplier = types.Int64Null()
@@ -647,19 +647,19 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.SignallingGracefulRestartLspCtype = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() {
 		data.SignallingGracefulRestartRecoveryTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() {
 		data.SignallingGracefulRestartRestartTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() {
 		data.SignallingHelloGracefulRestartRefreshInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() {
 		data.SignallingHelloGracefulRestartRefreshMisses = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() {
 		data.SignallingEventPerPulse = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -696,13 +696,13 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() {
 		data.AuthenticationWindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() {
 		data.AuthenticationLifeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() {
 		data.AuthenticationRetransmit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbors.neighbor"); value.Exists() {
@@ -715,32 +715,32 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AuthenticationKeyChain = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("authentication.window-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("authentication.window-size"); cValue.Exists() {
 				item.AuthenticationWindowSize = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("authentication.life-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("authentication.life-time"); cValue.Exists() {
 				item.AuthenticationLifeTime = types.Int64Value(cValue.Int())
 			}
 			data.Neighbors = append(data.Neighbors, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() {
 		data.BandwidthRdmPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() {
 		data.BandwidthRdmPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() {
 		data.LatencyThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.events.nsr"); value.Exists() {
@@ -753,7 +753,7 @@ func (data *RSVP) fromBody(ctx context.Context, res []byte, version string) {
 	} else {
 		data.LoggingEventsIssu = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.rare"); value.Exists() {
@@ -808,19 +808,19 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.SignallingGracefulRestartLspCtype = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-recovery-time"); value.Exists() {
 		data.SignallingGracefulRestartRecoveryTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.graceful-restart-restart-time"); value.Exists() {
 		data.SignallingGracefulRestartRestartTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.interval"); value.Exists() {
 		data.SignallingHelloGracefulRestartRefreshInterval = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.hello.graceful-restart.refresh.misses"); value.Exists() {
 		data.SignallingHelloGracefulRestartRefreshMisses = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "signalling.event-per-pulse"); value.Exists() {
 		data.SignallingEventPerPulse = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "signalling.prefix-filtering.access-list"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
@@ -857,13 +857,13 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 	if value := gjson.GetBytes(res, "authentication.key-source.key-chain"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AuthenticationKeyChain = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.window-size"); value.Exists() {
 		data.AuthenticationWindowSize = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.life-time"); value.Exists() {
 		data.AuthenticationLifeTime = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "authentication.retransmit"); value.Exists() {
 		data.AuthenticationRetransmit = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "neighbors.neighbor"); value.Exists() {
@@ -876,32 +876,32 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 			if cValue := v.Get("authentication.key-source.key-chain"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.AuthenticationKeyChain = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("authentication.window-size"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("authentication.window-size"); cValue.Exists() {
 				item.AuthenticationWindowSize = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("authentication.life-time"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("authentication.life-time"); cValue.Exists() {
 				item.AuthenticationLifeTime = types.Int64Value(cValue.Int())
 			}
 			data.Neighbors = append(data.Neighbors, item)
 			return true
 		})
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.max-reservable-bandwidth"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBandwidth = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc0"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.mam.percentage.max-reservable.bc1"); value.Exists() {
 		data.BandwidthMamPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc0"); value.Exists() {
 		data.BandwidthRdmPercentageMaxReservableBc0 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bandwidth.rdm.percentage.max-reservable-bc0.bc1"); value.Exists() {
 		data.BandwidthRdmPercentageMaxReservableBc1 = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "latency.threshold"); value.Exists() {
 		data.LatencyThreshold = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "logging.events.nsr"); value.Exists() {
@@ -914,7 +914,7 @@ func (data *RSVPData) fromBody(ctx context.Context, res []byte, version string) 
 	} else {
 		data.LoggingEventsIssu = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.multiplier-factor"); value.Exists() {
 		data.LtraceBufferMultiplier = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "ltrace-buffer.multiplier.rare"); value.Exists() {

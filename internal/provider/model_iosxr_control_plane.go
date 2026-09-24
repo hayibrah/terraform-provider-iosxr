@@ -2176,7 +2176,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2239,7 +2239,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].SshIpv6Prefixes[ci].Length = types.Int64Null()
@@ -2311,7 +2311,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2374,7 +2374,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].TelnetIpv6Prefixes[ci].Length = types.Int64Null()
@@ -2446,7 +2446,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2509,7 +2509,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].SnmpIpv6Prefixes[ci].Length = types.Int64Null()
@@ -2581,7 +2581,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2644,7 +2644,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].TftpIpv6Prefixes[ci].Length = types.Int64Null()
@@ -2716,7 +2716,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].HttpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2788,7 +2788,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2851,7 +2851,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].XmlIpv6Prefixes[ci].Length = types.Int64Null()
@@ -2923,7 +2923,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv4Prefixes[ci].Length = types.Int64Null()
@@ -2986,7 +2986,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].NetconfIpv6Prefixes[ci].Length = types.Int64Null()
@@ -3058,7 +3058,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv4Prefixes[ci].Length = types.Int64Null()
@@ -3121,7 +3121,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtInbandInterfaces[i].AllowAllIpv6Prefixes[ci].Length = types.Int64Null()
@@ -3194,7 +3194,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllSshIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllSshIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllSshIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllSshIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllSshIpv4Prefixes[i].Length = types.Int64Null()
@@ -3257,7 +3257,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllSshIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllSshIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllSshIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllSshIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllSshIpv6Prefixes[i].Length = types.Int64Null()
@@ -3329,7 +3329,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllTelnetIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllTelnetIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllTelnetIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllTelnetIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllTelnetIpv4Prefixes[i].Length = types.Int64Null()
@@ -3392,7 +3392,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllTelnetIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllTelnetIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllTelnetIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllTelnetIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllTelnetIpv6Prefixes[i].Length = types.Int64Null()
@@ -3464,7 +3464,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllSnmpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllSnmpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllSnmpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllSnmpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllSnmpIpv4Prefixes[i].Length = types.Int64Null()
@@ -3527,7 +3527,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllSnmpIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllSnmpIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllSnmpIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllSnmpIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllSnmpIpv6Prefixes[i].Length = types.Int64Null()
@@ -3599,7 +3599,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllTftpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllTftpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllTftpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllTftpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllTftpIpv4Prefixes[i].Length = types.Int64Null()
@@ -3662,7 +3662,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllTftpIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllTftpIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllTftpIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllTftpIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllTftpIpv6Prefixes[i].Length = types.Int64Null()
@@ -3734,7 +3734,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllHttpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllHttpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllHttpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllHttpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllHttpIpv4Prefixes[i].Length = types.Int64Null()
@@ -3806,7 +3806,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllXmlIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllXmlIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllXmlIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllXmlIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllXmlIpv4Prefixes[i].Length = types.Int64Null()
@@ -3869,7 +3869,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllXmlIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllXmlIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllXmlIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllXmlIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllXmlIpv6Prefixes[i].Length = types.Int64Null()
@@ -3941,7 +3941,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllNetconfIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllNetconfIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllNetconfIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllNetconfIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllNetconfIpv4Prefixes[i].Length = types.Int64Null()
@@ -4004,7 +4004,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllNetconfIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllNetconfIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllNetconfIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllNetconfIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllNetconfIpv6Prefixes[i].Length = types.Int64Null()
@@ -4076,7 +4076,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllAllowAllIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllAllowAllIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllAllowAllIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllAllowAllIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllAllowAllIpv4Prefixes[i].Length = types.Int64Null()
@@ -4139,7 +4139,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtInbandAllAllowAllIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtInbandAllAllowAllIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtInbandAllAllowAllIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtInbandAllAllowAllIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtInbandAllAllowAllIpv6Prefixes[i].Length = types.Int64Null()
@@ -4239,7 +4239,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4302,7 +4302,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].SshIpv6Prefixes[ci].Length = types.Int64Null()
@@ -4374,7 +4374,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4437,7 +4437,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].TelnetIpv6Prefixes[ci].Length = types.Int64Null()
@@ -4509,7 +4509,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4572,7 +4572,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].SnmpIpv6Prefixes[ci].Length = types.Int64Null()
@@ -4644,7 +4644,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4707,7 +4707,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].TftpIpv6Prefixes[ci].Length = types.Int64Null()
@@ -4779,7 +4779,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].HttpIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4851,7 +4851,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv4Prefixes[ci].Length = types.Int64Null()
@@ -4914,7 +4914,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].XmlIpv6Prefixes[ci].Length = types.Int64Null()
@@ -4986,7 +4986,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv4Prefixes[ci].Length = types.Int64Null()
@@ -5049,7 +5049,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].NetconfIpv6Prefixes[ci].Length = types.Int64Null()
@@ -5121,7 +5121,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv4Prefixes[ci].Length = types.Int64Null()
@@ -5184,7 +5184,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Address = types.StringNull()
 			}
-			if value := cr.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Length.IsNull() {
+			if value := cr.Get("length"); value.Exists() && !data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Length.IsNull() {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Length = types.Int64Value(value.Int())
 			} else {
 				data.MgmtOobInterfaces[i].AllowAllIpv6Prefixes[ci].Length = types.Int64Null()
@@ -5271,7 +5271,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllSshIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllSshIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllSshIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllSshIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllSshIpv4Prefixes[i].Length = types.Int64Null()
@@ -5334,7 +5334,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllSshIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllSshIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllSshIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllSshIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllSshIpv6Prefixes[i].Length = types.Int64Null()
@@ -5406,7 +5406,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllTelnetIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllTelnetIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllTelnetIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllTelnetIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllTelnetIpv4Prefixes[i].Length = types.Int64Null()
@@ -5469,7 +5469,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllTelnetIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllTelnetIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllTelnetIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllTelnetIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllTelnetIpv6Prefixes[i].Length = types.Int64Null()
@@ -5541,7 +5541,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllSnmpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllSnmpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllSnmpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllSnmpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllSnmpIpv4Prefixes[i].Length = types.Int64Null()
@@ -5604,7 +5604,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllSnmpIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllSnmpIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllSnmpIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllSnmpIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllSnmpIpv6Prefixes[i].Length = types.Int64Null()
@@ -5676,7 +5676,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllTftpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllTftpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllTftpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllTftpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllTftpIpv4Prefixes[i].Length = types.Int64Null()
@@ -5739,7 +5739,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllTftpIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllTftpIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllTftpIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllTftpIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllTftpIpv6Prefixes[i].Length = types.Int64Null()
@@ -5811,7 +5811,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllHttpIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllHttpIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllHttpIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllHttpIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllHttpIpv4Prefixes[i].Length = types.Int64Null()
@@ -5883,7 +5883,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllXmlIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllXmlIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllXmlIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllXmlIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllXmlIpv4Prefixes[i].Length = types.Int64Null()
@@ -5946,7 +5946,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllXmlIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllXmlIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllXmlIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllXmlIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllXmlIpv6Prefixes[i].Length = types.Int64Null()
@@ -6018,7 +6018,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllNetconfIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllNetconfIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllNetconfIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllNetconfIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllNetconfIpv4Prefixes[i].Length = types.Int64Null()
@@ -6081,7 +6081,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllNetconfIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllNetconfIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllNetconfIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllNetconfIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllNetconfIpv6Prefixes[i].Length = types.Int64Null()
@@ -6153,7 +6153,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllAllowAllIpv4Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllAllowAllIpv4Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllAllowAllIpv4Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllAllowAllIpv4Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllAllowAllIpv4Prefixes[i].Length = types.Int64Null()
@@ -6216,7 +6216,7 @@ func (data *ControlPlane) updateFromBody(ctx context.Context, res []byte, versio
 		} else {
 			data.MgmtOobAllAllowAllIpv6Prefixes[i].Address = types.StringNull()
 		}
-		if value := r.Get("length"); value.Exists() && value.Type == gjson.Number && !data.MgmtOobAllAllowAllIpv6Prefixes[i].Length.IsNull() {
+		if value := r.Get("length"); value.Exists() && !data.MgmtOobAllAllowAllIpv6Prefixes[i].Length.IsNull() {
 			data.MgmtOobAllAllowAllIpv6Prefixes[i].Length = types.Int64Value(value.Int())
 		} else {
 			data.MgmtOobAllAllowAllIpv6Prefixes[i].Length = types.Int64Null()
@@ -6277,7 +6277,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv4Prefixes = append(item.SshIpv4Prefixes, cItem)
@@ -6302,7 +6302,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv6Prefixes = append(item.SshIpv6Prefixes, cItem)
@@ -6332,7 +6332,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv4Prefixes = append(item.TelnetIpv4Prefixes, cItem)
@@ -6357,7 +6357,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv6Prefixes = append(item.TelnetIpv6Prefixes, cItem)
@@ -6387,7 +6387,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv4Prefixes = append(item.SnmpIpv4Prefixes, cItem)
@@ -6412,7 +6412,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv6Prefixes = append(item.SnmpIpv6Prefixes, cItem)
@@ -6442,7 +6442,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv4Prefixes = append(item.TftpIpv4Prefixes, cItem)
@@ -6467,7 +6467,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv6Prefixes = append(item.TftpIpv6Prefixes, cItem)
@@ -6497,7 +6497,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.HttpIpv4Prefixes = append(item.HttpIpv4Prefixes, cItem)
@@ -6527,7 +6527,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv4Prefixes = append(item.XmlIpv4Prefixes, cItem)
@@ -6552,7 +6552,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv6Prefixes = append(item.XmlIpv6Prefixes, cItem)
@@ -6582,7 +6582,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv4Prefixes = append(item.NetconfIpv4Prefixes, cItem)
@@ -6607,7 +6607,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv6Prefixes = append(item.NetconfIpv6Prefixes, cItem)
@@ -6637,7 +6637,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv4Prefixes = append(item.AllowAllIpv4Prefixes, cItem)
@@ -6662,7 +6662,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv6Prefixes = append(item.AllowAllIpv6Prefixes, cItem)
@@ -6696,7 +6696,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSshIpv4Prefixes = append(data.MgmtInbandAllSshIpv4Prefixes, item)
@@ -6721,7 +6721,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSshIpv6Prefixes = append(data.MgmtInbandAllSshIpv6Prefixes, item)
@@ -6751,7 +6751,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTelnetIpv4Prefixes = append(data.MgmtInbandAllTelnetIpv4Prefixes, item)
@@ -6776,7 +6776,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTelnetIpv6Prefixes = append(data.MgmtInbandAllTelnetIpv6Prefixes, item)
@@ -6806,7 +6806,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSnmpIpv4Prefixes = append(data.MgmtInbandAllSnmpIpv4Prefixes, item)
@@ -6831,7 +6831,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSnmpIpv6Prefixes = append(data.MgmtInbandAllSnmpIpv6Prefixes, item)
@@ -6861,7 +6861,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTftpIpv4Prefixes = append(data.MgmtInbandAllTftpIpv4Prefixes, item)
@@ -6886,7 +6886,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTftpIpv6Prefixes = append(data.MgmtInbandAllTftpIpv6Prefixes, item)
@@ -6916,7 +6916,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllHttpIpv4Prefixes = append(data.MgmtInbandAllHttpIpv4Prefixes, item)
@@ -6946,7 +6946,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllXmlIpv4Prefixes = append(data.MgmtInbandAllXmlIpv4Prefixes, item)
@@ -6971,7 +6971,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllXmlIpv6Prefixes = append(data.MgmtInbandAllXmlIpv6Prefixes, item)
@@ -7001,7 +7001,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllNetconfIpv4Prefixes = append(data.MgmtInbandAllNetconfIpv4Prefixes, item)
@@ -7026,7 +7026,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllNetconfIpv6Prefixes = append(data.MgmtInbandAllNetconfIpv6Prefixes, item)
@@ -7056,7 +7056,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllAllowAllIpv4Prefixes = append(data.MgmtInbandAllAllowAllIpv4Prefixes, item)
@@ -7081,7 +7081,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllAllowAllIpv6Prefixes = append(data.MgmtInbandAllAllowAllIpv6Prefixes, item)
@@ -7118,7 +7118,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv4Prefixes = append(item.SshIpv4Prefixes, cItem)
@@ -7143,7 +7143,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv6Prefixes = append(item.SshIpv6Prefixes, cItem)
@@ -7173,7 +7173,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv4Prefixes = append(item.TelnetIpv4Prefixes, cItem)
@@ -7198,7 +7198,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv6Prefixes = append(item.TelnetIpv6Prefixes, cItem)
@@ -7228,7 +7228,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv4Prefixes = append(item.SnmpIpv4Prefixes, cItem)
@@ -7253,7 +7253,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv6Prefixes = append(item.SnmpIpv6Prefixes, cItem)
@@ -7283,7 +7283,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv4Prefixes = append(item.TftpIpv4Prefixes, cItem)
@@ -7308,7 +7308,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv6Prefixes = append(item.TftpIpv6Prefixes, cItem)
@@ -7338,7 +7338,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.HttpIpv4Prefixes = append(item.HttpIpv4Prefixes, cItem)
@@ -7368,7 +7368,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv4Prefixes = append(item.XmlIpv4Prefixes, cItem)
@@ -7393,7 +7393,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv6Prefixes = append(item.XmlIpv6Prefixes, cItem)
@@ -7423,7 +7423,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv4Prefixes = append(item.NetconfIpv4Prefixes, cItem)
@@ -7448,7 +7448,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv6Prefixes = append(item.NetconfIpv6Prefixes, cItem)
@@ -7478,7 +7478,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv4Prefixes = append(item.AllowAllIpv4Prefixes, cItem)
@@ -7503,7 +7503,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv6Prefixes = append(item.AllowAllIpv6Prefixes, cItem)
@@ -7545,7 +7545,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSshIpv4Prefixes = append(data.MgmtOobAllSshIpv4Prefixes, item)
@@ -7570,7 +7570,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSshIpv6Prefixes = append(data.MgmtOobAllSshIpv6Prefixes, item)
@@ -7600,7 +7600,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTelnetIpv4Prefixes = append(data.MgmtOobAllTelnetIpv4Prefixes, item)
@@ -7625,7 +7625,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTelnetIpv6Prefixes = append(data.MgmtOobAllTelnetIpv6Prefixes, item)
@@ -7655,7 +7655,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSnmpIpv4Prefixes = append(data.MgmtOobAllSnmpIpv4Prefixes, item)
@@ -7680,7 +7680,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSnmpIpv6Prefixes = append(data.MgmtOobAllSnmpIpv6Prefixes, item)
@@ -7710,7 +7710,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTftpIpv4Prefixes = append(data.MgmtOobAllTftpIpv4Prefixes, item)
@@ -7735,7 +7735,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTftpIpv6Prefixes = append(data.MgmtOobAllTftpIpv6Prefixes, item)
@@ -7765,7 +7765,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllHttpIpv4Prefixes = append(data.MgmtOobAllHttpIpv4Prefixes, item)
@@ -7795,7 +7795,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllXmlIpv4Prefixes = append(data.MgmtOobAllXmlIpv4Prefixes, item)
@@ -7820,7 +7820,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllXmlIpv6Prefixes = append(data.MgmtOobAllXmlIpv6Prefixes, item)
@@ -7850,7 +7850,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllNetconfIpv4Prefixes = append(data.MgmtOobAllNetconfIpv4Prefixes, item)
@@ -7875,7 +7875,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllNetconfIpv6Prefixes = append(data.MgmtOobAllNetconfIpv6Prefixes, item)
@@ -7905,7 +7905,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllAllowAllIpv4Prefixes = append(data.MgmtOobAllAllowAllIpv4Prefixes, item)
@@ -7930,7 +7930,7 @@ func (data *ControlPlane) fromBody(ctx context.Context, res []byte, version stri
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllAllowAllIpv6Prefixes = append(data.MgmtOobAllAllowAllIpv6Prefixes, item)
@@ -7974,7 +7974,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv4Prefixes = append(item.SshIpv4Prefixes, cItem)
@@ -7999,7 +7999,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv6Prefixes = append(item.SshIpv6Prefixes, cItem)
@@ -8029,7 +8029,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv4Prefixes = append(item.TelnetIpv4Prefixes, cItem)
@@ -8054,7 +8054,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv6Prefixes = append(item.TelnetIpv6Prefixes, cItem)
@@ -8084,7 +8084,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv4Prefixes = append(item.SnmpIpv4Prefixes, cItem)
@@ -8109,7 +8109,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv6Prefixes = append(item.SnmpIpv6Prefixes, cItem)
@@ -8139,7 +8139,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv4Prefixes = append(item.TftpIpv4Prefixes, cItem)
@@ -8164,7 +8164,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv6Prefixes = append(item.TftpIpv6Prefixes, cItem)
@@ -8194,7 +8194,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.HttpIpv4Prefixes = append(item.HttpIpv4Prefixes, cItem)
@@ -8224,7 +8224,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv4Prefixes = append(item.XmlIpv4Prefixes, cItem)
@@ -8249,7 +8249,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv6Prefixes = append(item.XmlIpv6Prefixes, cItem)
@@ -8279,7 +8279,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv4Prefixes = append(item.NetconfIpv4Prefixes, cItem)
@@ -8304,7 +8304,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv6Prefixes = append(item.NetconfIpv6Prefixes, cItem)
@@ -8334,7 +8334,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv4Prefixes = append(item.AllowAllIpv4Prefixes, cItem)
@@ -8359,7 +8359,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv6Prefixes = append(item.AllowAllIpv6Prefixes, cItem)
@@ -8393,7 +8393,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSshIpv4Prefixes = append(data.MgmtInbandAllSshIpv4Prefixes, item)
@@ -8418,7 +8418,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSshIpv6Prefixes = append(data.MgmtInbandAllSshIpv6Prefixes, item)
@@ -8448,7 +8448,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTelnetIpv4Prefixes = append(data.MgmtInbandAllTelnetIpv4Prefixes, item)
@@ -8473,7 +8473,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTelnetIpv6Prefixes = append(data.MgmtInbandAllTelnetIpv6Prefixes, item)
@@ -8503,7 +8503,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSnmpIpv4Prefixes = append(data.MgmtInbandAllSnmpIpv4Prefixes, item)
@@ -8528,7 +8528,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllSnmpIpv6Prefixes = append(data.MgmtInbandAllSnmpIpv6Prefixes, item)
@@ -8558,7 +8558,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTftpIpv4Prefixes = append(data.MgmtInbandAllTftpIpv4Prefixes, item)
@@ -8583,7 +8583,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllTftpIpv6Prefixes = append(data.MgmtInbandAllTftpIpv6Prefixes, item)
@@ -8613,7 +8613,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllHttpIpv4Prefixes = append(data.MgmtInbandAllHttpIpv4Prefixes, item)
@@ -8643,7 +8643,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllXmlIpv4Prefixes = append(data.MgmtInbandAllXmlIpv4Prefixes, item)
@@ -8668,7 +8668,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllXmlIpv6Prefixes = append(data.MgmtInbandAllXmlIpv6Prefixes, item)
@@ -8698,7 +8698,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllNetconfIpv4Prefixes = append(data.MgmtInbandAllNetconfIpv4Prefixes, item)
@@ -8723,7 +8723,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllNetconfIpv6Prefixes = append(data.MgmtInbandAllNetconfIpv6Prefixes, item)
@@ -8753,7 +8753,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllAllowAllIpv4Prefixes = append(data.MgmtInbandAllAllowAllIpv4Prefixes, item)
@@ -8778,7 +8778,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtInbandAllAllowAllIpv6Prefixes = append(data.MgmtInbandAllAllowAllIpv6Prefixes, item)
@@ -8815,7 +8815,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv4Prefixes = append(item.SshIpv4Prefixes, cItem)
@@ -8840,7 +8840,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SshIpv6Prefixes = append(item.SshIpv6Prefixes, cItem)
@@ -8870,7 +8870,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv4Prefixes = append(item.TelnetIpv4Prefixes, cItem)
@@ -8895,7 +8895,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TelnetIpv6Prefixes = append(item.TelnetIpv6Prefixes, cItem)
@@ -8925,7 +8925,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv4Prefixes = append(item.SnmpIpv4Prefixes, cItem)
@@ -8950,7 +8950,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.SnmpIpv6Prefixes = append(item.SnmpIpv6Prefixes, cItem)
@@ -8980,7 +8980,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv4Prefixes = append(item.TftpIpv4Prefixes, cItem)
@@ -9005,7 +9005,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.TftpIpv6Prefixes = append(item.TftpIpv6Prefixes, cItem)
@@ -9035,7 +9035,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.HttpIpv4Prefixes = append(item.HttpIpv4Prefixes, cItem)
@@ -9065,7 +9065,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv4Prefixes = append(item.XmlIpv4Prefixes, cItem)
@@ -9090,7 +9090,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.XmlIpv6Prefixes = append(item.XmlIpv6Prefixes, cItem)
@@ -9120,7 +9120,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv4Prefixes = append(item.NetconfIpv4Prefixes, cItem)
@@ -9145,7 +9145,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.NetconfIpv6Prefixes = append(item.NetconfIpv6Prefixes, cItem)
@@ -9175,7 +9175,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv4Prefixes = append(item.AllowAllIpv4Prefixes, cItem)
@@ -9200,7 +9200,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 					if ccValue := cv.Get("address"); ccValue.Exists() && (ccValue.Type == gjson.String || ccValue.Type == gjson.Number) {
 						cItem.Address = types.StringValue(ccValue.String())
 					}
-					if ccValue := cv.Get("length"); ccValue.Exists() && ccValue.Type == gjson.Number {
+					if ccValue := cv.Get("length"); ccValue.Exists() {
 						cItem.Length = types.Int64Value(ccValue.Int())
 					}
 					item.AllowAllIpv6Prefixes = append(item.AllowAllIpv6Prefixes, cItem)
@@ -9242,7 +9242,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSshIpv4Prefixes = append(data.MgmtOobAllSshIpv4Prefixes, item)
@@ -9267,7 +9267,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSshIpv6Prefixes = append(data.MgmtOobAllSshIpv6Prefixes, item)
@@ -9297,7 +9297,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTelnetIpv4Prefixes = append(data.MgmtOobAllTelnetIpv4Prefixes, item)
@@ -9322,7 +9322,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTelnetIpv6Prefixes = append(data.MgmtOobAllTelnetIpv6Prefixes, item)
@@ -9352,7 +9352,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSnmpIpv4Prefixes = append(data.MgmtOobAllSnmpIpv4Prefixes, item)
@@ -9377,7 +9377,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllSnmpIpv6Prefixes = append(data.MgmtOobAllSnmpIpv6Prefixes, item)
@@ -9407,7 +9407,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTftpIpv4Prefixes = append(data.MgmtOobAllTftpIpv4Prefixes, item)
@@ -9432,7 +9432,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllTftpIpv6Prefixes = append(data.MgmtOobAllTftpIpv6Prefixes, item)
@@ -9462,7 +9462,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllHttpIpv4Prefixes = append(data.MgmtOobAllHttpIpv4Prefixes, item)
@@ -9492,7 +9492,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllXmlIpv4Prefixes = append(data.MgmtOobAllXmlIpv4Prefixes, item)
@@ -9517,7 +9517,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllXmlIpv6Prefixes = append(data.MgmtOobAllXmlIpv6Prefixes, item)
@@ -9547,7 +9547,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllNetconfIpv4Prefixes = append(data.MgmtOobAllNetconfIpv4Prefixes, item)
@@ -9572,7 +9572,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllNetconfIpv6Prefixes = append(data.MgmtOobAllNetconfIpv6Prefixes, item)
@@ -9602,7 +9602,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllAllowAllIpv4Prefixes = append(data.MgmtOobAllAllowAllIpv4Prefixes, item)
@@ -9627,7 +9627,7 @@ func (data *ControlPlaneData) fromBody(ctx context.Context, res []byte, version 
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("length"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("length"); cValue.Exists() {
 				item.Length = types.Int64Value(cValue.Int())
 			}
 			data.MgmtOobAllAllowAllIpv6Prefixes = append(data.MgmtOobAllAllowAllIpv6Prefixes, item)

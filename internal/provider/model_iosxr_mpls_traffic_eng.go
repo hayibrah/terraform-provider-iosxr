@@ -185,7 +185,7 @@ func (data *MPLSTrafficEng) updateFromBody(ctx context.Context, res []byte, vers
 	} else {
 		data.Disable = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && value.Type == gjson.Number && !data.ReoptimizeReoptimizationPeriodIn.IsNull() {
+	if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); helpers.VersionAtLeast(version, "25.4") && value.Exists() && !data.ReoptimizeReoptimizationPeriodIn.IsNull() {
 		data.ReoptimizeReoptimizationPeriodIn = types.Int64Value(value.Int())
 	} else {
 		data.ReoptimizeReoptimizationPeriodIn = types.Int64Null()
@@ -217,7 +217,7 @@ func (data *MPLSTrafficEng) fromBody(ctx context.Context, res []byte, version st
 		data.Disable = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); value.Exists() {
 			data.ReoptimizeReoptimizationPeriodIn = types.Int64Value(value.Int())
 		}
 	} else {
@@ -252,7 +252,7 @@ func (data *MPLSTrafficEngData) fromBody(ctx context.Context, res []byte, versio
 		data.Disable = types.BoolNull()
 	}
 	if helpers.VersionAtLeast(version, "25.4") {
-		if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); value.Exists() && value.Type == gjson.Number {
+		if value := gjson.GetBytes(res, "traffic-eng.pce.reoptimize.reoptimization-period-in"); value.Exists() {
 			data.ReoptimizeReoptimizationPeriodIn = types.Int64Value(value.Int())
 		}
 	} else {

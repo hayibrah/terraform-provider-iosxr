@@ -476,22 +476,22 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 	} else {
 		data.Description = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdTwoByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && !data.BgpRdTwoByteAsNumber.IsNull() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdTwoByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdTwoByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && !data.BgpRdTwoByteAsIndex.IsNull() {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdTwoByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdFourByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && !data.BgpRdFourByteAsNumber.IsNull() {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdFourByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdFourByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && !data.BgpRdFourByteAsIndex.IsNull() {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdFourByteAsIndex = types.Int64Null()
@@ -501,7 +501,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 	} else {
 		data.BgpRdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRdIpv4AddressIndex.IsNull() {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && !data.BgpRdIpv4AddressIndex.IsNull() {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	} else {
 		data.BgpRdIpv4AddressIndex = types.Int64Null()
@@ -529,12 +529,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetTwoByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.BgpRouteTargetTwoByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetTwoByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetTwoByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -563,12 +563,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetFourByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.BgpRouteTargetFourByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetFourByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetFourByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -602,7 +602,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 		} else {
 			data.BgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
@@ -631,12 +631,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetImportTwoByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -665,12 +665,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetImportFourByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetImportFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -704,7 +704,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 		} else {
 			data.BgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
@@ -733,12 +733,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetExportTwoByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -767,12 +767,12 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber.IsNull() {
 			data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetExportFourByteAsFormat[i].AsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetExportFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -806,7 +806,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) updateFromBody(ctx context.Context, res [
 		} else {
 			data.BgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.IsNull() {
 			data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.BgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
@@ -1028,32 +1028,32 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.route-target.export.two-byte-as-rts.two-byte-as-rt"); value.Exists() {
 		data.BgpRouteTargetTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetTwoByteAsFormat = append(data.BgpRouteTargetTwoByteAsFormat, item)
@@ -1064,10 +1064,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetFourByteAsFormat = append(data.BgpRouteTargetFourByteAsFormat, item)
@@ -1081,7 +1081,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetIpv4AddressFormat = append(data.BgpRouteTargetIpv4AddressFormat, item)
@@ -1092,10 +1092,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetImportTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportTwoByteAsFormat = append(data.BgpRouteTargetImportTwoByteAsFormat, item)
@@ -1106,10 +1106,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetImportFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportFourByteAsFormat = append(data.BgpRouteTargetImportFourByteAsFormat, item)
@@ -1123,7 +1123,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportIpv4AddressFormat = append(data.BgpRouteTargetImportIpv4AddressFormat, item)
@@ -1134,10 +1134,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetExportTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportTwoByteAsFormat = append(data.BgpRouteTargetExportTwoByteAsFormat, item)
@@ -1148,10 +1148,10 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 		data.BgpRouteTargetExportFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportFourByteAsFormat = append(data.BgpRouteTargetExportFourByteAsFormat, item)
@@ -1165,7 +1165,7 @@ func (data *EVPNSegmentRoutingSRv6EVI) fromBody(ctx context.Context, res []byte,
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportIpv4AddressFormat = append(data.BgpRouteTargetExportIpv4AddressFormat, item)
@@ -1292,32 +1292,32 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 	if value := gjson.GetBytes(res, "description"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.Description = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-number"); value.Exists() {
 		data.BgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.two-byte-as-assigned-number"); value.Exists() {
 		data.BgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-number"); value.Exists() {
 		data.BgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.four-byte-as-assigned-number"); value.Exists() {
 		data.BgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.BgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "bgp.rd.ipv4-address-assigned-number"); value.Exists() {
 		data.BgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "bgp.route-target.export.two-byte-as-rts.two-byte-as-rt"); value.Exists() {
 		data.BgpRouteTargetTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetTwoByteAsFormat = append(data.BgpRouteTargetTwoByteAsFormat, item)
@@ -1328,10 +1328,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetFourByteAsFormat = append(data.BgpRouteTargetFourByteAsFormat, item)
@@ -1345,7 +1345,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetIpv4AddressFormat = append(data.BgpRouteTargetIpv4AddressFormat, item)
@@ -1356,10 +1356,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetImportTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportTwoByteAsFormat = append(data.BgpRouteTargetImportTwoByteAsFormat, item)
@@ -1370,10 +1370,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetImportFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetImportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportFourByteAsFormat = append(data.BgpRouteTargetImportFourByteAsFormat, item)
@@ -1387,7 +1387,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetImportIpv4AddressFormat = append(data.BgpRouteTargetImportIpv4AddressFormat, item)
@@ -1398,10 +1398,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetExportTwoByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportTwoByteAsFormat = append(data.BgpRouteTargetExportTwoByteAsFormat, item)
@@ -1412,10 +1412,10 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 		data.BgpRouteTargetExportFourByteAsFormat = make([]EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := EVPNSegmentRoutingSRv6EVIBgpRouteTargetExportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.AsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportFourByteAsFormat = append(data.BgpRouteTargetExportFourByteAsFormat, item)
@@ -1429,7 +1429,7 @@ func (data *EVPNSegmentRoutingSRv6EVIData) fromBody(ctx context.Context, res []b
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.BgpRouteTargetExportIpv4AddressFormat = append(data.BgpRouteTargetExportIpv4AddressFormat, item)

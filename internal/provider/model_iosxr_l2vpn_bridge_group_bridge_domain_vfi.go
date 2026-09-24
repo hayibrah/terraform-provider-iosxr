@@ -545,7 +545,7 @@ func (data L2VPNBridgeGroupBridgeDomainVFI) GetPatternConstraints() []helpers.Fi
 
 // Section below is generated&owned by "gen/generator.go". //template:begin updateFromBody
 func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() && value.Type == gjson.Number && !data.VpnId.IsNull() {
+	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() && !data.VpnId.IsNull() {
 		data.VpnId = types.Int64Value(value.Int())
 	} else {
 		data.VpnId = types.Int64Null()
@@ -577,22 +577,22 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpRdAuto = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRdTwoByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRdTwoByteAsNumber.IsNull() {
 		data.AutodiscoveryBgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpRdTwoByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRdTwoByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() && !data.AutodiscoveryBgpRdTwoByteAsIndex.IsNull() {
 		data.AutodiscoveryBgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpRdTwoByteAsIndex = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRdFourByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRdFourByteAsNumber.IsNull() {
 		data.AutodiscoveryBgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpRdFourByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRdFourByteAsIndex.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && !data.AutodiscoveryBgpRdFourByteAsIndex.IsNull() {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Null()
@@ -602,7 +602,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && !data.AutodiscoveryBgpRdIpv4AddressIndex.IsNull() {
 		data.AutodiscoveryBgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpRdIpv4AddressIndex = types.Int64Null()
@@ -630,12 +630,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -664,12 +664,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].FourByteAsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].FourByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].FourByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].FourByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -703,7 +703,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
@@ -732,12 +732,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -766,12 +766,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].FourByteAsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].FourByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].FourByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].FourByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -805,7 +805,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat[i].AssignedNumber = types.Int64Null()
@@ -834,12 +834,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
+		if value := r.Get("two-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].TwoByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].TwoByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -868,12 +868,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				return true
 			},
 		)
-		if value := r.Get("four-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].FourByteAsNumber.IsNull() {
+		if value := r.Get("four-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].FourByteAsNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].FourByteAsNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].FourByteAsNumber = types.Int64Null()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].AssignedNumber.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].AssignedNumber.IsNull() {
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].AssignedNumber = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat[i].AssignedNumber = types.Int64Null()
@@ -907,7 +907,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Ipv4Address = types.StringNull()
 		}
-		if value := r.Get("assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Index.IsNull() {
+		if value := r.Get("assigned-number"); value.Exists() && !data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Index.IsNull() {
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Index = types.Int64Value(value.Int())
 		} else {
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat[i].Index = types.Int64Null()
@@ -931,12 +931,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolBgp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpSignalingProtocolBgpVeId.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() && !data.AutodiscoveryBgpSignalingProtocolBgpVeId.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeId = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeId = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpSignalingProtocolBgpVeRange.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() && !data.AutodiscoveryBgpSignalingProtocolBgpVeRange.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeRange = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeRange = types.Int64Null()
@@ -986,12 +986,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdp = types.BoolNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber = types.Int64Null()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Null()
@@ -1001,7 +1001,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringNull()
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex.IsNull() {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && !data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex.IsNull() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex = types.Int64Value(value.Int())
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex = types.Int64Null()
@@ -1112,7 +1112,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 		} else {
 			data.Neighbors[i].Address = types.StringNull()
 		}
-		if value := r.Get("pw-id"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].PwId.IsNull() {
+		if value := r.Get("pw-id"); value.Exists() && !data.Neighbors[i].PwId.IsNull() {
 			data.Neighbors[i].PwId = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].PwId = types.Int64Null()
@@ -1146,12 +1146,12 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 				data.Neighbors[i].StaticMacAddresses[ci].MacAddress = types.StringNull()
 			}
 		}
-		if value := r.Get("mpls.static.label.local"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].MplsStaticLabelLocal.IsNull() {
+		if value := r.Get("mpls.static.label.local"); value.Exists() && !data.Neighbors[i].MplsStaticLabelLocal.IsNull() {
 			data.Neighbors[i].MplsStaticLabelLocal = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].MplsStaticLabelLocal = types.Int64Null()
 		}
-		if value := r.Get("mpls.static.label.remote"); value.Exists() && value.Type == gjson.Number && !data.Neighbors[i].MplsStaticLabelRemote.IsNull() {
+		if value := r.Get("mpls.static.label.remote"); value.Exists() && !data.Neighbors[i].MplsStaticLabelRemote.IsNull() {
 			data.Neighbors[i].MplsStaticLabelRemote = types.Int64Value(value.Int())
 		} else {
 			data.Neighbors[i].MplsStaticLabelRemote = types.Int64Null()
@@ -1193,7 +1193,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) updateFromBody(ctx context.Context,
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBody
 
 func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() {
 		data.VpnId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -1211,32 +1211,32 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	} else {
 		data.AutodiscoveryBgpRdAuto = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-target.import.two-byte-as-rts.two-byte-as-rt"); value.Exists() {
 		data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat, item)
@@ -1247,10 +1247,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat, item)
@@ -1264,7 +1264,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat, item)
@@ -1275,10 +1275,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat, item)
@@ -1289,10 +1289,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat, item)
@@ -1306,7 +1306,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat, item)
@@ -1317,10 +1317,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetTwoByteAsFormat, item)
@@ -1331,10 +1331,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 		data.AutodiscoveryBgpRouteTargetFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetFourByteAsFormat, item)
@@ -1348,7 +1348,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.Index = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetIpv4AddressFormat, item)
@@ -1365,10 +1365,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolBgp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.load-balancing.flow-label.transmit"); value.Exists() {
@@ -1396,16 +1396,16 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.load-balancing.flow-label.transmit"); value.Exists() {
@@ -1459,7 +1459,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("pw-id"); cValue.Exists() {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
@@ -1473,10 +1473,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 					return true
 				})
 			}
-			if cValue := v.Get("mpls.static.label.local"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mpls.static.label.local"); cValue.Exists() {
 				item.MplsStaticLabelLocal = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() {
 				item.MplsStaticLabelRemote = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("pw-class"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
@@ -1507,7 +1507,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFI) fromBody(ctx context.Context, res [
 // Section below is generated&owned by "gen/generator.go". //template:begin fromBodyData
 
 func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, res []byte, version string) {
-	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "vpn-id"); value.Exists() {
 		data.VpnId = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "shutdown"); value.Exists() {
@@ -1525,32 +1525,32 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	} else {
 		data.AutodiscoveryBgpRdAuto = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpRdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.two-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdTwoByteAsIndex = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpRdFourByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.four-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdFourByteAsIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpRdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.rd.ipv4-address-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpRdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.route-target.import.two-byte-as-rts.two-byte-as-rt"); value.Exists() {
 		data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetImportTwoByteAsFormat, item)
@@ -1561,10 +1561,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetImportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetImportFourByteAsFormat, item)
@@ -1578,7 +1578,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetImportIpv4AddressFormat, item)
@@ -1589,10 +1589,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetExportTwoByteAsFormat, item)
@@ -1603,10 +1603,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetExportFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetExportFourByteAsFormat, item)
@@ -1620,7 +1620,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetExportIpv4AddressFormat, item)
@@ -1631,10 +1631,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetTwoByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetTwoByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetTwoByteAsFormat{}
-			if cValue := v.Get("two-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("two-byte-as-number"); cValue.Exists() {
 				item.TwoByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetTwoByteAsFormat = append(data.AutodiscoveryBgpRouteTargetTwoByteAsFormat, item)
@@ -1645,10 +1645,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 		data.AutodiscoveryBgpRouteTargetFourByteAsFormat = make([]L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetFourByteAsFormat, 0)
 		value.ForEach(func(k, v gjson.Result) bool {
 			item := L2VPNBridgeGroupBridgeDomainVFIAutodiscoveryBgpRouteTargetFourByteAsFormat{}
-			if cValue := v.Get("four-byte-as-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("four-byte-as-number"); cValue.Exists() {
 				item.FourByteAsNumber = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.AssignedNumber = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetFourByteAsFormat = append(data.AutodiscoveryBgpRouteTargetFourByteAsFormat, item)
@@ -1662,7 +1662,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			if cValue := v.Get("ipv4-address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Ipv4Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("assigned-number"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("assigned-number"); cValue.Exists() {
 				item.Index = types.Int64Value(cValue.Int())
 			}
 			data.AutodiscoveryBgpRouteTargetIpv4AddressFormat = append(data.AutodiscoveryBgpRouteTargetIpv4AddressFormat, item)
@@ -1679,10 +1679,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolBgp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-id"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeId = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.ve-range"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolBgpVeRange = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.bgp.load-balancing.flow-label.transmit"); value.Exists() {
@@ -1710,16 +1710,16 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 	} else {
 		data.AutodiscoveryBgpSignalingProtocolLdp = types.BoolValue(false)
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsNumber = types.Int64Value(value.Int())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.two-byte-as-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdTwoByteAsFormat = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address"); value.Exists() && (value.Type == gjson.String || value.Type == gjson.Number) {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4Address = types.StringValue(value.String())
 	}
-	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() && value.Type == gjson.Number {
+	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.ipv4-address-assigned-number"); value.Exists() {
 		data.AutodiscoveryBgpSignalingProtocolLdpVplsIdIpv4AddressIndex = types.Int64Value(value.Int())
 	}
 	if value := gjson.GetBytes(res, "autodiscovery.bgp.signaling-protocol.ldp.vpls-id.load-balancing.flow-label.transmit"); value.Exists() {
@@ -1773,7 +1773,7 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 			if cValue := v.Get("address"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
 				item.Address = types.StringValue(cValue.String())
 			}
-			if cValue := v.Get("pw-id"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("pw-id"); cValue.Exists() {
 				item.PwId = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("static-mac-addresses.static-mac-address"); cValue.Exists() {
@@ -1787,10 +1787,10 @@ func (data *L2VPNBridgeGroupBridgeDomainVFIData) fromBody(ctx context.Context, r
 					return true
 				})
 			}
-			if cValue := v.Get("mpls.static.label.local"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mpls.static.label.local"); cValue.Exists() {
 				item.MplsStaticLabelLocal = types.Int64Value(cValue.Int())
 			}
-			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() && cValue.Type == gjson.Number {
+			if cValue := v.Get("mpls.static.label.remote"); cValue.Exists() {
 				item.MplsStaticLabelRemote = types.Int64Value(cValue.Int())
 			}
 			if cValue := v.Get("pw-class"); cValue.Exists() && (cValue.Type == gjson.String || cValue.Type == gjson.Number) {
